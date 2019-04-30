@@ -2,235 +2,144 @@
 title: OY! API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
   - javascript
+  - java
+  - swift
+  - json
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://business.oyindonesia.com/oybayar'>Sign Up for Trial</a>
 
 includes:
-  - errors
+  - responsecodes
 
 search: true
 ---
 
 # Introduction
 
-OY! Bayar service enables business owners like you to receive payments from customers, either from your Application or independently by sending your Payment URL to your customers.
+OY! Bayar service enables business owners like you to receive payments from customers, either **from your Application** or independently **by sending your Payment URL to your customers**.
 
 With quick and easy integration, your business can start accepting payments on Day 1 after registration.
 
-# Authentication
+OY! Bayar supports multiple payment methods, including *Direct Debit*, *Credit Cards*, and *Bank Virtual Accounts*.
 
-> To authorize, use this code:
+# Quick Integration
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+> To open OY! Bayar webview, use following code from your platform:
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+window.open("https://pay.oyindonesia.com/username", "_blank"); 
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+```java
+Intent intent = new Intent(context, YourWebviewActivity.class);
+intent.putExtra("url", "https://pay.oyindonesia.com/username")
+startActivity(intent)
+```
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+```swift
+let controller = OyWebViewController()
+controller.url = "https://pay.oyindonesia.com/username"
+let navigationController = UINavigationController(rootViewController: controller)
+present(navigationController, animated: true, completion: nil)
+```
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+> Make sure to replace `username` with your account username, given on the email.
 
-`Authorization: meowmeowmeow`
+### Get Unique Payment URL for your business
+![Signup for Trial](images/img_signup.png)
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+1. Register for a unique payment URL here: [https://business.oyindonesia.com/oybayar](https://www.oyindonesia.com/oybayar)
+2. You will receive an email containing a unique payment URL for *trial version* of the checkout page. From here, you can immediately start the integration.
+
+<aside class="warning">
+Limitation of OY! Bayar (Trial Version)
 </aside>
 
-# Kittens
+Payment URL for the *trial version* will have several limitations, including:
 
-## Get All Kittens
+* Amount of payment is locked to Rp 10.000
+* It contains BIG watermark mentioning unverified account (note: you are not supposed to use this for production)
+* You don't get API Callback for payment result. However, you will notice that money will be sent to your bank account in real time
 
-```ruby
-require 'kittn'
+You can upgrade to OY! business partner to remove above limitations, by sending reply to the email that you receive. Our team will response your email quickly.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+### How Does It Work?
+![Integration flow](images/img_integration.png)
 
-```python
-import kittn
+1. **Put the logic of opening webview** on your app button, so that whenever buyer clicks on "Payment" button, it will open OY! Bayar checkout webview
+2. You implement your own **Product details page**
+3. You implement your **Order System to create transactionId** for buyers to checkout their order
+4. Your App/Web **opens OY! Bayar** Checkout page with additional parameters required
+5. Buyer pays using any of *Direct Debit*, *Credit Cards*, or *Bank Virtual Accounts*.
+6. You **receive money on your receiving account** and OY! will **send Payment status Callback** to your end point (note: Only available for non-trial account)
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+# OY! Bayar Webview
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+## Request With Parameters
 
 ```javascript
-const kittn = require('kittn');
+let params = 'open=true';
+params += (txid !== null) ? '&txid='+txid : '';
+params += (amount !== null) ? '&amount='+amount : '';
+params += (description !== null) ? '&description='+encodeURIComponent(description) : '';
+params += (show_contact !== null) ? '&show_contact='+show_contact : '';
+params += (show_account !== null) ? '&show_account='+show_account : '';
+params += (send_notif !== null) ? '&send_notif='+send_notif : '';
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+window.open("https://pay.oyindonesia.com/username?" + params, "_blank"); 
 ```
 
 This endpoint retrieves all kittens.
 
-### HTTP Request
+### Open Webview
 
-`GET http://example.com/api/kittens`
+`GET http://pay.oyindonesia.com/username`
+
+<aside class="success">
+Remember — Make sure to replace `username` with your account username, given on the email.
+</aside>
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+txid | not set | If set to specific ID, OY! will echo back the transactionID label via the Payment Result Callback (parameter name `txid`)
+amount | not set | If set to certain amount, will lock the amount of payment that Buyer can pay. Otherwise, Buyer needs to input the amount
+description | not set | If set, description text will be shown the main page of OY! Bayar webview. Otherwise, it will show blank description
+show_contact | true | If set to true, OY! Bayar webview will show Contact Form asking details of the Buyer
+show_account | true | If set to true, OY! Bayar webview will show your bank account number
+send_notif | true | Whether OY! should send payment notification to the Buyer via SMS/Push Notif
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+## Payment Result Callback
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "txid": "partner000001",
+  "oy_txid": "1234567",
+  "nominal": 10000,
+  "name": "Joko Widodo",
+  "phone_number": "+6281111111",
+  "note": "Mohon dikirim segera",
+  "result": "success"
 }
 ```
 
 This endpoint retrieves a specific kitten.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<aside class="warning">You need to register an end point URL to receive this callback. Note that Trial Account would not get access to this feature</aside>
 
-### HTTP Request
+### Callback Parameters
 
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
+Check here from example: [example](/?json#payment-result-callback)
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+txid | (Optional) TransactionID which partner set on the initial OY! Bayar URL
+oy_txid | Internal TransactionID from OY! system
+nominal | Amount of payment by the Buyer
+name | Name of Buyer
+phone_number | Phone Number of Buyer
+note | (Optional) This is note from the Buyer
+result | Payment Status of Buyer. Can be either "success" or "failed"
