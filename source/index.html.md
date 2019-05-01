@@ -47,7 +47,7 @@ present(navigationController, animated: true, completion: nil)
 
 > Make sure to replace `username` with your account username, given on the email.
 
-### Get Unique Payment URL for your business
+### Get Payment URL for your business
 ![Signup for Trial](images/img_signup.png)
 
 1. Register for a unique payment URL here: [https://business.oyindonesia.com/oybayar](https://www.oyindonesia.com/oybayar)
@@ -91,7 +91,7 @@ params += (send_notif !== null) ? '&send_notif='+send_notif : '';
 window.open("https://pay.oyindonesia.com/username?" + params, "_blank"); 
 ```
 
-This endpoint retrieves all kittens.
+Open this URL as webview to open OY! Bayar Checkout page, optionally with additional parameters.
 
 ### Open Webview
 
@@ -126,12 +126,13 @@ send_notif | true | Whether OY! should send payment notification to the Buyer vi
 }
 ```
 
-This endpoint retrieves a specific kitten.
+Non-trial Account can register specific end point URL (web hook) to receive callback whenever payment occurs.
 
 <aside class="warning">You need to register an end point URL to receive this callback. Note that Trial Account would not get access to this feature</aside>
 
 ### Callback Parameters
 
+The data on the callback will be sent using JSON format via POST data to your web hook
 Check here from example: [example](/?json#payment-result-callback)
 
 Parameter | Description

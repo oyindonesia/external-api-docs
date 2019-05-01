@@ -10,7 +10,7 @@ toc_footers:
   - <a href='#'>Sign Up for Trial</a>
 
 includes:
-  - errors
+
 
 search: true
 ---
