@@ -111,6 +111,8 @@ description | not set | If set, description text will be shown the main page of 
 show_contact | true | If set to true, OY! Bayar webview will show Contact Form asking details of the Buyer
 show_account | true | If set to true, OY! Bayar webview will show your bank account number
 send_notif | true | Whether OY! should send payment notification to the Buyer via SMS/Push Notif
+enable_payment_cc | false | Whether OY! should enable payment using Credit Card
+enable_payment_va | false | Whether OY! should enable payment using Bank Virtual Accounts
 
 ## Payment Result Callback
 
@@ -132,8 +134,8 @@ Non-trial Account can register specific end point URL (web hook) to receive call
 
 ### Callback Parameters
 
-The data on the callback will be sent using JSON format via POST data to your web hook
-Check here from example: [example](/?json#payment-result-callback)
+The data on the callback will be sent using JSON format via POST data to your web hook.
+Check here for example: [example](/?json#payment-result-callback)
 
 Parameter | Description
 --------- | -----------
