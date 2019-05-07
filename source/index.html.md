@@ -1,5 +1,5 @@
 ---
-title: OY! API Reference
+title: OY! API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
@@ -18,7 +18,7 @@ search: true
 
 # Introduction
 
-OY! Bayar service enables business owners like you to receive payments from customers, either **from your Application** or independently **by sending your Payment URL to your customers**.
+OY! API service enables business owners like you to receive payments from customers, either **from your Application** or independently **by sending your Payment URL to your customers**.
 
 With quick and easy integration, your business can start accepting payments on Day 1 after registration.
 
