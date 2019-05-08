@@ -3,146 +3,188 @@ title: OY! API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
-  - java
-  - swift
-  - json
+  - shell
 
 toc_footers:
-  - <a href='https://business.oyindonesia.com/oybayar'>Sign Up for Trial</a>
-
-includes:
-  - responsecodes
+  - <a href='mailto:business@oyindonesia.com'>Ask for Integration</a>
 
 search: true
 ---
 
 # Introduction
 
-OY! API service enables business owners like you to receive payments from customers, either **from your Application** or independently **by sending your Payment URL to your customers**.
+OY! API services provide a way to disburse payment to any bank accounts in Indonesia easily and real-time.
 
-With quick and easy integration, your business can start accepting payments on Day 1 after registration.
-
-OY! Bayar supports multiple payment methods, including *Direct Debit*, *Credit Cards*, and *Bank Virtual Accounts*.
-
-# Quick Integration
-
-> To open OY! Bayar webview, use following code from your platform:
+# Definition
 
 ```javascript
-window.open("https://pay.oyindonesia.com/username", "_blank"); 
+/**
+ * Welcome to Documentation page of
+ * OY! API Services
+ * 
+ * Here, you can get necessary info 
+ * for integration with OY! API
+ * 
+ * Happy coding!
+ ** /
 ```
 
-```java
-Intent intent = new Intent(context, YourWebviewActivity.class);
-intent.putExtra("url", "https://pay.oyindonesia.com/username")
-startActivity(intent)
-```
+For the purpose of standardization and to prevent any misunderstanding, below our the terms we are going to use in this documentation:
 
-```swift
-let controller = OyWebViewController()
-controller.url = "https://pay.oyindonesia.com/username"
-let navigationController = UINavigationController(rootViewController: controller)
-present(navigationController, animated: true, completion: nil)
-```
+* Partner: OY! Business clients which utilise the API Services and Payment Portal
+* Beneficiary: Destination account whereby the payout/transfer is intended to
+* Deposit: Balance stored in OY! Account which will be deducted for any successful disbursement
 
-> Make sure to replace `username` with your account username, given on the email.
+# Business Flow
+![Signup for Trial](images/img_business_flow.png)
 
-### Get Payment URL for your business
-![Signup for Trial](images/img_signup.png)
+After partner has acquired access to OY! API Services, then:
 
-1. Register for a unique payment URL here: [https://business.oyindonesia.com/oybayar](https://www.oyindonesia.com/oybayar)
-2. You will receive an email containing a unique payment URL for *trial version* of the checkout page. From here, you can immediately start the integration.
+1. Partner can topup OY! Account Deposit via Virtual Accounts
+2. Once Deposit balance is active, Partner can use the API services provided
+
+# API For Money Disbursement
+
+## HTTPS Request
+
+Disbursement API can be requested through HTTPS Request to OY! API Base URL endpoint. The HTTPS Header has to be used to allow proper authentication, additionally HTTPS Request should only be made from IP Address which has been registered in OY! System.
+
+### API Base URL
+
+Development Environment: `https:/sandbox.oyindonesia.com/staging/partner`
+Production Environment: `https:/partner.oyindonesia.com`
+
+## Authentication
+
+OY! API uses pair of `API Key` and `IP Address` to authenticate a partner request. Partner needs to register a unique `IP Address` which will be used as originating request for the API Services.
 
 <aside class="warning">
-Limitation of OY! Bayar (Trial Version)
+Note: Your machine which call request to OY! API Services should be originating from the registered IP Address
 </aside>
 
-Payment URL for the *trial version* will have several limitations, including:
+## HTTPS Header
 
-* Amount of payment is locked to Rp 10.000
-* It contains BIG watermark mentioning unverified account (note: you are not supposed to use this for production)
-* You don't get API Callback for payment result. However, you will notice that money will be sent to your bank account in real time
+Use following HTTPS Headers when you make a call to OY! API
 
-You can upgrade to OY! business partner to remove above limitations, by sending reply to the email that you receive. Our team will response your email quickly.
+Header | Value | Description
+--------- | --------- | -----------
+Content-Type | application/json | The Content-Type field indicates that JSON type is acceptable to send to the recipient
+Accept | application/json | The Accept field is used to specify that JSON type is acceptable for the response
+X-OY-API | `<Partner API Key>` | Partner API Key to access OY! API services
 
-### How Does It Work?
-![Integration flow](images/img_integration.png)
+## API: Disbursement Money
 
-1. **Put the logic of opening webview** on your app button, so that whenever buyer clicks on "Payment" button, it will open OY! Bayar checkout webview
-2. You implement your own **Product details page**
-3. You implement your **Order System to create transactionId** for buyers to checkout their order
-4. Your App/Web **opens OY! Bayar** Checkout page with additional parameters required
-5. Buyer pays using any of *Direct Debit*, *Credit Cards*, or *Bank Virtual Accounts*.
-6. You **receive money on your receiving account** and OY! will **send Payment status Callback** to your end point (note: Only available for non-trial account)
-
-# OY! Bayar Webview
-
-## Request With Parameters
-
-```javascript
-let params = 'open=true';
-params += (txid !== null) ? '&txid='+txid : '';
-params += (amount !== null) ? '&amount='+amount : '';
-params += (description !== null) ? '&description='+encodeURIComponent(description) : '';
-params += (show_contact !== null) ? '&show_contact='+show_contact : '';
-params += (show_account !== null) ? '&show_account='+show_account : '';
-params += (send_notif !== null) ? '&send_notif='+send_notif : '';
-
-window.open("https://pay.oyindonesia.com/username?" + params, "_blank"); 
+```shell
+curl https:/partner.oyindonesia.com/api/remit
 ```
 
-Open this URL as webview to open OY! Bayar Checkout page, optionally with additional parameters.
+Use this API to start disbursing money to a specific beneficiary account.
 
-### Open Webview
+### HTTPS Request
+`POST BASE_URL/api/remit`
 
-`GET http://pay.oyindonesia.com/username`
-
-<aside class="success">
-Remember — Make sure to replace `username` with your account username, given on the email.
-</aside>
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-txid | not set | If set to specific ID, OY! will echo back the transactionID label via the Payment Result Callback (parameter name `txid`)
-amount | not set | If set to certain amount, will lock the amount of payment that Buyer can pay. Otherwise, Buyer needs to input the amount
-description | not set | If set, description text will be shown the main page of OY! Bayar webview. Otherwise, it will show blank description
-show_contact | true | If set to true, OY! Bayar webview will show Contact Form asking details of the Buyer
-show_account | true | If set to true, OY! Bayar webview will show your bank account number
-send_notif | true | Whether OY! should send payment notification to the Buyer via SMS/Push Notif
-enable_payment_cc | false | Whether OY! should enable payment using Credit Card
-enable_payment_va | false | Whether OY! should enable payment using Bank Virtual Accounts
-
-## Payment Result Callback
-
-```json
-{
-  "txid": "partner000001",
-  "oy_txid": "1234567",
-  "nominal": 10000,
-  "name": "Joko Widodo",
-  "phone_number": "+6281111111",
-  "note": "Mohon dikirim segera",
-  "result": "success"
-}
-```
-
-Non-trial Account can register specific end point URL (web hook) to receive callback whenever payment occurs.
-
-<aside class="warning">You need to register an end point URL to receive this callback. Note that Trial Account would not get access to this feature</aside>
-
-### Callback Parameters
-
-The data on the callback will be sent using JSON format via POST data to your web hook.
-Check here for example: [example](/?json#payment-result-callback)
+### Request Parameters
 
 Parameter | Description
 --------- | -----------
-txid | (Optional) TransactionID which partner set on the initial OY! Bayar URL
-oy_txid | Internal TransactionID from OY! system
-nominal | Amount of payment by the Buyer
-name | Name of Buyer
-phone_number | Phone Number of Buyer
-note | (Optional) This is note from the Buyer
-result | Payment Status of Buyer. Can be either "success" or "failed"
+recipient_bank | Bank Code of the Beneficiary account
+recipient_account | Beneficiary account number
+amount | Amount of disbursement (Accept non fraction number)
+note | Add Note to the payout
+partner_trx_id | Unique Payout ID for a specific request
+
+### Response Parameters
+
+Parameter | Description
+--------- | -----------
+status | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+partner_trx_id | Unique Payout ID which partner put on the Request
+trx_id | Unique Payout ID from OY!. Partner can use this ID for settlement
+recipient_bank | Bank Code of the Beneficiary account
+recipient_account | Beneficiary account number
+amount | Amount of disbursement (Accept non fraction number)
+timestamp | Execution time of Disbursement in OY! system
+
+## API: Get Disbursement 
+
+```shell
+curl https:/partner.oyindonesia.com/api/remit
+```
+
+To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success / failed)
+
+### HTTPS Request
+`POST BASE_URL/api/remit-status`
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+partner_trx_id | Unique Payout ID for a specific request
+
+### Response Parameters
+
+Parameter | Description
+--------- | -----------
+status | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+partner_trx_id | Unique Payout ID which partner put on the Request
+trx_id | Unique Payout ID from OY!. Partner can use this ID for settlement
+recipient_bank | Bank Code of the Beneficiary account
+recipient_account | Beneficiary account number
+recipient_name | Account holder name of Beneficiary account number
+amount | Amount of disbursement (Accept non fraction number)
+timestamp | Execution time of Disbursement in OY! system
+
+# Response Codes
+
+Possible status codes on the Disbursement Response:
+
+Payment Status | State | Meaning
+---------- | ------- | -------
+000 | Final | Disbursement Request has been completed
+101 | Non-Final | Request is Processed
+102 | Non-Final | Request is In Progress
+300 | Final | Disbursement is FAILED
+201 | Final | Request is Rejected (User ID is not Found)
+202 | Final | Request is Rejected (User ID is not Active)
+203 | Final | Request is Rejected (Duplicate Partner Tx ID)
+204 | Final | Request is Rejected (Partner Tx ID is Not Found)
+205 | Final | Request is Rejected (Beneficiary Bank Code is Not Supported)
+206 | Final | Request is Rejected (Partner Deposit Balance is Not Enough)
+207 | Final | Request is Rejected (Request IP Address is not Registered)
+208 | Final | Request is Rejected (API Key is not Valid)
+990 | Final | Request is Rejected (Request Parameter is not Valid)
+999 | Non-Final | Internal Server Error
+
+# Bank Codes
+
+Supported Bank Codes to be used in the Disbursement Request
+
+Bank Code | Bank Name
+------------- | -------
+008 | Bank Mandiri
+002 | Bank BRI
+009 | Bank BNI
+014 | Bank BCA
+451 | Bank Syariah Mandiri
+422 | Bank BRI Syariah
+213 | Bank BTPN
+013 | Bank Permata
+114 | Bank Jatim
+145 | Bank Nusantara Parahyangan
+110 | Bank Jawa Barat
+046 | Bank DBS
+022 | CIMB Niaga
+011 | Bank Danamon
+200 | Bank BTN
+050 | Standard Chartered
+gopay | GOPAY
+mandiri_emoney | Mandiri E-Money
+ovo | OVO
+022 | CIMB Rekening Ponsel
+019 | Bank Panin
+016 | BII Maybank
+441 | Bank Bukopin
+147 | Bank Muamalat
+426 | Bank Mega
+153 | Bank Sinarmas
