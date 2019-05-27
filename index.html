@@ -293,9 +293,9 @@
 <h1 id='api-for-money-disbursement'>API For Money Disbursement</h1><h2 id='https-request'>HTTPS Request</h2>
 <p>Disbursement API can be requested through HTTPS Request to OY! API Base URL endpoint. The HTTPS Header has to be used to allow proper authentication, additionally HTTPS Request should only be made from IP Address which has been registered in OY! System.</p>
 <h3 id='api-base-url'>API Base URL</h3>
-<p>Development Environment: <code>https:/sandbox.oyindonesia.com/staging/partner</code></p>
+<p>Development Environment: <code>https://sandbox.oyindonesia.com/staging/partner</code></p>
 
-<p>Production Environment: <code>https:/partner.oyindonesia.com</code></p>
+<p>Production Environment: <code>https://partner.oyindonesia.com</code></p>
 <h2 id='authentication'>Authentication</h2>
 <p>OY! API uses pair of <code>API Key</code> and <code>IP Address</code> to authenticate a partner request. Partner needs to register a unique <code>IP Address</code> which will be used as originating request for the API Services.</p>
 
@@ -333,7 +333,7 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Partner&#39;s API Key to access OY! API services</td>
 </tr>
 </tbody></table>
-<h2 id='api-disbursement-money'>API: Disbursement Money</h2><pre class="highlight shell tab-shell"><code>curl https:/partner.oyindonesia.com/api/remit
+<h2 id='api-disbursement-money'>API: Disbursement Money</h2><pre class="highlight shell tab-shell"><code>curl https://partner.oyindonesia.com/api/remit
 </code></pre>
 <p>Use this API to start disbursing money to a specific beneficiary account.</p>
 <h3 id='https-request-2'>HTTPS Request</h3>
@@ -402,7 +402,7 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Execution time of Disbursement in OY! system</td>
 </tr>
 </tbody></table>
-<h2 id='api-get-disbursement'>API: Get Disbursement</h2><pre class="highlight shell tab-shell"><code>curl https:/partner.oyindonesia.com/api/remit
+<h2 id='api-get-disbursement'>API: Get Disbursement</h2><pre class="highlight shell tab-shell"><code>curl https://partner.oyindonesia.com/api/remit
 </code></pre>
 <p>To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success / failed)</p>
 <h3 id='https-request-3'>HTTPS Request</h3>
