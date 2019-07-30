@@ -72,6 +72,33 @@ Content-Type | application/json | The Content-Type field indicates that JSON typ
 Accept | application/json | The Accept field is used to specify that JSON type is acceptable for the response
 X-OY-API | `<Partner API Key>` | Partner API Key to access OY! API services
 
+## API: Inquiry Bank Account
+
+```shell
+curl https:/partner.oyindonesia.com/api/inquiry
+```
+
+Use this API to get beneficiary account details.
+
+### HTTPS Request
+`POST BASE_URL/api/inquiry`
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+recipient_bank | Bank Code of the Beneficiary account
+recipient_account | Beneficiary account number
+
+### Response Parameters
+
+Parameter | Description
+--------- | -----------
+status | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+bank_code | Bank Code of the Beneficiary account
+account_number | Account Number of the Beneficiary Account
+account_name | Account Name of the Beneficiary Account
+
 ## API: Disbursement Money
 
 ```shell
@@ -104,33 +131,6 @@ recipient_bank | Bank Code of the Beneficiary account
 recipient_account | Beneficiary account number
 amount | Amount of disbursement (Accept non fraction number)
 timestamp | Execution time of Disbursement in OY! system
-
-## API: Inquiry Bank Account
-
-```shell
-curl https:/partner.oyindonesia.com/api/inquiry
-```
-
-Use this API to get beneficiary account details.
-
-### HTTPS Request
-`POST BASE_URL/api/inquiry`
-
-### Request Parameters
-
-Parameter | Description
---------- | -----------
-recipient_bank | Bank Code of the Beneficiary account
-recipient_account | Beneficiary account number
-
-### Response Parameters
-
-Parameter | Description
---------- | -----------
-status | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-bank_code | Bank Code of the Beneficiary account
-account_number | Account Number of the Beneficiary Account
-account_name | Account Name of the Beneficiary Account
 
 ## API: Get Disbursement 
 
