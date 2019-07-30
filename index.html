@@ -241,6 +241,9 @@
                     <a href="#https-header" class="toc-h2 toc-link" data-title="HTTPS Header">HTTPS Header</a>
                   </li>
                   <li>
+                    <a href="#api-inquiry-bank-account" class="toc-h2 toc-link" data-title="API: Inquiry Bank Account">API: Inquiry Bank Account</a>
+                  </li>
+                  <li>
                     <a href="#api-disbursement-money" class="toc-h2 toc-link" data-title="API: Disbursement Money">API: Disbursement Money</a>
                   </li>
                   <li>
@@ -282,7 +285,7 @@
 <li>Deposit: Balance stored in OY! Account which will be deducted for any successful disbursement</li>
 </ul>
 <h1 id='business-flow'>Business Flow</h1>
-<p><img src="images/img_business_flow.png" alt="Signup for Trial" /></p>
+<p><img src="images/images/img_business_flow.png" alt="Signup for Trial" /></p>
 
 <p>After partner has acquired access to OY! API Services, then:</p>
 
@@ -293,9 +296,8 @@
 <h1 id='api-for-money-disbursement'>API For Money Disbursement</h1><h2 id='https-request'>HTTPS Request</h2>
 <p>Disbursement API can be requested through HTTPS Request to OY! API Base URL endpoint. The HTTPS Header has to be used to allow proper authentication, additionally HTTPS Request should only be made from IP Address which has been registered in OY! System.</p>
 <h3 id='api-base-url'>API Base URL</h3>
-<p>Development Environment: <code>https://sandbox.oyindonesia.com/staging/partner</code></p>
-
-<p>Production Environment: <code>https://partner.oyindonesia.com</code></p>
+<p>Development Environment: <code>https:/sandbox.oyindonesia.com/staging/partner</code>
+Production Environment: <code>https:/partner.oyindonesia.com</code></p>
 <h2 id='authentication'>Authentication</h2>
 <p>OY! API uses pair of <code>API Key</code> and <code>IP Address</code> to authenticate a partner request. Partner needs to register a unique <code>IP Address</code> which will be used as originating request for the API Services.</p>
 
@@ -323,22 +325,62 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>The Accept field is used to specify that JSON type is acceptable for the response</td>
 </tr>
 <tr>
-<td>x-oy-username</td>
-<td><code>&lt;Partner API Username&gt;</code></td>
-<td>Partner&#39;s API Username to access OY! API services</td>
-</tr>
-<tr>
-<td>x-api-key</td>
+<td>X-OY-API</td>
 <td><code>&lt;Partner API Key&gt;</code></td>
-<td>Partner&#39;s API Key to access OY! API services</td>
+<td>Partner API Key to access OY! API services</td>
 </tr>
 </tbody></table>
-<h2 id='api-disbursement-money'>API: Disbursement Money</h2><pre class="highlight shell tab-shell"><code>curl https://partner.oyindonesia.com/api/remit
+<h2 id='api-inquiry-bank-account'>API: Inquiry Bank Account</h2><pre class="highlight shell tab-shell"><code>curl https:/partner.oyindonesia.com/api/inquiry
+</code></pre>
+<p>Use this API to get beneficiary account details.</p>
+<h3 id='https-request-2'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api/inquiry</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recipient_bank</td>
+<td>Bank Code of the Beneficiary account</td>
+</tr>
+<tr>
+<td>recipient_account</td>
+<td>Beneficiary account number</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>Bank Code of the Beneficiary account</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>Account Number of the Beneficiary Account</td>
+</tr>
+<tr>
+<td>account_name</td>
+<td>Account Name of the Beneficiary Account</td>
+</tr>
+</tbody></table>
+<h2 id='api-disbursement-money'>API: Disbursement Money</h2><pre class="highlight shell tab-shell"><code>curl https:/partner.oyindonesia.com/api/remit
 </code></pre>
 <p>Use this API to start disbursing money to a specific beneficiary account.</p>
-<h3 id='https-request-2'>HTTPS Request</h3>
+<h3 id='https-request-3'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/remit</code></p>
-<h3 id='request-parameters'>Request Parameters</h3>
+<h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -366,7 +408,7 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Unique Payout ID for a specific request</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters'>Response Parameters</h3>
+<h3 id='response-parameters-2'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -402,12 +444,12 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Execution time of Disbursement in OY! system</td>
 </tr>
 </tbody></table>
-<h2 id='api-get-disbursement'>API: Get Disbursement</h2><pre class="highlight shell tab-shell"><code>curl https://partner.oyindonesia.com/api/remit
+<h2 id='api-get-disbursement'>API: Get Disbursement</h2><pre class="highlight shell tab-shell"><code>curl https:/partner.oyindonesia.com/api/remit
 </code></pre>
 <p>To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success / failed)</p>
-<h3 id='https-request-3'>HTTPS Request</h3>
+<h3 id='https-request-4'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/remit-status</code></p>
-<h3 id='request-parameters-2'>Request Parameters</h3>
+<h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -419,7 +461,7 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Unique Payout ID for a specific request</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-2'>Response Parameters</h3>
+<h3 id='response-parameters-3'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -528,16 +570,6 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>208</td>
 <td>Final</td>
 <td>Request is Rejected (API Key is not Valid)</td>
-</tr>
-<tr>
-<td>209</td>
-<td>Final</td>
-<td>Request is Rejected (Beneficiary Bank Account is Not Found)</td>
-</tr>
-<tr>
-<td>210</td>
-<td>Final</td>
-<td>Request is Rejected (Amount is not valid, less than 10000)</td>
 </tr>
 <tr>
 <td>990</td>
