@@ -111,7 +111,7 @@ timestamp | Execution time of Disbursement in OY! system
 curl https:/partner.oyindonesia.com/api/inquiry
 ```
 
-Use this API to start disbursing money to a specific beneficiary account.
+Use this API to get beneficiary account details.
 
 ### HTTPS Request
 `POST BASE_URL/api/inquiry`
