@@ -144,16 +144,39 @@ To get status of a disbursement request, you can call this API. You may need to 
 
 ## Mock number Staging API 
 
-To get response code status of a disbursement request, you can use this mock.
+To get response code status of a disbursement inquiry request, you can use this mock:
 
  Parameter | Expected Result
 --------- | -----------
-1234567890 (remit - recipient_account) | INTERNAL_SERVER_ERROR("999", "Internal Server Error")
-1111111111 (remit - recipient_account) | DUPLICATE_PARTNER_TX_ID("203", "Duplicate Partner Tx Id")
-2222222222 (remit - recipient_account) | BANK_CODE_NOT_FOUND("205", "Bank Code is not found")
-3333333333 (remit - recipient_account) | TX_ID_NOT_FOUND("204", "Tx Id is not found")
-4444444444 (remit - recipient_account) | USER_IS_NOT_FOUND("201", "User is not found")
-5555555555 (remit - recipient_account) | USER_IS_NOT_ACTIVE("202", "User is not active")
+1111111111 (recipient_account) | SUCCESS("000", "Success")
+2222222222 (recipient_account) | SUCCESS("000", "Success")
+3333333333 (recipient_account) | SUCCESS("000", "Success")
+4444444444 (recipient_account) | SUCCESS("000", "Success")
+5555555555 (recipient_account) | SUCCESS("000", "Success")
+6666666666 (recipient_account) | FAILED("300", "Failed"),
+other value (recipient_account) | BANK_ACCOUNT_NOT_FOUND("209", "Bank Account is not found")
+
+To get response code status of a disbursement remit request, you can use this mock:
+
+ Parameter | Expected Result
+--------- | -----------
+1234567890 (recipient_account) | INTERNAL_SERVER_ERROR("999", "Internal Server Error")
+1111111111 (recipient_account) | DUPLICATE_PARTNER_TX_ID("203", "Duplicate Partner Tx Id")
+2222222222 (recipient_account) | BANK_CODE_NOT_FOUND("205", "Bank Code is not found")
+3333333333 (recipient_account) | TX_ID_NOT_FOUND("204", "Tx Id is not found")
+4444444444 (recipient_account) | USER_IS_NOT_FOUND("201", "User is not found")
+5555555555 (recipient_account) | USER_IS_NOT_ACTIVE("202", "User is not active")
+other value (recipient_account) | PROCESSED("101", "Request is Processed")
+
+To get response code status of a disbursement remit status request, you can use this mock:
+
+ Parameter | Expected Result
+--------- | -----------
+1234567890 (recipient_account) | INTERNAL_SERVER_ERROR("999", "Internal Server Error")
+6666666666 (recipient_account) | IN_PROGRESS("102", "Request is In progress")
+7777777777 (recipient_account) | FAILED("300", "Failed")
+8888888888 (recipient_account) | BANK_ACCOUNT_NOT_FOUND("209", "Bank Account is not found")
+other value (recipient_account) | SUCCESS("000", "Success")
 
 
 
