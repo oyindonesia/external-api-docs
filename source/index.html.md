@@ -141,6 +141,22 @@ curl https:/partner.oyindonesia.com/api/remit
 
 To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success / failed)
 
+
+## Mock number Staging API 
+
+To get response code status of a disbursement request, you can use this mock.
+
+ Parameter | Expected Result
+--------- | -----------
+1234567890 (remit - recipient_account) | INTERNAL_SERVER_ERROR("999", "Internal Server Error")
+1111111111 (remit - recipient_account) | DUPLICATE_PARTNER_TX_ID("203", "Duplicate Partner Tx Id")
+2222222222 (remit - recipient_account) | BANK_CODE_NOT_FOUND("205", "Bank Code is not found")
+3333333333 (remit - recipient_account) | TX_ID_NOT_FOUND("204", "Tx Id is not found")
+4444444444 (remit - recipient_account) | USER_IS_NOT_FOUND("201", "User is not found")
+5555555555 (remit - recipient_account) | USER_IS_NOT_ACTIVE("202", "User is not active")
+
+
+
 ### HTTPS Request
 `POST BASE_URL/api/remit-status`
 
