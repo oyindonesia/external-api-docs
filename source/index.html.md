@@ -141,6 +141,27 @@ curl https:/partner.oyindonesia.com/api/remit
 
 To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success / failed)
 
+### HTTPS Request
+`POST BASE_URL/api/remit-status`
+
+### Request Parameters
+
+Parameter | Description
+--------- | -----------
+partner_trx_id | Unique Payout ID for a specific request
+
+### Response Parameters
+
+Parameter | Description
+--------- | -----------
+status | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+partner_trx_id | Unique Payout ID which partner put on the Request
+trx_id | Unique Payout ID from OY!. Partner can use this ID for settlement
+recipient_bank | Bank Code of the Beneficiary account
+recipient_account | Beneficiary account number
+recipient_name | Account holder name of Beneficiary account number
+amount | Amount of disbursement (Accept non fraction number)
+timestamp | Execution time of Disbursement in OY! system
 
 ## Mock number Staging API 
 
@@ -178,29 +199,6 @@ To get response code status of a disbursement remit status request, you can use 
 8888888888 (recipient_account) | BANK_ACCOUNT_NOT_FOUND("209", "Bank Account is not found")
 other value (recipient_account) | SUCCESS("000", "Success")
 
-
-
-### HTTPS Request
-`POST BASE_URL/api/remit-status`
-
-### Request Parameters
-
-Parameter | Description
---------- | -----------
-partner_trx_id | Unique Payout ID for a specific request
-
-### Response Parameters
-
-Parameter | Description
---------- | -----------
-status | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-partner_trx_id | Unique Payout ID which partner put on the Request
-trx_id | Unique Payout ID from OY!. Partner can use this ID for settlement
-recipient_bank | Bank Code of the Beneficiary account
-recipient_account | Beneficiary account number
-recipient_name | Account holder name of Beneficiary account number
-amount | Amount of disbursement (Accept non fraction number)
-timestamp | Execution time of Disbursement in OY! system
 
 # Response Codes
 
