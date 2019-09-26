@@ -214,6 +214,8 @@ Payment Status | State | Meaning
 206 | Final | Request is Rejected (Partner Deposit Balance is Not Enough)
 207 | Final | Request is Rejected (Request IP Address is not Registered)
 208 | Final | Request is Rejected (API Key is not Valid)
+209 | Final | Request is Rejected (Bank Account is not found)
+210 | Final | Request is Rejected (Amount is not valid)
 990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
 
