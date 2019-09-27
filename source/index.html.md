@@ -241,9 +241,6 @@ Bank Code | Bank Name
 011 | Bank Danamon
 200 | Bank BTN
 050 | Standard Chartered
-gopay | GOPAY
-mandiri_emoney | Mandiri E-Money
-ovo | OVO
 022 | CIMB Rekening Ponsel
 019 | Bank Panin
 016 | BII Maybank
