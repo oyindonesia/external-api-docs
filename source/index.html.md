@@ -169,13 +169,9 @@ To get response code status of a disbursement inquiry request, you can use this 
 
  Parameter | Expected Result
 --------- | -----------
-1111111111 (recipient_account) | SUCCESS("000", "Success")
-2222222222 (recipient_account) | SUCCESS("000", "Success")
-3333333333 (recipient_account) | SUCCESS("000", "Success")
-4444444444 (recipient_account) | SUCCESS("000", "Success")
-5555555555 (recipient_account) | SUCCESS("000", "Success")
-6666666666 (recipient_account) | FAILED("300", "Failed"),
-other value (recipient_account) | BANK_ACCOUNT_NOT_FOUND("209", "Bank Account is not found")
+2222222222 (recipient_account) | BANK_CODE_NOT_FOUND("205", "Bank Code is not found")
+8888888888 (recipient_account) | BANK_ACCOUNT_NOT_FOUND("209", "Bank Account is not found")
+other value (recipient_account) | SUCCESS("000", "Success")
 
 To get response code status of a disbursement remit request, you can use this mock:
 
@@ -218,6 +214,8 @@ Payment Status | State | Meaning
 206 | Final | Request is Rejected (Partner Deposit Balance is Not Enough)
 207 | Final | Request is Rejected (Request IP Address is not Registered)
 208 | Final | Request is Rejected (API Key is not Valid)
+209 | Final | Request is Rejected (Bank Account is not found)
+210 | Final | Request is Rejected (Amount is not valid)
 990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
 
@@ -243,9 +241,6 @@ Bank Code | Bank Name
 011 | Bank Danamon
 200 | Bank BTN
 050 | Standard Chartered
-gopay | GOPAY
-mandiri_emoney | Mandiri E-Money
-ovo | OVO
 022 | CIMB Rekening Ponsel
 019 | Bank Panin
 016 | BII Maybank
