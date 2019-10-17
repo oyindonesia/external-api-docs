@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;javascript&quot;,&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,8 +211,8 @@
     <div class="toc-wrapper">
       <img src="images/logo.svg" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="javascript">javascript</a>
               <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -338,8 +338,22 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Partner API Key to access OY! API services</td>
 </tr>
 </tbody></table>
-<h2 id='api-inquiry-bank-account'>API: Inquiry Bank Account</h2><pre class="highlight shell tab-shell"><code>curl https:/partner.oyindonesia.com/api/inquiry
+<h2 id='api-inquiry-bank-account'>API: Inquiry Bank Account</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/inquiry -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390"}'</span>
 </code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
+  </span><span class="s2">"status"</span><span class="p">:{</span><span class="w"> 
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"16-10-2019 09:55:31"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipient_bank"</span><span class="p">:</span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipient_account"</span><span class="p">:</span><span class="s2">"1239812390"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipient_name"</span><span class="p">:</span><span class="s2">"John Doe"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>Use this API to get beneficiary account details.</p>
 <h3 id='https-request-2'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/inquiry</code></p>
@@ -347,15 +361,18 @@ Note: Your machine which call request to OY! API Services should be originating 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>recipient_bank</td>
+<td>String</td>
 <td>Bank Code of the Beneficiary account</td>
 </tr>
 <tr>
 <td>recipient_account</td>
+<td>String</td>
 <td>Beneficiary account number</td>
 </tr>
 </tbody></table>
@@ -363,28 +380,49 @@ Note: Your machine which call request to OY! API Services should be originating 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
+<td>Object</td>
 <td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>bank_code</td>
+<td>String</td>
 <td>Bank Code of the Beneficiary account</td>
 </tr>
 <tr>
 <td>account_number</td>
+<td>String</td>
 <td>Account Number of the Beneficiary Account</td>
 </tr>
 <tr>
 <td>account_name</td>
+<td>String</td>
 <td>Account Name of the Beneficiary Account</td>
 </tr>
 </tbody></table>
-<h2 id='api-disbursement-money'>API: Disbursement Money</h2><pre class="highlight shell tab-shell"><code>curl https:/partner.oyindonesia.com/api/remit
+<h2 id='api-disbursement-money'>API: Disbursement Money</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/remit -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390", "amount":9999999, "note":"Split lunch bill", "partner_trx_id":"123"}'</span>
 </code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">125000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"16-10-2019 10:23:42"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipient_bank"</span><span class="p">:</span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipient_account"</span><span class="p">:</span><span class="s2">"1239812390"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"trx_id"</span><span class="p">:</span><span class="s2">"ABC-456"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"partner_trx_id"</span><span class="p">:</span><span class="s2">"123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>Use this API to start disbursing money to a specific beneficiary account.</p>
 <h3 id='https-request-3'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/remit</code></p>
@@ -392,27 +430,33 @@ Note: Your machine which call request to OY! API Services should be originating 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>recipient_bank</td>
+<td>String</td>
 <td>Bank Code of the Beneficiary account</td>
 </tr>
 <tr>
 <td>recipient_account</td>
+<td>String</td>
 <td>Beneficiary account number</td>
 </tr>
 <tr>
 <td>amount</td>
+<td>BigDecimal</td>
 <td>Amount of disbursement (Accept non fraction number)</td>
 </tr>
 <tr>
 <td>note</td>
+<td>String</td>
 <td>Add Note to the payout</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
+<td>String</td>
 <td>Unique Payout ID for a specific request</td>
 </tr>
 </tbody></table>
@@ -420,40 +464,65 @@ Note: Your machine which call request to OY! API Services should be originating 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
+<td>Object</td>
 <td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
+<td>String</td>
 <td>Unique Payout ID which partner put on the Request</td>
 </tr>
 <tr>
 <td>trx_id</td>
+<td>String</td>
 <td>Unique Payout ID from OY!. Partner can use this ID for settlement</td>
 </tr>
 <tr>
 <td>recipient_bank</td>
+<td>String</td>
 <td>Bank Code of the Beneficiary account</td>
 </tr>
 <tr>
 <td>recipient_account</td>
+<td>String</td>
 <td>Beneficiary account number</td>
 </tr>
 <tr>
 <td>amount</td>
+<td>BigDecimal</td>
 <td>Amount of disbursement (Accept non fraction number)</td>
 </tr>
 <tr>
 <td>timestamp</td>
-<td>Execution time of Disbursement in OY! system</td>
+<td>String</td>
+<td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
-<h2 id='api-get-disbursement'>API: Get Disbursement</h2><pre class="highlight shell tab-shell"><code>curl https:/partner.oyindonesia.com/api/remit
+<h2 id='api-get-disbursement'>API: Get Disbursement</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/remit-status -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_trx_id": "014"}'</span>
 </code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
+  </span><span class="s2">"status"</span><span class="p">:{</span><span class="w"> 
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">125000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"16-10-2019 10:34:23"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipient_name"</span><span class="p">:</span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipient_bank"</span><span class="p">:</span><span class="s2">"008"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipient_account"</span><span class="p">:</span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"trx_id"</span><span class="p">:</span><span class="s2">"ABC-456"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"partner_trx_id"</span><span class="p">:</span><span class="s2">"014"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success / failed)</p>
 <h3 id='https-request-4'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/remit-status</code></p>
@@ -461,11 +530,13 @@ Note: Your machine which call request to OY! API Services should be originating 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>partner_trx_id</td>
+<td>String</td>
 <td>Unique Payout ID for a specific request</td>
 </tr>
 </tbody></table>
@@ -473,40 +544,49 @@ Note: Your machine which call request to OY! API Services should be originating 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
+<td>String</td>
 <td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
+<td>String</td>
 <td>Unique Payout ID which partner put on the Request</td>
 </tr>
 <tr>
 <td>trx_id</td>
+<td>String</td>
 <td>Unique Payout ID from OY!. Partner can use this ID for settlement</td>
 </tr>
 <tr>
 <td>recipient_bank</td>
+<td>String</td>
 <td>Bank Code of the Beneficiary account</td>
 </tr>
 <tr>
 <td>recipient_account</td>
+<td>String</td>
 <td>Beneficiary account number</td>
 </tr>
 <tr>
 <td>recipient_name</td>
+<td>String</td>
 <td>Account holder name of Beneficiary account number</td>
 </tr>
 <tr>
 <td>amount</td>
+<td>BigDecimal</td>
 <td>Amount of disbursement (Accept non fraction number)</td>
 </tr>
 <tr>
 <td>timestamp</td>
-<td>Execution time of Disbursement in OY! system</td>
+<td>String</td>
+<td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
 <h2 id='mock-number-staging-api'>Mock number Staging API</h2>
@@ -796,8 +876,8 @@ Note: Your machine which call request to OY! API Services should be originating 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="javascript">javascript</a>
                 <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>
