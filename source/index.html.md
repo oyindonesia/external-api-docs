@@ -118,10 +118,10 @@ account_name | String | Account Name of the Beneficiary Account
 ## API: Disbursement Money
 
 ```shell
-curl -X POST https:/partner.oyindonesia.com/api/remit -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":9999999, "note":"Split lunch bill", "partner_trx_id":"123"}'
+curl -X POST https:/partner.oyindonesia.com/api/remit -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"123"}'
 ```
 
-> The above command returns JSON structured like this:
+> The above command returns JSON structured similar like this:
 
 ```json
 {
@@ -171,7 +171,7 @@ timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy H
 curl -X POST https:/partner.oyindonesia.com/api/remit-status -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_trx_id": "014"}'
 ```
 
-> The above command returns JSON structured like this:
+> The above command returns JSON structured similar like this:
 
 ```json
 { 
