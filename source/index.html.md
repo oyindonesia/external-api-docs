@@ -2,8 +2,8 @@
 title: OY! API Documentation
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - javascript
   - shell
+  - javascript
 
 toc_footers:
   - <a href='mailto:business@oyindonesia.com'>Ask for Integration</a>
@@ -76,7 +76,22 @@ X-Api-Key | `<Partner API Key>` | Partner API Key to access OY! API services
 ## API: Inquiry Bank Account
 
 ```shell
-curl https:/partner.oyindonesia.com/api/inquiry
+curl -X POST https:/partner.oyindonesia.com/api/inquiry -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390"}'
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{ 
+  "status":{ 
+    "code":"000",
+    "message":"Success"
+  },
+  "timestamp":"16-10-2019 09:55:31",
+  "recipient_bank":"014",
+  "recipient_account":"1239812390",
+  "recipient_name":"John Doe"
+}
 ```
 
 Use this API to get beneficiary account details.
@@ -86,24 +101,41 @@ Use this API to get beneficiary account details.
 
 ### Request Parameters
 
-Parameter | Description
---------- | -----------
-recipient_bank | Bank Code of the Beneficiary account
-recipient_account | Beneficiary account number
+Parameter | Type | Description
+--------- | ---- | -----------
+recipient_bank | String | Bank Code of the Beneficiary account
+recipient_account | String | Beneficiary account number
 
 ### Response Parameters
 
-Parameter | Description
---------- | -----------
-status | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-bank_code | Bank Code of the Beneficiary account
-account_number | Account Number of the Beneficiary Account
-account_name | Account Name of the Beneficiary Account
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+bank_code | String | Bank Code of the Beneficiary account
+account_number | String | Account Number of the Beneficiary Account
+account_name | String | Account Name of the Beneficiary Account
 
 ## API: Disbursement Money
 
 ```shell
-curl https:/partner.oyindonesia.com/api/remit
+curl -X POST https:/partner.oyindonesia.com/api/remit -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":9999999, "note":"Split lunch bill", "partner_trx_id":"123"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":{
+    "code":"000",
+    "message":"Success"
+  },
+  "amount":125000,
+  "timestamp":"16-10-2019 10:23:42",
+  "recipient_bank":"014",
+  "recipient_account":"1239812390",
+  "trx_id":"ABC-456",
+  "partner_trx_id":"123"
+}
 ```
 
 Use this API to start disbursing money to a specific beneficiary account.
@@ -113,30 +145,48 @@ Use this API to start disbursing money to a specific beneficiary account.
 
 ### Request Parameters
 
-Parameter | Description
---------- | -----------
-recipient_bank | Bank Code of the Beneficiary account
-recipient_account | Beneficiary account number
-amount | Amount of disbursement (Accept non fraction number)
-note | Add Note to the payout
-partner_trx_id | Unique Payout ID for a specific request
+Parameter | Type | Description
+--------- | ---- | -----------
+recipient_bank | String | Bank Code of the Beneficiary account
+recipient_account | String | Beneficiary account number
+amount | BigDecimal | Amount of disbursement (Accept non fraction number)
+note | String | Add Note to the payout
+partner_trx_id | String | Unique Payout ID for a specific request
 
 ### Response Parameters
 
-Parameter | Description
---------- | -----------
-status | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-partner_trx_id | Unique Payout ID which partner put on the Request
-trx_id | Unique Payout ID from OY!. Partner can use this ID for settlement
-recipient_bank | Bank Code of the Beneficiary account
-recipient_account | Beneficiary account number
-amount | Amount of disbursement (Accept non fraction number)
-timestamp | Execution time of Disbursement in OY! system
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+partner_trx_id | String | Unique Payout ID which partner put on the Request
+trx_id | String | Unique Payout ID from OY!. Partner can use this ID for settlement
+recipient_bank | String | Bank Code of the Beneficiary account
+recipient_account | String | Beneficiary account number
+amount | BigDecimal | Amount of disbursement (Accept non fraction number)
+timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy HH:mm:ss")
 
 ## API: Get Disbursement 
 
 ```shell
-curl https:/partner.oyindonesia.com/api/remit
+curl -X POST https:/partner.oyindonesia.com/api/remit-status -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_trx_id": "014"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{ 
+  "status":{ 
+    "code":"000",
+    "message":"Success"
+  },
+  "amount":125000,
+  "timestamp":"16-10-2019 10:34:23",
+  "recipient_name":"John Doe",
+  "recipient_bank":"008",
+  "recipient_account":"1234567890",
+  "trx_id":"ABC-456",
+  "partner_trx_id":"014"
+}
 ```
 
 To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success / failed)
@@ -146,22 +196,22 @@ To get status of a disbursement request, you can call this API. You may need to 
 
 ### Request Parameters
 
-Parameter | Description
---------- | -----------
-partner_trx_id | Unique Payout ID for a specific request
+Parameter | Type | Description
+--------- | ---- | -----------
+partner_trx_id | String | Unique Payout ID for a specific request
 
 ### Response Parameters
 
-Parameter | Description
---------- | -----------
-status | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-partner_trx_id | Unique Payout ID which partner put on the Request
-trx_id | Unique Payout ID from OY!. Partner can use this ID for settlement
-recipient_bank | Bank Code of the Beneficiary account
-recipient_account | Beneficiary account number
-recipient_name | Account holder name of Beneficiary account number
-amount | Amount of disbursement (Accept non fraction number)
-timestamp | Execution time of Disbursement in OY! system
+Parameter | Type | Description
+--------- | ---- | -----------
+status | String | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+partner_trx_id | String | Unique Payout ID which partner put on the Request
+trx_id | String | Unique Payout ID from OY!. Partner can use this ID for settlement
+recipient_bank | String | Bank Code of the Beneficiary account
+recipient_account | String | Beneficiary account number
+recipient_name | String | Account holder name of Beneficiary account number
+amount | BigDecimal | Amount of disbursement (Accept non fraction number)
+timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy HH:mm:ss")
 
 ## Mock number Staging API 
 
