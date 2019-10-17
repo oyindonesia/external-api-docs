@@ -405,10 +405,10 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Account Name of the Beneficiary Account</td>
 </tr>
 </tbody></table>
-<h2 id='api-disbursement-money'>API: Disbursement Money</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/remit -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390", "amount":9999999, "note":"Split lunch bill", "partner_trx_id":"123"}'</span>
+<h2 id='api-disbursement-money'>API: Disbursement Money</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/remit -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"123"}'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured similar like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:{</span><span class="w">
@@ -507,7 +507,7 @@ Note: Your machine which call request to OY! API Services should be originating 
 <h2 id='api-get-disbursement'>API: Get Disbursement</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/remit-status -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_trx_id": "014"}'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured similar like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
   </span><span class="s2">"status"</span><span class="p">:{</span><span class="w"> 
