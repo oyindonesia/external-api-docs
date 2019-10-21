@@ -275,26 +275,86 @@ Supported Bank Codes to be used in the Disbursement Request
 
 Bank Code | Bank Name
 ------------- | -------
-008 | Bank Mandiri
 002 | Bank BRI
+008 | Bank Mandiri
 009 | Bank BNI
-014 | Bank BCA
-451 | Bank Syariah Mandiri
-422 | Bank BRI Syariah
-213 | Bank BTPN
-013 | Bank Permata
-114 | Bank Jatim
-145 | Bank Nusantara Parahyangan
-110 | Bank Jawa Barat
-046 | Bank DBS
-022 | CIMB Niaga
 011 | Bank Danamon
-200 | Bank BTN
-050 | Standard Chartered
-022 | CIMB Rekening Ponsel
-019 | Bank Panin
+013 | Bank Permata
+014 | Bank BCA
 016 | BII Maybank
-441 | Bank Bukopin
+019 | Bank Panin
+022 | CIMB Niaga
+022 | CIMB Rekening Ponsel
+036	| Bank Windu Kentjana International
+045	| Bank Nusantara Parahyangan
+046 | Bank DBS
+050 | Standard Chartered
+054	| Bank Capital (associate member)
+061	| ANZ Indonesia
+076	| Bank Bumi Arta
+087	| Bank Ekonomi Raharja
+088	| Bank Antardaerah
+089	| Bank Rabobank
+110 | Bank Jawa Barat
+112	| Bank BPD DIY
+114 | Bank Jatim
+115	| Bank Jambi
+116	| Bank Aceh
+117	| Bank SUMUT
+118	| Bank Nagari
+119	| Bank Riau
+120	| BANK SUMSEL BABEL
+121	| Bank Lampung
+123	| BPD KALBAR
+124	| Bank BPD Kaltim
+125	| Bank BPD Kalteng
+126	| BANK SULSELBAR
+127	| Bank Sulut
+128	| Bank NTB
+129	| Bank BPD Bali
+130	| Bank NTT
+131	| Bank Maluku
+132	| Bank BPD Papua
+133	| Bank Bengkulu
+134	| BANK SULTENG
+135	| Bank Sultra
+145	| BNP
+146	| Bank Of India Indonesia
 147 | Bank Muamalat
-426 | Bank Mega
+151	| Bank Mestika
 153 | Bank Sinarmas
+157	| Bank Maspion
+161	| Bank Ganesha
+164	| BANK ICBC
+167	| Bank QNB indonesia
+200 | Bank BTN
+212	| Bank Woori Saudara
+213 | Bank BTPN
+405	| Bank Victoria Syariah
+422 | Bank BRI Syariah
+425	| Bank Jabar Banten Syariah
+426 | Bank Mega
+441 | Bank Bukopin
+451 | Bank Syariah Mandiri
+472 |	Bank Jasa Jakarta
+494 |	Bank Rakyat Indonesia AGRONIAGA
+498 |	Bank SBI Indonesia (Indomonex)
+501 |	Bank Royal
+503 |	Bank National Nobu
+513 |	Bank INA
+517 |	Bank Panin Syariah
+520 |	BANK PRIMA MASTER
+523 |	Bank Sahabat Sampoerna
+526 |	BANK DINAR
+535 |	BANK KESEJAHTERAAN EKONOMI
+542 |	Bank ARTOS
+547 |	BANK BTPN SYARIAH
+548 |	Bank Multiarta Sentosa
+553 |	Bank Mayora
+555 |	BANK INDEX
+558 |	Bank Pembangunan Daerah Banten
+559	| CNB
+567	| HARDA
+889	| BPR KS
+945 |	Bank Agris
+949 |	Bank CTBC Indonesia
