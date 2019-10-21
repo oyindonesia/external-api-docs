@@ -765,6 +765,11 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Request is Rejected (Amount is not valid)</td>
 </tr>
 <tr>
+<td>301</td>
+<td>Final</td>
+<td>Suspect (When there is a unclear answer from Banks Network)</td>
+</tr>
+<tr>
 <td>990</td>
 <td>Final</td>
 <td>Request is Rejected (Request Parameter is not Valid)</td>
@@ -785,96 +790,336 @@ Note: Your machine which call request to OY! API Services should be originating 
 </tr>
 </thead><tbody>
 <tr>
-<td>008</td>
-<td>Bank Mandiri</td>
-</tr>
-<tr>
 <td>002</td>
 <td>Bank BRI</td>
+</tr>
+<tr>
+<td>008</td>
+<td>Bank Mandiri</td>
 </tr>
 <tr>
 <td>009</td>
 <td>Bank BNI</td>
 </tr>
 <tr>
-<td>014</td>
-<td>Bank BCA</td>
-</tr>
-<tr>
-<td>451</td>
-<td>Bank Syariah Mandiri</td>
-</tr>
-<tr>
-<td>422</td>
-<td>Bank BRI Syariah</td>
-</tr>
-<tr>
-<td>213</td>
-<td>Bank BTPN</td>
+<td>011</td>
+<td>Bank Danamon</td>
 </tr>
 <tr>
 <td>013</td>
 <td>Bank Permata</td>
 </tr>
 <tr>
-<td>114</td>
-<td>Bank Jatim</td>
-</tr>
-<tr>
-<td>145</td>
-<td>Bank Nusantara Parahyangan</td>
-</tr>
-<tr>
-<td>110</td>
-<td>Bank Jawa Barat</td>
-</tr>
-<tr>
-<td>046</td>
-<td>Bank DBS</td>
-</tr>
-<tr>
-<td>022</td>
-<td>CIMB Niaga</td>
-</tr>
-<tr>
-<td>011</td>
-<td>Bank Danamon</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Bank BTN</td>
-</tr>
-<tr>
-<td>050</td>
-<td>Standard Chartered</td>
-</tr>
-<tr>
-<td>022</td>
-<td>CIMB Rekening Ponsel</td>
-</tr>
-<tr>
-<td>019</td>
-<td>Bank Panin</td>
+<td>014</td>
+<td>Bank BCA</td>
 </tr>
 <tr>
 <td>016</td>
 <td>BII Maybank</td>
 </tr>
 <tr>
-<td>441</td>
-<td>Bank Bukopin</td>
+<td>019</td>
+<td>Bank Panin</td>
+</tr>
+<tr>
+<td>022</td>
+<td>CIMB Niaga</td>
+</tr>
+<tr>
+<td>022</td>
+<td>CIMB Rekening Ponsel</td>
+</tr>
+<tr>
+<td>036</td>
+<td>Bank Windu Kentjana International</td>
+</tr>
+<tr>
+<td>045</td>
+<td>Bank Nusantara Parahyangan</td>
+</tr>
+<tr>
+<td>046</td>
+<td>Bank DBS</td>
+</tr>
+<tr>
+<td>050</td>
+<td>Standard Chartered</td>
+</tr>
+<tr>
+<td>054</td>
+<td>Bank Capital (associate member)</td>
+</tr>
+<tr>
+<td>061</td>
+<td>ANZ Indonesia</td>
+</tr>
+<tr>
+<td>076</td>
+<td>Bank Bumi Arta</td>
+</tr>
+<tr>
+<td>087</td>
+<td>Bank Ekonomi Raharja</td>
+</tr>
+<tr>
+<td>088</td>
+<td>Bank Antardaerah</td>
+</tr>
+<tr>
+<td>089</td>
+<td>Bank Rabobank</td>
+</tr>
+<tr>
+<td>110</td>
+<td>Bank Jawa Barat</td>
+</tr>
+<tr>
+<td>112</td>
+<td>Bank BPD DIY</td>
+</tr>
+<tr>
+<td>114</td>
+<td>Bank Jatim</td>
+</tr>
+<tr>
+<td>115</td>
+<td>Bank Jambi</td>
+</tr>
+<tr>
+<td>116</td>
+<td>Bank Aceh</td>
+</tr>
+<tr>
+<td>117</td>
+<td>Bank SUMUT</td>
+</tr>
+<tr>
+<td>118</td>
+<td>Bank Nagari</td>
+</tr>
+<tr>
+<td>119</td>
+<td>Bank Riau</td>
+</tr>
+<tr>
+<td>120</td>
+<td>BANK SUMSEL BABEL</td>
+</tr>
+<tr>
+<td>121</td>
+<td>Bank Lampung</td>
+</tr>
+<tr>
+<td>123</td>
+<td>BPD KALBAR</td>
+</tr>
+<tr>
+<td>124</td>
+<td>Bank BPD Kaltim</td>
+</tr>
+<tr>
+<td>125</td>
+<td>Bank BPD Kalteng</td>
+</tr>
+<tr>
+<td>126</td>
+<td>BANK SULSELBAR</td>
+</tr>
+<tr>
+<td>127</td>
+<td>Bank Sulut</td>
+</tr>
+<tr>
+<td>128</td>
+<td>Bank NTB</td>
+</tr>
+<tr>
+<td>129</td>
+<td>Bank BPD Bali</td>
+</tr>
+<tr>
+<td>130</td>
+<td>Bank NTT</td>
+</tr>
+<tr>
+<td>131</td>
+<td>Bank Maluku</td>
+</tr>
+<tr>
+<td>132</td>
+<td>Bank BPD Papua</td>
+</tr>
+<tr>
+<td>133</td>
+<td>Bank Bengkulu</td>
+</tr>
+<tr>
+<td>134</td>
+<td>BANK SULTENG</td>
+</tr>
+<tr>
+<td>135</td>
+<td>Bank Sultra</td>
+</tr>
+<tr>
+<td>145</td>
+<td>BNP</td>
+</tr>
+<tr>
+<td>146</td>
+<td>Bank Of India Indonesia</td>
 </tr>
 <tr>
 <td>147</td>
 <td>Bank Muamalat</td>
 </tr>
 <tr>
-<td>426</td>
-<td>Bank Mega</td>
+<td>151</td>
+<td>Bank Mestika</td>
 </tr>
 <tr>
 <td>153</td>
 <td>Bank Sinarmas</td>
+</tr>
+<tr>
+<td>157</td>
+<td>Bank Maspion</td>
+</tr>
+<tr>
+<td>161</td>
+<td>Bank Ganesha</td>
+</tr>
+<tr>
+<td>164</td>
+<td>BANK ICBC</td>
+</tr>
+<tr>
+<td>167</td>
+<td>Bank QNB indonesia</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Bank BTN</td>
+</tr>
+<tr>
+<td>212</td>
+<td>Bank Woori Saudara</td>
+</tr>
+<tr>
+<td>213</td>
+<td>Bank BTPN</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Bank Victoria Syariah</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Bank BRI Syariah</td>
+</tr>
+<tr>
+<td>425</td>
+<td>Bank Jabar Banten Syariah</td>
+</tr>
+<tr>
+<td>426</td>
+<td>Bank Mega</td>
+</tr>
+<tr>
+<td>441</td>
+<td>Bank Bukopin</td>
+</tr>
+<tr>
+<td>451</td>
+<td>Bank Syariah Mandiri</td>
+</tr>
+<tr>
+<td>472</td>
+<td>Bank Jasa Jakarta</td>
+</tr>
+<tr>
+<td>494</td>
+<td>Bank Rakyat Indonesia AGRONIAGA</td>
+</tr>
+<tr>
+<td>498</td>
+<td>Bank SBI Indonesia (Indomonex)</td>
+</tr>
+<tr>
+<td>501</td>
+<td>Bank Royal</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Bank National Nobu</td>
+</tr>
+<tr>
+<td>513</td>
+<td>Bank INA</td>
+</tr>
+<tr>
+<td>517</td>
+<td>Bank Panin Syariah</td>
+</tr>
+<tr>
+<td>520</td>
+<td>BANK PRIMA MASTER</td>
+</tr>
+<tr>
+<td>523</td>
+<td>Bank Sahabat Sampoerna</td>
+</tr>
+<tr>
+<td>526</td>
+<td>BANK DINAR</td>
+</tr>
+<tr>
+<td>535</td>
+<td>BANK KESEJAHTERAAN EKONOMI</td>
+</tr>
+<tr>
+<td>542</td>
+<td>Bank ARTOS</td>
+</tr>
+<tr>
+<td>547</td>
+<td>BANK BTPN SYARIAH</td>
+</tr>
+<tr>
+<td>548</td>
+<td>Bank Multiarta Sentosa</td>
+</tr>
+<tr>
+<td>553</td>
+<td>Bank Mayora</td>
+</tr>
+<tr>
+<td>555</td>
+<td>BANK INDEX</td>
+</tr>
+<tr>
+<td>558</td>
+<td>Bank Pembangunan Daerah Banten</td>
+</tr>
+<tr>
+<td>559</td>
+<td>CNB</td>
+</tr>
+<tr>
+<td>567</td>
+<td>HARDA</td>
+</tr>
+<tr>
+<td>889</td>
+<td>BPR KS</td>
+</tr>
+<tr>
+<td>945</td>
+<td>Bank Agris</td>
+</tr>
+<tr>
+<td>949</td>
+<td>Bank CTBC Indonesia</td>
 </tr>
 </tbody></table>
 
