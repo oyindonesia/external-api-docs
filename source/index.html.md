@@ -267,6 +267,7 @@ Payment Status | State | Meaning
 208 | Final | Request is Rejected (API Key is not Valid)
 209 | Final | Request is Rejected (Bank Account is not found)
 210 | Final | Request is Rejected (Amount is not valid)
+301 | Final | Suspect (When there is a unclear answer from Banks Network)
 990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
 
