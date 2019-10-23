@@ -291,7 +291,6 @@ Bank Code | Bank Name
 045	| Bank Nusantara Parahyangan
 046 | Bank DBS
 050 | Standard Chartered
-054	| Bank Capital (associate member)
 061	| ANZ Indonesia
 076	| Bank Bumi Arta
 087	| Bank Ekonomi Raharja
@@ -303,11 +302,9 @@ Bank Code | Bank Name
 115	| Bank Jambi
 116	| Bank Aceh
 117	| Bank SUMUT
-118	| Bank Nagari
 119	| Bank Riau
 120	| BANK SUMSEL BABEL
 121	| Bank Lampung
-123	| BPD KALBAR
 124	| Bank BPD Kaltim
 125	| Bank BPD Kalteng
 126	| BANK SULSELBAR
@@ -344,14 +341,9 @@ Bank Code | Bank Name
 501 |	Bank Royal
 503 |	Bank National Nobu
 513 |	Bank INA
-517 |	Bank Panin Syariah
-520 |	BANK PRIMA MASTER
 523 |	Bank Sahabat Sampoerna
-526 |	BANK DINAR
 535 |	BANK KESEJAHTERAAN EKONOMI
-542 |	Bank ARTOS
 547 |	BANK BTPN SYARIAH
-548 |	Bank Multiarta Sentosa
 553 |	Bank Mayora
 555 |	BANK INDEX
 558 |	Bank Pembangunan Daerah Banten
