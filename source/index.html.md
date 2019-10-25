@@ -244,6 +244,7 @@ To get response code status of a disbursement remit status request, you can use 
 6666666666 (recipient_account) | IN_PROGRESS("102", "Request is In progress")
 7777777777 (recipient_account) | FAILED("300", "Failed")
 8888888888 (recipient_account) | BANK_ACCOUNT_NOT_FOUND("209", "Bank Account is not found")
+9999999999 (recipient_account) | SUSPECT(“301”, “Suspect”)
 other value (recipient_account) | SUCCESS("000", "Success")
 
 
@@ -256,7 +257,6 @@ Payment Status | State | Meaning
 000 | Final | Disbursement Request has been completed
 101 | Non-Final | Request is Processed
 102 | Non-Final | Request is In Progress
-300 | Final | Disbursement is FAILED
 201 | Final | Request is Rejected (User ID is not Found)
 202 | Final | Request is Rejected (User ID is not Active)
 203 | Final | Request is Rejected (Duplicate Partner Tx ID)
@@ -267,7 +267,8 @@ Payment Status | State | Meaning
 208 | Final | Request is Rejected (API Key is not Valid)
 209 | Final | Request is Rejected (Bank Account is not found)
 210 | Final | Request is Rejected (Amount is not valid)
-301 | Final | Suspect (When there is a unclear answer from Banks Network)
+300 | Final | Disbursement is FAILED
+301 | Non-Final | Suspect (When there is a unclear answer from Banks Network)
 990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
 
