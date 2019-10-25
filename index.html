@@ -680,6 +680,10 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>BANK_ACCOUNT_NOT_FOUND(&quot;209&quot;, &quot;Bank Account is not found&quot;)</td>
 </tr>
 <tr>
+<td>9999999999 (recipient_account)</td>
+<td>SUSPECT(“301”, “Suspect”)</td>
+</tr>
+<tr>
 <td>other value (recipient_account)</td>
 <td>SUCCESS(&quot;000&quot;, &quot;Success&quot;)</td>
 </tr>
@@ -708,11 +712,6 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>102</td>
 <td>Non-Final</td>
 <td>Request is In Progress</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Final</td>
-<td>Disbursement is FAILED</td>
 </tr>
 <tr>
 <td>201</td>
@@ -765,8 +764,13 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Request is Rejected (Amount is not valid)</td>
 </tr>
 <tr>
-<td>301</td>
+<td>300</td>
 <td>Final</td>
+<td>Disbursement is FAILED</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Non-Final</td>
 <td>Suspect (When there is a unclear answer from Banks Network)</td>
 </tr>
 <tr>
