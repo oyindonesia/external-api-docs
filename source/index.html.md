@@ -254,7 +254,7 @@ Possible status codes on the Disbursement Response:
 
 Payment Status | State | Meaning
 ---------- | ------- | -------
-000 | Final | Disbursement Request has been completed
+000 | Final | Disbursement Request has been completed (SUCCESS)
 101 | Non-Final | Request is Processed
 102 | Non-Final | Request is In Progress
 201 | Final | Request is Rejected (User ID is not Found)
