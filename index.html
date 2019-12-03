@@ -250,6 +250,9 @@
                     <a href="#api-get-disbursement" class="toc-h2 toc-link" data-title="API: Get Disbursement">API: Get Disbursement</a>
                   </li>
                   <li>
+                    <a href="#api-get-balance" class="toc-h2 toc-link" data-title="API: Get Balance">API: Get Balance</a>
+                  </li>
+                  <li>
                     <a href="#mock-number-staging-api" class="toc-h2 toc-link" data-title="Mock number Staging API">Mock number Staging API</a>
                   </li>
               </ul>
@@ -417,8 +420,8 @@ Note: Your machine which call request to OY! API Services should be originating 
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:{</span><span class="w">
-    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Request is Processed"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">125000</span><span class="p">,</span><span class="w">
   </span><span class="s2">"recipient_bank"</span><span class="p">:</span><span class="s2">"014"</span><span class="p">,</span><span class="w">
@@ -594,6 +597,61 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
+<h2 id='api-get-balance'>API: Get Balance</h2><pre class="highlight shell tab-shell"><code>curl -X GET https:/partner.oyindonesia.com/api/balace -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:janedoe, x-api-key:7654321'</span> -d <span class="s1">'{"username": "janedoe"}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:{</span><span class="w">
+    </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="mi">125000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"10-12-2019 12:15:37"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Use this API to get partner balance.</p>
+<h3 id='https-request-5'>HTTPS Request</h3>
+<p><code>GET BASE_URL/api/balance</code></p>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>String</td>
+<td>Partner Username to access OY! API services</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-4'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of disbursement (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String</td>
+<td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
+</tr>
+</tbody></table>
 <h2 id='mock-number-staging-api'>Mock number Staging API</h2>
 <p>To get response code status of a disbursement inquiry request, you can use this mock:</p>
 
@@ -688,6 +746,24 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>SUCCESS(&quot;000&quot;, &quot;Success&quot;)</td>
 </tr>
 </tbody></table>
+
+<p>To get response code status of a disbursement balance request, you can use this mock:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Expected Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>&lt;partner_username&gt; (username)</td>
+<td>SUCCESS(&quot;000&quot;, &quot;Success&quot;)</td>
+</tr>
+<tr>
+<td>other value (username)</td>
+<td>USER_IS_NOT_FOUND(&quot;201&quot;, &quot;User is not found&quot;)</td>
+</tr>
+</tbody></table>
 <h1 id='response-codes'>Response Codes</h1>
 <p>Possible status codes on the Disbursement Response:</p>
 
@@ -771,7 +847,7 @@ Note: Your machine which call request to OY! API Services should be originating 
 <tr>
 <td>301</td>
 <td>Non-Final</td>
-<td>Suspect (When there is a unclear answer from Banks Network)</td>
+<td>Pending (When there is a unclear answer from Banks Network)</td>
 </tr>
 <tr>
 <td>990</td>
