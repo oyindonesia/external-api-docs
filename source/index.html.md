@@ -387,6 +387,7 @@ Bank Code | Bank Name
 422 | Bank BRI Syariah
 425	| Bank Jabar Banten Syariah
 426 | Bank Mega
+427 | Bank BNI Syariah
 441 | Bank Bukopin
 451 | Bank Syariah Mandiri
 472 |	Bank Jasa Jakarta
