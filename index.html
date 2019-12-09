@@ -229,36 +229,41 @@
             <a href="#business-flow" class="toc-h1 toc-link" data-title="Business Flow">Business Flow</a>
           </li>
           <li>
-            <a href="#api-for-money-disbursement" class="toc-h1 toc-link" data-title="API For Money Disbursement">API For Money Disbursement</a>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#https-request" class="toc-h2 toc-link" data-title="HTTPS Request">HTTPS Request</a>
                   </li>
                   <li>
-                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
-                  </li>
-                  <li>
                     <a href="#https-header" class="toc-h2 toc-link" data-title="HTTPS Header">HTTPS Header</a>
-                  </li>
-                  <li>
-                    <a href="#api-inquiry-bank-account" class="toc-h2 toc-link" data-title="API: Inquiry Bank Account">API: Inquiry Bank Account</a>
-                  </li>
-                  <li>
-                    <a href="#api-disbursement-money" class="toc-h2 toc-link" data-title="API: Disbursement Money">API: Disbursement Money</a>
-                  </li>
-                  <li>
-                    <a href="#api-get-disbursement" class="toc-h2 toc-link" data-title="API: Get Disbursement">API: Get Disbursement</a>
-                  </li>
-                  <li>
-                    <a href="#api-get-balance" class="toc-h2 toc-link" data-title="API: Get Balance">API: Get Balance</a>
-                  </li>
-                  <li>
-                    <a href="#mock-number-staging-api" class="toc-h2 toc-link" data-title="Mock number Staging API">Mock number Staging API</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#response-codes" class="toc-h1 toc-link" data-title="Response Codes">Response Codes</a>
+            <a href="#fund-disbursement" class="toc-h1 toc-link" data-title="Fund Disbursement">Fund Disbursement</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#bank-account-inquiry" class="toc-h2 toc-link" data-title="Bank Account Inquiry">Bank Account Inquiry</a>
+                  </li>
+                  <li>
+                    <a href="#disbursement" class="toc-h2 toc-link" data-title="Disbursement">Disbursement</a>
+                  </li>
+                  <li>
+                    <a href="#get-disbursement-status" class="toc-h2 toc-link" data-title="Get Disbursement Status">Get Disbursement Status</a>
+                  </li>
+                  <li>
+                    <a href="#get-balance" class="toc-h2 toc-link" data-title="Get Balance">Get Balance</a>
+                  </li>
+                  <li>
+                    <a href="#mock-number-staging-api" class="toc-h2 toc-link" data-title="Mock number Staging API">Mock number Staging API</a>
+                  </li>
+                  <li>
+                    <a href="#response-codes" class="toc-h2 toc-link" data-title="Response Codes">Response Codes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#kyc-coming-soon" class="toc-h1 toc-link" data-title="KYC (Coming Soon)">KYC (Coming Soon)</a>
           </li>
           <li>
             <a href="#bank-codes" class="toc-h1 toc-link" data-title="Bank Codes">Bank Codes</a>
@@ -272,14 +277,14 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>OY! API services provide a way to disburse payment to any bank accounts in Indonesia easily and real-time.</p>
+<p>Welcome to OY! API Documentation. Our API services are organized around <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>, accepts <a href="https://en.wikipedia.org/wiki/POST_(HTTP)#Use_for_submitting_web_forms">form-encoded</a> request bodies and returns <a href="https://www.json.org/json-en.html">JSON-encoded</a> responses.</p>
 <h1 id='definition'>Definition</h1><pre class="highlight javascript tab-javascript"><code><span class="cm">/**
  * Welcome to Documentation page of
  * OY! API Services
- * 
- * Here, you can get necessary info 
+ *
+ * Here, you can get necessary info
  * for integration with OY! API
- * 
+ *
  * Happy coding!
  ** /
 </span></code></pre>
@@ -299,17 +304,17 @@
 <li>Partner can topup OY! Account Deposit via Virtual Accounts</li>
 <li>Once Deposit balance is active, Partner can use the API services provided</li>
 </ol>
-<h1 id='api-for-money-disbursement'>API For Money Disbursement</h1><h2 id='https-request'>HTTPS Request</h2>
-<p>Disbursement API can be requested through HTTPS Request to OY! API Base URL endpoint. The HTTPS Header has to be used to allow proper authentication, additionally HTTPS Request should only be made from IP Address which has been registered in OY! System.</p>
-<h3 id='api-base-url'>API Base URL</h3>
-<p>Development Environment: <code>https:/sandbox.oyindonesia.com/staging/partner</code>
-Production Environment: <code>https:/partner.oyindonesia.com</code></p>
-<h2 id='authentication'>Authentication</h2>
+<h1 id='authentication'>Authentication</h1>
 <p>OY! API uses pair of <code>API Key</code> and <code>IP Address</code> to authenticate a partner request. Partner needs to register a unique <code>IP Address</code> which will be used as originating request for the API Services.</p>
 
 <aside class="warning">
 Note: Your machine which call request to OY! API Services should be originating from the registered IP Address
 </aside>
+<h2 id='https-request'>HTTPS Request</h2>
+<p>Disbursement API can be requested through HTTPS Request to OY! API Base URL endpoint. The HTTPS Header has to be used to allow proper authentication, additionally HTTPS Request should only be made from IP Address which has been registered in OY! System.</p>
+<h3 id='api-base-url'>API Base URL</h3>
+<p>Development Environment: <code>https:/sandbox.oyindonesia.com/staging/partner</code>
+Production Environment: <code>https:/partner.oyindonesia.com</code></p>
 <h2 id='https-header'>HTTPS Header</h2>
 <p>Use following HTTPS Headers when you make a call to OY! API</p>
 
@@ -341,13 +346,15 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Partner API Key to access OY! API services</td>
 </tr>
 </tbody></table>
-<h2 id='api-inquiry-bank-account'>API: Inquiry Bank Account</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/inquiry -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390"}'</span>
+<h1 id='fund-disbursement'>Fund Disbursement</h1>
+<p>Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts in Indonesia easily and real-time.</p>
+<h2 id='bank-account-inquiry'>Bank Account Inquiry</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/inquiry -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
-  </span><span class="s2">"status"</span><span class="p">:{</span><span class="w"> 
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -413,7 +420,7 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Timestamp api hit (format: dd-MM-yyyy HH:mm:ss)</td>
 </tr>
 </tbody></table>
-<h2 id='api-disbursement-money'>API: Disbursement Money</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/remit -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf"}'</span>
+<h2 id='disbursement'>Disbursement</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/remit -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -512,13 +519,13 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
-<h2 id='api-get-disbursement'>API: Get Disbursement</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/remit-status -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_trx_id": "1234-asde"}'</span>
+<h2 id='get-disbursement-status'>Get Disbursement Status</h2><pre class="highlight shell tab-shell"><code>curl -X POST https:/partner.oyindonesia.com/api/remit-status -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_trx_id": "1234-asde"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
-  </span><span class="s2">"status"</span><span class="p">:{</span><span class="w"> 
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:{</span><span class="w">
     </span><span class="s2">"code"</span><span class="p">:</span><span class="s2">"000"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -597,7 +604,7 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
-<h2 id='api-get-balance'>API: Get Balance</h2><pre class="highlight shell tab-shell"><code>curl -X GET https:/partner.oyindonesia.com/api/balace -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:janedoe, x-api-key:7654321'</span> -d <span class="s1">'{"username": "janedoe"}'</span>
+<h2 id='get-balance'>Get Balance</h2><pre class="highlight shell tab-shell"><code>curl -X GET https:/partner.oyindonesia.com/api/balace -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:janedoe, x-api-key:7654321'</span> -d <span class="s1">'{"username": "janedoe"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -764,8 +771,8 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>USER_IS_NOT_FOUND(&quot;201&quot;, &quot;User is not found&quot;)</td>
 </tr>
 </tbody></table>
-<h1 id='response-codes'>Response Codes</h1>
-<p>Possible status codes on the Disbursement Response:</p>
+<h2 id='response-codes'>Response Codes</h2>
+<p>These are the list of possible status codes for fund disbursement:</p>
 
 <table><thead>
 <tr>
@@ -860,6 +867,10 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Internal Server Error</td>
 </tr>
 </tbody></table>
+<h1 id='kyc-coming-soon'>KYC (Coming Soon)</h1>
+<p>KYC APIs will allow you to verify whether the user-supplied identity card is valid or not.</p>
+
+<p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
 <h1 id='bank-codes'>Bank Codes</h1>
 <p>Supported Bank Codes to be used in the Disbursement Request</p>
 
