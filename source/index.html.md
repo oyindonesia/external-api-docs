@@ -231,7 +231,7 @@ curl -X GET https:/partner.oyindonesia.com/api/balace -H 'content-type: applicat
     "code":"000",
     "message":"Success"
   },
-  "amount":125000,
+  "balance":125000,
   "timestamp":"10-12-2019 12:15:37"
 }
 ```
@@ -252,7 +252,7 @@ username | String | Partner Username to access OY! API services
 Parameter | Type | Description
 --------- | ---- | -----------
 status | String | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-amount | BigDecimal | Amount of disbursement (Accept non fraction number)
+balance | BigDecimal | Remaining balance (Accept non fraction number)
 timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy HH:mm:ss")
 
 ## Mock number Staging API
