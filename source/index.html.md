@@ -122,7 +122,7 @@ timestamp | Timestamp | Timestamp api hit (format: dd-MM-yyyy HH:mm:ss)
 ## Disbursement
 
 ```shell
-curl -X POST https:/partner.oyindonesia.com/api/remit -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" : "asdf@email.com"}'
+curl -X POST https:/partner.oyindonesia.com/api/remit -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com"}'
 ```
 
 > The above command returns JSON structured similar like this:
