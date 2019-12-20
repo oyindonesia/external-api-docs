@@ -57,8 +57,8 @@ Disbursement API can be requested through HTTPS Request to OY! API Base URL endp
 
 ### API Base URL
 
-Development Environment: `https:/sandbox.oyindonesia.com/staging/partner`
-Production Environment: `https:/partner.oyindonesia.com`
+Development Environment: `https://sandbox.oyindonesia.com/staging/partner`
+Production Environment: `https://partner.oyindonesia.com`
 
 ## HTTPS Header
 
@@ -79,7 +79,7 @@ Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts
 ## Bank Account Inquiry
 
 ```shell
-curl -X POST https:/partner.oyindonesia.com/api/inquiry -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390"}'
+curl -X POST https://partner.oyindonesia.com/api/inquiry -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -122,7 +122,7 @@ timestamp | Timestamp | Timestamp api hit (format: dd-MM-yyyy HH:mm:ss)
 ## Disbursement
 
 ```shell
-curl -X POST https:/partner.oyindonesia.com/api/remit -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com"}'
+curl -X POST https://partner.oyindonesia.com/api/remit -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -172,7 +172,7 @@ timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy H
 ## Get Disbursement Status
 
 ```shell
-curl -X POST https:/partner.oyindonesia.com/api/remit-status -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_trx_id": "1234-asde"}'
+curl -X POST https://partner.oyindonesia.com/api/remit-status -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_trx_id": "1234-asde"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -220,7 +220,7 @@ timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy H
 ## Get Balance
 
 ```shell
-curl -X GET https:/partner.oyindonesia.com/api/balace -H 'content-type: application/json, accept: application/json, x-oy-username:janedoe, x-api-key:7654321' -d '{"username": "janedoe"}'
+curl -X GET https://partner.oyindonesia.com/api/balace -H 'content-type: application/json, accept: application/json, x-oy-username:janedoe, x-api-key:7654321'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -240,12 +240,6 @@ Use this API to get partner balance.
 
 ### HTTPS Request
 `GET BASE_URL/api/balance`
-
-### Request Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-username | String | Partner Username to access OY! API services
 
 ### Response Parameters
 
