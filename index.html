@@ -609,7 +609,7 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 <td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
-<h2 id='get-balance'>Get Balance</h2><pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/balace -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:janedoe, x-api-key:7654321'</span>
+<h2 id='get-balance'>Get Balance</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s1">'https://partner.oyindonesia.com/api/balance'</span> -H <span class="s1">'Content-Type: application/json'</span> -H <span class="s1">'Accept: application/json'</span> -H <span class="s1">'X-OY-Username: janedoe'</span> -H <span class="s1">'X-Api-Key: 7654321'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -754,11 +754,11 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 </tr>
 </thead><tbody>
 <tr>
-<td>&lt;partner_username&gt; (username)</td>
+<td>&lt;Partner Username&gt; (X-OY-Username)</td>
 <td>SUCCESS(&quot;000&quot;, &quot;Success&quot;)</td>
 </tr>
 <tr>
-<td>other value (username)</td>
+<td>other value (X-OY-Username)</td>
 <td>USER_IS_NOT_FOUND(&quot;201&quot;, &quot;User is not found&quot;)</td>
 </tr>
 </tbody></table>
