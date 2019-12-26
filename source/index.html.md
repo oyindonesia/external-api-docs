@@ -220,7 +220,7 @@ timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy H
 ## Get Balance
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/balace -H 'content-type: application/json, accept: application/json, x-oy-username:janedoe, x-api-key:7654321'
+curl -X GET 'https://partner.oyindonesia.com/api/balance' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'X-OY-Username: janedoe' -H 'X-Api-Key: 7654321'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -286,8 +286,8 @@ To get response code status of a disbursement balance request, you can use this 
 
  Parameter | Expected Result
 --------- | -----------
-\<partner_username\> (username) | SUCCESS("000", "Success")
-other value (username) | USER_IS_NOT_FOUND("201", "User is not found")
+\<Partner Username\> (X-OY-Username) | SUCCESS("000", "Success")
+other value (X-OY-Username) | USER_IS_NOT_FOUND("201", "User is not found")
 
 ## Response Codes
 
