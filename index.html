@@ -263,6 +263,17 @@
               </ul>
           </li>
           <li>
+            <a href="#static-va-generator" class="toc-h1 toc-link" data-title="Static VA Generator">Static VA Generator</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#va-generator" class="toc-h2 toc-link" data-title="VA Generator">VA Generator</a>
+                  </li>
+                  <li>
+                    <a href="#partner-callback" class="toc-h2 toc-link" data-title="Partner Callback">Partner Callback</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#kyc-coming-soon" class="toc-h1 toc-link" data-title="KYC (Coming Soon)">KYC (Coming Soon)</a>
           </li>
           <li>
@@ -856,6 +867,104 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 <td>999</td>
 <td>Non-Final</td>
 <td>Internal Server Error</td>
+</tr>
+</tbody></table>
+<h1 id='static-va-generator'>Static VA Generator</h1>
+<p>Static VA Generator API allow you to create single unique VA number as payment instrument between your company and your users.</p>
+<h2 id='va-generator'>VA Generator</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partnerUserId": "oy00000001","bankCode": "002","amount": 500000}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vaNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000001"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Use this API to generate VA number</p>
+<h3 id='https-request-6'>HTTPS Request</h3>
+<p><code>GET BASE_URL/api/generate-static-va</code></p>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>Your unique ID for specified user</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>Bank code which the VA number will be generated</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimall</td>
+<td>Amount your user must paid to complete the transaction</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-5'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String</td>
+<td>Generated VA balance</td>
+</tr>
+</tbody></table>
+<h2 id='partner-callback'>Partner Callback</h2>
+<p>Once user successfully do the payment, our system will make a callback to your system</p>
+<h3 id='callback-parameters'>Callback Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>va_number</td>
+<td>String</td>
+<td>Generated VA balance</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimall</td>
+<td>Amount your user must paid to complete the transaction</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>Your unique ID for specified user</td>
+</tr>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>payment status if success or not</td>
 </tr>
 </tbody></table>
 <h1 id='kyc-coming-soon'>KYC (Coming Soon)</h1>
