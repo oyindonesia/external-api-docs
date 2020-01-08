@@ -899,7 +899,7 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 <tr>
 <td>partner_user_id</td>
 <td>String</td>
-<td>Your unique ID for specified user</td>
+<td>Your unique ID for specific user</td>
 </tr>
 <tr>
 <td>bank_code</td>
@@ -908,7 +908,7 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 </tr>
 <tr>
 <td>amount</td>
-<td>BigDecimall</td>
+<td>BigDecimal</td>
 <td>Amount your user must paid to complete the transaction</td>
 </tr>
 </tbody></table>
@@ -922,7 +922,7 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 </thead><tbody>
 <tr>
 <td>status</td>
-<td>String</td>
+<td>Object</td>
 <td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
@@ -933,10 +933,40 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 <tr>
 <td>va_number</td>
 <td>String</td>
-<td>Generated VA balance</td>
+<td>Generated VA number</td>
+</tr>
+</tbody></table>
+<h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
+<table><thead>
+<tr>
+<th>Bank Code</th>
+<th>Bank Name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>002</td>
+<td>Bank BRI</td>
+</tr>
+<tr>
+<td>013</td>
+<td>Bank Permata</td>
+</tr>
+<tr>
+<td>022</td>
+<td>Bank CIMB Niaga</td>
 </tr>
 </tbody></table>
 <h2 id='partner-callback'>Partner Callback</h2>
+<blockquote>
+<p>Response callback:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oy0000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>Once user successfully do the payment, our system will make a callback to your system</p>
 <h3 id='callback-parameters'>Callback Parameters</h3>
 <table><thead>
@@ -949,17 +979,17 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 <tr>
 <td>va_number</td>
 <td>String</td>
-<td>Generated VA balance</td>
+<td>Generated VA number</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimall</td>
-<td>Amount your user must paid to complete the transaction</td>
+<td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String</td>
-<td>Your unique ID for specified user</td>
+<td>Your unique ID for specific user</td>
 </tr>
 <tr>
 <td>success</td>
