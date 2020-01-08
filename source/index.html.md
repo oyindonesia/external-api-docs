@@ -359,7 +359,7 @@ va_number | String | Generated VA number
 
 ### Available Bank for Static VA
 Bank Code | Bank Name
-------------- | -------
+--------- | -------
 002 | Bank BRI
 013 | Bank Permata
 022 | Bank CIMB Niaga
@@ -384,7 +384,7 @@ Once user successfully do the payment, our system will make a callback to your s
 Parameter | Type | Description
 --------- | ---- | -----------
 va_number | String | Generated VA number
-amount | BigDecimall | Amount of VA transaction
+amount | BigDecimal | Amount of VA transaction
 partner_user_id | String | Your unique ID for specific user
 success | boolean | payment status if success or not
 
