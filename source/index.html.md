@@ -345,28 +345,47 @@ Use this API to generate VA number
 
 Parameter | Type | Description
 --------- | ---- | -----------
-partner_user_id | String | Your unique ID for specified user
+partner_user_id | String | Your unique ID for specific user
 bank_code | String | Bank code which the VA number will be generated
-amount | BigDecimall | Amount your user must paid to complete the transaction
+amount | BigDecimal | Amount your user must paid to complete the transaction
 
 ### Response Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | String | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
-va_number | String | Generated VA balance
+va_number | String | Generated VA number
+
+### Available Bank for Static VA
+Bank Code | Bank Name
+------------- | -------
+002 | Bank BRI
+013 | Bank Permata
+022 | Bank CIMB Niaga
 
 ## Partner Callback
+
+> Response callback:
+
+```json
+{
+	"va_number": "1234567",
+	"amount": 100000,
+	"partner_user_id": "oy0000000001",
+	"success": true
+}
+```
+
 Once user successfully do the payment, our system will make a callback to your system
 
 ### Callback Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
-va_number | String | Generated VA balance
-amount | BigDecimall | Amount your user must paid to complete the transaction
-partner_user_id | String | Your unique ID for specified user
+va_number | String | Generated VA number
+amount | BigDecimall | Amount of VA transaction
+partner_user_id | String | Your unique ID for specific user
 success | boolean | payment status if success or not
 
 # KYC (Coming Soon)
