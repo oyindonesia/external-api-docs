@@ -313,6 +313,62 @@ Payment Status | State | Meaning
 990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
 
+# Static VA Generator
+
+Static VA Generator API allow you to create single unique VA number as payment instrument between your company and your users.
+
+## VA Generator
+
+```shell
+curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partnerUserId": "oy00000001","bankCode": "002","amount": 500000}'
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "amount": 500000,
+    "vaNumber": "100536000000000001"
+}
+```
+
+Use this API to generate VA number
+
+### HTTPS Request
+`GET BASE_URL/api/generate-static-va`
+
+### Request Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+partner_user_id | String | Your unique ID for specified user
+bank_code | String | Bank code which the VA number will be generated
+amount | BigDecimall | Amount your user must paid to complete the transaction
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+status | String | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+amount | BigDecimal | Amount of VA transaction
+va_number | String | Generated VA balance
+
+## Partner Callback
+Once user successfully do the payment, our system will make a callback to your system
+
+### Callback Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+va_number | String | Generated VA balance
+amount | BigDecimall | Amount your user must paid to complete the transaction
+partner_user_id | String | Your unique ID for specified user
+success | boolean | payment status if success or not
+
 # KYC (Coming Soon)
 
 KYC APIs will allow you to verify whether the user-supplied identity card is valid or not.
