@@ -339,7 +339,7 @@ curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-
 Use this API to generate VA number
 
 ### HTTPS Request
-`GET BASE_URL/api/generate-static-va`
+`POST BASE_URL/api/generate-static-va`
 
 ### Request Parameters
 
