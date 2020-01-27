@@ -97,6 +97,7 @@ curl -X POST https://partner.oyindonesia.com/api/inquiry -H 'content-type: appli
 }
 ```
 
+`This API is mandatory to hit before remit API.`
 Use this API to get beneficiary account details.
 
 ### HTTPS Request
