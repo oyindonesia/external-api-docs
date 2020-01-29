@@ -872,7 +872,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h1 id='static-va-generator'>Static VA Generator</h1>
 <p>Static VA Generator API allow you to create single unique VA number as payment instrument between your company and your users.</p>
-<h2 id='va-generator'>VA Generator</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partnerUserId": "oy00000001","bankCode": "002","amount": 500000}'</span>
+<h2 id='va-generator'>VA Generator</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
