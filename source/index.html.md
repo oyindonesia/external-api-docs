@@ -320,7 +320,7 @@ Static VA Generator API allow you to create single unique VA number as payment i
 ## VA Generator
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partnerUserId": "oy00000001","bankCode": "002","amount": 500000}'
+curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'
 ```
 
 > The above command returns JSON structured similar like this:
