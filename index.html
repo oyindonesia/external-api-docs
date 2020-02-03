@@ -552,7 +552,9 @@ Use this API to get beneficiary account details.</p>
   </span><span class="s2">"recipient_account"</span><span class="p">:</span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"trx_id"</span><span class="p">:</span><span class="s2">"ABC-456"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"partner_trx_id"</span><span class="p">:</span><span class="s2">"1234-asde"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"16-10-2019 10:34:23"</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"16-10-2020 10:34:23"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24-01-2020 06:48:08"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_updated_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24-01-2020 06:48:39"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success / failed)</p>
@@ -618,7 +620,17 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>timestamp</td>
 <td>String</td>
-<td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
+<td>Execution time of API remit status in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
+</tr>
+<tr>
+<td>created_date</td>
+<td>String</td>
+<td>Executionn time of Disbures in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
+</tr>
+<tr>
+<td>last_updated_date</td>
+<td>String</td>
+<td>Latest status change of a disbursement. Example from &#39;Pending&#39; to &#39;Success&#39; (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
 <h2 id='get-balance'>Get Balance</h2><pre class="highlight shell tab-shell"><code>curl -X GET <span class="s1">'https://partner.oyindonesia.com/api/balance'</span> -H <span class="s1">'Content-Type: application/json'</span> -H <span class="s1">'Accept: application/json'</span> -H <span class="s1">'X-OY-Username: janedoe'</span> -H <span class="s1">'X-Api-Key: 7654321'</span>
