@@ -313,6 +313,11 @@ Payment Status | State | Meaning
 208 | Final | Request is Rejected (API Key is not Valid)
 209 | Final | Request is Rejected (Bank Account is not found)
 210 | Final | Request is Rejected (Amount is not valid)
+211 | Final | Request is Rejected (Bank code is not available for this service)
+212 | Final | Request is Rejected (Given amount are lesser than allowed value for static va)
+213 | Final | Request is Rejected (Given amount are greater than allowed value for static va)
+214 | Final | Request is Rejected (Failed to generate static va)
+215 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
 300 | Final | Disbursement is FAILED
 301 | Non-Final | Pending (When there is a unclear answer from Banks Network)
 990 | Final | Request is Rejected (Request Parameter is not Valid)
