@@ -266,6 +266,9 @@
             <a href="#static-va-generator" class="toc-h1 toc-link" data-title="Static VA Generator">Static VA Generator</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#api-base-url-2" class="toc-h2 toc-link" data-title="API Base URL">API Base URL</a>
+                  </li>
+                  <li>
                     <a href="#va-generator" class="toc-h2 toc-link" data-title="VA Generator">VA Generator</a>
                   </li>
                   <li>
@@ -908,7 +911,9 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </tbody></table>
 <h1 id='static-va-generator'>Static VA Generator</h1>
-<p>Static VA Generator API allow you to create single unique VA number as payment instrument between your company and your users.</p>
+<p>Static VA Generator API allows you to create a unique VA number as a payment method for your customers..</p>
+<h3 id='api-base-url-2'>API Base URL</h3>
+<p>Currently API static VA generator is only available in our Production Environment: <code>https://partner.oyindonesia.com</code> (Staging Environment will be available soon)</p>
 <h2 id='va-generator'>VA Generator</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
 </code></pre>
 <blockquote>
