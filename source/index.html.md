@@ -325,7 +325,11 @@ Payment Status | State | Meaning
 
 # Static VA Generator
 
-Static VA Generator API allow you to create single unique VA number as payment instrument between your company and your users.
+Static VA Generator API allows you to create a unique VA number as a payment method for your customers..
+
+### API Base URL
+
+Currently API static VA generator is only available in our Production Environment: `https://partner.oyindonesia.com` (Staging Environment will be available soon)
 
 ## VA Generator
 
