@@ -272,6 +272,15 @@
                     <a href="#va-generator" class="toc-h2 toc-link" data-title="VA Generator">VA Generator</a>
                   </li>
                   <li>
+                    <a href="#get-va-info" class="toc-h2 toc-link" data-title="Get VA Info">Get VA Info</a>
+                  </li>
+                  <li>
+                    <a href="#get-list-of-created-va" class="toc-h2 toc-link" data-title="Get list of created VA">Get list of created VA</a>
+                  </li>
+                  <li>
+                    <a href="#get-list-of-transaction-for-va" class="toc-h2 toc-link" data-title="Get List of Transaction for VA">Get List of Transaction for VA</a>
+                  </li>
+                  <li>
                     <a href="#partner-callback" class="toc-h2 toc-link" data-title="Partner Callback">Partner Callback</a>
                   </li>
               </ul>
@@ -964,7 +973,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
-<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+<td>True means VA number can accept any amount, field <code>amount</code> can be optional, False means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
 </tr>
 <tr>
 <td>is_single_use</td>
@@ -1051,7 +1060,192 @@ Use this API to get beneficiary account details.</p>
 <td>Bank CIMB Niaga</td>
 </tr>
 </tbody></table>
-<h2 id='partner-callback'>Partner Callback</h2>
+<h2 id='get-va-info'>Get VA Info</h2>
+<p>Get VA info using Unique VA id.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1233456000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-list-of-created-va'>Get list of created VA</h2>
+<p>Get list of created VA</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre><h3 id='request-parameters-5'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>start offset, default is 0</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>max item to fetch, default is 10</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-6'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total</td>
+<td>Integer</td>
+<td>total items</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array of object</td>
+<td>List of Object <code>{id: &lt;id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;}</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a660428-3373-436b-b929-ef69698dd26f"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000006"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582791896416</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pejetaja"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22222221122424444"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000005"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pejetaja"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2221122424444"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
+<p>Get list of incoming transaction for specific va number.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/de51383f-1557-409c-8542-dcb74ca76375 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre><h3 id='request-parameters-6'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>start offset, default is 0</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>max item to fetch, default is 10</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-7'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Integer</td>
+<td>Unique VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array of Object</td>
+<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;}</code></td>
+</tr>
+<tr>
+<td>numberOfTransaction</td>
+<td>Integer</td>
+<td>Total transaction</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d9c2963f-be14-4558-9380-5ba1db8ed156"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-27 07:48:01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"create_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_update_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582789681439</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456000000000001"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='partner-callback'>Partner Callback</h2>
 <blockquote>
 <p>Response callback:</p>
 </blockquote>
