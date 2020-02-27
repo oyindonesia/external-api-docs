@@ -461,9 +461,9 @@ status | Object | Status of Payout in Object `{code: <status_code>, message: <st
             "is_single_use": false,
             "expiration_time": 1582791896416,
             "va_status": "EXPIRED",
-            "username_display": "pejetaja",
+            "username_display": "username",
             "amount_detected": 400000,
-            "partner_user_id": "22222221122424444"
+            "partner_user_id": "12345"
         },
         {
             "id": "de51383f-1557-409c-8542-dcb74ca76375",
@@ -474,9 +474,9 @@ status | Object | Status of Payout in Object `{code: <status_code>, message: <st
             "is_single_use": false,
             "expiration_time": 1582790250609,
             "va_status": "EXPIRED",
-            "username_display": "pejetaja",
+            "username_display": "username",
             "amount_detected": 500000,
-            "partner_user_id": "2221122424444"
+            "partner_user_id": "54321"
         }
     ],
     "status": {
