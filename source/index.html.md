@@ -341,12 +341,19 @@ curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-
 
 ```json
 {
+    "id": "12345b1-23be-45670-a123-5ca678f12b3e",
     "status": {
         "code": "000",
         "message": "Success"
     },
-    "amount": 500000,
-    "vaNumber": "100536000000000001"
+    "amount": 10000,
+    "va_number": "123456789182827272",
+    "bank_code": "002",
+    "is_open": false,
+    "is_single_use": false,
+    "expiration_time": 1582783668175,
+    "va_status": "WAITING_PAYMENT",
+    "username_display": "va name"
 }
 ```
 
@@ -393,18 +400,10 @@ Bank Code | Bank Name
 
 ```json
 {
-	"status": {
-      "code": "000",
-      "message": "Success"
-    },
-    "id": "ab123",
-    "amount": 500000,
-    "bank_code": "002",
-    "is_open": true,
-    "is_single_use": true,
-    "expiration_time": 1582639972,
-    "va_status": "WAITING_PAYMENT",
-    "Va_number": "273898000"
+	"va_number": "1234567",
+	"amount": 100000,
+	"partner_user_id": "oy0000000001",
+	"success": true
 }
 ```
 
