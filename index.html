@@ -954,6 +954,21 @@ Use this API to get beneficiary account details.</p>
 <td>BigDecimal</td>
 <td>Amount your user must paid to complete the transaction</td>
 </tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>Expiration time of the VA in minutes</td>
+</tr>
 </tbody></table>
 <h3 id='response-parameters-5'>Response Parameters</h3>
 <table><thead>
@@ -977,6 +992,36 @@ Use this API to get beneficiary account details.</p>
 <td>va_number</td>
 <td>String</td>
 <td>Generated VA number</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique VA ID</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>Bank code for VA</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>Expiration time of the VA in minutes</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String</td>
+<td>Status of VA</td>
 </tr>
 </tbody></table>
 <h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
@@ -1004,10 +1049,18 @@ Use this API to get beneficiary account details.</p>
 <p>Response callback:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oy0000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ab123"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582639972</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"273898000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Once user successfully do the payment, our system will make a callback to your system</p>
