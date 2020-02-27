@@ -369,7 +369,7 @@ Parameter | Type | Description
 partner_user_id | String | Your unique ID for specific user
 bank_code | String | Bank code which the VA number will be generated
 amount | BigDecimal | Amount your user must paid to complete the transaction
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+is_open | Boolean | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Int | Expiration time of the VA in minutes 
 
@@ -393,6 +393,146 @@ Bank Code | Bank Name
 002 | Bank BRI
 013 | Bank Permata
 022 | Bank CIMB Niaga
+
+## Get VA Info
+
+Get VA info using Unique VA id.
+
+```shell
+curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "id": "de51383f-1557-409c-8542-dcb74ca76375",
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "amount": 10000.0000,
+    "va_number": "1233456000000000001",
+    "bank_code": "002",
+    "is_open": true,
+    "is_single_use": false,
+    "expiration_time": 1582790250609,
+    "va_status": "WAITING_PAYMENT",
+    "username_display": "username",
+    "amount_detected": 0,
+    "partner_user_id": "123456"
+}
+```
+
+## Get list of created VA
+
+Get list of created VA
+
+```shell
+curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+```
+
+### Request Parameters
+Parameter | Type | Description
+--------- | ---- | -----------
+offset | Integer | start offset, default is 0
+limit | Integer | max item to fetch, default is 10
+
+### Response Parameters
+Parameter | Type | Description
+--------- | ---- | -----------
+total | Integer | total items
+data  | Array of object | List of Object `{id: <id>, amount: <amount>, va_number: <va_number>, bank_code: <bank_code>, is_open: <is_open>, is_single_user: <is_single_user>, expiration_time: <expiration_time>, va_status: <va_status>, username_display: <username_display>, amount_detected: <amount_detected>, partner_user_id: <partner_user_id>}`
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "total": 5,
+    "data": [
+        {
+            "id": "9a660428-3373-436b-b929-ef69698dd26f",
+            "amount": 12000.0000,
+            "va_number": "100536000000000006",
+            "bank_code": "002",
+            "is_open": true,
+            "is_single_use": false,
+            "expiration_time": 1582791896416,
+            "va_status": "EXPIRED",
+            "username_display": "pejetaja",
+            "amount_detected": 400000,
+            "partner_user_id": "22222221122424444"
+        },
+        {
+            "id": "de51383f-1557-409c-8542-dcb74ca76375",
+            "amount": 12000.0000,
+            "va_number": "100536000000000005",
+            "bank_code": "002",
+            "is_open": true,
+            "is_single_use": false,
+            "expiration_time": 1582790250609,
+            "va_status": "EXPIRED",
+            "username_display": "pejetaja",
+            "amount_detected": 500000,
+            "partner_user_id": "2221122424444"
+        }
+    ],
+    "status": {
+        "code": "000",
+        "message": "Success"
+    }
+}
+```
+
+## Get List of Transaction for VA
+
+Get list of incoming transaction for specific va number.
+
+```shell
+curl -X GET https://partner.oyindonesia.com/api/va-tx-history/de51383f-1557-409c-8542-dcb74ca76375 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+```
+
+### Request Parameters
+Parameter | Type | Description
+--------- | ---- | -----------
+offset | Integer | start offset, default is 0
+limit | Integer | max item to fetch, default is 10
+
+### Response Parameters
+Parameter | Type | Description
+--------- | ---- | -----------
+id | Integer | Unique VA id
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+data  | Array of Object  | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>}`
+numberOfTransaction  | Integer | Total transaction
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "id": "de51383f-1557-409c-8542-dcb74ca76375",
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "data": [
+        {
+            "id": "d9c2963f-be14-4558-9380-5ba1db8ed156",
+            "created": "2020-02-27 07:48:01",
+            "name": "Static VA by username",
+            "amount": 10000,
+            "create_by": "Static VA by username",
+            "last_update_by": "Static VA by username",
+            "last_updated": 1582789681439,
+            "admin_fee": 1000,
+            "va_number": "123456000000000001"
+        }
+    ],
+    "number_of_transaction": 1
+}
+```
 
 ## Partner Callback
 
