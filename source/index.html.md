@@ -362,6 +362,9 @@ Parameter | Type | Description
 partner_user_id | String | Your unique ID for specific user
 bank_code | String | Bank code which the VA number will be generated
 amount | BigDecimal | Amount your user must paid to complete the transaction
+is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+expiration_time | Int | Expiration time of the VA in minutes 
 
 ### Response Parameters
 
@@ -370,6 +373,12 @@ Parameter | Type | Description
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
 va_number | String | Generated VA number
+id | String | Unique VA ID
+bank_code | String | Bank code for VA
+is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+expiration_time | Int | Expiration time of the VA in minutes 
+va_status | String | Status of VA
 
 ### Available Bank for Static VA
 Bank Code | Bank Name
@@ -384,10 +393,18 @@ Bank Code | Bank Name
 
 ```json
 {
-	"va_number": "1234567",
-	"amount": 100000,
-	"partner_user_id": "oy0000000001",
-	"success": true
+	"status": {
+      "code": "000",
+      "message": "Success"
+    },
+    "id": "ab123",
+    "amount": 500000,
+    "bank_code": "002",
+    "is_open": true,
+    "is_single_use": true,
+    "expiration_time": 1582639972,
+    "va_status": "WAITING_PAYMENT",
+    "Va_number": "273898000"
 }
 ```
 
