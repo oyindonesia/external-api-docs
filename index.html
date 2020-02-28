@@ -263,13 +263,13 @@
               </ul>
           </li>
           <li>
-            <a href="#static-va-generator" class="toc-h1 toc-link" data-title="Static VA Generator">Static VA Generator</a>
+            <a href="#static-va" class="toc-h1 toc-link" data-title="Static VA">Static VA</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#api-base-url-2" class="toc-h2 toc-link" data-title="API Base URL">API Base URL</a>
                   </li>
                   <li>
-                    <a href="#va-generator" class="toc-h2 toc-link" data-title="VA Generator">VA Generator</a>
+                    <a href="#create-va" class="toc-h2 toc-link" data-title="Create VA">Create VA</a>
                   </li>
                   <li>
                     <a href="#get-va-info" class="toc-h2 toc-link" data-title="Get VA Info">Get VA Info</a>
@@ -922,12 +922,12 @@ Use this API to get beneficiary account details.</p>
 <td>Internal Server Error</td>
 </tr>
 </tbody></table>
-<h1 id='static-va-generator'>Static VA Generator</h1>
-<p>Static VA Generator API allows you to create a unique VA number as a payment method for your customers..</p>
+<h1 id='static-va'>Static VA</h1>
+<p>Static VA API allows you to create a unique VA number as a payment method for your customers..</p>
 <h3 id='api-base-url-2'>API Base URL</h3>
 <p>Currently API static VA generator is only available in our Production Environment: <code>https://partner.oyindonesia.com</code> (Staging Environment will be available soon)</p>
-<h2 id='va-generator'>VA Generator</h2>
-<p>Use this API to generate VA number</p>
+<h2 id='create-va'>Create VA</h2>
+<p>Use this API to create new VA number</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
 </code></pre>
 <blockquote>
@@ -955,42 +955,50 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>partner_user_id</td>
 <td>String</td>
+<td>-</td>
 <td>Your unique ID for specific user</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String</td>
+<td>-</td>
 <td>Bank code which the VA number will be generated</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>-</td>
 <td>Amount your user must paid to complete the transaction</td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
-<td>True means VA number can accept any amount, field <code>amount</code> can be optional, False means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
+<td>true</td>
+<td>If set true means VA number can accept any amount, field <code>amount</code> can be optional, if set false means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
 </tr>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
+<td>false</td>
 <td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
 <td>Int</td>
+<td>-</td>
 <td>Expiration time of the VA in minutes</td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String</td>
+<td>username</td>
 <td>VA Name, default is using username</td>
 </tr>
 </tbody></table>
@@ -1355,17 +1363,20 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>offset</td>
 <td>Integer</td>
+<td>0</td>
 <td>start offset, default is 0, if empty will used default value</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>Integer</td>
+<td>10</td>
 <td>max item to fetch, default is 10, if empty will used default value</td>
 </tr>
 </tbody></table>
@@ -1428,22 +1439,26 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>String</td>
+<td>-</td>
 <td>Unique id of VA</td>
 </tr>
 <tr>
 <td>offset</td>
 <td>Integer</td>
+<td>0</td>
 <td>start offset, default is 0, if empty will used default value</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>Integer</td>
+<td>10</td>
 <td>max item to fetch, default is 10, if empty will used default value</td>
 </tr>
 </tbody></table>
