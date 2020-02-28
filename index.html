@@ -974,7 +974,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
-<td>-</td>
+<td>0</td>
 <td>Amount your user must paid to complete the transaction</td>
 </tr>
 <tr>
@@ -1083,7 +1083,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt; -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1106,8 +1106,8 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-7'>HTTPS Request</h3>
-<p><code>PUT BASE_URL/api/static-virtual-account/:id</code></p>
-<h3 id='request-parameters-5'>Request Parameters</h3>
+<p><code>PUT BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1116,9 +1116,9 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
+<td>ID</td>
 <td>String</td>
-<td>Uniqua VA id, you can get this, once you success created VA</td>
+<td>Uniqua VA id, you can get this once you success created VA</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-6'>Response Parameters</h3>
@@ -1192,7 +1192,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='update-va'>Update VA</h2>
 <p>Update VA using unique VA id.</p>
-<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt; -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1210,8 +1210,11 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-8'>HTTPS Request</h3>
-<p><code>PUT BASE_URL/api/static-virtual-account/:id</code></p>
-<h3 id='request-parameters-6'>Request Parameters</h3>
+<p><code>PUT BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
+<h3 id='url-parameter'>URL Parameter</h3>
+<p>Parameter | Type | Description
+ID | String | Unique VA ID, you can get this once you success created VA</p>
+<h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1358,7 +1361,7 @@ Use this API to get beneficiary account details.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-9'>HTTPS Request</h3>
 <p><code>GET BASE_URL/api/static-virtual-account</code></p>
-<h3 id='request-parameters-7'>Request Parameters</h3>
+<h3 id='request-parameters-6'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1406,7 +1409,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
 <p>Get list of incoming transaction for specific va number.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/&lt;ID&gt; -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1433,8 +1436,11 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-10'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/va-tx-history/:id</code></p>
-<h3 id='request-parameters-8'>Request Parameters</h3>
+<p><code>GET BASE_URL/api/va-tx-history/&lt;ID&gt;</code></p>
+<h3 id='url-parameter-2'>URL Parameter</h3>
+<p>Parameter | Type | Description
+ID | String | Unique VA ID, you can get this once you success created VA</p>
+<h3 id='request-parameters-7'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1443,12 +1449,6 @@ Use this API to get beneficiary account details.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>-</td>
-<td>Unique id of VA</td>
-</tr>
 <tr>
 <td>offset</td>
 <td>Integer</td>
