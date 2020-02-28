@@ -618,6 +618,7 @@ curl -X GET https://partner.oyindonesia.com/api/va-tx-history/<ID> -H 'content-t
 
 ### URL Parameter
 Parameter | Type | Description
+--------- | ---- | -----------
 ID | String | Unique VA ID, you can get this once you success created VA
 
 ### Request Parameters
