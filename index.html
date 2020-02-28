@@ -272,6 +272,12 @@
                     <a href="#create-va" class="toc-h2 toc-link" data-title="Create VA">Create VA</a>
                   </li>
                   <li>
+                    <a href="#static-va-bank-code" class="toc-h2 toc-link" data-title="Static VA Bank Code">Static VA Bank Code</a>
+                  </li>
+                  <li>
+                    <a href="#static-va-status" class="toc-h2 toc-link" data-title="Static VA Status">Static VA Status</a>
+                  </li>
+                  <li>
                     <a href="#get-va-info" class="toc-h2 toc-link" data-title="Get VA Info">Get VA Info</a>
                   </li>
                   <li>
@@ -1033,7 +1039,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>bank_code</td>
 <td>String</td>
-<td>Bank code for VA</td>
+<td>Bank code for VA, see <a href="#static-va-bank-code">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
@@ -1043,7 +1049,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
-<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+<td>True means that this VA should be closed/finish once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
@@ -1053,7 +1059,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>va_status</td>
 <td>String</td>
-<td>Status of VA</td>
+<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
@@ -1061,7 +1067,7 @@ Use this API to get beneficiary account details.</p>
 <td>VA Name, default is using username</td>
 </tr>
 </tbody></table>
-<h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
+<h2 id='static-va-bank-code'>Static VA Bank Code</h2><h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
 <table><thead>
 <tr>
 <th>Bank Code</th>
@@ -1079,6 +1085,30 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>022</td>
 <td>Bank CIMB Niaga</td>
+</tr>
+</tbody></table>
+<h2 id='static-va-status'>Static VA Status</h2><h3 id='available-status-for-static-va'>Available Status for Static VA</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WAITING_PAYMENT</td>
+<td>This status means that VA is active and can receive a payment</td>
+</tr>
+<tr>
+<td>PAYMENT_DETECTED</td>
+<td>This status means that there are incoming payment to VA Number</td>
+</tr>
+<tr>
+<td>EXPIRED</td>
+<td>This status means that VA is expired. You cannot accept or make update to VA Number with this status.</td>
+</tr>
+<tr>
+<td>FINISH</td>
+<td>This status means that VA is closed after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute <code>is_single_use</code> true can have this status.</td>
 </tr>
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
@@ -1172,7 +1202,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>va_status</td>
 <td>String</td>
-<td>Status of VA</td>
+<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
@@ -1305,7 +1335,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>va_status</td>
 <td>String</td>
-<td>Last status of VA</td>
+<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
