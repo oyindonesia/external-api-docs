@@ -275,6 +275,9 @@
                     <a href="#get-va-info" class="toc-h2 toc-link" data-title="Get VA Info">Get VA Info</a>
                   </li>
                   <li>
+                    <a href="#update-va" class="toc-h2 toc-link" data-title="Update VA">Update VA</a>
+                  </li>
+                  <li>
                     <a href="#get-list-of-created-va" class="toc-h2 toc-link" data-title="Get list of created VA">Get list of created VA</a>
                   </li>
                   <li>
@@ -923,27 +926,7 @@ Use this API to get beneficiary account details.</p>
 <p>Static VA Generator API allows you to create a unique VA number as a payment method for your customers..</p>
 <h3 id='api-base-url-2'>API Base URL</h3>
 <p>Currently API static VA generator is only available in our Production Environment: <code>https://partner.oyindonesia.com</code> (Staging Environment will be available soon)</p>
-<h2 id='va-generator'>VA Generator</h2><pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345b1-23be-45670-a123-5ca678f12b3e"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789182827272"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
+<h2 id='va-generator'>VA Generator</h2>
 <p>Use this API to generate VA number</p>
 <h3 id='https-request-6'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/generate-static-va</code></p>
@@ -984,6 +967,11 @@ Use this API to get beneficiary account details.</p>
 <td>expiration_time</td>
 <td>Int</td>
 <td>Expiration time of the VA in minutes</td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String</td>
+<td>VA Name, default is using username</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-5'>Response Parameters</h3>
@@ -1039,8 +1027,33 @@ Use this API to get beneficiary account details.</p>
 <td>String</td>
 <td>Status of VA</td>
 </tr>
+<tr>
+<td>username_display</td>
+<td>String</td>
+<td>VA Name, default is using username</td>
+</tr>
 </tbody></table>
-<h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345b1-23be-45670-a123-5ca678f12b3e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789182827272"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
 <table><thead>
 <tr>
 <th>Bank Code</th>
@@ -1062,6 +1075,91 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
+<h3 id='https-request-7'>HTTPS Request</h3>
+<p><code>PUT BASE_URL/api/static-virtual-account/:id</code></p>
+<h3 id='request-parameters-5'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Uniqua VA id, you can get this, once you success created VA</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-6'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Uniqua VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique VA ID</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>Bank code for VA</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>Expiration time of the VA in minutes</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String</td>
+<td>Status of VA</td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String</td>
+<td>VA Name, default is using username</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>Your unique ID for specific user</td>
+</tr>
+</tbody></table>
 <pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
 </code></pre>
 <blockquote>
@@ -1084,10 +1182,135 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='update-va'>Update VA</h2>
+<p>Update VA using unique VA id.</p>
+<h3 id='https-request-8'>HTTPS Request</h3>
+<p><code>PUT BASE_URL/api/static-virtual-account/:id</code></p>
+<h3 id='request-parameters-6'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>Bank code which the VA number will be generated</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount your user must paid to complete the transaction</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, field <code>amount</code> can be optional, False means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>Expiration time of the VA in minutes</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-7'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Uniqua VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique VA ID</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>Bank code for VA</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>Expiration time of the VA in minutes</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String</td>
+<td>Last status of VA</td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String</td>
+<td>VA Name, default is using username</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>Your unique ID for specific user</td>
+</tr>
+</tbody></table>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001234000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaname"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='get-list-of-created-va'>Get list of created VA</h2>
 <p>Get list of created VA</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
-</code></pre><h3 id='request-parameters-5'>Request Parameters</h3>
+<h3 id='https-request-9'>HTTPS Request</h3>
+<p><code>GET BASE_URL/api/static-virtual-account</code></p>
+<h3 id='request-parameters-7'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1098,15 +1321,15 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>offset</td>
 <td>Integer</td>
-<td>start offset, default is 0</td>
+<td>start offset, default is 0, if empty will used default value</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>max item to fetch, default is 10</td>
+<td>max item to fetch, default is 10, if empty will used default value</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-6'>Response Parameters</h3>
+<h3 id='response-parameters-8'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1130,7 +1353,8 @@ Use this API to get beneficiary account details.</p>
 <td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 </tbody></table>
-
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
@@ -1171,8 +1395,9 @@ Use this API to get beneficiary account details.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
 <p>Get list of incoming transaction for specific va number.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/de51383f-1557-409c-8542-dcb74ca76375 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
-</code></pre><h3 id='request-parameters-6'>Request Parameters</h3>
+<h3 id='https-request-10'>HTTPS Request</h3>
+<p><code>GET BASE_URL/api/va-tx-history/:id</code></p>
+<h3 id='request-parameters-8'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1181,17 +1406,22 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </thead><tbody>
 <tr>
+<td>id</td>
+<td>String</td>
+<td>Unique id of VA</td>
+</tr>
+<tr>
 <td>offset</td>
 <td>Integer</td>
-<td>start offset, default is 0</td>
+<td>start offset, default is 0, if empty will used default value</td>
 </tr>
 <tr>
 <td>limit</td>
 <td>Integer</td>
-<td>max item to fetch, default is 10</td>
+<td>max item to fetch, default is 10, if empty will used default value</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-7'>Response Parameters</h3>
+<h3 id='response-parameters-9'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1220,7 +1450,8 @@ Use this API to get beneficiary account details.</p>
 <td>Total transaction</td>
 </tr>
 </tbody></table>
-
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
