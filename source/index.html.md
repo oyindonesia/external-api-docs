@@ -368,7 +368,7 @@ Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
 partner_user_id | String | - | Your unique ID for specific user
 bank_code | String | - | Bank code which the VA number will be generated
-amount | BigDecimal | - | Amount your user must paid to complete the transaction
+amount | BigDecimal | 0 | Amount your user must paid to complete the transaction
 is_open | Boolean | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Int | - | Expiration time of the VA in minutes 
@@ -401,7 +401,7 @@ Bank Code | Bank Name
 Get VA info using Unique VA id.
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/<ID> -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -427,13 +427,13 @@ curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H 'c
 ```
 
 ### HTTPS Request
-`PUT BASE_URL/api/static-virtual-account/:id`
+`PUT BASE_URL/api/static-virtual-account/<ID>`
 
-### Request Parameters
+### URL Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
-id | String | Uniqua VA id, you can get this, once you success created VA
+ID | String | Uniqua VA id, you can get this once you success created VA
 
 ### Response Parameters
 
@@ -457,7 +457,7 @@ partner_user_id | String | Your unique ID for specific user
 Update VA using unique VA id.
 
 ```shell
-curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/:id -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
+curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/<ID> -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
 ```
 
 ```json
@@ -480,7 +480,11 @@ curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/:id -H 'c
 ```
 
 ### HTTPS Request
-`PUT BASE_URL/api/static-virtual-account/:id`
+`PUT BASE_URL/api/static-virtual-account/<ID>`
+
+### URL Parameter
+Parameter | Type | Description
+ID | String | Unique VA ID, you can get this once you success created VA
 
 ### Request Parameters
 
@@ -579,7 +583,7 @@ status | Object | Status of Payout in Object `{code: <status_code>, message: <st
 Get list of incoming transaction for specific va number.
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/va-tx-history/:id -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+curl -X GET https://partner.oyindonesia.com/api/va-tx-history/<ID> -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -609,12 +613,15 @@ curl -X GET https://partner.oyindonesia.com/api/va-tx-history/:id -H 'content-ty
 ```
 
 ### HTTPS Request
-`GET BASE_URL/api/va-tx-history/:id`
+`GET BASE_URL/api/va-tx-history/<ID>`
+
+### URL Parameter
+Parameter | Type | Description
+ID | String | Unique VA ID, you can get this once you success created VA
 
 ### Request Parameters
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-id | String | - | Unique id of VA
 offset | Integer | 0 | start offset, default is 0, if empty will used default value
 limit | Integer | 10 | max item to fetch, default is 10, if empty will used default value
 
