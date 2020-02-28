@@ -1083,13 +1083,13 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt; -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
@@ -1150,11 +1150,6 @@ Use this API to get beneficiary account details.</p>
 <td>Generated VA number</td>
 </tr>
 <tr>
-<td>id</td>
-<td>String</td>
-<td>Unique VA ID</td>
-</tr>
-<tr>
 <td>bank_code</td>
 <td>String</td>
 <td>Bank code for VA</td>
@@ -1192,7 +1187,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='update-va'>Update VA</h2>
 <p>Update VA using unique VA id.</p>
-<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt; -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1288,11 +1283,6 @@ Use this API to get beneficiary account details.</p>
 <td>Generated VA number</td>
 </tr>
 <tr>
-<td>id</td>
-<td>String</td>
-<td>Unique VA ID</td>
-</tr>
-<tr>
 <td>bank_code</td>
 <td>String</td>
 <td>Bank code for VA</td>
@@ -1330,7 +1320,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-list-of-created-va'>Get list of created VA</h2>
 <p>Get list of created VA</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1371,7 +1361,7 @@ Use this API to get beneficiary account details.</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-9'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/static-virtual-account</code></p>
+<p><code>GET BASE_URL/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
 <h3 id='request-parameters-6'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -1420,13 +1410,13 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
 <p>Get list of incoming transaction for specific va number.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/&lt;ID&gt; -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345676788898"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
@@ -1447,7 +1437,7 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-10'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/va-tx-history/&lt;ID&gt;</code></p>
+<p><code>GET BASE_URL/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
 <h3 id='url-parameter-2'>URL Parameter</h3>
 <table><thead>
 <tr>
