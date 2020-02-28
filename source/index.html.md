@@ -335,6 +335,30 @@ Currently API static VA generator is only available in our Production Environmen
 
 Use this API to generate VA number
 
+```shell
+curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "id": "12345b1-23be-45670-a123-5ca678f12b3e",
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "amount": 10000,
+    "va_number": "123456789182827272",
+    "bank_code": "002",
+    "is_open": false,
+    "is_single_use": false,
+    "expiration_time": 1582783668175,
+    "va_status": "WAITING_PAYMENT",
+    "username_display": "va name"
+}
+```
+
 ### HTTPS Request
 `POST BASE_URL/api/generate-static-va`
 
@@ -365,30 +389,6 @@ expiration_time | Int | Expiration time of the VA in minutes
 va_status | String | Status of VA
 username_display | String | VA Name, default is using username
 
-```shell
-curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'
-```
-
-> The above command returns JSON structured similar like this:
-
-```json
-{
-    "id": "12345b1-23be-45670-a123-5ca678f12b3e",
-    "status": {
-        "code": "000",
-        "message": "Success"
-    },
-    "amount": 10000,
-    "va_number": "123456789182827272",
-    "bank_code": "002",
-    "is_open": false,
-    "is_single_use": false,
-    "expiration_time": 1582783668175,
-    "va_status": "WAITING_PAYMENT",
-    "username_display": "va name"
-}
-```
-
 ### Available Bank for Static VA
 Bank Code | Bank Name
 --------- | -------
@@ -399,32 +399,6 @@ Bank Code | Bank Name
 ## Get VA Info
 
 Get VA info using Unique VA id.
-
-### HTTPS Request
-`PUT BASE_URL/api/static-virtual-account/:id`
-
-### Request Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-id | String | Uniqua VA id, you can get this, once you success created VA
-
-### Response Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-id | String |  Uniqua VA id
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-amount | BigDecimal | Amount of VA transaction
-va_number | String | Generated VA number
-id | String | Unique VA ID
-bank_code | String | Bank code for VA
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of the VA in minutes 
-va_status | String | Status of VA
-username_display | String | VA Name, default is using username
-partner_user_id | String | Your unique ID for specific user
 
 ```shell
 curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
@@ -452,9 +426,58 @@ curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H 'c
 }
 ```
 
+### HTTPS Request
+`PUT BASE_URL/api/static-virtual-account/:id`
+
+### Request Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+id | String | Uniqua VA id, you can get this, once you success created VA
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+id | String |  Uniqua VA id
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+amount | BigDecimal | Amount of VA transaction
+va_number | String | Generated VA number
+id | String | Unique VA ID
+bank_code | String | Bank code for VA
+is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+expiration_time | Int | Expiration time of the VA in minutes 
+va_status | String | Status of VA
+username_display | String | VA Name, default is using username
+partner_user_id | String | Your unique ID for specific user
+
 ## Update VA
 
 Update VA using unique VA id.
+
+```shell
+curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/:id -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
+```
+
+```json
+{
+    "id": "1414255-12121-21212121-212121",
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "amount": 50000,
+    "va_number": "1001234000000000001",
+    "bank_code": "002",
+    "is_open": true,
+    "is_single_use": false,
+    "expiration_time": 1582802205412,
+    "va_status": "WAITING_PAYMENT",
+    "username_display": "vaname",
+    "partner_user_id": "12345677"
+}
+```
 
 ### HTTPS Request
 `PUT BASE_URL/api/static-virtual-account/:id`
@@ -486,48 +509,9 @@ va_status | String | Last status of VA
 username_display | String | VA Name, default is using username
 partner_user_id | String | Your unique ID for specific user
 
-```shell
-curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/:id -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
-```
-
-```json
-{
-    "id": "1414255-12121-21212121-212121",
-    "status": {
-        "code": "000",
-        "message": "Success"
-    },
-    "amount": 50000,
-    "va_number": "1001234000000000001",
-    "bank_code": "002",
-    "is_open": true,
-    "is_single_use": false,
-    "expiration_time": 1582802205412,
-    "va_status": "WAITING_PAYMENT",
-    "username_display": "vaname",
-    "partner_user_id": "12345677"
-}
-```
-
 ## Get list of created VA
 
 Get list of created VA
-
-### HTTPS Request
-`GET BASE_URL/api/static-virtual-account`
-
-### Request Parameters
-Parameter | Type | Description
---------- | ---- | -----------
-offset | Integer | start offset, default is 0, if empty will used default value
-limit | Integer | max item to fetch, default is 10, if empty will used default value
-
-### Response Parameters
-Parameter | Type | Description
---------- | ---- | -----------
-total | Integer | total items
-data  | Array of object | List of Object `{id: <id>, amount: <amount>, va_number: <va_number>, bank_code: <bank_code>, is_open: <is_open>, is_single_user: <is_single_user>, expiration_time: <expiration_time>, va_status: <va_status>, username_display: <username_display>, amount_detected: <amount_detected>, partner_user_id: <partner_user_id>}`
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
 
 ```shell
 curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
@@ -573,27 +557,26 @@ curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H 'conte
 }
 ```
 
-## Get List of Transaction for VA
-
-Get list of incoming transaction for specific va number.
-
 ### HTTPS Request
-`GET BASE_URL/api/va-tx-history/:id`
+`GET BASE_URL/api/static-virtual-account`
 
 ### Request Parameters
 Parameter | Type | Description
 --------- | ---- | -----------
-id | String | Unique id of VA
 offset | Integer | start offset, default is 0, if empty will used default value
 limit | Integer | max item to fetch, default is 10, if empty will used default value
 
 ### Response Parameters
 Parameter | Type | Description
 --------- | ---- | -----------
-id | Integer | Unique VA id
+total | Integer | total items
+data  | Array of object | List of Object `{id: <id>, amount: <amount>, va_number: <va_number>, bank_code: <bank_code>, is_open: <is_open>, is_single_user: <is_single_user>, expiration_time: <expiration_time>, va_status: <va_status>, username_display: <username_display>, amount_detected: <amount_detected>, partner_user_id: <partner_user_id>}`
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-data  | Array of Object  | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>}`
-numberOfTransaction  | Integer | Total transaction
+
+
+## Get List of Transaction for VA
+
+Get list of incoming transaction for specific va number.
 
 ```shell
 curl -X GET https://partner.oyindonesia.com/api/va-tx-history/:id -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
@@ -624,6 +607,24 @@ curl -X GET https://partner.oyindonesia.com/api/va-tx-history/:id -H 'content-ty
     "number_of_transaction": 1
 }
 ```
+
+### HTTPS Request
+`GET BASE_URL/api/va-tx-history/:id`
+
+### Request Parameters
+Parameter | Type | Description
+--------- | ---- | -----------
+id | String | Unique id of VA
+offset | Integer | start offset, default is 0, if empty will used default value
+limit | Integer | max item to fetch, default is 10, if empty will used default value
+
+### Response Parameters
+Parameter | Type | Description
+--------- | ---- | -----------
+id | Integer | Unique VA id
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+data  | Array of Object  | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>}`
+numberOfTransaction  | Integer | Total transaction
 
 ## Partner Callback
 
