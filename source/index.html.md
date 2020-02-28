@@ -382,19 +382,29 @@ status | Object | Status of Payout in Object `{code: <status_code>, message: <st
 amount | BigDecimal | Amount of VA transaction
 va_number | String | Generated VA number
 id | String | Unique VA ID
-bank_code | String | Bank code for VA
+bank_code | String | Bank code for VA, see [VA Bank Code](#static-va-bank-code)
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+is_single_use | Boolean | True means that this VA should be closed/finish once there is a successful payment that is being made to this VA. 
 expiration_time | Int | Expiration time of VA
-va_status | String | Status of VA
+va_status | String | Status of VA, see [VA Status](#static-va-status)
 username_display | String | VA Name, default is using username
 
+## Static VA Bank Code
 ### Available Bank for Static VA
 Bank Code | Bank Name
 --------- | -------
 002 | Bank BRI
 013 | Bank Permata
 022 | Bank CIMB Niaga
+
+## Static VA Status
+### Available Status for Static VA
+Status | Description
+------ | -----------
+WAITING_PAYMENT | This status means that VA is active and can receive a payment
+PAYMENT_DETECTED | This status means that there are incoming payment to VA Number
+EXPIRED | This status means that VA is expired. You cannot accept or make update to VA Number with this status.
+FINISH | This status means that VA is closed after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute `is_single_use` true can have this status.
 
 ## Get VA Info
 
@@ -447,7 +457,7 @@ bank_code | String | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Int | Expiration time of the VA
-va_status | String | Status of VA
+va_status | String | Status of VA, see [VA Status](#static-va-status)
 username_display | String | VA Name, default is using username
 partner_user_id | String | Your unique ID for specific user
 
@@ -508,7 +518,7 @@ bank_code | String | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Int | Expiration time of the VA
-va_status | String | Last status of VA
+va_status | String | Status of VA, see [VA Status](#static-va-status)
 username_display | String | VA Name, default is using username
 partner_user_id | String | Your unique ID for specific user
 
