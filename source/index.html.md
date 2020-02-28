@@ -323,17 +323,17 @@ Payment Status | State | Meaning
 990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
 
-# Static VA Generator
+# Static VA
 
-Static VA Generator API allows you to create a unique VA number as a payment method for your customers..
+Static VA API allows you to create a unique VA number as a payment method for your customers..
 
 ### API Base URL
 
 Currently API static VA generator is only available in our Production Environment: `https://partner.oyindonesia.com` (Staging Environment will be available soon)
 
-## VA Generator
+## Create VA
 
-Use this API to generate VA number
+Use this API to create new VA number
 
 ```shell
 curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'
@@ -364,15 +364,15 @@ curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-
 
 ### Request Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-partner_user_id | String | Your unique ID for specific user
-bank_code | String | Bank code which the VA number will be generated
-amount | BigDecimal | Amount your user must paid to complete the transaction
-is_open | Boolean | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of the VA in minutes 
-username_display | String | VA Name, default is using username
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+partner_user_id | String | - | Your unique ID for specific user
+bank_code | String | - | Bank code which the VA number will be generated
+amount | BigDecimal | - | Amount your user must paid to complete the transaction
+is_open | Boolean | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
+is_single_use | Boolean | false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+expiration_time | Int | - | Expiration time of the VA in minutes 
+username_display | String | username | VA Name, default is using username
 
 ### Response Parameters
 
@@ -561,10 +561,10 @@ curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H 'conte
 `GET BASE_URL/api/static-virtual-account`
 
 ### Request Parameters
-Parameter | Type | Description
---------- | ---- | -----------
-offset | Integer | start offset, default is 0, if empty will used default value
-limit | Integer | max item to fetch, default is 10, if empty will used default value
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+offset | Integer | 0 | start offset, default is 0, if empty will used default value
+limit | Integer | 10 | max item to fetch, default is 10, if empty will used default value
 
 ### Response Parameters
 Parameter | Type | Description
@@ -612,11 +612,11 @@ curl -X GET https://partner.oyindonesia.com/api/va-tx-history/:id -H 'content-ty
 `GET BASE_URL/api/va-tx-history/:id`
 
 ### Request Parameters
-Parameter | Type | Description
---------- | ---- | -----------
-id | String | Unique id of VA
-offset | Integer | start offset, default is 0, if empty will used default value
-limit | Integer | max item to fetch, default is 10, if empty will used default value
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+id | String | - | Unique id of VA
+offset | Integer | 0 | start offset, default is 0, if empty will used default value
+limit | Integer | 10 | max item to fetch, default is 10, if empty will used default value
 
 ### Response Parameters
 Parameter | Type | Description
