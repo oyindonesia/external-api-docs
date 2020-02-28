@@ -484,6 +484,7 @@ curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/<ID> -H '
 
 ### URL Parameter
 Parameter | Type | Description
+--------- | ---- | -----------
 ID | String | Unique VA ID, you can get this once you success created VA
 
 ### Request Parameters
