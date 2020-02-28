@@ -928,7 +928,27 @@ Use this API to get beneficiary account details.</p>
 <p>Currently API static VA generator is only available in our Production Environment: <code>https://partner.oyindonesia.com</code> (Staging Environment will be available soon)</p>
 <h2 id='va-generator'>VA Generator</h2>
 <p>Use this API to generate VA number</p>
-<h3 id='https-request-6'>HTTPS Request</h3>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345b1-23be-45670-a123-5ca678f12b3e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789182827272"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-6'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/generate-static-va</code></p>
 <h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
@@ -1033,27 +1053,7 @@ Use this API to get beneficiary account details.</p>
 <td>VA Name, default is using username</td>
 </tr>
 </tbody></table>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345b1-23be-45670-a123-5ca678f12b3e"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789182827272"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
+<h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
 <table><thead>
 <tr>
 <th>Bank Code</th>
@@ -1075,7 +1075,29 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
-<h3 id='https-request-7'>HTTPS Request</h3>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1233456000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-7'>HTTPS Request</h3>
 <p><code>PUT BASE_URL/api/static-virtual-account/:id</code></p>
 <h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
@@ -1160,31 +1182,26 @@ Use this API to get beneficiary account details.</p>
 <td>Your unique ID for specific user</td>
 </tr>
 </tbody></table>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+<h2 id='update-va'>Update VA</h2>
+<p>Update VA using unique VA id.</p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1233456000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001234000000000001"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
     </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaname"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='update-va'>Update VA</h2>
-<p>Update VA using unique VA id.</p>
-<h3 id='https-request-8'>HTTPS Request</h3>
+</span></code></pre><h3 id='https-request-8'>HTTPS Request</h3>
 <p><code>PUT BASE_URL/api/static-virtual-account/:id</code></p>
 <h3 id='request-parameters-6'>Request Parameters</h3>
 <table><thead>
@@ -1289,26 +1306,49 @@ Use this API to get beneficiary account details.</p>
 <td>Your unique ID for specific user</td>
 </tr>
 </tbody></table>
-<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
+<h2 id='get-list-of-created-va'>Get list of created VA</h2>
+<p>Get list of created VA</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a660428-3373-436b-b929-ef69698dd26f"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000006"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582791896416</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000005"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54321"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001234000000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaname"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='get-list-of-created-va'>Get list of created VA</h2>
-<p>Get list of created VA</p>
-<h3 id='https-request-9'>HTTPS Request</h3>
+</span></code></pre><h3 id='https-request-9'>HTTPS Request</h3>
 <p><code>GET BASE_URL/api/static-virtual-account</code></p>
 <h3 id='request-parameters-7'>Request Parameters</h3>
 <table><thead>
@@ -1353,49 +1393,35 @@ Use this API to get beneficiary account details.</p>
 <td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 </tbody></table>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+<h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
+<p>Get list of incoming transaction for specific va number.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a660428-3373-436b-b929-ef69698dd26f"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000006"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582791896416</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000005"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54321"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d9c2963f-be14-4558-9380-5ba1db8ed156"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-27 07:48:01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"create_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_update_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582789681439</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456000000000001"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
-<p>Get list of incoming transaction for specific va number.</p>
-<h3 id='https-request-10'>HTTPS Request</h3>
+</span></code></pre><h3 id='https-request-10'>HTTPS Request</h3>
 <p><code>GET BASE_URL/api/va-tx-history/:id</code></p>
 <h3 id='request-parameters-8'>Request Parameters</h3>
 <table><thead>
@@ -1450,33 +1476,7 @@ Use this API to get beneficiary account details.</p>
 <td>Total transaction</td>
 </tr>
 </tbody></table>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/:id -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d9c2963f-be14-4558-9380-5ba1db8ed156"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-27 07:48:01"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"create_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last_update_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582789681439</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456000000000001"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h2 id='partner-callback'>Partner Callback</h2>
+<h2 id='partner-callback'>Partner Callback</h2>
 <blockquote>
 <p>Response callback:</p>
 </blockquote>
