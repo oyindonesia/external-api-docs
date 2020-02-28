@@ -433,13 +433,13 @@ curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-1
 
 Parameter | Type | Description
 --------- | ---- | -----------
-ID | String | Uniqua VA id, you can get this once you success created VA
+ID | String | Unique VA id, you can get this once you success created VA
 
 ### Response Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
-id | String |  Uniqua VA id
+id | String |  Unique VA id
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
 va_number | String | Generated VA number
@@ -500,7 +500,7 @@ expiration_time | Int | Expiration time of the VA in minutes
 
 Parameter | Type | Description
 --------- | ---- | -----------
-id | String |  Uniqua VA id
+id | String |  Unique VA id
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
 va_number | String | Generated VA number
