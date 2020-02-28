@@ -401,14 +401,14 @@ Bank Code | Bank Name
 Get VA info using Unique VA id.
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/<ID> -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
 ```
 
 > The above command returns JSON structured similar like this:
 
 ```json
 {
-    "id": "de51383f-1557-409c-8542-dcb74ca76375",
+    "id": "1414255-12121-21212121-212121",
     "status": {
         "code": "000",
         "message": "Success"
@@ -443,7 +443,6 @@ id | String |  Uniqua VA id
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
 va_number | String | Generated VA number
-id | String | Unique VA ID
 bank_code | String | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
@@ -457,7 +456,7 @@ partner_user_id | String | Your unique ID for specific user
 Update VA using unique VA id.
 
 ```shell
-curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/<ID> -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
+curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
 ```
 
 ```json
@@ -505,7 +504,6 @@ id | String |  Uniqua VA id
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
 va_number | String | Generated VA number
-id | String | Unique VA ID
 bank_code | String | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
@@ -519,7 +517,7 @@ partner_user_id | String | Your unique ID for specific user
 Get list of created VA
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+curl -X GET https://partner.oyindonesia.com/api/static-virtual-account?offset=0&limit=10 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -563,7 +561,7 @@ curl -X GET https://partner.oyindonesia.com/api/static-virtual-account -H 'conte
 ```
 
 ### HTTPS Request
-`GET BASE_URL/api/static-virtual-account`
+`GET BASE_URL/api/static-virtual-account?offset=<offset>&limit=<limit>`
 
 ### Request Parameters
 Parameter | Type | Default | Description
@@ -584,14 +582,14 @@ status | Object | Status of Payout in Object `{code: <status_code>, message: <st
 Get list of incoming transaction for specific va number.
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/va-tx-history/<ID> -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+curl -X GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset=0&limit=10 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
 ```
 
 > The above command returns JSON structured similar like this:
 
 ```json
 {
-    "id": "de51383f-1557-409c-8542-dcb74ca76375",
+    "id": "12345676788898",
     "status": {
         "code": "000",
         "message": "Success"
@@ -614,7 +612,7 @@ curl -X GET https://partner.oyindonesia.com/api/va-tx-history/<ID> -H 'content-t
 ```
 
 ### HTTPS Request
-`GET BASE_URL/api/va-tx-history/<ID>`
+`GET BASE_URL/api/va-tx-history/<ID>?offset=<offset>&limit=<limit>`
 
 ### URL Parameter
 Parameter | Type | Description
