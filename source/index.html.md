@@ -371,7 +371,8 @@ bank_code | String | - | Bank code which the VA number will be generated
 amount | BigDecimal | 0 | Amount your user must paid to complete the transaction
 is_open | Boolean | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
+expiration_time | Int | - | Expiration time of the VA in minut
+es, if empty VA will be expired in 24 hour
 username_display | String | username | VA Name, default is using username
 
 ### Response Parameters
@@ -385,7 +386,7 @@ id | String | Unique VA ID
 bank_code | String | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of the VA in minutes 
+expiration_time | Int | Expiration time of VA
 va_status | String | Status of VA
 username_display | String | VA Name, default is using username
 
@@ -446,7 +447,7 @@ va_number | String | Generated VA number
 bank_code | String | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of the VA in minutes 
+expiration_time | Int | Expiration time of the VA
 va_status | String | Status of VA
 username_display | String | VA Name, default is using username
 partner_user_id | String | Your unique ID for specific user
@@ -494,7 +495,7 @@ bank_code | String | Bank code which the VA number will be generated
 amount | BigDecimal | Amount your user must paid to complete the transaction
 is_open | Boolean | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of the VA in minutes 
+expiration_time | Int | Expiration time of the VA in minutes, if empty VA will be expired on 24 hour
 
 ### Response Parameters
 
@@ -507,7 +508,7 @@ va_number | String | Generated VA number
 bank_code | String | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of the VA in minutes 
+expiration_time | Int | Expiration time of the VA
 va_status | String | Last status of VA
 username_display | String | VA Name, default is using username
 partner_user_id | String | Your unique ID for specific user
