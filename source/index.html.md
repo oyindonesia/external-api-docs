@@ -437,7 +437,7 @@ curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-1
 ```
 
 ### HTTPS Request
-`PUT BASE_URL/api/static-virtual-account/<ID>`
+`GET BASE_URL/api/static-virtual-account/<ID>`
 
 ### URL Parameters
 
