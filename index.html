@@ -1012,6 +1012,12 @@ Use this API to get beneficiary account details.</p>
 <td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
 </tr>
 <tr>
+<td>is_lifetime</td>
+<td>Boolean</td>
+<td>false</td>
+<td>If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.</td>
+</tr>
+<tr>
 <td>username_display</td>
 <td>String</td>
 <td>username</td>
@@ -1064,7 +1070,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>expiration_time</td>
 <td>Int</td>
-<td>Expiration time of VA</td>
+<td>Expiration time of VA on Unix timestamp, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>va_status</td>
@@ -1207,7 +1213,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>expiration_time</td>
 <td>Int</td>
-<td>Expiration time of the VA</td>
+<td>Expiration time of VA on Unix timestamp, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>va_status</td>
@@ -1340,7 +1346,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>expiration_time</td>
 <td>Int</td>
-<td>Expiration time of the VA</td>
+<td>Expiration time of VA on Unix timestamp, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>va_status</td>
