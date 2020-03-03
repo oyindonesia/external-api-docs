@@ -1271,33 +1271,39 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>bank_code</td>
-<td>String</td>
-<td>Bank code which the VA number will be generated</td>
-</tr>
-<tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>-</td>
 <td>Amount your user must paid to complete the transaction</td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>true</td>
 <td>True means VA number can accept any amount, field <code>amount</code> can be optional, False means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
 </tr>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
+<td>false</td>
 <td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
 <td>Int</td>
-<td>Expiration time of the VA in minutes, if empty VA will be expired on 24 hour</td>
+<td>-</td>
+<td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
+</tr>
+<tr>
+<td>is_lifetime</td>
+<td>Boolean</td>
+<td>false</td>
+<td>If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-7'>Response Parameters</h3>
