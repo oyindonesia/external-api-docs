@@ -318,6 +318,8 @@ Payment Status | State | Meaning
 213 | Final | Request is Rejected (Given amount are greater than allowed value for static va)
 214 | Final | Request is Rejected (Failed to generate static va)
 215 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
+216 | Final | Request is Rejected (VA Id is empty)
+217 | Final | Request is Rejected (VA Number is still active for this partner user id)
 300 | Final | Disbursement is FAILED
 301 | Non-Final | Pending (When there is a unclear answer from Banks Network)
 990 | Final | Request is Rejected (Request Parameter is not Valid)
