@@ -501,13 +501,14 @@ ID | String | Unique VA ID, you can get this once you success created VA
 
 ### Request Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-bank_code | String | Bank code which the VA number will be generated
-amount | BigDecimal | Amount your user must paid to complete the transaction
-is_open | Boolean | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of the VA in minutes, if empty VA will be expired on 24 hour
+Parameter | Type | Default | Description
+--------- | ---- | ------- | -----------
+amount | BigDecimal | - | Amount your user must paid to complete the transaction
+is_open | Boolean | true | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
+is_single_use | Boolean |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+expiration_time | Int | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
+is_lifetime | Boolean | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
+
 
 ### Response Parameters
 
