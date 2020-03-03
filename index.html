@@ -908,6 +908,16 @@ Use this API to get beneficiary account details.</p>
 <td>Request is Rejected (Max amount per transaction exceed for disburse)</td>
 </tr>
 <tr>
+<td>216</td>
+<td>Final</td>
+<td>Request is Rejected (VA Id is empty)</td>
+</tr>
+<tr>
+<td>217</td>
+<td>Final</td>
+<td>Request is Rejected (VA Number is still active for this partner user id)</td>
+</tr>
+<tr>
 <td>300</td>
 <td>Final</td>
 <td>Disbursement is FAILED</td>
@@ -1136,7 +1146,7 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-7'>HTTPS Request</h3>
-<p><code>PUT BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
+<p><code>GET BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
