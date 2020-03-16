@@ -1065,7 +1065,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
-<td>True means that this VA should be closed/finish once there is a successful payment that is being made to this VA.</td>
+<td>True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
@@ -1123,8 +1123,8 @@ Use this API to get beneficiary account details.</p>
 <td>This status means that VA is expired. You cannot accept or make update to VA Number with this status.</td>
 </tr>
 <tr>
-<td>FINISH</td>
-<td>This status means that VA is closed after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute <code>is_single_use</code> true can have this status.</td>
+<td>COMPLETE</td>
+<td>This status means that VA is closed/complete after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute <code>is_single_use</code> true can have this status.</td>
 </tr>
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
