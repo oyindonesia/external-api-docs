@@ -237,6 +237,8 @@ curl -X GET 'https://partner.oyindonesia.com/api/balance' -H 'Content-Type: appl
     "message":"Success"
   },
   "balance":125000,
+  "overdraftBalance":2555555,
+  "overbookingBalance":3000000,
   "timestamp":"10-12-2019 12:15:37"
 }
 ```
