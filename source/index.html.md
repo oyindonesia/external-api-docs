@@ -254,6 +254,8 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | String | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
 balance | BigDecimal | Remaining balance (Accept non fraction number)
+overdraftBalance | BigDecimal | Remaining overdraft balance (Accept non fraction number)
+overbookingBalance | BigDecimal | Remaining overbooking balance (Accept non fraction number)
 timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy HH:mm:ss")
 
 ## Mock number Staging API
