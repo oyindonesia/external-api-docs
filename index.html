@@ -665,6 +665,8 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"balance"</span><span class="p">:</span><span class="mi">125000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"overdraftBalance"</span><span class="p">:</span><span class="mi">2555555</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"overbookingBalance"</span><span class="p">:</span><span class="mi">3000000</span><span class="p">,</span><span class="w">
   </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="s2">"10-12-2019 12:15:37"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -688,6 +690,16 @@ Use this API to get beneficiary account details.</p>
 <td>balance</td>
 <td>BigDecimal</td>
 <td>Remaining balance (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>overdraftBalance</td>
+<td>BigDecimal</td>
+<td>Remaining overdraft balance (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>overbookingBalance</td>
+<td>BigDecimal</td>
+<td>Remaining overbooking balance (Accept non fraction number)</td>
 </tr>
 <tr>
 <td>timestamp</td>
