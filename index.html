@@ -315,7 +315,7 @@
               </ul>
           </li>
           <li>
-            <a href="#personal-finance-management-coming-soon" class="toc-h1 toc-link" data-title="Personal Finance Management (Coming Soon)">Personal Finance Management (Coming Soon)</a>
+            <a href="#pfm-coming-soon" class="toc-h1 toc-link" data-title="PFM (Coming Soon)">PFM (Coming Soon)</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#list-of-internet-banking-services" class="toc-h2 toc-link" data-title="List of internet banking services">List of internet banking services</a>
@@ -2086,7 +2086,7 @@ Use this API to get beneficiary account details.</p>
 
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
 <h2 id='verify-id-card'>Verify ID-Card</h2>
-<p>Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
+<p>Verification using id-card will be handle asynchronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
 <pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "id_card_photo": "base64 encode of id card photo", "selfie_card_photo": "base64 encode of selfie with id card photo"}'</span>
 </code></pre>
 <blockquote>
@@ -2283,7 +2283,7 @@ Use this API to get beneficiary account details.</p>
 <td>Internal Server Error</td>
 </tr>
 </tbody></table>
-<h1 id='personal-finance-management-coming-soon'>Personal Finance Management (Coming Soon)</h1>
+<h1 id='pfm-coming-soon'>PFM (Coming Soon)</h1>
 <p>PFM APIs will allow you to connect with internet banking account. You can use it to check accounts, balance and mutations. PFM API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
 
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
@@ -2334,7 +2334,7 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </tbody></table>
 <h2 id='connect-internet-banking'>Connect internet banking</h2>
-<p>Login and connect internet banking. This process is asycronous, we will send response using callback url that you registered to us. For detail of callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
+<p>Login and connect internet banking. This process is asynchronous, we will send response using callback url that you registered to us. For detail of callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
 <pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/ibank/login -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"data":"encrypted username password", "bank_code":"008", "phone_number": "Phone number", "email":""}'</span>
 </code></pre>
 <blockquote>
@@ -2583,7 +2583,7 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </tbody></table>
 <h2 id='update-balance-and-mutations'>Update balance and mutations</h2>
-<p>Update balance and mutations. This request is asyncronous, we will send response using callback that you registered to us. For detail callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
+<p>Update balance and mutations. This request is asynchronous, we will send response using callback that you registered to us. For detail callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
 <pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/ibank/:ibankId/update -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
 </code></pre>
 <blockquote>
