@@ -675,11 +675,126 @@ amount | BigDecimal | Amount of VA transaction
 partner_user_id | String | Your unique ID for specific user
 success | boolean | payment status if success or not
 
-# KYC (Coming Soon)
+# KYC (Comming Soon)
 
-KYC APIs will allow you to verify whether the user-supplied identity card is valid or not.
+KYC APIs will allow you to verify whether the user-supplied identity card is valid or not. KYC API can be requested through HTTPS Request to OY! API Base URL endpoint.
+
 
 <a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a>
+
+## Verify ID-Card
+
+Verification using ID Card.
+
+```shell
+curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"name": "name of user", "address": "home address", "nik" : "id card number", "id_card_photo": "base64 encode of id card photo", "selfie_card_photo": "base64 encode of selfie with id card photo"}'
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status": {
+        "code": "000",
+        "message" : "Request processed"
+    }
+}
+```
+
+Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see [KYC Response Callback](#kyc-response-callback)
+
+### HTTPS Request
+`POST BASE_URL/api/kyc/id-card`
+
+### Request Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+name | String | Name of user
+address | String | Home address
+nik | String | ID card number
+id_card_photo | String | Id Card Photo, encode to base64 string
+selfie_card_photo | String | Selfie with id card, encode to base64 String
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Code](#kyc-response-code)
+
+## Verify Phone Number
+
+Verification using phone number.
+
+```shell
+curl -X POST https://partner.oyindonesia.com/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status": {
+        "code": "000",
+        "message" : "Verified"
+    }
+}
+```
+
+### HTTPS Request
+`POST BASE_URL/kyc/phone-number`
+
+### Request Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+name | String | Name of user
+address | String | Home address
+nik | String | ID card number
+phone_number | String | Phone number of user, use +62 format
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Code](#kyc-response-code)
+
+## KYC Response Callback
+
+> Response callback:
+
+```json
+{
+	"status": {
+		"code": "000",
+		"message" : "verified"
+	}
+}
+```
+
+Once data have been verified, our system will make a callback to your system.
+
+### Callback Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Code](#kyc-response-code)
+
+
+## KYC Response Codes
+
+These are the list of possible status codes for KYC response status:
+
+Status Code | State | Meaning
+---------- | ------- | -------
+000 | Final | Response success without error
+001 | Non-Final | Data on request body is empty or invalid
+002 | Non-Final | Request is rejected (Name is not the same as id card)
+003 | Non-Final | Request is Rejected (Address is not the same as id card)
+004 | Non-Final | Request is Rejected (NIK is not the same as id card)
+005 | Non-Final | Request is Rejected (ID card photo is not clear)
+006 | Non-Final | Request is Rejected (Face is not the same as photo on id card)
+999 | Final | Internal Server Error
 
 # Bank Codes
 
