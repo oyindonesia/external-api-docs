@@ -913,10 +913,6 @@ PFM APIs will allow you to connect with internet banking account. You can use it
 
 <a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a>
 
-## Get list internet banking services
-
-This API allow you to check our supported bank for PFM.
-
 ## List of internet banking services
 
 Check supported internet banking service. 
