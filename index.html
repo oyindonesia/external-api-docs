@@ -260,6 +260,9 @@
                   <li>
                     <a href="#response-codes" class="toc-h2 toc-link" data-title="Response Codes">Response Codes</a>
                   </li>
+                  <li>
+                    <a href="#bank-codes" class="toc-h2 toc-link" data-title="Bank Codes">Bank Codes</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -295,7 +298,7 @@
               </ul>
           </li>
           <li>
-            <a href="#kyc-comming-soon" class="toc-h1 toc-link" data-title="KYC (Comming Soon)">KYC (Comming Soon)</a>
+            <a href="#kyc-coming-soon" class="toc-h1 toc-link" data-title="KYC (Coming Soon)">KYC (Coming Soon)</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#verify-id-card" class="toc-h2 toc-link" data-title="Verify ID-Card">Verify ID-Card</a>
@@ -312,7 +315,36 @@
               </ul>
           </li>
           <li>
-            <a href="#bank-codes" class="toc-h1 toc-link" data-title="Bank Codes">Bank Codes</a>
+            <a href="#personal-finance-management-coming-soon" class="toc-h1 toc-link" data-title="Personal Finance Management (Coming Soon)">Personal Finance Management (Coming Soon)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-list-internet-banking-services" class="toc-h2 toc-link" data-title="Get list internet banking services">Get list internet banking services</a>
+                  </li>
+                  <li>
+                    <a href="#list-of-internet-banking-services" class="toc-h2 toc-link" data-title="List of internet banking services">List of internet banking services</a>
+                  </li>
+                  <li>
+                    <a href="#connect-internet-banking" class="toc-h2 toc-link" data-title="Connect internet banking">Connect internet banking</a>
+                  </li>
+                  <li>
+                    <a href="#get-connected-accounts" class="toc-h2 toc-link" data-title="Get connected accounts">Get connected accounts</a>
+                  </li>
+                  <li>
+                    <a href="#get-balance-2" class="toc-h2 toc-link" data-title="Get Balance">Get Balance</a>
+                  </li>
+                  <li>
+                    <a href="#get-mutations" class="toc-h2 toc-link" data-title="Get Mutations">Get Mutations</a>
+                  </li>
+                  <li>
+                    <a href="#update-balance-and-mutations" class="toc-h2 toc-link" data-title="Update balance and mutations">Update balance and mutations</a>
+                  </li>
+                  <li>
+                    <a href="#pfm-callback-response" class="toc-h2 toc-link" data-title="PFM Callback Response">PFM Callback Response</a>
+                  </li>
+                  <li>
+                    <a href="#pfm-response-codes" class="toc-h2 toc-link" data-title="PFM Response Codes">PFM Response Codes</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -964,867 +996,7 @@ Use this API to get beneficiary account details.</p>
 <td>Internal Server Error</td>
 </tr>
 </tbody></table>
-<h1 id='static-va'>Static VA</h1>
-<p>Static VA API allows you to create a unique VA number as a payment method for your customers..</p>
-<h3 id='api-base-url-2'>API Base URL</h3>
-<p>Currently API static VA generator is only available in our Production Environment: <code>https://partner.oyindonesia.com</code> (Staging Environment will be available soon)</p>
-<h2 id='create-va'>Create VA</h2>
-<p>Use this API to create new VA number</p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345b1-23be-45670-a123-5ca678f12b3e"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789182827272"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-6'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/generate-static-va</code></p>
-<h3 id='request-parameters-4'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>partner_user_id</td>
-<td>String</td>
-<td>-</td>
-<td>Your unique ID for specific user</td>
-</tr>
-<tr>
-<td>bank_code</td>
-<td>String</td>
-<td>-</td>
-<td>Bank code which the VA number will be generated</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>BigDecimal</td>
-<td>0</td>
-<td>Amount your user must paid to complete the transaction</td>
-</tr>
-<tr>
-<td>is_open</td>
-<td>Boolean</td>
-<td>true</td>
-<td>If set true means VA number can accept any amount, field <code>amount</code> can be optional, if set false means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
-</tr>
-<tr>
-<td>is_single_use</td>
-<td>Boolean</td>
-<td>false</td>
-<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
-</tr>
-<tr>
-<td>expiration_time</td>
-<td>Int</td>
-<td>-</td>
-<td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
-</tr>
-<tr>
-<td>is_lifetime</td>
-<td>Boolean</td>
-<td>false</td>
-<td>If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.</td>
-</tr>
-<tr>
-<td>username_display</td>
-<td>String</td>
-<td>username</td>
-<td>VA Name, default is using username</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-5'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
-</tr>
-<tr>
-<td>amount</td>
-<td>BigDecimal</td>
-<td>Amount of VA transaction</td>
-</tr>
-<tr>
-<td>va_number</td>
-<td>String</td>
-<td>Generated VA number</td>
-</tr>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>Unique VA ID</td>
-</tr>
-<tr>
-<td>bank_code</td>
-<td>String</td>
-<td>Bank code for VA, see <a href="#static-va-bank-code">VA Bank Code</a></td>
-</tr>
-<tr>
-<td>is_open</td>
-<td>Boolean</td>
-<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
-</tr>
-<tr>
-<td>is_single_use</td>
-<td>Boolean</td>
-<td>True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.</td>
-</tr>
-<tr>
-<td>expiration_time</td>
-<td>Int</td>
-<td>Expiration time of VA on Unix timestamp, -1 means no expiration time.</td>
-</tr>
-<tr>
-<td>va_status</td>
-<td>String</td>
-<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
-</tr>
-<tr>
-<td>username_display</td>
-<td>String</td>
-<td>VA Name, default is using username</td>
-</tr>
-</tbody></table>
-<h2 id='static-va-bank-code'>Static VA Bank Code</h2><h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
-<table><thead>
-<tr>
-<th>Bank Code</th>
-<th>Bank Name</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>002</td>
-<td>Bank BRI</td>
-</tr>
-<tr>
-<td>013</td>
-<td>Bank Permata</td>
-</tr>
-<tr>
-<td>022</td>
-<td>Bank CIMB Niaga</td>
-</tr>
-</tbody></table>
-<h2 id='static-va-status'>Static VA Status</h2><h3 id='available-status-for-static-va'>Available Status for Static VA</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>WAITING_PAYMENT</td>
-<td>This status means that VA is active and can receive a payment</td>
-</tr>
-<tr>
-<td>PAYMENT_DETECTED</td>
-<td>This status means that there are incoming payment to VA Number</td>
-</tr>
-<tr>
-<td>EXPIRED</td>
-<td>This status means that VA is expired. You cannot accept or make update to VA Number with this status.</td>
-</tr>
-<tr>
-<td>COMPLETE</td>
-<td>This status means that VA is closed/complete after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute <code>is_single_use</code> true can have this status.</td>
-</tr>
-</tbody></table>
-<h2 id='get-va-info'>Get VA Info</h2>
-<p>Get VA info using Unique VA id.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1233456000000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-7'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>String</td>
-<td>Unique VA id, you can get this once you success created VA</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-6'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>Unique VA id</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
-</tr>
-<tr>
-<td>amount</td>
-<td>BigDecimal</td>
-<td>Amount of VA transaction</td>
-</tr>
-<tr>
-<td>va_number</td>
-<td>String</td>
-<td>Generated VA number</td>
-</tr>
-<tr>
-<td>bank_code</td>
-<td>String</td>
-<td>Bank code for VA</td>
-</tr>
-<tr>
-<td>is_open</td>
-<td>Boolean</td>
-<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
-</tr>
-<tr>
-<td>is_single_use</td>
-<td>Boolean</td>
-<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
-</tr>
-<tr>
-<td>expiration_time</td>
-<td>Int</td>
-<td>Expiration time of VA on Unix timestamp, -1 means no expiration time.</td>
-</tr>
-<tr>
-<td>va_status</td>
-<td>String</td>
-<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
-</tr>
-<tr>
-<td>username_display</td>
-<td>String</td>
-<td>VA Name, default is using username</td>
-</tr>
-<tr>
-<td>partner_user_id</td>
-<td>String</td>
-<td>Your unique ID for specific user</td>
-</tr>
-</tbody></table>
-<h2 id='update-va'>Update VA</h2>
-<p>Update VA using unique VA id.</p>
-<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001234000000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaname"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-8'>HTTPS Request</h3>
-<p><code>PUT BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
-<h3 id='url-parameter'>URL Parameter</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>String</td>
-<td>Unique VA ID, you can get this once you success created VA</td>
-</tr>
-</tbody></table>
-<h3 id='request-parameters-5'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>amount</td>
-<td>BigDecimal</td>
-<td>-</td>
-<td>Amount your user must paid to complete the transaction</td>
-</tr>
-<tr>
-<td>is_open</td>
-<td>Boolean</td>
-<td>true</td>
-<td>True means VA number can accept any amount, field <code>amount</code> can be optional, False means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
-</tr>
-<tr>
-<td>is_single_use</td>
-<td>Boolean</td>
-<td>false</td>
-<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
-</tr>
-<tr>
-<td>expiration_time</td>
-<td>Int</td>
-<td>-</td>
-<td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
-</tr>
-<tr>
-<td>is_lifetime</td>
-<td>Boolean</td>
-<td>false</td>
-<td>If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-7'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>String</td>
-<td>Unique VA id</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
-</tr>
-<tr>
-<td>amount</td>
-<td>BigDecimal</td>
-<td>Amount of VA transaction</td>
-</tr>
-<tr>
-<td>va_number</td>
-<td>String</td>
-<td>Generated VA number</td>
-</tr>
-<tr>
-<td>bank_code</td>
-<td>String</td>
-<td>Bank code for VA</td>
-</tr>
-<tr>
-<td>is_open</td>
-<td>Boolean</td>
-<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
-</tr>
-<tr>
-<td>is_single_use</td>
-<td>Boolean</td>
-<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
-</tr>
-<tr>
-<td>expiration_time</td>
-<td>Int</td>
-<td>Expiration time of VA on Unix timestamp, -1 means no expiration time.</td>
-</tr>
-<tr>
-<td>va_status</td>
-<td>String</td>
-<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
-</tr>
-<tr>
-<td>username_display</td>
-<td>String</td>
-<td>VA Name, default is using username</td>
-</tr>
-<tr>
-<td>partner_user_id</td>
-<td>String</td>
-<td>Your unique ID for specific user</td>
-</tr>
-</tbody></table>
-<h2 id='get-list-of-created-va'>Get list of created VA</h2>
-<p>Get list of created VA</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a660428-3373-436b-b929-ef69698dd26f"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000006"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582791896416</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000005"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54321"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-9'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
-<h3 id='request-parameters-6'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>offset</td>
-<td>Integer</td>
-<td>0</td>
-<td>start offset, default is 0, if empty will used default value</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>Integer</td>
-<td>10</td>
-<td>max item to fetch, default is 10, if empty will used default value</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-8'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>total</td>
-<td>Integer</td>
-<td>total items</td>
-</tr>
-<tr>
-<td>data</td>
-<td>Array of object</td>
-<td>List of Object <code>{id: &lt;id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;}</code></td>
-</tr>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
-</tr>
-</tbody></table>
-<h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
-<p>Get list of incoming transaction for specific va number.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345676788898"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d9c2963f-be14-4558-9380-5ba1db8ed156"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-27 07:48:01"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"create_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last_update_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582789681439</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456000000000001"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-10'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
-<h3 id='url-parameter-2'>URL Parameter</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>String</td>
-<td>Unique VA ID, you can get this once you success created VA</td>
-</tr>
-</tbody></table>
-<h3 id='request-parameters-7'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>offset</td>
-<td>Integer</td>
-<td>0</td>
-<td>start offset, default is 0, if empty will used default value</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>Integer</td>
-<td>10</td>
-<td>max item to fetch, default is 10, if empty will used default value</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-9'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>Integer</td>
-<td>Unique VA id</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Array of Object</td>
-<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;}</code></td>
-</tr>
-<tr>
-<td>numberOfTransaction</td>
-<td>Integer</td>
-<td>Total transaction</td>
-</tr>
-</tbody></table>
-<h2 id='partner-callback'>Partner Callback</h2>
-<blockquote>
-<p>Response callback:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oy0000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Once user successfully do the payment, our system will make a callback to your system</p>
-<h3 id='callback-parameters'>Callback Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>va_number</td>
-<td>String</td>
-<td>Generated VA number</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>BigDecimal</td>
-<td>Amount of VA transaction</td>
-</tr>
-<tr>
-<td>partner_user_id</td>
-<td>String</td>
-<td>Your unique ID for specific user</td>
-</tr>
-<tr>
-<td>success</td>
-<td>boolean</td>
-<td>payment status if success or not</td>
-</tr>
-</tbody></table>
-<h1 id='kyc-comming-soon'>KYC (Comming Soon)</h1>
-<p>KYC APIs will allow you to verify whether the user-supplied identity card is valid or not. KYC API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
-
-<p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
-<h2 id='verify-id-card'>Verify ID-Card</h2>
-<p>Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "id_card_photo": "base64 encode of id card photo", "selfie_card_photo": "base64 encode of selfie with id card photo"}'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Request processed"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-11'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/kyc/id-card</code></p>
-<h3 id='request-parameters-8'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Name of user</td>
-</tr>
-<tr>
-<td>address</td>
-<td>String</td>
-<td>Home address</td>
-</tr>
-<tr>
-<td>nik</td>
-<td>String</td>
-<td>ID card number</td>
-</tr>
-<tr>
-<td>id_card_photo</td>
-<td>String</td>
-<td>Id Card Photo, encode to base64 string</td>
-</tr>
-<tr>
-<td>selfie_card_photo</td>
-<td>String</td>
-<td>Selfie with id card, encode to base64 String</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-10'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Code</a></td>
-</tr>
-</tbody></table>
-<h2 id='verify-phone-number'>Verify Phone Number</h2>
-<p>Verification using phone number.</p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-12'>HTTPS Request</h3>
-<p><code>POST BASE_URL/kyc/phone-number</code></p>
-<h3 id='request-parameters-9'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>Name of user</td>
-</tr>
-<tr>
-<td>address</td>
-<td>String</td>
-<td>Home address</td>
-</tr>
-<tr>
-<td>nik</td>
-<td>String</td>
-<td>ID card number</td>
-</tr>
-<tr>
-<td>phone_number</td>
-<td>String</td>
-<td>Phone number of user, use +62 format</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-11'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Code</a></td>
-</tr>
-</tbody></table>
-<h2 id='kyc-response-callback'>KYC Response Callback</h2>
-<blockquote>
-<p>Response callback:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Once data have been verified, our system will make a callback to your system.</p>
-<h3 id='callback-parameters-2'>Callback Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Code</a></td>
-</tr>
-</tbody></table>
-<h2 id='kyc-response-codes'>KYC Response Codes</h2>
-<p>These are the list of possible status codes for KYC response status:</p>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>State</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>000</td>
-<td>Final</td>
-<td>Response success without error</td>
-</tr>
-<tr>
-<td>001</td>
-<td>Non-Final</td>
-<td>Data on request body is empty or invalid</td>
-</tr>
-<tr>
-<td>002</td>
-<td>Non-Final</td>
-<td>Request is rejected (Name is not the same as id card)</td>
-</tr>
-<tr>
-<td>003</td>
-<td>Non-Final</td>
-<td>Request is Rejected (Address is not the same as id card)</td>
-</tr>
-<tr>
-<td>004</td>
-<td>Non-Final</td>
-<td>Request is Rejected (NIK is not the same as id card)</td>
-</tr>
-<tr>
-<td>005</td>
-<td>Non-Final</td>
-<td>Request is Rejected (ID card photo is not clear)</td>
-</tr>
-<tr>
-<td>006</td>
-<td>Non-Final</td>
-<td>Request is Rejected (Face is not the same as photo on id card)</td>
-</tr>
-<tr>
-<td>999</td>
-<td>Final</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
-<h1 id='bank-codes'>Bank Codes</h1>
+<h2 id='bank-codes'>Bank Codes</h2>
 <p>Supported Bank Codes to be used in the Disbursement Request</p>
 
 <table><thead>
@@ -2252,6 +1424,1231 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>950</td>
 <td>Bank COMMONWEALTH</td>
+</tr>
+</tbody></table>
+<h1 id='static-va'>Static VA</h1>
+<p>Static VA API allows you to create a unique VA number as a payment method for your customers..</p>
+<h3 id='api-base-url-2'>API Base URL</h3>
+<p>Currently API static VA generator is only available in our Production Environment: <code>https://partner.oyindonesia.com</code> (Staging Environment will be available soon)</p>
+<h2 id='create-va'>Create VA</h2>
+<p>Use this API to create new VA number</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345b1-23be-45670-a123-5ca678f12b3e"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789182827272"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-6'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api/generate-static-va</code></p>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>-</td>
+<td>Your unique ID for specific user</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>-</td>
+<td>Bank code which the VA number will be generated</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>0</td>
+<td>Amount your user must paid to complete the transaction</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>true</td>
+<td>If set true means VA number can accept any amount, field <code>amount</code> can be optional, if set false means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>false</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>-</td>
+<td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
+</tr>
+<tr>
+<td>is_lifetime</td>
+<td>Boolean</td>
+<td>false</td>
+<td>If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.</td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String</td>
+<td>username</td>
+<td>VA Name, default is using username</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-5'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique VA ID</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>Bank code for VA, see <a href="#static-va-bank-code">VA Bank Code</a></td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>Expiration time of VA on Unix timestamp, -1 means no expiration time.</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String</td>
+<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String</td>
+<td>VA Name, default is using username</td>
+</tr>
+</tbody></table>
+<h2 id='static-va-bank-code'>Static VA Bank Code</h2><h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
+<table><thead>
+<tr>
+<th>Bank Code</th>
+<th>Bank Name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>002</td>
+<td>Bank BRI</td>
+</tr>
+<tr>
+<td>013</td>
+<td>Bank Permata</td>
+</tr>
+<tr>
+<td>022</td>
+<td>Bank CIMB Niaga</td>
+</tr>
+</tbody></table>
+<h2 id='static-va-status'>Static VA Status</h2><h3 id='available-status-for-static-va'>Available Status for Static VA</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WAITING_PAYMENT</td>
+<td>This status means that VA is active and can receive a payment</td>
+</tr>
+<tr>
+<td>PAYMENT_DETECTED</td>
+<td>This status means that there are incoming payment to VA Number</td>
+</tr>
+<tr>
+<td>EXPIRED</td>
+<td>This status means that VA is expired. You cannot accept or make update to VA Number with this status.</td>
+</tr>
+<tr>
+<td>COMPLETE</td>
+<td>This status means that VA is closed/complete after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute <code>is_single_use</code> true can have this status.</td>
+</tr>
+</tbody></table>
+<h2 id='get-va-info'>Get VA Info</h2>
+<p>Get VA info using Unique VA id.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1233456000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-7'>HTTPS Request</h3>
+<p><code>GET BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>String</td>
+<td>Unique VA id, you can get this once you success created VA</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-6'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>Bank code for VA</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>Expiration time of VA on Unix timestamp, -1 means no expiration time.</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String</td>
+<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String</td>
+<td>VA Name, default is using username</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>Your unique ID for specific user</td>
+</tr>
+</tbody></table>
+<h2 id='update-va'>Update VA</h2>
+<p>Update VA using unique VA id.</p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> -d <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001234000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaname"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-8'>HTTPS Request</h3>
+<p><code>PUT BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
+<h3 id='url-parameter'>URL Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>String</td>
+<td>Unique VA ID, you can get this once you success created VA</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-5'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>-</td>
+<td>Amount your user must paid to complete the transaction</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>true</td>
+<td>True means VA number can accept any amount, field <code>amount</code> can be optional, False means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>false</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>-</td>
+<td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
+</tr>
+<tr>
+<td>is_lifetime</td>
+<td>Boolean</td>
+<td>false</td>
+<td>If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-7'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>Bank code for VA</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Int</td>
+<td>Expiration time of VA on Unix timestamp, -1 means no expiration time.</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String</td>
+<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String</td>
+<td>VA Name, default is using username</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>Your unique ID for specific user</td>
+</tr>
+</tbody></table>
+<h2 id='get-list-of-created-va'>Get list of created VA</h2>
+<p>Get list of created VA</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a660428-3373-436b-b929-ef69698dd26f"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000006"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582791896416</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000005"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54321"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-9'>HTTPS Request</h3>
+<p><code>GET BASE_URL/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
+<h3 id='request-parameters-6'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>0</td>
+<td>start offset, default is 0, if empty will used default value</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>10</td>
+<td>max item to fetch, default is 10, if empty will used default value</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-8'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total</td>
+<td>Integer</td>
+<td>total items</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array of object</td>
+<td>List of Object <code>{id: &lt;id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;}</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+</tbody></table>
+<h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
+<p>Get list of incoming transaction for specific va number.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345676788898"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d9c2963f-be14-4558-9380-5ba1db8ed156"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-27 07:48:01"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"create_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_update_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582789681439</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456000000000001"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-10'>HTTPS Request</h3>
+<p><code>GET BASE_URL/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
+<h3 id='url-parameter-2'>URL Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>String</td>
+<td>Unique VA ID, you can get this once you success created VA</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-7'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>0</td>
+<td>start offset, default is 0, if empty will used default value</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>10</td>
+<td>max item to fetch, default is 10, if empty will used default value</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-9'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Integer</td>
+<td>Unique VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array of Object</td>
+<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;}</code></td>
+</tr>
+<tr>
+<td>numberOfTransaction</td>
+<td>Integer</td>
+<td>Total transaction</td>
+</tr>
+</tbody></table>
+<h2 id='partner-callback'>Partner Callback</h2>
+<blockquote>
+<p>Response callback:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oy0000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Once user successfully do the payment, our system will make a callback to your system</p>
+<h3 id='callback-parameters'>Callback Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>va_number</td>
+<td>String</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>Your unique ID for specific user</td>
+</tr>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>payment status if success or not</td>
+</tr>
+</tbody></table>
+<h1 id='kyc-coming-soon'>KYC (Coming Soon)</h1>
+<p>KYC APIs will allow you to verify whether the user-supplied identity card is valid or not. KYC API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
+
+<p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
+<h2 id='verify-id-card'>Verify ID-Card</h2>
+<p>Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "id_card_photo": "base64 encode of id card photo", "selfie_card_photo": "base64 encode of selfie with id card photo"}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Request processed"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-11'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api/kyc/id-card</code></p>
+<h3 id='request-parameters-8'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of user</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Home address</td>
+</tr>
+<tr>
+<td>nik</td>
+<td>String</td>
+<td>ID card number</td>
+</tr>
+<tr>
+<td>id_card_photo</td>
+<td>String</td>
+<td>Id Card Photo, encode to base64 string</td>
+</tr>
+<tr>
+<td>selfie_card_photo</td>
+<td>String</td>
+<td>Selfie with id card, encode to base64 String</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-10'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
+</tr>
+</tbody></table>
+<h2 id='verify-phone-number'>Verify Phone Number</h2>
+<p>Verification using phone number.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-12'>HTTPS Request</h3>
+<p><code>POST BASE_URL/kyc/phone-number</code></p>
+<h3 id='request-parameters-9'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of user</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Home address</td>
+</tr>
+<tr>
+<td>nik</td>
+<td>String</td>
+<td>ID card number</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>String</td>
+<td>Phone number of user, use +62 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-11'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
+</tr>
+</tbody></table>
+<h2 id='kyc-response-callback'>KYC Response Callback</h2>
+<blockquote>
+<p>Response callback:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Once data have been verified, our system will make a callback to your system.</p>
+<h3 id='callback-parameters-2'>Callback Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
+</tr>
+</tbody></table>
+<h2 id='kyc-response-codes'>KYC Response Codes</h2>
+<p>These are the list of possible status codes for KYC response status:</p>
+
+<table><thead>
+<tr>
+<th>Status Code</th>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Final</td>
+<td>Response success without error</td>
+</tr>
+<tr>
+<td>001</td>
+<td>Non-Final</td>
+<td>Data on request body is empty or invalid</td>
+</tr>
+<tr>
+<td>002</td>
+<td>Non-Final</td>
+<td>Request is rejected (Name is not the same as id card)</td>
+</tr>
+<tr>
+<td>003</td>
+<td>Non-Final</td>
+<td>Request is Rejected (Address is not the same as id card)</td>
+</tr>
+<tr>
+<td>004</td>
+<td>Non-Final</td>
+<td>Request is Rejected (NIK is not the same as id card)</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Non-Final</td>
+<td>Request is Rejected (ID card photo is not clear)</td>
+</tr>
+<tr>
+<td>006</td>
+<td>Non-Final</td>
+<td>Request is Rejected (Face is not the same as photo on id card)</td>
+</tr>
+<tr>
+<td>999</td>
+<td>Final</td>
+<td>Internal Server Error</td>
+</tr>
+</tbody></table>
+<h1 id='personal-finance-management-coming-soon'>Personal Finance Management (Coming Soon)</h1>
+<p>PFM APIs will allow you to connect with internet banking account. You can use it to check accounts, balance and mutations. PFM API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
+
+<p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
+<h2 id='get-list-internet-banking-services'>Get list internet banking services</h2>
+<p>This API allow you to check our supported bank for PFM.</p>
+<h2 id='list-of-internet-banking-services'>List of internet banking services</h2>
+<p>Check supported internet banking service. </p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/ibank/services -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"008"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mandiri"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bca"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"enable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-13'>HTTPS Request</h3>
+<p><code>GET BASE_URL/api/ibank/services</code></p>
+<h3 id='response-parameters-12'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array of Object</td>
+<td>List of Object <code>{bank_code: &lt;bank_code&gt;, bank_name: &lt;bank_name&gt;, enable: &lt;enable&gt;}</code></td>
+</tr>
+</tbody></table>
+<h2 id='connect-internet-banking'>Connect internet banking</h2>
+<p>Login and connect internet banking. This process is asycronous, we will send response using callback url that you registered to us. For detail of callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/ibank/login -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"data":"encrypted username password", "bank_code":"008", "phone_number": "Phone number", "email":""}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing login to internet banking"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-14'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api/ibank/login</code></p>
+<h3 id='response-parameters-13'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
+</tr>
+</tbody></table>
+<h2 id='get-connected-accounts'>Get connected accounts</h2>
+<p>Get all connected accounts on specific Internet banking id (ibank ID)</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-132131-13213-1312131"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678900"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAVING"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2134-4315-1234-5123-12331411"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************1234"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT-CARD"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-15'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api/ibank/:ibankId/accounts</code></p>
+<h3 id='url-parameter-3'>URL Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ibankId</td>
+<td>String</td>
+<td>Unique internet banking id</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-14'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array of Object</td>
+<td>List of object <code>{id: &lt;id&gt;, account_number: &lt;account_number&gt;, account_type: &lt;account_type&gt;, bank: { code: &lt;code&gt;, name: &lt;name&gt;}}</code></td>
+</tr>
+</tbody></table>
+<h2 id='get-balance-2'>Get Balance</h2>
+<p>Get balance for specific account. This is required account ID as parameter.</p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/balance -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-132131-13213-1312131"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678900"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAVING"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">150000000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">150091892829299</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-16'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api/ibank/:ibankId/accounts</code></p>
+<h3 id='response-parameters-15'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Object of <code>{id: &lt;id&gt;, account_number: &lt;account_number&gt;, account_type: &lt;account_type&gt;, bank: { code: &lt;code&gt;, name: &lt;name&gt;}, balance: &lt;balance&gt;, last_updated: &lt;last_updated&gt;}</code></td>
+</tr>
+</tbody></table>
+<h2 id='get-mutations'>Get Mutations</h2>
+<p>Get mutations for specific account with time range. This is required account ID as parameter, </p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span class="o">=</span>2020-01-01&amp;endDate<span class="o">=</span>2020-01-30 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-123131-132132-131231"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"food"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"balance_flow"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"transaction_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">15818182101011</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB DEBIT DOMESTIK TANGGAL :21/09 TRN DEBIT DOM 008 KFC DRIVE THRU SAM"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-123131-132132-131231"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"food"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"balance_flow"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"transaction_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">15881818220012</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB DEBIT DOMESTIK TANGGAL :24/11 TRN DEBIT DOM 022 PANCIOUS PANCAKE H"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-17'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api/ibank/:ibankId/mutations</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>startDate</td>
+<td>String</td>
+<td>Start date of transaction, using format yyyy-MM-dd</td>
+</tr>
+<tr>
+<td>endDate</td>
+<td>String</td>
+<td>End date of transaction, using format yyyy-MM-dd</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-16'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Object of <code>{id: &lt;id&gt;, category: &lt;category&gt;, amount: &lt;amount&gt;, balance_flow: &lt;balance_flow&gt;, transaction_date: &lt;transaction_date&gt;, description: &lt;description&gt;, status: &lt;status&gt;}</code></td>
+</tr>
+</tbody></table>
+<h2 id='update-balance-and-mutations'>Update balance and mutations</h2>
+<p>Update balance and mutations. This request is asyncronous, we will send response using callback that you registered to us. For detail callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/ibank/:ibankId/update -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request Processed"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-18'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api/ibank/:ibankId/update</code></p>
+<h3 id='url-parameter-4'>URL Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ibankId</td>
+<td>String</td>
+<td>Unique internet banking id</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-17'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
+</tr>
+</tbody></table>
+<h2 id='pfm-callback-response'>PFM Callback Response</h2>
+<blockquote>
+<p>Response Callback</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succeess"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"ibank_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12313-13213-132141-131231"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Once data have been connected, our system will make a callback to your system. You can start using our PFM API to get accounts, balance and mutation.</p>
+<h3 id='callback-parameters-3'>Callback Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Data of response in Object <code>{ibank_id: &lt;ibank_id&gt;}</code></td>
+</tr>
+</tbody></table>
+<h2 id='pfm-response-codes'>PFM Response Codes</h2>
+<p>These are the list of possible status codes for PFM response status:</p>
+
+<table><thead>
+<tr>
+<th>Status Code</th>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Final</td>
+<td>Response success without error</td>
+</tr>
+<tr>
+<td>999</td>
+<td>Final</td>
+<td>Internal Server Error</td>
 </tr>
 </tbody></table>
 
