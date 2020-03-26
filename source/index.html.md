@@ -1044,7 +1044,6 @@ Parameter | Type | Description
 --------- | ---- | -----------
 ibankId | String | Unique internet banking id
 
-
 ### Response Parameters
 
 Parameter | Type | Description
@@ -1084,7 +1083,12 @@ curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/balance -H '
 ```
 
 ### HTTPS Request
-`GET BASE_URL/api/ibank/:ibankId/accounts`
+`GET BASE_URL/api/accounts/:accountId/balance`
+
+### URL Parameter
+Parameter | Type | Description
+--------- | ---- | -----------
+accountId | String | Unique account id
 
 
 ### Response Parameters
@@ -1135,7 +1139,12 @@ curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?st
 ```
 
 ### HTTPS Request
-`GET BASE_URL/api/ibank/:ibankId/mutations`
+`GET BASE_URL/api/account/:accountId/mutations`
+
+### URL Parameters
+Parameter | Type | Description
+--------- | ---- | -----------
+accountId | String | Unique account id
 
 ### Query Parameters
 Parameter | Type | Description
