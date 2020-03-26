@@ -979,6 +979,15 @@ curl -X POST https://partner.oyindonesia.com/api/ibank/login -H 'content-type: a
 ### HTTPS Request
 `POST BASE_URL/api/ibank/login`
 
+### Request Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+data | String | True | Encripted json of username and password.
+bank_code | String | True | Code of bank
+phone_number | String | True | Phone number of user
+email | String | False | Email of user
+
 
 ### Response Parameters
 
