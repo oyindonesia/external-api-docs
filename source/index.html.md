@@ -995,6 +995,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
 
+
 ## Get connected accounts
 
 Get all connected accounts on specific Internet banking id (ibank ID)
@@ -1036,7 +1037,7 @@ curl -X GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts -H 'cont
 ```
 
 ### HTTPS Request
-`POST BASE_URL/api/ibank/:ibankId/accounts`
+`GET BASE_URL/api/ibank/:ibankId/accounts`
 
 ### URL Parameter
 Parameter | Type | Description
@@ -1048,7 +1049,7 @@ ibankId | String | Unique internet banking id
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
 data | Array of Object | List of object `{id: <id>, account_number: <account_number>, account_type: <account_type>, bank: { code: <code>, name: <name>}}`
 
 ## Get Balance
@@ -1083,14 +1084,14 @@ curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/balance -H '
 ```
 
 ### HTTPS Request
-`POST BASE_URL/api/ibank/:ibankId/accounts`
+`GET BASE_URL/api/ibank/:ibankId/accounts`
 
 
 ### Response Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
 data | Object | Object of `{id: <id>, account_number: <account_number>, account_type: <account_type>, bank: { code: <code>, name: <name>}, balance: <balance>, last_updated: <last_updated>}`
 
 ## Get Mutations
@@ -1134,7 +1135,7 @@ curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?st
 ```
 
 ### HTTPS Request
-`POST BASE_URL/api/ibank/:ibankId/mutations`
+`GET BASE_URL/api/ibank/:ibankId/mutations`
 
 ### Query Parameters
 Parameter | Type | Description
@@ -1146,7 +1147,7 @@ endDate | String | End date of transaction, using format yyyy-MM-dd
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
 data | Object | Object of `{id: <id>, category: <category>, amount: <amount>, balance_flow: <balance_flow>, transaction_date: <transaction_date>, description: <description>, status: <status>}`
 
 ## Update balance and mutations
@@ -1170,7 +1171,7 @@ curl -X PUT https://partner.oyindonesia.com/api/ibank/:ibankId/update -H 'conten
 ```
 
 ### HTTPS Request
-`POST BASE_URL/api/ibank/:ibankId/update`
+`PUT BASE_URL/api/ibank/:ibankId/update`
 
 ### URL Parameter
 Parameter | Type | Description
@@ -1181,7 +1182,7 @@ ibankId | String | Unique internet banking id
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
 
 
 ## PFM Callback Response
@@ -1206,7 +1207,7 @@ Once data have been connected, our system will make a callback to your system. Y
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Codes](#kyc-response-codes)
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
 data | Object | Data of response in Object `{ibank_id: <ibank_id>}`
 
 ## PFM Response Codes
