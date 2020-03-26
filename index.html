@@ -295,7 +295,21 @@
               </ul>
           </li>
           <li>
-            <a href="#kyc-coming-soon" class="toc-h1 toc-link" data-title="KYC (Coming Soon)">KYC (Coming Soon)</a>
+            <a href="#kyc-comming-soon" class="toc-h1 toc-link" data-title="KYC (Comming Soon)">KYC (Comming Soon)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#verify-id-card" class="toc-h2 toc-link" data-title="Verify ID-Card">Verify ID-Card</a>
+                  </li>
+                  <li>
+                    <a href="#verify-phone-number" class="toc-h2 toc-link" data-title="Verify Phone Number">Verify Phone Number</a>
+                  </li>
+                  <li>
+                    <a href="#kyc-response-callback" class="toc-h2 toc-link" data-title="KYC Response Callback">KYC Response Callback</a>
+                  </li>
+                  <li>
+                    <a href="#kyc-response-codes" class="toc-h2 toc-link" data-title="KYC Response Codes">KYC Response Codes</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#bank-codes" class="toc-h1 toc-link" data-title="Bank Codes">Bank Codes</a>
@@ -1608,10 +1622,210 @@ Use this API to get beneficiary account details.</p>
 <td>payment status if success or not</td>
 </tr>
 </tbody></table>
-<h1 id='kyc-coming-soon'>KYC (Coming Soon)</h1>
-<p>KYC APIs will allow you to verify whether the user-supplied identity card is valid or not.</p>
+<h1 id='kyc-comming-soon'>KYC (Comming Soon)</h1>
+<p>KYC APIs will allow you to verify whether the user-supplied identity card is valid or not. KYC API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
 
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
+<h2 id='verify-id-card'>Verify ID-Card</h2>
+<p>Verification using ID Card.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "id_card_photo": "base64 encode of id card photo", "selfie_card_photo": "base64 encode of selfie with id card photo"}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Request processed"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
+<h3 id='https-request-11'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api/kyc/id-card</code></p>
+<h3 id='request-parameters-8'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of user</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Home address</td>
+</tr>
+<tr>
+<td>nik</td>
+<td>String</td>
+<td>ID card number</td>
+</tr>
+<tr>
+<td>id_card_photo</td>
+<td>String</td>
+<td>Id Card Photo, encode to base64 string</td>
+</tr>
+<tr>
+<td>selfie_card_photo</td>
+<td>String</td>
+<td>Selfie with id card, encode to base64 String</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-10'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-code">KYC Response Code</a></td>
+</tr>
+</tbody></table>
+<h2 id='verify-phone-number'>Verify Phone Number</h2>
+<p>Verification using phone number.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-12'>HTTPS Request</h3>
+<p><code>POST BASE_URL/kyc/phone-number</code></p>
+<h3 id='request-parameters-9'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Name of user</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Home address</td>
+</tr>
+<tr>
+<td>nik</td>
+<td>String</td>
+<td>ID card number</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>String</td>
+<td>Phone number of user, use +62 format</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-11'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-code">KYC Response Code</a></td>
+</tr>
+</tbody></table>
+<h2 id='kyc-response-callback'>KYC Response Callback</h2>
+<blockquote>
+<p>Response callback:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Once data have been verified, our system will make a callback to your system.</p>
+<h3 id='callback-parameters-2'>Callback Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-code">KYC Response Code</a></td>
+</tr>
+</tbody></table>
+<h2 id='kyc-response-codes'>KYC Response Codes</h2>
+<p>These are the list of possible status codes for KYC response status:</p>
+
+<table><thead>
+<tr>
+<th>Status Code</th>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Final</td>
+<td>Response success without error</td>
+</tr>
+<tr>
+<td>001</td>
+<td>Non-Final</td>
+<td>Data on request body is empty or invalid</td>
+</tr>
+<tr>
+<td>002</td>
+<td>Non-Final</td>
+<td>Request is rejected (Name is not the same as id card)</td>
+</tr>
+<tr>
+<td>003</td>
+<td>Non-Final</td>
+<td>Request is Rejected (Address is not the same as id card)</td>
+</tr>
+<tr>
+<td>004</td>
+<td>Non-Final</td>
+<td>Request is Rejected (NIK is not the same as id card)</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Non-Final</td>
+<td>Request is Rejected (ID card photo is not clear)</td>
+</tr>
+<tr>
+<td>006</td>
+<td>Non-Final</td>
+<td>Request is Rejected (Face is not the same as photo on id card)</td>
+</tr>
+<tr>
+<td>999</td>
+<td>Final</td>
+<td>Internal Server Error</td>
+</tr>
+</tbody></table>
 <h1 id='bank-codes'>Bank Codes</h1>
 <p>Supported Bank Codes to be used in the Disbursement Request</p>
 
