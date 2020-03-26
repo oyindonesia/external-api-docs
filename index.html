@@ -2348,6 +2348,40 @@ Use this API to get beneficiary account details.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-14'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/ibank/login</code></p>
+<h3 id='request-parameters-10'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>String</td>
+<td>True</td>
+<td>Encripted json of username and password.</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>True</td>
+<td>Code of bank</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>String</td>
+<td>True</td>
+<td>Phone number of user</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>False</td>
+<td>Email of user</td>
+</tr>
+</tbody></table>
 <h3 id='response-parameters-13'>Response Parameters</h3>
 <table><thead>
 <tr>
