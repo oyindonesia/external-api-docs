@@ -2489,7 +2489,21 @@ Use this API to get beneficiary account details.</p>
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-16'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/ibank/:ibankId/accounts</code></p>
+<p><code>GET BASE_URL/api/accounts/:accountId/balance</code></p>
+<h3 id='url-parameter-4'>URL Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>String</td>
+<td>Unique account id</td>
+</tr>
+</tbody></table>
 <h3 id='response-parameters-15'>Response Parameters</h3>
 <table><thead>
 <tr>
@@ -2543,7 +2557,21 @@ Use this API to get beneficiary account details.</p>
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-17'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/ibank/:ibankId/mutations</code></p>
+<p><code>GET BASE_URL/api/account/:accountId/mutations</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountId</td>
+<td>String</td>
+<td>Unique account id</td>
+</tr>
+</tbody></table>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2597,7 +2625,7 @@ Use this API to get beneficiary account details.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-18'>HTTPS Request</h3>
 <p><code>PUT BASE_URL/api/ibank/:ibankId/update</code></p>
-<h3 id='url-parameter-4'>URL Parameter</h3>
+<h3 id='url-parameter-5'>URL Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
