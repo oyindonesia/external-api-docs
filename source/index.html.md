@@ -796,7 +796,7 @@ KYC APIs will allow you to verify whether the user-supplied identity card is val
 
 ## Verify ID-Card
 
-Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see [KYC Response Callback](#kyc-response-callback)
+Verification using id-card will be handle asynchronous, and we will send KYC response via callback url. For detail callback, you can see [KYC Response Callback](#kyc-response-callback)
 
 
 ```shell
@@ -907,7 +907,7 @@ Status Code | State | Meaning
 006 | Non-Final | Request is Rejected (Face is not the same as photo on id card)
 999 | Final | Internal Server Error
 
-# Personal Finance Management (Coming Soon)
+# PFM (Coming Soon)
 
 PFM APIs will allow you to connect with internet banking account. You can use it to check accounts, balance and mutations. PFM API can be requested through HTTPS Request to OY! API Base URL endpoint.
 
@@ -958,7 +958,7 @@ data | Array of Object  | List of Object `{bank_code: <bank_code>, bank_name: <b
 
 ## Connect internet banking
 
-Login and connect internet banking. This process is asycronous, we will send response using callback url that you registered to us. For detail of callback response, see [PFM Callback Response](#pfm-callback-response)
+Login and connect internet banking. This process is asynchronous, we will send response using callback url that you registered to us. For detail of callback response, see [PFM Callback Response](#pfm-callback-response)
 
 
 ```shell
@@ -1152,7 +1152,7 @@ data | Object | Object of `{id: <id>, category: <category>, amount: <amount>, ba
 
 ## Update balance and mutations
 
-Update balance and mutations. This request is asyncronous, we will send response using callback that you registered to us. For detail callback response, see [PFM Callback Response](#pfm-callback-response)
+Update balance and mutations. This request is asynchronous, we will send response using callback that you registered to us. For detail callback response, see [PFM Callback Response](#pfm-callback-response)
 
 
 ```shell
