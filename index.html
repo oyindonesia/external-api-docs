@@ -1627,7 +1627,7 @@ Use this API to get beneficiary account details.</p>
 
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
 <h2 id='verify-id-card'>Verify ID-Card</h2>
-<p>Verification using ID Card.</p>
+<p>Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
 <pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "id_card_photo": "base64 encode of id card photo", "selfie_card_photo": "base64 encode of selfie with id card photo"}'</span>
 </code></pre>
 <blockquote>
@@ -1639,9 +1639,7 @@ Use this API to get beneficiary account details.</p>
         </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Request processed"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
-<h3 id='https-request-11'>HTTPS Request</h3>
+</span></code></pre><h3 id='https-request-11'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/kyc/id-card</code></p>
 <h3 id='request-parameters-8'>Request Parameters</h3>
 <table><thead>
@@ -1688,7 +1686,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>status</td>
 <td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-code">KYC Response Code</a></td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Code</a></td>
 </tr>
 </tbody></table>
 <h2 id='verify-phone-number'>Verify Phone Number</h2>
@@ -1746,7 +1744,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>status</td>
 <td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-code">KYC Response Code</a></td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Code</a></td>
 </tr>
 </tbody></table>
 <h2 id='kyc-response-callback'>KYC Response Callback</h2>
@@ -1772,7 +1770,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>status</td>
 <td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-code">KYC Response Code</a></td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Code</a></td>
 </tr>
 </tbody></table>
 <h2 id='kyc-response-codes'>KYC Response Codes</h2>
