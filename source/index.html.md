@@ -684,7 +684,8 @@ KYC APIs will allow you to verify whether the user-supplied identity card is val
 
 ## Verify ID-Card
 
-Verification using ID Card.
+Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see [KYC Response Callback](#kyc-response-callback)
+
 
 ```shell
 curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"name": "name of user", "address": "home address", "nik" : "id card number", "id_card_photo": "base64 encode of id card photo", "selfie_card_photo": "base64 encode of selfie with id card photo"}'
@@ -700,8 +701,6 @@ curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H 'content-type: a
     }
 }
 ```
-
-Verification using id-card will be handle asyncronous, and we will send KYC response via callback url. For detail callback, you can see [KYC Response Callback](#kyc-response-callback)
 
 ### HTTPS Request
 `POST BASE_URL/api/kyc/id-card`
@@ -720,7 +719,7 @@ selfie_card_photo | String | Selfie with id card, encode to base64 String
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Code](#kyc-response-code)
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Code](#kyc-response-codes)
 
 ## Verify Phone Number
 
@@ -757,7 +756,7 @@ phone_number | String | Phone number of user, use +62 format
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Code](#kyc-response-code)
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Code](#kyc-response-codes)
 
 ## KYC Response Callback
 
@@ -778,7 +777,7 @@ Once data have been verified, our system will make a callback to your system.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Code](#kyc-response-code)
+status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Code](#kyc-response-codes)
 
 
 ## KYC Response Codes
