@@ -502,7 +502,7 @@ id | String | Unique VA ID
 bank_code | String | Bank code for VA, see [VA Bank Code](#static-va-bank-code)
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of VA on Unix timestamp, -1 means no expiration time.
+expiration_time | Int | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String | Status of VA, see [VA Status](#static-va-status)
 username_display | String | VA Name, default is using username
 
@@ -573,7 +573,7 @@ va_number | String | Generated VA number
 bank_code | String | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of VA on Unix timestamp, -1 means no expiration time.
+expiration_time | Int | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String | Status of VA, see [VA Status](#static-va-status)
 username_display | String | VA Name, default is using username
 partner_user_id | String | Your unique ID for specific user
@@ -635,7 +635,7 @@ va_number | String | Generated VA number
 bank_code | String | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of VA on Unix timestamp, -1 means no expiration time.
+expiration_time | Int | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String | Status of VA, see [VA Status](#static-va-status)
 username_display | String | VA Name, default is using username
 partner_user_id | String | Your unique ID for specific user
