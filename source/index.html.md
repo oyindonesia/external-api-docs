@@ -351,7 +351,6 @@ Bank Code | Bank Name
 036	| Bank Windu Kentjana International
 037 | Bank ARTHA GRAHA
 042 | Bank TOKYO MITSUBISHI UFJ
-045	| Bank Nusantara Parahyangan
 046 | Bank DBS
 050 | Standard Chartered
 054 | Bank CAPITAL
@@ -390,7 +389,7 @@ Bank Code | Bank Name
 134	| Bank SULTENG
 135	| Bank Sultra
 137 | Bank BANTEN
-145	| BNP
+145	| Bank Nusantara Parahyangan
 146	| Bank Of India Indonesia
 147 | Bank Muamalat
 151	| Bank Mestika
@@ -410,35 +409,34 @@ Bank Code | Bank Name
 427 | Bank BNI SYARIAH
 441 | Bank Bukopin
 451 | Bank Syariah Mandiri
-472 |	Bank Jasa Jakarta
+472 | Bank Jasa Jakarta
 484 | Bank KEB HANA
 485 | Bank MNC INTERNATIONAL
 490 | Bank YUDHA BHAKTI
-494 |	Bank Rakyat Indonesia AGRONIAGA
-498 |	Bank SBI Indonesia (Indomonex)
-501 |	Bank Royal
-503 |	Bank National Nobu
+494 | Bank Rakyat Indonesia AGRONIAGA
+498 | Bank SBI Indonesia (Indomonex)
+501 | Bank Royal
+503 | Bank National Nobu
 506 | Bank MEGA SYARIAH
-513 |	Bank INA
+513 | Bank INA
 517 | Bank PANIN SYARIAH
 520 | PRIMA MASTER BANK
 521 | Bank SYARIAH BUKOPIN
-523 |	Bank Sahabat Sampoerna
+523 | Bank Sahabat Sampoerna
 526 | Bank DINAR
-535 |	Bank KESEJAHTERAAN EKONOMI
+535 | Bank KESEJAHTERAAN EKONOMI
 536 | Bank BCA SYARIAH
 542 | Bank ARTOS
-547 |	Bank BTPN SYARIAH
+547 | Bank BTPN SYARIAH
 548 | Bank MULTIARTA SENTOSA
-553 |	Bank Mayora
-555 |	Bank INDEX
-558 |	Bank Pembangunan Daerah Banten
+553 | Bank Mayora
+555 | Bank INDEX
 559	| CNB
 564 | Bank MANTAP
 566 | Bank VICTORIA INTL
 567	| HARDA
-945 |	Bank Agris
-949 |	Bank CTBC Indonesia
+945 | IBK
+949 | Bank CTBC Indonesia
 950 | Bank COMMONWEALTH
 
 # Static VA
