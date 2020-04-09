@@ -513,6 +513,8 @@ Bank Code | Bank Name
 002 | Bank BRI
 013 | Bank Permata
 022 | Bank CIMB Niaga
+008 | Bank Mandiri
+009 | Bank BNI
 
 ## Static VA Status
 ### Available Status for Static VA
