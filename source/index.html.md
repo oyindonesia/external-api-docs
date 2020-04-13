@@ -490,6 +490,7 @@ is_single_use | Boolean | false | True means that this VA should be closed once 
 expiration_time | Int | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
 is_lifetime | Boolean | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 username_display | String | username | VA Name, default is using username
+email | String | - | Email of user, using email standard format
 
 ### Response Parameters
 
@@ -624,7 +625,7 @@ is_open | Boolean | true | True means VA number can accept any amount, field `am
 is_single_use | Boolean |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Int | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
 is_lifetime | Boolean | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
-
+email | String | - | Email of user, using email standard format
 
 ### Response Parameters
 
