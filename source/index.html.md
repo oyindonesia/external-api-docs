@@ -963,7 +963,7 @@ Login and connect internet banking. This process is asynchronous, we will send r
 
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/ibank/login -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"data":"encrypted username password", "bank_code":"008", "phone_number": "Phone number", "email":""}'
+curl -X POST https://partner.oyindonesia.com/api/ibank/login -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"data": "<ENCRYPTED_USERNAME_PASSWORD>","bank_code": "008","phone_number" : "+62821123456789","email" : "","tx_history_start_date": 1586734844000,"tx_history_end_date": 1584056444000,"user_consent": true}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -988,6 +988,9 @@ data | String | True | Encripted json of username and password.
 bank_code | String | True | Code of bank
 phone_number | String | True | Phone number of user
 email | String | False | Email of user
+tx_history_start_date | Long | False | Start date mutations on millisecond, if empty will be used current date
+tx_history_end_date | Long | False | End date mutation on millisecond, if empty will be used current date
+user_consent | Boolean | True | User consent, if false we are
 
 
 ### Response Parameters
@@ -1206,7 +1209,43 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
         "message": "Succeess"
     },
     "data": {
-        "ibank_id" : "12313-13213-132141-131231"
+        "phone_number" : "0821123456778",
+        "bank_code": "008",
+        "tx_history_start_date" : 1586734844000,
+        "tx_history_end_date" : 1584056444000, 
+        "accounts" : [
+            {
+                "id": "12345-132131-13213-1312131",
+                "account_number": "12345678900",
+                "account_type": "SAVING"
+                "bank": {
+                    "code": "014",
+                    "name": "BCA"
+                },
+                "balance": 150000000,
+                "last_updated": 150091892829299,
+                "mutation": [
+                    {
+                        "id": "1234-123131-132132-131231",
+                        "category": "food",
+                        "amount": 50000,
+                        "balance_flow:" -1,
+                        "transaction_date": 15818182101011,
+                        "description": "DB DEBIT DOMESTIK TANGGAL :21/09 TRN DEBIT DOM 008 KFC DRIVE THRU SAM",
+                        "status": "complete"
+                    },
+                    {
+                        "id": "1234-123131-132132-131231",
+                        "category": "food",
+                        "amount": 35000,
+                        "balance_flow:" -1,
+                        "transaction_date": 15881818220012,
+                        "description": "DB DEBIT DOMESTIK TANGGAL :24/11 TRN DEBIT DOM 022 PANCIOUS PANCAKE H",
+                        "status": "pending"
+                    }
+                ]
+            }
+        ]
     }
 }
 ```
