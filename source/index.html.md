@@ -1217,7 +1217,7 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
             {
                 "id": "12345-132131-13213-1312131",
                 "account_number": "12345678900",
-                "account_type": "SAVING"
+                "account_type": "SAVING",
                 "bank": {
                     "code": "014",
                     "name": "BCA"
@@ -1229,7 +1229,7 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
                         "id": "1234-123131-132132-131231",
                         "category": "food",
                         "amount": 50000,
-                        "balance_flow:" -1,
+                        "balance_flow": -1,
                         "transaction_date": 15818182101011,
                         "description": "DB DEBIT DOMESTIK TANGGAL :21/09 TRN DEBIT DOM 008 KFC DRIVE THRU SAM",
                         "status": "complete"
@@ -1238,7 +1238,7 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
                         "id": "1234-123131-132132-131231",
                         "category": "food",
                         "amount": 35000,
-                        "balance_flow:" -1,
+                        "balance_flow": -1,
                         "transaction_date": 15881818220012,
                         "description": "DB DEBIT DOMESTIK TANGGAL :24/11 TRN DEBIT DOM 022 PANCIOUS PANCAKE H",
                         "status": "pending"
