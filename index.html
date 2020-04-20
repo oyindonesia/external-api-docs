@@ -2099,7 +2099,7 @@ Use this API to get beneficiary account details.</p>
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
 <h2 id='verify-id-card'>Verify ID-Card</h2>
 <p>Verification using id-card will be handle asynchronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "id_card_photo": "base64 encode of id card photo", "selfie_card_photo": "base64 encode of selfie with id card photo"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "encrypted RSA of id card number", "id_card_photo": "encrypted RSA of base64 encode of id card photo", "selfie_card_photo": "encrypted RSA of base64 encode of selfie with id card photo", "phone_number" : "628123456789", "email" : "optional@gmail.com", "business_address": "BUSINESS ADDRESS"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2117,33 +2117,57 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>name</td>
 <td>String</td>
+<td>True</td>
 <td>Name of user</td>
 </tr>
 <tr>
 <td>address</td>
 <td>String</td>
-<td>Home address</td>
+<td>True</td>
+<td>Home address based on ID Card</td>
 </tr>
 <tr>
 <td>nik</td>
 <td>String</td>
-<td>ID card number</td>
+<td>True</td>
+<td>ID card number, encrypted with RSA</td>
 </tr>
 <tr>
 <td>id_card_photo</td>
 <td>String</td>
-<td>Id Card Photo, encode to base64 string</td>
+<td>True</td>
+<td>Id Card Photo, encode to base64 string, encrypted with RSA</td>
 </tr>
 <tr>
 <td>selfie_card_photo</td>
 <td>String</td>
-<td>Selfie with id card, encode to base64 String</td>
+<td>True</td>
+<td>Selfie with id card, encode to base64 String, encrypted with RSA</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>String</td>
+<td>True</td>
+<td>Phone number to be verified</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>False</td>
+<td>Email</td>
+</tr>
+<tr>
+<td>business_address</td>
+<td>String</td>
+<td>True</td>
+<td>Business address</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-10'>Response Parameters</h3>
@@ -2170,7 +2194,7 @@ Use this API to get beneficiary account details.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Verified"</span><span class="w">
+        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Request processed"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-12'>HTTPS Request</h3>
@@ -2180,27 +2204,32 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>name</td>
 <td>String</td>
+<td>True</td>
 <td>Name of user</td>
 </tr>
 <tr>
 <td>address</td>
 <td>String</td>
+<td>True</td>
 <td>Home address</td>
 </tr>
 <tr>
 <td>nik</td>
 <td>String</td>
-<td>ID card number</td>
+<td>True</td>
+<td>ID card number, encrypted with RSA</td>
 </tr>
 <tr>
 <td>phone_number</td>
 <td>String</td>
+<td>False</td>
 <td>Phone number of user, use +62 format</td>
 </tr>
 </tbody></table>
@@ -2226,6 +2255,10 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"nik"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ENCRYPTED_NIK"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signature"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OY_GENERATE_SIGNATURE"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2242,6 +2275,11 @@ Use this API to get beneficiary account details.</p>
 <td>status</td>
 <td>Object</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Detail data of response in Object <code>{nik: &lt;encrypted nik&gt;, signature: &lt;OY! signature&gt;}</code></td>
 </tr>
 </tbody></table>
 <h2 id='kyc-response-codes'>KYC Response Codes</h2>
@@ -2767,6 +2805,11 @@ Use this API to get beneficiary account details.</p>
 <td>000</td>
 <td>Final</td>
 <td>Response success without error</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Final</td>
+<td></td>
 </tr>
 <tr>
 <td>999</td>
