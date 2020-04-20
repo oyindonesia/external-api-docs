@@ -801,7 +801,7 @@ Verification using id-card will be handle asynchronous, and we will send KYC res
 
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"name": "name of user", "address": "home address", "nik" : "id card number", "id_card_photo": "base64 encode of id card photo", "selfie_card_photo": "base64 encode of selfie with id card photo"}'
+curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"name": "name of user", "address": "home address", "nik" : "encrypted RSA of id card number", "id_card_photo": "encrypted RSA of base64 encode of id card photo", "selfie_card_photo": "encrypted RSA of base64 encode of selfie with id card photo", "phone_number" : "628123456789", "email" : "optional@gmail.com", "business_address": "BUSINESS ADDRESS"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -820,13 +820,16 @@ curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H 'content-type: a
 
 ### Request Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-name | String | Name of user
-address | String | Home address
-nik | String | ID card number
-id_card_photo | String | Id Card Photo, encode to base64 string
-selfie_card_photo | String | Selfie with id card, encode to base64 String
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+name | String | True | Name of user
+address | String | True | Home address based on ID Card
+nik | String | True | ID card number, encrypted with RSA
+id_card_photo | String | True | Id Card Photo, encode to base64 string, encrypted with RSA
+selfie_card_photo | String | True | Selfie with id card, encode to base64 String, encrypted with RSA
+phone_number | String | True | Phone number to be verified
+email | String | False | Email
+business_address | String | True | Business address
 
 ### Response Parameters
 
@@ -848,7 +851,7 @@ curl -X POST https://partner.oyindonesia.com/kyc/id-card -H 'content-type: appli
 {
     "status": {
         "code": "000",
-        "message" : "Verified"
+        "message" : "Request processed"
     }
 }
 ```
@@ -858,12 +861,12 @@ curl -X POST https://partner.oyindonesia.com/kyc/id-card -H 'content-type: appli
 
 ### Request Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-name | String | Name of user
-address | String | Home address
-nik | String | ID card number
-phone_number | String | Phone number of user, use +62 format
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+name | String | True | Name of user
+address | String | True | Home address
+nik | String | True | ID card number, encrypted with RSA
+phone_number | String | False | Phone number of user, use +62 format
 
 ### Response Parameters
 
@@ -877,10 +880,14 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 
 ```json
 {
-	"status": {
-		"code": "000",
-		"message" : "verified"
-	}
+    "status": {
+        "code": "000",
+        "message" : "verified"
+    },
+    "data" : {
+        "nik" : "ENCRYPTED_NIK",
+        "signature" : "OY_GENERATE_SIGNATURE"
+    }
 }
 ```
 
@@ -891,7 +898,7 @@ Once data have been verified, our system will make a callback to your system.
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [KYC Response Codes](#kyc-response-codes)
-
+data | Object | Detail data of response in Object `{nik: <encrypted nik>, signature: <OY! signature>}`
 
 ## KYC Response Codes
 
@@ -1266,5 +1273,6 @@ These are the list of possible status codes for PFM response status:
 Status Code | State | Meaning
 ---------- | ------- | -------
 000 | Final | Response success without error
+301 | Final | 
 999 | Final | Internal Server Error
 
