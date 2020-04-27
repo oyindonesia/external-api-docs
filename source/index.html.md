@@ -952,7 +952,7 @@ curl -X POST https://partner.oyindonesia.com/api/ibank/login -H 'content-type: a
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 data | String | True | Encripted json of username and password.
-bank_code | String | True | Code of bank
+bank_code | String | True | Code of bank, For list of bank code, see [PFM Bank Codes](#pfm-bank-codes)
 phone_number | String | True | Phone number of user
 email | String | False | Email of user
 tx_history_start_date | Long | False | Start date mutations on millisecond, if empty will be used current date - 7
@@ -972,6 +972,7 @@ data | Object | Data of response in Object `{id:<request_id>}`
 > Response Callback
 
 ```json
+{
     "status": {
         "code" : "000",
         "message": "Succeess"
@@ -988,6 +989,18 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
 data | Object | Data of response in Object `{"id":"1234-1234-1234-1241","phone_number":"<phone_number>","bank_code":"<bank_code>","tx_history_start_date":<start_date_of_mutation>,"tx_history_end_date":<end_date_of_mutations>,"accounts":[{"id":"<account_id>","account_number":"<account_number>","account_type":"<account_type>","bank":{"code":"<bank_code>","name":"<bank_name>"},"balance":<current_balance>,"last_updated":<last_updated_date>,"mutation":[{"id":"<transaction_id>","category":"<category>","amount":<balance>,"balance_flow":<flow>,"transaction_date":<transaction_date>,"description":"<description>","status":"<status>"}]}]}`
+
+## PFM Bank Codes
+
+These are the lis of available bank on our PFM service:
+Bank Code | Bank Name |
+----------|-----------|
+008 | Mandiri
+014 | BCA
+009 | BNI
+002 | BRI
+022 | CIMB
+013 | Permata
 
 ## PFM Response Codes
 
