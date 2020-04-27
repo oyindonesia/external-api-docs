@@ -995,7 +995,7 @@ data | Object | Data of response in Object in encrypted of `{"id":"1234-1234-123
 These are the lis of available bank on our PFM service:
 
 Bank Code | Bank Name 
---------- | --------- 
+--------- | ---------
 008 | Mandiri
 014 | BCA
 009 | BNI
