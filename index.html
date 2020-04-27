@@ -318,25 +318,13 @@
             <a href="#pfm-coming-soon" class="toc-h1 toc-link" data-title="PFM (Coming Soon)">PFM (Coming Soon)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#list-of-internet-banking-services" class="toc-h2 toc-link" data-title="List of internet banking services">List of internet banking services</a>
-                  </li>
-                  <li>
                     <a href="#connect-internet-banking" class="toc-h2 toc-link" data-title="Connect internet banking">Connect internet banking</a>
                   </li>
                   <li>
-                    <a href="#get-connected-accounts" class="toc-h2 toc-link" data-title="Get connected accounts">Get connected accounts</a>
-                  </li>
-                  <li>
-                    <a href="#get-balance-2" class="toc-h2 toc-link" data-title="Get Balance">Get Balance</a>
-                  </li>
-                  <li>
-                    <a href="#get-mutations" class="toc-h2 toc-link" data-title="Get Mutations">Get Mutations</a>
-                  </li>
-                  <li>
-                    <a href="#update-balance-and-mutations" class="toc-h2 toc-link" data-title="Update balance and mutations">Update balance and mutations</a>
-                  </li>
-                  <li>
                     <a href="#pfm-callback-response" class="toc-h2 toc-link" data-title="PFM Callback Response">PFM Callback Response</a>
+                  </li>
+                  <li>
+                    <a href="#pfm-bank-codes" class="toc-h2 toc-link" data-title="PFM Bank Codes">PFM Bank Codes</a>
                   </li>
                   <li>
                     <a href="#pfm-response-codes" class="toc-h2 toc-link" data-title="PFM Response Codes">PFM Response Codes</a>
@@ -2337,52 +2325,6 @@ Use this API to get beneficiary account details.</p>
 <p>PFM APIs will allow you to connect with internet banking account. You can use it to check accounts, balance and mutations. PFM API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
 
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
-<h2 id='list-of-internet-banking-services'>List of internet banking services</h2>
-<p>Check supported internet banking service. </p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/ibank/services -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"008"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mandiri"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bca"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"enable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-13'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/ibank/services</code></p>
-<h3 id='response-parameters-12'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Array of Object</td>
-<td>List of Object <code>{bank_code: &lt;bank_code&gt;, bank_name: &lt;bank_name&gt;, enable: &lt;enable&gt;}</code></td>
-</tr>
-</tbody></table>
 <h2 id='connect-internet-banking'>Connect internet banking</h2>
 <p>Login and connect internet banking. This process is asynchronous, we will send response using callback url that you registered to us. For detail of callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
 <pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/ibank/login -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"data": "&lt;ENCRYPTED_USERNAME_PASSWORD&gt;","bank_code": "008","phone_number" : "+62821123456789","email" : "","tx_history_start_date": 1586734844000,"tx_history_end_date": 1584056444000,"user_consent": true}'</span>
@@ -2394,9 +2336,12 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing login to internet banking"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-12341-1231-1231"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-14'>HTTPS Request</h3>
+</span></code></pre><h3 id='https-request-13'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/ibank/login</code></p>
 <h3 id='request-parameters-10'>Request Parameters</h3>
 <table><thead>
@@ -2417,7 +2362,7 @@ Use this API to get beneficiary account details.</p>
 <td>bank_code</td>
 <td>String</td>
 <td>True</td>
-<td>Code of bank</td>
+<td>Code of bank, For list of bank code, see <a href="#pfm-bank-codes">PFM Bank Codes</a></td>
 </tr>
 <tr>
 <td>phone_number</td>
@@ -2435,7 +2380,7 @@ Use this API to get beneficiary account details.</p>
 <td>tx_history_start_date</td>
 <td>Long</td>
 <td>False</td>
-<td>Start date mutations on millisecond, if empty will be used current date</td>
+<td>Start date mutations on millisecond, if empty will be used current date - 7</td>
 </tr>
 <tr>
 <td>tx_history_end_date</td>
@@ -2450,129 +2395,7 @@ Use this API to get beneficiary account details.</p>
 <td>User consent, if false we are</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-13'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
-</tr>
-</tbody></table>
-<h2 id='get-connected-accounts'>Get connected accounts</h2>
-<p>Get all connected accounts on specific Internet banking id (ibank ID)</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-132131-13213-1312131"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678900"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAVING"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2134-4315-1234-5123-12331411"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************1234"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT-CARD"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-15'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/ibank/:ibankId/accounts</code></p>
-<h3 id='url-parameter-3'>URL Parameter</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ibankId</td>
-<td>String</td>
-<td>Unique internet banking id</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-14'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Array of Object</td>
-<td>List of object <code>{id: &lt;id&gt;, account_number: &lt;account_number&gt;, account_type: &lt;account_type&gt;, bank: { code: &lt;code&gt;, name: &lt;name&gt;}}</code></td>
-</tr>
-</tbody></table>
-<h2 id='get-balance-2'>Get Balance</h2>
-<p>Get balance for specific account. This is required account ID as parameter.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/balance -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-132131-13213-1312131"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678900"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAVING"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">150000000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">150091892829299</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-16'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/accounts/:accountId/balance</code></p>
-<h3 id='url-parameter-4'>URL Parameter</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>accountId</td>
-<td>String</td>
-<td>Unique account id</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-15'>Response Parameters</h3>
+<h3 id='response-parameters-12'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2588,137 +2411,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>data</td>
 <td>Object</td>
-<td>Object of <code>{id: &lt;id&gt;, account_number: &lt;account_number&gt;, account_type: &lt;account_type&gt;, bank: { code: &lt;code&gt;, name: &lt;name&gt;}, balance: &lt;balance&gt;, last_updated: &lt;last_updated&gt;}</code></td>
-</tr>
-</tbody></table>
-<h2 id='get-mutations'>Get Mutations</h2>
-<p>Get mutations for specific account with time range. This is required account ID as parameter, </p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span class="o">=</span>2020-01-01&amp;endDate<span class="o">=</span>2020-01-30 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-123131-132132-131231"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"food"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"balance_flow"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"transaction_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">15818182101011</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB DEBIT DOMESTIK TANGGAL :21/09 TRN DEBIT DOM 008 KFC DRIVE THRU SAM"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-123131-132132-131231"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"food"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"balance_flow"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"transaction_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">15881818220012</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB DEBIT DOMESTIK TANGGAL :24/11 TRN DEBIT DOM 022 PANCIOUS PANCAKE H"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-17'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/account/:accountId/mutations</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>accountId</td>
-<td>String</td>
-<td>Unique account id</td>
-</tr>
-</tbody></table>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>startDate</td>
-<td>String</td>
-<td>Start date of transaction, using format yyyy-MM-dd</td>
-</tr>
-<tr>
-<td>endDate</td>
-<td>String</td>
-<td>End date of transaction, using format yyyy-MM-dd</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-16'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Object</td>
-<td>Object of <code>{id: &lt;id&gt;, category: &lt;category&gt;, amount: &lt;amount&gt;, balance_flow: &lt;balance_flow&gt;, transaction_date: &lt;transaction_date&gt;, description: &lt;description&gt;, status: &lt;status&gt;}</code></td>
-</tr>
-</tbody></table>
-<h2 id='update-balance-and-mutations'>Update balance and mutations</h2>
-<p>Update balance and mutations. This request is asynchronous, we will send response using callback that you registered to us. For detail callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
-<pre class="highlight shell tab-shell"><code>curl -X PUT https://partner.oyindonesia.com/api/ibank/:ibankId/update -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request Processed"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='https-request-18'>HTTPS Request</h3>
-<p><code>PUT BASE_URL/api/ibank/:ibankId/update</code></p>
-<h3 id='url-parameter-5'>URL Parameter</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ibankId</td>
-<td>String</td>
-<td>Unique internet banking id</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-17'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
+<td>Data of response in Object <code>{id:&lt;request_id&gt;}</code></td>
 </tr>
 </tbody></table>
 <h2 id='pfm-callback-response'>PFM Callback Response</h2>
@@ -2730,45 +2423,7 @@ Use this API to get beneficiary account details.</p>
         </span><span class="s2">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succeess"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"phone_number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0821123456778"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"008"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tx_history_start_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1586734844000</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"tx_history_end_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1584056444000</span><span class="p">,</span><span class="w"> 
-        </span><span class="s2">"accounts"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-132131-13213-1312131"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678900"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAVING"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                    </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
-                </span><span class="p">},</span><span class="w">
-                </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">150000000</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">150091892829299</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"mutation"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-123131-132132-131231"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"food"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"balance_flow"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"transaction_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">15818182101011</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB DEBIT DOMESTIK TANGGAL :21/09 TRN DEBIT DOM 008 KFC DRIVE THRU SAM"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
-                    </span><span class="p">{</span><span class="w">
-                        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-123131-132132-131231"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"food"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"balance_flow"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"transaction_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">15881818220012</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB DEBIT DOMESTIK TANGGAL :24/11 TRN DEBIT DOM 022 PANCIOUS PANCAKE H"</span><span class="p">,</span><span class="w">
-                        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
-                    </span><span class="p">}</span><span class="w">
-                </span><span class="p">]</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"encrypted callback response"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Once data have been connected, our system will make a callback to your system. You can start using our PFM API to get accounts, balance and mutation.</p>
@@ -2788,9 +2443,19 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>data</td>
 <td>Object</td>
-<td>Data of response in Object <code>{ibank_id: &lt;ibank_id&gt;}</code></td>
+<td>Data of response in Object <code>{&quot;id&quot;:&quot;1234-1234-1234-1241&quot;,&quot;phone_number&quot;:&quot;&lt;phone_number&gt;&quot;,&quot;bank_code&quot;:&quot;&lt;bank_code&gt;&quot;,&quot;tx_history_start_date&quot;:&lt;start_date_of_mutation&gt;,&quot;tx_history_end_date&quot;:&lt;end_date_of_mutations&gt;,&quot;accounts&quot;:[{&quot;id&quot;:&quot;&lt;account_id&gt;&quot;,&quot;account_number&quot;:&quot;&lt;account_number&gt;&quot;,&quot;account_type&quot;:&quot;&lt;account_type&gt;&quot;,&quot;bank&quot;:{&quot;code&quot;:&quot;&lt;bank_code&gt;&quot;,&quot;name&quot;:&quot;&lt;bank_name&gt;&quot;},&quot;balance&quot;:&lt;current_balance&gt;,&quot;last_updated&quot;:&lt;last_updated_date&gt;,&quot;mutation&quot;:[{&quot;id&quot;:&quot;&lt;transaction_id&gt;&quot;,&quot;category&quot;:&quot;&lt;category&gt;&quot;,&quot;amount&quot;:&lt;balance&gt;,&quot;balance_flow&quot;:&lt;flow&gt;,&quot;transaction_date&quot;:&lt;transaction_date&gt;,&quot;description&quot;:&quot;&lt;description&gt;&quot;,&quot;status&quot;:&quot;&lt;status&gt;&quot;}]}]}</code></td>
 </tr>
 </tbody></table>
+<h2 id='pfm-bank-codes'>PFM Bank Codes</h2>
+<p>These are the lis of available bank on our PFM service:
+Bank Code | Bank Name |
+----------|-----------|
+008 | Mandiri
+014 | BCA
+009 | BNI
+002 | BRI
+022 | CIMB
+013 | Permata</p>
 <h2 id='pfm-response-codes'>PFM Response Codes</h2>
 <p>These are the list of possible status codes for PFM response status:</p>
 
@@ -2807,9 +2472,34 @@ Use this API to get beneficiary account details.</p>
 <td>Response success without error</td>
 </tr>
 <tr>
+<td>001</td>
+<td>Final</td>
+<td>Processing login to internet banking</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Final</td>
+<td>Failed</td>
+</tr>
+<tr>
 <td>301</td>
 <td>Final</td>
-<td></td>
+<td>Failed Authentication</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Final</td>
+<td>Error wrong encryption</td>
+</tr>
+<tr>
+<td>303</td>
+<td>Final</td>
+<td>Bank code is not valid</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Final</td>
+<td>User consent is false</td>
 </tr>
 <tr>
 <td>999</td>
