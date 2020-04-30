@@ -927,7 +927,7 @@ Login and connect internet banking. This process is asynchronous, we will send r
 
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/ibank/login -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"data": "<ENCRYPTED_USERNAME_PASSWORD>","bank_code": "008","phone_number" : "+62821123456789","email" : "","tx_history_start_date": 1586734844000,"tx_history_end_date": 1584056444000,"user_consent": true}'
+curl -X POST https://partner.oyindonesia.com/api/ibank/login -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654' -d '{"data": "<ENCRYPTED_USERNAME_PASSWORD>","bank_code": "008","phone_number" : "+62821123456789","email" : "","tx_history_start_date": 1586734844000,"tx_history_end_date": 1584056444000,"user_consent": true}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -974,7 +974,7 @@ Get all connected accounts on specific Internet banking id (ibank ID)
 
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'
+curl -X GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -1029,7 +1029,7 @@ Get balance for specific account. This is required account ID as parameter.
 
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/balance -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'
+curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/balance -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -1076,7 +1076,7 @@ Get mutations for specific account with time range. This is required account ID 
 
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate=2020-01-01&endDate=2020-01-30 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'
+curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate=2020-01-01&endDate=2020-01-30 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -1147,7 +1147,7 @@ data | Object | Object of `{id: <id>, category: <category>, amount: <amount>, ba
 }
 ```
 
-Once data have been connected, our system will make a callback to your system. You can start using our PFM API to get accounts, balance and mutation.
+Once data have been connected, our system will make a callback to your system.
 
 ### Callback Parameters
 
