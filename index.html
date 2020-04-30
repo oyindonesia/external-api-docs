@@ -2336,7 +2336,7 @@ Use this API to get beneficiary account details.</p>
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
 <h2 id='connect-internet-banking'>Connect internet banking</h2>
 <p>Login and connect internet banking. This process is asynchronous, we will send response using callback url that you registered to us. For detail of callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/ibank/login -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"data": "&lt;ENCRYPTED_USERNAME_PASSWORD&gt;","bank_code": "008","phone_number" : "+62821123456789","email" : "","tx_history_start_date": 1586734844000,"tx_history_end_date": 1584056444000,"user_consent": true}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/ibank/login -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span> -d <span class="s1">'{"data": "&lt;ENCRYPTED_USERNAME_PASSWORD&gt;","bank_code": "008","phone_number" : "+62821123456789","email" : "","tx_history_start_date": 1586734844000,"tx_history_end_date": 1584056444000,"user_consent": true}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2425,7 +2425,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-connected-accounts'>Get connected accounts</h2>
 <p>Get all connected accounts on specific Internet banking id (ibank ID)</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2493,7 +2493,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-balance-2'>Get Balance</h2>
 <p>Get balance for specific account. This is required account ID as parameter.</p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/balance -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/balance -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2552,7 +2552,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='get-mutations'>Get Mutations</h2>
 <p>Get mutations for specific account with time range. This is required account ID as parameter, </p>
-<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span class="o">=</span>2020-01-01&amp;endDate<span class="o">=</span>2020-01-30 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span class="o">=</span>2020-01-01&amp;endDate<span class="o">=</span>2020-01-30 -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2649,7 +2649,7 @@ Use this API to get beneficiary account details.</p>
     </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"encrypted callback response"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Once data have been connected, our system will make a callback to your system. You can start using our PFM API to get accounts, balance and mutation.</p>
+<p>Once data have been connected, our system will make a callback to your system.</p>
 <h3 id='callback-parameters-3'>Callback Parameters</h3>
 <table><thead>
 <tr>
