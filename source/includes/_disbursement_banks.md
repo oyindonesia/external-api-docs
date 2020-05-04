@@ -13,7 +13,6 @@ Bank Codes | Bank Name
 016	| BII Maybank
 019	| Bank Panin
 022	| CIMB Niaga
-022	| CIMB Rekening Ponsel
 023	| Bank UOB INDONESIA
 028	| Bank OCBC NISP
 031	| CITIBANK
