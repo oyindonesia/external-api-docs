@@ -25,7 +25,6 @@ Bank Codes | Bank Name
 061	| ANZ Indonesia
 069	| Bank OF CHINA
 076	| Bank Bumi Arta
-087	| Bank Ekonomi Raharja
 087 | Bank HSBC
 088	| Bank Antardaerah
 089	| Bank Rabobank
