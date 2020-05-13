@@ -106,4 +106,8 @@ Bank Codes | Bank Name
 945	| IBK
 949	| Bank CTBC Indonesia
 950	| Bank COMMONWEALTH
+ovo | OVO
+linkaja | LinkAja
+dana    | Dana
+gopay	| Gopay
 
