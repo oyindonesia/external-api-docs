@@ -162,9 +162,11 @@ curl -X GET 'https://partner.oyindonesia.com/api/balance' -H 'Content-Type: appl
     "code":"000",
     "message":"Success"
   },
-  "balance":125000,
-  "overdraftBalance":2555555,
-  "overbookingBalance":3000000,
+  "balance":125000.0000,
+  "overdraftBalance":2555555.0000,
+  "overbookingBalance":3000000.0000,
+  "pendingBalance":0.0000,
+  "availableBalance":28300000000.0000,
   "timestamp":"10-12-2019 12:15:37"
 }
 ```
@@ -182,7 +184,10 @@ status | String | Status of Payout in Object `{code: <status_code>, message: <st
 balance | BigDecimal | Remaining balance (Accept non fraction number)
 overdraftBalance | BigDecimal | Remaining overdraft balance (Accept non fraction number)
 overbookingBalance | BigDecimal | Remaining overbooking balance (Accept non fraction number)
-timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy HH:mm:ss")
+pendingBalance | BigDecimal | The cumulative balance of your pending transactions.
+availableBalance | BigDecimal | The total cumulative money of Balance + Available Overdraft - Pending Balance that you can use for disbursement.
+timestamp | String | Execution time of Disbursement in OY! system ("dd-MM-yyyy HH:mm:ss").
+
 
 ## Mock number Staging API
 
