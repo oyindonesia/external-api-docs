@@ -162,11 +162,11 @@ curl -X GET 'https://partner.oyindonesia.com/api/balance' -H 'Content-Type: appl
     "code":"000",
     "message":"Success"
   },
-  "balance":125000.0000,
-  "overdraftBalance":2555555.0000,
-  "overbookingBalance":3000000.0000,
-  "pendingBalance":0.0000,
-  "availableBalance":28300000000.0000,
+  "balance":100000000.0000,
+  "overdraftBalance":500000.0000,
+  "overbookingBalance":200000.0000,
+  "pendingBalance":2000000.0000,
+  "availableBalance":98500000.0000,
   "timestamp":"10-12-2019 12:15:37"
 }
 ```
