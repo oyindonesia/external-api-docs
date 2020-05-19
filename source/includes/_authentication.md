@@ -23,5 +23,5 @@ Header | Type | Description
 ------ | ----- | -----------
 Content-Type | application/json | The Content-Type field indicates that JSON type is acceptable to send to the recipient
 Accept | application/json | The Accept field is used to specify that JSON type is acceptable for the response
-X-OY-Username | String(50) | Partner Username to access OY! API services
+X-OY-Username | String(64) | Partner Username to access OY! API services
 X-Api-Key | String(255) | Partner API Key to access OY! API services
