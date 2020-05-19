@@ -19,9 +19,9 @@ Production Environment: `https://partner.oyindonesia.com`
 
 Use following HTTPS Headers when you make a call to OY! API
 
-Header | Value | Description
---------- | --------- | -----------
+Header | Type | Description
+------ | ----- | -----------
 Content-Type | application/json | The Content-Type field indicates that JSON type is acceptable to send to the recipient
 Accept | application/json | The Accept field is used to specify that JSON type is acceptable for the response
-X-OY-Username | `<Partner Username>` | Partner Username to access OY! API services
-X-Api-Key | `<Partner API Key>` | Partner API Key to access OY! API services
+X-OY-Username | String(50) | Partner Username to access OY! API services
+X-Api-Key | String(255) | Partner API Key to access OY! API services

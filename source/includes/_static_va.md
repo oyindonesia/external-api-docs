@@ -39,17 +39,17 @@ curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-
 
 ### Request Parameters
 
-Parameter | Type | Max Length | Required | Default | Description
---------- | ---- | ---------- | -------- | ------- | -----------
-partner_user_id | String | 255 | TRUE | - | Your unique ID for specific user
-bank_code | String | 3 | TRUE | - | Bank code which the VA number will be generated
-amount | BigDecimal | - | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
-is_open | Boolean | - | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
-is_single_use | Boolean | - | FALSE | false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | - | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
-is_lifetime | Boolean | - | FALSE | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
-username_display | String | 255 | FALSE | username | VA Name, default is using username
-email | String | 50 | FALSE | - | Email of user, using email standard format
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+partner_user_id | String(255) | TRUE | - | Your unique ID for specific user
+bank_code | String(3) | TRUE | - | Bank code which the VA number will be generated
+amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
+is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
+is_single_use | Boolean | FALSE | false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+expiration_time | Int | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
+is_lifetime | Boolean | FALSE | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
+username_display | String(255) | FALSE | username | VA Name, default is using username
+email | String(50) | FALSE | - | Email of user, using email standard format
 
 ### Response Parameters
 
@@ -102,9 +102,9 @@ curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-1
 
 ### URL Parameters
 
-Parameter | Type | Max Length | Required | Default | Description
---------- | ---- | ---------- | -------- | ------- | -----------
-ID | String | 255 | TRUE | - | Unique VA id, you can get this once you success created VA
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+ID | String(255) | TRUE | - | Unique VA id, you can get this once you success created VA
 
 ### Response Parameters
 
@@ -153,20 +153,20 @@ curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-1
 `PUT BASE_URL/api/static-virtual-account/<ID>`
 
 ### URL Parameter
-Parameter | Type | Max Length | Required | Default | Description
---------- | ---- | ---------- | -------- | ------- | -----------
-ID | String | 255 | TRUE | - | Unique VA ID, you can get this once you success created VA
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+ID | String(36) | TRUE | - | Unique VA ID, you can get this once you success created VA
 
 ### Request Parameters
 
-Parameter | Type | Max Length | Required | Default | Description
---------- | ---- | ---------- | -------- | ------- | -----------
-amount | BigDecimal | - | FALSE | - | Amount your user must paid to complete the transaction
-is_open | Boolean | - | FALSE | true | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
-is_single_use | Boolean | - | FALSE |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | - | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
-is_lifetime | Boolean | - | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
-email | String | 50 | FALSE | - | Email of user, using email standard format
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+amount | BigDecimal | FALSE | - | Amount your user must paid to complete the transaction
+is_open | Boolean | FALSE | true | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
+is_single_use | Boolean | FALSE |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+expiration_time | Int | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
+is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
+email | String(50) | FALSE | - | Email of user, using email standard format
 
 ### Response Parameters
 
@@ -287,15 +287,15 @@ curl -X GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?off
 `GET BASE_URL/api/va-tx-history/<ID>?offset=<offset>&limit=<limit>`
 
 ### URL Parameter
-Parameter | Type | Max Length | Required | Default | Description
---------- | ---- | ---------- | -------- | ------- | -----------
-ID | String | 255 | TRUE | - | Unique VA ID, you can get this once you success created VA
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+ID | String(36) | TRUE | - | Unique VA ID, you can get this once you success created VA
 
 ### Request Parameters
-Parameter | Type | Max Length | Required | Default | Description
+Parameter | Type | Required | Default | Description
 --------- | ---- | ---------- | -------- | ------- | -----------
-offset | Integer | - | FALSE | 0 | start offset, default is 0, if empty will used default value
-limit | Integer | - | FALSE | 10 | max item to fetch, default is 10, if empty will used default value
+offset | Integer | FALSE | 0 | start offset, default is 0, if empty will used default value
+limit | Integer | FALSE | 10 | max item to fetch, default is 10, if empty will used default value
 
 ### Response Parameters
 Parameter | Type | Description
