@@ -57,14 +57,14 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
-va_number | String | Generated VA number
-id | String | Unique VA ID
-bank_code | String | Bank code for VA, see [VA Bank Code](#static-va-bank-code)
+va_number | String(20) | Generated VA number
+id | String(36) | Unique VA ID
+bank_code | String(3) | Bank code for VA, see [VA Bank Code](#static-va-bank-code)
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA. 
 expiration_time | Int | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
-va_status | String | Status of VA, see [VA Status](#static-va-status)
-username_display | String | VA Name, default is using username
+va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
+username_display | String(255) | VA Name, default is using username
 
 
 ## Get VA Info
@@ -113,14 +113,14 @@ Parameter | Type | Description
 id | String |  Unique VA id
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
-va_number | String | Generated VA number
-bank_code | String | Bank code for VA
+va_number | String(20) | Generated VA number
+bank_code | String(3) | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Int | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
-va_status | String | Status of VA, see [VA Status](#static-va-status)
-username_display | String | VA Name, default is using username
-partner_user_id | String | Your unique ID for specific user
+va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
+username_display | String(255) | VA Name, default is using username
+partner_user_id | String(255) | Your unique ID for specific user
 
 ## Update VA
 
@@ -175,14 +175,14 @@ Parameter | Type | Description
 id | String |  Unique VA id
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
-va_number | String | Generated VA number
-bank_code | String | Bank code for VA
+va_number | String(20) | Generated VA number
+bank_code | String(3) | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Int | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
-va_status | String | Status of VA, see [VA Status](#static-va-status)
-username_display | String | VA Name, default is using username
-partner_user_id | String | Your unique ID for specific user
+va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
+username_display | String(255) | VA Name, default is using username
+partner_user_id | String(255) | Your unique ID for specific user
 
 ## Get list of created VA
 
@@ -324,9 +324,9 @@ Once user successfully do the payment, our system will make a callback to your s
 
 Parameter | Type | Description
 --------- | ---- | -----------
-va_number | String | Generated VA number
+va_number | String(20) | Generated VA number
 amount | BigDecimal | Amount of VA transaction
-partner_user_id | String | Your unique ID for specific user
+partner_user_id | String(255) | Your unique ID for specific user
 success | boolean | payment status if success or not
 
 ## Static VA Bank Code
