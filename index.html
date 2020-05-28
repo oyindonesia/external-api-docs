@@ -307,6 +307,9 @@
                     <a href="#verify-phone-number" class="toc-h2 toc-link" data-title="Verify Phone Number">Verify Phone Number</a>
                   </li>
                   <li>
+                    <a href="#check-status-kyc" class="toc-h2 toc-link" data-title="Check Status KYC">Check Status KYC</a>
+                  </li>
+                  <li>
                     <a href="#kyc-response-callback" class="toc-h2 toc-link" data-title="KYC Response Callback">KYC Response Callback</a>
                   </li>
                   <li>
@@ -2164,7 +2167,7 @@ Use this API to get beneficiary account details.</p>
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
 <h2 id='verify-id-card'>Verify ID-Card</h2>
 <p>Verification using id-card will be handle asynchronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "encrypted RSA of id card number", "id_card_photo": "encrypted RSA of base64 encode of id card photo", "selfie_card_photo": "encrypted RSA of base64 encode of selfie with id card photo", "phone_number" : "628123456789", "email" : "optional@gmail.com", "business_address": "BUSINESS ADDRESS"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"personal_information": "rsa_encrypted_personal_information", "address": "rsa_encrypted_address", "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2177,7 +2180,7 @@ Use this API to get beneficiary account details.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/kyc/id-card</code></p>
-<h3 id='request-parameters'>Request Parameters</h3>
+<h3 id='request-attribute'>Request Attribute</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2202,19 +2205,19 @@ Use this API to get beneficiary account details.</p>
 <td>nik</td>
 <td>String</td>
 <td>True</td>
-<td>ID card number, encrypted with RSA</td>
+<td>ID card number</td>
 </tr>
 <tr>
 <td>id_card_photo</td>
 <td>String</td>
 <td>True</td>
-<td>Id Card Photo, encode to base64 string, encrypted with RSA</td>
+<td>Id Card Photo, encode to base64 string</td>
 </tr>
 <tr>
 <td>selfie_card_photo</td>
 <td>String</td>
 <td>True</td>
-<td>Selfie with id card, encode to base64 String, encrypted with RSA</td>
+<td>Selfie with id card, encode to base64 String</td>
 </tr>
 <tr>
 <td>phone_number</td>
@@ -2233,6 +2236,40 @@ Use this API to get beneficiary account details.</p>
 <td>String</td>
 <td>True</td>
 <td>Business address</td>
+</tr>
+</tbody></table>
+<h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Encryption</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>personal_information</td>
+<td>String</td>
+<td>User personal information consisting of <code>{name: &lt;name&gt;, email: &lt;email&gt;, phone_number: &lt;phone_number&gt;, nik: &lt;nik&gt;, secret_key: &lt;secret_key&gt;}</code></td>
+<td>RSA</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Address information consisting of <code>{home: &lt;home&gt;, business: &lt;business&gt;}</code></td>
+<td>RSA</td>
+</tr>
+<tr>
+<td>id_card_photo</td>
+<td>String</td>
+<td>Base64 encode of Id card photo</td>
+<td>AES</td>
+</tr>
+<tr>
+<td>selfie_card_photo</td>
+<td>String</td>
+<td>Base64 encode of selfie card photo</td>
+<td>AES</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters'>Response Parameters</h3>
@@ -2264,7 +2301,7 @@ Use this API to get beneficiary account details.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='https-request-2'>HTTPS Request</h3>
 <p><code>POST BASE_URL/kyc/phone-number</code></p>
-<h3 id='request-parameters-2'>Request Parameters</h3>
+<h3 id='request-attributes'>Request Attributes</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2289,13 +2326,35 @@ Use this API to get beneficiary account details.</p>
 <td>nik</td>
 <td>String</td>
 <td>True</td>
-<td>ID card number, encrypted with RSA</td>
+<td>ID card number</td>
 </tr>
 <tr>
 <td>phone_number</td>
 <td>String</td>
 <td>False</td>
 <td>Phone number of user, use +62 format</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-2'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Encryption</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>personal_information</td>
+<td>String</td>
+<td>Personal information consisting of <code>{name: &lt;name&gt;, phone_number: &lt;phone_number&gt;, nik: &lt;nik&gt;, secret_key: &lt;secret_key&gt;}</code></td>
+<td>RSA</td>
+</tr>
+<tr>
+<td>address</td>
+<td>String</td>
+<td>Address consisting of <code>{home: &lt;home&gt;}</code></td>
+<td>RSA</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-2'>Response Parameters</h3>
@@ -2310,6 +2369,76 @@ Use this API to get beneficiary account details.</p>
 <td>status</td>
 <td>Object</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
+</tr>
+</tbody></table>
+<h2 id='check-status-kyc'>Check Status KYC</h2>
+<p>There are some cases send callback can be failed, so client cannot get kyc status from callback, to handle this we suggest to check kyc status using this API.</p>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/kyc/status -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"personal_information": "rsa_encryption_personal_information"}'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"nik"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ENCRYPTED_NIK"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signature"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OY_GENERATE_SIGNATURE"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='https-request-3'>HTTPS Request</h3>
+<p><code>POST BASE_URL/kyc/status</code></p>
+<h3 id='request-attributes-2'>Request Attributes</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nik</td>
+<td>String</td>
+<td>True</td>
+<td>ID card number</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-3'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+<th>Encryption</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>personal_information</td>
+<td>String</td>
+<td>Personal information consisting of <code>{nik: &lt;nik&gt;}</code></td>
+<td>RSA</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-3'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Detail data of response in Object <code>{nik: &lt;encrypted nik&gt;, signature: &lt;OY! signature&gt;}</code></td>
 </tr>
 </tbody></table>
 <h2 id='kyc-response-callback'>KYC Response Callback</h2>
@@ -2364,32 +2493,32 @@ Use this API to get beneficiary account details.</p>
 </tr>
 <tr>
 <td>001</td>
-<td>Non-Final</td>
+<td>Final</td>
 <td>Data on request body is empty or invalid</td>
 </tr>
 <tr>
 <td>002</td>
-<td>Non-Final</td>
+<td>Final</td>
 <td>Request is rejected (Name is not the same as id card)</td>
 </tr>
 <tr>
 <td>003</td>
-<td>Non-Final</td>
+<td>Final</td>
 <td>Request is Rejected (Address is not the same as id card)</td>
 </tr>
 <tr>
 <td>004</td>
-<td>Non-Final</td>
+<td>Final</td>
 <td>Request is Rejected (NIK is not the same as id card)</td>
 </tr>
 <tr>
 <td>005</td>
-<td>Non-Final</td>
+<td>Final</td>
 <td>Request is Rejected (ID card photo is not clear)</td>
 </tr>
 <tr>
 <td>006</td>
-<td>Non-Final</td>
+<td>Final</td>
 <td>Request is Rejected (Face is not the same as photo on id card)</td>
 </tr>
 <tr>
