@@ -2167,7 +2167,7 @@ Use this API to get beneficiary account details.</p>
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
 <h2 id='verify-id-card'>Verify ID-Card</h2>
 <p>Verification using id-card will be handle asynchronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"personal_information": "rsa_encrypted_personal_information", "address": "rsa_encrypted_address", "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span> -d <span class="s1">'{"personal_information": "rsa_encrypted_personal_information", "address": "rsa_encrypted_address", "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2250,7 +2250,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>personal_information</td>
 <td>String</td>
-<td>User personal information consisting of <code>{name: &lt;name&gt;, email: &lt;email&gt;, phone_number: &lt;phone_number&gt;, nik: &lt;nik&gt;, secret_key: &lt;secret_key&gt;}</code></td>
+<td>User personal information consisting of <code>{name: &lt;name&gt;, email: &lt;email&gt;, phone_number: &lt;phone_number&gt;, nik: &lt;nik&gt;, secret: &lt;secret&gt;}</code></td>
 <td>RSA</td>
 </tr>
 <tr>
@@ -2288,7 +2288,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='verify-phone-number'>Verify Phone Number</h2>
 <p>Verification using phone number.</p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/kyc/id-card -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span> -d <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2347,7 +2347,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>personal_information</td>
 <td>String</td>
-<td>Personal information consisting of <code>{name: &lt;name&gt;, phone_number: &lt;phone_number&gt;, nik: &lt;nik&gt;, secret_key: &lt;secret_key&gt;}</code></td>
+<td>Personal information consisting of <code>{name: &lt;name&gt;, phone_number: &lt;phone_number&gt;, nik: &lt;nik&gt;}</code></td>
 <td>RSA</td>
 </tr>
 <tr>
@@ -2373,7 +2373,7 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='check-status-kyc'>Check Status KYC</h2>
 <p>There are some cases send callback can be failed, so client cannot get kyc status from callback, to handle this we suggest to check kyc status using this API.</p>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/kyc/status -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> -d <span class="s1">'{"personal_information": "rsa_encryption_personal_information"}'</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://partner.oyindonesia.com/kyc/status -H <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span> -d <span class="s1">'{"personal_information": "rsa_encryption_personal_information"}'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2520,6 +2520,11 @@ Use this API to get beneficiary account details.</p>
 <td>006</td>
 <td>Final</td>
 <td>Request is Rejected (Face is not the same as photo on id card)</td>
+</tr>
+<tr>
+<td>007</td>
+<td>Final</td>
+<td>Data not found. ID Card number not registered</td>
 </tr>
 <tr>
 <td>999</td>
