@@ -11,7 +11,7 @@ Verification using id-card will be handle asynchronous, and we will send KYC res
 
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"personal_information": "rsa_encrypted_personal_information", "address": "rsa_encrypted_address", "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"}'
+curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654' -d '{"personal_information": "rsa_encrypted_personal_information", "address": "rsa_encrypted_address", "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -44,7 +44,7 @@ business_address | String | True | Business address
 ### Request Body
 Parameter | Type | Description | Encryption
 --------- | ---- | ----------- | ----------
-personal_information | String | User personal information consisting of `{name: <name>, email: <email>, phone_number: <phone_number>, nik: <nik>, secret_key: <secret_key>}` | RSA
+personal_information | String | User personal information consisting of `{name: <name>, email: <email>, phone_number: <phone_number>, nik: <nik>, secret: <secret>}` | RSA
 address | String | Address information consisting of `{home: <home>, business: <business>}` | RSA
 id_card_photo | String | Base64 encode of Id card photo | AES
 selfie_card_photo | String | Base64 encode of selfie card photo | AES
@@ -60,7 +60,7 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 Verification using phone number.
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'
+curl -X POST https://partner.oyindonesia.com/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654' -d '{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -90,7 +90,7 @@ phone_number | String | False | Phone number of user, use +62 format
 
 Parameter | Type | Description | Encryption
 --------- | ---- | ----------- | ----------
-personal_information | String | Personal information consisting of `{name: <name>, phone_number: <phone_number>, nik: <nik>, secret_key: <secret_key>}` | RSA
+personal_information | String | Personal information consisting of `{name: <name>, phone_number: <phone_number>, nik: <nik>}` | RSA
 address | String | Address consisting of `{home: <home>}` | RSA
 
 ### Response Parameters
@@ -103,7 +103,7 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 There are some cases send callback can be failed, so client cannot get kyc status from callback, to handle this we suggest to check kyc status using this API.
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/kyc/status -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"personal_information": "rsa_encryption_personal_information"}'
+curl -X POST https://partner.oyindonesia.com/kyc/status -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654' -d '{"personal_information": "rsa_encryption_personal_information"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -182,4 +182,5 @@ Status Code | State | Meaning
 004 | Final | Request is Rejected (NIK is not the same as id card)
 005 | Final | Request is Rejected (ID card photo is not clear)
 006 | Final | Request is Rejected (Face is not the same as photo on id card)
+007 | Final | Data not found. ID Card number not registered
 999 | Final | Internal Server Error
