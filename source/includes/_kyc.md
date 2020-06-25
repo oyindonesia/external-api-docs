@@ -1,4 +1,4 @@
-# KYC (Coming Soon)
+# KYC
 
 KYC APIs will allow you to verify whether the user-supplied identity card is valid or not. KYC API can be requested through HTTPS Request to OY! API Base URL endpoint.
 

@@ -1,4 +1,4 @@
-# PFM (Coming Soon)
+# PFM
 
 PFM APIs will allow you to connect with internet banking account. You can use it to check accounts, balance and mutations. PFM API can be requested through HTTPS Request to OY! API Base URL endpoint.
 
@@ -20,7 +20,7 @@ curl -X POST https://partner.oyindonesia.com/api/ibank/login -H 'content-type: a
     "status": {
         "code": "000",
         "message": "Processing login to internet banking"
-    }, 
+    },
     "data" : {
         "id": "1234-12341-1231-1231"
     }
@@ -156,7 +156,7 @@ data | Object | Object of `{id: <id>, account_number: <account_number>, account_
 
 ## Get Mutations
 
-Get mutations for specific account with time range. This is required account ID as parameter, 
+Get mutations for specific account with time range. This is required account ID as parameter,
 
 
 ```shell
@@ -244,7 +244,7 @@ data | Object | Data of response in Object in encrypted of `{"id":"1234-1234-123
 
 These are the lis of available bank on our PFM service:
 
-Bank Code | Bank Name 
+Bank Code | Bank Name
 --------- | ---------
 008 | Mandiri
 014 | BCA
