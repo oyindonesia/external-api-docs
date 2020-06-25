@@ -309,7 +309,7 @@
               </ul>
           </li>
           <li>
-            <a href="#kyc-coming-soon" class="toc-h1 toc-link" data-title="KYC (Coming Soon)">KYC (Coming Soon)</a>
+            <a href="#kyc" class="toc-h1 toc-link" data-title="KYC">KYC</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#verify-id-card" class="toc-h2 toc-link" data-title="Verify ID-Card">Verify ID-Card</a>
@@ -329,7 +329,7 @@
               </ul>
           </li>
           <li>
-            <a href="#pfm-coming-soon" class="toc-h1 toc-link" data-title="PFM (Coming Soon)">PFM (Coming Soon)</a>
+            <a href="#pfm" class="toc-h1 toc-link" data-title="PFM">PFM</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#connect-internet-banking" class="toc-h2 toc-link" data-title="Connect internet banking">Connect internet banking</a>
@@ -2172,7 +2172,7 @@ Use this API to get beneficiary account details.</p>
 <td>This status means that VA is closed/complete after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute <code>is_single_use</code> true can have this status.</td>
 </tr>
 </tbody></table>
-<h1 id='kyc-coming-soon'>KYC (Coming Soon)</h1>
+<h1 id='kyc'>KYC</h1>
 <p>KYC APIs will allow you to verify whether the user-supplied identity card is valid or not. KYC API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
 
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
@@ -2538,12 +2538,17 @@ Use this API to get beneficiary account details.</p>
 <td>Data not found. ID Card number not registered</td>
 </tr>
 <tr>
+<td>008</td>
+<td>Final</td>
+<td>Image size more than 1MB</td>
+</tr>
+<tr>
 <td>999</td>
 <td>Final</td>
 <td>Internal Server Error</td>
 </tr>
 </tbody></table>
-<h1 id='pfm-coming-soon'>PFM (Coming Soon)</h1>
+<h1 id='pfm'>PFM</h1>
 <p>PFM APIs will allow you to connect with internet banking account. You can use it to check accounts, balance and mutations. PFM API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
 
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
@@ -2558,7 +2563,7 @@ Use this API to get beneficiary account details.</p>
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing login to internet banking"</span><span class="w">
-    </span><span class="p">},</span><span class="w"> 
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-12341-1231-1231"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2770,7 +2775,7 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </tbody></table>
 <h2 id='get-mutations'>Get Mutations</h2>
-<p>Get mutations for specific account with time range. This is required account ID as parameter, </p>
+<p>Get mutations for specific account with time range. This is required account ID as parameter,</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span class="o">=</span>2020-01-01&amp;endDate<span class="o">=</span>2020-01-30 <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span>
 </code></pre></div>
 <blockquote>
