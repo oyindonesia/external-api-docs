@@ -183,4 +183,5 @@ Status Code | State | Meaning
 005 | Final | Request is Rejected (ID card photo is not clear)
 006 | Final | Request is Rejected (Face is not the same as photo on id card)
 007 | Final | Data not found. ID Card number not registered
+008 | Final | Image size more than 1MB
 999 | Final | Internal Server Error
