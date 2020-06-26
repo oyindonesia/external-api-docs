@@ -53,7 +53,6 @@ Bank Codes | Bank Name
 130	| Bank NTT
 131	| Bank Maluku
 132	| Bank BPD Papua
-133	| Bank Bengkulu
 134	| Bank SULTENG
 135	| Bank Sultra
 137	| Bank BANTEN
