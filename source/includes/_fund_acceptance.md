@@ -1,4 +1,4 @@
-# Funds Acceptance
+# Fund Acceptance (Coming Soon)
 
 There are two products that fall under the category of funds acceptance which are Payment Checkout and Invoicing. 
 
