@@ -17,6 +17,7 @@ includes:
   - static_va
   - kyc
   - pfm
+  - fund_acceptance
 
 search: true
 ---
