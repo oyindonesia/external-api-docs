@@ -4,7 +4,7 @@ There are two products that fall under the category of funds acceptance which ar
 
 Payment Checkout product will allow you to receive funds from your customers by choosing from our various payment channels such as bank transfer or credit/debit card. 
 
-Similarly, Invocing will let you to bill your customers for service/items purchased by sending a payment checkout link to your customer's email by attatching/creating an invoice via our API.
+Similarly, Invoicing will let you to bill your customers for service/items purchased by sending a payment checkout link to your customer's email by attatching/creating an invoice via our API.
 
 All payment link and/or details can be monitored by using our dashboard and various API endpoints. 
 
@@ -33,7 +33,7 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/create`
 ```json
 {
         "success": true;
-        "url": "https://pay.oyindonesia.com/v2?743826nfo3897hfdk$#113334
+        "url": "https://pay.oyindonesia.com/v2?743826nfo3897hfdk$#113334";
 }
 ```
 
@@ -95,16 +95,14 @@ POST `https://partner.oyindonesia.com/api/TBD`
 ```json
 {
         "success": true;
-        "url": "https://pay.oyindonesia.com/v2?783465983fnvsnjk73fsdf
-        "email_status" : "delivered"
+        "url": "https://pay.oyindonesia.com/v2?783465983fnvsnjk73fsdf";
+        "email_status" : "delivered";
 }
-
-
 ```
 
 ### Request Parameters
 
-*Note: all parameters from API Create (Payment Checkout) are still applicable. Below is the list of the additional specific parameters for Invocing product.
+*Note: all parameters from API Create (Payment Checkout) are still applicable. Below is the list of the additional specific parameters for Invoicing product.
 
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
@@ -116,4 +114,42 @@ attachments | - | Upload attachment to be sent by email and can be downloaded vi
 
 ## API Create (Recurring Invoice)
 
-To be updated
+This endpoint is to enable the capability to send recurring invoice with the same invoice configuration (e.g. payment method, amount, attachments) via email.
+
+```shell
+curl -X POST \
+  https://partner.oyindonesia.com/api/TBD\
+  -H 'cache-control: no-cache' -H 'content-type: application/json' \
+  -H 'x-api-key: apikeymu' -H 'x-oy-username: yourusername' \
+  -d '{"username":"testaccount","partner_tx_id":"ABC123456527","sender_name":"Roberto F",
+        "sender_note":"bill payment","sender_phone": "082114845847", "amount":75000,"is_open":false,"step":"select-payment-method",
+        "list_disabled_payment_methods":"CC"; "DC" , "list_enabled_payment_banks": "008"; "014", "included_admin_fee": true, "expiration": 7,
+        "description":"payment for March 2020", "partner_user_id": "merchant A", "is_va_lifetime" : true , "email" : "johnsmith@example.com",
+        "recurring_start_date" : "10/11/2020", "recurring_end_date": "10/11/2021", "recurring_frequency": 30
+    }'
+```
+
+### HTTPS Request
+
+POST `https://partner.oyindonesia.com/api/TBD`
+
+> Json Response
+
+```json
+{
+        "success": true;
+        "url": "https://pay.oyindonesia.com/v2?98999987uydfuiwk73636hehnrm";
+        "email_status" : "delivered";
+}
+```
+
+### Request Parameters
+
+*Note: all parameters from API Create (Payment Checkout and Invoicing) are still applicable. Below is the list of the additional specific parameters for Recurring Invoice feature.
+
+Parameters | Type | Description | Limitation
+---- | ---- | ------ | -------
+recurring_start_date | String | Defining the date when the first invoice will be sent. | -
+recurring_end_date | String | Username assigned to the customer by partner. | - 
+recurring_frequency | Integer | The interval of a recurring invoice to be sent to customers (in days). | -
+
