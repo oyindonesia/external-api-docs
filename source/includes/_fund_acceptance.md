@@ -32,8 +32,8 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/create`
 
 ```json
 {
-        "success": true;
-        "url": "https://pay.oyindonesia.com/v2?743826nfo3897hfdk$#113334";
+        "success": true,
+        "url": "https://pay.oyindonesia.com/v2?743826nfo3897hfdk113334"
 }
 ```
 
@@ -94,9 +94,9 @@ POST `https://partner.oyindonesia.com/api/TBD`
 
 ```json
 {
-        "success": true;
-        "url": "https://pay.oyindonesia.com/v2?783465983fnvsnjk73fsdf";
-        "email_status" : "delivered";
+        "success": true,
+        "url": "https://pay.oyindonesia.com/v2?783465983fnvsnjk73fsdf",
+        "email_status" : "delivered"
 }
 ```
 
@@ -137,9 +137,9 @@ POST `https://partner.oyindonesia.com/api/TBD`
 
 ```json
 {
-        "success": true;
-        "url": "https://pay.oyindonesia.com/v2?98999987uydfuiwk73636hehnrm";
-        "email_status" : "delivered";
+        "success": true,
+        "url": "https://pay.oyindonesia.com/v2?98999987uydfuiwk73636hehnrm",
+        "email_status" : "delivered"
 }
 ```
 
