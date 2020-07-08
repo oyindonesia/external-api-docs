@@ -153,6 +153,40 @@ recurring_start_date | String | Defining the date when the first invoice will be
 recurring_end_date | String | Username assigned to the customer by partner. | - 
 recurring_frequency | Integer | The interval of a recurring invoice to be sent to customers (in days). | -
 
+## Callback Parameters
+
+The data on the callback will be sent using JSON format via POST data to your web hook.
+Check here for example: [example](/?json#payment-result-callback-v2)
+
+Parameter | Type | Description
+--------- | ---- | -----------
+partner_tx_id | String | A unique transaction ID provided by partner
+tx_ref_number | String | OY's internal unique transaction ID
+amount | BigDecimal | The amount of a transaction that is paid
+sender_name | String | Name of a payer for a transaction
+sender_phone | String | Phone number of a payer for a transaction
+sender_note | String | Additional notes from a payer for a transaction
+status | String | The status of a transaction (e.g. success/failed/processing)
+sender_bank | String | The bank code used by a payer to do payment
+payment_method | String | The payment method used in a transaction such as CC (Credit Card), DC (Debit Card) or VA (Virtual Account)
+va_number | String | VA number to be used on payment if using Virtual Account
+settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
+created | DateTime | The timestamp which indicates the creation time of a payment checkout link
+updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
+
+## Callback Response Codes
+
+Payment Status | Type | Payment Method | Description
+---- | ---- | ---- | ----
+waiting_payment | String | Bank Transfer | Payer triggers a payment status check for an unpaid VA
+expired_va | String | Bank Transfer | An unpaid VA has expired and payer can retry a payment
+charge_in_progress | String | Card | OTP for card payment method has been succesfully entered and processed
+charge_sucess | String | Bank Transfer/Card | A payment has been successfully received by OY
+charge_failed | String | Card | OTP for card payment method has been succesfully entered but payment is rejected
+disburse_in_progress | String | Bank Transfer/Card | For "Realtime" settlement option, disbursement is currently in progress to partner's registered bank account
+complete | String | Bank Transfer/Card | For "Realtime" settlement option, disbursement has been succesfully executed and received by partner
+closed | String | N/A | Payment checkout link is deleted
+
 ## API Callback
 
 An endpoint to retrieve and/or re-send the latest callback status of a transaction. We can also provide a static IP for the callback to ensure the callback sent is from OY that can be whitelisted by partners.
@@ -217,3 +251,39 @@ va_number | String | VA number to be used on payment if using Virtual Account
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 created | String | The timestamp which indicates the creation time of a payment checkout link
 updated | String | The timestamp which indicates the latest updated time of a payment checkout link due to status update
+
+## API Delete
+
+An endpoint to delete a payment/invoice URL that is still active and a payment method has not been selected.
+
+```shell
+curl -X POST \
+  https://partner.oyindonesia.com/api/TBD\
+  -H 'cache-control: no-cache' -H 'content-type: application/json' \
+  -H 'x-api-key: apikeymu' -H 'x-oy-username: yourusername' \
+  -d '{"partner_tx_id":"ABC123456527","reason": "wrong partner tx id assignment"
+    }'
+```
+
+### HTTPS Request
+
+POST `https://partner.oyindonesia.com/api/payment-checkout/TBD`
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "created_time" : "08/07/2020 15:32:22"
+  "updated_time" : "15/07/2020 21:22:13"
+  "status" : "Closed"
+}
+```
+
+### Request Parameters
+
+Parameters | Type | Description | Limitation
+---- | ---- | ------ | -------
+created_time | String | The timestamp when the URL is created. | -
+updated_time | String | The timestamp when the URL is closed. | - 
+status | Integer | The status indicator that a URL has been successfully closed. | -
+
