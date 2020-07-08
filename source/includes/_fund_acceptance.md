@@ -156,7 +156,6 @@ recurring_frequency | Integer | The interval of a recurring invoice to be sent t
 ## Callback Parameters
 
 The data on the callback will be sent using JSON format via POST data to your web hook.
-Check here for example: [example](/?json#payment-result-callback-v2)
 
 Parameter | Type | Description
 --------- | ---- | -----------
