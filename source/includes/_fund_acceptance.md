@@ -153,3 +153,67 @@ recurring_start_date | String | Defining the date when the first invoice will be
 recurring_end_date | String | Username assigned to the customer by partner. | - 
 recurring_frequency | Integer | The interval of a recurring invoice to be sent to customers (in days). | -
 
+## API Callback
+
+An endpoint to retrieve and/or re-send the latest callback status of a transaction. We can also provide a static IP for the callback to ensure the callback sent is from OY that can be whitelisted by partners.
+
+Please contact us to submit a request of an API Key and IP whitelisting.
+
+### HTTPS Request
+
+GET `https://partner.oyindonesia.com/api/payment-checkout/status`
+
+> To retrieve a callback result for a particular transaction, use following code from your platform:
+
+```shell
+curl -X GET 'https://partner.oyindonesia.com/api/payment-checkout/status?partner_tx_id=OY123456&send_callback=false' -H 'x-oy-username:yourusername' -H ' x-api-key:yourapikey'
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "partner_tx_id": "partner000001",
+  "tx_ref_number": "1234567",
+  "amount": 15000,
+  "sender_name": "Joko Widodo",
+  "sender_phone": "+6281111111",
+  "sender_note": "Mohon dikirim segera",
+  "status": "success",
+  "settlement_type": "realtime",
+  "sender_bank": "008",
+  "payment_method": "DC",
+  "va_number" : ""
+}
+```
+
+### Request Headers
+
+Parameters | Type | Description
+---- | ---- | ----
+x-api-key | String | API Key for establishing connection to this particular endpoint
+x-oy-username | String | The registered partner username which access is enabled for payment checkout product
+
+### Request Parameters
+
+Parameters | Type | Description
+---- | ---- | ----
+partner_tx_id | String | A unique transaction ID which callback status to be checked
+send_callback | Boolean | A flag to indiciate if the latest callback of a transaction need to be re-sent or not
+
+### Response Parameters
+Parameter | Type | Description
+---- | ---- | ----
+partner_tx_id | String | A unique transaction ID provided by partner
+tx_ref_number | String | OY's internal unique transaction ID
+amount | BigDecimal | The amount of a transaction that is paid
+sender_name | String | Name of a payer for a transaction
+sender_phone | String | Phone number of a payer for a transaction
+sender_note | String | Additional notes from a payer for a transaction
+status | String | The status of a transaction
+sender_bank | String | The bank code used by a payer to do payment
+payment_method | String | The payment method used in a transaction such as CC (Credit Card), DC (Debit Card) or VA (Virtual Account)
+va_number | String | VA number to be used on payment if using Virtual Account
+settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
+created | String | The timestamp which indicates the creation time of a payment checkout link
+updated | String | The timestamp which indicates the latest updated time of a payment checkout link due to status update
