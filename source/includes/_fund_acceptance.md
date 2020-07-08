@@ -273,8 +273,8 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/TBD`
 
 ```json
 {
-  "created_time" : "08/07/2020 15:32:22"
-  "updated_time" : "15/07/2020 21:22:13"
+  "created_time" : "08/07/2020 15:32:22",
+  "updated_time" : "15/07/2020 21:22:13",
   "status" : "Closed"
 }
 ```
