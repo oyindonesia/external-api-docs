@@ -1,10 +1,10 @@
-# Static VA
+# VA aggregator
 
-Static VA API allows you to create a unique VA number as a payment method for your customers..
+API VA aggregator allows you to create a unique Virtual Account (VA) number as a payment method for your customers.
 
 ### API Base URL
 
-Currently API static VA generator is only available in our Production Environment: `https://partner.oyindonesia.com` (Staging Environment will be available soon)
+Currently API VA generator is only available in our Production Environment: `https://partner.oyindonesia.com` (Staging Environment will be available soon)
 
 ## Create VA
 
@@ -331,8 +331,8 @@ partner_user_id | String(255) | Your unique ID for specific user
 success | boolean | Payment status if success or not
 tx_date | Timestamp | Incoming payment transaction date, format dd/MM/yyyy HH:mm:ss
 
-## Static VA Bank Code
-### Available Bank for Static VA
+## VA aggregator Bank Code
+### Available Bank for VA aggregator
 Bank Code | Bank Name
 --------- | -------
 002 | Bank BRI
@@ -341,8 +341,8 @@ Bank Code | Bank Name
 008 | Bank Mandiri
 009 | Bank BNI
 
-## Static VA Status
-### Available Status for Static VA
+## VA aggregator Status
+### Available Status for VA aggregator
 Status | Description
 ------ | -----------
 WAITING_PAYMENT | This status means that VA is active and can receive a payment

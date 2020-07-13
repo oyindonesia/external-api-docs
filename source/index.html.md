@@ -15,6 +15,7 @@ includes:
   - disbursement_banks
   - disbursement_response_code
   - static_va
+  - static_va_response_code
   - kyc
   - pfm
   - fund_acceptance
