@@ -272,12 +272,12 @@
                     <a href="#disbursement-bank-codes" class="toc-h2 toc-link" data-title="Disbursement Bank Codes">Disbursement Bank Codes</a>
                   </li>
                   <li>
-                    <a href="#response-codes" class="toc-h2 toc-link" data-title="Response Codes">Response Codes</a>
+                    <a href="#fund-disbursement-response-codes" class="toc-h2 toc-link" data-title="Fund Disbursement Response Codes">Fund Disbursement Response Codes</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#static-va" class="toc-h1 toc-link" data-title="Static VA">Static VA</a>
+            <a href="#va-aggregator" class="toc-h1 toc-link" data-title="VA aggregator">VA aggregator</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#api-base-url" class="toc-h2 toc-link" data-title="API Base URL">API Base URL</a>
@@ -301,10 +301,13 @@
                     <a href="#partner-callback" class="toc-h2 toc-link" data-title="Partner Callback">Partner Callback</a>
                   </li>
                   <li>
-                    <a href="#static-va-bank-code" class="toc-h2 toc-link" data-title="Static VA Bank Code">Static VA Bank Code</a>
+                    <a href="#va-aggregator-bank-code" class="toc-h2 toc-link" data-title="VA aggregator Bank Code">VA aggregator Bank Code</a>
                   </li>
                   <li>
-                    <a href="#static-va-status" class="toc-h2 toc-link" data-title="Static VA Status">Static VA Status</a>
+                    <a href="#va-aggregator-status" class="toc-h2 toc-link" data-title="VA aggregator Status">VA aggregator Status</a>
+                  </li>
+                  <li>
+                    <a href="#va-aggregator-response-codes" class="toc-h2 toc-link" data-title="VA Aggregator Response Codes">VA Aggregator Response Codes</a>
                   </li>
               </ul>
           </li>
@@ -1353,7 +1356,7 @@ Use this API to get beneficiary account details.</p>
 <td>Gopay</td>
 </tr>
 </tbody></table>
-<h2 id='response-codes'>Response Codes</h2>
+<h2 id='fund-disbursement-response-codes'>Fund Disbursement Response Codes</h2>
 <p>These are the list of possible status codes for fund disbursement:</p>
 
 <table><thead>
@@ -1429,39 +1432,9 @@ Use this API to get beneficiary account details.</p>
 <td>Request is Rejected (Amount is not valid)</td>
 </tr>
 <tr>
-<td>211</td>
-<td>Final</td>
-<td>Request is Rejected (Bank code is not available for this service)</td>
-</tr>
-<tr>
-<td>212</td>
-<td>Final</td>
-<td>Request is Rejected (Given amount are lesser than allowed value for static va)</td>
-</tr>
-<tr>
-<td>213</td>
-<td>Final</td>
-<td>Request is Rejected (Given amount are greater than allowed value for static va)</td>
-</tr>
-<tr>
-<td>214</td>
-<td>Final</td>
-<td>Request is Rejected (Failed to generate static va)</td>
-</tr>
-<tr>
 <td>215</td>
 <td>Final</td>
 <td>Request is Rejected (Max amount per transaction exceed for disburse)</td>
-</tr>
-<tr>
-<td>216</td>
-<td>Final</td>
-<td>Request is Rejected (VA Id is empty)</td>
-</tr>
-<tr>
-<td>217</td>
-<td>Final</td>
-<td>Request is Rejected (VA Number is still active for this partner user id)</td>
 </tr>
 <tr>
 <td>300</td>
@@ -1484,10 +1457,10 @@ Use this API to get beneficiary account details.</p>
 <td>Internal Server Error</td>
 </tr>
 </tbody></table>
-<h1 id='static-va'>Static VA</h1>
-<p>Static VA API allows you to create a unique VA number as a payment method for your customers..</p>
+<h1 id='va-aggregator'>VA aggregator</h1>
+<p>API VA aggregator allows you to create a unique Virtual Account (VA) number as a payment method for your customers.</p>
 <h3 id='api-base-url'>API Base URL</h3>
-<p>Currently API static VA generator is only available in our Production Environment: <code>https://partner.oyindonesia.com</code> (Staging Environment will be available soon)</p>
+<p>Currently API VA generator is only available in our Production Environment: <code>https://partner.oyindonesia.com</code> (Staging Environment will be available soon)</p>
 <h2 id='create-va'>Create VA</h2>
 <p>Use this API to create new VA number</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/generate-static-va <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> <span class="nt">-d</span> <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
@@ -2148,7 +2121,7 @@ Use this API to get beneficiary account details.</p>
 <td>Incoming payment transaction date, format dd/MM/yyyy HH:mm:ss</td>
 </tr>
 </tbody></table>
-<h2 id='static-va-bank-code'>Static VA Bank Code</h2><h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
+<h2 id='va-aggregator-bank-code'>VA aggregator Bank Code</h2><h3 id='available-bank-for-va-aggregator'>Available Bank for VA aggregator</h3>
 <table><thead>
 <tr>
 <th>Bank Code</th>
@@ -2176,7 +2149,7 @@ Use this API to get beneficiary account details.</p>
 <td>Bank BNI</td>
 </tr>
 </tbody></table>
-<h2 id='static-va-status'>Static VA Status</h2><h3 id='available-status-for-static-va'>Available Status for Static VA</h3>
+<h2 id='va-aggregator-status'>VA aggregator Status</h2><h3 id='available-status-for-va-aggregator'>Available Status for VA aggregator</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -2198,6 +2171,72 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>COMPLETE</td>
 <td>This status means that VA is closed/complete after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute <code>is_single_use</code> true can have this status.</td>
+</tr>
+</tbody></table>
+<h2 id='va-aggregator-response-codes'>VA Aggregator Response Codes</h2>
+<p>These are the list of possible status codes for api va aggregator:</p>
+
+<table><thead>
+<tr>
+<th>Payment Status</th>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Final</td>
+<td>Response success without error</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Final</td>
+<td>Request is Rejected (User ID is not Found)</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Final</td>
+<td>Request is Rejected (User ID is not Active)</td>
+</tr>
+<tr>
+<td>207</td>
+<td>Final</td>
+<td>Request is Rejected (Request IP Address is not Registered)</td>
+</tr>
+<tr>
+<td>208</td>
+<td>Final</td>
+<td>Request is Rejected (API Key is not Valid)</td>
+</tr>
+<tr>
+<td>211</td>
+<td>Final</td>
+<td>Request is Rejected (Bank code is not available for this service)</td>
+</tr>
+<tr>
+<td>212</td>
+<td>Final</td>
+<td>Request is Rejected (Given amount are lesser than allowed value for static va)</td>
+</tr>
+<tr>
+<td>214</td>
+<td>Final</td>
+<td>Request is Rejected (Failed to generate static va)</td>
+</tr>
+<tr>
+<td>216</td>
+<td>Final</td>
+<td>Request is Rejected (VA Id is empty)</td>
+</tr>
+<tr>
+<td>217</td>
+<td>Final</td>
+<td>Request is Rejected (VA Number is still active for this partner user id)</td>
+</tr>
+<tr>
+<td>999</td>
+<td>Non-Final</td>
+<td>Internal Server Error</td>
 </tr>
 </tbody></table>
 <h1 id='kyc'>KYC</h1>
