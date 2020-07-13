@@ -587,7 +587,7 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>note</td>
 <td>String(255)</td>
-<td>TRUE</td>
+<td>FALSE</td>
 <td>Add Note to the payout</td>
 </tr>
 <tr>
@@ -2109,7 +2109,8 @@ Use this API to get beneficiary account details.</p>
     </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oy0000000001"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tx_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020 01:01:01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Once user successfully do the payment, our system will make a callback to your system</p>
@@ -2139,7 +2140,12 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>success</td>
 <td>boolean</td>
-<td>payment status if success or not</td>
+<td>Payment status if success or not</td>
+</tr>
+<tr>
+<td>tx_date</td>
+<td>Timestamp</td>
+<td>Incoming payment transaction date, format dd/MM/yyyy HH:mm:ss</td>
 </tr>
 </tbody></table>
 <h2 id='static-va-bank-code'>Static VA Bank Code</h2><h3 id='available-bank-for-static-va'>Available Bank for Static VA</h3>
@@ -3279,8 +3285,7 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </tbody></table>
 <h2 id='callback-parameters'>Callback Parameters</h2>
-<p>The data on the callback will be sent using JSON format via POST data to your web hook.
-Check here for example: <a href="/?json#payment-result-callback-v2">example</a></p>
+<p>The data on the callback will be sent using JSON format via POST data to your web hook.</p>
 
 <table><thead>
 <tr>
