@@ -314,7 +314,8 @@ numberOfTransaction  | Integer | Total transaction
 	"va_number": "1234567",
 	"amount": 100000,
 	"partner_user_id": "oy0000000001",
-	"success": true
+	"success": true,
+    "tx_date" : "31/01/2020 01:01:01"
 }
 ```
 
@@ -327,7 +328,8 @@ Parameter | Type | Description
 va_number | String(20) | Generated VA number
 amount | BigDecimal | Amount of VA transaction
 partner_user_id | String(255) | Your unique ID for specific user
-success | boolean | payment status if success or not
+success | boolean | Payment status if success or not
+tx_date | Timestamp | Incoming payment transaction date, format dd/MM/yyyy HH:mm:ss
 
 ## Static VA Bank Code
 ### Available Bank for Static VA
