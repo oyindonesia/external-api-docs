@@ -339,6 +339,7 @@ Bank Code | Bank Name
 013 | Bank Permata
 022 | Bank CIMB Niaga
 008 | Bank Mandiri
+009 | Bank BNI
 
 ## VA aggregator Status
 ### Available Status for VA aggregator
