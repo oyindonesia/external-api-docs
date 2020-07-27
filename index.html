@@ -381,6 +381,9 @@
                   <li>
                     <a href="#api-delete" class="toc-h2 toc-link" data-title="API Delete">API Delete</a>
                   </li>
+                  <li>
+                    <a href="#api-get" class="toc-h2 toc-link" data-title="API Get">API Get</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -3114,40 +3117,10 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
-<td>String</td>
-<td>The username used by partner for registration with OY!</td>
-<td>-</td>
-</tr>
-<tr>
 <td>partner_tx_id</td>
 <td>String</td>
 <td>A unique transaction ID provided by partner.</td>
 <td>A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics.</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>Integer</td>
-<td>The amount of a transaction to be paid.</td>
-<td>The amount that can be processed is between IDR 15,000 and IDR 25,000,000.</td>
-</tr>
-<tr>
-<td>sender_name</td>
-<td>String</td>
-<td>Name of the payer for a transaction.</td>
-<td>Only accepts alphabets (A-Z) and space as input and cannot be empty.</td>
-</tr>
-<tr>
-<td>sender_phone</td>
-<td>Numeric</td>
-<td>Phone number of the payer for a transaction.</td>
-<td>Do not use special character (e.g. &quot;+&quot;) and cannot be empty.</td>
-</tr>
-<tr>
-<td>sender_note</td>
-<td>String</td>
-<td>Additional notes from the payer for a transaction.</td>
-<td>Only accepts alphabets (A-Z), numeric (0-9) and space as input.</td>
 </tr>
 <tr>
 <td>description</td>
@@ -3156,10 +3129,46 @@ Use this API to get beneficiary account details.</p>
 <td>Only accepts alphabets (A-Z), numeric (0-9) and space as input.</td>
 </tr>
 <tr>
+<td>notes</td>
+<td>String</td>
+<td>Notes.</td>
+<td>Only accepts alphabets (A-Z), numeric (0-9) and space as input.</td>
+</tr>
+<tr>
+<td>sender_name</td>
+<td>String</td>
+<td>Name of the payer for a transaction.</td>
+<td>Only accepts alphabets (A-Z) and space as input and cannot be empty.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>The amount of a transaction to be paid.</td>
+<td>The amount that can be processed is between IDR 15,000 and IDR 25,000,000.</td>
+</tr>
+<tr>
 <td>email</td>
 <td>String</td>
 <td>The email address where the payment checkout link will be sent to.</td>
 <td>-</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>Numeric</td>
+<td>Phone number of the payer for a transaction.</td>
+<td>Do not use special character (e.g. &quot;+&quot;) and cannot be empty.</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>Enable open/closed amount transaction method.</td>
+<td>If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined. Once a partner_tx_id has ever been defined with is_open=false, the amount and the is_open parameters cannot be updated unless the transaction is completed for that particular partner_tx_id.</td>
+</tr>
+<tr>
+<td>step</td>
+<td>String</td>
+<td>Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method).</td>
+<td>If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.</td>
 </tr>
 <tr>
 <td>include_admin_fee</td>
@@ -3181,21 +3190,9 @@ Use this API to get beneficiary account details.</p>
 </tr>
 <tr>
 <td>expiration</td>
-<td>Integer</td>
-<td>To set the expiration of the payment link in day(s).</td>
+<td>datetime</td>
+<td>To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)</td>
 <td>-</td>
-</tr>
-<tr>
-<td>is_open</td>
-<td>Boolean</td>
-<td>Enable open/closed amount transaction method.</td>
-<td>If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined. Once a partner_tx_id has ever been defined with is_open=false, the amount and the is_open parameters cannot be updated unless the transaction is completed for that particular partner_tx_id.</td>
-</tr>
-<tr>
-<td>step</td>
-<td>String</td>
-<td>Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method).</td>
-<td>If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters'>Response Parameters</h3>
@@ -3246,13 +3243,13 @@ Use this API to get beneficiary account details.</p>
           "full_name" : "Raymond",
           "is_va_lifetime": false,
           "invoice_items": [
-        {
-          "item":"item name", 
+          {
+            "item":"item name", 
             "description":"description", 
             "quantity": 10, 
             "date_of_purchase":"2020-09-20", 
             "price_per_item": 33000  
-        }
+          }
         ],
           "attachment": "string base 64 pdf"
     }'</span>
@@ -3265,8 +3262,7 @@ Use this API to get beneficiary account details.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
         </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pay.oyindonesia.com/invoice/id"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"email_status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"delivered"</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-2'>Request Parameters</h3>
 <p>*Note: all parameters from API Create (Payment Checkout) are still applicable. Below is the list of the additional specific parameters for Invoicing product.</p>
@@ -3280,15 +3276,93 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>full_name</td>
+<td>partner_tx_id</td>
 <td>String</td>
-<td>The customer&#39;s full name.</td>
+<td>A unique transaction ID provided by partner.</td>
+<td>A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>Description of the payment checkout link.</td>
+<td>Only accepts alphabets (A-Z), numeric (0-9) and space as input.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>String</td>
+<td>Notes.</td>
+<td>Only accepts alphabets (A-Z), numeric (0-9) and space as input.</td>
+</tr>
+<tr>
+<td>sender_name</td>
+<td>String</td>
+<td>Name of the payer for a transaction.</td>
+<td>Only accepts alphabets (A-Z) and space as input and cannot be empty.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Integer</td>
+<td>The amount of a transaction to be paid.</td>
+<td>The amount that can be processed is between IDR 15,000 and IDR 25,000,000.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>The email address where the payment checkout link will be sent to.</td>
+<td>-</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>Numeric</td>
+<td>Phone number of the payer for a transaction.</td>
+<td>Do not use special character (e.g. &quot;+&quot;) and cannot be empty.</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>Enable open/closed amount transaction method.</td>
+<td>If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined. Once a partner_tx_id has ever been defined with is_open=false, the amount and the is_open parameters cannot be updated unless the transaction is completed for that particular partner_tx_id.</td>
+</tr>
+<tr>
+<td>step</td>
+<td>String</td>
+<td>Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method).</td>
+<td>If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.</td>
+</tr>
+<tr>
+<td>include_admin_fee</td>
+<td>Boolean</td>
+<td>Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE.</td>
+<td>-</td>
+</tr>
+<tr>
+<td>list_disabled_payment_methods</td>
+<td>String</td>
+<td>To configure payment methods to be disabled (e.g. VA, CC, DC)</td>
+<td>There must be at least 1 payment method is enabled.</td>
+</tr>
+<tr>
+<td>list_enabled_banks</td>
+<td>String</td>
+<td>To configure banks to be enabled for VA payment method.</td>
+<td>-</td>
+</tr>
+<tr>
+<td>expiration</td>
+<td>datetime</td>
+<td>To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)</td>
 <td>-</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String</td>
 <td>Username assigned to the customer by partner.</td>
+<td>-</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>String</td>
+<td>The customer&#39;s full name.</td>
 <td>-</td>
 </tr>
 <tr>
@@ -3300,18 +3374,18 @@ Use this API to get beneficiary account details.</p>
 <tr>
 <td>invoice_items</td>
 <td>List</td>
-<td>List of items to be invoiced that can be generated via API in the following format: [item name, description, quantity, date of purchase, price per item ]</td>
+<td>List of items to be invoiced that can be generated via API in the following format: [item, description, quantity, date_of_purchase, price_per_item ]</td>
 <td>-</td>
 </tr>
 <tr>
-<td>attachments</td>
+<td>attachment</td>
 <td>-</td>
-<td>Upload attachment to be sent by email and can be downloaded via the webview</td>
+<td>Upload attachment (string base 64 pdf) and can be downloaded via the webview</td>
 <td>-</td>
 </tr>
 </tbody></table>
 <h2 id='api-create-recurring-invoice-coming-soon'>API Create (Recurring Invoice) (Coming soon)</h2>
-<p>This endpoint is to enable the capability to send recurring invoice with the same invoice configuration (e.g. payment method, amount, attachments) via email.</p>
+<p>This endpoint is to enable the capability to send recurring invoice with the same invoice configuration (e.g. payment method, amount, attachment) via email.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
   https://partner.oyindonesia.com/api/TBD<span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -3639,22 +3713,19 @@ Use this API to get beneficiary account details.</p>
 </tbody></table>
 <h2 id='api-delete'>API Delete</h2>
 <p>An endpoint to delete a payment/invoice URL that is still active and a payment method has not been selected.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
-  https://partner.oyindonesia.com/api/TBD<span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="se">\</span>
+  https://partner.oyindonesia.com/api/payment-checkout/<span class="o">{</span>partner_tx_id<span class="o">}</span><span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'x-api-key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username: yourusername'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"partner_tx_id":"ABC123456527","reason": "wrong partner tx id assignment"
-    }'</span>
+  <span class="nt">-H</span> <span class="s1">'X-Api-key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'X-Oy-Username: yourusername'</span> 
 </code></pre></div><h3 id='https-request-5'>HTTPS Request</h3>
-<p>POST <code>https://partner.oyindonesia.com/api/payment-checkout/TBD</code></p>
+<p>DELETE <code>https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}</code></p>
 
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"created_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"08/07/2020 15:32:22"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updated_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"15/07/2020 21:22:13"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Closed"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
@@ -3666,21 +3737,63 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>created_time</td>
+<td>partner_tx_id</td>
 <td>String</td>
-<td>The timestamp when the URL is created.</td>
+<td>partner_tx_id in url param</td>
 <td>-</td>
 </tr>
+</tbody></table>
+<h2 id='api-get'>API Get</h2>
+<p>An endpoint to get a payment/invoice data.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="se">\</span>
+  https://partner.oyindonesia.com/api/payment-checkout/<span class="o">{</span>partner_tx_id<span class="o">}</span><span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-Api-key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'X-Oy-Username: yourusername'</span>
+</code></pre></div><h3 id='https-request-6'>HTTPS Request</h3>
+<p>GET <code>https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}</code></p>
+
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partnerTxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner tx id"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paymentLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35281815-4784-4f55-9a61-090f5c17a191"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">30000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"senderName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sender Name"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"senderPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sender phone number"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"senderNotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sender note"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"status"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"txRefNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tx_ref_number"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"isOpen"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"step"</span><span class="p">:</span><span class="w"> </span><span class="s2">"step"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notes"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phone number"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"includeAdminFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"listDisabledPaymentMethods"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"listEnabledBanks"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"expirationTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1595679313000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"invoiceData"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"return payment checkout data"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-parameters-6'>Request Parameters</h3>
+<table><thead>
 <tr>
-<td>updated_time</td>
-<td>String</td>
-<td>The timestamp when the URL is closed.</td>
-<td>-</td>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Limitation</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>status</td>
-<td>Integer</td>
-<td>The status indicator that a URL has been successfully closed.</td>
+<td>partner_tx_id</td>
+<td>String</td>
+<td>partner_tx_id in url param</td>
 <td>-</td>
 </tr>
 </tbody></table>
