@@ -304,25 +304,22 @@ updated | String | The timestamp which indicates the latest updated time of a pa
 An endpoint to delete a payment/invoice URL that is still active and a payment method has not been selected.
 
 ```shell
-curl -X POST \
-  https://partner.oyindonesia.com/api/TBD\
+curl -X DELETE \
+  https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}\
   -H 'cache-control: no-cache' -H 'content-type: application/json' \
-  -H 'x-api-key: apikeymu' -H 'x-oy-username: yourusername' \
-  -d '{"partner_tx_id":"ABC123456527","reason": "wrong partner tx id assignment"
-    }'
+  -H 'X-Api-key: apikeymu' -H 'X-Oy-Username: yourusername' 
 ```
 
 ### HTTPS Request
 
-POST `https://partner.oyindonesia.com/api/payment-checkout/TBD`
+DELETE `https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}`
 
 > The above command returns JSON structured similar like this:
 
 ```json
 {
-  "created_time" : "08/07/2020 15:32:22",
-  "updated_time" : "15/07/2020 21:22:13",
-  "status" : "Closed"
+  "status" : true,
+  "message" : "success",
 }
 ```
 
@@ -330,7 +327,58 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/TBD`
 
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
-created_time | String | The timestamp when the URL is created. | -
-updated_time | String | The timestamp when the URL is closed. | - 
-status | Integer | The status indicator that a URL has been successfully closed. | -
+partner_tx_id | String | partner_tx_id in url param | -
+
+
+## API Get
+
+An endpoint to get a payment/invoice data.
+
+```shell
+curl -X GET \
+  https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}\
+  -H 'cache-control: no-cache' -H 'content-type: application/json' \
+  -H 'X-Api-key: apikeymu' -H 'X-Oy-Username: yourusername'
+```
+
+### HTTPS Request
+
+GET `https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}`
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "data": {
+        "partnerTxId": "partner tx id",
+        "paymentLinkId": "35281815-4784-4f55-9a61-090f5c17a191",
+        "amount": 30000,
+        "username": "username",
+        "senderName": "Sender Name",
+        "senderPhoneNumber": "sender phone number",
+        "senderNotes": "sender note",
+        "status": "status",
+        "txRefNumber": "tx_ref_number",
+        "description": "description",
+        "isOpen": true,
+        "step": "step",
+        "notes": "notes",
+        "phoneNumber": "phone number",
+        "email": "email",
+        "includeAdminFee": false,
+        "listDisabledPaymentMethods": "",
+        "listEnabledBanks": "",
+        "expirationTime": 1595679313000,
+        "invoiceData": null
+    },
+    "message": "return payment checkout data",
+    "status": true
+}
+```
+
+### Request Parameters
+
+Parameters | Type | Description | Limitation
+---- | ---- | ------ | -------
+partner_tx_id | String | partner_tx_id in url param | -
 
