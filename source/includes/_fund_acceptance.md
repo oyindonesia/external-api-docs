@@ -69,8 +69,8 @@ phone_number | Numeric | Phone number of the payer for a transaction. | Do not u
 is_open	| Boolean | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined. Once a partner_tx_id has ever been defined with is_open=false, the amount and the is_open parameters cannot be updated unless the transaction is completed for that particular partner_tx_id.
 step | String | Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method). | If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.
 include_admin_fee | Boolean | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
-list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CC, DC) | There must be at least 1 payment method is enabled.
-list_enabled_banks | String | To configure banks to be enabled for VA payment method. | -
+list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, DEBIT_CARD) | There must be at least 1 payment method is enabled.
+list_enabled_banks | String | To configure banks to be enabled for VA payment method. | "002", "008", "009", "013", "022"
 expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss) | -
 
 
@@ -150,8 +150,8 @@ phone_number | Numeric | Phone number of the payer for a transaction. | Do not u
 is_open	| Boolean | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined. Once a partner_tx_id has ever been defined with is_open=false, the amount and the is_open parameters cannot be updated unless the transaction is completed for that particular partner_tx_id.
 step | String | Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method). | If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.
 include_admin_fee | Boolean | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
-list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CC, DC) | There must be at least 1 payment method is enabled.
-list_enabled_banks | String | To configure banks to be enabled for VA payment method. | -
+list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, DEBIT_CARD) | There must be at least 1 payment method is enabled.
+list_enabled_banks | String | To configure banks to be enabled for VA payment method. | "002", "008", "009", "013", "022"
 expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss) | -
 partner_user_id | String | Username assigned to the customer by partner. | - 
 full_name | String | The customer's full name. | -
