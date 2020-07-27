@@ -3144,7 +3144,7 @@ Use this API to get beneficiary account details.</p>
 <td>amount</td>
 <td>Integer</td>
 <td>The amount of a transaction to be paid.</td>
-<td>The amount that can be processed is between IDR 15,000 and IDR 25,000,000.</td>
+<td>Minimum amount is IDR 15,000.</td>
 </tr>
 <tr>
 <td>email</td>
@@ -3156,13 +3156,13 @@ Use this API to get beneficiary account details.</p>
 <td>phone_number</td>
 <td>Numeric</td>
 <td>Phone number of the payer for a transaction.</td>
-<td>Do not use special character (e.g. &quot;+&quot;) and cannot be empty.</td>
+<td>Do not use special character (e.g. &quot;+&quot;)</td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
 <td>Enable open/closed amount transaction method.</td>
-<td>If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined. Once a partner_tx_id has ever been defined with is_open=false, the amount and the is_open parameters cannot be updated unless the transaction is completed for that particular partner_tx_id.</td>
+<td>If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.</td>
 </tr>
 <tr>
 <td>step</td>
@@ -3186,13 +3186,13 @@ Use this API to get beneficiary account details.</p>
 <td>list_enabled_banks</td>
 <td>String</td>
 <td>To configure banks to be enabled for VA payment method.</td>
-<td>&quot;002&quot;, &quot;008&quot;, &quot;009&quot;, &quot;013&quot;, &quot;022&quot;</td>
+<td>List of eligible bank codes: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB).</td>
 </tr>
 <tr>
 <td>expiration</td>
 <td>datetime</td>
 <td>To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)</td>
-<td>-</td>
+<td>Expiration date will be defaulted to 24 hours if it is not defined.</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters'>Response Parameters</h3>
@@ -3265,8 +3265,6 @@ Use this API to get beneficiary account details.</p>
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-2'>Request Parameters</h3>
-<p>*Note: all parameters from API Create (Payment Checkout) are still applicable. Below is the list of the additional specific parameters for Invoicing product.</p>
-
 <table><thead>
 <tr>
 <th>Parameters</th>
@@ -3303,7 +3301,7 @@ Use this API to get beneficiary account details.</p>
 <td>amount</td>
 <td>Integer</td>
 <td>The amount of a transaction to be paid.</td>
-<td>The amount that can be processed is between IDR 15,000 and IDR 25,000,000.</td>
+<td>Minimum amount is IDR 15,000.</td>
 </tr>
 <tr>
 <td>email</td>
@@ -3315,13 +3313,13 @@ Use this API to get beneficiary account details.</p>
 <td>phone_number</td>
 <td>Numeric</td>
 <td>Phone number of the payer for a transaction.</td>
-<td>Do not use special character (e.g. &quot;+&quot;) and cannot be empty.</td>
+<td>Do not use special character (e.g. &quot;+&quot;).</td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
 <td>Enable open/closed amount transaction method.</td>
-<td>If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined. Once a partner_tx_id has ever been defined with is_open=false, the amount and the is_open parameters cannot be updated unless the transaction is completed for that particular partner_tx_id.</td>
+<td>If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.</td>
 </tr>
 <tr>
 <td>step</td>
@@ -3345,7 +3343,7 @@ Use this API to get beneficiary account details.</p>
 <td>list_enabled_banks</td>
 <td>String</td>
 <td>To configure banks to be enabled for VA payment method.</td>
-<td>&quot;002&quot;, &quot;008&quot;, &quot;009&quot;, &quot;013&quot;, &quot;022&quot;</td>
+<td>List of eligible bank codes: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB).</td>
 </tr>
 <tr>
 <td>expiration</td>
@@ -3381,7 +3379,7 @@ Use this API to get beneficiary account details.</p>
 <td>attachment</td>
 <td>-</td>
 <td>Upload attachment (string base 64 pdf) and can be downloaded via the webview</td>
-<td>-</td>
+<td>There is a maximum limit of 1 PDF attachment (maximum 2 MB) to be uploaded per URL</td>
 </tr>
 </tbody></table>
 <h2 id='api-create-recurring-invoice-coming-soon'>API Create (Recurring Invoice) (Coming soon)</h2>
