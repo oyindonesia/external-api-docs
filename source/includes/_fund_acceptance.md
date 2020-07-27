@@ -1,4 +1,4 @@
-# Fund Acceptance (Coming Soon)
+# Fund Acceptance
 
 There are two products that fall under the category of funds acceptance which are Payment Checkout and Invoicing. 
 
@@ -14,26 +14,37 @@ An endpoint to create payment checkout URL which return parameters by encapsulat
 
 ```shell
 curl -X POST \
-  https://partner.oyindonesia.com/api/payment-checkout/create \
+  https://partner.oyindonesia.com/api/payment-checkout/create-v2 \
   -H 'cache-control: no-cache' -H 'content-type: application/json' \
-  -H 'x-api-key: apikeymu' -H 'x-oy-username: yourusername' \
-  -d '{"username":"testaccount","partner_tx_id":"ABC123456527","sender_name":"Roberto F",
-        "sender_note":"bill payment","sender_phone": "082114845847", "amount":75000,"is_open":false,"step":"select-payment-method",
-        "list_disabled_payment_methods":"CC"; "DC" , "list_enabled_payment_banks": "008"; "014", "included_admin_fee": true, "expiration": 7,
-        "description":"payment for March 2020"
+  -H 'X-Api-Key: apikeymu' -H 'X-Oy-Username: yourusername' \
+  -d '{
+        "partner_tx_id":"partnerTxId",
+        "description":"description",
+        "notes":"notes",
+        "sender_name":"Sender name",
+        "amount":50000,
+        "email":"",
+        "phone_number":"",
+        "is_open":false,
+        "step":"input-amount",
+        "include_admin_fee":false,
+        "list_disabled_payment_methods":"",
+        "list_enabled_banks":"",
+        "expiration":"2020-08-08 08:09:12"
     }'
 ```
 
 ### HTTPS Request
 
-POST `https://partner.oyindonesia.com/api/payment-checkout/create`
+POST `https://partner.oyindonesia.com/api/payment-checkout/create-v2`
 
 > Json Response
 
 ```json
 {
         "success": true,
-        "url": "https://pay.oyindonesia.com/v2?743826nfo3897hfdk113334"
+        "url": "https://pay.oyindonesia.com/id",
+        "message": "success"
 }
 ```
 
@@ -41,8 +52,8 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/create`
 
 Parameters | Type | Description
 ---- | ---- | ----
-x-api-key | String | API Key for establishing connection to this particular endpoint
-x-oy-username | String | The registered partner username which access is enabled for payment checkout product
+X-Api-Key | String | API Key for establishing connection to this particular endpoint
+X-Oy-Username | String | The registered partner username which access is enabled for payment checkout product
 
 ### Request Parameters
 
@@ -69,6 +80,7 @@ Parameter | Type | Description
 ---- | ---- | ----
 success | Boolean | The username used by partner for registration with OY!
 url | String | A unique transaction ID provided by partner
+message | String | Message response
 
 ## API Create (Invoicing)
 
@@ -76,26 +88,50 @@ Our Invoicing product is leveraging most parameters that are defined for our pay
 
 ```shell
 curl -X POST \
-  https://partner.oyindonesia.com/api/TBD\
+  https://partner.oyindonesia.com/api/payment-checkout/create-invoice\
   -H 'cache-control: no-cache' -H 'content-type: application/json' \
-  -H 'x-api-key: apikeymu' -H 'x-oy-username: yourusername' \
-  -d '{"username":"testaccount","partner_tx_id":"ABC123456527","sender_name":"Roberto F",
-        "sender_note":"bill payment","sender_phone": "082114845847", "amount":75000,"is_open":false,"step":"select-payment-method",
-        "list_disabled_payment_methods":"CC"; "DC" , "list_enabled_payment_banks": "008"; "014", "included_admin_fee": true, "expiration": 7,
-        "description":"payment for March 2020", "partner_user_id": "merchant A", "is_va_lifetime" : true , "email" : "johnsmith@example.com"
+  -H 'X-Api-key: apikeymu' -H 'X-Oy-Username: yourusername' \
+  -d '{
+        "partner_tx_id":"partner tx id",
+        "description":"desc invoice",
+        "notes":"notes satu",
+        "sender_name":"Sender Name API",
+        "amount":"30000",
+        "email":"",
+        "phone_number":"",
+        "is_open":"true",
+        "step":"input-amount",
+        "include_admin_fee":false,
+        "list_disabled_payment_methods":"",
+        "list_enabled_banks":"013",
+        "expiration":"2020-07-28 19:15:13",
+        "partner_user_id":"partner user id", 
+    	  "full_name" : "Raymond",
+    	  "is_va_lifetime": false,
+    	  "invoice_items": [
+        {
+          "item":"item name", 
+	        "description":"description", 
+	        "quantity": 10, 
+	        "date_of_purchase":"2020-09-20", 
+	        "price_per_item": 33000  
+        }
+        ],
+    	  "attachment": "string base 64 pdf"
     }'
 ```
 
 ### HTTPS Request
 
-POST `https://partner.oyindonesia.com/api/TBD`
+POST `https://partner.oyindonesia.com/api/payment-checkout/create-invoice`
 
 > Json Response
 
 ```json
 {
         "success": true,
-        "url": "https://pay.oyindonesia.com/v2?783465983fnvsnjk73fsdf",
+        "url": "https://pay.oyindonesia.com/invoice/id",
+        "message": "success",
         "email_status" : "delivered"
 }
 ```
@@ -112,7 +148,7 @@ is_va_lifetime | Boolean | To enable VA static confirugation for a payment . | I
 invoice_items | List | List of items to be invoiced that can be generated via API in the following format: [item name, description, quantity, date of purchase, price per item ]  | -
 attachments | - | Upload attachment to be sent by email and can be downloaded via the webview | -
 
-## API Create (Recurring Invoice)
+## API Create (Recurring Invoice) (Coming soon)
 
 This endpoint is to enable the capability to send recurring invoice with the same invoice configuration (e.g. payment method, amount, attachments) via email.
 
