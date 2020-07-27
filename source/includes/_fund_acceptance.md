@@ -157,12 +157,12 @@ partner_user_id | String | Username assigned to the customer by partner. | -
 full_name | String | The customer's full name. | -
 is_va_lifetime | Boolean | To enable VA static confirugation for a payment . | If this is set as true and the partner_user_id is already associated to specific VAs, then the same VA numbers will be used for this partner_tx_id instead of generating new VA number. Partner_user_id and VA payment method must be specified to use this parameter.
 invoice_items | List | List of items to be invoiced that can be generated via API in the following format: [item, description, quantity, date_of_purchase, price_per_item ]  | -
-attachments | - | Upload attachment (string base 64 pdf) and can be downloaded via the webview | -
+attachment | - | Upload attachment (string base 64 pdf) and can be downloaded via the webview | -
 
 
 ## API Create (Recurring Invoice) (Coming soon)
 
-This endpoint is to enable the capability to send recurring invoice with the same invoice configuration (e.g. payment method, amount, attachments) via email.
+This endpoint is to enable the capability to send recurring invoice with the same invoice configuration (e.g. payment method, amount, attachment) via email.
 
 ```shell
 curl -X POST \
