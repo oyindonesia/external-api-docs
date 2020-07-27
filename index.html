@@ -358,7 +358,7 @@
               </ul>
           </li>
           <li>
-            <a href="#fund-acceptance-coming-soon" class="toc-h1 toc-link" data-title="Fund Acceptance (Coming Soon)">Fund Acceptance (Coming Soon)</a>
+            <a href="#fund-acceptance" class="toc-h1 toc-link" data-title="Fund Acceptance">Fund Acceptance</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#api-create-payment-checkout" class="toc-h2 toc-link" data-title="API Create (Payment Checkout)">API Create (Payment Checkout)</a>
@@ -367,7 +367,7 @@
                     <a href="#api-create-invoicing" class="toc-h2 toc-link" data-title="API Create (Invoicing)">API Create (Invoicing)</a>
                   </li>
                   <li>
-                    <a href="#api-create-recurring-invoice" class="toc-h2 toc-link" data-title="API Create (Recurring Invoice)">API Create (Recurring Invoice)</a>
+                    <a href="#api-create-recurring-invoice-coming-soon" class="toc-h2 toc-link" data-title="API Create (Recurring Invoice) (Coming soon)">API Create (Recurring Invoice) (Coming soon)</a>
                   </li>
                   <li>
                     <a href="#callback-parameters" class="toc-h2 toc-link" data-title="Callback Parameters">Callback Parameters</a>
@@ -3045,7 +3045,7 @@ Use this API to get beneficiary account details.</p>
 <td>Internal Server Error</td>
 </tr>
 </tbody></table>
-<h1 id='fund-acceptance-coming-soon'>Fund Acceptance (Coming Soon)</h1>
+<h1 id='fund-acceptance'>Fund Acceptance</h1>
 <p>There are two products that fall under the category of funds acceptance which are Payment Checkout and Invoicing. </p>
 
 <p>Payment Checkout product will allow you to receive funds from your customers by choosing from our various payment channels such as bank transfer or credit/debit card. </p>
@@ -3056,23 +3056,34 @@ Use this API to get beneficiary account details.</p>
 <h2 id='api-create-payment-checkout'>API Create (Payment Checkout)</h2>
 <p>An endpoint to create payment checkout URL which return parameters by encapsulation.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
-  https://partner.oyindonesia.com/api/payment-checkout/create <span class="se">\</span>
+  https://partner.oyindonesia.com/api/payment-checkout/create-v2 <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'x-api-key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username: yourusername'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"username":"testaccount","partner_tx_id":"ABC123456527","sender_name":"Roberto F",
-        "sender_note":"bill payment","sender_phone": "082114845847", "amount":75000,"is_open":false,"step":"select-payment-method",
-        "list_disabled_payment_methods":"CC"; "DC" , "list_enabled_payment_banks": "008"; "014", "included_admin_fee": true, "expiration": 7,
-        "description":"payment for March 2020"
+  <span class="nt">-H</span> <span class="s1">'X-Api-Key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'X-Oy-Username: yourusername'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+        "partner_tx_id":"partnerTxId",
+        "description":"description",
+        "notes":"notes",
+        "sender_name":"Sender name",
+        "amount":50000,
+        "email":"",
+        "phone_number":"",
+        "is_open":false,
+        "step":"input-amount",
+        "include_admin_fee":false,
+        "list_disabled_payment_methods":"",
+        "list_enabled_banks":"",
+        "expiration":"2020-08-08 08:09:12"
     }'</span>
 </code></pre></div><h3 id='https-request'>HTTPS Request</h3>
-<p>POST <code>https://partner.oyindonesia.com/api/payment-checkout/create</code></p>
+<p>POST <code>https://partner.oyindonesia.com/api/payment-checkout/create-v2</code></p>
 
 <blockquote>
 <p>Json Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
         </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pay.oyindonesia.com/v2?743826nfo3897hfdk113334"</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pay.oyindonesia.com/id"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-headers'>Request Headers</h3>
 <table><thead>
@@ -3083,12 +3094,12 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>x-api-key</td>
+<td>X-Api-Key</td>
 <td>String</td>
 <td>API Key for establishing connection to this particular endpoint</td>
 </tr>
 <tr>
-<td>x-oy-username</td>
+<td>X-Oy-Username</td>
 <td>String</td>
 <td>The registered partner username which access is enabled for payment checkout product</td>
 </tr>
@@ -3205,27 +3216,56 @@ Use this API to get beneficiary account details.</p>
 <td>String</td>
 <td>A unique transaction ID provided by partner</td>
 </tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Message response</td>
+</tr>
 </tbody></table>
 <h2 id='api-create-invoicing'>API Create (Invoicing)</h2>
 <p>Our Invoicing product is leveraging most parameters that are defined for our payment checkout in the above section with some additional parameters that are only applicable for Inovicing product. </p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
-  https://partner.oyindonesia.com/api/TBD<span class="se">\</span>
+  https://partner.oyindonesia.com/api/payment-checkout/create-invoice<span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'x-api-key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username: yourusername'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{"username":"testaccount","partner_tx_id":"ABC123456527","sender_name":"Roberto F",
-        "sender_note":"bill payment","sender_phone": "082114845847", "amount":75000,"is_open":false,"step":"select-payment-method",
-        "list_disabled_payment_methods":"CC"; "DC" , "list_enabled_payment_banks": "008"; "014", "included_admin_fee": true, "expiration": 7,
-        "description":"payment for March 2020", "partner_user_id": "merchant A", "is_va_lifetime" : true , "email" : "johnsmith@example.com"
+  <span class="nt">-H</span> <span class="s1">'X-Api-key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'X-Oy-Username: yourusername'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+        "partner_tx_id":"partner tx id",
+        "description":"desc invoice",
+        "notes":"notes satu",
+        "sender_name":"Sender Name API",
+        "amount":"30000",
+        "email":"",
+        "phone_number":"",
+        "is_open":"true",
+        "step":"input-amount",
+        "include_admin_fee":false,
+        "list_disabled_payment_methods":"",
+        "list_enabled_banks":"013",
+        "expiration":"2020-07-28 19:15:13",
+        "partner_user_id":"partner user id", 
+          "full_name" : "Raymond",
+          "is_va_lifetime": false,
+          "invoice_items": [
+        {
+          "item":"item name", 
+            "description":"description", 
+            "quantity": 10, 
+            "date_of_purchase":"2020-09-20", 
+            "price_per_item": 33000  
+        }
+        ],
+          "attachment": "string base 64 pdf"
     }'</span>
 </code></pre></div><h3 id='https-request-2'>HTTPS Request</h3>
-<p>POST <code>https://partner.oyindonesia.com/api/TBD</code></p>
+<p>POST <code>https://partner.oyindonesia.com/api/payment-checkout/create-invoice</code></p>
 
 <blockquote>
 <p>Json Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
         </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pay.oyindonesia.com/v2?783465983fnvsnjk73fsdf"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pay.oyindonesia.com/invoice/id"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"email_status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"delivered"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-2'>Request Parameters</h3>
@@ -3270,7 +3310,7 @@ Use this API to get beneficiary account details.</p>
 <td>-</td>
 </tr>
 </tbody></table>
-<h2 id='api-create-recurring-invoice'>API Create (Recurring Invoice)</h2>
+<h2 id='api-create-recurring-invoice-coming-soon'>API Create (Recurring Invoice) (Coming soon)</h2>
 <p>This endpoint is to enable the capability to send recurring invoice with the same invoice configuration (e.g. payment method, amount, attachments) via email.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
   https://partner.oyindonesia.com/api/TBD<span class="se">\</span>
