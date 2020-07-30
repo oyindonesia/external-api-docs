@@ -303,14 +303,14 @@ An endpoint to delete a payment/invoice URL that is still active and a payment m
 
 ```shell
 curl -X DELETE \
-  https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}\
+  https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}\
   -H 'cache-control: no-cache' -H 'content-type: application/json' \
   -H 'X-Api-key: apikeymu' -H 'X-Oy-Username: yourusername' 
 ```
 
 ### HTTPS Request
 
-DELETE `https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}`
+DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 
 > The above command returns JSON structured similar like this:
 
@@ -325,7 +325,7 @@ DELETE `https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}`
 
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
-partner_tx_id | String | partner_tx_id in url param | -
+payment_link_id | String | payment_link_id in url param | -
 
 
 ## API Get
@@ -334,14 +334,14 @@ An endpoint to get a payment/invoice data.
 
 ```shell
 curl -X GET \
-  https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}\
+  https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}\
   -H 'cache-control: no-cache' -H 'content-type: application/json' \
   -H 'X-Api-key: apikeymu' -H 'X-Oy-Username: yourusername'
 ```
 
 ### HTTPS Request
 
-GET `https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}`
+GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 
 > The above command returns JSON structured similar like this:
 
@@ -378,5 +378,5 @@ GET `https://partner.oyindonesia.com/api/payment-checkout/{partner_tx_id}`
 
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
-partner_tx_id | String | partner_tx_id in url param | -
+payment_link_id | String | payment_link_id in url param | -
 
