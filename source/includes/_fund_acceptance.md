@@ -342,11 +342,11 @@ message | String | Action message | success delete payment checkout data
 
 Parameters | Type | Description | Value
 ---- | ---- | ------ | -------
-status | Boolean | Action status | Can not delete ***(failed reason)***
+status | Boolean | Action status | false
+message | String | Action message | Can not delete ***(failed reason)***
 
 
-
-**Failed Reason Message Map**
+### Failed Reason Message Map
 
 Reason | Description | Message
 ---- | ---- | ----
