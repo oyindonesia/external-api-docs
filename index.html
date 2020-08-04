@@ -3730,6 +3730,8 @@ Use this API to get beneficiary account details.</p>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'X-Api-key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'X-Oy-Username: yourusername'</span> 
 </code></pre></div><h3 id='https-request-5'>HTTPS Request</h3>
+<p>And End Point to <strong><em>Delete</em></strong> Payment / Invoice Link based on <strong><em>payment_link_id</em></strong>.</p>
+
 <p>DELETE <code>https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}</code></p>
 
 <blockquote>
@@ -3737,7 +3739,7 @@ Use this API to get beneficiary account details.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+  </span><span class="nl">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success delete payment checkout data"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
@@ -3755,26 +3757,88 @@ Use this API to get beneficiary account details.</p>
 <td>-</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-3'>Response Parameters</h3>
+<h3 id='success-response-parameters'>Success Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
 <th>Type</th>
 <th>Description</th>
-<th>Limitation</th>
+<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Boolean</td>
 <td>Action status</td>
-<td>true / false</td>
+<td>true</td>
 </tr>
 <tr>
 <td>message</td>
 <td>String</td>
 <td>Action message</td>
-<td>-</td>
+<td>success delete payment checkout data</td>
+</tr>
+</tbody></table>
+<h3 id='failed-response-parameters'>Failed Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Boolean</td>
+<td>Action status</td>
+<td>Can not delete <strong><em>(failed reason)</em></strong></td>
+</tr>
+</tbody></table>
+
+<p><strong>Failed Reason Message Map</strong></p>
+
+<table><thead>
+<tr>
+<th>Reason</th>
+<th>Description</th>
+<th>Message</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Data Not Found</strong></td>
+<td>Payment Link Id not found in our system</td>
+<td>Can not delete data is not found</td>
+</tr>
+<tr>
+<td><strong>Invalid Payment Link Id</strong></td>
+<td>Payment Link Id null or invalid</td>
+<td>Can not delete paymentLinkId is empty</td>
+</tr>
+<tr>
+<td><strong>Username Not Found</strong></td>
+<td>Username not found in our system</td>
+<td>Can not delete username is not found</td>
+</tr>
+<tr>
+<td><strong>Invalid IP Address</strong></td>
+<td>User Ip address not registered on our system</td>
+<td>Can not delete IP Address not registered</td>
+</tr>
+<tr>
+<td><strong>Invallid API Key</strong></td>
+<td>User API Key is Invalid</td>
+<td>Can not delete API Key is not valid</td>
+</tr>
+<tr>
+<td><strong>Username doesn&#39;t match</strong></td>
+<td>User not eligible to delete another user payment data</td>
+<td>Can not delete data is not match with username</td>
+</tr>
+<tr>
+<td><strong>Uneligible Payment Status</strong></td>
+<td>Payment Status is not eligible to delete. Example: <strong>COMPLETE</strong></td>
+<td>Can not delete, status transaction is <strong><em>(payment status)</em></strong></td>
 </tr>
 </tbody></table>
 <h2 id='api-get'>API Get</h2>
