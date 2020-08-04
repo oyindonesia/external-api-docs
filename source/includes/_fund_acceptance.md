@@ -75,11 +75,12 @@ expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH
 
 
 ### Response Parameters
-Parameter | Type | Description
----- | ---- | ----
-success | Boolean | The username used by partner for registration with OY!
-url | String | A unique transaction ID provided by partner
-message | String | Message response
+Parameter | Type | Description | Limitation
+---- | ---- | ---- | ----
+success | Boolean | Action status | true / false
+url | String | Payment link which used for payment | -
+payment_link_id | String | A unique transaction ID provided by partner | -
+message | String | Message response | -
 
 ## API Create (Invoicing)
 
@@ -107,6 +108,7 @@ curl -X POST \
         "partner_user_id":"partner user id", 
     	  "full_name" : "Raymond",
     	  "is_va_lifetime": false,
+        "attachment": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9GaWx0ZXIvRmxhdGVEZWNvZGUvTGVuZ3RoIDQ5Nj4+c3RyZWFtCnicrZVdb9MwFIbv/SsOd51EwrHjz0tKhxQk2IciJMS4CG46lbVNyYcE/HqcbNloh5xO8U3OUXJ8Hr/2aweBQkQBQRjhnnZLfpJ5RhIJQhjIluQ8I1eEwYfubVeHMFRnW/LmPQWKkK3I7Cz70dU+lfTN/hnE3ChJY9SPA0U3EPvP1S2ZXXx5Bemnzxfpu/OuGcLtfxp+/ebisp+QH8VkrNjhHJ9QaV23xRKyciKIGuCGjYPmv6cq0idKWuRNEYDlV7VoixAgwcdEXeZVsysqyH5BughA88t6uy3bXQNO3XRbCEq9pKr8sw5gPuXT8zGv7/JNCOeh9mAYMoxQRcyEMJ5KRlEmokkI63lVrSgqi8JEWlsV8ZURkRFMR1pILkVuZcJYCEd69V7vY3eZxYj4GvEkGsaMK5SAMTcauYsKje6aObskUsGWaKr7bPOYHUd7/8XIocZlx9H2DfuSh+Qw2AG4GZLDYMlqmLfHEQIS/XyBaOf++5uoqG213jfrcjfVfAYdi/tY0288noxBrpqpvwoh1AjjslrbqUo6j/kpWdnkG7iZpYvrm7MQmyOe045vBhkhDbFFI6gTz6Jvj9zqCd+frz/5MRMvOvyeBUxGRM3bvIHvRZXvmryGu7Jq901ZhTDJqEweC+xlvkTqX6+ILeYKZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8L1RhYnMvUy9Hcm91cDw8L1MvVHJhbnNwYXJlbmN5L1R5cGUvR3JvdXAvQ1MvRGV2aWNlUkdCPj4vQ29udGVudHMgMyAwIFIvVHlwZS9QYWdlL1Jlc291cmNlczw8L0NvbG9yU3BhY2U8PC9DUy9EZXZpY2VSR0I+Pi9Qcm9jU2V0IFsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXS9Gb250PDwvRjEgMiAwIFI+Pj4+L1BhcmVudCA0IDAgUi9Sb3RhdGUgOTAvTWVkaWFCb3hbMCAwIDU5NSA4NDJdPj4KZW5kb2JqCjUgMCBvYmoKWzEgMCBSL1hZWiAwIDYwNSAwXQplbmRvYmoKMiAwIG9iago8PC9TdWJ0eXBlL1R5cGUxL1R5cGUvRm9udC9CYXNlRm9udC9IZWx2ZXRpY2EvRW5jb2RpbmcvV2luQW5zaUVuY29kaW5nPj4KZW5kb2JqCjQgMCBvYmoKPDwvS2lkc1sxIDAgUl0vVHlwZS9QYWdlcy9Db3VudCAxL0lUWFQoMi4xLjcpPj4KZW5kb2JqCjYgMCBvYmoKPDwvTmFtZXNbKEpSX1BBR0VfQU5DSE9SXzBfMSkgNSAwIFJdPj4KZW5kb2JqCjcgMCBvYmoKPDwvRGVzdHMgNiAwIFI+PgplbmRvYmoKOCAwIG9iago8PC9OYW1lcyA3IDAgUi9UeXBlL0NhdGFsb2cvUGFnZXMgNCAwIFIvVmlld2VyUHJlZmVyZW5jZXM8PC9QcmludFNjYWxpbmcvQXBwRGVmYXVsdD4+Pj4KZW5kb2JqCjkgMCBvYmoKPDwvTW9kRGF0ZShEOjIwMjAwNzI5MTE1MzE1WikvQ3JlYXRvcihKYXNwZXJSZXBvcnRzIExpYnJhcnkgdmVyc2lvbiBudWxsKS9DcmVhdGlvbkRhdGUoRDoyMDIwMDcyOTExNTMxNVopL1Byb2R1Y2VyKGlUZXh0IDIuMS43IGJ5IDFUM1hUKT4+CmVuZG9iagp4cmVmCjAgMTAKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwNTc4IDAwMDAwIG4gCjAwMDAwMDA4NjQgMDAwMDAgbiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwOTUyIDAwMDAwIG4gCjAwMDAwMDA4MjkgMDAwMDAgbiAKMDAwMDAwMTAxNSAwMDAwMCBuIAowMDAwMDAxMDY5IDAwMDAwIG4gCjAwMDAwMDExMDEgMDAwMDAgbiAKMDAwMDAwMTIwNCAwMDAwMCBuIAp0cmFpbGVyCjw8L0luZm8gOSAwIFIvSUQgWzwzZWMyMWUyNjkwNjcxYzViYTliNjUxODNhY2IxOTM3ND48NzZhNzM1MWE1YmY4ZmMxNDNmY2NlZmUwYjRjMzA4MWI+XS9Sb290IDggMCBSL1NpemUgMTA+PgpzdGFydHhyZWYKMTM1OAolJUVPRgo=",
     	  "invoice_items": [
           {
             "item":"item name", 
@@ -232,7 +234,7 @@ disburse_in_progress | String | Bank Transfer/Card | For "Realtime" settlement o
 complete | String | Bank Transfer/Card | For "Realtime" settlement option, disbursement has been succesfully executed and received by partner
 closed | String | N/A | Payment checkout link is deleted
 
-## API Callback
+## API Payment Status
 
 An endpoint to retrieve and/or re-send the latest callback status of a transaction. We can also provide a static IP for the callback to ensure the callback sent is from OY that can be whitelisted by partners.
 
@@ -317,7 +319,7 @@ DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 ```json
 {
   "status" : true,
-  "message" : "success",
+  "message" : "success"
 }
 ```
 
@@ -326,6 +328,13 @@ DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 payment_link_id | String | payment_link_id in url param | -
+
+### Response Parameters
+
+Parameters | Type | Description | Limitation
+---- | ---- | ------ | -------
+status | Boolean | Action status | true / false
+message | String | Action message | -
 
 
 ## API Get
@@ -380,3 +389,58 @@ Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 payment_link_id | String | payment_link_id in url param | -
 
+
+## POSTMAN
+
+Postman is an of **free** web service testing which provide all web service testing schema. Its **easy**, **fast** and **solid** software for developer to learn and maintain web service contract both from provider and consumer. Many developer use Postman as part of their web service contract testing and reference because Postman has great User Experience.
+
+Postman have collection archiving tech to make us easy to store and sharing to other people to keep data consistency. We provide our Postman Collection to our partner for increase their development and knowledge learning speed. You can get how to install Postman in [here](https://www.postman.com/downloads/)
+
+### Import OY! Fund Acceptance Postman Collection to Postman
+
+* Open Postman. select Import button on the upper left application
+* Choose Link Tab and set url value with this [URL](https://www.getpostman.com/collections/36bb9f0160c5e40c4893)
+* Collection has been imported named **Payment Checkout Postman** that contains all Fund Acceptance APIs.
+
+![import](images/postman_checkout_import_link.png)
+
+### API Authorization
+
+You must provide your authorization information to us to access our feature. Our authorization consist of **Username** and **API Key**. Contact Us to obtain your API Key. After you get your API Key follow this step:
+
+* Select one of our API in Payment Checkout Postman collection which provided by us. Example. GET DETAIL PAYMENT / INVOICE API
+* Open Header tab. Add **Content-Type** with **application/json**, **X-Oy-Username** with your username and **X-Api-Key** with your **API Key**
+* Your Autorization header configuration has been complete. You can access all our api list now.
+
+![header](images/postman_checkout_header.png)
+
+### Postman Global Variable Environment
+
+You can reuse all authoorization header confguration with Postman Variable Environment. It will save your time to provide us authorization information. Just follow this step:
+
+* Select gear icon in the upper right corner.
+
+![header](images/postman_checkout_add_environtment.png)
+
+* Give Environment name. Example OY! Payment.
+* Add **base_url** in Variable column and set your **https://partner.oyindonesia.com** value in Current Value column
+* Add **username** in Variable column and set your **username** value in Current Value column
+* Add **apiKey** in Variable column and set your **API Key** value in Current Value column
+
+![header](images/postman_checkout_setup_environtment.png)
+
+* Add / Update button to save
+* Select Environment Management on upper Right corner. Left of **eye** icon.
+* Choose on of our API and navigate to Header tab. Change your **username** value to **{{username}}**
+* Change your **API Key value** to **{{api_key}}**
+
+![header](images/postman_checkout_finish_environtment.png)
+
+You just set your authorization value header with environment variable which already configured.
+
+
+### Make Your First API Call
+
+Time to try!. Click Send Button which colored blue. Check your response window you will get your payment information response. Once you get your payment information correctly thats sign you are on the right track. You can do same thing with other API. Feel free to contact us if you have a problem to use our Postman Collection.
+
+![header](images/postman_checkout_detail.png)
