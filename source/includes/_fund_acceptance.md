@@ -75,11 +75,12 @@ expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH
 
 
 ### Response Parameters
-Parameter | Type | Description
----- | ---- | ----
-success | Boolean | The username used by partner for registration with OY!
-url | String | A unique transaction ID provided by partner
-message | String | Message response
+Parameter | Type | Description | Limitation
+---- | ---- | ---- | ----
+success | Boolean | Action status | true / false
+url | String | Payment link which used for payment | -
+payment_link_id | String | A unique transaction ID provided by partner | -
+message | String | Message response | -
 
 ## API Create (Invoicing)
 
@@ -232,7 +233,7 @@ disburse_in_progress | String | Bank Transfer/Card | For "Realtime" settlement o
 complete | String | Bank Transfer/Card | For "Realtime" settlement option, disbursement has been succesfully executed and received by partner
 closed | String | N/A | Payment checkout link is deleted
 
-## API Callback
+## API Payment Status
 
 An endpoint to retrieve and/or re-send the latest callback status of a transaction. We can also provide a static IP for the callback to ensure the callback sent is from OY that can be whitelisted by partners.
 
@@ -317,7 +318,7 @@ DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 ```json
 {
   "status" : true,
-  "message" : "success",
+  "message" : "success"
 }
 ```
 
@@ -326,6 +327,13 @@ DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 payment_link_id | String | payment_link_id in url param | -
+
+### Response Parameters
+
+Parameters | Type | Description | Limitation
+---- | ---- | ------ | -------
+status | Boolean | Action status | true / false
+message | String | Action message | -
 
 
 ## API Get
@@ -380,3 +388,57 @@ Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 payment_link_id | String | payment_link_id in url param | -
 
+## POSTMAN
+
+Postman is a HTTP client for testing web services which makes it easy to test APIs by providing a simple interface for making API requests and viewing responses. The easiest way to get started using our API is to use our Postman Collection. 
+
+Postman is a free client application that enables you to make calls using API easily. To make integrating with our API easier, we have created Postman Collection of all our endpoints so that you can test our APIs more easily. You can get how to install Postman in [here](https://www.postman.com/downloads/)
+
+### Import OY! Fund Acceptance Postman Collection in Postman
+
+* Open Postman. Find Import button on the upper left corner and click Import
+* Select Import from Link and paste this [URL](https://www.getpostman.com/collections/36bb9f0160c5e40c4893)
+* Once imported, navigate to Collections tab on left sidebar and you can see a folder name Payment Checkout Postman that contains all Fund Acceptance APIs.
+
+![import](images/postman_checkout_import_link.png)
+
+### Authorize Your Account to Perform API Call
+
+You can authorize your account by provide your OY! Fund Acceptance Username and API Key. Contact Us to obtain your API Key. Once you get your API Key follow this step:
+
+* Open Postman and select any API in Payment Checkout Postman collection you would like to try (in this tutorial, let’s select GET DETAIL PAYMENT / INVOICE API)
+* Once you have selected GET GET DETAIL PAYMENT / INVOICE API, navigate to Header tab. Add **Content-Type** with **application/json**, **X-Oy-Username** with your username and **X-Api-Key** with your **API Key**
+* You have now authorized your API! You can find Authorization field alongside its value in Header tab > Temporary Header section to verify the result
+
+![header](images/postman_checkout_header.png)
+
+### Create Environment in Postman
+
+To skip authorization processs for each API call, you can create a new environment to save your authorization credentials for future usage. Here’s how you can do it
+
+* In Postman, navigate to Header tab. Find and copy Authorization value in Temporary Headers section
+* Navigate to the upper right corner to find and click gear icon
+
+![header](images/postman_checkout_add_environtment.png)
+
+* In the Manage Environment window, add a name to the environment (let’s name it OY! Payment for now)
+* Type **base_url** in Variable column and paste your **https://partner.oyindonesia.com** value in Current Value column
+* Type **username** in Variable column and paste your **username** value in Current Value column
+* Type **apiKey** in Variable column and paste your **API Key** value in Current Value column
+
+![header](images/postman_checkout_setup_environtment.png)
+
+* Click Add / Update button to save
+* Close Manage Environment window
+* On the left side of the gear icon, select your new OY! Payment environment
+* Select an API and navigate to Header tab. Change your **username** value to **{{username}}**
+* Change your **API Key value** to **{{api_key}}**
+
+![header](images/postman_checkout_finish_environtment.png)
+
+
+### Make Your First API Call
+
+Try getting payment or invoice detail by hitting the blue Send button. In the response area below, you should get payment latest information. If you can get payment information successfully, you are all set up! Feel free to explore our other APIs by selecting it in the collection and launching it
+
+![header](images/postman_checkout_detail.png)
