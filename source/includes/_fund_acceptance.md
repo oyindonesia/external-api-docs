@@ -312,6 +312,8 @@ curl -X DELETE \
 
 ### HTTPS Request
 
+And End Point to ***Delete*** Payment / Invoice Link based on ***payment_link_id***.
+
 DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 
 > The above command returns JSON structured similar like this:
@@ -319,7 +321,7 @@ DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 ```json
 {
   "status" : true,
-  "message" : "success"
+  "message" : "success delete payment checkout data"
 }
 ```
 
@@ -329,12 +331,32 @@ Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 payment_link_id | String | payment_link_id in url param | -
 
-### Response Parameters
+### Success Response Parameters
 
-Parameters | Type | Description | Limitation
+Parameters | Type | Description | Value
 ---- | ---- | ------ | -------
-status | Boolean | Action status | true / false
-message | String | Action message | -
+status | Boolean | Action status | true
+message | String | Action message | success delete payment checkout data
+
+### Failed Response Parameters
+
+Parameters | Type | Description | Value
+---- | ---- | ------ | -------
+status | Boolean | Action status | false
+message | String | Action message | Can not delete ***(failed reason)***
+
+
+### Failed Reason Message Map
+
+Reason | Description | Message
+---- | ---- | ----
+**Data Not Found** | Payment Link Id not found in our system | Can not delete data is not found
+**Invalid Payment Link Id** | Payment Link Id null or invalid | Can not delete paymentLinkId is empty
+**Username Not Found** | Username not found in our system | Can not delete username is not found
+**Invalid IP Address** | User Ip address not registered on our system | Can not delete IP Address not registered
+**Invallid API Key** | User API Key is Invalid | Can not delete API Key is not valid
+**Username doesn't match** | User not eligible to delete another user payment data | Can not delete data is not match with username
+**Uneligible Payment Status** | Payment Status is not eligible to delete. Example: **COMPLETE** | Can not delete, status transaction is ***(payment status)***
 
 
 ## API Get
@@ -416,7 +438,7 @@ You must provide your authorization information to us to access our feature. Our
 
 ### Postman Global Variable Environment
 
-You can reuse all authoorization header confguration with Postman Variable Environment. It will save your time to provide us authorization information. Just follow this step:
+You can reuse all authorization header confguration with Postman Variable Environment. It will save your time to provide us authorization information. Just follow this step:
 
 * Select gear icon in the upper right corner.
 
