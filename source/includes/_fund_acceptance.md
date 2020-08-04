@@ -389,18 +389,17 @@ Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 payment_link_id | String | payment_link_id in url param | -
 
-
 ## POSTMAN
 
-Postman is an of **free** web service testing which provide all web service testing schema. Its **easy**, **fast** and **solid** software for developer to learn and maintain web service contract both from provider and consumer. Many developer use Postman as part of their web service contract testing and reference because Postman has great User Experience.
+Postman is a HTTP client for testing web services which makes it easy to test APIs by providing a simple interface for making API requests and viewing responses. The easiest way to get started using our API is to use our Postman Collection. 
 
-Postman have collection archiving tech to make us easy to store and sharing to other people to keep data consistency. We provide our Postman Collection to our partner for increase their development and knowledge learning speed. You can get how to install Postman in [here](https://www.postman.com/downloads/)
+Postman is a free client application that enables you to make calls using API easily. To make integrating with our API easier, we have created Postman Collection of all our endpoints so that you can test our APIs more easily. You can get how to install Postman in [here](https://www.postman.com/downloads/)
 
 ### Import OY! Fund Acceptance Postman Collection in Postman
 
 * Open Postman. Find Import button on the upper left corner and click Import
 * Select Import from Link and paste this [URL](https://www.getpostman.com/collections/36bb9f0160c5e40c4893)
-* Once imported, navigate to Collections tab on left sidebar and you can see a folder name **Payment Checkout Postman** that contains all Fund Acceptance APIs.
+* Once imported, navigate to Collections tab on left sidebar and you can see a folder name Payment Checkout Postman that contains all Fund Acceptance APIs.
 
 ![import](images/postman_checkout_import_link.png)
 
