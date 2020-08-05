@@ -4139,7 +4139,7 @@ Use this API to get beneficiary account details.</p>
 <h3 id='import-oy-payment-checkout-postman-collection-to-postman'>Import OY! Payment Checkout Postman Collection to Postman</h3>
 <ul>
 <li>Locate the “Import” button at the upper left corner of your Postman screen</li>
-<li>On the pop-up menu, navigate to the “Link” tab and enter this <a href="https://www.getpostman.com/collections/36bb9f0160c5e40c4893">URL</a>, click “Continue”</li>
+<li>On the pop-up menu, navigate to the “Link” tab and enter this <a href="https://www.getpostman.com/collections/36bb9f0160c5e40c4893">URL</a>, click “Continue” then “Import”</li>
 </ul>
 
 <p><img src="images/images/postman_checkout_import_link.png" alt="import" /></p>
@@ -4149,17 +4149,21 @@ Use this API to get beneficiary account details.</p>
 <li>Locate the “Collections” tab on the left menu bar of your Postman dashboard to find that a collection named “Payment Checkout Postman” has been added</li>
 </ul>
 <h3 id='api-authorization'>API Authorization</h3>
-<p>You must provide your authorization information to us to access our feature. Our authorization consist of <strong>Username</strong> and <strong>API Key</strong>. Contact Us to obtain your API Key. After you get your API Key follow this step:</p>
-
 <ul>
-<li>Select one of our API in Payment Checkout Postman collection which provided by us. Example. GET DETAIL PAYMENT / INVOICE API</li>
-<li>Open Header tab. Add <strong>Content-Type</strong> with <strong>application/json</strong>, <strong>X-Oy-Username</strong> with your username and <strong>X-Api-Key</strong> with your <strong>API Key</strong></li>
-<li>Your Autorization header configuration has been complete. You can access all our api list now.</li>
+<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. </li>
+<li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
+<li>Open the “Headers” tab and add the following key-value pairs: <strong>Content-Type</strong> with <strong>application/json</strong>, <strong>X-Oy-Username</strong> with your <em>username</em> and <strong>X-Api-Key</strong> with your <strong>API Key</strong></li>
 </ul>
 
 <p><img src="images/images/postman_checkout_header.png" alt="header" /></p>
+
+<ul>
+<li>Your Authorization header configuration has been complete. Click the blue “Send” button and check your response window to retrieve your payment information response. </li>
+</ul>
+
+<p><img src="images/images/postman_checkout_header_finish.png" alt="header_result" /></p>
 <h3 id='create-a-postman-variable-environment'>Create a Postman Variable Environment</h3>
-<p>The Postman Variable Environment provides you with the capabilities to save authorization configurations. You can use these saved configurations for all your Postman Requests.</p>
+<p>The Postman Variable Environment provides you with the capabilities to save authorization configurations. You can use these saved configurations for all your Postman Requests. This step is optional.</p>
 
 <ul>
 <li>Locate the gear icon at the upper right corner of your Postman screen</li>
@@ -4171,7 +4175,7 @@ Use this API to get beneficiary account details.</p>
 <ul>
 <li>Add <strong>base_url</strong> in the Variable column and set the value to <strong>https://partner.oyindonesia.com</strong> in Current Value column</li>
 <li>Add <strong>username</strong> in the Variable column and set the value to your <strong>username</strong> in the Current Value column</li>
-<li>Add <strong>apiKey</strong> in the Variable column and set the value to your <strong>API Key</strong> value in the Current Value column</li>
+<li>Add <strong>api_key</strong> in the Variable column and set the value to your <em>API Key</em> value in the Current Value column</li>
 <li>Click “Add” to save. You can later re-visit and update these values.</li>
 </ul>
 
@@ -4189,20 +4193,15 @@ Use this API to get beneficiary account details.</p>
 <ul>
 <li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. </li>
 <li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
-</ul>
-
-<p><img src="images/images/postman_checkout_finish_environtment.png" alt="header" /></p>
-
-<ul>
+<li>Replace <a href="https://partner.oyindonesia.com">https://partner.oyindonesia.com</a> in the GET url with <strong>{{base_url}}</strong> as the value </li>
 <li>Replace the <strong>X-Oy-Username</strong> key-value pair to <strong>{{username}}</strong> as the value </li>
-<li>Replace the <strong>X-Api-Key* key-value pair to **{{api_key}}</strong> as the value</li>
+<li>Replace the <strong>X-Api-Key</strong> key-value pair to <strong>{{api_key}}</strong> as the value</li>
+<li>Click the blue “Send” button and check your response window to retrieve your payment information response.</li>
 </ul>
 
 <p><img src="images/images/postman_checkout_detail.png" alt="header" /></p>
 
-<ul>
-<li>Click the blue “Send” button and check your response window to retrieve your payment information response.</li>
-</ul>
+<p>If you were able to complete all these steps, your environment is working perfectly and is on the right track. Feel free to test out our other API products or contact us at <a href="partner@oyindonesia.com">partner@oyindonesia.com</a> if you encountered any difficulties testing our Postman Collection. </p>
 
       </div>
       <div class="dark-box">
