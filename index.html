@@ -3089,7 +3089,9 @@ Use this API to get beneficiary account details.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
         </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pay.oyindonesia.com/id"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCESSED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-headers'>Request Headers</h3>
 <table><thead>
@@ -3231,6 +3233,12 @@ Use this API to get beneficiary account details.</p>
 <td>Message response</td>
 <td>-</td>
 </tr>
+<tr>
+<td>email_status</td>
+<td>String</td>
+<td>email status</td>
+<td>-</td>
+</tr>
 </tbody></table>
 <h2 id='api-create-invoicing'>API Create (Invoicing)</h2>
 <p>Our Invoicing product is leveraging most parameters that are defined for our payment checkout in the above section with some additional parameters that are only applicable for Inovicing product. </p>
@@ -3276,7 +3284,9 @@ Use this API to get beneficiary account details.</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
         </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pay.oyindonesia.com/invoice/id"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCESSED"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
@@ -3724,13 +3734,13 @@ Use this API to get beneficiary account details.</p>
 </tr>
 </tbody></table>
 <h2 id='api-delete'>API Delete</h2>
-<p>And End Point to <strong><em>Delete</em></strong> Payment / Invoice Link based on <strong><em>payment_link_id</em></strong> that is still active and a payment method has not been selected.</p>
+<p>And End Point to <strong><em>Delete</em></strong> Payment / Invoice Link based on <strong><em>payment_link_id</em></strong> or <strong><em>partner_tx_id</em></strong> that is still active and a payment method has not been selected.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="se">\</span>
-  https://partner.oyindonesia.com/api/payment-checkout/<span class="o">{</span>payment_link_id<span class="o">}</span><span class="se">\</span>
+  https://partner.oyindonesia.com/api/payment-checkout/<span class="o">{</span>payment_link_id_or_partner_tx_id<span class="o">}</span><span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'X-Api-key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'X-Oy-Username: yourusername'</span> 
 </code></pre></div><h3 id='https-request-5'>HTTPS Request</h3>
-<p>DELETE <code>https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}</code></p>
+<p>DELETE <code>https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}</code></p>
 
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -3846,11 +3856,11 @@ Use this API to get beneficiary account details.</p>
 <h2 id='api-get'>API Get</h2>
 <p>An endpoint to get a payment/invoice data.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="se">\</span>
-  https://partner.oyindonesia.com/api/payment-checkout/<span class="o">{</span>payment_link_id<span class="o">}</span><span class="se">\</span>
+  https://partner.oyindonesia.com/api/payment-checkout/<span class="o">{</span>payment_link_id_or_partner_tx_id<span class="o">}</span><span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'X-Api-key: apikeymu'</span> <span class="nt">-H</span> <span class="s1">'X-Oy-Username: yourusername'</span>
 </code></pre></div><h3 id='https-request-6'>HTTPS Request</h3>
-<p>GET <code>https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}</code></p>
+<p>GET <code>https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}</code></p>
 
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -3875,7 +3885,7 @@ Use this API to get beneficiary account details.</p>
         </span><span class="nl">"includeAdminFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"listDisabledPaymentMethods"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
         </span><span class="nl">"listEnabledBanks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"008"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"expirationTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1600016400000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"expirationTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-08-12 00:00:00"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"invoiceData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Dooe"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"isVaLifetime"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
