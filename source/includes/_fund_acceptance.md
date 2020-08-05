@@ -301,7 +301,7 @@ updated | String | The timestamp which indicates the latest updated time of a pa
 
 ## API Delete
 
-An endpoint to delete a payment/invoice URL that is still active and a payment method has not been selected.
+And End Point to ***Delete*** Payment / Invoice Link based on ***payment_link_id*** that is still active and a payment method has not been selected.
 
 ```shell
 curl -X DELETE \
@@ -311,8 +311,6 @@ curl -X DELETE \
 ```
 
 ### HTTPS Request
-
-And End Point to ***Delete*** Payment / Invoice Link based on ***payment_link_id***.
 
 DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 
@@ -383,7 +381,7 @@ GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
         "paymentLinkId": "703e05c0-48e3-47bd-9c22-670941d4d5fe",
         "amount": 15000,
         "username": "justkhals",
-        "senderName": "Jokowi",
+        "senderName": "John Doe",
         "senderPhoneNumber": null,
         "senderNotes": null,
         "status": "CREATED",
@@ -485,7 +483,7 @@ Prerequisites: You must have received an authorization **Username** and **API Ke
 ### Import OY! Payment Checkout Postman Collection to Postman
 
 * Locate the “Import” button at the upper left corner of your Postman screen
-* On the pop-up menu, navigate to the “Link” tab and enter this [URL](https://www.getpostman.com/collections/36bb9f0160c5e40c4893), click “Continue”
+* On the pop-up menu, navigate to the “Link” tab and enter this [URL](https://www.getpostman.com/collections/36bb9f0160c5e40c4893), click “Continue” then “Import”
 
 ![import](images/postman_checkout_import_link.png)
 
@@ -494,17 +492,20 @@ Prerequisites: You must have received an authorization **Username** and **API Ke
 
 ### API Authorization
 
-You must provide your authorization information to us to access our feature. Our authorization consist of **Username** and **API Key**. Contact Us to obtain your API Key. After you get your API Key follow this step:
-
-* Select one of our API in Payment Checkout Postman collection which provided by us. Example. GET DETAIL PAYMENT / INVOICE API
-* Open Header tab. Add **Content-Type** with **application/json**, **X-Oy-Username** with your username and **X-Api-Key** with your **API Key**
-* Your Autorization header configuration has been complete. You can access all our api list now.
+* On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. 
+* The screenshot below uses Detail > Get Detail Payment/Invoice as an example
+* Open the “Headers” tab and add the following key-value pairs: **Content-Type** with **application/json**, **X-Oy-Username** with your *username* and **X-Api-Key** with your **API Key**
 
 ![header](images/postman_checkout_header.png)
 
+* Your Authorization header configuration has been complete. Click the blue “Send” button and check your response window to retrieve your payment information response. 
+
+![header_result](images/postman_checkout_header_finish.png)
+
+
 ### Create a Postman Variable Environment
 
-The Postman Variable Environment provides you with the capabilities to save authorization configurations. You can use these saved configurations for all your Postman Requests.
+The Postman Variable Environment provides you with the capabilities to save authorization configurations. You can use these saved configurations for all your Postman Requests. This step is optional.
 
 * Locate the gear icon at the upper right corner of your Postman screen
 * On the pop-up menu, click “Add” and give an Environment name. For example, “OY! Payment”
@@ -513,7 +514,7 @@ The Postman Variable Environment provides you with the capabilities to save auth
 
 * Add **base_url** in the Variable column and set the value to **https://partner.oyindonesia.com** in Current Value column
 * Add **username** in the Variable column and set the value to your **username** in the Current Value column
-* Add **apiKey** in the Variable column and set the value to your **API Key** value in the Current Value column
+* Add **api_key** in the Variable column and set the value to your *API Key* value in the Current Value column
 * Click “Add” to save. You can later re-visit and update these values.
 
 ![header](images/postman_checkout_setup_environtment.png)
@@ -530,12 +531,11 @@ You just set your authorization value header with environment variable which alr
 
 * On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. 
 * The screenshot below uses Detail > Get Detail Payment/Invoice as an example
-
-![header](images/postman_checkout_finish_environtment.png)
-
+* Replace [https://partner.oyindonesia.com](https://partner.oyindonesia.com) in the GET url with **{{base_url}}** as the value 
 * Replace the **X-Oy-Username** key-value pair to **{{username}}** as the value 
-* Replace the **X-Api-Key* key-value pair to **{{api_key}}** as the value
+* Replace the **X-Api-Key** key-value pair to **{{api_key}}** as the value
+* Click the blue “Send” button and check your response window to retrieve your payment information response.
 
 ![header](images/postman_checkout_detail.png)
 
-* Click the blue “Send” button and check your response window to retrieve your payment information response.
+If you were able to complete all these steps, your environment is working perfectly and is on the right track. Feel free to test out our other API products or contact us at [partner@oyindonesia.com](partner@oyindonesia.com) if you encountered any difficulties testing our Postman Collection. 
