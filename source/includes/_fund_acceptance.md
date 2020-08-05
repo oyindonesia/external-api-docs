@@ -494,7 +494,7 @@ Prerequisites: You must have received an authorization **Username** and **API Ke
 
 * On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. 
 * The screenshot below uses Detail > Get Detail Payment/Invoice as an example
-* Open the “Headers” tab and add the following key-value pairs: **Content-Type** with **application/json**, **X-Oy-Username** with your *username* and **X-Api-Key** with your **API Key**
+* Open the “Headers” tab and add the following key-value pairs: **Content-Type** with **application/json**, **X-Oy-Username** with your **username** and **X-Api-Key** with your **API Key**
 
 ![header](images/postman_checkout_header.png)
 
@@ -514,7 +514,7 @@ The Postman Variable Environment provides you with the capabilities to save auth
 
 * Add **base_url** in the Variable column and set the value to **https://partner.oyindonesia.com** in Current Value column
 * Add **username** in the Variable column and set the value to your **username** in the Current Value column
-* Add **api_key** in the Variable column and set the value to your *API Key* value in the Current Value column
+* Add **api_key** in the Variable column and set the value to your **API Key** value in the Current Value column
 * Click “Add” to save. You can later re-visit and update these values.
 
 ![header](images/postman_checkout_setup_environtment.png)
