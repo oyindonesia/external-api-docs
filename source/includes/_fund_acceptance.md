@@ -379,26 +379,34 @@ GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
 ```json
 {
     "data": {
-        "partnerTxId": "partner tx id",
-        "paymentLinkId": "35281815-4784-4f55-9a61-090f5c17a191",
-        "amount": 30000,
-        "username": "username",
-        "senderName": "Sender Name",
-        "senderPhoneNumber": "sender phone number",
-        "senderNotes": "sender note",
-        "status": "status",
-        "txRefNumber": "tx_ref_number",
-        "description": "description",
+        "partnerTxId": "abc10",
+        "paymentLinkId": "703e05c0-48e3-47bd-9c22-670941d4d5fe",
+        "amount": 15000,
+        "username": "justkhals",
+        "senderName": "Jokowi",
+        "senderPhoneNumber": null,
+        "senderNotes": null,
+        "status": "CREATED",
+        "txRefNumber": null,
+        "description": "testdesc",
         "isOpen": true,
-        "step": "step",
-        "notes": "notes",
-        "phoneNumber": "phone number",
-        "email": "email",
+        "step": "input-amount",
+        "notes": "testnote",
+        "phoneNumber": "085248395555",
+        "email": "maskalgrr@gmail.com",
         "includeAdminFee": false,
         "listDisabledPaymentMethods": "",
-        "listEnabledBanks": "",
-        "expirationTime": 1595679313000,
-        "invoiceData": null
+        "listEnabledBanks": "008",
+        "expirationTime": 1600016400000,
+        "invoiceData": {
+            "fullName": "John Dooe",
+            "isVaLifetime": false,
+            "isScheduled": false,
+            "recurringStartDate": null,
+            "recurringEndDate": null,
+            "recurringFrequency": null,
+            "invoiceItems": "[{\"item\": \"AK 47\", \"quantity\": 2000, \"description\": \"Untuk Kemanan Negara\", \"price_per_item\": 2250000, \"date_of_purchase\": 1590969600000}]"
+        }
     },
     "message": "return payment checkout data",
     "status": true
@@ -412,19 +420,77 @@ Parameters | Type | Description | Limitation
 payment_link_id | String | payment_link_id in url param | -
 
 
+### Payment Response Parameters
+
+Parameters | Type | Description | Example Value
+---- | ---- | ------ | -------
+partnerTxId | String | Payment Partner Tx Id | abc123
+paymentLinkId | String | Payment Link Id | 35281815-4784-4f55-9a61-090f5c17a191
+amount | Integer | Payment Amount | 30000
+username | String | Partner Username | johndoe
+senderName | String | Payment Sender Name | Budi
+senderPhoneNumber | String | Payment Sender Phone Number | 081234567890
+senderNotes | String | Payment Notes / Subject | Cicilan Mobil - 5
+status | String | Payment Status | COMPLETE
+txRefNumber | String | Payment Transaction Reference Number | GTY67JJU
+description | String | Payment Description | Tagihan Cicilan Mobil
+isOpen | Boolean | Payment Editable Amount Capability | true
+step | String | Partner Step State | CREATED
+notes | String | Payment Notes / Subject | Cicilan Mobil - 5
+email | String | Payment Sender Email | johndoe@gmail.com
+senderPhoneNumber | String | Payment Sender Phone Number | 081234567890
+includeAdminFee | Boolean | Admin fee bills destination between partner or user | true
+listDisabledPaymentMethods | String | List Of Disable Payment Method **(VA | DEBIT_CARD | CREDIT_CARD)** | VA
+listEnabledBanks | String | Payment Method List Enable Bank for VA Payment Method: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB). | 002,008
+expirationTime | String | Payment Exporation Date and Time | "2020-08-12 00:00:00"
+invoiceData | Invoice | Data For Invoice Payment will be null | CREDIT_CARD)** | null
+
+### Invoice Response Parameters
+
+Parameters | Type | Description | Example Value
+---- | ---- | ------ | -------
+fullName | String | Invoice Payer Name | John Doe
+isVaLifetime | String | Invoice static VA status | true
+isScheduled | Boolean | Invoice Scheduled status | true
+invoiceItems | String JSON | Invoice Item List JSON | "[{\"item\": \"AK 47\", \"quantity\": 2000, \"description\": \"Untuk Kemanan Negara\", \"price_per_item\": 2250000, \"date_of_purchase\": 1590969600000}]"
+
+### Failed Response Parameters
+
+Parameters | Type | Description | Value
+---- | ---- | ------ | -------
+status | Boolean | Action status | false
+message | String | Action message | Can not get ***(failed reason)***
+
+
+### Failed Reason Message Map
+
+Reason | Description | Message
+---- | ---- | ----
+**Data Not Found** | Payment Link Id not found in our system | Can not delete data is not found
+**Invalid Payment Link Id** | Payment Link Id null or invalid | Can not get paymentLinkId is empty
+**Username Not Found** | Username not found in our system | Can not get username is not found
+**Invalid IP Address** | User Ip address not registered on our system | Can not get IP Address not registered
+**Invallid API Key** | User API Key is Invalid | Can not get API Key is not valid
+**Username doesn't match** | User not eligible to get another user payment data | Can not get data is not match with username
+
+
 ## POSTMAN
 
-Postman is an of **free** web service testing which provide all web service testing schema. Its **easy**, **fast** and **solid** software for developer to learn and maintain web service contract both from provider and consumer. Many developer use Postman as part of their web service contract testing and reference because Postman has great User Experience.
+Postman is a free web testing service that provides an easy, fast, and solid software for developers to learn and maintain a web service contract from both the provider and consumer. As such, Postman has become a widely used tool for contract testing and reference due to its User Experience. 
 
-Postman have collection archiving tech to make us easy to store and sharing to other people to keep data consistency. We provide our Postman Collection to our partner for increase their development and knowledge learning speed. You can get how to install Postman in [here](https://www.postman.com/downloads/)
+To streamline development and integration with OY!, we have created a Postman Collection at your disposal. Get started by installing Postman here.
 
-### Import OY! Fund Acceptance Postman Collection to Postman
+Prerequisites: You must have received an authorization **Username** and **API Key** from us to access our feature. Contact us at [partner@oyindonesia.com](partner@oyindonesia.com) to receive your authorization information now. 
 
-* Open Postman. select Import button on the upper left application
-* Choose Link Tab and set url value with this [URL](https://www.getpostman.com/collections/36bb9f0160c5e40c4893)
-* Collection has been imported named **Payment Checkout Postman** that contains all Fund Acceptance APIs.
+### Import OY! Payment Checkout Postman Collection to Postman
+
+* Locate the “Import” button at the upper left corner of your Postman screen
+* On the pop-up menu, navigate to the “Link” tab and enter this [URL](https://www.getpostman.com/collections/36bb9f0160c5e40c4893), click “Continue”
 
 ![import](images/postman_checkout_import_link.png)
+
+* A notification on the bottom left corner of your dashboard should appear, indicating that you have successfully imported the collection
+* Locate the “Collections” tab on the left menu bar of your Postman dashboard to find that a collection named “Payment Checkout Postman” has been added
 
 ### API Authorization
 
@@ -436,33 +502,40 @@ You must provide your authorization information to us to access our feature. Our
 
 ![header](images/postman_checkout_header.png)
 
-### Postman Global Variable Environment
+### Create a Postman Variable Environment
 
-You can reuse all authorization header confguration with Postman Variable Environment. It will save your time to provide us authorization information. Just follow this step:
+The Postman Variable Environment provides you with the capabilities to save authorization configurations. You can use these saved configurations for all your Postman Requests.
 
-* Select gear icon in the upper right corner.
+* Locate the gear icon at the upper right corner of your Postman screen
+* On the pop-up menu, click “Add” and give an Environment name. For example, “OY! Payment”
 
 ![header](images/postman_checkout_add_environtment.png)
 
-* Give Environment name. Example OY! Payment.
-* Add **base_url** in Variable column and set your **https://partner.oyindonesia.com** value in Current Value column
-* Add **username** in Variable column and set your **username** value in Current Value column
-* Add **apiKey** in Variable column and set your **API Key** value in Current Value column
+* Add **base_url** in the Variable column and set the value to **https://partner.oyindonesia.com** in Current Value column
+* Add **username** in the Variable column and set the value to your **username** in the Current Value column
+* Add **apiKey** in the Variable column and set the value to your **API Key** value in the Current Value column
+* Click “Add” to save. You can later re-visit and update these values.
 
 ![header](images/postman_checkout_setup_environtment.png)
 
-* Add / Update button to save
-* Select Environment Management on upper Right corner. Left of **eye** icon.
-* Choose on of our API and navigate to Header tab. Change your **username** value to **{{username}}**
-* Change your **API Key value** to **{{api_key}}**
+* To utilize the created environment, locate the environment management menu at the upper left corner of your screen. It should be to the left of the eye icon. 
+* In the drop down menu, choose the environment that you have just created. 
 
-![header](images/postman_checkout_finish_environtment.png)
+![header](images/postman_checkout_choose_environtment.png)
 
 You just set your authorization value header with environment variable which already configured.
 
 
-### Make Your First API Call
+### Test one of our API Calls
 
-Time to try!. Click Send Button which colored blue. Check your response window you will get your payment information response. Once you get your payment information correctly thats sign you are on the right track. You can do same thing with other API. Feel free to contact us if you have a problem to use our Postman Collection.
+* On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. 
+* The screenshot below uses Detail > Get Detail Payment/Invoice as an example
+
+![header](images/postman_checkout_finish_environtment.png)
+
+* Replace the **X-Oy-Username** key-value pair to **{{username}}** as the value 
+* Replace the **X-Api-Key* key-value pair to **{{api_key}}** as the value
 
 ![header](images/postman_checkout_detail.png)
+
+* Click the blue “Send” button and check your response window to retrieve your payment information response.
