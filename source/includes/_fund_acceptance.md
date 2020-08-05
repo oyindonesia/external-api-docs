@@ -44,7 +44,9 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/create-v2`
 {
         "success": true,
         "url": "https://pay.oyindonesia.com/id",
-        "message": "success"
+        "message": "success",
+        "email_status": "PROCESSED",
+        "payment_link_id": "id"
 }
 ```
 
@@ -81,6 +83,7 @@ success | Boolean | Action status | true / false
 url | String | Payment link which used for payment | -
 payment_link_id | String | A unique transaction ID provided by partner | -
 message | String | Message response | -
+email_status | String | email status | -
 
 ## API Create (Invoicing)
 
@@ -132,7 +135,9 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/create-invoice`
 {
         "success": true,
         "url": "https://pay.oyindonesia.com/invoice/id",
-        "message": "success"
+        "message": "success",
+        "email_status": "PROCESSED",
+        "payment_link_id": "id"
 }
 ```
 
@@ -301,18 +306,18 @@ updated | String | The timestamp which indicates the latest updated time of a pa
 
 ## API Delete
 
-And End Point to ***Delete*** Payment / Invoice Link based on ***payment_link_id*** that is still active and a payment method has not been selected.
+And End Point to ***Delete*** Payment / Invoice Link based on ***payment_link_id*** or ***partner_tx_id*** that is still active and a payment method has not been selected.
 
 ```shell
 curl -X DELETE \
-  https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}\
+  https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}\
   -H 'cache-control: no-cache' -H 'content-type: application/json' \
   -H 'X-Api-key: apikeymu' -H 'X-Oy-Username: yourusername' 
 ```
 
 ### HTTPS Request
 
-DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
+DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}`
 
 > The above command returns JSON structured similar like this:
 
@@ -363,14 +368,14 @@ An endpoint to get a payment/invoice data.
 
 ```shell
 curl -X GET \
-  https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}\
+  https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}\
   -H 'cache-control: no-cache' -H 'content-type: application/json' \
   -H 'X-Api-key: apikeymu' -H 'X-Oy-Username: yourusername'
 ```
 
 ### HTTPS Request
 
-GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
+GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}`
 
 > The above command returns JSON structured similar like this:
 
@@ -395,7 +400,7 @@ GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id}`
         "includeAdminFee": false,
         "listDisabledPaymentMethods": "",
         "listEnabledBanks": "008",
-        "expirationTime": 1600016400000,
+        "expirationTime": "2020-08-12 00:00:00",
         "invoiceData": {
             "fullName": "John Dooe",
             "isVaLifetime": false,
