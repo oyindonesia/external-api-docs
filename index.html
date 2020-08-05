@@ -4071,6 +4071,67 @@ Use this API to get beneficiary account details.</p>
 <td>&quot;[{\&quot;item\&quot;: \&quot;AK 47\&quot;, \&quot;quantity\&quot;: 2000, \&quot;description\&quot;: \&quot;Untuk Kemanan Negara\&quot;, \&quot;price_per_item\&quot;: 2250000, \&quot;date_of_purchase\&quot;: 1590969600000}]&quot;</td>
 </tr>
 </tbody></table>
+<h3 id='failed-response-parameters-2'>Failed Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Boolean</td>
+<td>Action status</td>
+<td>false</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Action message</td>
+<td>Can not get <strong><em>(failed reason)</em></strong></td>
+</tr>
+</tbody></table>
+<h3 id='failed-reason-message-map-2'>Failed Reason Message Map</h3>
+<table><thead>
+<tr>
+<th>Reason</th>
+<th>Description</th>
+<th>Message</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Data Not Found</strong></td>
+<td>Payment Link Id not found in our system</td>
+<td>Can not delete data is not found</td>
+</tr>
+<tr>
+<td><strong>Invalid Payment Link Id</strong></td>
+<td>Payment Link Id null or invalid</td>
+<td>Can not get paymentLinkId is empty</td>
+</tr>
+<tr>
+<td><strong>Username Not Found</strong></td>
+<td>Username not found in our system</td>
+<td>Can not get username is not found</td>
+</tr>
+<tr>
+<td><strong>Invalid IP Address</strong></td>
+<td>User Ip address not registered on our system</td>
+<td>Can not get IP Address not registered</td>
+</tr>
+<tr>
+<td><strong>Invallid API Key</strong></td>
+<td>User API Key is Invalid</td>
+<td>Can not get API Key is not valid</td>
+</tr>
+<tr>
+<td><strong>Username doesn&#39;t match</strong></td>
+<td>User not eligible to get another user payment data</td>
+<td>Can not get data is not match with username</td>
+</tr>
+</tbody></table>
 <h2 id='postman'>POSTMAN</h2>
 <p>Postman is a free web testing service that provides an easy, fast, and solid software for developers to learn and maintain a web service contract from both the provider and consumer. As such, Postman has become a widely used tool for contract testing and reference due to its User Experience. </p>
 
