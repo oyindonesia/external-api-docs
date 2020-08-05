@@ -332,7 +332,7 @@ DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or
 
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
-payment_link_id | String | payment_link_id in url param | -
+payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in url param | -
 
 ### Success Response Parameters
 
@@ -420,7 +420,7 @@ GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_pa
 
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
-payment_link_id | String | payment_link_id in url param | -
+payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in url param | -
 
 
 ### Payment Response Parameters
