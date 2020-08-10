@@ -206,7 +206,7 @@ recurring_start_date | String | Defining the date when the first invoice will be
 recurring_end_date | String | Username assigned to the customer by partner. | - 
 recurring_frequency | Integer | The interval of a recurring invoice to be sent to customers (in days). | -
 
-## Callback Parameters
+## Payment Checkout Callback Parameters
 
 The data on the callback will be sent using JSON format via POST data to your web hook.
 
@@ -226,7 +226,7 @@ settlement_type | String | Indicate if a transaction will be settled in realtime
 created | DateTime | The timestamp which indicates the creation time of a payment checkout link
 updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
 
-## Callback Payment Checkout Status
+## Payment Checkout Callback Status
 
 Payment Status | Type | Payment Method | Description
 ---- | ---- | ---- | ----
