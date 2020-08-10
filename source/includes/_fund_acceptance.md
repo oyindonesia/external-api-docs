@@ -226,7 +226,7 @@ settlement_type | String | Indicate if a transaction will be settled in realtime
 created | DateTime | The timestamp which indicates the creation time of a payment checkout link
 updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
 
-## Callback Response Codes
+## Callback Payment Checkout Status
 
 Payment Status | Type | Payment Method | Description
 ---- | ---- | ---- | ----
