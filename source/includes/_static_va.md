@@ -23,7 +23,7 @@ curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-
         "code": "000",
         "message": "Success"
     },
-    "amount": 10000,
+    "amount": 500000,
     "va_number": "123456789182827272",
     "bank_code": "002",
     "is_open": false,
@@ -305,7 +305,7 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 data  | Array of Object  | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>}`
 numberOfTransaction  | Integer | Total transaction
 
-## Partner Callback
+## Partner Callback Va Aggregator
 
 > Response callback:
 
