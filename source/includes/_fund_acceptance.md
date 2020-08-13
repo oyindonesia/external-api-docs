@@ -120,8 +120,7 @@ curl -X POST \
             "date_of_purchase":"2020-09-20", 
             "price_per_item": 33000  
           }
-        ],
-    	  "attachment": "string base 64 pdf"
+        ]
     }'
 ```
 
