@@ -340,6 +340,7 @@ Bank Code | Bank Name
 022 | Bank CIMB Niaga
 008 | Bank Mandiri
 009 | Bank BNI
+014 | Bank BCA
 
 ## VA aggregator Status
 ### Available Status for VA aggregator
