@@ -315,7 +315,7 @@ numberOfTransaction  | Integer | Total transaction
 	"amount": 100000,
 	"partner_user_id": "oy0000000001",
 	"success": true,
-    "tx_date" : "31/01/2020 01:01:01"
+    "tx_date" : "31/01/2020T01:01:01.000+0000"
 }
 ```
 
@@ -329,7 +329,7 @@ va_number | String(20) | Generated VA number
 amount | BigDecimal | Amount of VA transaction
 partner_user_id | String(255) | Your unique ID for specific user
 success | boolean | Payment status if success or not
-tx_date | Timestamp | Incoming payment transaction date, format dd/MM/yyyy HH:mm:ss
+tx_date | Timestamp | Incoming payment transaction date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator
