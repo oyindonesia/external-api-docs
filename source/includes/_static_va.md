@@ -11,7 +11,12 @@ Currently API VA generator is only available in our Production Environment: `htt
 Use this API to create new VA number
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/generate-static-va -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'
+curl --location --request POST https://partner.oyindonesia.com/api/generate-static-va
+--header 'content-type: application/json'
+--header 'accept: application/json'
+--header 'x-oy-username: username'
+--header 'x-api-key: apikey'
+--data-raw '{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -72,7 +77,11 @@ username_display | String(255) | VA Name, default is using username
 Get VA info using Unique VA id.
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+curl --location --request GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+--header 'content-type: application/json' 
+--header 'accept: application/json'
+--header 'x-oy-username: username'
+--header 'x-api-key: apikey'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -127,7 +136,12 @@ partner_user_id | String(255) | Your unique ID for specific user
 Update VA using unique VA id.
 
 ```shell
-curl -X PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
+curl --location --request PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+--header 'content-type: application/json'
+--header 'accept: application/json'
+--header 'x-oy-username: username'
+--header 'x-api-key: apikey' 
+--data-raw '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
 ```
 
 ```json
@@ -189,7 +203,11 @@ partner_user_id | String(255) | Your unique ID for specific user
 Get list of created VA
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/static-virtual-account?offset=0&limit=10 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+curl --location --request GET https://partner.oyindonesia.com/api/static-virtual-account?offset=0&limit=10
+--header 'content-type: application/json'
+--header 'accept: application/json'
+--header 'x-oy-username: username'
+--header 'x-api-key: apikey'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -254,7 +272,11 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 Get list of incoming transaction for specific va number.
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset=0&limit=10 -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'
+curl --location --request GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset=0&limit=10
+--header 'content-type: application/json'
+--header 'accept: application/json'
+--header 'x-oy-username: username'
+--header 'x-api-key: apikey'
 ```
 
 > The above command returns JSON structured similar like this:
