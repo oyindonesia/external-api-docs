@@ -1,8 +1,8 @@
-# VA aggregator
+# VA Aggregator
 
 API VA aggregator allows you to create a unique Virtual Account (VA) number as a payment method for your customers.
 
-### API Base URL
+### VA Aggregator API Base URL
 
 Currently API VA generator is only available in our Production Environment: `https://partner.oyindonesia.com` (Staging Environment will be available soon)
 
