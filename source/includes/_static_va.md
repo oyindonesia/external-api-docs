@@ -12,11 +12,11 @@ Use this API to create new VA number
 
 ```shell
 curl --location --request POST https://partner.oyindonesia.com/api/generate-static-va
---header 'content-type: application/json'
---header 'accept: application/json'
---header 'x-oy-username: username'
---header 'x-api-key: apikey'
---data-raw '{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: apikey' \
+-d '{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -78,9 +78,9 @@ Get VA info using Unique VA id.
 
 ```shell
 curl --location --request GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
---header 'content-type: application/json' 
---header 'accept: application/json'
---header 'x-oy-username: username'
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--header 'x-oy-username: username' \
 --header 'x-api-key: apikey'
 ```
 
@@ -137,11 +137,11 @@ Update VA using unique VA id.
 
 ```shell
 curl --location --request PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
---header 'content-type: application/json'
---header 'accept: application/json'
---header 'x-oy-username: username'
---header 'x-api-key: apikey' 
---data-raw '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: apikey' \
+-d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
 ```
 
 ```json
@@ -204,9 +204,9 @@ Get list of created VA
 
 ```shell
 curl --location --request GET https://partner.oyindonesia.com/api/static-virtual-account?offset=0&limit=10
---header 'content-type: application/json'
---header 'accept: application/json'
---header 'x-oy-username: username'
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--header 'x-oy-username: username' \
 --header 'x-api-key: apikey'
 ```
 
@@ -273,9 +273,9 @@ Get list of incoming transaction for specific va number.
 
 ```shell
 curl --location --request GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset=0&limit=10
---header 'content-type: application/json'
---header 'accept: application/json'
---header 'x-oy-username: username'
+--header 'content-type: application/json' \
+--header 'accept: application/json' \
+--header 'x-oy-username: username' \
 --header 'x-api-key: apikey'
 ```
 
