@@ -1564,11 +1564,11 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <h2 id='create-va'>Create VA</h2>
 <p>Use this API to create new VA number</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST https://partner.oyindonesia.com/api/generate-static-va
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
-<span class="nt">--data-raw</span> <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1726,9 +1726,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <h2 id='get-va-info'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> 
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span>
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
 </code></pre></div>
 <blockquote>
@@ -1838,11 +1838,11 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <h2 id='update-va'>Update VA</h2>
 <p>Update VA using unique VA id.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> 
-<span class="nt">--data-raw</span> <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1999,9 +1999,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <h2 id='get-list-of-created-va'>Get list of created VA</h2>
 <p>Get list of created VA</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span>
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
 </code></pre></div>
 <blockquote>
@@ -2093,9 +2093,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
 <p>Get list of incoming transaction for specific va number.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span>
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
 </code></pre></div>
 <blockquote>
