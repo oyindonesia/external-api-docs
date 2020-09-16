@@ -51,7 +51,7 @@ bank_code | String(3) | TRUE | - | Bank code which the VA number will be generat
 amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
 is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | FALSE | false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
+expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
 is_lifetime | Boolean | FALSE | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 username_display | String(255) | FALSE | username | VA Name, default is using username
 email | String(50) | FALSE | - | Email of user, using email standard format
@@ -67,7 +67,7 @@ id | String(36) | Unique VA ID
 bank_code | String(3) | Bank code for VA, see [VA Bank Code](#static-va-bank-code)
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
+expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | VA Name, default is using username
 
@@ -126,7 +126,7 @@ va_number | String(20) | Generated VA number
 bank_code | String(3) | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
+expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | VA Name, default is using username
 partner_user_id | String(255) | Your unique ID for specific user
@@ -178,7 +178,7 @@ Parameter | Type | Required | Default | Description
 amount | BigDecimal | FALSE | - | Amount your user must paid to complete the transaction
 is_open | Boolean | FALSE | true | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | FALSE |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
+expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
 is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 email | String(50) | FALSE | - | Email of user, using email standard format
 
@@ -193,7 +193,7 @@ va_number | String(20) | Generated VA number
 bank_code | String(3) | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Int | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
+expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | VA Name, default is using username
 partner_user_id | String(255) | Your unique ID for specific user
