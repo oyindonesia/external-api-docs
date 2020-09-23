@@ -61,7 +61,7 @@ X-Oy-Username | String | The registered partner username which access is enabled
 
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
-partner_tx_id | String | A unique transaction ID provided by partner. | A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics.
+partner_tx_id | String | A unique transaction ID provided by partner. | A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics. If empty then OY will generate automatically.
 description | String | Description of the payment checkout link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
@@ -144,7 +144,7 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/create-invoice`
 
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
-partner_tx_id | String | A unique transaction ID provided by partner. | A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics.
+partner_tx_id | String | A unique transaction ID provided by partner. | A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics. If empty then OY will generate automatically.
 description | String | Description of the payment checkout link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
