@@ -1746,7 +1746,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
-<td>Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
@@ -1870,7 +1870,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
-<td>Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
@@ -1979,9 +1979,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>-</td>
-<td>Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.</td>
-<td></td>
+<td>Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
@@ -2057,7 +2057,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
-<td>Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
