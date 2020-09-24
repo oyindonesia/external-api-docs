@@ -1568,7 +1568,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'</span>
+<span class="nt">-d</span> <span class="s1">'{"partner_user_id":"51200021","bank_code": "002","amount": 0,"is_open" : true,"is_single_use" : false,"is_lifetime": false,"expiration_time": 5,"username_display" : "va name","email": "email@mail.com"}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1586,7 +1586,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
     </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="w">
+    </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
 <p><code>POST BASE_URL/api/generate-static-va</code></p>
@@ -1605,7 +1607,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>String(255)</td>
 <td>TRUE</td>
 <td>-</td>
-<td>Your unique ID for specific user</td>
+<td>Partner unique ID for specific user</td>
 </tr>
 <tr>
 <td>bank_code</td>
@@ -1640,7 +1642,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Long</td>
 <td>FALSE</td>
 <td>-</td>
-<td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
+<td>Expiration time of the VA in minutes, e.g If VA want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty VA will be expired in 24 hour</td>
 </tr>
 <tr>
 <td>is_lifetime</td>
@@ -1654,7 +1656,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>String(255)</td>
 <td>FALSE</td>
 <td>username</td>
-<td>VA Name, default is using username</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>email</td>
@@ -1662,6 +1664,20 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>FALSE</td>
 <td>-</td>
 <td>Email of user, using email standard format</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty transaction expiration time will be the same with va expiration time</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Partner unique Transaction ID for specific transaction</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters'>Response Parameters</h3>
@@ -1693,6 +1709,11 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Unique VA ID</td>
 </tr>
 <tr>
+<td>partner_user_id</td>
+<td>String(255)</td>
+<td>Your unique ID for specific user</td>
+</tr>
+<tr>
 <td>bank_code</td>
 <td>String(3)</td>
 <td>Bank code for VA, see <a href="#static-va-bank-code">VA Bank Code</a></td>
@@ -1720,7 +1741,17 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
-<td>VA Name, default is using username</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Partner unique Transaction ID for specific transaction</td>
 </tr>
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
@@ -1749,7 +1780,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="w">
+    </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-2'>HTTPS Request</h3>
 <p><code>GET BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
@@ -1827,12 +1860,22 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
-<td>VA Name, default is using username</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
-<td>Your unique ID for specific user</td>
+<td>Partner unique ID for specific user,</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Partner unique Transaction ID for specific transaction</td>
 </tr>
 </tbody></table>
 <h2 id='update-va'>Update VA</h2>
@@ -1842,7 +1885,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'</span>
+<span class="nt">-d</span> <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002","trx_expiration_time":5,"partner_trx_id":"TRX0002"}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1857,7 +1900,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
     </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaname"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="w">
+    </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-3'>HTTPS Request</h3>
 <p><code>PUT BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
@@ -1931,6 +1976,20 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>-</td>
 <td>Email of user, using email standard format</td>
 </tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>-</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.</td>
+<td></td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>-</td>
+<td>Partner unique Transaction ID for specific transaction</td>
+<td></td>
+</tr>
 </tbody></table>
 <h3 id='response-parameters-3'>Response Parameters</h3>
 <table><thead>
@@ -1988,12 +2047,22 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
-<td>VA Name, default is using username</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
-<td>Your unique ID for specific user</td>
+<td>Partner unique ID for specific user</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Partner unique Transaction ID for specific transaction</td>
 </tr>
 </tbody></table>
 <h2 id='get-list-of-created-va'>Get list of created VA</h2>
@@ -2021,7 +2090,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
             </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
+            </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
@@ -2034,7 +2105,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
             </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54321"</span><span class="w">
+            </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54321"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2205,7 +2278,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oy0000000001"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tx_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="w">
+    </span><span class="nl">"tx_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VA Name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Once user successfully do the payment, our system will make a callback to your system</p>
@@ -2242,6 +2318,21 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Timestamp</td>
 <td>Incoming payment transaction date, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code></td>
 </tr>
+<tr>
+<td>username_display</td>
+<td>String(255)</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
+</tr>
+<tr>
+<td>trx_expiration_date</td>
+<td>Long</td>
+<td>Transaction expiration date, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code></td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Partner unique Transaction ID for specific transaction</td>
+</tr>
 </tbody></table>
 <h2 id='va-aggregator-bank-code'>VA aggregator Bank Code</h2><h3 id='available-bank-for-va-aggregator'>Available Bank for VA aggregator</h3>
 <table><thead>
@@ -2275,6 +2366,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Bank BCA</td>
 </tr>
 </tbody></table>
+
+<p>For enable VA Bank BCA, we need partner to send documents to us, <a href='mailto:business@oyindonesia.com'>Contact us for more information!</a></p>
 <h2 id='va-aggregator-status'>VA aggregator Status</h2><h3 id='available-status-for-va-aggregator'>Available Status for VA aggregator</h3>
 <table><thead>
 <tr>
@@ -2293,6 +2386,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>EXPIRED</td>
 <td>This status means that VA is expired. You cannot accept or make update to VA Number with this status.</td>
+</tr>
+<tr>
+<td>STATIC_TRX_EXPIRED</td>
+<td>This status means that Transaction is expired. If VA have a unlimited lifetime, you can create a new transaction using update va info.</td>
 </tr>
 <tr>
 <td>COMPLETE</td>
