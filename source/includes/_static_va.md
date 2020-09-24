@@ -16,7 +16,7 @@ curl --location --request POST https://partner.oyindonesia.com/api/generate-stat
 --header 'accept: application/json' \
 --header 'x-oy-username: username' \
 --header 'x-api-key: apikey' \
--d '{"partner_user_id": "oy00000001","bank_code": "002","amount": 500000}'
+-d '{"partner_user_id":"51200021","bank_code": "002","amount": 0,"is_open" : true,"is_single_use" : false,"is_lifetime": false,"expiration_time": 5,"username_display" : "va name","email": "email@mail.com"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -35,7 +35,9 @@ curl --location --request POST https://partner.oyindonesia.com/api/generate-stat
     "is_single_use": false,
     "expiration_time": 1582783668175,
     "va_status": "WAITING_PAYMENT",
-    "username_display": "va name"
+    "username_display": "va name",
+    "trx_expiration_time" : 1582783668175,
+    "partner_trx_id" : "TRX0001"
 }
 ```
 
@@ -46,17 +48,19 @@ curl --location --request POST https://partner.oyindonesia.com/api/generate-stat
 
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
-partner_user_id | String(255) | TRUE | - | Your unique ID for specific user
+partner_user_id | String(255) | TRUE | - | Partner unique ID for specific user
 bank_code | String(3) | TRUE | - | Bank code which the VA number will be generated
 amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
 is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | FALSE | false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
-expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
+expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, e.g If VA want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty VA will be expired in 24 hour
 is_lifetime | Boolean | FALSE | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
-username_display | String(255) | FALSE | username | VA Name, default is using username
+username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
 email | String(50) | FALSE | - | Email of user, using email standard format
+trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty transaction expiration time will be the same with va expiration time
+partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID for specific transaction
 
-### Response Parameters
+### Response Parameters 
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -64,12 +68,15 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
 id | String(36) | Unique VA ID
+partner_user_id | String(255) | Your unique ID for specific user
 bank_code | String(3) | Bank code for VA, see [VA Bank Code](#static-va-bank-code)
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA. 
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
-username_display | String(255) | VA Name, default is using username
+username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
+trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.
+partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
 
 
 ## Get VA Info
@@ -102,7 +109,9 @@ curl --location --request GET https://partner.oyindonesia.com/api/static-virtual
     "va_status": "WAITING_PAYMENT",
     "username_display": "username",
     "amount_detected": 0,
-    "partner_user_id": "123456"
+    "partner_user_id": "123456",
+    "trx_expiration_time": 1582790250609,
+    "partner_trx_id": "TRX0001"
 }
 ```
 
@@ -128,8 +137,10 @@ is_open | Boolean | True means VA number can accept any amount, False means VA n
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
-username_display | String(255) | VA Name, default is using username
-partner_user_id | String(255) | Your unique ID for specific user
+username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
+partner_user_id | String(255) | Partner unique ID for specific user,
+trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.
+partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
 
 ## Update VA
 
@@ -141,7 +152,7 @@ curl --location --request PUT https://partner.oyindonesia.com/api/static-virtual
 --header 'accept: application/json' \
 --header 'x-oy-username: username' \
 --header 'x-api-key: apikey' \
--d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002"}'
+-d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002","trx_expiration_time":5,"partner_trx_id":"TRX0002"}'
 ```
 
 ```json
@@ -159,7 +170,9 @@ curl --location --request PUT https://partner.oyindonesia.com/api/static-virtual
     "expiration_time": 1582802205412,
     "va_status": "WAITING_PAYMENT",
     "username_display": "vaname",
-    "partner_user_id": "12345677"
+    "partner_user_id": "12345677",
+    "trx_expiration_time": 1582802205412,
+    "partner_trx_id": "TRX0002"
 }
 ```
 
@@ -181,6 +194,8 @@ is_single_use | Boolean | FALSE |  false | True means that this VA should be clo
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
 is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 email | String(50) | FALSE | - | Email of user, using email standard format
+trx_expiration_time | Long | - | Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.
+partner_trx_id | String(255) | - | Partner unique Transaction ID for specific transaction
 
 ### Response Parameters
 
@@ -195,8 +210,10 @@ is_open | Boolean | True means VA number can accept any amount, False means VA n
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
-username_display | String(255) | VA Name, default is using username
-partner_user_id | String(255) | Your unique ID for specific user
+username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
+partner_user_id | String(255) | Partner unique ID for specific user
+trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.
+partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
 
 ## Get list of created VA
 
@@ -227,7 +244,9 @@ curl --location --request GET https://partner.oyindonesia.com/api/static-virtual
             "va_status": "EXPIRED",
             "username_display": "username",
             "amount_detected": 400000,
-            "partner_user_id": "12345"
+            "partner_user_id": "12345",
+            "trx_expiration_time": 1582802205412,
+            "partner_trx_id": "TRX0002"
         },
         {
             "id": "de51383f-1557-409c-8542-dcb74ca76375",
@@ -240,7 +259,9 @@ curl --location --request GET https://partner.oyindonesia.com/api/static-virtual
             "va_status": "EXPIRED",
             "username_display": "username",
             "amount_detected": 500000,
-            "partner_user_id": "54321"
+            "partner_user_id": "54321",
+            "trx_expiration_time": 1582802205412,
+            "partner_trx_id": "TRX0002"
         }
     ],
     "status": {
@@ -337,7 +358,10 @@ numberOfTransaction  | Integer | Total transaction
 	"amount": 100000,
 	"partner_user_id": "oy0000000001",
 	"success": true,
-    "tx_date" : "31/01/2020T01:01:01.000+0000"
+    "tx_date" : "31/01/2020T01:01:01.000+0000",
+    "username_display": "VA Name",
+    "trx_expiration_date": "31/01/2020T01:01:01.000+0000",
+    "partner_trx_id": "TRX0002"
 }
 ```
 
@@ -352,6 +376,10 @@ amount | BigDecimal | Amount of VA transaction
 partner_user_id | String(255) | Your unique ID for specific user
 success | boolean | Payment status if success or not
 tx_date | Timestamp | Incoming payment transaction date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
+username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
+trx_expiration_date | Long | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
+partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
+
 
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator
@@ -364,6 +392,8 @@ Bank Code | Bank Name
 009 | Bank BNI
 014 | Bank BCA
 
+For enable VA Bank BCA, we need partner to send documents to us, <a href='mailto:business@oyindonesia.com'>Contact us for more information!</a>
+
 ## VA aggregator Status
 ### Available Status for VA aggregator
 Status | Description
@@ -371,5 +401,6 @@ Status | Description
 WAITING_PAYMENT | This status means that VA is active and can receive a payment
 PAYMENT_DETECTED | This status means that there are incoming payment to VA Number
 EXPIRED | This status means that VA is expired. You cannot accept or make update to VA Number with this status.
+STATIC_TRX_EXPIRED | This status means that Transaction is expired. If VA have a unlimited lifetime, you can create a new transaction using update va info.
 COMPLETE | This status means that VA is closed/complete after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute `is_single_use` true can have this status.
 
