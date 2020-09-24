@@ -75,7 +75,7 @@ is_single_use | Boolean | True means that this VA should be closed/complete once
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.
+trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
 
 
@@ -139,7 +139,7 @@ expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 partner_user_id | String(255) | Partner unique ID for specific user,
-trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.
+trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
 
 ## Update VA
@@ -194,7 +194,7 @@ is_single_use | Boolean | FALSE |  false | True means that this VA should be clo
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
 is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 email | String(50) | FALSE | - | Email of user, using email standard format
-trx_expiration_time | Long | - | Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.
+trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. 
 partner_trx_id | String(255) | - | Partner unique Transaction ID for specific transaction
 
 ### Response Parameters
@@ -212,7 +212,7 @@ expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 partner_user_id | String(255) | Partner unique ID for specific user
-trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, 1 means no expiration time.
+trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
 
 ## Get list of created VA
