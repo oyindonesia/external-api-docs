@@ -384,7 +384,7 @@ partner_trx_id | String(255) | Partner unique Transaction ID for specific transa
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator
 Bank Code | Bank Name
---------- | -------
+--------- | ---------
 002 | Bank BRI
 013 | Bank Permata
 022 | Bank CIMB Niaga
@@ -392,7 +392,33 @@ Bank Code | Bank Name
 009 | Bank BNI
 014 | Bank BCA
 
-For enable VA Bank BCA, we need partner to send documents to us, <a href='mailto:business@oyindonesia.com'>Contact us for more information!</a>
+## List of Documents
+To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative. 
+
+### Common Documents
+No | Document
+--- | ---------
+1 | Taxpayer Registration Number
+2 | National ID
+
+### Documents for Foundation, or Donation Partner
+No | Documents
+--- | ---------
+1 | Akta Pendirian Perusahaan
+2 | Keputusan Dewan Pembina Yayasan
+3 | Persetujuan Menhumham
+4 | Taxpayer Registration Number Organization
+5 | Izin Usaha
+6 | Surat Keterangan Domisili
+7 | Sertifikat Yayasan
+
+### Documents for Other Company 
+No | Documents
+--- | ---------
+1 | Trade Business License
+2 | Company's Deed
+3 | Company Registration Certificate
+4 | Decree of Minister Justine and Human Right
 
 ## VA aggregator Status
 ### Available Status for VA aggregator
