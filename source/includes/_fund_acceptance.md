@@ -224,6 +224,23 @@ va_number | String | VA number to be used on payment if using Virtual Account
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 created | DateTime | The timestamp which indicates the creation time of a payment checkout link
 updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
+invoice | Boolean | The invoice which indicates the transaction is invoice or not.
+
+Additional data on the callback if invoice = true
+
+Parameter | Type | Description
+--------- | ---- | -----------
+invoice_ID | String | The invoice id.
+description | String | The descrition.
+expiration | DateTime | The expiration time.
+full_name | String | The full name.
+email | String | The email.
+final_amount | BigDecimal | The final amount.
+paid_amount | BigDecimal | The paid amount.
+created_date | DateTime | The created date.
+last_updated_date | DateTime | The last update date.
+payment_method | String | The payment method.
+payment_bank | String | The payment bank.
 
 ## Payment Checkout Callback Status
 
