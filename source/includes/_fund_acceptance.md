@@ -254,7 +254,7 @@ curl -X POST \
 Payment Status | Type | Payment Method | Description
 ---- | ---- | ---- | ----
 waiting_payment | String | Bank Transfer | Payer triggers a payment status check for an unpaid VA
-expired_va | String | Bank Transfer | An unpaid VA has expired and payer can retry a payment
+expired | String | Bank Transfer | The payment link has been expired.
 charge_in_progress | String | Card | OTP for card payment method has been succesfully entered and processed
 charge_sucess | String | Bank Transfer/Card | A payment has been successfully received by OY
 charge_failed | String | Card | OTP for card payment method has been succesfully entered but payment is rejected
