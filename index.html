@@ -3829,6 +3829,77 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>DateTime</td>
 <td>The timestamp which indicates the latest updated time of a payment checkout link due to status update</td>
 </tr>
+<tr>
+<td>invoice</td>
+<td>Boolean</td>
+<td>The invoice which indicates the transaction is invoice or not.</td>
+</tr>
+</tbody></table>
+
+<p>Additional data on the callback if invoice = true</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>invoice_ID</td>
+<td>String</td>
+<td>The invoice id.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>The descrition.</td>
+</tr>
+<tr>
+<td>expiration</td>
+<td>DateTime</td>
+<td>The expiration time.</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>String</td>
+<td>The full name.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>The email.</td>
+</tr>
+<tr>
+<td>final_amount</td>
+<td>BigDecimal</td>
+<td>The final amount.</td>
+</tr>
+<tr>
+<td>paid_amount</td>
+<td>BigDecimal</td>
+<td>The paid amount.</td>
+</tr>
+<tr>
+<td>created_date</td>
+<td>DateTime</td>
+<td>The created date.</td>
+</tr>
+<tr>
+<td>last_updated_date</td>
+<td>DateTime</td>
+<td>The last update date.</td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td>String</td>
+<td>The payment method.</td>
+</tr>
+<tr>
+<td>payment_bank</td>
+<td>String</td>
+<td>The payment bank.</td>
+</tr>
 </tbody></table>
 <h2 id='payment-checkout-callback-status'>Payment Checkout Callback Status</h2>
 <table><thead>
