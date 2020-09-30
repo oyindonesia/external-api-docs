@@ -242,6 +242,19 @@ last_updated_date | DateTime | The last update date.
 payment_method | String | The payment method.
 payment_bank | String | The payment bank.
 
+
+```shell
+curl -X POST \
+  https://partner.url.com/api/callback\
+  -H 'cache-control: no-cache' -H 'content-type: application/json' \
+  -d '{"partner_tx_id":"938bca2f-7771-47a1-9315-13507cf7bba3","amount":60000,"sender_phone":"082114845847","sender_note":"sender notes","created":"2020-09-29T20:57:41","tx_ref_number":"20097G1X2329","sender_name":"Sender Name","va_number":"8932540000050129","invoice":false,"updated":"2020-09-29T20:59:08","payment_method":"VA","status":"complete","sender_bank":"008","settlement_type":"non_realtime"}'
+
+curl -X POST \
+  https://partner.url.com/api/callback\
+  -H 'cache-control: no-cache' -H 'content-type: application/json' \
+  -d '{"partner_tx_id":"51f5640c-5d79-4957-8781-bbb6e122e51f","amount":15600,"sender_phone":"6282114845847","sender_note":"notes","created":"2020-09-29T21:00:32","tx_ref_number":"2009LJBNDOQ3","description":"desc","sender_name":"Sender API","payment_bank":"008","full_name":"Roberto Fernandez","paid_amount":15600,"invoice_ID":"4f539bce-8fe3-4514-b4e2-c171fd85d1fd","expiration":1602180061000,"final_amount":11600,"va_number":"8932560000000015","invoice":true,"created_date":1601388032512,"last_updated_date":1601388054630,"updated":"2020-09-29T21:00:54","payment_method":"VA","email":"","status":"complete","sender_bank":"008","settlement_type":"non_realtime"}'
+```
+
 ## Payment Checkout Callback Status
 
 Payment Status | Type | Payment Method | Description
