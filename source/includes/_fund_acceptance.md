@@ -223,7 +223,7 @@ payment_method | String | The payment method used by user to complete a payment.
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 created | DateTime | The timestamp which indicates the creation time of a payment checkout link
 updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
-invoice | Boolean | The invoice which indicates the transaction is invoice or not.
+is_invoice | Boolean | The invoice which indicates the transaction is invoice or not.
 description | String | The description of the payment checkout/invoice link.
 expiration | DateTime | The expiration time of the payment checkout/invoice link.
 email | String | the email address for the payment checkout/invoice link to be sent.
