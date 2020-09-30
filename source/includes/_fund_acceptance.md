@@ -219,28 +219,22 @@ sender_phone | String | Phone number of a payer for a transaction
 sender_note | String | Additional notes from a payer for a transaction
 status | String | The status of a transaction (e.g. success/failed/processing)
 sender_bank | String | The bank code used by a payer to do payment
-payment_method | String | The payment method used in a transaction such as CC (Credit Card), DC (Debit Card) or VA (Virtual Account)
-va_number | String | VA number to be used on payment if using Virtual Account
+payment_method | String | The payment method used by user to complete a payment.
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 created | DateTime | The timestamp which indicates the creation time of a payment checkout link
 updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
 invoice | Boolean | The invoice which indicates the transaction is invoice or not.
+description | String | The description of the payment checkout/invoice link.
+expiration | DateTime | The expiration time of the payment checkout/invoice link.
+email | String | the email address for the payment checkout/invoice link to be sent.
+paid_amount | BigDecimal | the total amount that a user has paid.
 
 Additional data on the callback if invoice = true
 
 Parameter | Type | Description
 --------- | ---- | -----------
 invoice_ID | String | The invoice id.
-description | String | The descrition.
-expiration | DateTime | The expiration time.
 full_name | String | The full name.
-email | String | The email.
-final_amount | BigDecimal | The final amount.
-paid_amount | BigDecimal | The paid amount.
-created_date | DateTime | The created date.
-last_updated_date | DateTime | The last update date.
-payment_method | String | The payment method.
-payment_bank | String | The payment bank.
 
 
 ```shell
