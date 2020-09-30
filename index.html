@@ -3807,12 +3807,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>payment_method</td>
 <td>String</td>
-<td>The payment method used in a transaction such as CC (Credit Card), DC (Debit Card) or VA (Virtual Account)</td>
-</tr>
-<tr>
-<td>va_number</td>
-<td>String</td>
-<td>VA number to be used on payment if using Virtual Account</td>
+<td>The payment method used by user to complete a payment.</td>
 </tr>
 <tr>
 <td>settlement_type</td>
@@ -3830,9 +3825,29 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>The timestamp which indicates the latest updated time of a payment checkout link due to status update</td>
 </tr>
 <tr>
-<td>invoice</td>
+<td>is_invoice</td>
 <td>Boolean</td>
 <td>The invoice which indicates the transaction is invoice or not.</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String</td>
+<td>The description of the payment checkout/invoice link.</td>
+</tr>
+<tr>
+<td>expiration</td>
+<td>DateTime</td>
+<td>The expiration time of the payment checkout/invoice link.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>the email address for the payment checkout/invoice link to be sent.</td>
+</tr>
+<tr>
+<td>paid_amount</td>
+<td>BigDecimal</td>
+<td>the total amount that a user has paid.</td>
 </tr>
 </tbody></table>
 
@@ -3851,54 +3866,9 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>The invoice id.</td>
 </tr>
 <tr>
-<td>description</td>
-<td>String</td>
-<td>The descrition.</td>
-</tr>
-<tr>
-<td>expiration</td>
-<td>DateTime</td>
-<td>The expiration time.</td>
-</tr>
-<tr>
 <td>full_name</td>
 <td>String</td>
 <td>The full name.</td>
-</tr>
-<tr>
-<td>email</td>
-<td>String</td>
-<td>The email.</td>
-</tr>
-<tr>
-<td>final_amount</td>
-<td>BigDecimal</td>
-<td>The final amount.</td>
-</tr>
-<tr>
-<td>paid_amount</td>
-<td>BigDecimal</td>
-<td>The paid amount.</td>
-</tr>
-<tr>
-<td>created_date</td>
-<td>DateTime</td>
-<td>The created date.</td>
-</tr>
-<tr>
-<td>last_updated_date</td>
-<td>DateTime</td>
-<td>The last update date.</td>
-</tr>
-<tr>
-<td>payment_method</td>
-<td>String</td>
-<td>The payment method.</td>
-</tr>
-<tr>
-<td>payment_bank</td>
-<td>String</td>
-<td>The payment bank.</td>
 </tr>
 </tbody></table>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
