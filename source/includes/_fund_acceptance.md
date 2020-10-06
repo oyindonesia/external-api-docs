@@ -431,7 +431,7 @@ GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_pa
             "recurringStartDate": null,
             "recurringEndDate": null,
             "recurringFrequency": null,
-            "invoiceItems": "[{\"item\": \"AK 47\", \"quantity\": 2000, \"description\": \"Untuk Kemanan Negara\", \"price_per_item\": 2250000, \"date_of_purchase\": 1590969600000}]"
+            "invoiceItems": "[{\"item\": \"Semen Gresik\", \"quantity\": 2000, \"description\": \"Grade B\", \"price_per_item\": 2250000, \"date_of_purchase\": 1590969600000}]"
         }
     },
     "message": "return payment checkout data",
@@ -478,7 +478,7 @@ Parameters | Type | Description | Example Value
 fullName | String | Invoice Payer Name | John Doe
 isVaLifetime | String | Invoice static VA status | true
 isScheduled | Boolean | Invoice Scheduled status | true
-invoiceItems | String JSON | Invoice Item List JSON | "[{\"item\": \"AK 47\", \"quantity\": 2000, \"description\": \"Untuk Kemanan Negara\", \"price_per_item\": 2250000, \"date_of_purchase\": 1590969600000}]"
+invoiceItems | String JSON | Invoice Item List JSON | "[{\"item\": \"Semen Gresik\", \"quantity\": 2000, \"description\": \"Grade B\", \"price_per_item\": 2250000, \"date_of_purchase\": 1590969600000}]"
 
 ### Failed Response Parameters
 
