@@ -37,7 +37,8 @@ curl --location --request POST https://partner.oyindonesia.com/api/generate-stat
     "va_status": "WAITING_PAYMENT",
     "username_display": "va name",
     "trx_expiration_time" : 1582783668175,
-    "partner_trx_id" : "TRX0001"
+    "partner_trx_id" : "TRX0001",
+    "trx_counter": -1
 }
 ```
 
@@ -54,11 +55,12 @@ amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the tra
 is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | FALSE | false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, e.g If VA want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty VA will be expired in 24 hour
-is_lifetime | Boolean | FALSE | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
+is_lifetime | Boolean | FALSE | FALSE | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
 email | String(50) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty transaction expiration time will be the same with va expiration time
 partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID for specific transaction
+trx_counter | Int | FALSE | -1/1 | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 
 ### Response Parameters 
 
@@ -77,6 +79,7 @@ va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
+trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 
 
 ## Get VA Info
@@ -111,7 +114,8 @@ curl --location --request GET https://partner.oyindonesia.com/api/static-virtual
     "amount_detected": 0,
     "partner_user_id": "123456",
     "trx_expiration_time": 1582790250609,
-    "partner_trx_id": "TRX0001"
+    "partner_trx_id": "TRX0001",
+    "trx_counter" : -1
 }
 ```
 
@@ -141,6 +145,8 @@ username_display | String(255) | Customizable VA display name that will be seen 
 partner_user_id | String(255) | Partner unique ID for specific user,
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
+trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+
 
 ## Update VA
 
@@ -172,7 +178,8 @@ curl --location --request PUT https://partner.oyindonesia.com/api/static-virtual
     "username_display": "vaname",
     "partner_user_id": "12345677",
     "trx_expiration_time": 1582802205412,
-    "partner_trx_id": "TRX0002"
+    "partner_trx_id": "TRX0002",
+    "trx_counter": 1
 }
 ```
 
@@ -196,6 +203,7 @@ is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then
 email | String(50) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. 
 partner_trx_id | String(255) | - | Partner unique Transaction ID for specific transaction
+trx_counter | Int | FALSE | -1/1 | Update transaction counter to limit number of transaction that can be receive by va number
 
 ### Response Parameters
 
@@ -214,6 +222,7 @@ username_display | String(255) | Customizable VA display name that will be seen 
 partner_user_id | String(255) | Partner unique ID for specific user
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
+trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 
 ## Get list of created VA
 
