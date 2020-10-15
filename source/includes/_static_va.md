@@ -199,6 +199,7 @@ amount | BigDecimal | FALSE | - | Amount your user must paid to complete the tra
 is_open | Boolean | FALSE | true | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | FALSE |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
+username_display | String | - | - | Customizable VA display name that will be seen by user, If empty willl be using partner username
 is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 email | String(50) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. 
