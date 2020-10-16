@@ -395,6 +395,26 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#offline-api" class="toc-h1 toc-link" data-title="Offline API">Offline API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#initiate-transaction" class="toc-h2 toc-link" data-title="Initiate Transaction">Initiate Transaction</a>
+                  </li>
+                  <li>
+                    <a href="#transaction-info" class="toc-h2 toc-link" data-title="Transaction Info">Transaction Info</a>
+                  </li>
+                  <li>
+                    <a href="#refrersh-code" class="toc-h2 toc-link" data-title="Refrersh Code">Refrersh Code</a>
+                  </li>
+                  <li>
+                    <a href="#callback" class="toc-h2 toc-link" data-title="Callback">Callback</a>
+                  </li>
+                  <li>
+                    <a href="#api-offline-response-codes" class="toc-h2 toc-link" data-title="API Offline Response Codes">API Offline Response Codes</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='mailto:business@oyindonesia.com'>Ask for Integration</a></li>
@@ -1984,13 +2004,6 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>FALSE</td>
 <td>-</td>
 <td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
-</tr>
-<tr>
-<td>username_display</td>
-<td>String</td>
-<td>-</td>
-<td>-</td>
-<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>is_lifetime</td>
@@ -4596,6 +4609,468 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <p><img src="images/images/postman_checkout_detail.png" alt="header" /></p>
 
 <p>If you were able to complete all these steps, your environment is working perfectly and is on the right track. Feel free to test out our other API products or contact us at <a href="partner@oyindonesia.com">partner@oyindonesia.com</a> if you encountered any difficulties testing our Postman Collection. </p>
+<h1 id='offline-api'>Offline API</h1>
+<p>Offline APIs provide you possibility to withdraw and deposit money from OY offline channel such as Cash Recycle Machine (CRM) and convenience store</p>
+<h2 id='initiate-transaction'>Initiate Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api-offline/initiate <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_tx_id": "withdraw_request_123", "receiver_phone_number": "081234567890", "amount": 50000, "transaction_type": "CASH_OUT"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"897412"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-10-2020 17:12:16"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"receiver_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6281234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdrawal-request-123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-5678"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH_OUT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"inactive_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-14 13:12:16.786"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15 10:12:16.786"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api-offline/initiate</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Unique Payout ID for a specific request, generated by partner.</td>
+</tr>
+<tr>
+<td>receiver_phone_number</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>User&#39;s phone number that will be used for withdraw or deposit process.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>TRUE</td>
+<td>The amount that going to withdraw or deposit</td>
+</tr>
+<tr>
+<td>transaction_type</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Type of transaction. CASH_OUT for withdrawal and CASH_IN for deposit.</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Unique Payout ID for a specific request, generated by partner.</td>
+</tr>
+<tr>
+<td>trx_id</td>
+<td>String(36)</td>
+<td>Unique Payout ID from OY!. Partner can use this ID for settlement.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of transaction (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String(6)</td>
+<td>Required OTP code for Deposit or Withdrawal Process</td>
+</tr>
+<tr>
+<td>receiver_phone_number</td>
+<td>String(255)</td>
+<td>User&#39;s phone number that</td>
+</tr>
+<tr>
+<td>transaction_type</td>
+<td>String(255)</td>
+<td>Type of transaction. CASH_OUT for withdrawal and CASH_IN for deposit.</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String(19)</td>
+<td>Execution time of Disbursement in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+<tr>
+<td>inactive_at</td>
+<td>String(19)</td>
+<td>Time that the otp code need to ber refreshed(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+<tr>
+<td>expired_at</td>
+<td>String(19)</td>
+<td>Time that otp code will expired and no longer can&#39;t be used.(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+</tbody></table>
+<h2 id='transaction-info'>Transaction Info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/remit-status <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "withdraw_request_123", "send_callback": "true"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"897412"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-10-2020 17:12:16"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"receiver_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6281234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdrawal-request-123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-5678"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH_OUT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"inactive_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-14 13:12:16.786"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15 10:12:16.786"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>To get status of a transaction request, you can call this API. You may need to call this API few times until getting a final status (success / failed)</p>
+
+<p>This API offers an option to send you a callback status of the transaction request to a specific URL.
+Please contact us and submit a callback URL if you need a callback status of a transaction request.</p>
+<h3 id='https-request-2'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api-offline/tx-info</code></p>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Unique Payout ID for a specific request, generated by partner</td>
+</tr>
+<tr>
+<td>send_callback</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>A flag to indiciate if the status of the transaction request need to be re-sent as a callback or not</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-2'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Unique Payout ID for a specific request, generated by partner.</td>
+</tr>
+<tr>
+<td>trx_id</td>
+<td>String(36)</td>
+<td>Unique Payout ID from OY!. Partner can use this ID for settlement.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of transaction (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String(6)</td>
+<td>Required OTP code for Deposit or Withdrawal Process</td>
+</tr>
+<tr>
+<td>receiver_phone_number</td>
+<td>String(255)</td>
+<td>User&#39;s phone number that</td>
+</tr>
+<tr>
+<td>transaction_type</td>
+<td>String(255)</td>
+<td>Type of transaction. CASH_OUT for withdrawal and CASH_IN for deposit.</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String(19)</td>
+<td>Execution time of Disbursement in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+<tr>
+<td>inactive_at</td>
+<td>String(19)</td>
+<td>Time that the otp code need to ber refreshed(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+<tr>
+<td>expired_at</td>
+<td>String(19)</td>
+<td>Time that otp code will expired and no longer can&#39;t be used.(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+</tbody></table>
+<h2 id='refrersh-code'>Refrersh Code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/refresh-code <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "withdraw_request_123"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"970524"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_tx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw_request_123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"inactive_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-14 13:12:16.786"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15 10:12:16.786"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to refresh code that have been exceeded the interval active time 3 hours.</p>
+<h3 id='https-request-3'>HTTPS Request</h3>
+<p><code>POST BASE_URL/api-offline/refresh-code</code></p>
+<h3 id='request-parameters-3'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Unique Payout ID for a specific request, generated by partner</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-3'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>code</td>
+<td>String(6)</td>
+<td>Required OTP code for Deposit or Withdrawal Process</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Unique Payout ID for a specific request, generated by partner</td>
+</tr>
+<tr>
+<td>inactive_at</td>
+<td>String(19)</td>
+<td>Time that the otp code need to ber refreshed(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+<tr>
+<td>expired_at</td>
+<td>String(19)</td>
+<td>Time that otp code will expired and no longer can&#39;t be used.(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+</tbody></table>
+<h2 id='callback'>Callback</h2>
+<blockquote>
+<p>Response callback:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"897412"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-10-2020 17:12:16"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"receiver_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6281234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdrawal-request-123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-5678"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH_OUT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-14 13:12:16.786"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_updated_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15 10:12:16.786"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Once a transaction request is finished, our system will make a callback status of that transaction request to your system</p>
+
+<p>Please contact us and submit a callback URL if you need a callback status of a transaction request.</p>
+<h3 id='callback-parameters'>Callback Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Unique Payout ID for a specific request, generated by partner.</td>
+</tr>
+<tr>
+<td>trx_id</td>
+<td>String(36)</td>
+<td>Unique Payout ID from OY!. Partner can use this ID for settlement.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of transaction (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>code</td>
+<td>String(6)</td>
+<td>Required OTP code for Deposit or Withdrawal Process</td>
+</tr>
+<tr>
+<td>receiver_phone_number</td>
+<td>String(255)</td>
+<td>User&#39;s phone number that</td>
+</tr>
+<tr>
+<td>transaction_type</td>
+<td>String(255)</td>
+<td>Type of transaction. CASH_OUT for withdrawal and CASH_IN for deposit.</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String(19)</td>
+<td>Execution time of Disbursement in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+<tr>
+<td>created_date</td>
+<td>String(19)</td>
+<td>Executionn time of trasaction in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+<tr>
+<td>last_updated_date</td>
+<td>String(19)</td>
+<td>Latest status change of a transaction. Example from &#39;Pending&#39; to &#39;Success&#39; (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+</tr>
+</tbody></table>
+<h2 id='api-offline-response-codes'>API Offline Response Codes</h2>
+<p>These are the list of possible status codes for API Offline:</p>
+
+<table><thead>
+<tr>
+<th>Payment Status</th>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Final</td>
+<td>Transasction Request has been completed (SUCCESS)</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Non-Final</td>
+<td>Request is In Progress (Waiting for Deposit or Withdrawal)</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Final</td>
+<td>Request is Rejected (User ID is not Found)</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Final</td>
+<td>Request is Rejected (User ID is not Active)</td>
+</tr>
+<tr>
+<td>203</td>
+<td>Final</td>
+<td>Request is Rejected (Duplicate Partner Tx ID)</td>
+</tr>
+<tr>
+<td>204</td>
+<td>Final</td>
+<td>Request is Rejected (Partner Tx ID is Not Found)</td>
+</tr>
+<tr>
+<td>206</td>
+<td>Final</td>
+<td>Request is Rejected (Partner Deposit Balance is Not Enough)</td>
+</tr>
+<tr>
+<td>207</td>
+<td>Final</td>
+<td>Request is Rejected (Request IP Address is not Registered)</td>
+</tr>
+<tr>
+<td>208</td>
+<td>Final</td>
+<td>Request is Rejected (API Key is not Valid)</td>
+</tr>
+<tr>
+<td>215</td>
+<td>Final</td>
+<td>Request is Rejected (Invalid denom amount request)</td>
+</tr>
+<tr>
+<td>221</td>
+<td>Final</td>
+<td>Request is Rejected (Invalid transaction type)</td>
+</tr>
+<tr>
+<td>222</td>
+<td>Final</td>
+<td>Transaction is EXPIRED</td>
+</tr>
+<tr>
+<td>224</td>
+<td>Final</td>
+<td>Request is Rejected (Amount disburse does not reach Min amount)</td>
+</tr>
+<tr>
+<td>225</td>
+<td>Final</td>
+<td>Request is Rejected (Max amount per transaction exceed for disburse)</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Final</td>
+<td>Transaction is FAILED</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
