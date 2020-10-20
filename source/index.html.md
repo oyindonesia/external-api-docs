@@ -19,6 +19,7 @@ includes:
   - kyc
   - pfm
   - fund_acceptance
+  - offline_api
 
 search: true
 ---
