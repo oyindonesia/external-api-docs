@@ -22,6 +22,8 @@ includes:
   - offline_api
 
 search: true
+
+code_clipboard: true
 ---
 
 # Introduction
