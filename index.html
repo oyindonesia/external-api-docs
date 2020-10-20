@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>OY! API Documentation</title>
 
-    <style>
+    <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight .gh {
@@ -146,47 +146,36 @@
 }
 .highlight .vc {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .nn {
   color: #ffffff;
-  background-color: #272822;
-}
-.highlight .nl {
-  color: #ffffff;
-  background-color: #272822;
 }
 .highlight .ni {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .bp {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .vg {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .vi {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .nv, .highlight .vm {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .w {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight {
   color: #ffffff;
-  background-color: #272822;
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
-  background-color: #272822;
+}
+.highlight .nl {
+  color: #f92672;
 }
 .highlight .ow {
   color: #f92672;
@@ -207,20 +196,107 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-75f6955d.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-e9bde216.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="" />
+        <img src="images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.svg" class="logo" alt="" />
+      <img src="images/logo-83679f03.svg" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="javascript">javascript</a>
@@ -443,7 +519,7 @@
 <li>Deposit: Balance stored in OY! Account which will be deducted for any successful disbursement</li>
 </ul>
 <h1 id='business-flow'>Business Flow</h1>
-<p><img src="images/images/img_business_flow.png" alt="Signup for Trial" /></p>
+<p><img src="images/images/img_business_flow-a714abbb.png" alt="Signup for Trial" /></p>
 
 <p>After partner has acquired access to OY! API Services, then:</p>
 
@@ -4556,7 +4632,7 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <li>On the pop-up menu, navigate to the “Link” tab and enter this <a href="https://www.getpostman.com/collections/36bb9f0160c5e40c4893">URL</a>, click “Continue” then “Import”</li>
 </ul>
 
-<p><img src="images/images/postman_checkout_import_link.png" alt="import" /></p>
+<p><img src="images/images/postman_checkout_import_link-c96dfc0b.png" alt="import" /></p>
 
 <ul>
 <li>A notification on the bottom left corner of your dashboard should appear, indicating that you have successfully imported the collection</li>
@@ -4569,13 +4645,13 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <li>Open the “Headers” tab and add the following key-value pairs: <strong>Content-Type</strong> with <strong>application/json</strong>, <strong>X-Oy-Username</strong> with your <strong>username</strong> and <strong>X-Api-Key</strong> with your <strong>API Key</strong></li>
 </ul>
 
-<p><img src="images/images/postman_checkout_header.png" alt="header" /></p>
+<p><img src="images/images/postman_checkout_header-cd91633b.png" alt="header" /></p>
 
 <ul>
 <li>Your Authorization header configuration has been complete. Click the blue “Send” button and check your response window to retrieve your payment information response. </li>
 </ul>
 
-<p><img src="images/images/postman_checkout_header_finish.png" alt="header_result" /></p>
+<p><img src="images/images/postman_checkout_header_finish-aef7ab5b.png" alt="header_result" /></p>
 <h3 id='create-a-postman-variable-environment'>Create a Postman Variable Environment</h3>
 <p>The Postman Variable Environment provides you with the capabilities to save authorization configurations. You can use these saved configurations for all your Postman Requests. This step is optional.</p>
 
@@ -4584,7 +4660,7 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <li>On the pop-up menu, click “Add” and give an Environment name. For example, “OY! Payment”</li>
 </ul>
 
-<p><img src="images/images/postman_checkout_add_environtment.png" alt="header" /></p>
+<p><img src="images/images/postman_checkout_add_environtment-61a56609.png" alt="header" /></p>
 
 <ul>
 <li>Add <strong>base_url</strong> in the Variable column and set the value to <strong>https://partner.oyindonesia.com</strong> in Current Value column</li>
@@ -4593,14 +4669,14 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <li>Click “Add” to save. You can later re-visit and update these values.</li>
 </ul>
 
-<p><img src="images/images/postman_checkout_setup_environtment.png" alt="header" /></p>
+<p><img src="images/images/postman_checkout_setup_environtment-33bb8cfb.png" alt="header" /></p>
 
 <ul>
 <li>To utilize the created environment, locate the environment management menu at the upper left corner of your screen. It should be to the left of the eye icon. </li>
 <li>In the drop down menu, choose the environment that you have just created. </li>
 </ul>
 
-<p><img src="images/images/postman_checkout_choose_environtment.png" alt="header" /></p>
+<p><img src="images/images/postman_checkout_choose_environtment-6a6204fb.png" alt="header" /></p>
 
 <p>You just set your authorization value header with environment variable which already configured.</p>
 <h3 id='test-one-of-our-api-calls'>Test one of our API Calls</h3>
@@ -4613,7 +4689,7 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <li>Click the blue “Send” button and check your response window to retrieve your payment information response.</li>
 </ul>
 
-<p><img src="images/images/postman_checkout_detail.png" alt="header" /></p>
+<p><img src="images/images/postman_checkout_detail-86fd86c0.png" alt="header" /></p>
 
 <p>If you were able to complete all these steps, your environment is working perfectly and is on the right track. Feel free to test out our other API products or contact us at <a href="partner@oyindonesia.com">partner@oyindonesia.com</a> if you encountered any difficulties testing our Postman Collection. </p>
 <h1 id='api-offline'>API Offline</h1>
