@@ -439,4 +439,3 @@ PAYMENT_DETECTED | This status means that there are incoming payment to VA Numbe
 EXPIRED | This status means that VA is expired. You cannot accept or make update to VA Number with this status.
 STATIC_TRX_EXPIRED | This status means that Transaction is expired. If VA have a unlimited lifetime, you can create a new transaction using update va info.
 COMPLETE | This status means that VA is closed/complete after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute `is_single_use` true can have this status.
-
