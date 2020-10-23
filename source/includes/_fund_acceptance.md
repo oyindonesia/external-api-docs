@@ -42,7 +42,7 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/create-v2`
 
 ```json
 {
-        "success": true,
+        "status": true,
         "url": "https://pay.oyindonesia.com/id",
         "message": "success",
         "email_status": "PROCESSED",
@@ -79,7 +79,7 @@ expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH
 ### Response Parameters
 Parameter | Type | Description | Limitation
 ---- | ---- | ---- | ----
-success | Boolean | Action status | true / false
+status | Boolean | Action status | true / false
 url | String | Payment link which used for payment | -
 payment_link_id | String | A unique transaction ID provided by partner | -
 message | String | Message response | -
@@ -132,7 +132,7 @@ POST `https://partner.oyindonesia.com/api/payment-checkout/create-invoice`
 
 ```json
 {
-        "success": true,
+        "status": true,
         "url": "https://pay.oyindonesia.com/invoice/id",
         "message": "success",
         "email_status": "PROCESSED",
@@ -189,7 +189,7 @@ POST `https://partner.oyindonesia.com/api/TBD`
 
 ```json
 {
-        "success": true,
+        "status": true,
         "url": "https://pay.oyindonesia.com/v2?98999987uydfuiwk73636hehnrm",
         "email_status" : "delivered"
 }
