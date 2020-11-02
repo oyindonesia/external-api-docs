@@ -5,7 +5,8 @@ Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts
 ## Bank Account Inquiry
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/inquiry -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390"}'
+curl -X POST https://partner.oyindonesia.com/api/inquiry 
+-H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myusern' -H 'x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390"}'
 ```
 
 > The above command returns JSON structured similar like this:
