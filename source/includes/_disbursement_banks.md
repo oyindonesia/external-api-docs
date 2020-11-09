@@ -40,6 +40,7 @@ Bank Codes | Bank Name
 115	| Bank Jambi
 115 | Bank Jambi Syariah
 116	| Bank Aceh
+116 | Bank Aceh Syariah
 117	| Bank SUMUT
 118	| Bank NAGARI
 119	| Bank Riau
