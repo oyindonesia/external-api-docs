@@ -9,8 +9,10 @@ Bank Codes | Bank Name
 009	| Bank BNI
 011	| Bank Danamon
 013	| Bank Permata
+013 | Bank Permata Syariah
 014	| Bank BCA
 016	| BII Maybank
+016 | Maybank Syariah
 019	| Bank Panin
 022	| CIMB Niaga
 023	| Bank UOB INDONESIA
@@ -36,11 +38,14 @@ Bank Codes | Bank Name
 113	| Bank JATENG
 114	| Bank Jatim
 115	| Bank Jambi
+115 | Bank Jambi Syariah
 116	| Bank Aceh
 117	| Bank SUMUT
 118	| Bank NAGARI
 119	| Bank Riau
+119 | Bank Riau Syariah
 120	| Bank SUMSEL BABEL
+120 | Bank SUMSEL BABEL Syariah
 121	| Bank Lampung
 122	| Bank KALSEL
 123	| Bank KALBAR
@@ -49,6 +54,7 @@ Bank Codes | Bank Name
 126	| Bank SULSELBAR
 127	| Bank Sulut
 128	| Bank NTB
+128 | Bank NTB Syariah
 129	| Bank BPD Bali
 130	| Bank NTT
 131	| Bank Maluku
