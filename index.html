@@ -572,7 +572,7 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 <h1 id='fund-disbursement'>Fund Disbursement</h1>
 <p>Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts in Indonesia easily and real-time.</p>
 <h2 id='bank-account-inquiry'>Bank Account Inquiry</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/inquiry 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myusern'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390"}'</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390"}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -648,7 +648,7 @@ Use this API to get beneficiary account details.</p>
 <td>Timestamp api hit (format: dd-MM-yyyy HH:mm:ss)</td>
 </tr>
 </tbody></table>
-<h2 id='disbursement'>Disbursement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/remit <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> <span class="nt">-d</span> <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com test@email.com"}'</span>
+<h2 id='disbursement'>Disbursement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/remit <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com test@email.com"}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -841,7 +841,7 @@ Use this API to get beneficiary account details.</p>
 <td>Latest status change of a disbursement. Example from &#39;Pending&#39; to &#39;Success&#39; (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
-<h2 id='get-disbursement-status'>Get Disbursement Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/remit-status <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "1234-asde", "send_callback": "true"}'</span>
+<h2 id='get-disbursement-status'>Get Disbursement Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/remit-status <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "1234-asde", "send_callback": "true"}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1156,12 +1156,20 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Bank Permata</td>
 </tr>
 <tr>
+<td>013</td>
+<td>Bank Permata Syariah</td>
+</tr>
+<tr>
 <td>014</td>
 <td>Bank BCA</td>
 </tr>
 <tr>
 <td>016</td>
 <td>BII Maybank</td>
+</tr>
+<tr>
+<td>016</td>
+<td>Maybank Syariah</td>
 </tr>
 <tr>
 <td>019</td>
@@ -1264,8 +1272,16 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Bank Jambi</td>
 </tr>
 <tr>
+<td>115</td>
+<td>Bank Jambi Syariah</td>
+</tr>
+<tr>
 <td>116</td>
 <td>Bank Aceh</td>
+</tr>
+<tr>
+<td>116</td>
+<td>Bank Aceh Syariah</td>
 </tr>
 <tr>
 <td>117</td>
@@ -1280,8 +1296,16 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Bank Riau</td>
 </tr>
 <tr>
+<td>119</td>
+<td>Bank Riau Syariah</td>
+</tr>
+<tr>
 <td>120</td>
 <td>Bank SUMSEL BABEL</td>
+</tr>
+<tr>
+<td>120</td>
+<td>Bank SUMSEL BABEL Syariah</td>
 </tr>
 <tr>
 <td>121</td>
@@ -1314,6 +1338,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <tr>
 <td>128</td>
 <td>Bank NTB</td>
+</tr>
+<tr>
+<td>128</td>
+<td>Bank NTB Syariah</td>
 </tr>
 <tr>
 <td>129</td>
