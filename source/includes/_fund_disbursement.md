@@ -6,7 +6,7 @@ Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts
 
 ```shell
 curl -X POST https://partner.oyindonesia.com/api/inquiry 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myusern' -H 'x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390"}'
+-H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -50,7 +50,7 @@ timestamp | Timestamp | Timestamp api hit (format: dd-MM-yyyy HH:mm:ss)
 ## Disbursement
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/remit -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com test@email.com"}'
+curl -X POST https://partner.oyindonesia.com/api/remit -H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com test@email.com"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -141,7 +141,7 @@ last_updated_date | String(19) | Latest status change of a disbursement. Example
 ## Get Disbursement Status
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/remit-status -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:7654321' -d '{"partner_trx_id": "1234-asde", "send_callback": "true"}'
+curl -X POST https://partner.oyindonesia.com/api/remit-status -H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"partner_trx_id": "1234-asde", "send_callback": "true"}'
 ```
 
 > The above command returns JSON structured similar like this:
