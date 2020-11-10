@@ -257,7 +257,7 @@ waiting_payment | String | Bank Transfer | Payer triggers a payment status check
 expired | String | Bank Transfer | The payment link has been expired.
 charge_in_progress | String | Card | OTP for card payment method has been succesfully entered and processed
 charge_sucess | String | Bank Transfer/Card | A payment has been successfully received by OY
-charge_failed | String | Card | OTP for card payment method has been succesfully entered but payment is rejected
+failed | String | Card | OTP for card payment method has been succesfully entered but payment is rejected
 disburse_in_progress | String | Bank Transfer/Card | For "Realtime" settlement option, disbursement is currently in progress to partner's registered bank account
 complete | String | Bank Transfer/Card | For "Realtime" settlement option, disbursement has been succesfully executed and received by partner
 closed | String | N/A | Payment checkout link is deleted
