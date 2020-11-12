@@ -251,16 +251,15 @@ curl -X POST \
 
 ## Payment Checkout Callback Status
 
-Payment Status | Type | Payment Method | Description
----- | ---- | ---- | ----
-waiting_payment | String | Bank Transfer | Payer triggers a payment status check for an unpaid VA
-expired | String | Bank Transfer | The payment link has been expired.
-charge_in_progress | String | Card | OTP for card payment method has been succesfully entered and processed
-charge_sucess | String | Bank Transfer/Card | A payment has been successfully received by OY
-failed | String | Card | OTP for card payment method has been succesfully entered but payment is rejected
-disburse_in_progress | String | Bank Transfer/Card | For "Realtime" settlement option, disbursement is currently in progress to partner's registered bank account
-complete | String | Bank Transfer/Card | For "Realtime" settlement option, disbursement has been succesfully executed and received by partner
-closed | String | N/A | Payment checkout link is deleted
+Payment Status | Type | Payment Method | final/non final | Description
+---- | ---- | ---- | ---- | ----
+waiting_payment | String | Bank Transfer | non_final | Payer triggers a payment status check for an unpaid VA
+expired | String | Bank Transfer | final | The payment link has been expired.
+charge_in_progress | String | Card | non_final | OTP for card payment method has been succesfully entered and processed
+charge_sucess | String | Bank Transfer/Card | non_final | A payment has been successfully received by OY
+failed | String | Card | non_final | OTP for card payment method has been succesfully entered but payment is rejected
+complete | String | Bank Transfer/Card | final | For "Realtime" settlement option, disbursement has been succesfully executed and received by partner
+closed | String | N/A | final | Payment checkout link is deleted
 
 ## API Payment Status
 
