@@ -36,7 +36,8 @@ curl -X POST \
 
 ### HTTPS Request
 
-POST `https://partner.oyindonesia.com/api/payment-checkout/create-v2`
+**[Production]** POST `https://partner.oyindonesia.com/api/payment-checkout/create-v2`<br/>
+**[Staging]** POST `https://api-stg.oyindonesia.com/api/payment-checkout/create-v2`
 
 > Json Response
 
@@ -126,7 +127,8 @@ curl -X POST \
 
 ### HTTPS Request
 
-POST `https://partner.oyindonesia.com/api/payment-checkout/create-invoice`
+**[Production]** POST `https://partner.oyindonesia.com/api/payment-checkout/create-invoice`<br/>
+**[Staging]** POST `https://api-stg.oyindonesia.com/api/payment-checkout/create-invoice`
 
 > Json Response
 
@@ -183,7 +185,8 @@ curl -X POST \
 
 ### HTTPS Request
 
-POST `https://partner.oyindonesia.com/api/TBD`
+**[Production]** POST `https://partner.oyindonesia.com/api/TBD`<br/>
+**[Staging]** POST `https://api-stg.oyindonesia.com/api/TBD`
 
 > Json Response
 
@@ -269,7 +272,8 @@ Please contact us to submit a request of an API Key and IP whitelisting.
 
 ### HTTPS Request
 
-GET `https://partner.oyindonesia.com/api/payment-checkout/status`
+**[Production]** GET `https://partner.oyindonesia.com/api/payment-checkout/status`<br/>
+**[Staging]** GET `https://api-stg.oyindonesia.com/api/payment-checkout/status`
 
 > To retrieve a callback result for a particular transaction, use following code from your platform:
 
@@ -339,7 +343,8 @@ curl -X DELETE \
 
 ### HTTPS Request
 
-DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}`
+**[Production]** DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}`<br/>
+**[Staging]** DELETE `https://api-stg.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}`
 
 > The above command returns JSON structured similar like this:
 
@@ -397,7 +402,8 @@ curl -X GET \
 
 ### HTTPS Request
 
-GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}`
+**[Production]** GET `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}`<br/>
+**[Staging]** GET `https://api-stg.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}`
 
 > The above command returns JSON structured similar like this:
 
