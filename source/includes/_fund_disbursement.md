@@ -28,7 +28,8 @@ curl -X POST https://partner.oyindonesia.com/api/inquiry
 Use this API to get beneficiary account details.
 
 ### HTTPS Request
-`POST BASE_URL/api/inquiry`
+**[Production]** `POST https://partner.oyindonesia.com/api/inquiry`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/inquiry`
 
 ### Request Parameters
 
@@ -73,7 +74,8 @@ curl -X POST https://partner.oyindonesia.com/api/remit -H 'content-type: applica
 Use this API to start disbursing money to a specific beneficiary account.
 
 ### HTTPS Request
-`POST BASE_URL/api/remit`
+**[Production]** `POST https://partner.oyindonesia.com/api/remit`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/remit`
 
 ### Request Parameters
 
@@ -170,7 +172,8 @@ This API offers an option to send you a callback status of the disbursement requ
 Please contact us and submit a callback URL if you need a callback status of a disbursement request.
 
 ### HTTPS Request
-`POST BASE_URL/api/remit-status`
+**[Production]** `POST https://partner.oyindonesia.com/api/remit-status`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/remit-status`
 
 ### Request Parameters
 
@@ -220,7 +223,8 @@ curl -X GET 'https://partner.oyindonesia.com/api/balance' -H 'Content-Type: appl
 Use this API to get partner balance.
 
 ### HTTPS Request
-`GET BASE_URL/api/balance`
+**[Production]** `GET https://partner.oyindonesia.com/api/balance`<br>
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/balance`
 
 ### Response Parameters
 
@@ -267,7 +271,8 @@ curl -X POST https://partner.oyindonesia.com/api/scheduled-remit
 ```
 
 ### HTTPS Request
-`POST BASE_URL/api/scheduled-remit`
+**[Production]** `POST https://partner.oyindonesia.com/api/scheduled-remit`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/scheduled-remit`
 
 There are two types of scheduled disbursement:
 
@@ -338,7 +343,8 @@ curl -X PUT https://partner.oyindonesia.com/api/scheduled-remit
 ```
 
 ### HTTPS Request
-`PUT BASE_URL/api/scheduled-remit`
+**[Production]** `PUT https://partner.oyindonesia.com/api/scheduled-remit`<br>
+**[Staging]** `PUT https://api-stg.oyindonesia.com/api/scheduled-remit`
 
 ### Request Parameters
 
@@ -395,7 +401,8 @@ curl -X DELETE https://partner.oyindonesia.com/api/scheduled-remit
 ```
 
 ### HTTPS Request
-`DELETE BASE_URL/api/scheduled-remit`
+**[Production]** `DELETE https://partner.oyindonesia.com/api/scheduled-remit`<br>
+**[Staging]** `DELETE https://api-stg.oyindonesia.com/api/scheduled-remit`
 
 ### Request Parameters
 
@@ -450,7 +457,8 @@ curl -X POST https://partner.oyindonesia.com/api/scheduled-remit/retry
 ```
 
 ### HTTPS Request
-`POST BASE_URL/api/scheduled-remit/retry`
+**[Production]** `POST https://partner.oyindonesia.com/api/scheduled-remit/retry`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/scheduled-remit/retry`
 
 ### Request Parameters
 

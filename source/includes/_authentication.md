@@ -12,7 +12,6 @@ Disbursement API can be requested through HTTPS Request to OY! API Base URL endp
 
 ### API Base URL
 
-Development Environment: `https://sandbox.oyindonesia.com/staging/partner`
 Production Environment: `https://partner.oyindonesia.com`
 
 ## HTTPS Header
