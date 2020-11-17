@@ -4,14 +4,15 @@ API VA aggregator allows you to create a unique Virtual Account (VA) number as a
 
 ### VA Aggregator API Base URL
 
-Currently API VA generator is only available in our Production Environment: `https://partner.oyindonesia.com` (Staging Environment will be available soon)
+**[Production Base URL]**: `<%= config[:endpoint_prod] %>`<br/>
+**[Staging Base URL]**: `<%= config[:endpoint_stg] %>`
 
 ## Create VA
 
 Use this API to create new VA number
 
 ```shell
-curl --location --request POST https://partner.oyindonesia.com/api/generate-static-va
+curl --location --request POST <%= config[:endpoint_prod] %>/api/generate-static-va
 --header 'content-type: application/json' \
 --header 'accept: application/json' \
 --header 'x-oy-username: username' \
@@ -43,7 +44,8 @@ curl --location --request POST https://partner.oyindonesia.com/api/generate-stat
 ```
 
 ### HTTPS Request
-`POST BASE_URL/api/generate-static-va`
+**[Production]** `POST <%= config[:endpoint_prod] %>/api/generate-static-va` <br/>
+**[Staging]** `POST <%= config[:endpoint_stg] %>/api/generate-static-va`
 
 ### Request Parameters
 
@@ -53,7 +55,7 @@ partner_user_id | String(255) | TRUE | - | Partner unique ID for specific user
 bank_code | String(3) | TRUE | - | Bank code which the VA number will be generated
 amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
 is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
-is_single_use | Boolean | FALSE | false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+is_single_use | Boolean | FALSE | false | True means that this VA should be closed once there is a successful payment that is being made to this VA.
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, e.g If VA want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty VA will be expired in 24 hour
 is_lifetime | Boolean | FALSE | FALSE | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
@@ -62,7 +64,7 @@ trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes,
 partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID for specific transaction
 trx_counter | Int | FALSE | -1/1 | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 
-### Response Parameters 
+### Response Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -73,7 +75,7 @@ id | String(36) | Unique VA ID
 partner_user_id | String(255) | Your unique ID for specific user
 bank_code | String(3) | Bank code for VA, see [VA Bank Code](#static-va-bank-code)
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA. 
+is_single_use | Boolean | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
@@ -87,7 +89,7 @@ trx_counter | Int | Transaction counter to limit number of transaction that can 
 Get VA info using Unique VA id.
 
 ```shell
-curl --location --request GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+curl --location --request GET <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212121-212121
 --header 'content-type: application/json' \
 --header 'accept: application/json' \
 --header 'x-oy-username: username' \
@@ -120,7 +122,8 @@ curl --location --request GET https://partner.oyindonesia.com/api/static-virtual
 ```
 
 ### HTTPS Request
-`GET BASE_URL/api/static-virtual-account/<ID>`
+**[Production]** `GET <%= config[:endpoint_prod] %>/api/static-virtual-account/<ID>` <br/>
+**[Staging]** `GET <%= config[:endpoint_stg] %>/api/static-virtual-account/<ID>`
 
 ### URL Parameters
 
@@ -138,7 +141,7 @@ amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
 bank_code | String(3) | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA.
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
@@ -153,7 +156,7 @@ trx_counter | Int | Transaction counter to limit number of transaction that can 
 Update VA using unique VA id.
 
 ```shell
-curl --location --request PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+curl --location --request PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212121-212121
 --header 'content-type: application/json' \
 --header 'accept: application/json' \
 --header 'x-oy-username: username' \
@@ -184,7 +187,8 @@ curl --location --request PUT https://partner.oyindonesia.com/api/static-virtual
 ```
 
 ### HTTPS Request
-`PUT BASE_URL/api/static-virtual-account/<ID>`
+**[Production]** `PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/<ID>` <br/>
+**[Staging]** `PUT <%= config[:endpoint_stg] %>/api/static-virtual-account/<ID>`
 
 ### URL Parameter
 Parameter | Type | Required | Default | Description
@@ -197,12 +201,12 @@ Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
 amount | BigDecimal | FALSE | - | Amount your user must paid to complete the transaction
 is_open | Boolean | FALSE | true | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
-is_single_use | Boolean | FALSE |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+is_single_use | Boolean | FALSE |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA.
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
 username_display | String | - | - | Customizable VA display name that will be seen by user, If empty willl be using partner username
 is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 email | String(50) | FALSE | - | Email of user, using email standard format
-trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. 
+trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5.
 partner_trx_id | String(255) | - | Partner unique Transaction ID for specific transaction
 trx_counter | Int | FALSE | -1/1 | Update transaction counter to limit number of transaction that can be receive by va number
 
@@ -216,7 +220,7 @@ amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
 bank_code | String(3) | Bank code for VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA. 
+is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA.
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
@@ -230,7 +234,7 @@ trx_counter | Int | Transaction counter to limit number of transaction that can 
 Get list of created VA
 
 ```shell
-curl --location --request GET https://partner.oyindonesia.com/api/static-virtual-account?offset=0&limit=10
+curl --location --request GET <%= config[:endpoint_prod] %>/api/static-virtual-account?offset=0&limit=10
 --header 'content-type: application/json' \
 --header 'accept: application/json' \
 --header 'x-oy-username: username' \
@@ -282,7 +286,8 @@ curl --location --request GET https://partner.oyindonesia.com/api/static-virtual
 ```
 
 ### HTTPS Request
-`GET BASE_URL/api/static-virtual-account?offset=<offset>&limit=<limit>`
+**[Production]** `GET <%= config[:endpoint_prod] %>/api/static-virtual-account?offset=<offset>&limit=<limit>` <br/>
+**[Staging]** `GET <%= config[:endpoint_stg] %>/api/static-virtual-account?offset=<offset>&limit=<limit>`
 
 ### Request Parameters
 Parameter | Type | Default | Description
@@ -303,7 +308,7 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 Get list of incoming transaction for specific va number.
 
 ```shell
-curl --location --request GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset=0&limit=10
+curl --location --request GET <%= config[:endpoint_prod] %>/api/va-tx-history/12345676788898?offset=0&limit=10
 --header 'content-type: application/json' \
 --header 'accept: application/json' \
 --header 'x-oy-username: username' \
@@ -337,7 +342,8 @@ curl --location --request GET https://partner.oyindonesia.com/api/va-tx-history/
 ```
 
 ### HTTPS Request
-`GET BASE_URL/api/va-tx-history/<ID>?offset=<offset>&limit=<limit>`
+**[Production]** `GET <%= config[:endpoint_prod] %>/api/va-tx-history/<ID>?offset=<offset>&limit=<limit>` <br/>
+**[Staging]** `GET <%= config[:endpoint_stg] %>/api/va-tx-history/<ID>?offset=<offset>&limit=<limit>`
 
 ### URL Parameter
 Parameter | Type | Required | Default | Description
@@ -403,7 +409,7 @@ Bank Code | Bank Name
 014 | Bank BCA
 
 ## List of Documents
-To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative. 
+To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.
 
 ### Common Documents
 No | Document
@@ -422,7 +428,7 @@ No | Documents
 6 | Surat Keterangan Domisili
 7 | Sertifikat Yayasan
 
-### Documents for Other Company 
+### Documents for Other Company
 No | Documents
 --- | ---------
 1 | Trade Business License

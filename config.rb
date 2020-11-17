@@ -54,6 +54,13 @@ configure :build do
   # activate :gzip
 end
 
+# Global Variables
+set :endpoint_prod, 'https://partner.oyindonesia.com'
+config[:endpoint_prod]
+set :endpoint_stg, 'https://api-stg.oyindonesia.com'
+config[:endpoint_stg]
+
+
 # Deploy Configuration
 # If you want Middleman to listen on a different port, you can set that below
 set :port, 4567
