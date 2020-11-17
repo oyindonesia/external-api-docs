@@ -1,0 +1,960 @@
+<h1 id='va-aggregator'>VA Aggregator</h1>
+<p>API VA aggregator allows you to create a unique Virtual Account (VA) number as a payment method for your customers.</p>
+<h3 id='va-aggregator-api-base-url'>VA Aggregator API Base URL</h3>
+<p><strong>[Production Base URL]</strong>: <code>https://partner.oyindonesia.com</code><br/>
+<strong>[Staging Base URL]</strong>: <code>https://api-stg.oyindonesia.com</code></p>
+<h2 id='create-va'>Create VA</h2>
+<p>Use this API to create new VA number</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST https://partner.oyindonesia.com/api/generate-static-va
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{"partner_user_id":"51200021","bank_code": "002","amount": 0,"is_open" : true,"is_single_use" : false,"is_lifetime": false,"expiration_time": 5,"username_display" : "va name","email": "email@mail.com"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345b1-23be-45670-a123-5ca678f12b3e"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789182827272"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/generate-static-va</code> <br/>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/generate-static-va</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_user_id</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>Partner unique ID for specific user</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String(3)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>Bank code which the VA number will be generated</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>FALSE</td>
+<td>0</td>
+<td>Amount your user must paid to complete the transaction, if is_open is false, amount is required.</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>true</td>
+<td>If set true means VA number can accept any amount, field <code>amount</code> can be optional, if set false means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>false</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Long</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Expiration time of the VA in minutes, e.g If VA want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty VA will be expired in 24 hour</td>
+</tr>
+<tr>
+<td>is_lifetime</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>FALSE</td>
+<td>If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.</td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>username</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String(50)</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Email of user, using email standard format</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty transaction expiration time will be the same with va expiration time</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Partner unique Transaction ID for specific transaction</td>
+</tr>
+<tr>
+<td>trx_counter</td>
+<td>Int</td>
+<td>FALSE</td>
+<td>-1/1</td>
+<td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String(20)</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String(36)</td>
+<td>Unique VA ID</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String(255)</td>
+<td>Your unique ID for specific user</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String(3)</td>
+<td>Bank code for VA, see <a href="#static-va-bank-code">VA Bank Code</a></td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Long</td>
+<td>Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String(16)</td>
+<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String(255)</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Partner unique Transaction ID for specific transaction</td>
+</tr>
+<tr>
+<td>trx_counter</td>
+<td>Int</td>
+<td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
+</tr>
+</tbody></table>
+<h2 id='get-va-info'>Get VA Info</h2>
+<p>Get VA info using Unique VA id.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1233456000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_counter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-2'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>Unique VA id, you can get this once you success created VA</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-2'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String(20)</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String(3)</td>
+<td>Bank code for VA</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Long</td>
+<td>Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String(16)</td>
+<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String(255)</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String(255)</td>
+<td>Partner unique ID for specific user,</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Partner unique Transaction ID for specific transaction</td>
+</tr>
+<tr>
+<td>trx_counter</td>
+<td>Int</td>
+<td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
+</tr>
+</tbody></table>
+<h2 id='update-va'>Update VA</h2>
+<p>Update VA using unique VA id.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002","trx_expiration_time":5,"partner_trx_id":"TRX0002"}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001234000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaname"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-3'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>PUT https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
+<strong>[Staging]</strong> <code>PUT https://api-stg.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code></p>
+<h3 id='url-parameter'>URL Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>String(36)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>Unique VA ID, you can get this once you success created VA</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Amount your user must paid to complete the transaction</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>true</td>
+<td>True means VA number can accept any amount, field <code>amount</code> can be optional, False means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>false</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Long</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String</td>
+<td>-</td>
+<td>-</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
+</tr>
+<tr>
+<td>is_lifetime</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>-</td>
+<td>false</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String(50)</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Email of user, using email standard format</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>FALSE</td>
+<td>-</td>
+<td>Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5.</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>-</td>
+<td>Partner unique Transaction ID for specific transaction</td>
+<td></td>
+</tr>
+<tr>
+<td>trx_counter</td>
+<td>Int</td>
+<td>FALSE</td>
+<td>-1/1</td>
+<td>Update transaction counter to limit number of transaction that can be receive by va number</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-3'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String(20)</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String(3)</td>
+<td>Bank code for VA</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Long</td>
+<td>Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String(16)</td>
+<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String(255)</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String(255)</td>
+<td>Partner unique ID for specific user</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Partner unique Transaction ID for specific transaction</td>
+</tr>
+<tr>
+<td>trx_counter</td>
+<td>Int</td>
+<td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
+</tr>
+</tbody></table>
+<h2 id='get-list-of-created-va'>Get list of created VA</h2>
+<p>Get list of created VA</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9a660428-3373-436b-b929-ef69698dd26f"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000006"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582791896416</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000005"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54321"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-4'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code> <br/>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
+<h3 id='request-parameters-3'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>0</td>
+<td>start offset, default is 0, if empty will used default value</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>10</td>
+<td>max item to fetch, default is 10, if empty will used default value</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-4'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total</td>
+<td>Integer</td>
+<td>total items</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array of object</td>
+<td>List of Object <code>{id: &lt;id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;}</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+</tbody></table>
+<h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
+<p>Get list of incoming transaction for specific va number.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345676788898"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d9c2963f-be14-4558-9380-5ba1db8ed156"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-02-27 07:48:01"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"create_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_update_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582789681439</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456000000000001"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-5'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code> <br/>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
+<h3 id='url-parameter-2'>URL Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>String(36)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>Unique VA ID, you can get this once you success created VA</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>FALSE</td>
+<td>0</td>
+<td>start offset, default is 0, if empty will used default value</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>FALSE</td>
+<td>10</td>
+<td>max item to fetch, default is 10, if empty will used default value</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-5'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Integer</td>
+<td>Unique VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array of Object</td>
+<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;}</code></td>
+</tr>
+<tr>
+<td>numberOfTransaction</td>
+<td>Integer</td>
+<td>Total transaction</td>
+</tr>
+</tbody></table>
+<h2 id='partner-callback-va-aggregator'>Partner Callback Va Aggregator</h2>
+<blockquote>
+<p>Response callback:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oy0000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tx_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VA Name"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Once user successfully do the payment, our system will make a callback to your system</p>
+<h3 id='callback-parameters'>Callback Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>va_number</td>
+<td>String(20)</td>
+<td>Generated VA number</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of VA transaction</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String(255)</td>
+<td>Your unique ID for specific user</td>
+</tr>
+<tr>
+<td>success</td>
+<td>boolean</td>
+<td>Payment status if success or not</td>
+</tr>
+<tr>
+<td>tx_date</td>
+<td>Timestamp</td>
+<td>Incoming payment transaction date, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code></td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String(255)</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
+</tr>
+<tr>
+<td>trx_expiration_date</td>
+<td>Long</td>
+<td>Transaction expiration date, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code></td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Partner unique Transaction ID for specific transaction</td>
+</tr>
+</tbody></table>
+<h2 id='va-aggregator-bank-code'>VA aggregator Bank Code</h2><h3 id='available-bank-for-va-aggregator'>Available Bank for VA aggregator</h3>
+<table><thead>
+<tr>
+<th>Bank Code</th>
+<th>Bank Name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>002</td>
+<td>Bank BRI</td>
+</tr>
+<tr>
+<td>013</td>
+<td>Bank Permata</td>
+</tr>
+<tr>
+<td>022</td>
+<td>Bank CIMB Niaga</td>
+</tr>
+<tr>
+<td>008</td>
+<td>Bank Mandiri</td>
+</tr>
+<tr>
+<td>009</td>
+<td>Bank BNI</td>
+</tr>
+<tr>
+<td>014</td>
+<td>Bank BCA</td>
+</tr>
+</tbody></table>
+<h2 id='list-of-documents'>List of Documents</h2>
+<p>To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.</p>
+<h3 id='common-documents'>Common Documents</h3>
+<table><thead>
+<tr>
+<th>No</th>
+<th>Document</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Taxpayer Registration Number</td>
+</tr>
+<tr>
+<td>2</td>
+<td>National ID</td>
+</tr>
+</tbody></table>
+<h3 id='documents-for-foundation-or-donation-partner'>Documents for Foundation, or Donation Partner</h3>
+<table><thead>
+<tr>
+<th>No</th>
+<th>Documents</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Akta Pendirian Perusahaan</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Keputusan Dewan Pembina Yayasan</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Persetujuan Menhumham</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Taxpayer Registration Number Organization</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Izin Usaha</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Surat Keterangan Domisili</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Sertifikat Yayasan</td>
+</tr>
+</tbody></table>
+<h3 id='documents-for-other-company'>Documents for Other Company</h3>
+<table><thead>
+<tr>
+<th>No</th>
+<th>Documents</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>Trade Business License</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Company&#39;s Deed</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Company Registration Certificate</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Decree of Minister Justine and Human Right</td>
+</tr>
+</tbody></table>
+<h2 id='va-aggregator-status'>VA aggregator Status</h2><h3 id='available-status-for-va-aggregator'>Available Status for VA aggregator</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>WAITING_PAYMENT</td>
+<td>This status means that VA is active and can receive a payment</td>
+</tr>
+<tr>
+<td>PAYMENT_DETECTED</td>
+<td>This status means that there are incoming payment to VA Number</td>
+</tr>
+<tr>
+<td>EXPIRED</td>
+<td>This status means that VA is expired. You cannot accept or make update to VA Number with this status.</td>
+</tr>
+<tr>
+<td>STATIC_TRX_EXPIRED</td>
+<td>This status means that Transaction is expired. If VA have a unlimited lifetime, you can create a new transaction using update va info.</td>
+</tr>
+<tr>
+<td>COMPLETE</td>
+<td>This status means that VA is closed/complete after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute <code>is_single_use</code> true can have this status.</td>
+</tr>
+</tbody></table>

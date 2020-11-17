@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -298,8 +298,7 @@
     <div class="toc-wrapper">
       <img src="images/logo-83679f03.svg" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="shell">cUrl</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -504,16 +503,7 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to OY! API Documentation. Our API services are organized around <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>, accepts <a href="https://en.wikipedia.org/wiki/POST_(HTTP)#Use_for_submitting_web_forms">form-encoded</a> request bodies and returns <a href="https://www.json.org/json-en.html">JSON-encoded</a> responses.</p>
-<h1 id='definition'>Definition</h1><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="cm">/**
- * Welcome to Documentation page of
- * OY! API Services
- *
- * Here, you can get necessary info
- * for integration with OY! API
- *
- * Happy coding!
- ** /
-</span></code></pre></div>
+<h1 id='definition'>Definition</h1>
 <p>For the purpose of standardization and to prevent any misunderstanding, below our the terms we are going to use in this documentation:</p>
 
 <ul>
@@ -2336,7 +2326,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <h1 id='va-aggregator'>VA Aggregator</h1>
 <p>API VA aggregator allows you to create a unique Virtual Account (VA) number as a payment method for your customers.</p>
 <h3 id='va-aggregator-api-base-url'>VA Aggregator API Base URL</h3>
-<p>Currently API VA generator is only available in our Production Environment: <code>https://partner.oyindonesia.com</code> (Staging Environment will be available soon)</p>
+<p><strong>[Production Base URL]</strong>: <code>https://partner.oyindonesia.com</code><br/>
+<strong>[Staging Base URL]</strong>: <code>https://api-stg.oyindonesia.com</code></p>
 <h2 id='create-va'>Create VA</h2>
 <p>Use this API to create new VA number</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST https://partner.oyindonesia.com/api/generate-static-va
@@ -2368,7 +2359,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/generate-static-va</code></p>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/generate-static-va</code> <br/>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/generate-static-va</code></p>
 <h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -2575,7 +2567,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"trx_counter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-2'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2701,7 +2694,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-3'>HTTPS Request</h3>
-<p><code>PUT BASE_URL/api/static-virtual-account/&lt;ID&gt;</code></p>
+<p><strong>[Production]</strong> <code>PUT https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
+<strong>[Staging]</strong> <code>PUT https://api-stg.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code></p>
 <h3 id='url-parameter'>URL Parameter</h3>
 <table><thead>
 <tr>
@@ -2931,7 +2925,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-4'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code> <br/>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
 <h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -3011,7 +3006,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-5'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code> <br/>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
 <h3 id='url-parameter-2'>URL Parameter</h3>
 <table><thead>
 <tr>
@@ -3182,7 +3178,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tr>
 </tbody></table>
 <h2 id='list-of-documents'>List of Documents</h2>
-<p>To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative. </p>
+<p>To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.</p>
 <h3 id='common-documents'>Common Documents</h3>
 <table><thead>
 <tr>
@@ -5843,8 +5839,7 @@ Please contact us and submit a callback URL if you need a callback status of a t
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="shell">cUrl</a>
           </div>
       </div>
     </div>
