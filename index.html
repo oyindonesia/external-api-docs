@@ -539,8 +539,7 @@ Note: Your machine which call request to OY! API Services should be originating 
 <h2 id='https-request'>HTTPS Request</h2>
 <p>Disbursement API can be requested through HTTPS Request to OY! API Base URL endpoint. The HTTPS Header has to be used to allow proper authentication, additionally HTTPS Request should only be made from IP Address which has been registered in OY! System.</p>
 <h3 id='api-base-url'>API Base URL</h3>
-<p>Development Environment: <code>https://sandbox.oyindonesia.com/staging/partner</code>
-Production Environment: <code>https://partner.oyindonesia.com</code></p>
+<p>Production Environment: <code>https://partner.oyindonesia.com</code></p>
 <h2 id='https-header'>HTTPS Header</h2>
 <p>Use following HTTPS Headers when you make a call to OY! API</p>
 
@@ -594,7 +593,8 @@ Production Environment: <code>https://partner.oyindonesia.com</code></p>
 <p><code>This API is mandatory to hit before remit API.</code>
 Use this API to get beneficiary account details.</p>
 <h3 id='https-request'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/inquiry</code></p>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/inquiry</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/inquiry</code></p>
 <h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -671,7 +671,8 @@ Use this API to get beneficiary account details.</p>
 </span></code></pre></div>
 <p>Use this API to start disbursing money to a specific beneficiary account.</p>
 <h3 id='https-request-2'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/remit</code></p>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/remit</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/remit</code></p>
 <h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -870,7 +871,8 @@ Use this API to get beneficiary account details.</p>
 <p>This API offers an option to send you a callback status of the disbursement request to a specific URL.
 Please contact us and submit a callback URL if you need a callback status of a disbursement request.</p>
 <h3 id='https-request-3'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/remit-status</code></p>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/remit-status</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/remit-status</code></p>
 <h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -972,7 +974,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </span></code></pre></div>
 <p>Use this API to get partner balance.</p>
 <h3 id='https-request-4'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/balance</code></p>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/balance</code><br>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/balance</code></p>
 <h3 id='response-parameters-4'>Response Parameters</h3>
 <table><thead>
 <tr>
@@ -1043,7 +1046,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-5'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/scheduled-remit</code></p>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/scheduled-remit</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
 
 <p>There are two types of scheduled disbursement:</p>
 
@@ -1223,7 +1227,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-6'>HTTPS Request</h3>
-<p><code>PUT BASE_URL/api/scheduled-remit</code></p>
+<p><strong>[Production]</strong> <code>PUT https://partner.oyindonesia.com/api/scheduled-remit</code><br>
+<strong>[Staging]</strong> <code>PUT https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
 <h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -1342,7 +1347,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-7'>HTTPS Request</h3>
-<p><code>DELETE BASE_URL/api/scheduled-remit</code></p>
+<p><strong>[Production]</strong> <code>DELETE https://partner.oyindonesia.com/api/scheduled-remit</code><br>
+<strong>[Staging]</strong> <code>DELETE https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
 <h3 id='request-parameters-6'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -1449,7 +1455,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-8'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/scheduled-remit/retry</code></p>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/scheduled-remit/retry</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/scheduled-remit/retry</code></p>
 <h3 id='request-parameters-7'>Request Parameters</h3>
 <table><thead>
 <tr>
