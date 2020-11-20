@@ -49,4 +49,4 @@ account_number | String | Account Number of the Beneficiary Account
 account_name | String | Account Name of the Beneficiary Account
 id | String | Unique ID of the inquiry. ID will be provided only for `000` or `209` status. Otherwise, the ID will be `null`.
 invoice_id | String | ID of the invoice related to the inquiry result. Notes: This will be `null` until the payment feature for inquiry has been released.
-timestamp | Timestamp | Timestamp api hit on UTC+7 (Format: `yyyy-MM-ddTHH:mm:ss`)
+timestamp | Timestamp | UTC Timestamp api hit (Format: `yyyy-MM-ddTHH:mm:ss`)
