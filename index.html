@@ -326,6 +326,17 @@
               </ul>
           </li>
           <li>
+            <a href="#account-inquiry" class="toc-h1 toc-link" data-title="Account Inquiry">Account Inquiry</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#account-inquiry-2" class="toc-h2 toc-link" data-title="Account Inquiry">Account Inquiry</a>
+                  </li>
+                  <li>
+                    <a href="#account-inquiry-response-codes" class="toc-h2 toc-link" data-title="Account Inquiry Response Codes">Account Inquiry Response Codes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#fund-disbursement" class="toc-h1 toc-link" data-title="Fund Disbursement">Fund Disbursement</a>
               <ul class="toc-list-h2">
                   <li>
@@ -561,6 +572,145 @@ Note: Your machine which call request to OY! API Services should be originating 
 <td>Partner API Key to access OY! API services</td>
 </tr>
 </tbody></table>
+<h1 id='account-inquiry'>Account Inquiry</h1>
+<p>Account Inquiry APIs allow you to get beneficiary account details.</p>
+<h2 id='account-inquiry-2'>Account Inquiry</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/account-inquiry 
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"bank_code": "014", "account_number": "1239812390"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1239812390"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-19T17:01:17"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59e11245-4b36-4ed7-97be-0c501b8ae3c8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"invoice_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to get beneficiary account details.</p>
+<h3 id='https-request'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/account-inquiry</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/account-inquiry</code></p>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bank_code</td>
+<td>String(3)</td>
+<td>TRUE</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Beneficiary account number</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of inquiry <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>String</td>
+<td>Account Number of the Beneficiary Account</td>
+</tr>
+<tr>
+<td>account_name</td>
+<td>String</td>
+<td>Account Name of the Beneficiary Account</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Unique ID of the inquiry. ID will be provided only for <code>000</code> or <code>209</code> status. Otherwise, the ID will be <code>null</code>.</td>
+</tr>
+<tr>
+<td>invoice_id</td>
+<td>String</td>
+<td>ID of the invoice related to the inquiry result. Notes: This will be <code>null</code> until the payment feature for inquiry has been released.</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>Timestamp</td>
+<td>Timestamp api hit on UTC+7 (Format: <code>yyyy-MM-ddTHH:mm:ss</code>)</td>
+</tr>
+</tbody></table>
+<h2 id='account-inquiry-response-codes'>Account Inquiry Response Codes</h2>
+<p>These are the list of possible status codes for account inquiry:</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Inquiry is success</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Request is Rejected (User ID is not Found)</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Request is Rejected (User ID/product is not active)</td>
+</tr>
+<tr>
+<td>205</td>
+<td>Request is Rejected (Beneficiary Bank Code is Not Supported)</td>
+</tr>
+<tr>
+<td>207</td>
+<td>Request is Rejected (Request IP Address is not Registered)</td>
+</tr>
+<tr>
+<td>208</td>
+<td>Request is Rejected (API Key is not Valid)</td>
+</tr>
+<tr>
+<td>209</td>
+<td>Request is Rejected (Bank Account is not found)</td>
+</tr>
+<tr>
+<td>990</td>
+<td>Request is Rejected (Request Parameter is not Valid)</td>
+</tr>
+<tr>
+<td>999</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table>
+
+<p>Notes: there will be additional status code once the payment feature is released</p>
 <h1 id='fund-disbursement'>Fund Disbursement</h1>
 <p>Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts in Indonesia easily and real-time.</p>
 <h2 id='bank-account-inquiry'>Bank Account Inquiry</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/inquiry 
