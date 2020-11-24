@@ -313,7 +313,7 @@ trigger_email | String(255) | EEmail which the fund acceptance email and URL wil
 timestamp | String(19) | Time of scheduled disbursement creation in OY! system ("dd-MM-yyyy HH:mm:ss")
 
 ### Update Scheduled Disbursement
-This endpoint allows you to update created scheduled disbursement that has not been executed yet. For non-trigger based scheduled disburse, only update to `schedule_date` is allowed. For trigger-based scheduled disburse, only update to `trigger_date` is allowed.
+This endpoint allows you to update created scheduled disbursement up to a day before the `schedule_date`/`trigger_date`. For non-trigger based scheduled disburse, only update to `schedule_date` is allowed. For trigger-based scheduled disburse, only update to `trigger_date` is allowed.
 
 ```shell
 curl -X PUT https://partner.oyindonesia.com/api/scheduled-remit 
@@ -371,7 +371,7 @@ trigger_email | String(255) | Email which the fund acceptance email and URL will
 timestamp | String(19) | Time of scheduled disbursement update in OY! system ("dd-MM-yyyy HH:mm:ss")
 
 ### Cancel Scheduled Disbursement
-This endpoint allows you to cancel a scheduled disbursement that has not been executed yet.
+This endpoint allows you to cancel created scheduled disbursement up to a day before the `schedule_date`/`trigger_date`.
 
 ```shell
 curl -X DELETE https://partner.oyindonesia.com/api/scheduled-remit 
