@@ -1342,7 +1342,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tr>
 </tbody></table>
 <h3 id='update-scheduled-disbursement'>Update Scheduled Disbursement</h3>
-<p>This endpoint allows you to update created scheduled disbursement that has not been executed yet. For non-trigger based scheduled disburse, only update to <code>schedule_date</code> is allowed. For trigger-based scheduled disburse, only update to <code>trigger_date</code> is allowed.</p>
+<p>This endpoint allows you to update created scheduled disbursement up to a day before the <code>schedule_date</code>/<code>trigger_date</code>. For non-trigger based scheduled disburse, only update to <code>schedule_date</code> is allowed. For trigger-based scheduled disburse, only update to <code>trigger_date</code> is allowed.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://partner.oyindonesia.com/api/scheduled-remit 
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "123-asdf","schedule_date": "21-11-2020"}'</span>
 </code></pre></div>
@@ -1462,7 +1462,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tr>
 </tbody></table>
 <h3 id='cancel-scheduled-disbursement'>Cancel Scheduled Disbursement</h3>
-<p>This endpoint allows you to cancel a scheduled disbursement that has not been executed yet.</p>
+<p>This endpoint allows you to cancel created scheduled disbursement up to a day before the <code>schedule_date</code>/<code>trigger_date</code>.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE https://partner.oyindonesia.com/api/scheduled-remit 
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "123-asdf"}'</span>
 </code></pre></div>
