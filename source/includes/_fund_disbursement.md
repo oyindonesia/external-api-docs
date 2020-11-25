@@ -293,8 +293,8 @@ schedule_date | String(10) | FALSE | Date for scheduled non-trigger-based disbur
 is_trigger_based | Boolean | FALSE | Whether scheduled transfer is trigger-based. Default value is false, if set to true, `trigger_date` and `trigger_email` are required
 trigger_date | String(10) | FALSE | Date when the disburse can be claimed by Beneficiary in "dd-mm-yyyy" format. Required if `is_trigger_based` = TRUE. Date is based on GMT+7
 trigger_email | String(255) | FALSE | Email which the fund acceptance email and URL will be sent to. Required if is_trigger_based = TRUE. Only one email can be provided
-cs_phone_number | String(255) | FALSE | Customer service phone number Beneficiary can contact when a trigger-based disbursement fails. This information will be shown to Beneficiary when trying to claim disbursement on a trigger-based disbursement and disburse execution fails due to insufficient balance
-cs_email | String(255) | FALSE | Customer service email Beneficiary can contact when a trigger-based disbursement fails. This information will be shown to Beneficiary when trying to claim disbursement on a trigger-based disbursement and disburse execution fails due to insufficient balance
+cs_phone_number | String(255) | FALSE | Customer service phone number Beneficiary can contact when a trigger-based disbursement fails. This information will be shown to Beneficiary when trying to claim disbursement on a trigger-based disbursement and disburse execution fails due to insufficient balance. Required if `is_trigger_based` = TRUE
+cs_email | String(255) | FALSE | Customer service email Beneficiary can contact when a trigger-based disbursement fails. This information will be shown to Beneficiary when trying to claim disbursement on a trigger-based disbursement and disburse execution fails due to insufficient balance. Required if `is_trigger_based` = TRUE
 
 ### Response Parameters
 
