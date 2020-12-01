@@ -312,6 +312,143 @@ trigger_date | String(10) | Date when the disburse can be claimed by Beneficiary
 trigger_email | String(255) | EEmail which the fund acceptance email and URL will be sent to. Null if scheduled disbursement is non-trigger-based
 timestamp | String(19) | Time of scheduled disbursement creation in OY! system ("dd-MM-yyyy HH:mm:ss")
 
+### Get Detail of Scheduled Disbursement
+This endpoint allows you to get detail of a created scheduled disbursement.
+
+```shell
+curl -X GET https://partner.oyindonesia.com/api/scheduled-remit 
+-H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"partner_trx_id": "123-asdf"}'
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "status": {
+      "code": "000",
+      "message": "Success"
+  },
+  "recipient_bank": "014",
+  "recipient_account": "1239812390",
+  "amount": 10000,
+  "scheduled_trx_id": "ABC-456",
+  "partner_trx_id": "123-asdf",
+  "scheduled_trx_status": "SUCCESS",
+  "schedule_date": "19-11-2020",
+  "is_trigger_based": false,
+  "trigger_date": null,
+  "trigger_email": null,
+  "timestamp": "16-11-2020 03:21:15"
+}
+```
+
+### HTTPS Request
+**[Production]** `GET https://partner.oyindonesia.com/api/scheduled-remit`<br>
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/scheduled-remit`
+
+### Request Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+partner_trx_id | String(255) | TRUE | Unique Payout ID which partner put on scheduled disburse creation
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Status of get detail Scheduled Disburse in Object `{code: <status_code>, message: <status_message>}`
+recipient_bank | String(3) | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
+recipient_account | String(255) | Beneficiary account number 
+amount | BigDecimal | Amount of disbursement (Accept non fraction number)
+partner_trx_id | String(255) | Unique Payout ID which partner put on the Request
+scheduled_trx_status | String(255) | Status of scheduled disbursement
+schedule_date | String(10) | Date for scheduled non-trigger-based disburse in "dd-mm-yyyy" format. Null if scheduled disbursement is trigger-based
+is_trigger_based | Boolean | Whether scheduled transfer is trigger-based
+trigger_date | String(10) | Date when the disburse can be claimed by Beneficiary in "dd-mm-yyyy" format. Null if scheduled disbursement is non-trigger-based
+trigger_email | String(255) | EEmail which the fund acceptance email and URL will be sent to. Null if scheduled disbursement is non-trigger-based
+timestamp | String(19) | Time of scheduled disbursement creation in OY! system ("dd-MM-yyyy HH:mm:ss")
+
+### Get List of Scheduled Disbursement
+This endpoint allows you get list of scheduled disbursement with or without applying filter on status and processing date (`trigger_date`/`schedule_date`)
+
+```shell
+curl -X GET https://partner.oyindonesia.com/api/scheduled-remit/list 
+-H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"scheduled_trx_status": "SCHEDULED","start_date": "20-11-2020","end_date": "20-11-2020","offset": 0,"limit": 100,}'
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "start_date": "20-11-2020",
+    "end_date": "20-11-2020",
+    "scheduled_trx_status": "SCHEDULED",
+    "total_scheduled_disburse": 2,
+    "total_amount": 25000.0000,
+    "offset": 0,
+    "limit": 100,
+    "data": [
+        {
+            "recipient_bank": "014",
+            "recipient_account": "111",
+            "amount": 10000.0000,
+            "scheduled_trx_id": "scheduled-trx-123",
+            "partner_trx_id": "partner-trx-123",
+            "scheduled_trx_status": "SCHEDULED",
+            "schedule_date": null,
+            "is_trigger_based": true,
+            "trigger_date": "20-11-2020",
+            "trigger_email": "ivana.thomas@oyindonesia.com"
+        },
+        {
+            "recipient_bank": "014",
+            "recipient_account": "111",
+            "amount": 15000.0000,
+            "scheduled_trx_id": "scheduled-trx-456",
+            "partner_trx_id": "partner-trx-456",
+            "scheduled_trx_status": "SUCCESS",
+            "schedule_date": "20-11-2020",
+            "is_trigger_based": false,
+            "trigger_date": null,
+            "trigger_email": "ivana.thomas@oyindonesia.com"
+        }
+    ],
+    "timestamp": "01-12-2020 11:42:12"
+}
+```
+
+### HTTPS Request
+**[Production]** `POST https://partner.oyindonesia.com/api/scheduled-remit/list`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/scheduled-remit/list`
+
+### Request Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+start_date | String(10) | FALSE | Start date filter in "dd-mm-yyyy" format. List of scheduled disburse retrieved will be filtered and have `trigger_date`/`schedule_date` >= date defined in this parameter.
+start_date | String(10) | FALSE | End date filter in "dd-mm-yyyy" format. List of scheduled disburse retrieved will be filtered and have `trigger_date`/`schedule_date` <= date defined in this parameter.
+scheduled_trx_status | String(255) | FALSE | Status filter. List of scheduled disburse retrieved will be filtered with status defined with this parameter. Status for scheduled disbursement: `SCHEDULED`, `PENDING`, `SUCCESS`, `BALANCE_IS_NOT_ENOUGH`, `FAILED`
+offset | Integer | FALSE | Offset for retrieved list of scheduled disburse. Default is 0
+limit | Integer | FALSE | Limit for retrieved list of scheduled disburse. Default and maximum is 100
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Status of get list Scheduled Disburse in Object `{code: <status_code>, message: <status_message>}`
+total_amount | BigDecimal | Sum of amount of all scheduled disburse with given filter regardless of offset and limit
+total_scheduled_disburse | BigDecimal | Count of total scheduled disburse with given filter regardless of offset and limit
+start_date | String(10) | Start date filter in "dd-mm-yyyy" format as given in request. Default is null.
+end_date | String(10) | End date filter in "dd-mm-yyyy" format as given in request. Default is null.
+scheduled_trx_status | String(10) | Status filter as given in request. Default is null.
+offset | Integer | Offset for retrieved list of scheduled disburse as given in request. Default is 0
+limit | Integer | Limit for retrieved list of scheduled disburse. Default and maximum is 100
+data | List of Object | List of scheduled disburse detail according to given limit and offset. Parameter details of each scheduled disburse in the list is the same as response parameters in [Get Detail Scheduled Disburse](#get-detail-of-scheduled-disbursement)
+
 ### Update Scheduled Disbursement
 This endpoint allows you to update created scheduled disbursement up to a day before the `schedule_date`/`trigger_date`. For non-trigger based scheduled disburse, only update to `schedule_date` is allowed. For trigger-based scheduled disburse, only update to `trigger_date` is allowed.
 
