@@ -1341,6 +1341,259 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Time of scheduled disbursement creation in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
+<h3 id='get-detail-of-scheduled-disbursement'>Get Detail of Scheduled Disbursement</h3>
+<p>This endpoint allows you to get detail of a created scheduled disbursement.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/scheduled-remit 
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "123-asdf"}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1239812390"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scheduled_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC-456"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123-asdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scheduled_trx_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"schedule_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19-11-2020"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_trigger_based"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trigger_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-6'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/scheduled-remit</code><br>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
+<h3 id='request-parameters-5'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Unique Payout ID which partner put on scheduled disburse creation</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-6'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of get detail Scheduled Disburse in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>recipient_bank</td>
+<td>String(3)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+</tr>
+<tr>
+<td>recipient_account</td>
+<td>String(255)</td>
+<td>Beneficiary account number</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount of disbursement (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Unique Payout ID which partner put on the Request</td>
+</tr>
+<tr>
+<td>scheduled_trx_status</td>
+<td>String(255)</td>
+<td>Status of scheduled disbursement</td>
+</tr>
+<tr>
+<td>schedule_date</td>
+<td>String(10)</td>
+<td>Date for scheduled non-trigger-based disburse in &quot;dd-mm-yyyy&quot; format. Null if scheduled disbursement is trigger-based</td>
+</tr>
+<tr>
+<td>is_trigger_based</td>
+<td>Boolean</td>
+<td>Whether scheduled transfer is trigger-based</td>
+</tr>
+<tr>
+<td>trigger_date</td>
+<td>String(10)</td>
+<td>Date when the disburse can be claimed by Beneficiary in &quot;dd-mm-yyyy&quot; format. Null if scheduled disbursement is non-trigger-based</td>
+</tr>
+<tr>
+<td>trigger_email</td>
+<td>String(255)</td>
+<td>EEmail which the fund acceptance email and URL will be sent to. Null if scheduled disbursement is non-trigger-based</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String(19)</td>
+<td>Time of scheduled disbursement creation in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
+</tr>
+</tbody></table>
+<h3 id='get-list-of-scheduled-disbursement'>Get List of Scheduled Disbursement</h3>
+<p>This endpoint allows you get list of scheduled disbursement with or without applying filter on status and processing date (<code>trigger_date</code>/<code>schedule_date</code>)</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/scheduled-remit/list 
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"scheduled_trx_status": "SCHEDULED","start_date": "20-11-2020","end_date": "20-11-2020","offset": 0,"limit": 100,}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20-11-2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20-11-2020"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scheduled_trx_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCHEDULED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_scheduled_disburse"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">25000.0000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"scheduled_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduled-trx-123"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-trx-123"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"scheduled_trx_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SCHEDULED"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"schedule_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_trigger_based"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trigger_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20-11-2020"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ivana.thomas@oyindonesia.com"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">15000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"scheduled_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scheduled-trx-456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner-trx-456"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"scheduled_trx_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"schedule_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20-11-2020"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_trigger_based"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trigger_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ivana.thomas@oyindonesia.com"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01-12-2020 11:42:12"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-7'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/scheduled-remit/list</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/scheduled-remit/list</code></p>
+<h3 id='request-parameters-6'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_date</td>
+<td>String(10)</td>
+<td>FALSE</td>
+<td>Start date filter in &quot;dd-mm-yyyy&quot; format. List of scheduled disburse retrieved will be filtered and have <code>trigger_date</code>/<code>schedule_date</code> &gt;= date defined in this parameter.</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>String(10)</td>
+<td>FALSE</td>
+<td>End date filter in &quot;dd-mm-yyyy&quot; format. List of scheduled disburse retrieved will be filtered and have <code>trigger_date</code>/<code>schedule_date</code> &lt;= date defined in this parameter.</td>
+</tr>
+<tr>
+<td>scheduled_trx_status</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>Status filter. List of scheduled disburse retrieved will be filtered with status defined with this parameter. Status for scheduled disbursement: <code>SCHEDULED</code>, <code>PENDING</code>, <code>SUCCESS</code>, <code>BALANCE_IS_NOT_ENOUGH</code>, <code>FAILED</code></td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>FALSE</td>
+<td>Offset for retrieved list of scheduled disburse. Default is 0</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>FALSE</td>
+<td>Limit for retrieved list of scheduled disburse. Default and maximum is 100</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-7'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of get list Scheduled Disburse in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>total_amount</td>
+<td>BigDecimal</td>
+<td>Sum of amount of all scheduled disburse with given filter regardless of offset and limit</td>
+</tr>
+<tr>
+<td>total_scheduled_disburse</td>
+<td>BigDecimal</td>
+<td>Count of total scheduled disburse with given filter regardless of offset and limit</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>String(10)</td>
+<td>Start date filter in &quot;dd-mm-yyyy&quot; format as given in request. Default is null.</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>String(10)</td>
+<td>End date filter in &quot;dd-mm-yyyy&quot; format as given in request. Default is null.</td>
+</tr>
+<tr>
+<td>scheduled_trx_status</td>
+<td>String(10)</td>
+<td>Status filter as given in request. Default is null.</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Integer</td>
+<td>Offset for retrieved list of scheduled disburse as given in request. Default is 0</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>Integer</td>
+<td>Limit for retrieved list of scheduled disburse. Default and maximum is 100</td>
+</tr>
+<tr>
+<td>data</td>
+<td>List of Object</td>
+<td>List of scheduled disburse detail according to given limit and offset. Parameter details of each scheduled disburse in the list is the same as response parameters in <a href="#get-detail-of-scheduled-disbursement">Get Detail Scheduled Disburse</a></td>
+</tr>
+</tbody></table>
 <h3 id='update-scheduled-disbursement'>Update Scheduled Disbursement</h3>
 <p>This endpoint allows you to update created scheduled disbursement up to a day before the <code>schedule_date</code>/<code>trigger_date</code>. For non-trigger based scheduled disburse, only update to <code>schedule_date</code> is allowed. For trigger-based scheduled disburse, only update to <code>trigger_date</code> is allowed.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://partner.oyindonesia.com/api/scheduled-remit 
@@ -1366,10 +1619,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-6'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-8'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>PUT https://partner.oyindonesia.com/api/scheduled-remit</code><br>
 <strong>[Staging]</strong> <code>PUT https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
-<h3 id='request-parameters-5'>Request Parameters</h3>
+<h3 id='request-parameters-7'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1397,7 +1650,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Updated date when the disburse can be claimed by Beneficiary in &quot;dd-mm-yyyy&quot; format. Required if scheduled disbursement is trigger-based. Date is based on GMT+7</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-6'>Response Parameters</h3>
+<h3 id='response-parameters-8'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1486,10 +1739,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-7'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-9'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>DELETE https://partner.oyindonesia.com/api/scheduled-remit</code><br>
 <strong>[Staging]</strong> <code>DELETE https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
-<h3 id='request-parameters-6'>Request Parameters</h3>
+<h3 id='request-parameters-8'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1505,7 +1758,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Unique Payout ID for a specific request, generated by partner</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-7'>Response Parameters</h3>
+<h3 id='response-parameters-9'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1594,10 +1847,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-8'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-10'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/scheduled-remit/retry</code><br>
 <strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/scheduled-remit/retry</code></p>
-<h3 id='request-parameters-7'>Request Parameters</h3>
+<h3 id='request-parameters-9'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1631,7 +1884,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Date for the newly created scheduled disburse to be claimed by beneficiary, in &quot;dd-mm-yyyy&quot; format. Required if old scheduled disbursement is trigger-based</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-8'>Response Parameters</h3>
+<h3 id='response-parameters-10'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
