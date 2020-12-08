@@ -211,10 +211,10 @@ endDate | String | End date of transaction, using format yyyy-MM-dd
 
 ### Response Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
+Parameter | Type | Description 
+--------- | ---- | -----------  
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
-data | Object | Object of `{id: <id>, category: <category>, amount: <amount>, balance_flow: <balance_flow>, transaction_date: <transaction_date>, description: <description>, status: <status>}`
+data | Object | Object of `{id: <id>, category: <category>, amount: <amount>, balance_flow: <balance_flow>, transaction_date: <transaction_date>, description: <description>, status: <status>}` 
 
 
 
@@ -236,10 +236,10 @@ Once data have been connected, our system will make a callback to your system.
 
 ### Callback Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes)
-data | Object | Data of response in Object in encrypted of `{"id":"1234-1234-1234-1241","phone_number":"<phone_number>","bank_code":"<bank_code>","tx_history_start_date":<start_date_of_mutation>,"tx_history_end_date":<end_date_of_mutations>,"accounts":[{"id":"<account_id>","account_number":"<account_number>","account_type":"<account_type>","bank":{"code":"<bank_code>","name":"<bank_name>"},"balance":<current_balance>,"last_updated":<last_updated_date>,"mutation":[{"id":"<transaction_id>","category":"<category>","amount":<balance>,"balance_flow":<flow>,"transaction_date":<transaction_date>,"description":"<description>","status":"<status>"}]}]}`
+Parameter | Type | Description | Encryption
+--------- | ---- | ----------- | ----------
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. For list of status code, see [PFM Response Codes](#pfm-response-codes) | -
+data | Object | Data of response in Object in encrypted of `{"id":"1234-1234-1234-1241","phone_number":"<phone_number>","bank_code":"<bank_code>","tx_history_start_date":<start_date_of_mutation>,"tx_history_end_date":<end_date_of_mutations>,"accounts":[{"id":"<account_id>","account_number":"<account_number>","account_type":"<account_type>","bank":{"code":"<bank_code>","name":"<bank_name>"},"balance":<current_balance>,"last_updated":<last_updated_date>,"mutation":[{"id":"<transaction_id>","category":"<category>","amount":<balance>,"balance_flow":<flow>,"transaction_date":<transaction_date>,"description":"<description>","status":"<status>"}]}]}` | AES
 
 ## PFM Bank Codes
 
