@@ -4456,17 +4456,20 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <th>Parameter</th>
 <th>Type</th>
 <th>Description</th>
+<th>Encryption</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
+<td>-</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object</td>
 <td>Data of response in Object in encrypted of <code>{&quot;id&quot;:&quot;1234-1234-1234-1241&quot;,&quot;phone_number&quot;:&quot;&lt;phone_number&gt;&quot;,&quot;bank_code&quot;:&quot;&lt;bank_code&gt;&quot;,&quot;tx_history_start_date&quot;:&lt;start_date_of_mutation&gt;,&quot;tx_history_end_date&quot;:&lt;end_date_of_mutations&gt;,&quot;accounts&quot;:[{&quot;id&quot;:&quot;&lt;account_id&gt;&quot;,&quot;account_number&quot;:&quot;&lt;account_number&gt;&quot;,&quot;account_type&quot;:&quot;&lt;account_type&gt;&quot;,&quot;bank&quot;:{&quot;code&quot;:&quot;&lt;bank_code&gt;&quot;,&quot;name&quot;:&quot;&lt;bank_name&gt;&quot;},&quot;balance&quot;:&lt;current_balance&gt;,&quot;last_updated&quot;:&lt;last_updated_date&gt;,&quot;mutation&quot;:[{&quot;id&quot;:&quot;&lt;transaction_id&gt;&quot;,&quot;category&quot;:&quot;&lt;category&gt;&quot;,&quot;amount&quot;:&lt;balance&gt;,&quot;balance_flow&quot;:&lt;flow&gt;,&quot;transaction_date&quot;:&lt;transaction_date&gt;,&quot;description&quot;:&quot;&lt;description&gt;&quot;,&quot;status&quot;:&quot;&lt;status&gt;&quot;}]}]}</code></td>
+<td>AES</td>
 </tr>
 </tbody></table>
 <h2 id='pfm-bank-codes'>PFM Bank Codes</h2>
