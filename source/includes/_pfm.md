@@ -40,7 +40,6 @@ phone_number | String | True | Phone number of user
 email | String | False | Email of user
 tx_history_start_date | Long | False | Start date mutations on millisecond, if empty will be used current date - 7
 tx_history_end_date | Long | False | End date mutation on millisecond, if empty will be used current date
-tx_history_month | Integer | False | Get mutation using month, 1 is for January, 2 for February and so on
 user_consent | Boolean | True | User consent to share specific information about user and user's account to OY! Indonesia for processing the user's data, if false we are unauthorized to process the data further
 
 
@@ -249,9 +248,6 @@ Bank Code | Bank Name
 008 | Mandiri
 014 | BCA
 009 | BNI
-002 | BRI
-022 | CIMB
-013 | Permata
 
 ## PFM Response Codes
 
