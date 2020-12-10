@@ -2,31 +2,6 @@
 
 Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts in Indonesia easily and real-time.
 
-## Bank Account Inquiry
-
-```shell
-curl -X POST https://partner.oyindonesia.com/api/inquiry 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390"}'
-```
-
-> The above command returns JSON structured similar like this:
-
-```json
-{
-  "status":{
-    "code":"000",
-    "message":"Success"
-  },
-  "recipient_bank":"014",
-  "recipient_account":"1239812390",
-  "recipient_name":"John Doe",
-  "timestamp":"16-10-2019 09:55:31"
-}
-```
-
-`This API is mandatory to hit before remit API.`
-Use this API to get beneficiary account details.
-
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/inquiry`<br>
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/inquiry`
