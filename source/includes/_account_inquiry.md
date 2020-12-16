@@ -1,6 +1,7 @@
 # Account Inquiry
 
 Account Inquiry APIs allow you to get beneficiary account details.
+Invoice will be created on the first API hit of the day with status `INITIATED`. The next day, invoice will be updated with status `UNPAID`. `UNPAID` invoice can be paid via payment endpoint. This will update the invoice status to `PAID`
 
 ## Account Inquiry
 
