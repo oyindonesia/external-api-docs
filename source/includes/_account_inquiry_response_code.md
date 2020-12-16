@@ -7,6 +7,7 @@ Status | Meaning
 000 | Inquiry is success
 201 | Request is Rejected (User ID is not Found)
 202 | Request is Rejected (User ID/product is not active)
+204 | Request is Rejected (Invoice ID is not found)
 205 | Request is Rejected (Beneficiary Bank Code is Not Supported)
 206 | Failed doing payment (Balance is not enough)
 207 | Request is Rejected (Request IP Address is not Registered)
