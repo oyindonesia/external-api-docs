@@ -8,10 +8,11 @@ Status | Meaning
 201 | Request is Rejected (User ID is not Found)
 202 | Request is Rejected (User ID/product is not active)
 205 | Request is Rejected (Beneficiary Bank Code is Not Supported)
+206 | Failed doing payment (Balance is not enough)
 207 | Request is Rejected (Request IP Address is not Registered)
 208 | Request is Rejected (API Key is not Valid)
 209 | Request is Rejected (Bank Account is not found)
+232 | Request is Rejected (User has unpaid invoices)
+300 | Failed doing payment (invoice is not on `UNPAID` status)
 990 | Request is Rejected (Request Parameter is not Valid)
 999 | Internal server error
-
-Notes: there will be additional status code once the payment feature is released
