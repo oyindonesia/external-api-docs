@@ -103,7 +103,7 @@ curl -X GET https://partner.oyindonesia.com/api/account-inquiry/invoices
 Use this API to get inquiry invoices.
 
 ### HTTPS Request
-**[Production]** `GET https://partner.oyindonesia.com/api/account-inquiry/inovices?offset=<offset>&limit=<limit>&status=<status>`<br>
+**[Production]** `GET https://partner.oyindonesia.com/api/account-inquiry/invoices?offset=<offset>&limit=<limit>&status=<status>`<br>
 **[Staging]** `GET https://api-stg.oyindonesia.com/api/account-inquiry/invoices?offset=<offset>&limit=<limit>&status=<status>`
 
 ### Request Parameters
@@ -153,7 +153,7 @@ curl -X GET https://partner.oyindonesia.com/api/account-inquiry/invoices/e972bfc
 Use this API to get inquiry invoice by ID.
 
 ### HTTPS Request
-**[Production]** `GET https://partner.oyindonesia.com/api/account-inquiry/inovices/<id>`<br>
+**[Production]** `GET https://partner.oyindonesia.com/api/account-inquiry/invoices/<id>`<br>
 **[Staging]** `GET https://api-stg.oyindonesia.com/api/account-inquiry/invoices/<id>`
 
 ### Request Parameters
@@ -205,7 +205,7 @@ curl -X GET https://partner.oyindonesia.com/api/account-inquiry/invoices/pay
 Use this API to pay inquiry invoice.
 
 ### HTTPS Request
-**[Production]** `POST https://partner.oyindonesia.com/api/account-inquiry/inovices/pay`<br>
+**[Production]** `POST https://partner.oyindonesia.com/api/account-inquiry/invoices/pay`<br>
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/account-inquiry/invoices/pay`
 
 ### Request Parameters
