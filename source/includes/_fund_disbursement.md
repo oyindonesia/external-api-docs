@@ -2,27 +2,6 @@
 
 Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts in Indonesia easily and real-time.
 
-### HTTPS Request
-**[Production]** `POST https://partner.oyindonesia.com/api/inquiry`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/inquiry`
-
-### Request Parameters
-
-Parameter | Type | Required | Description
---------- | ---- | -------- | -----------
-recipient_bank | String(3) | TRUE | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
-recipient_account | String(255) | TRUE | Beneficiary account number, numeric only
-
-### Response Parameters
-
-Parameter | Type | Description
---------- | ---- | -----------
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-recipient_bank | String(3) | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
-recipient_account | Numeric(255) | Account Number of the Beneficiary Account
-recipient_name | String(255) | Account Name of the Beneficiary Account
-timestamp | Timestamp | Timestamp api hit (format: dd-MM-yyyy HH:mm:ss)
-
 ## Disbursement
 
 ```shell
