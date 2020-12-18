@@ -349,15 +349,6 @@
             <a href="#fund-disbursement" class="toc-h1 toc-link" data-title="Fund Disbursement">Fund Disbursement</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#https-request" class="toc-h2 toc-link" data-title="HTTPS Request">HTTPS Request</a>
-                  </li>
-                  <li>
-                    <a href="#request-parameters" class="toc-h2 toc-link" data-title="Request Parameters">Request Parameters</a>
-                  </li>
-                  <li>
-                    <a href="#response-parameters" class="toc-h2 toc-link" data-title="Response Parameters">Response Parameters</a>
-                  </li>
-                  <li>
                     <a href="#disbursement" class="toc-h2 toc-link" data-title="Disbursement">Disbursement</a>
                   </li>
                   <li>
@@ -1034,65 +1025,6 @@ Invoice will be created on the first API hit of the day with status <code>INITIA
 </tbody></table>
 <h1 id='fund-disbursement'>Fund Disbursement</h1>
 <p>Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts in Indonesia easily and real-time.</p>
-<h3 id='https-request'>HTTPS Request</h3>
-<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/inquiry</code><br>
-<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/inquiry</code></p>
-<h3 id='request-parameters'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>recipient_bank</td>
-<td>String(3)</td>
-<td>TRUE</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
-</tr>
-<tr>
-<td>recipient_account</td>
-<td>String(255)</td>
-<td>TRUE</td>
-<td>Beneficiary account number, numeric only</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
-</tr>
-<tr>
-<td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
-</tr>
-<tr>
-<td>recipient_account</td>
-<td>Numeric(255)</td>
-<td>Account Number of the Beneficiary Account</td>
-</tr>
-<tr>
-<td>recipient_name</td>
-<td>String(255)</td>
-<td>Account Name of the Beneficiary Account</td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>Timestamp</td>
-<td>Timestamp api hit (format: dd-MM-yyyy HH:mm:ss)</td>
-</tr>
-</tbody></table>
 <h2 id='disbursement'>Disbursement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/remit <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com test@email.com"}'</span>
 </code></pre></div>
 <blockquote>
@@ -1112,10 +1044,10 @@ Invoice will be created on the first API hit of the day with status <code>INITIA
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Use this API to start disbursing money to a specific beneficiary account.</p>
-<h3 id='https-request-2'>HTTPS Request</h3>
+<h3 id='https-request'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/remit</code><br>
 <strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/remit</code></p>
-<h3 id='request-parameters-2'>Request Parameters</h3>
+<h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1161,7 +1093,7 @@ Invoice will be created on the first API hit of the day with status <code>INITIA
 <td>Email for invoice notification (Optional). Email can be more than one but not more that five separated by a whitespace.</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-2'>Response Parameters</h3>
+<h3 id='response-parameters'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1312,10 +1244,10 @@ Invoice will be created on the first API hit of the day with status <code>INITIA
 
 <p>This API offers an option to send you a callback status of the disbursement request to a specific URL.
 Please contact us and submit a callback URL if you need a callback status of a disbursement request.</p>
-<h3 id='https-request-3'>HTTPS Request</h3>
+<h3 id='https-request-2'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/remit-status</code><br>
 <strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/remit-status</code></p>
-<h3 id='request-parameters-3'>Request Parameters</h3>
+<h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1337,7 +1269,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>A flag to indiciate if the status of the disbursement request need to be re-sent as a callback or not</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-3'>Response Parameters</h3>
+<h3 id='response-parameters-2'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1415,10 +1347,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Use this API to get partner balance.</p>
-<h3 id='https-request-4'>HTTPS Request</h3>
+<h3 id='https-request-3'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/balance</code><br>
 <strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/balance</code></p>
-<h3 id='response-parameters-4'>Response Parameters</h3>
+<h3 id='response-parameters-3'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1487,7 +1419,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-5'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-4'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/scheduled-remit</code><br>
 <strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
 
@@ -1497,7 +1429,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <li>Non-trigger-based scheduled disbursement: OY! scheduler will run and execute the disbursement automatically on date specified in <code>schedule_date</code> field.</li>
 <li>Trigger-based scheduled disbursement: We will send a fund acceptance email to beneficiary email provided in <code>trigger_email</code> field. Beneficiary will be able to execute disbursement by clicking URL provided in the email on or after the date specified in <code>trigger_date</code> field.</li>
 </ol>
-<h3 id='request-parameters-4'>Request Parameters</h3>
+<h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1579,7 +1511,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Customer service email Beneficiary can contact when a trigger-based disbursement fails. This information will be shown to Beneficiary when trying to claim disbursement on a trigger-based disbursement and disburse execution fails due to insufficient balance. Required if <code>is_trigger_based</code> = TRUE</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-5'>Response Parameters</h3>
+<h3 id='response-parameters-4'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1668,10 +1600,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-6'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-5'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/scheduled-remit</code><br>
 <strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
-<h3 id='request-parameters-5'>Request Parameters</h3>
+<h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1687,7 +1619,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Unique Payout ID which partner put on scheduled disburse creation</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-6'>Response Parameters</h3>
+<h3 id='response-parameters-5'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1799,10 +1731,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01-12-2020 11:42:12"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-7'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-6'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/scheduled-remit/list</code><br>
 <strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/scheduled-remit/list</code></p>
-<h3 id='request-parameters-6'>Request Parameters</h3>
+<h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1842,7 +1774,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Limit for retrieved list of scheduled disburse. Default and maximum is 100</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-7'>Response Parameters</h3>
+<h3 id='response-parameters-6'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1921,10 +1853,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-8'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-7'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>PUT https://partner.oyindonesia.com/api/scheduled-remit</code><br>
 <strong>[Staging]</strong> <code>PUT https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
-<h3 id='request-parameters-7'>Request Parameters</h3>
+<h3 id='request-parameters-6'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1952,7 +1884,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Updated date when the disburse can be claimed by Beneficiary in &quot;dd-mm-yyyy&quot; format. Required if scheduled disbursement is trigger-based. Date is based on GMT+7</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-8'>Response Parameters</h3>
+<h3 id='response-parameters-7'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2041,10 +1973,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-9'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-8'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>DELETE https://partner.oyindonesia.com/api/scheduled-remit</code><br>
 <strong>[Staging]</strong> <code>DELETE https://api-stg.oyindonesia.com/api/scheduled-remit</code></p>
-<h3 id='request-parameters-8'>Request Parameters</h3>
+<h3 id='request-parameters-7'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2060,7 +1992,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Unique Payout ID for a specific request, generated by partner</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-9'>Response Parameters</h3>
+<h3 id='response-parameters-8'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2149,10 +2081,10 @@ Please contact us and submit a callback URL if you need a callback status of a d
   </span><span class="nl">"trigger_email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16-11-2020 03:21:15"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-10'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-9'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/scheduled-remit/retry</code><br>
 <strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/scheduled-remit/retry</code></p>
-<h3 id='request-parameters-9'>Request Parameters</h3>
+<h3 id='request-parameters-8'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2186,7 +2118,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Date for the newly created scheduled disburse to be claimed by beneficiary, in &quot;dd-mm-yyyy&quot; format. Required if old scheduled disbursement is trigger-based</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-10'>Response Parameters</h3>
+<h3 id='response-parameters-9'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
