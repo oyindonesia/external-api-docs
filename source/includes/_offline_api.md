@@ -5,7 +5,7 @@ API Offline enables your user to withdraw and deposit money from OY offline chan
 ## Initiate Transaction
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api-offline/initiate -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"partner_tx_id": "withdraw_request_123", "receiver_phone_number": "081234567890", "amount": 50000, "transaction_type": "CASH_OUT"}'
+curl -X POST https://partner.oyindonesia.com/api-offline/initiate -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"partner_tx_id": "withdraw_request_123", "receiver_phone_number": "081234567890", "amount": 50000, "transaction_type": "CASH_OUT", "offline_channel": "CRM"}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -39,6 +39,7 @@ partner_trx_id | String(255) | TRUE | Unique Payout ID for a specific request, g
 receiver_phone_number | String(255) | TRUE | User's phone number that will be used for withdraw or deposit process
 amount | BigDecimal | TRUE | The amount that going to withdraw or deposit
 transaction_type | String(255) | TRUE | Type of transaction. CASH_OUT for withdrawal and CASH_IN for deposit.
+offline_channel | String(255) | TRUE | Offline Channel which the transaction will be processed. 
 
 ### Response Parameters
  Parameter | Type | Description
@@ -209,10 +210,18 @@ Payment Status | State | Meaning
 207 | Final | Request is Rejected (Request IP Address is not Registered)
 208 | Final | Request is Rejected (API Key is not Valid)
 215 | Final | Request is Rejected (Invalid denom amount request)
+220 | Final | Request is Rejected (Offline channel is not valid or not elegible to process Withdrawal/Deposit Transaction)
 221 | Final | Request is Rejected (Invalid transaction type)
 222 | Final | Transaction is EXPIRED
 224 | Final | Request is Rejected (Amount disburse does not reach Min amount)
 225 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
 300 | Final | Transaction is FAILED
 
+## API Offline Response Codes
 
+These are the list of Oy! offline channel
+
+Offline Channel | Transaction Type
+---------- | -------
+CRM | CASH IN, CASH OUT
+ALFAMART | CASH OUT
