@@ -217,7 +217,7 @@ Payment Status | State | Meaning
 225 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
 300 | Final | Transaction is FAILED
 
-## API Offline Response Codes
+## API Offline Channel
 
 These are the list of Oy! offline channel
 
