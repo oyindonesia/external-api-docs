@@ -508,6 +508,9 @@
                   <li>
                     <a href="#api-offline-response-codes" class="toc-h2 toc-link" data-title="API Offline Response Codes">API Offline Response Codes</a>
                   </li>
+                  <li>
+                    <a href="#api-offline-channel" class="toc-h2 toc-link" data-title="API Offline Channel">API Offline Channel</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -5999,7 +6002,7 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <p>If you were able to complete all these steps, your environment is working perfectly and is on the right track. Feel free to test out our other API products or contact us at <a href="partner@oyindonesia.com">partner@oyindonesia.com</a> if you encountered any difficulties testing our Postman Collection. </p>
 <h1 id='api-offline'>API Offline</h1>
 <p>API Offline enables your user to withdraw and deposit money from OY offline channel such as Cash Recycle Machine (CRM) and convenience store.</p>
-<h2 id='initiate-transaction'>Initiate Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api-offline/initiate <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_tx_id": "withdraw_request_123", "receiver_phone_number": "081234567890", "amount": 50000, "transaction_type": "CASH_OUT"}'</span>
+<h2 id='initiate-transaction'>Initiate Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api-offline/initiate <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_tx_id": "withdraw_request_123", "receiver_phone_number": "081234567890", "amount": 50000, "transaction_type": "CASH_OUT", "offline_channel": "CRM"}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -6053,6 +6056,12 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <td>String(255)</td>
 <td>TRUE</td>
 <td>Type of transaction. CASH_OUT for withdrawal and CASH_IN for deposit.</td>
+</tr>
+<tr>
+<td>offline_channel</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Offline Channel which the transaction will be processed.</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters'>Response Parameters</h3>
@@ -6434,6 +6443,11 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <td>Request is Rejected (Invalid denom amount request)</td>
 </tr>
 <tr>
+<td>220</td>
+<td>Final</td>
+<td>Request is Rejected (Offline channel is not valid or not elegible to process Withdrawal/Deposit Transaction)</td>
+</tr>
+<tr>
 <td>221</td>
 <td>Final</td>
 <td>Request is Rejected (Invalid transaction type)</td>
@@ -6457,6 +6471,24 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <td>300</td>
 <td>Final</td>
 <td>Transaction is FAILED</td>
+</tr>
+</tbody></table>
+<h2 id='api-offline-channel'>API Offline Channel</h2>
+<p>These are the list of Oy! offline channel</p>
+
+<table><thead>
+<tr>
+<th>Offline Channel</th>
+<th>Transaction Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CRM</td>
+<td>CASH IN, CASH OUT</td>
+</tr>
+<tr>
+<td>ALFAMART</td>
+<td>CASH OUT</td>
 </tr>
 </tbody></table>
 
