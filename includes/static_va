@@ -5,12 +5,23 @@
 <strong>[Staging Base URL]</strong>: <code>https://api-stg.oyindonesia.com</code></p>
 <h2 id='create-va'>Create VA</h2>
 <p>Use this API to create new VA number</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST https://partner.oyindonesia.com/api/generate-static-va
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{"partner_user_id":"51200021","bank_code": "002","amount": 0,"is_open" : true,"is_single_use" : false,"is_lifetime": false,"expiration_time": 5,"username_display" : "va name","email": "email@mail.com"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\ </span>
+POST https://partner.oyindonesia.com/api/generate-static-va
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "partner_user_id":"51200021",
+    "bank_code": "002",
+    "amount": 0,
+    "is_open": true,
+    "is_single_use" : false,
+    "is_lifetime": false,
+    "expiration_time": 5,
+    "username_display": "va name",
+    "email": "email@mail.com"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -29,8 +40,8 @@
     </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
     </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trx_expiration_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partner_trx_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
@@ -212,11 +223,12 @@
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -239,7 +251,7 @@
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trx_counter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+    </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-2'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
@@ -343,12 +355,22 @@
 </tbody></table>
 <h2 id='update-va'>Update VA</h2>
 <p>Update VA using unique VA id.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002","trx_expiration_time":5,"partner_trx_id":"TRX0002"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "is_open": true,
+    "amount": 50000,
+    "is_single_use": false,
+    "expiration_time": 30,
+    "username_display": "test",
+    "bank_code": "002",
+    "trx_expiration_time":5,
+    "partner_trx_id":"TRX0002"
+}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -551,11 +573,12 @@
 </tbody></table>
 <h2 id='get-list-of-created-va'>Get list of created VA</h2>
 <p>Get list of created VA</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -650,11 +673,12 @@
 </tbody></table>
 <h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
 <p>Get list of incoming transaction for specific va number.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -764,7 +788,7 @@
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oy0000000001"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tx_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tx_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VA Name"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">

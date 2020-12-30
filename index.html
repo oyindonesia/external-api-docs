@@ -584,8 +584,16 @@ Note: Your machine which call request to OY! API Services should be originating 
 <h1 id='account-inquiry'>Account Inquiry</h1>
 <p>Account Inquiry APIs allow you to get beneficiary account details.
 Invoice will be created on the first API hit of the day with status <code>INITIATED</code>. The next day, invoice will be updated with status <code>UNPAID</code>. <code>UNPAID</code> invoice can be paid via payment endpoint. This will update the invoice status to <code>PAID</code></p>
-<h2 id='account-inquiry-2'>Account Inquiry</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/account-inquiry 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"bank_code": "014", "account_number": "1239812390"}'</span>
+<h2 id='account-inquiry-2'>Account Inquiry</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/account-inquiry <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "bank_code": "014", 
+    "account_number": "1239812390"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -673,8 +681,12 @@ Invoice will be created on the first API hit of the day with status <code>INITIA
 <td>UTC Timestamp api hit (Format: <code>yyyy-MM-ddTHH:mm:ss</code>)</td>
 </tr>
 </tbody></table>
-<h2 id='get-account-inquiry-invoices'>Get Account Inquiry Invoices</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/account-inquiry/invoices 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span>
+<h2 id='get-account-inquiry-invoices'>Get Account Inquiry Invoices</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/account-inquiry/invoices <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\ </span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -780,8 +792,12 @@ Invoice will be created on the first API hit of the day with status <code>INITIA
 <td>List of objects <code>{&quot;invoice_id&quot;: &lt;invoice_id&gt;, &quot;tx_date&quot;: &lt;tx_date&gt;, &quot;amount&quot;: &lt;amount&gt;,&quot;total_inquiry&quot;: &lt;total_inquiry&gt;, &quot;paid_at&quot;: &lt;paid-at&gt;,&quot;invoice_status&quot;: &lt;invoice-status&gt;,&quot;due_at&quot;: &lt;due-date&gt;}</code> <br>- <code>invoice_id</code> invoice ID <br>- <code>tx_date</code> the UTC+7 date of inquiry transaction from 00:00 UTC+7 until 23:59 UTC+7 <br>- <code>amount</code> amount of the invoice<br>- <code>total_inquiry</code> the number of inquiries<br>- <code>paid_at</code> UTC invoice payment timestamp<br> - <code>invoice_status</code> status of the invoice: <code>INITIATED</code>, <code>UNPAID</code>, or <code>PAID</code><br>- <code>due_at</code> UTC due timestamp for the invoice</td>
 </tr>
 </tbody></table>
-<h2 id='get-account-inquiry-invoice-by-id'>Get Account Inquiry Invoice by ID</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/account-inquiry/invoices/e972bfcb-fcc4-4732-8887-91a589a0b54a
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span>
+<h2 id='get-account-inquiry-invoice-by-id'>Get Account Inquiry Invoice by ID</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/account-inquiry/invoices/e972bfcb-fcc4-4732-8887-91a589a0b54a <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -872,9 +888,16 @@ Invoice will be created on the first API hit of the day with status <code>INITIA
 <td>UTC due timestamp for the invoice</td>
 </tr>
 </tbody></table>
-<h2 id='pay-account-inquiry-invoice'>Pay Account Inquiry Invoice</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/account-inquiry/invoices/pay
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"invoice_id": "53f48b8a-1f53-4f56-aa91-7b32414a7513"}
-</span></code></pre></div>
+<h2 id='pay-account-inquiry-invoice'>Pay Account Inquiry Invoice</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/account-inquiry/invoices/pay <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "invoice_id": "53f48b8a-1f53-4f56-aa91-7b32414a7513"
+}'</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
@@ -1028,7 +1051,20 @@ Invoice will be created on the first API hit of the day with status <code>INITIA
 </tbody></table>
 <h1 id='fund-disbursement'>Fund Disbursement</h1>
 <p>Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts in Indonesia easily and real-time.</p>
-<h2 id='disbursement'>Disbursement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/remit <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com test@email.com"}'</span>
+<h2 id='disbursement'>Disbursement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "recipient_bank": "014", 
+  "recipient_account": "1239812390", 
+  "amount":125000, 
+  "note":"Split lunch bill", 
+  "partner_trx_id":"1234-asdf",
+  "email" :"napoleon@email.com test@email.com"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1222,7 +1258,16 @@ Invoice will be created on the first API hit of the day with status <code>INITIA
 <td>Latest status change of a disbursement. Example from &#39;Pending&#39; to &#39;Success&#39; (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
-<h2 id='get-disbursement-status'>Get Disbursement Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/remit-status <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "1234-asde", "send_callback": "true"}'</span>
+<h2 id='get-disbursement-status'>Get Disbursement Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/remit-status <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "partner_trx_id": "1234-asde", 
+  "send_callback": "true"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1331,7 +1376,12 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>Latest status change of a disbursement. Example from &#39;Pending&#39; to &#39;Success&#39; (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
 </tr>
 </tbody></table>
-<h2 id='get-balance'>Get Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s1">'https://partner.oyindonesia.com/api/balance'</span> <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'X-OY-Username: janedoe'</span> <span class="nt">-H</span> <span class="s1">'X-Api-Key: 7654321'</span>
+<h2 id='get-balance'>Get Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/balance <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'X-OY-Username: janedoe'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'X-Api-Key: 7654321'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1399,8 +1449,21 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h2 id='scheduled-disbursement'>Scheduled Disbursement</h2>
 <p>This set of APIs will allow you to schedule disbursement to any bank account on a specified date.</p>
-<h3 id='create-scheduled-disbursement'>Create Scheduled Disbursement</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/scheduled-remit 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"recipient_bank": "014", "recipient_account": "1239812390","amount": 50000,"note": "Split Lunch Bill","partner_trx_id": "123-asdf","email": "napolean@gmail.com test@email.com","schedule_date": "19-11-2020"}'</span>
+<h3 id='create-scheduled-disbursement'>Create Scheduled Disbursement</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/scheduled-remit <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "recipient_bank": "014", 
+  "recipient_account": "1239812390",
+  "amount": 50000,
+  "note": "Split Lunch Bill",
+  "partner_trx_id": "123-asdf",
+  "email": "napolean@gmail.com test@email.com",
+  "schedule_date": "19-11-2020"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1580,8 +1643,15 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h3 id='get-detail-of-scheduled-disbursement'>Get Detail of Scheduled Disbursement</h3>
 <p>This endpoint allows you to get detail of a created scheduled disbursement.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/scheduled-remit 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "123-asdf"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/scheduled-remit <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "partner_trx_id": "123-asdf"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1688,8 +1758,19 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h3 id='get-list-of-scheduled-disbursement'>Get List of Scheduled Disbursement</h3>
 <p>This endpoint allows you get list of scheduled disbursement with or without applying filter on status and processing date (<code>trigger_date</code>/<code>schedule_date</code>)</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/scheduled-remit/list 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"scheduled_trx_status": "SCHEDULED","start_date": "20-11-2020","end_date": "20-11-2020","offset": 0,"limit": 100,}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/scheduled-remit/list <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "scheduled_trx_status": "SCHEDULED",
+  "start_date": "20-11-2020",
+  "end_date": "20-11-2020",
+  "offset": 0,
+  "limit": 100
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1833,8 +1914,16 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h3 id='update-scheduled-disbursement'>Update Scheduled Disbursement</h3>
 <p>This endpoint allows you to update created scheduled disbursement up to a day before the <code>schedule_date</code>/<code>trigger_date</code>. For non-trigger based scheduled disburse, only update to <code>schedule_date</code> is allowed. For trigger-based scheduled disburse, only update to <code>trigger_date</code> is allowed.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://partner.oyindonesia.com/api/scheduled-remit 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "123-asdf","schedule_date": "21-11-2020"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+PUT https://partner.oyindonesia.com/api/scheduled-remit <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "partner_trx_id": "123-asdf",
+  "schedule_date": "21-11-2020"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -1953,8 +2042,15 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h3 id='cancel-scheduled-disbursement'>Cancel Scheduled Disbursement</h3>
 <p>This endpoint allows you to cancel created scheduled disbursement up to a day before the <code>schedule_date</code>/<code>trigger_date</code>.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE https://partner.oyindonesia.com/api/scheduled-remit 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"partner_trx_id": "123-asdf"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+DELETE https://partner.oyindonesia.com/api/scheduled-remit <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "partner_trx_id": "123-asdf"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2061,8 +2157,17 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h3 id='retry-scheduled-disbursement'>Retry Scheduled Disbursement</h3>
 <p>This endpoint will allow you to create a new scheduled disbursement based on the detail of a previous failed/cancelled scheduled disbursement.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/scheduled-remit/retry 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"old_partner_trx_id": "123-asdf","new_partner_trx_id": "456-asdf","schedule_date": "22-11-2020"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "old_partner_trx_id": "123-asdf",
+  "new_partner_trx_id": "456-asdf",
+  "schedule_date": "22-11-2020"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2970,12 +3075,23 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <strong>[Staging Base URL]</strong>: <code>https://api-stg.oyindonesia.com</code></p>
 <h2 id='create-va'>Create VA</h2>
 <p>Use this API to create new VA number</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST https://partner.oyindonesia.com/api/generate-static-va
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{"partner_user_id":"51200021","bank_code": "002","amount": 0,"is_open" : true,"is_single_use" : false,"is_lifetime": false,"expiration_time": 5,"username_display" : "va name","email": "email@mail.com"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\ </span>
+POST https://partner.oyindonesia.com/api/generate-static-va
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "partner_user_id":"51200021",
+    "bank_code": "002",
+    "amount": 0,
+    "is_open": true,
+    "is_single_use" : false,
+    "is_lifetime": false,
+    "expiration_time": 5,
+    "username_display": "va name",
+    "email": "email@mail.com"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -2994,8 +3110,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
     </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trx_expiration_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partner_trx_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
@@ -3177,11 +3293,12 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -3204,7 +3321,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trx_counter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+    </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-2'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
@@ -3308,12 +3425,22 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h2 id='update-va'>Update VA</h2>
 <p>Update VA using unique VA id.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002","trx_expiration_time":5,"partner_trx_id":"TRX0002"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "is_open": true,
+    "amount": 50000,
+    "is_single_use": false,
+    "expiration_time": 30,
+    "username_display": "test",
+    "bank_code": "002",
+    "trx_expiration_time":5,
+    "partner_trx_id":"TRX0002"
+}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3516,11 +3643,12 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h2 id='get-list-of-created-va'>Get list of created VA</h2>
 <p>Get list of created VA</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -3615,11 +3743,12 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h2 id='get-list-of-transaction-for-va'>Get List of Transaction for VA</h2>
 <p>Get list of incoming transaction for specific va number.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
-<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: apikey'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -3729,7 +3858,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oy0000000001"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tx_date"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tx_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VA Name"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
@@ -3995,7 +4124,18 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
 <h2 id='verify-id-card'>Verify ID-Card</h2>
 <p>Verification using id-card will be handle asynchronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/kyc/id-card <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"personal_information": "rsa_encrypted_personal_information", "address": "rsa_encrypted_address", "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/kyc/id-card <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "personal_information": "rsa_encrypted_personal_information", 
+    "address": "rsa_encrypted_address", 
+    "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", 
+    "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -4116,7 +4256,18 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h2 id='verify-phone-number'>Verify Phone Number</h2>
 <p>Verification using phone number.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/kyc/id-card <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/kyc/id-card <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\ </span>
+<span class="nt">-d</span> <span class="s1">'{
+    "name": "name of user",
+    "address": "home address",
+    "nik": "id card number",
+    "phone_number": "phone number"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -4201,7 +4352,15 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tbody></table>
 <h2 id='check-status-kyc'>Check Status KYC</h2>
 <p>There are some cases send callback can be failed, so client cannot get kyc status from callback, to handle this we suggest to check kyc status using this API.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/kyc/status <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654'</span> <span class="nt">-d</span> <span class="s1">'{"personal_information": "rsa_encryption_personal_information"}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/kyc/status <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "personal_information": "rsa_encryption_personal_information"
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -6009,7 +6168,7 @@ POST https://partner.oyindonesia.com/api-offline/initiate <span class="se">\</sp
 <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-api-key:7654321'</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
-   "partner_tx_id":"withdraw_request_123",
+   "partner_trx_id":"withdraw_request_123",
    "receiver_phone_number":"081234567890",
    "amount":50000,
    "transaction_type":"CASH_OUT",
@@ -6047,7 +6206,7 @@ POST https://partner.oyindonesia.com/api-offline/initiate <span class="se">\</sp
 </tr>
 </thead><tbody>
 <tr>
-<td>partner_tx_id</td>
+<td>partner_trx_id</td>
 <td>String(255)</td>
 <td>TRUE</td>
 <td>Unique Payout ID for a specific request, generated by partner</td>
@@ -6143,7 +6302,7 @@ POST https://partner.oyindonesia.com/api-offline/tx-info <span class="se">\</spa
 <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-api-key:7654321'</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
-   "partner_tx_id":"withdraw_request_123",
+   "partner_trx_id":"withdraw_request_123",
    "send_callback":"true"
 }'</span>
 </code></pre></div>
@@ -6183,7 +6342,7 @@ Please contact us and submit a callback URL if you need a callback status of a t
 </tr>
 </thead><tbody>
 <tr>
-<td>partner_tx_id</td>
+<td>partner_trx_id</td>
 <td>String(255)</td>
 <td>TRUE</td>
 <td>Unique Payout ID for a specific request, generated by partner</td>
@@ -6214,7 +6373,7 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <td>Unique Payout ID for a specific request, generated by partner.</td>
 </tr>
 <tr>
-<td>tx_id</td>
+<td>trx_id</td>
 <td>String(36)</td>
 <td>Unique Payout ID from OY!. Partner can use this ID for settlement.</td>
 </tr>
@@ -6261,7 +6420,7 @@ POST https://partner.oyindonesia.com/api-offline/refresh-code <span class="se">\
 <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-api-key:7654321'</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
-   "partner_tx_id":"withdraw_request_123"
+   "partner_trx_id":"withdraw_request_123"
 }'</span>
 </code></pre></div>
 <blockquote>
@@ -6273,7 +6432,7 @@ POST https://partner.oyindonesia.com/api-offline/refresh-code <span class="se">\
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"970524"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partner_tx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw_request_123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"withdraw_request_123"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"inactive_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-14 13:12:16.786"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15 10:12:16.786"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -6292,7 +6451,7 @@ POST https://partner.oyindonesia.com/api-offline/refresh-code <span class="se">\
 </tr>
 </thead><tbody>
 <tr>
-<td>partner_tx_id</td>
+<td>partner_trx_id</td>
 <td>String(255)</td>
 <td>TRUE</td>
 <td>Unique Payout ID for a specific request, generated by partner</td>
@@ -6317,7 +6476,7 @@ POST https://partner.oyindonesia.com/api-offline/refresh-code <span class="se">\
 <td>Required unique code for Deposit or Withdrawal Process</td>
 </tr>
 <tr>
-<td>partner_tx_id</td>
+<td>partner_trx_id</td>
 <td>String(255)</td>
 <td>Unique Payout ID for a specific request, generated by partner</td>
 </tr>
