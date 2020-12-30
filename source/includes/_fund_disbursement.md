@@ -5,7 +5,20 @@ Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts
 ## Disbursement
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/remit -H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390", "amount":125000, "note":"Split lunch bill", "partner_trx_id":"1234-asdf","email" :"napoleon@email.com test@email.com"}'
+curl -X \
+POST https://partner.oyindonesia.com/api/remit \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "recipient_bank": "014", 
+  "recipient_account": "1239812390", 
+  "amount":125000, 
+  "note":"Split lunch bill", 
+  "partner_trx_id":"1234-asdf",
+  "email" :"napoleon@email.com test@email.com"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -97,7 +110,16 @@ last_updated_date | String(19) | Latest status change of a disbursement. Example
 ## Get Disbursement Status
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/remit-status -H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"partner_trx_id": "1234-asde", "send_callback": "true"}'
+curl -X \
+POST https://partner.oyindonesia.com/api/remit-status \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "partner_trx_id": "1234-asde", 
+  "send_callback": "true"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -154,7 +176,12 @@ last_updated_date | String(19) | Latest status change of a disbursement. Example
 ## Get Balance
 
 ```shell
-curl -X GET 'https://partner.oyindonesia.com/api/balance' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'X-OY-Username: janedoe' -H 'X-Api-Key: 7654321'
+curl -X \
+GET https://partner.oyindonesia.com/api/balance \
+-H 'Content-Type: application/json' \
+-H 'Accept: application/json' \
+-H 'X-OY-Username: janedoe' \
+-H 'X-Api-Key: 7654321'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -198,8 +225,21 @@ This set of APIs will allow you to schedule disbursement to any bank account on 
 
 ### Create Scheduled Disbursement
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/scheduled-remit 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"recipient_bank": "014", "recipient_account": "1239812390","amount": 50000,"note": "Split Lunch Bill","partner_trx_id": "123-asdf","email": "napolean@gmail.com test@email.com","schedule_date": "19-11-2020"}'
+curl -X \
+POST https://partner.oyindonesia.com/api/scheduled-remit \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "recipient_bank": "014", 
+  "recipient_account": "1239812390",
+  "amount": 50000,
+  "note": "Split Lunch Bill",
+  "partner_trx_id": "123-asdf",
+  "email": "napolean@gmail.com test@email.com",
+  "schedule_date": "19-11-2020"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -270,8 +310,15 @@ timestamp | String(19) | Time of scheduled disbursement creation in OY! system (
 This endpoint allows you to get detail of a created scheduled disbursement.
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/scheduled-remit 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"partner_trx_id": "123-asdf"}'
+curl -X \
+GET https://partner.oyindonesia.com/api/scheduled-remit \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "partner_trx_id": "123-asdf"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -326,8 +373,19 @@ timestamp | String(19) | Time of scheduled disbursement creation in OY! system (
 This endpoint allows you get list of scheduled disbursement with or without applying filter on status and processing date (`trigger_date`/`schedule_date`)
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/scheduled-remit/list 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"scheduled_trx_status": "SCHEDULED","start_date": "20-11-2020","end_date": "20-11-2020","offset": 0,"limit": 100,}'
+curl -X \
+GET https://partner.oyindonesia.com/api/scheduled-remit/list \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "scheduled_trx_status": "SCHEDULED",
+  "start_date": "20-11-2020",
+  "end_date": "20-11-2020",
+  "offset": 0,
+  "limit": 100
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -407,8 +465,16 @@ data | List of Object | List of scheduled disburse detail according to given lim
 This endpoint allows you to update created scheduled disbursement up to a day before the `schedule_date`/`trigger_date`. For non-trigger based scheduled disburse, only update to `schedule_date` is allowed. For trigger-based scheduled disburse, only update to `trigger_date` is allowed.
 
 ```shell
-curl -X PUT https://partner.oyindonesia.com/api/scheduled-remit 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"partner_trx_id": "123-asdf","schedule_date": "21-11-2020"}'
+curl -X \
+PUT https://partner.oyindonesia.com/api/scheduled-remit \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "partner_trx_id": "123-asdf",
+  "schedule_date": "21-11-2020"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -465,8 +531,15 @@ timestamp | String(19) | Time of scheduled disbursement update in OY! system ("d
 This endpoint allows you to cancel created scheduled disbursement up to a day before the `schedule_date`/`trigger_date`.
 
 ```shell
-curl -X DELETE https://partner.oyindonesia.com/api/scheduled-remit 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"partner_trx_id": "123-asdf"}'
+curl -X \
+DELETE https://partner.oyindonesia.com/api/scheduled-remit \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "partner_trx_id": "123-asdf"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -521,8 +594,17 @@ timestamp | String(19) | Time of scheduled disbursement cancellation in OY! syst
 This endpoint will allow you to create a new scheduled disbursement based on the detail of a previous failed/cancelled scheduled disbursement.
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/scheduled-remit/retry 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"old_partner_trx_id": "123-asdf","new_partner_trx_id": "456-asdf","schedule_date": "22-11-2020"}'
+curl -X \
+POST https://partner.oyindonesia.com/api/scheduled-remit/retry \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "old_partner_trx_id": "123-asdf",
+  "new_partner_trx_id": "456-asdf",
+  "schedule_date": "22-11-2020"
+}'
 ```
 
 > The above command returns JSON structured similar like this:

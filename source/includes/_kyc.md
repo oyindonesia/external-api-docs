@@ -11,7 +11,18 @@ Verification using id-card will be handle asynchronous, and we will send KYC res
 
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"personal_information": "rsa_encrypted_personal_information", "address": "rsa_encrypted_address", "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"}'
+curl -X \
+POST https://partner.oyindonesia.com/api/kyc/id-card \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+    "personal_information": "rsa_encrypted_personal_information", 
+    "address": "rsa_encrypted_address", 
+    "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", 
+    "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -60,7 +71,18 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 Verification using phone number.
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/kyc/id-card -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"name": "name of user", "address": "home address", "nik" : "id card number", "phone_number": "phone number"}'
+curl -X \
+POST https://partner.oyindonesia.com/kyc/id-card \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \ 
+-d '{
+    "name": "name of user",
+    "address": "home address",
+    "nik": "id card number",
+    "phone_number": "phone number"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -103,7 +125,15 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 There are some cases send callback can be failed, so client cannot get kyc status from callback, to handle this we suggest to check kyc status using this API.
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/kyc/status -H 'content-type: application/json, accept: application/json, x-oy-username:myuser, x-api-key:987654' -d '{"personal_information": "rsa_encryption_personal_information"}'
+curl -X \
+POST https://partner.oyindonesia.com/kyc/status \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+    "personal_information": "rsa_encryption_personal_information"
+}'
 ```
 
 > The above command returns JSON structured similar like this:

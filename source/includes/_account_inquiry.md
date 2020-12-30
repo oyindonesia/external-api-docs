@@ -6,8 +6,16 @@ Invoice will be created on the first API hit of the day with status `INITIATED`.
 ## Account Inquiry
 
 ```shell
-curl -X POST https://partner.oyindonesia.com/api/account-inquiry 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"bank_code": "014", "account_number": "1239812390"}'
+curl -X \
+POST https://partner.oyindonesia.com/api/account-inquiry \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+    "bank_code": "014", 
+    "account_number": "1239812390"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -56,8 +64,12 @@ timestamp | Timestamp | UTC Timestamp api hit (Format: `yyyy-MM-ddTHH:mm:ss`)
 ## Get Account Inquiry Invoices
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/account-inquiry/invoices 
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654'
+curl -X \
+GET https://partner.oyindonesia.com/api/account-inquiry/invoices \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \ 
+-H 'x-api-key:987654'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -127,8 +139,12 @@ data | Array of objects | List of objects `{"invoice_id": <invoice_id>, "tx_date
 ## Get Account Inquiry Invoice by ID
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/account-inquiry/invoices/e972bfcb-fcc4-4732-8887-91a589a0b54a
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654'
+curl -X \
+GET https://partner.oyindonesia.com/api/account-inquiry/invoices/e972bfcb-fcc4-4732-8887-91a589a0b54a \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -179,8 +195,15 @@ due_at | String | UTC due timestamp for the invoice
 ## Pay Account Inquiry Invoice
 
 ```shell
-curl -X GET https://partner.oyindonesia.com/api/account-inquiry/invoices/pay
--H 'content-type: application/json' -H 'accept: application/json' -H 'x-oy-username:myuser' -H 'x-api-key:987654' -d '{"invoice_id": "53f48b8a-1f53-4f56-aa91-7b32414a7513"}
+curl -X \
+GET https://partner.oyindonesia.com/api/account-inquiry/invoices/pay \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+    "invoice_id": "53f48b8a-1f53-4f56-aa91-7b32414a7513"
+}'
 ```
 
 > The above command returns JSON structured similar like this:

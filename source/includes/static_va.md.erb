@@ -12,12 +12,23 @@ API VA aggregator allows you to create a unique Virtual Account (VA) number as a
 Use this API to create new VA number
 
 ```shell
-curl --location --request POST <%= config[:endpoint_prod] %>/api/generate-static-va
---header 'content-type: application/json' \
---header 'accept: application/json' \
---header 'x-oy-username: username' \
---header 'x-api-key: apikey' \
--d '{"partner_user_id":"51200021","bank_code": "002","amount": 0,"is_open" : true,"is_single_use" : false,"is_lifetime": false,"expiration_time": 5,"username_display" : "va name","email": "email@mail.com"}'
+curl -X \ 
+POST <%= config[:endpoint_prod] %>/api/generate-static-va
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username: username' \
+-H 'x-api-key: apikey' \
+-d '{
+    "partner_user_id":"51200021",
+    "bank_code": "002",
+    "amount": 0,
+    "is_open": true,
+    "is_single_use" : false,
+    "is_lifetime": false,
+    "expiration_time": 5,
+    "username_display": "va name",
+    "email": "email@mail.com"
+}'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -37,8 +48,8 @@ curl --location --request POST <%= config[:endpoint_prod] %>/api/generate-static
     "expiration_time": 1582783668175,
     "va_status": "WAITING_PAYMENT",
     "username_display": "va name",
-    "trx_expiration_time" : 1582783668175,
-    "partner_trx_id" : "TRX0001",
+    "trx_expiration_time": 1582783668175,
+    "partner_trx_id": "TRX0001",
     "trx_counter": -1
 }
 ```
@@ -89,11 +100,12 @@ trx_counter | Int | Transaction counter to limit number of transaction that can 
 Get VA info using Unique VA id.
 
 ```shell
-curl --location --request GET <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212121-212121
---header 'content-type: application/json' \
---header 'accept: application/json' \
---header 'x-oy-username: username' \
---header 'x-api-key: apikey'
+curl -X \
+GET <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212121-212121
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username: username' \
+-H 'x-api-key: apikey'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -117,7 +129,7 @@ curl --location --request GET <%= config[:endpoint_prod] %>/api/static-virtual-a
     "partner_user_id": "123456",
     "trx_expiration_time": 1582790250609,
     "partner_trx_id": "TRX0001",
-    "trx_counter" : -1
+    "trx_counter": -1
 }
 ```
 
@@ -156,12 +168,22 @@ trx_counter | Int | Transaction counter to limit number of transaction that can 
 Update VA using unique VA id.
 
 ```shell
-curl --location --request PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212121-212121
---header 'content-type: application/json' \
---header 'accept: application/json' \
---header 'x-oy-username: username' \
---header 'x-api-key: apikey' \
--d '{"is_open" : true,"amount": 50000,"is_single_use" : false,"expiration_time": 30,"username_display" : "test","bank_code": "002","trx_expiration_time":5,"partner_trx_id":"TRX0002"}'
+curl -X \
+PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212121-212121
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username: username' \
+-H 'x-api-key: apikey' \
+-d '{
+    "is_open": true,
+    "amount": 50000,
+    "is_single_use": false,
+    "expiration_time": 30,
+    "username_display": "test",
+    "bank_code": "002",
+    "trx_expiration_time":5,
+    "partner_trx_id":"TRX0002"
+}'
 ```
 
 ```json
@@ -234,11 +256,12 @@ trx_counter | Int | Transaction counter to limit number of transaction that can 
 Get list of created VA
 
 ```shell
-curl --location --request GET <%= config[:endpoint_prod] %>/api/static-virtual-account?offset=0&limit=10
---header 'content-type: application/json' \
---header 'accept: application/json' \
---header 'x-oy-username: username' \
---header 'x-api-key: apikey'
+curl -X \
+GET <%= config[:endpoint_prod] %>/api/static-virtual-account?offset=0&limit=10
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username: username' \
+-H 'x-api-key: apikey'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -308,11 +331,12 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 Get list of incoming transaction for specific va number.
 
 ```shell
-curl --location --request GET <%= config[:endpoint_prod] %>/api/va-tx-history/12345676788898?offset=0&limit=10
---header 'content-type: application/json' \
---header 'accept: application/json' \
---header 'x-oy-username: username' \
---header 'x-api-key: apikey'
+curl -X \
+GET <%= config[:endpoint_prod] %>/api/va-tx-history/12345676788898?offset=0&limit=10
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username: username' \
+-H 'x-api-key: apikey'
 ```
 
 > The above command returns JSON structured similar like this:
@@ -374,7 +398,7 @@ numberOfTransaction  | Integer | Total transaction
 	"amount": 100000,
 	"partner_user_id": "oy0000000001",
 	"success": true,
-    "tx_date" : "31/01/2020T01:01:01.000+0000",
+    "tx_date": "31/01/2020T01:01:01.000+0000",
     "username_display": "VA Name",
     "trx_expiration_date": "31/01/2020T01:01:01.000+0000",
     "partner_trx_id": "TRX0002"
