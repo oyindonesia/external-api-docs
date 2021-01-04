@@ -2,13 +2,11 @@
 
 These are the list of possible status codes for fund disbursement:
 
-Payment Status | State | Meaning
+Payment Status | State | Description
 ---------- | ------- | -------
 000 | Final | Disbursement Request has been completed (success)
 101 | Non-Final | Request is Processed
 102 | Non-Final | Request is In Progress
-201 | Final | Request is Rejected (User ID is not Found)
-202 | Final | Request is Rejected (User ID is not Active)
 203 | Final | Request is Rejected (Duplicate Partner Tx ID)
 204 | Final | Request is Rejected (Partner Tx ID is Not Found)
 205 | Final | Request is Rejected (Beneficiary Bank Code is Not Supported)
@@ -22,3 +20,10 @@ Payment Status | State | Meaning
 301 | Non-Final | Pending (When there is a unclear answer from Banks Network)
 990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
+
+The following status codes mean that your request is not received by OY! and does not represent any information related to your transaction status:
+
+Payment Status | Meaning
+---------- | -------
+201 | Request is Rejected (User ID is not Found)
+202 | Request is Rejected (User ID is not Active)
