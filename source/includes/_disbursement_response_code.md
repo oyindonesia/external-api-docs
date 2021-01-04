@@ -18,7 +18,6 @@ Response Code | State | Description
 215 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
 300 | Final | Disbursement is FAILED
 301 | Non-Final | Pending (When there is a unclear answer from Banks Network)
-990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
 
 IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:
