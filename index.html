@@ -2971,13 +2971,13 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 </tr>
 </tbody></table>
 <h2 id='fund-disbursement-response-codes'>Fund Disbursement Response Codes</h2>
-<p>These are the list of possible status codes for fund disbursement:</p>
+<p>Below is the list of response codes for fund disbursement:</p>
 
 <table><thead>
 <tr>
-<th>Payment Status</th>
+<th>Response Code</th>
 <th>State</th>
-<th>Meaning</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
@@ -2994,16 +2994,6 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 <td>102</td>
 <td>Non-Final</td>
 <td>Request is In Progress</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Final</td>
-<td>Request is Rejected (User ID is not Found)</td>
-</tr>
-<tr>
-<td>202</td>
-<td>Final</td>
-<td>Request is Rejected (User ID is not Active)</td>
 </tr>
 <tr>
 <td>203</td>
@@ -3069,6 +3059,24 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 <td>999</td>
 <td>Non-Final</td>
 <td>Internal Server Error</td>
+</tr>
+</tbody></table>
+
+<p>IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction status:</p>
+
+<table><thead>
+<tr>
+<th>Response Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td>Request is Rejected (User ID is not Found)</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Request is Rejected (User ID is not Active)</td>
 </tr>
 </tbody></table>
 <h1 id='va-aggregator'>VA Aggregator</h1>
@@ -4056,29 +4064,19 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 </tr>
 </tbody></table>
 <h2 id='va-aggregator-response-codes'>VA Aggregator Response Codes</h2>
-<p>These are the list of possible status codes for api va aggregator:</p>
+<p>Below is the list of response codes for API VA aggregator:</p>
 
 <table><thead>
 <tr>
-<th>Payment Status</th>
+<th>Response Code</th>
 <th>State</th>
-<th>Meaning</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>000</td>
 <td>Final</td>
 <td>Response success without error</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Final</td>
-<td>Request is Rejected (User ID is not Found)</td>
-</tr>
-<tr>
-<td>202</td>
-<td>Final</td>
-<td>Request is Rejected (User ID is not Active)</td>
 </tr>
 <tr>
 <td>207</td>
@@ -4119,6 +4117,24 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>999</td>
 <td>Non-Final</td>
 <td>Internal Server Error</td>
+</tr>
+</tbody></table>
+
+<p>IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction status:</p>
+
+<table><thead>
+<tr>
+<th>Response Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td>Request is Rejected (User ID is not Found)</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Request is Rejected (User ID is not Active)</td>
 </tr>
 </tbody></table>
 <h1 id='kyc'>KYC</h1>
