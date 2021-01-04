@@ -1,6 +1,6 @@
 ## VA Aggregator Response Codes
 
-These are the list of possible status codes for API VA aggregator:
+Below is the list of response codes for API VA aggregator:
 
 Response Code | State | Description
 ---------- | ------- | -------
@@ -14,7 +14,7 @@ Response Code | State | Description
 217 | Final | Request is Rejected (VA Number is still active for this partner user id)
 999 | Non-Final | Internal Server Error
 
-IMPORTANT! The following status codes mean that your request is not received by OY! and do not represent any information related to your transaction status:
+IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction status:
 
 Response Code | Description
 ---------- | -------
