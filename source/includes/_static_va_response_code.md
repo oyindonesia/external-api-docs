@@ -1,12 +1,10 @@
 ## VA Aggregator Response Codes
 
-These are the list of possible status codes for api va aggregator:
+These are the list of possible status codes for API VA aggregator:
 
-Payment Status | State | Meaning
+Payment Status | State | Description
 ---------- | ------- | -------
 000 | Final | Response success without error
-201 | Final | Request is Rejected (User ID is not Found)
-202 | Final | Request is Rejected (User ID is not Active)
 207 | Final | Request is Rejected (Request IP Address is not Registered)
 208 | Final | Request is Rejected (API Key is not Valid)
 211 | Final | Request is Rejected (Bank code is not available for this service)
@@ -15,3 +13,10 @@ Payment Status | State | Meaning
 216 | Final | Request is Rejected (VA Id is empty)
 217 | Final | Request is Rejected (VA Number is still active for this partner user id)
 999 | Non-Final | Internal Server Error
+
+The following status codes mean that your request is not received by OY! and do not represent any information related to your transaction status:
+
+Payment Status | Description
+---------- | -------
+201 | Request is Rejected (User ID is not Found)
+202 | Request is Rejected (User ID is not Active)
