@@ -3062,7 +3062,7 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 </tr>
 </tbody></table>
 
-<p>IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction status:</p>
+<p>IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:</p>
 
 <table><thead>
 <tr>
@@ -3077,6 +3077,10 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 <tr>
 <td>202</td>
 <td>Request is Rejected (User ID is not Active)</td>
+</tr>
+<tr>
+<td>990</td>
+<td>Request is Rejected (Invalid Format)</td>
 </tr>
 </tbody></table>
 <h1 id='va-aggregator'>VA Aggregator</h1>
@@ -4120,7 +4124,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 </tr>
 </tbody></table>
 
-<p>IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction status:</p>
+<p>IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:</p>
 
 <table><thead>
 <tr>
@@ -4135,6 +4139,10 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <tr>
 <td>202</td>
 <td>Request is Rejected (User ID is not Active)</td>
+</tr>
+<tr>
+<td>990</td>
+<td>Request is Rejected (Invalid Format)</td>
 </tr>
 </tbody></table>
 <h1 id='kyc'>KYC</h1>
