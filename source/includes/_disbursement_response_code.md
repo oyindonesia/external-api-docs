@@ -21,7 +21,7 @@ Payment Status | State | Description
 990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
 
-The following status codes mean that your request is not received by OY! and do not represent any information related to your transaction status:
+IMPORTANT! The following status codes mean that your request is not received by OY! and do not represent any information related to your transaction status:
 
 Payment Status | Description
 ---------- | -------
