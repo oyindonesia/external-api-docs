@@ -21,10 +21,10 @@ Response Code | State | Description
 990 | Final | Request is Rejected (Request Parameter is not Valid)
 999 | Non-Final | Internal Server Error
 
-IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction status:
+IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:
 
 Response Code | Description
 ---------- | -------
 201 | Request is Rejected (User ID is not Found)
 202 | Request is Rejected (User ID is not Active)
-990 | Request is Rejected (Invalid format)
+990 | Request is Rejected (Invalid Format)
