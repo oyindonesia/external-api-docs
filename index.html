@@ -4533,7 +4533,21 @@ POST https://partner.oyindonesia.com/kyc/status <span class="se">\</span>
 <p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
 <h2 id='connect-internet-banking'>Connect internet banking</h2>
 <p>Login and connect internet banking. This process is asynchronous, we will send response using callback url that you registered to us. For detail of callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://partner.oyindonesia.com/api/ibank/login <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span> <span class="nt">-d</span> <span class="s1">'{"data": "&lt;ENCRYPTED_USERNAME_PASSWORD&gt;","bank_code": "008","phone_number" : "+62821123456789","email" : "","tx_history_start_date": 1586734844000,"tx_history_end_date": 1584056444000,"user_consent": true}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/ibank/login <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-apikey:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "data": "&lt;ENCRYPTED_USERNAME_PASSWORD&gt;",
+    "bank_code": "008",
+    "phone_number": "+62821123456789",
+    "email": "",
+    "tx_history_start_date": 1586734844000,
+    "tx_history_end_date": 1584056444000,
+    "user_consent": true
+}'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -4622,7 +4636,12 @@ POST https://partner.oyindonesia.com/kyc/status <span class="se">\</span>
 </tbody></table>
 <h2 id='get-connected-accounts'>Get connected accounts</h2>
 <p>Get all connected accounts on specific Internet banking id (ibank ID)</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-apikey:987654'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -4690,7 +4709,12 @@ POST https://partner.oyindonesia.com/kyc/status <span class="se">\</span>
 </tbody></table>
 <h2 id='get-balance'>Get Balance</h2>
 <p>Get balance for specific account. This is required account ID as parameter.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/accounts/:accountId/balance <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/accounts/:accountId/balance 
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-apikey:987654'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
@@ -4749,7 +4773,12 @@ POST https://partner.oyindonesia.com/kyc/status <span class="se">\</span>
 </tbody></table>
 <h2 id='get-mutations'>Get Mutations</h2>
 <p>Get mutations for specific account with time range. This is required account ID as parameter,</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span class="o">=</span>2020-01-01&amp;endDate<span class="o">=</span>2020-01-30 <span class="nt">-H</span> <span class="s1">'content-type: application/json, accept: application/json, x-oy-username:myuser, x-oy-apikey:987654'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="se">\</span>
+https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span class="o">=</span>2020-01-01&amp;endDate<span class="o">=</span>2020-01-30 <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-apikey:987654'</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this:</p>
