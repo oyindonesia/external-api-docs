@@ -2,7 +2,7 @@
 
 These are the list of possible status codes for fund disbursement:
 
-Payment Status | State | Description
+Response Code | State | Description
 ---------- | ------- | -------
 000 | Final | Disbursement Request has been completed (success)
 101 | Non-Final | Request is Processed
@@ -23,7 +23,7 @@ Payment Status | State | Description
 
 IMPORTANT! The following status codes mean that your request is not received by OY! and do not represent any information related to your transaction status:
 
-Payment Status | Description
+Response Code | Description
 ---------- | -------
 201 | Request is Rejected (User ID is not Found)
 202 | Request is Rejected (User ID is not Active)
