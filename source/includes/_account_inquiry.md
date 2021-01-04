@@ -34,7 +34,7 @@ POST https://partner.oyindonesia.com/api/account-inquiry \
     "account_name": "John Doe",
     "timestamp": "2020-11-19T17:01:17",
     "id": "59e11245-4b36-4ed7-97be-0c501b8ae3c8",
-    "invoice_id": "c0503fa6-a5b3-4816-bc07-241473357f58
+    "invoice_id": "c0503fa6-a5b3-4816-bc07-241473357f58"
 }
 ```
 
