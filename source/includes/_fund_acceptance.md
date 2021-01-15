@@ -351,7 +351,7 @@ curl -X GET \
   "partner_tx_id": "partner000001",
   "tx_ref_number": "1234567",
   "amount": 15000,
-  "sender_name": "Joko Widodo",
+  "sender_name": "Budi",
   "sender_phone": "+6281111111",
   "sender_note": "Mohon dikirim segera",
   "status": "success",
