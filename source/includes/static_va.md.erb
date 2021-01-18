@@ -12,7 +12,7 @@ API VA aggregator allows you to create a unique Virtual Account (VA) number as a
 Use this API to create new VA number
 
 ```shell
-curl -X \ 
+curl -X \
 POST <%= config[:endpoint_prod] %>/api/generate-static-va
 -H 'content-type: application/json' \
 -H 'accept: application/json' \
@@ -414,7 +414,7 @@ Parameter | Type | Description
 va_number | String(20) | Generated VA number
 amount | BigDecimal | Amount of VA transaction
 partner_user_id | String(255) | Your unique ID for specific user
-success | boolean | Payment status if success or not
+success | boolean | Payment status, its always success
 tx_date | Timestamp | Incoming payment transaction date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 trx_expiration_date | Long | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
