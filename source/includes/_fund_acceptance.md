@@ -392,12 +392,16 @@ sender_name | String | Name of a payer for a transaction
 sender_phone | String | Phone number of a payer for a transaction
 sender_note | String | Additional notes from a payer for a transaction
 status | String | The status of a transaction
+settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
 payment_method | String | The payment method used in a transaction such as CC (Credit Card), DC (Debit Card) or VA (Virtual Account)
-va_number | String | VA number to be used on payment if using Virtual Account
-settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 created | String | The timestamp which indicates the creation time of a payment checkout link
+description | String | Description of the payment checkout link.
+paid_amount | BigDecimal | the total amount that a user has paid.
+expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)
+is_invoice | Boolean | The invoice which indicates the transaction is invoice or not.
 updated | String | The timestamp which indicates the latest updated time of a payment checkout link due to status update
+email | String | The email address where the payment checkout link will be sent to.
 
 ## API Delete
 
