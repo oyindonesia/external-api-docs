@@ -3085,7 +3085,7 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 <strong>[Staging Base URL]</strong>: <code>https://api-stg.oyindonesia.com</code></p>
 <h2 id='create-va'>Create VA</h2>
 <p>Use this API to create new VA number</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\ </span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/generate-static-va
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
@@ -3901,7 +3901,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <tr>
 <td>success</td>
 <td>boolean</td>
-<td>Payment status if success or not</td>
+<td>Payment status, its always success</td>
 </tr>
 <tr>
 <td>tx_date</td>
