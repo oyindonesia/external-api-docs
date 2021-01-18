@@ -358,7 +358,13 @@ curl -X GET \
   "settlement_type": "realtime",
   "sender_bank": "008",
   "payment_method": "DC",
-  "va_number" : ""
+  "created": "2021-01-12T16:25:33",
+  "description": "",
+  "paid_amount": 100000,
+  "expiration": "2021-01-13T16:25:14",
+  "is_invoice": false,
+  "updated": "2021-01-12T16:26:17",
+  "email": ""
 }
 ```
 
