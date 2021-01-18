@@ -5768,6 +5768,11 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <td>The status of a transaction</td>
 </tr>
 <tr>
+<td>settlement_type</td>
+<td>String</td>
+<td>Indicate if a transaction will be settled in realtime/non-realtime</td>
+</tr>
+<tr>
 <td>sender_bank</td>
 <td>String</td>
 <td>The bank code used by a payer to do payment</td>
@@ -5778,24 +5783,39 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <td>The payment method used in a transaction such as CC (Credit Card), DC (Debit Card) or VA (Virtual Account)</td>
 </tr>
 <tr>
-<td>va_number</td>
-<td>String</td>
-<td>VA number to be used on payment if using Virtual Account</td>
-</tr>
-<tr>
-<td>settlement_type</td>
-<td>String</td>
-<td>Indicate if a transaction will be settled in realtime/non-realtime</td>
-</tr>
-<tr>
 <td>created</td>
 <td>String</td>
 <td>The timestamp which indicates the creation time of a payment checkout link</td>
 </tr>
 <tr>
+<td>description</td>
+<td>String</td>
+<td>Description of the payment checkout link.</td>
+</tr>
+<tr>
+<td>paid_amount</td>
+<td>BigDecimal</td>
+<td>the total amount that a user has paid.</td>
+</tr>
+<tr>
+<td>expiration</td>
+<td>datetime</td>
+<td>To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)</td>
+</tr>
+<tr>
+<td>is_invoice</td>
+<td>Boolean</td>
+<td>The invoice which indicates the transaction is invoice or not.</td>
+</tr>
+<tr>
 <td>updated</td>
 <td>String</td>
 <td>The timestamp which indicates the latest updated time of a payment checkout link due to status update</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>The email address where the payment checkout link will be sent to.</td>
 </tr>
 </tbody></table>
 <h2 id='api-delete'>API Delete</h2>
