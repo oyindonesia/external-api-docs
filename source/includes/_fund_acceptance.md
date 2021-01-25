@@ -405,7 +405,7 @@ email | String | The email address where the payment checkout link will be sent 
 
 ## API Delete
 
-And End Point to ***Delete*** Payment / Invoice Link based on ***payment_link_id*** or ***partner_tx_id*** that is still active and a payment method has not been selected.
+An endpoint to ***Delete*** Payment / Invoice Link based on ***payment_link_id*** or ***partner_tx_id*** that is still active and a payment method has not been selected.
 
 ```shell
 curl -X DELETE \
@@ -436,32 +436,26 @@ Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in url param | -
 
-### Success Response Parameters
+### Response Parameters
 
-Parameters | Type | Description | Value
+Parameters | Type | Description
 ---- | ---- | ------ | -------
-status | Boolean | Action status | true
-message | String | Action message | success delete payment checkout data
-
-### Failed Response Parameters
-
-Parameters | Type | Description | Value
----- | ---- | ------ | -------
-status | Boolean | Action status | false
-message | String | Action message | Can not delete ***(failed reason)***
+status | Boolean | TRUE if delete is successfull and FALSE otherwise
+message | String | Return message
 
 
-### Failed Reason Message Map
+### Return Message
 
-Reason | Description | Message
+Reason | Message
 ---- | ---- | ----
-**Data Not Found** | Payment Link Id not found in our system | Can not delete data is not found
-**Invalid Payment Link Id** | Payment Link Id null or invalid | Can not delete paymentLinkId is empty
-**Username Not Found** | Username not found in our system | Can not delete username is not found
-**Invalid IP Address** | User Ip address not registered on our system | Can not delete IP Address not registered
-**Invallid API Key** | User API Key is Invalid | Can not delete API Key is not valid
-**Username doesn't match** | User not eligible to delete another user payment data | Can not delete data is not match with username
-**Uneligible Payment Status** | Payment Status is not eligible to delete. Example: **COMPLETE** | Can not delete, status transaction is ***(payment status)***
+**Successfull Deletion** | Payment link has been deleted
+**Data Not Found** | The payment_link_id or partner_trx_id cannot be found in our system
+**Invalid Payment Link Id** | The payment_link_id or partner_trx_id is null or invalid
+**Username Not Found** | Username is not found
+**Invalid IP Address** | Invalid IP Address
+**Invalid API Key** | Invalid API Key
+**Restricted Access** | User does not have access to delete the payment link
+**Invalid Payment Status** | A payment method has already been selected
 
 
 ## API Get
@@ -564,23 +558,22 @@ invoiceItems | String JSON | Invoice Item List JSON | "[{\"item\": \"Semen Gresi
 
 ### Failed Response Parameters
 
-Parameters | Type | Description | Value
+Parameters | Type | Description
 ---- | ---- | ------ | -------
-status | Boolean | Action status | false
-message | String | Action message | Can not get ***(failed reason)***
+status | Boolean | Return false if data is not found
+message | String | Return message
 
 
-### Failed Reason Message Map
+### Failed Return Message
 
-Reason | Description | Message
+Reason | Description
 ---- | ---- | ----
-**Data Not Found** | Payment Link Id not found in our system | Can not delete data is not found
-**Invalid Payment Link Id** | Payment Link Id null or invalid | Can not get paymentLinkId is empty
-**Username Not Found** | Username not found in our system | Can not get username is not found
-**Invalid IP Address** | User Ip address not registered on our system | Can not get IP Address not registered
-**Invallid API Key** | User API Key is Invalid | Can not get API Key is not valid
-**Username doesn't match** | User not eligible to get another user payment data | Can not get data is not match with username
-
+**Data Not Found** | The payment_link_id or partner_trx_id cannot be found in our system
+**Invalid Payment Link Id** | The payment_link_id or partner_trx_id is null or invalid
+**Username Not Found** | Username is not found
+**Invalid IP Address** | Invalid IP Address
+**Invalid API Key** | Invalid API Key
+**Restricted Access** | User does not have access to the payment link
 
 ## POSTMAN
 
