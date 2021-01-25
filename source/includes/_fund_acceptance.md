@@ -315,7 +315,7 @@ curl -X POST \
 ## Payment Checkout Status
 
 Payment Status | Type | Description
----- | ---- | ---- | ----
+---- | ---- | ----
 waiting_payment | String | Status that indicates transaction is yet to be paid
 expired | String | The payment link has expired
 charge_in_progress | String | OTP for card payment method has been succesfully entered and processed
