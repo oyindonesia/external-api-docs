@@ -80,13 +80,13 @@ expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH
 
 
 ### Response Parameters
-Parameter | Type | Description | Limitation
+Parameter | Type | Description
 ---- | ---- | ---- | ----
-status | Boolean | Action status | true / false
-url | String | Payment link which used for payment | -
-payment_link_id | String | A unique transaction ID provided by partner | -
-message | String | Message response | -
-email_status | String | email status | -
+status | Boolean | true / false
+url | String | Payment link which used for payment
+payment_link_id | String | A unique transaction ID provided by partner
+message | String | Message response
+email_status | String | email status
 
 ## API Create (Invoicing)
 
@@ -222,11 +222,11 @@ curl -X POST \
 
 *Note: all parameters from API Create (Payment Checkout and Invoicing) are still applicable. Below is the list of the additional specific parameters for Recurring Invoice feature.
 
-Parameters | Type | Description | Limitation
+Parameters | Type | Description
 ---- | ---- | ------ | -------
-recurring_start_date | String | Defining the date when the first invoice will be sent. | -
-recurring_end_date | String | Username assigned to the customer by partner. | - 
-recurring_frequency | Integer | The interval of a recurring invoice to be sent to customers (in days). | -
+recurring_start_date | String | Defining the date when the first invoice will be sent.
+recurring_end_date | String | Username assigned to the customer by partner. 
+recurring_frequency | Integer | The interval of a recurring invoice to be sent to customers (in days).
 
 ## Payment Checkout Callback Parameters
 
@@ -432,14 +432,14 @@ curl -X DELETE \
 
 ### Request Parameters
 
-Parameters | Type | Description | Limitation
+Parameters | Type | Description
 ---- | ---- | ------ | -------
-payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in url param | -
+payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in url param
 
 ### Response Parameters
 
 Parameters | Type | Description
----- | ---- | ------ | -------
+---- | ---- | ------
 status | Boolean | TRUE if delete is successfull and FALSE otherwise
 message | String | Return message
 
@@ -447,7 +447,7 @@ message | String | Return message
 ### Return Message
 
 Reason | Message
----- | ---- | ----
+---- | ----
 **Successfull Deletion** | Payment link has been deleted
 **Data Not Found** | The payment_link_id or partner_trx_id cannot be found in our system
 **Invalid Payment Link Id** | The payment_link_id or partner_trx_id is null or invalid
@@ -517,9 +517,9 @@ curl -X GET \
 
 ### Request Parameters
 
-Parameters | Type | Description | Limitation
+Parameters | Type | Description
 ---- | ---- | ------ | -------
-payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in url param | -
+payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in url param
 
 
 ### Payment Response Parameters
@@ -559,15 +559,15 @@ invoiceItems | String JSON | Invoice Item List JSON | "[{\"item\": \"Semen Gresi
 ### Failed Response Parameters
 
 Parameters | Type | Description
----- | ---- | ------ | -------
-status | Boolean | Return false if data is not found
+---- | ---- | ------
+status | Boolean | Return FALSE if data is not found
 message | String | Return message
 
 
 ### Failed Return Message
 
 Reason | Description
----- | ---- | ----
+---- | ----
 **Data Not Found** | The payment_link_id or partner_trx_id cannot be found in our system
 **Invalid Payment Link Id** | The payment_link_id or partner_trx_id is null or invalid
 **Username Not Found** | Username is not found
