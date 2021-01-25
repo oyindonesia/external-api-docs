@@ -81,7 +81,7 @@ expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH
 
 ### Response Parameters
 Parameter | Type | Description
----- | ---- | ---- | ----
+---- | ---- | ----
 status | Boolean | true / false
 url | String | Payment link which used for payment
 payment_link_id | String | A unique transaction ID provided by partner
@@ -223,7 +223,7 @@ curl -X POST \
 *Note: all parameters from API Create (Payment Checkout and Invoicing) are still applicable. Below is the list of the additional specific parameters for Recurring Invoice feature.
 
 Parameters | Type | Description
----- | ---- | ------ | -------
+---- | ---- | ------
 recurring_start_date | String | Defining the date when the first invoice will be sent.
 recurring_end_date | String | Username assigned to the customer by partner. 
 recurring_frequency | Integer | The interval of a recurring invoice to be sent to customers (in days).
@@ -433,7 +433,7 @@ curl -X DELETE \
 ### Request Parameters
 
 Parameters | Type | Description
----- | ---- | ------ | -------
+---- | ---- | ------
 payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in url param
 
 ### Response Parameters
@@ -518,7 +518,7 @@ curl -X GET \
 ### Request Parameters
 
 Parameters | Type | Description
----- | ---- | ------ | -------
+---- | ---- | ------
 payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in url param
 
 
