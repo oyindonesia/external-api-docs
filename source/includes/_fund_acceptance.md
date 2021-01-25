@@ -455,8 +455,7 @@ Reason | Message
 **Invalid IP Address** | Invalid IP Address
 **Invalid API Key** | Invalid API Key
 **Restricted Access** | User does not have access to delete the payment link
-**Invalid Payment Status** | A payment method has already been selected
-
+**Invalid Payment Status** | Cannot delete payment link status other than CREATED/INITIATIED 
 
 ## API Get
 
