@@ -440,7 +440,7 @@ payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in 
 
 Parameters | Type | Description
 ---- | ---- | ------
-status | Boolean | TRUE if delete is successfull and FALSE otherwise
+status | Boolean | TRUE if delete is successful and FALSE otherwise
 message | String | Return message
 
 
@@ -448,7 +448,7 @@ message | String | Return message
 
 Reason | Message
 ---- | ----
-**Successfull Deletion** | Payment link has been deleted
+**Successful Deletion** | Payment link has been deleted
 **Data Not Found** | The payment_link_id or partner_trx_id cannot be found in our system
 **Invalid Payment Link Id** | The payment_link_id or partner_trx_id is null or invalid
 **Username Not Found** | Username is not found
