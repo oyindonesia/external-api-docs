@@ -312,17 +312,17 @@ curl -X POST \
       }'
 ```
 
-## Payment Checkout Callback Status
+## Payment Checkout Status
 
-Payment Status | Type | Payment Method | final/non final | Description
----- | ---- | ---- | ---- | ----
-waiting_payment | String | Bank Transfer | non_final | Payer triggers a payment status check for an unpaid VA
-expired | String | Bank Transfer | final | The payment link has been expired.
-charge_in_progress | String | Card | non_final | OTP for card payment method has been succesfully entered and processed
-charge_sucess | String | Bank Transfer/Card | non_final | A payment has been successfully received by OY
-failed | String | Card | non_final | OTP for card payment method has been succesfully entered but payment is rejected
-complete | String | Bank Transfer/Card | final | For "Realtime" settlement option, disbursement has been succesfully executed and received by partner
-closed | String | N/A | final | Payment checkout link is deleted
+Payment Status | Type | Description
+---- | ---- | ---- | ----
+waiting_payment | String | Status that indicates transaction is yet to be paid
+expired | String | The payment link has expired
+charge_in_progress | String | OTP for card payment method has been succesfully entered and processed
+charge_sucess | String | Card payment has been successfully received by OY
+failed | String | OTP for card payment method has been succesfully entered but payment is rejected or QRIS has expired
+complete | String | Transaction has been succesfully completed
+closed | String | Payment checkout link is deleted
 
 ## API Payment Status
 
@@ -391,7 +391,7 @@ amount | BigDecimal | The amount of a transaction that is paid
 sender_name | String | Name of a payer for a transaction
 sender_phone | String | Phone number of a payer for a transaction
 sender_note | String | Additional notes from a payer for a transaction
-status | String | The status of a transaction
+status | String | The status of a payment link
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
 payment_method | String | The payment method used in a transaction such as CC (Credit Card), DC (Debit Card) or VA (Virtual Account)
