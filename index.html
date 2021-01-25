@@ -5150,38 +5150,32 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
 <th>Parameter</th>
 <th>Type</th>
 <th>Description</th>
-<th>Limitation</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Boolean</td>
-<td>Action status</td>
 <td>true / false</td>
 </tr>
 <tr>
 <td>url</td>
 <td>String</td>
 <td>Payment link which used for payment</td>
-<td>-</td>
 </tr>
 <tr>
 <td>payment_link_id</td>
 <td>String</td>
 <td>A unique transaction ID provided by partner</td>
-<td>-</td>
 </tr>
 <tr>
 <td>message</td>
 <td>String</td>
 <td>Message response</td>
-<td>-</td>
 </tr>
 <tr>
 <td>email_status</td>
 <td>String</td>
 <td>email status</td>
-<td>-</td>
 </tr>
 </tbody></table>
 <h2 id='api-create-invoicing'>API Create (Invoicing)</h2>
@@ -5400,26 +5394,22 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
 <th>Parameters</th>
 <th>Type</th>
 <th>Description</th>
-<th>Limitation</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>recurring_start_date</td>
 <td>String</td>
 <td>Defining the date when the first invoice will be sent.</td>
-<td>-</td>
 </tr>
 <tr>
 <td>recurring_end_date</td>
 <td>String</td>
 <td>Username assigned to the customer by partner.</td>
-<td>-</td>
 </tr>
 <tr>
 <td>recurring_frequency</td>
 <td>Integer</td>
 <td>The interval of a recurring invoice to be sent to customers (in days).</td>
-<td>-</td>
 </tr>
 </tbody></table>
 <h2 id='payment-checkout-callback-parameters'>Payment Checkout Callback Parameters</h2>
@@ -5819,7 +5809,7 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 </tr>
 </tbody></table>
 <h2 id='api-delete'>API Delete</h2>
-<p>And End Point to <strong><em>Delete</em></strong> Payment / Invoice Link based on <strong><em>payment_link_id</em></strong> or <strong><em>partner_tx_id</em></strong> that is still active and a payment method has not been selected.</p>
+<p>An endpoint to <strong><em>Delete</em></strong> Payment / Invoice Link based on <strong><em>payment_link_id</em></strong> or <strong><em>partner_tx_id</em></strong> that is still active and a payment method has not been selected.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="se">\</span>
   https://partner.oyindonesia.com/api/payment-checkout/<span class="o">{</span>payment_link_id_or_partner_tx_id<span class="o">}</span><span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
@@ -5843,102 +5833,71 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <th>Parameters</th>
 <th>Type</th>
 <th>Description</th>
-<th>Limitation</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>payment_link_id_or_partner_tx_id</td>
 <td>String</td>
 <td>payment_link_id or partner_tx_id in url param</td>
-<td>-</td>
 </tr>
 </tbody></table>
-<h3 id='success-response-parameters'>Success Response Parameters</h3>
+<h3 id='response-parameters-3'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
 <th>Type</th>
 <th>Description</th>
-<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Boolean</td>
-<td>Action status</td>
-<td>true</td>
+<td>TRUE if delete is successfull and FALSE otherwise</td>
 </tr>
 <tr>
 <td>message</td>
 <td>String</td>
-<td>Action message</td>
-<td>success delete payment checkout data</td>
+<td>Return message</td>
 </tr>
 </tbody></table>
-<h3 id='failed-response-parameters'>Failed Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameters</th>
-<th>Type</th>
-<th>Description</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Boolean</td>
-<td>Action status</td>
-<td>false</td>
-</tr>
-<tr>
-<td>message</td>
-<td>String</td>
-<td>Action message</td>
-<td>Can not delete <strong><em>(failed reason)</em></strong></td>
-</tr>
-</tbody></table>
-<h3 id='failed-reason-message-map'>Failed Reason Message Map</h3>
+<h3 id='return-message'>Return Message</h3>
 <table><thead>
 <tr>
 <th>Reason</th>
-<th>Description</th>
 <th>Message</th>
 </tr>
 </thead><tbody>
 <tr>
+<td><strong>Successfull Deletion</strong></td>
+<td>Payment link has been deleted</td>
+</tr>
+<tr>
 <td><strong>Data Not Found</strong></td>
-<td>Payment Link Id not found in our system</td>
-<td>Can not delete data is not found</td>
+<td>The payment_link_id or partner_trx_id cannot be found in our system</td>
 </tr>
 <tr>
 <td><strong>Invalid Payment Link Id</strong></td>
-<td>Payment Link Id null or invalid</td>
-<td>Can not delete paymentLinkId is empty</td>
+<td>The payment_link_id or partner_trx_id is null or invalid</td>
 </tr>
 <tr>
 <td><strong>Username Not Found</strong></td>
-<td>Username not found in our system</td>
-<td>Can not delete username is not found</td>
+<td>Username is not found</td>
 </tr>
 <tr>
 <td><strong>Invalid IP Address</strong></td>
-<td>User Ip address not registered on our system</td>
-<td>Can not delete IP Address not registered</td>
+<td>Invalid IP Address</td>
 </tr>
 <tr>
-<td><strong>Invallid API Key</strong></td>
-<td>User API Key is Invalid</td>
-<td>Can not delete API Key is not valid</td>
+<td><strong>Invalid API Key</strong></td>
+<td>Invalid API Key</td>
 </tr>
 <tr>
-<td><strong>Username doesn&#39;t match</strong></td>
-<td>User not eligible to delete another user payment data</td>
-<td>Can not delete data is not match with username</td>
+<td><strong>Restricted Access</strong></td>
+<td>User does not have access to delete the payment link</td>
 </tr>
 <tr>
-<td><strong>Uneligible Payment Status</strong></td>
-<td>Payment Status is not eligible to delete. Example: <strong>COMPLETE</strong></td>
-<td>Can not delete, status transaction is <strong><em>(payment status)</em></strong></td>
+<td><strong>Invalid Payment Status</strong></td>
+<td>A payment method has already been selected</td>
 </tr>
 </tbody></table>
 <h2 id='api-get'>API Get</h2>
@@ -5996,14 +5955,12 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <th>Parameters</th>
 <th>Type</th>
 <th>Description</th>
-<th>Limitation</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>payment_link_id_or_partner_tx_id</td>
 <td>String</td>
 <td>payment_link_id or partner_tx_id in url param</td>
-<td>-</td>
 </tr>
 </tbody></table>
 <h3 id='payment-response-parameters'>Payment Response Parameters</h3>
@@ -6170,65 +6127,55 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <td>&quot;[{\&quot;item\&quot;: \&quot;Semen Gresik\&quot;, \&quot;quantity\&quot;: 2000, \&quot;description\&quot;: \&quot;Grade B\&quot;, \&quot;price_per_item\&quot;: 2250000, \&quot;date_of_purchase\&quot;: 1590969600000}]&quot;</td>
 </tr>
 </tbody></table>
-<h3 id='failed-response-parameters-2'>Failed Response Parameters</h3>
+<h3 id='failed-response-parameters'>Failed Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
 <th>Type</th>
 <th>Description</th>
-<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Boolean</td>
-<td>Action status</td>
-<td>false</td>
+<td>Return FALSE if data is not found</td>
 </tr>
 <tr>
 <td>message</td>
 <td>String</td>
-<td>Action message</td>
-<td>Can not get <strong><em>(failed reason)</em></strong></td>
+<td>Return message</td>
 </tr>
 </tbody></table>
-<h3 id='failed-reason-message-map-2'>Failed Reason Message Map</h3>
+<h3 id='failed-return-message'>Failed Return Message</h3>
 <table><thead>
 <tr>
 <th>Reason</th>
 <th>Description</th>
-<th>Message</th>
 </tr>
 </thead><tbody>
 <tr>
 <td><strong>Data Not Found</strong></td>
-<td>Payment Link Id not found in our system</td>
-<td>Can not delete data is not found</td>
+<td>The payment_link_id or partner_trx_id cannot be found in our system</td>
 </tr>
 <tr>
 <td><strong>Invalid Payment Link Id</strong></td>
-<td>Payment Link Id null or invalid</td>
-<td>Can not get paymentLinkId is empty</td>
+<td>The payment_link_id or partner_trx_id is null or invalid</td>
 </tr>
 <tr>
 <td><strong>Username Not Found</strong></td>
-<td>Username not found in our system</td>
-<td>Can not get username is not found</td>
+<td>Username is not found</td>
 </tr>
 <tr>
 <td><strong>Invalid IP Address</strong></td>
-<td>User Ip address not registered on our system</td>
-<td>Can not get IP Address not registered</td>
+<td>Invalid IP Address</td>
 </tr>
 <tr>
-<td><strong>Invallid API Key</strong></td>
-<td>User API Key is Invalid</td>
-<td>Can not get API Key is not valid</td>
+<td><strong>Invalid API Key</strong></td>
+<td>Invalid API Key</td>
 </tr>
 <tr>
-<td><strong>Username doesn&#39;t match</strong></td>
-<td>User not eligible to get another user payment data</td>
-<td>Can not get data is not match with username</td>
+<td><strong>Restricted Access</strong></td>
+<td>User does not have access to the payment link</td>
 </tr>
 </tbody></table>
 <h2 id='postman'>POSTMAN</h2>
