@@ -566,7 +566,7 @@ message | String | Return message
 
 ### Failed Return Message
 
-Reason | Description
+Reason | Message
 ---- | ----
 **Data Not Found** | The payment_link_id or partner_trx_id cannot be found in our system
 **Invalid Payment Link Id** | The payment_link_id or partner_trx_id is null or invalid
