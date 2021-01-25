@@ -322,7 +322,7 @@ charge_in_progress | String | OTP for card payment method has been succesfully e
 charge_sucess | String | Card payment has been successfully received by OY
 failed | String | OTP for card payment method has been succesfully entered but payment is rejected or QRIS has expired
 complete | String | Transaction has been succesfully completed
-closed | String | Payment checkout link is deleted
+closed | String | Payment checkout link has  been deleted
 
 ## API Payment Status
 
