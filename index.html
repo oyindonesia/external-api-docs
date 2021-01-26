@@ -474,7 +474,7 @@
                     <a href="#payment-checkout-callback-parameters" class="toc-h2 toc-link" data-title="Payment Checkout Callback Parameters">Payment Checkout Callback Parameters</a>
                   </li>
                   <li>
-                    <a href="#payment-checkout-callback-status" class="toc-h2 toc-link" data-title="Payment Checkout Callback Status">Payment Checkout Callback Status</a>
+                    <a href="#payment-checkout-status" class="toc-h2 toc-link" data-title="Payment Checkout Status">Payment Checkout Status</a>
                   </li>
                   <li>
                     <a href="#api-payment-status" class="toc-h2 toc-link" data-title="API Payment Status">API Payment Status</a>
@@ -5578,64 +5578,48 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
         "sender_bank":"008",
         "settlement_type":"non_realtime"
       }'</span>
-</code></pre></div><h2 id='payment-checkout-callback-status'>Payment Checkout Callback Status</h2>
+</code></pre></div><h2 id='payment-checkout-status'>Payment Checkout Status</h2>
 <table><thead>
 <tr>
 <th>Payment Status</th>
 <th>Type</th>
-<th>Payment Method</th>
-<th>final/non final</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>waiting_payment</td>
 <td>String</td>
-<td>Bank Transfer</td>
-<td>non_final</td>
-<td>Payer triggers a payment status check for an unpaid VA</td>
+<td>Status that indicates transaction is yet to be paid</td>
 </tr>
 <tr>
 <td>expired</td>
 <td>String</td>
-<td>Bank Transfer</td>
-<td>final</td>
-<td>The payment link has been expired.</td>
+<td>The payment link has expired</td>
 </tr>
 <tr>
 <td>charge_in_progress</td>
 <td>String</td>
-<td>Card</td>
-<td>non_final</td>
 <td>OTP for card payment method has been succesfully entered and processed</td>
 </tr>
 <tr>
 <td>charge_sucess</td>
 <td>String</td>
-<td>Bank Transfer/Card</td>
-<td>non_final</td>
-<td>A payment has been successfully received by OY</td>
+<td>Card payment has been successfully received by OY</td>
 </tr>
 <tr>
 <td>failed</td>
 <td>String</td>
-<td>Card</td>
-<td>non_final</td>
-<td>OTP for card payment method has been succesfully entered but payment is rejected</td>
+<td>OTP for card payment method has been succesfully entered but payment is rejected or QRIS has expired</td>
 </tr>
 <tr>
 <td>complete</td>
 <td>String</td>
-<td>Bank Transfer/Card</td>
-<td>final</td>
-<td>For &quot;Realtime&quot; settlement option, disbursement has been succesfully executed and received by partner</td>
+<td>Transaction has been succesfully completed</td>
 </tr>
 <tr>
 <td>closed</td>
 <td>String</td>
-<td>N/A</td>
-<td>final</td>
-<td>Payment checkout link is deleted</td>
+<td>Payment checkout link has  been deleted</td>
 </tr>
 </tbody></table>
 <h2 id='api-payment-status'>API Payment Status</h2>
@@ -5755,7 +5739,7 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <tr>
 <td>status</td>
 <td>String</td>
-<td>The status of a transaction</td>
+<td>The status of a payment link</td>
 </tr>
 <tr>
 <td>settlement_type</td>
