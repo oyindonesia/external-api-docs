@@ -212,11 +212,11 @@ Use this API to get partner balance.
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
-balance | BigInteger | Remaining balance (Accept Non-Decimal Number)
-overdraftBalance | BigInteger | Remaining overdraft balance (Accept Non-Decimal Number)
-overbookingBalance | BigInteger | Remaining overbooking balance (Accept Non-Decimal Number)
-pendingBalance | BigInteger | The cumulative balance of your pending transactions.
-availableBalance | BigInteger | The total cumulative money of Balance + Available Overdraft - Pending Balance that you can use for disbursement.
+balance | BigDecimal | Remaining balance (Accept non fraction number)
+overdraftBalance | BigDecimal | Remaining overdraft balance (Accept non fraction number)
+overbookingBalance | BigDecimal | Remaining overbooking balance (Accept non fraction number)
+pendingBalance | BigDecimal | The cumulative balance of your pending transactions.
+availableBalance | BigDecimal | The total cumulative money of Balance + Available Overdraft - Pending Balance that you can use for disbursement.
 timestamp | String(19) | Execution time of Disbursement in OY! system ("dd-MM-yyyy HH:mm:ss").
 
 ## Scheduled Disbursement
