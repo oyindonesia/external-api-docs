@@ -405,7 +405,8 @@ numberOfTransaction  | Integer | Total transaction
   "tx_date": "31/01/2020T01:01:01.000+0000",
   "username_display": "VA Name",
   "trx_expiration_date": "31/01/2020T01:01:01.000+0000",
-  "partner_trx_id": "TRX0002"
+  "partner_trx_id": "TRX0002",
+  "trx_id": "12345-12345-12453-12455"
 }
 ```
 
@@ -422,7 +423,8 @@ success | boolean | The status of the payment and it is always set to SUCCESS
 tx_date | Timestamp | Incoming payment transaction date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 trx_expiration_date | Long | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
-partner_trx_id | String(255) | Partner unique Transaction ID of a VA
+partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
+trx_id | String (255) | Unique ID of incoming payment
 
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator
