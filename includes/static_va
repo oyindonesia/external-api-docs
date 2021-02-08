@@ -795,8 +795,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
   </span><span class="nl">"tx_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VA Name"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"trx_expiration_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31/01/2020T01:01:01.000+0000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-12345-12453-12455"</span><span class="w">
+  </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Once user successfully do the payment, our system will make a callback to your system</p>
@@ -847,11 +846,6 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>partner_trx_id</td>
 <td>String(255)</td>
 <td>Partner unique Transaction ID for specific transaction</td>
-</tr>
-<tr>
-<td>trx_id</td>
-<td>String (255)</td>
-<td>Unique ID of incoming payment</td>
 </tr>
 </tbody></table>
 <h2 id='va-aggregator-bank-code'>VA aggregator Bank Code</h2><h3 id='available-bank-for-va-aggregator'>Available Bank for VA aggregator</h3>
