@@ -247,6 +247,7 @@ Payment Status | State | Meaning
 222 | Final | Transaction is EXPIRED
 224 | Final | Request is Rejected (Amount disburse does not reach Min amount)
 225 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
+429 | Final | Request Rejected (Too Many Request to specific endpoint)
 300 | Final | Transaction is FAILED
 
 ## API Offline Channel
