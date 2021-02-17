@@ -41,8 +41,8 @@ POST https://partner.oyindonesia.com/api-offline/initiate \
 ```
 
 ### HTTPS Request
-**[Production]** `GET https://partner.oyindonesia.com/api-offline/initiate`<br>
-**[Staging]** `GET https://api-stg.oyindonesia.com/api-offline/initiate`
+**[Production]** `POST https://partner.oyindonesia.com/api-offline/initiate`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api-offline/initiate`
 
 ### Request Parameters
 
@@ -109,8 +109,8 @@ This API offers an option to send you a callback status of the transaction reque
 Please contact us and submit a callback URL if you need a callback status of a transaction request.
 
 ### HTTPS Request
-**[Production]** `GET https://partner.oyindonesia.com/api-offline/tx-info`<br>
-**[Staging]** `GET https://api-stg.oyindonesia.com/api-offline/tx-info`
+**[Production]** `POST https://partner.oyindonesia.com/api-offline/tx-info`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api-offline/tx-info`
 
 ### Request Parameters
 
@@ -166,8 +166,8 @@ POST https://partner.oyindonesia.com/api-offline/refresh-code \
 A transaction will be valid for 24 hours with a 3-hours validity for each unique code . Use this API to refresh the unique code that have expired in which transaction is still valid.
 
 ### HTTPS Request
-**[Production]** `GET https://partner.oyindonesia.com/api-offline/refresh-code`<br>
-**[Staging]** `GET https://api-stg.oyindonesia.com/api-offline/refresh-code`
+**[Production]** `POST https://partner.oyindonesia.com/api-offline/refresh-code`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api-offline/refresh-code`
 
 ### Request Parameters
 
