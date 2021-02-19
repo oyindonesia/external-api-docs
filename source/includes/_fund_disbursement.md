@@ -97,6 +97,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+tx_status_description | String(255) | additional information of status code (e.g. FORCE CREDIT)
 amount | BigInteger | Amount of disbursement (Accept Non-Decimal Number)
 recipient_name | String(255) | Account holder name of Beneficiary account number
 recipient_bank | String(3) | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
@@ -163,6 +164,7 @@ send_callback | Boolean | FALSE | A flag to indiciate if the status of the disbu
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+tx_status_description | String(255) | additional information of status code (e.g. FORCE CREDIT)
 amount | BigInteger | Amount of disbursement (Accept Non-Decimal Number)
 recipient_name | String(255) | Account holder name of Beneficiary account number
 recipient_bank | String(3) | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
