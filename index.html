@@ -1220,6 +1220,11 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 <td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
+<td>tx_status_description</td>
+<td>String(255)</td>
+<td>additional information of status code (e.g. FORCE CREDIT)</td>
+</tr>
+<tr>
 <td>amount</td>
 <td>BigInteger</td>
 <td>Amount of disbursement (Accept Non-Decimal Number)</td>
@@ -1336,6 +1341,11 @@ Please contact us and submit a callback URL if you need a callback status of a d
 <td>status</td>
 <td>Object</td>
 <td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>tx_status_description</td>
+<td>String(255)</td>
+<td>additional information of status code (e.g. FORCE CREDIT)</td>
 </tr>
 <tr>
 <td>amount</td>
