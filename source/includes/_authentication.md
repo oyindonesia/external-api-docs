@@ -1,6 +1,16 @@
 # Authentication
 
-OY! API uses pair of `API Key` and `IP Address` to authenticate a partner request. Partner needs to register a unique `IP Address` which will be used as originating request for the API Services.
+OY! API uses pair of `API Key` and `IP Address` to authenticate a partner's request. Always ensure that you keep your API keys secure. Do not share your secret API keys in publicly accessible areas.
+  
+Here are the steps for the authentication;  
+  
+1) Submit your IPs and callback URLs (both for staging and production environment) to your business representative or to [partner@oyindonesia.com](mailto:partner@oyindonesia.com)
+  
+2) Request your staging and production API Keys to our business representative (note: you are not required to upgrade your account to request staging API Key. Upgrade is only required if you want to request Production API Key).
+  
+3) You have to include your API keys as part of the HTTPS headers when you make a call to OY! API  
+  
+All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Secure). Calls made over HTTP will fail. API requests without authentication will also fail.
 
 <aside class="warning">
 Note: Your machine which call request to OY! API Services should be originating from the registered IP Address
@@ -8,15 +18,19 @@ Note: Your machine which call request to OY! API Services should be originating 
 
 ## HTTPS Request
 
-Disbursement API can be requested through HTTPS Request to OY! API Base URL endpoint. The HTTPS Header has to be used to allow proper authentication, additionally HTTPS Request should only be made from IP Address which has been registered in OY! System.
+* HTTPS Request should only be made from IP Address that has been registered in OY! System.  
+* The HTTPS Header should always be included as part of the request in order for us to do authentication
+
 
 ### API Base URL
 
 Production Environment: `https://partner.oyindonesia.com`
 
+Test/Staging Environment: `https://api-stg.oyindonesia.com/`
+
 ## HTTPS Header
 
-Use following HTTPS Headers when you make a call to OY! API
+Use the following HTTPS Headers when you make a call to OY! API
 
 Header | Type | Description
 ------ | ----- | -----------
