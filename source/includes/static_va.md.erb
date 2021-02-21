@@ -1,6 +1,9 @@
-# VA Aggregator
+# Virtual Account (VA) Aggregator
 
-API VA aggregator allows you to create a unique Virtual Account (VA) number as a payment method for your customers.
+Our API VA Aggregator product will significantly save the cost and time needed for reporting and reconciling payments received through various banks. 
+
+It provides you with the capabilities to create unique Virtual Account (VA) numbers as a bank transfer payment method for your customers while the fund movements take place through OY!'s physical account.  
+You don’t have to open a bank account with each respective bank - all you need to do is to integrate with our API VA Aggregator and you will have centralized access to the VAs across multiple banks.
 
 ### VA Aggregator API Base URL
 
@@ -9,7 +12,7 @@ API VA aggregator allows you to create a unique Virtual Account (VA) number as a
 
 ## Create VA
 
-Use this API to create new VA number
+This API endpoint can be used to create a new VA number.
 
 ```shell
 curl -X \
@@ -65,18 +68,18 @@ POST <%= config[:endpoint_prod] %>/api/generate-static-va
 
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
-partner_user_id | String(255) | TRUE | - | Partner unique ID for specific user
-bank_code | String(3) | TRUE | - | Bank code which the VA number will be generated
-amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
-is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
-is_single_use | Boolean | FALSE | false | True means that this VA should be closed once there is a successful payment that is being made to this VA.
-expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, e.g If VA want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty VA will be expired in 24 hour
-is_lifetime | Boolean | FALSE | FALSE | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
-username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
-email | String(50) | FALSE | - | Email of user, using email standard format
-trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty transaction expiration time will be the same with va expiration time
-partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
-trx_counter | Int | FALSE | -1/1 | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+partner_user_id | String(255) | TRUE | - | A unique ID of your choice for a specific user
+bank_code | String(3) | TRUE | - | Bank code of the virtual account you want to create. Refer to [this section](https://api-docs.oyindonesia.com/#va-aggregator-bank-code) for the list of available bank codes
+amount | BigDecimal | FALSE | 0 | The amount that the virtual account will accept.  If is_open is false, amount is mandatory to be specified.
+is_open | Boolean | FALSE | true | When set to `true`, the VA will be open and, therefore, can accept any amount (field `amount` can be optional). When set to `false`, the VA will be closed and, therefore, only accepts the amount specified in `amount` field (mandatory to be specified).
+is_single_use | Boolean | FALSE | false | When set to `true`, the VA will be inactive/closed and the status will change to `COMPLETED` after it is successfully paid
+expiration_time | Long | FALSE | - | Expiration time of the VA (in minutes). e.g if VA wants to be expired after 5 minutes, you just have to set expiration_time to 5. If empty, VA will expire in 24 hours
+is_lifetime | Boolean | FALSE | FALSE | When set to `false` (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
+username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user (displayed in bank's user interface, e.g. ATM confirmation screens, mobile banking UI). If empty, we will display the username of your OY! account
+email | String(50) | FALSE | - | Email of your user - using email standard format
+trx_expiration_time | Long | FALSE | - | Transaction expiration time (in minutes), e.g If transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty, transaction expiration time will be the same with VA expiration time
+partner_trx_id | String(255) | FALSE | - | A unique ID of your choice for a specific transaction ID
+trx_counter | Int | FALSE | -1/1 | Transaction counter to limit the number of transaction that can be received by a VA number. If empty, default value -1 will be used for multiple use VA (is_single_use set to `false`) and default value 1 will be used for single use VA (is_single_use set to `true`). If counter reach zero, va cannot be inquiry or accept payment.
 
 ### Response Parameters
 
@@ -86,21 +89,20 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
 id | String(36) | Unique VA ID
-partner_user_id | String(255) | Your unique ID for specific user
-bank_code | String(3) | Bank code for VA, see [VA Bank Code](#static-va-bank-code)
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.
+partner_user_id | String(255) | A unique ID of your choice for a specific user
+bank_code | String(3) | Bank code of the virtual account you want to create. Refer to [this section](https://api-docs.oyindonesia.com/#va-aggregator-bank-code) for the list of available bank codes
+is_open | Boolean | When set to `true`, the VA will be open and, therefore, can accept any amount (field `amount` can be optional). When set to `false`, the VA will be closed and, therefore, only accepts the amount specified in `amount` field (mandatory to be specified).
+is_single_use | Boolean | When set to `true`, the VA will be inactive/closed and the status will change to `COMPLETED` after it is successfully paid
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
-username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
+username_display | String(255) | Customizable VA display name that will be seen by user (displayed in bank's user interface, e.g. ATM confirmation screens, mobile banking UI). If empty, we will display the username of your OY! account
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID of a VA
-trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+partner_trx_id | String(255) | A unique ID of your choice for a specific transaction ID
+trx_counter | Int | Transaction counter to limit the number of transaction that can be received by a VA number. If empty, default value -1 will be used for multiple use VA (is_single_use set to `false`) and default value 1 will be used for single use VA (is_single_use set to `true`). If counter reaches zero, the VA can no longer be inquired or paid by the user.
 
+  ## Get VA Info
 
-## Get VA Info
-
-Get VA info using Unique VA id.
+This API endpoint can be used to get an information corresponding to a specific VA number (based on a unique VA ID).
 
 ```shell
 curl -X \
@@ -144,8 +146,8 @@ GET <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212
 
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
-ID | String(255) | TRUE | - | Unique VA id, you can get this once you success created VA
-
+ID | String(255) | TRUE | - | Unique VA ID (you can get VA ID after you successfully create a new VA number)
+  
 ### Response Parameters
 
 Parameter | Type | Description
@@ -154,21 +156,35 @@ id | String |  Unique VA id
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
-bank_code | String(3) | Bank code for VA
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA.
+bank_code | String(3) | Bank code of the VA
+is_open | Boolean | When set to `true`, the VA will be open and, therefore, can accept any amount (field `amount` can be optional). When set to `false`, the VA will be closed and, therefore, only accepts the amount specified in `amount` field (mandatory to be specified).
+is_single_use | Boolean | When set to `true`, the VA will be inactive/closed and the status will change to `COMPLETED` after it is successfully paid
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
-username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-partner_user_id | String(255) | Partner unique ID for specific user,
+username_display | String(255) | Customizable VA display name that will be seen by user (displayed in bank's user interface, e.g. ATM confirmation screens, mobile banking UI). If empty, we will display the username of your OY! account
+partner_user_id | String(255) | A unique ID of your choice for a specific user
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID of a VA
-trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
-
+partner_trx_id | String(255) | A unique ID of your choice for a specific transaction ID
+trx_counter | Int | Transaction counter to limit the number of transaction that can be received by a VA number. If empty, default value -1 will be used for multiple use VA (is_single_use set to `false`) and default value 1 will be used for single use VA (is_single_use set to `true`). If counter reaches zero, the VA can no longer be inquired or paid by the user.
 
 ## Update VA
 
-Update VA using unique VA id.
+This API endpoint can be used to update the attributes corresponding to a VA number (based on a unique VA ID).
+  
+Attributes that can be updated:
+
+* amount
+* is_single_use
+* email
+* trx_counter
+* expired_time
+* trx_expired_time
+* username_display
+
+Example:
+* A static VA with a closed amount can be updated with a new closed amount hence it can work as a bill to be paid for a particular customer
+* A static VA can be updated to a single use so it will be the last payment received from a particular customer
+* A dynamic VA with a closed amount is updated to an opened amount so that it can accept payments for any amount
 
 ```shell
 curl -X \
@@ -219,45 +235,46 @@ PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212
 ### URL Parameter
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
-ID | String(36) | TRUE | - | Unique VA ID, you can get this once you success created VA
-
+ID | String(36) | TRUE | - | Unique VA ID (you can get VA ID after you successfully create a new VA number)
+  
 ### Request Parameters
 
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
-amount | BigDecimal | FALSE | - | Amount your user must paid to complete the transaction
-is_open | Boolean | FALSE | true | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
-is_single_use | Boolean | FALSE |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA.
-expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
-username_display | String | - | - | Customizable VA display name that will be seen by user, If empty willl be using partner username
-is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
+amount | BigDecimal | FALSE | - | The amount that the virtual account will accept.  If is_open is false, amount is mandatory to be specified.
+is_single_use | Boolean | FALSE | false | When set to true, the VA will be inactive/closed and the status will change to COMPLETED after it is successfully paid
+expiration_time | Long | FALSE | - | Expiration time of the VA (in minutes). e.g if VA wants to be expired after 5 minutes, you just have to set expiration_time to 5. If empty, VA will expire in 24 hours
+username_display | String | - | - | Customizable VA display name that will be seen by user (displayed in bank's user interface, e.g. ATM confirmation screens, mobile banking UI). If empty, we will display the username of your OY! account
+is_lifetime | Boolean | FALSE | - | false | When set to false (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 email | String(50) | FALSE | - | Email of user, using email standard format
-trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5.
+trx_expiration_time | Long | FALSE | - | Transaction expiration time (in minutes), e.g If transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty, transaction expiration time will be the same with VA expiration time
 partner_trx_id | String(255) | - | Partner unique Transaction ID of a VA
-trx_counter | Int | FALSE | -1/1 | Update transaction counter to limit number of transaction that can be receive by va number
+trx_counter | Int | FALSE | -1/1 | Transaction counter to limit the number of transaction that can be received by a VA number. If empty, default value -1 will be used for multiple use VA (is_single_use set to false) and default value 1 will be used for single use VA (is_single_use set to true). If counter reaches zero, the VA can no longer be inquired or paid by the user.
+
 
 ### Response Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
-id | String |  Unique VA id
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
+id | String | Unique VA ID (you can get VA ID after you successfully create a new VA number)
+status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
 amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
-bank_code | String(3) | Bank code for VA
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA.
+bank_code | String(3) | Bank code of VA
+is_open | Boolean | When set to true, the VA will be open and, therefore, can accept any amount (field amount can be optional). When set to false, the VA will be closed and, therefore, only accepts the amount specified in amount field (mandatory to be specified).
+is_single_use | Boolean | When set to true, the VA will be inactive/closed and the status will change to COMPLETED after it is successfully paid
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
-username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-partner_user_id | String(255) | Partner unique ID for specific user
+username_display | String(255) | Customizable VA display name that will be seen by user (displayed in bank's user interface, e.g. ATM confirmation screens, mobile banking UI). If empty, we will display the username of your OY! account
+partner_user_id | String(255) | A unique ID of your choice for a specific user
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID of a VA
-trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+partner_trx_id | String(255) | A unique ID of your choice for a specific transaction ID
+trx_counter | Int | Transaction counter to limit the number of transaction that can be received by a VA number. If empty, default value -1 will be used for multiple use VA (is_single_use set to false) and default value 1 will be used for single use VA (is_single_use set to true). If counter reaches zero, the VA can no longer be inquired or paid by the user.
+counter_incoming_payment | Integer | Count of total incoming payment for the VA
 
-## Get list of created VA
+## Get List of Created VA
 
-Get list of created VA
+This API endpoint can be used to get the list of created VA.
 
 ```shell
 curl -X \
@@ -319,21 +336,22 @@ GET <%= config[:endpoint_prod] %>/api/static-virtual-account?offset=0&limit=10
 ### Request Parameters
 Parameter | Type | Default | Description
 --------- | ---- | ------- | -----------
-offset | Integer | 0 | start offset, default is 0, if empty will used default value
-limit | Integer | 10 | max item to fetch, default is 10, if empty will used default value
+offset | Integer | 0 | Start offset. If empty, default value will be used
+limit | Integer | 10 | Max item to fetch. If empty, default value will be used
+
 
 ### Response Parameters
 Parameter | Type | Description
 --------- | ---- | -----------
 total | Integer | total items
-data  | Array of object | List of Object `{id: <id>, amount: <amount>, va_number: <va_number>, bank_code: <bank_code>, is_open: <is_open>, is_single_user: <is_single_user>, expiration_time: <expiration_time>, va_status: <va_status>, username_display: <username_display>, amount_detected: <amount_detected>, partner_user_id: <partner_user_id>}`
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
+data | Array of object | List of Object {id: <va_id>, amount: <amount>, va_number: <va_number>, bank_code: <bank_code>, bank_name: <bank_name>, is_open: <is_open>, is_single_use: <is_single_use>, expiration_time: <expiration_time>, va_status: <va_status>, username_display: <username_display>, amount_detected: <amount_detected>, partner_user_id: <partner_user_id>, created: <created>, counter_incoming_payment: <counter_incoming_payment>, trx_counter: <trx_counter>}
+status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
 
 
 ## Get List of Transaction for VA
 
-Get list of incoming transaction for specific va number.
-
+This API endpoint can be used to get the list of incoming payment/transaction made into a specific VA number.
+  
 ```shell
 curl -X \
 GET <%= config[:endpoint_prod] %>/api/va-tx-history/12345676788898?offset=0&limit=10
@@ -376,7 +394,7 @@ GET <%= config[:endpoint_prod] %>/api/va-tx-history/12345676788898?offset=0&limi
 ### URL Parameter
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
-ID | String(36) | TRUE | - | Unique VA ID, you can get this once you success created VA
+ID | String(36) | TRUE | - | Unique VA ID (you can get VA ID after you successfully create a new VA number)
 
 ### Request Parameters
 Parameter | Type | Required | Default | Description
@@ -389,10 +407,11 @@ Parameter | Type | Description
 --------- | ---- | -----------
 id | Integer | Unique VA id
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
-data  | Array of Object  | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>}`
+data  | Array of Object  | List of Object `{id: <transaction_id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>, va_history_id: <va_history_id>}`
 numberOfTransaction  | Integer | Total transaction
+total_incoming_payment | Integer | Total incoming payment
 
-## Partner Callback Va Aggregator
+## VA Aggregator Callback
 
 > Response callback:
 
@@ -420,11 +439,12 @@ va_number | String(20) | Generated VA number
 amount | BigDecimal | Amount of VA transaction
 partner_user_id | String(255) | Your unique ID for specific user
 success | boolean | The status of the payment and it is always set to SUCCESS
-tx_date | Timestamp | Incoming payment transaction date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
+tx_date | Timestamp | Incoming payment transaction date, UTC format dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-trx_expiration_date | Long | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
+trx_expiration_date | Long | Transaction expiration date, UTC format dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
 trx_id | String (255) | Unique ID of incoming payment
+
 
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator
@@ -436,9 +456,10 @@ Bank Code | Bank Name
 008 | Bank Mandiri
 009 | Bank BNI
 014 | Bank BCA
+  
+## Required Documents for VA BCA Activation
+To create and enable payment through BCA VA, you are required to submit additional documents to our business representative. 
 
-## List of Documents
-To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.
 
 ### Common Documents
 No | Document
@@ -470,7 +491,7 @@ No | Documents
 Status | Description
 ------ | -----------
 WAITING_PAYMENT | This status means that VA is active and can receive a payment
-PAYMENT_DETECTED | This status means that there are incoming payment to VA Number
+PAYMENT_DETECTED | This status means that there are incoming payments into the VA Number
 EXPIRED | This status means that VA is expired. You cannot accept or make update to VA Number with this status.
-STATIC_TRX_EXPIRED | This status means that Transaction is expired. If VA have a unlimited lifetime, you can create a new transaction using update va info.
-COMPLETE | This status means that VA is closed/complete after get incoming payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute `is_single_use` true can have this status.
+STATIC_TRX_EXPIRED | This status means that the transaction is expired. If the VA has an unlimited lifetime, you can create a new transaction under the same VA using [Update VA endpoint](https://api-docs.oyindonesia.com/#update-va) .
+COMPLETE | This status means that the VA is already closed/completed after successfully receiving a single payment. You cannot accept or make update to VA Number with this status. Only Static VA with attribute `is_single_use` true can have this status.
