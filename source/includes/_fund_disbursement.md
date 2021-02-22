@@ -76,6 +76,7 @@ timestamp | String(19) | Execution time of Disbursement in OY! system ("dd-MM-yy
     "code":"000",
     "message":"Success"
   },
+  "tx_status_description":"Force Credit",
   "amount":125000,
   "recipient_name":"John Doe",
   "recipient_bank":"008",
@@ -131,6 +132,7 @@ POST https://partner.oyindonesia.com/api/remit-status \
     "code":"000",
     "message":"Success"
   },
+  "tx_status_description":"Force Credit",
   "amount":125000,
   "recipient_name":"John Doe",
   "recipient_bank":"008",
