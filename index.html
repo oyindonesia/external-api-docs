@@ -364,9 +364,6 @@
                     <a href="#scheduled-disbursement" class="toc-h2 toc-link" data-title="Scheduled Disbursement">Scheduled Disbursement</a>
                   </li>
                   <li>
-                    <a href="#mock-number-staging-api" class="toc-h2 toc-link" data-title="Mock number Staging API">Mock number Staging API</a>
-                  </li>
-                  <li>
                     <a href="#disbursement-bank-codes" class="toc-h2 toc-link" data-title="Disbursement Bank Codes">Disbursement Bank Codes</a>
                   </li>
                   <li>
@@ -2414,118 +2411,6 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 <td>last_updated_date</td>
 <td>String(19)</td>
 <td>Latest status change of a scheduled disbursement. Example from &#39;Scheduled&#39; to &#39;Success&#39; (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
-</tr>
-</tbody></table>
-<h2 id='mock-number-staging-api'>Mock number Staging API</h2>
-<p>To get response code status of a disbursement inquiry request, you can use this mock:</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Expected Result</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>2222222222 (recipient_account)</td>
-<td>BANK_CODE_NOT_FOUND(&quot;205&quot;, &quot;Bank Code is not found&quot;)</td>
-</tr>
-<tr>
-<td>8888888888 (recipient_account)</td>
-<td>BANK_ACCOUNT_NOT_FOUND(&quot;209&quot;, &quot;Bank Account is not found&quot;)</td>
-</tr>
-<tr>
-<td>other value (recipient_account)</td>
-<td>SUCCESS(&quot;000&quot;, &quot;Success&quot;)</td>
-</tr>
-</tbody></table>
-
-<p>To get response code status of a disbursement remit request, you can use this mock:</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Expected Result</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>1234567890 (recipient_account)</td>
-<td>INTERNAL_SERVER_ERROR(&quot;999&quot;, &quot;Internal Server Error&quot;)</td>
-</tr>
-<tr>
-<td>1111111111 (recipient_account)</td>
-<td>DUPLICATE_PARTNER_TX_ID(&quot;203&quot;, &quot;Duplicate Partner Tx Id&quot;)</td>
-</tr>
-<tr>
-<td>2222222222 (recipient_account)</td>
-<td>BANK_CODE_NOT_FOUND(&quot;205&quot;, &quot;Bank Code is not found&quot;)</td>
-</tr>
-<tr>
-<td>3333333333 (recipient_account)</td>
-<td>TX_ID_NOT_FOUND(&quot;204&quot;, &quot;Tx Id is not found&quot;)</td>
-</tr>
-<tr>
-<td>4444444444 (recipient_account)</td>
-<td>USER_IS_NOT_FOUND(&quot;201&quot;, &quot;User is not found&quot;)</td>
-</tr>
-<tr>
-<td>5555555555 (recipient_account)</td>
-<td>USER_IS_NOT_ACTIVE(&quot;202&quot;, &quot;User is not active&quot;)</td>
-</tr>
-<tr>
-<td>other value (recipient_account)</td>
-<td>PROCESSED(&quot;101&quot;, &quot;Request is Processed&quot;)</td>
-</tr>
-</tbody></table>
-
-<p>To get response code status of a disbursement remit status request, you can use this mock:</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Expected Result</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>1234567890 (recipient_account)</td>
-<td>INTERNAL_SERVER_ERROR(&quot;999&quot;, &quot;Internal Server Error&quot;)</td>
-</tr>
-<tr>
-<td>6666666666 (recipient_account)</td>
-<td>IN_PROGRESS(&quot;102&quot;, &quot;Request is In progress&quot;)</td>
-</tr>
-<tr>
-<td>7777777777 (recipient_account)</td>
-<td>FAILED(&quot;300&quot;, &quot;Failed&quot;)</td>
-</tr>
-<tr>
-<td>8888888888 (recipient_account)</td>
-<td>BANK_ACCOUNT_NOT_FOUND(&quot;209&quot;, &quot;Bank Account is not found&quot;)</td>
-</tr>
-<tr>
-<td>9999999999 (recipient_account)</td>
-<td>SUSPECT(“301”, “Suspect”)</td>
-</tr>
-<tr>
-<td>other value (recipient_account)</td>
-<td>SUCCESS(&quot;000&quot;, &quot;Success&quot;)</td>
-</tr>
-</tbody></table>
-
-<p>To get response code status of a disbursement balance request, you can use this mock:</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Expected Result</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>&lt;Partner Username&gt; (X-OY-Username)</td>
-<td>SUCCESS(&quot;000&quot;, &quot;Success&quot;)</td>
-</tr>
-<tr>
-<td>other value (X-OY-Username)</td>
-<td>USER_IS_NOT_FOUND(&quot;201&quot;, &quot;User is not found&quot;)</td>
 </tr>
 </tbody></table>
 <h2 id='disbursement-bank-codes'>Disbursement Bank Codes</h2>
