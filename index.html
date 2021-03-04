@@ -3028,8 +3028,10 @@ POST https://partner.oyindonesia.com/api/generate-static-va
     </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
     </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"va name"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_user_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"51200021"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"counter_incoming_payment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
@@ -3208,6 +3210,11 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <td>Int</td>
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
+<tr>
+<td>counter_incoming_payment</td>
+<td>Integer</td>
+<td>Count total incoming payment of VA</td>
+</tr>
 </tbody></table>
 <h2 id='get-va-info'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
@@ -3230,6 +3237,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1233456000000000001"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank BRI"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
@@ -3237,6 +3245,8 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
     </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1613545965167</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"counter_incoming_payment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
@@ -3296,6 +3306,11 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Bank code for VA</td>
 </tr>
 <tr>
+<td>bank_name</td>
+<td>String(10)</td>
+<td>Bank name of the VA</td>
+</tr>
+<tr>
 <td>is_open</td>
 <td>Boolean</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
@@ -3323,7 +3338,17 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
-<td>Partner unique ID for specific user,</td>
+<td>Partner unique ID for specific user</td>
+</tr>
+<tr>
+<td>created</td>
+<td>Long</td>
+<td>Unix timestamp in milliseconds when VA created</td>
+</tr>
+<tr>
+<td>counter_incoming_payment</td>
+<td>Integer</td>
+<td>Count total incoming payment of VA</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
@@ -3350,7 +3375,6 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
-    "is_open": true,
     "amount": 50000,
     "is_single_use": false,
     "expiration_time": 30,
@@ -3377,7 +3401,8 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"counter_incoming_payment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-3'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>PUT https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
@@ -3416,13 +3441,6 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>FALSE</td>
 <td>-</td>
 <td>Amount your user must paid to complete the transaction</td>
-</tr>
-<tr>
-<td>is_open</td>
-<td>Boolean</td>
-<td>FALSE</td>
-<td>true</td>
-<td>True means VA number can accept any amount, field <code>amount</code> can be optional, False means VA number only accept the specified amount in the field amount. When you set <code>is_open</code> to false, you must specify amount field.</td>
 </tr>
 <tr>
 <td>is_single_use</td>
@@ -3559,6 +3577,11 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Int</td>
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
+<tr>
+<td>counter_incoming_payment</td>
+<td>Integer</td>
+<td>Count total incoming payment of VA</td>
+</tr>
 </tbody></table>
 <h2 id='get-list-of-created-va'>Get list of created VA</h2>
 <p>Get list of created VA</p>
@@ -3580,6 +3603,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000006"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank BRI"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582791896416</span><span class="p">,</span><span class="w">
@@ -3587,14 +3611,18 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
             </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1613545965167</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"counter_incoming_payment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
+            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">12000.0000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100536000000000005"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"bank_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank BRI"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
             </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
@@ -3602,8 +3630,11 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
             </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"amount_detected"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
             </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54321"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"created"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1613545965167</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"counter_incoming_payment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="w">
+            </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -3652,7 +3683,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 <tr>
 <td>data</td>
 <td>Array of object</td>
-<td>List of Object <code>{id: &lt;id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;}</code></td>
+<td>List of Object <code>{id: &lt;va_id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, bank_name: &lt;bank_name&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;, created: &lt;created&gt;, counter_incoming_payment: &lt;counter_incoming_payment&gt;, trx_counter: &lt;trx_counter&gt;}</code></td>
 </tr>
 <tr>
 <td>status</td>
@@ -3688,10 +3719,12 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
             </span><span class="nl">"last_update_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Static VA by username"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582789681439</span><span class="p">,</span><span class="w">
             </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456000000000001"</span><span class="w">
+            </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456000000000001"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"va_history_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3d5c41e6-04ac-4f1a-bd5e-53887fedf98f"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nl">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_incoming_payment"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-5'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code> <br/>
@@ -3760,12 +3793,17 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <tr>
 <td>data</td>
 <td>Array of Object</td>
-<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;}</code></td>
+<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;, va_history_id: &lt;va_history_id&gt;}</code></td>
 </tr>
 <tr>
-<td>numberOfTransaction</td>
+<td>number_of_transaction</td>
 <td>Integer</td>
 <td>Total transaction</td>
+</tr>
+<tr>
+<td>total_incoming_payment</td>
+<td>Integer</td>
+<td>Total incoming payment</td>
 </tr>
 </tbody></table>
 <h2 id='partner-callback-va-aggregator'>Partner Callback Va Aggregator</h2>
@@ -4026,6 +4064,11 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>217</td>
 <td>Final</td>
 <td>Request is Rejected (VA Number is still active for this partner user id)</td>
+</tr>
+<tr>
+<td>219</td>
+<td>Final</td>
+<td>Request is Rejected (Virtual account is not enabled for this bank)</td>
 </tr>
 <tr>
 <td>999</td>
