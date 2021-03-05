@@ -6209,7 +6209,7 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <h1 id='api-offline'>API Offline</h1>
 <p>API Offline enables your user to withdraw and deposit money from OY offline channel such as Cash Recycle Machine (CRM) and convenience store.</p>
 <h2 id='initiate-transaction'>Initiate Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-POST https://partner.oyindonesia.com/api-offline/initiate <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
@@ -6241,8 +6241,8 @@ POST https://partner.oyindonesia.com/api-offline/initiate <span class="se">\</sp
     </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15 10:12:16.786"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
-<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api-offline/initiate</code><br>
-<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api-offline/initiate</code></p>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/offline-create</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/offline-create</code></p>
 <h3 id='request-parameters'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -6319,7 +6319,7 @@ POST https://partner.oyindonesia.com/api-offline/initiate <span class="se">\</sp
 <tr>
 <td>receiver_phone_number</td>
 <td>String(255)</td>
-<td>User&#39;s phone number that</td>
+<td>User&#39;s phone number that will be used for withdraw or deposit process</td>
 </tr>
 <tr>
 <td>transaction_type</td>
@@ -6329,7 +6329,7 @@ POST https://partner.oyindonesia.com/api-offline/initiate <span class="se">\</sp
 <tr>
 <td>timestamp</td>
 <td>String(19)</td>
-<td>Execution time of Disbursement in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+<td>Execution time of the request in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
 </tr>
 <tr>
 <td>inactive_at</td>
@@ -6343,7 +6343,7 @@ POST https://partner.oyindonesia.com/api-offline/initiate <span class="se">\</sp
 </tr>
 </tbody></table>
 <h2 id='transaction-info'>Transaction Info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-POST https://partner.oyindonesia.com/api-offline/tx-info <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/offline-info <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
@@ -6377,8 +6377,8 @@ POST https://partner.oyindonesia.com/api-offline/tx-info <span class="se">\</spa
 <p>This API offers an option to send you a callback status of the transaction request to a specific URL.
 Please contact us and submit a callback URL if you need a callback status of a transaction request.</p>
 <h3 id='https-request-2'>HTTPS Request</h3>
-<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api-offline/tx-info</code><br>
-<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api-offline/tx-info</code></p>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/offline-info</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/offline-info</code></p>
 <h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -6427,7 +6427,7 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
-<td>Amount of transaction (Accept non fraction number)</td>
+<td>Amount of transaction</td>
 </tr>
 <tr>
 <td>code</td>
@@ -6437,7 +6437,7 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <tr>
 <td>receiver_phone_number</td>
 <td>String(255)</td>
-<td>User&#39;s phone number that</td>
+<td>User&#39;s phone number that will be used for withdraw or deposit process</td>
 </tr>
 <tr>
 <td>transaction_type</td>
@@ -6447,7 +6447,7 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <tr>
 <td>timestamp</td>
 <td>String(19)</td>
-<td>Execution time of Disbursement in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+<td>Execution time of the request in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
 </tr>
 <tr>
 <td>inactive_at</td>
@@ -6461,7 +6461,7 @@ Please contact us and submit a callback URL if you need a callback status of a t
 </tr>
 </tbody></table>
 <h2 id='refresh-code'>Refresh Code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-POST https://partner.oyindonesia.com/api-offline/refresh-code <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
@@ -6484,10 +6484,10 @@ POST https://partner.oyindonesia.com/api-offline/refresh-code <span class="se">\
     </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15 10:12:16.786"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>A transaction will be valid for 24 hours with a 3-hours validity for each unique code . Use this API to refresh the unique code that have expired in which transaction is still valid.</p>
+<p>A transaction will be valid for 24 hours with a default 3-hours validity for each unique code . Use this API to refresh the unique code that have expired in which transaction is still valid.</p>
 <h3 id='https-request-3'>HTTPS Request</h3>
-<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api-offline/refresh-code</code><br>
-<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api-offline/refresh-code</code></p>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/offline-refresh-code</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/offline-refresh-code</code></p>
 <h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -6587,7 +6587,7 @@ POST https://partner.oyindonesia.com/api-offline/refresh-code <span class="se">\
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
-<td>Amount of transaction (Accept non fraction number)</td>
+<td>Amount of transaction</td>
 </tr>
 <tr>
 <td>code</td>
@@ -6597,7 +6597,7 @@ POST https://partner.oyindonesia.com/api-offline/refresh-code <span class="se">\
 <tr>
 <td>receiver_phone_number</td>
 <td>String(255)</td>
-<td>User&#39;s phone number that</td>
+<td>User&#39;s phone number that will be used for withdraw or deposit process</td>
 </tr>
 <tr>
 <td>transaction_type</td>
@@ -6607,7 +6607,7 @@ POST https://partner.oyindonesia.com/api-offline/refresh-code <span class="se">\
 <tr>
 <td>timestamp</td>
 <td>String(19)</td>
-<td>Execution time of Disbursement in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
+<td>Execution time of the request in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
 </tr>
 <tr>
 <td>created_date</td>
