@@ -12,6 +12,7 @@ Response Code | State | Description
 214 | Final | Request is Rejected (Failed to generate static va)
 216 | Final | Request is Rejected (VA Id is empty)
 217 | Final | Request is Rejected (VA Number is still active for this partner user id)
+219 | Final | Request is Rejected (Virtual account is not enabled for this bank)
 999 | Non-Final | Internal Server Error
 
 IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:
@@ -20,4 +21,5 @@ Response Code | Description
 ---------- | -------
 201 | Request is Rejected (User ID is not Found)
 202 | Request is Rejected (User ID is not Active)
+429 | Request Rejected (Too Many Request to specific endpoint)
 990 | Request is Rejected (Invalid Format)

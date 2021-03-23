@@ -214,4 +214,5 @@ Status Code | State | Meaning
 006 | Final | Request is Rejected (Face is not the same as photo on id card)
 007 | Final | Data not found. ID Card number not registered
 008 | Final | Image size more than 1MB
+429 | Final | Request Rejected (Too Many Request to specific endpoint)
 999 | Final | Internal Server Error

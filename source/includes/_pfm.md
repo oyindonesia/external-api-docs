@@ -293,4 +293,5 @@ Status Code | State | Meaning
 302 | Final | Error wrong encryption
 303 | Final | Bank code is not valid
 304 | Final | User consent is false
+429 | Final | Request Rejected (Too Many Request to specific endpoint)
 999 | Final | Internal Server Error

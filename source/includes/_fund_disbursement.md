@@ -76,6 +76,7 @@ timestamp | String(19) | Execution time of Disbursement in OY! system ("dd-MM-yy
     "code":"000",
     "message":"Success"
   },
+  "tx_status_description":"Force Credit",
   "amount":125000,
   "recipient_name":"John Doe",
   "recipient_bank":"008",
@@ -97,6 +98,7 @@ Please contact us and submit a callback URL if you need a callback status of a d
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+tx_status_description | String(255) | additional information of status code (e.g. FORCE CREDIT)
 amount | BigInteger | Amount of disbursement (Accept Non-Decimal Number)
 recipient_name | String(255) | Account holder name of Beneficiary account number
 recipient_bank | String(3) | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
@@ -130,6 +132,7 @@ POST https://partner.oyindonesia.com/api/remit-status \
     "code":"000",
     "message":"Success"
   },
+  "tx_status_description":"Force Credit",
   "amount":125000,
   "recipient_name":"John Doe",
   "recipient_bank":"008",
@@ -163,6 +166,7 @@ send_callback | Boolean | FALSE | A flag to indiciate if the status of the disbu
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+tx_status_description | String(255) | additional information of status code (e.g. FORCE CREDIT)
 amount | BigInteger | Amount of disbursement (Accept Non-Decimal Number)
 recipient_name | String(255) | Account holder name of Beneficiary account number
 recipient_bank | String(3) | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
@@ -707,47 +711,4 @@ trigger_date | String(10) | Date when the disburse can be claimed by Beneficiary
 timestamp | String(19) | Execution time of scheduled disburse in OY! system ("dd-MM-yyyy HH:mm:ss")
 created_date | String(19) | Time when scheduled disburse was first scheduled ("dd-MM-yyyy HH:mm:ss")
 last_updated_date | String(19) | Latest status change of a scheduled disbursement. Example from 'Scheduled' to 'Success' ("dd-MM-yyyy HH:mm:ss")
-
-## Mock number Staging API
-
-To get response code status of a disbursement inquiry request, you can use this mock:
-
- Parameter | Expected Result
---------- | -----------
-2222222222 (recipient_account) | BANK_CODE_NOT_FOUND("205", "Bank Code is not found")
-8888888888 (recipient_account) | BANK_ACCOUNT_NOT_FOUND("209", "Bank Account is not found")
-other value (recipient_account) | SUCCESS("000", "Success")
-
-To get response code status of a disbursement remit request, you can use this mock:
-
- Parameter | Expected Result
---------- | -----------
-1234567890 (recipient_account) | INTERNAL_SERVER_ERROR("999", "Internal Server Error")
-1111111111 (recipient_account) | DUPLICATE_PARTNER_TX_ID("203", "Duplicate Partner Tx Id")
-2222222222 (recipient_account) | BANK_CODE_NOT_FOUND("205", "Bank Code is not found")
-3333333333 (recipient_account) | TX_ID_NOT_FOUND("204", "Tx Id is not found")
-4444444444 (recipient_account) | USER_IS_NOT_FOUND("201", "User is not found")
-5555555555 (recipient_account) | USER_IS_NOT_ACTIVE("202", "User is not active")
-other value (recipient_account) | PROCESSED("101", "Request is Processed")
-
-To get response code status of a disbursement remit status request, you can use this mock:
-
- Parameter | Expected Result
---------- | -----------
-1234567890 (recipient_account) | INTERNAL_SERVER_ERROR("999", "Internal Server Error")
-6666666666 (recipient_account) | IN_PROGRESS("102", "Request is In progress")
-7777777777 (recipient_account) | FAILED("300", "Failed")
-8888888888 (recipient_account) | BANK_ACCOUNT_NOT_FOUND("209", "Bank Account is not found")
-9999999999 (recipient_account) | SUSPECT(“301”, “Suspect”)
-other value (recipient_account) | SUCCESS("000", "Success")
-
-To get response code status of a disbursement balance request, you can use this mock:
-
-
-
- Parameter | Expected Result
---------- | -----------
-\<Partner Username\> (X-OY-Username) | SUCCESS("000", "Success")
-other value (X-OY-Username) | USER_IS_NOT_FOUND("201", "User is not found")
-
 

@@ -51,8 +51,10 @@ POST <%= config[:endpoint_prod] %>/api/generate-static-va
     "expiration_time": 1582783668175,
     "va_status": "WAITING_PAYMENT",
     "username_display": "va name",
-    "trx_expiration_time": 1582783668175,
+    "partner_user_id" : "51200021",
+    "counter_incoming_payment": 0,
     "partner_trx_id": "TRX0001",
+    "trx_expiration_time": 1582783668175,
     "trx_counter": 1
 }
 ```
@@ -75,7 +77,7 @@ is_lifetime | Boolean | FALSE | FALSE | If it is set to FALSE (default) then VA 
 username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
 email | String(50) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty transaction expiration time will be the same with va expiration time
-partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID for specific transaction
+partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
 trx_counter | Int | FALSE | -1/1 | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 
 ### Response Parameters
@@ -94,8 +96,9 @@ expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
+partner_trx_id | String(255) | Partner unique Transaction ID of a VA
 trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+counter_incoming_payment | Integer | Count total incoming payment of VA
 
 
 ## Get VA Info
@@ -123,6 +126,7 @@ GET <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212
     "amount": 10000.0000,
     "va_number": "1233456000000000001",
     "bank_code": "002",
+    "bank_name": "Bank BRI",
     "is_open": true,
     "is_single_use": false,
     "expiration_time": 1582790250609,
@@ -130,6 +134,8 @@ GET <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212
     "username_display": "username",
     "amount_detected": 0,
     "partner_user_id": "123456",
+    "created": 1613545965167,
+    "counter_incoming_payment": 0,
     "trx_expiration_time": 1582790250609,
     "partner_trx_id": "TRX0001",
     "trx_counter": -1
@@ -155,14 +161,17 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
 bank_code | String(3) | Bank code for VA
+bank_name | String(10) | Bank name of the VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA.
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
 va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-partner_user_id | String(255) | Partner unique ID for specific user,
+partner_user_id | String(255) | Partner unique ID for specific user
+created | Long | Unix timestamp in milliseconds when VA created
+counter_incoming_payment | Integer | Count total incoming payment of VA
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
+partner_trx_id | String(255) | Partner unique Transaction ID of a VA
 trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 
 
@@ -178,7 +187,6 @@ PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212
 -H 'x-oy-username: username' \
 -H 'x-api-key: apikey' \
 -d '{
-    "is_open": true,
     "amount": 50000,
     "is_single_use": false,
     "expiration_time": 30,
@@ -208,7 +216,8 @@ PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212
     "partner_user_id": "12345677",
     "trx_expiration_time": 1582802205412,
     "partner_trx_id": "TRX0002",
-    "trx_counter": 1
+    "trx_counter": 1,
+    "counter_incoming_payment" : 0
 }
 ```
 
@@ -226,14 +235,13 @@ ID | String(36) | TRUE | - | Unique VA ID, you can get this once you success cre
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
 amount | BigDecimal | FALSE | - | Amount your user must paid to complete the transaction
-is_open | Boolean | FALSE | true | True means VA number can accept any amount, field `amount` can be optional, False means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | FALSE |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA.
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
 username_display | String | - | - | Customizable VA display name that will be seen by user, If empty willl be using partner username
 is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 email | String(50) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5.
-partner_trx_id | String(255) | - | Partner unique Transaction ID for specific transaction
+partner_trx_id | String(255) | - | Partner unique Transaction ID of a VA
 trx_counter | Int | FALSE | -1/1 | Update transaction counter to limit number of transaction that can be receive by va number
 
 ### Response Parameters
@@ -252,8 +260,9 @@ va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 partner_user_id | String(255) | Partner unique ID for specific user
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
+partner_trx_id | String(255) | Partner unique Transaction ID of a VA
 trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+counter_incoming_payment | Integer | Count total incoming payment of VA
 
 ## Get list of created VA
 
@@ -279,6 +288,7 @@ GET <%= config[:endpoint_prod] %>/api/static-virtual-account?offset=0&limit=10
             "amount": 12000.0000,
             "va_number": "100536000000000006",
             "bank_code": "002",
+            "bank_name": "Bank BRI",
             "is_open": true,
             "is_single_use": false,
             "expiration_time": 1582791896416,
@@ -286,14 +296,18 @@ GET <%= config[:endpoint_prod] %>/api/static-virtual-account?offset=0&limit=10
             "username_display": "username",
             "amount_detected": 400000,
             "partner_user_id": "12345",
+            "created" : 1613545965167,
+            "counter_incoming_payment" : 0,
             "trx_expiration_time": 1582802205412,
-            "partner_trx_id": "TRX0002"
+            "partner_trx_id": "TRX0002",
+            "trx_counter": 0
         },
         {
             "id": "de51383f-1557-409c-8542-dcb74ca76375",
             "amount": 12000.0000,
             "va_number": "100536000000000005",
             "bank_code": "002",
+            "bank_name": "Bank BRI",
             "is_open": true,
             "is_single_use": false,
             "expiration_time": 1582790250609,
@@ -301,8 +315,11 @@ GET <%= config[:endpoint_prod] %>/api/static-virtual-account?offset=0&limit=10
             "username_display": "username",
             "amount_detected": 500000,
             "partner_user_id": "54321",
+            "created" : 1613545965167,
+            "counter_incoming_payment" : 0,
             "trx_expiration_time": 1582802205412,
-            "partner_trx_id": "TRX0002"
+            "partner_trx_id": "TRX0002",
+            "trx_counter": 0
         }
     ],
     "status": {
@@ -326,7 +343,7 @@ limit | Integer | 10 | max item to fetch, default is 10, if empty will used defa
 Parameter | Type | Description
 --------- | ---- | -----------
 total | Integer | total items
-data  | Array of object | List of Object `{id: <id>, amount: <amount>, va_number: <va_number>, bank_code: <bank_code>, is_open: <is_open>, is_single_user: <is_single_user>, expiration_time: <expiration_time>, va_status: <va_status>, username_display: <username_display>, amount_detected: <amount_detected>, partner_user_id: <partner_user_id>}`
+data  | Array of object | List of Object `{id: <va_id>, amount: <amount>, va_number: <va_number>, bank_code: <bank_code>, bank_name: <bank_name>, is_open: <is_open>, is_single_user: <is_single_user>, expiration_time: <expiration_time>, va_status: <va_status>, username_display: <username_display>, amount_detected: <amount_detected>, partner_user_id: <partner_user_id>, created: <created>, counter_incoming_payment: <counter_incoming_payment>, trx_counter: <trx_counter>}`
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
 
 
@@ -362,10 +379,12 @@ GET <%= config[:endpoint_prod] %>/api/va-tx-history/12345676788898?offset=0&limi
             "last_update_by": "Static VA by username",
             "last_updated": 1582789681439,
             "admin_fee": 1000,
-            "va_number": "123456000000000001"
+            "va_number": "123456000000000001",
+            "va_history_id": "3d5c41e6-04ac-4f1a-bd5e-53887fedf98f"
         }
     ],
-    "number_of_transaction": 1
+    "number_of_transaction": 1,
+    "total_incoming_payment": 10000
 }
 ```
 
@@ -389,8 +408,10 @@ Parameter | Type | Description
 --------- | ---- | -----------
 id | Integer | Unique VA id
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
-data  | Array of Object  | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>}`
-numberOfTransaction  | Integer | Total transaction
+data  | Array of Object  | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>, va_history_id: <va_history_id>}`
+number_of_transaction  | Integer | Total transaction
+total_incoming_payment | Integer | Total incoming payment
+
 
 ## Partner Callback Va Aggregator
 
@@ -405,7 +426,8 @@ numberOfTransaction  | Integer | Total transaction
   "tx_date": "31/01/2020T01:01:01.000+0000",
   "username_display": "VA Name",
   "trx_expiration_date": "31/01/2020T01:01:01.000+0000",
-  "partner_trx_id": "TRX0002"
+  "partner_trx_id": "TRX0002",
+  "trx_id": "12345-12345-12453-12455"
 }
 ```
 
@@ -423,7 +445,7 @@ tx_date | Timestamp | Incoming payment transaction date, format `dd/MM/yyyy'T'HH
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 trx_expiration_date | Long | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
-
+trx_id | String (255) | Unique ID of incoming payment
 
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator

@@ -15,5 +15,6 @@ Status | Meaning
 209 | Request is Rejected (Bank Account is not found)
 232 | Request is Rejected (User has unpaid invoices)
 300 | Failed doing payment (invoice is not on `UNPAID` status)
+429 | Request Rejected (Too Many Request to specific endpoint)
 990 | Request is Rejected (Request Parameter is not Valid)
 999 | Internal server error

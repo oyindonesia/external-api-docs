@@ -26,4 +26,5 @@ Response Code | Description
 ---------- | -------
 201 | Request is Rejected (User ID is not Found)
 202 | Request is Rejected (User ID is not Active)
+429 | Request Rejected (Too Many Request to specific endpoint)
 990 | Request is Rejected (Invalid Format)
