@@ -251,6 +251,8 @@ description | String | The description of the payment checkout/invoice link.
 expiration | DateTime | The expiration time of the payment checkout/invoice link.
 email | String | the email address for the payment checkout/invoice link to be sent.
 paid_amount | BigDecimal | the total amount that a user has paid.
+settlement_time | DateTime | The timestamp which indicates the time this transaction is updated to account statement. If delayed settlement, this will refer to expected date transaction will be updated to account statement.
+settlement_status | String | SUCCESS If transaction already updated to account statement, WAITING If transaction still in delayed settlement report.
 
 Additional data on the callback if invoice = true
 
@@ -282,7 +284,9 @@ curl -X POST \
         "description":"description",
         "expiration":"2020-10-18T15:00:00",
         "email":"email@gmail.com",
-        "paid_amount": 70000
+        "paid_amount": 70000,
+        "settlement_time": "2020-09-30T15:00:00",
+        "settlement_status": "WAITING"
       }'
 
 curl -X POST \
@@ -308,7 +312,9 @@ curl -X POST \
         "email":"",
         "status":"complete",
         "sender_bank":"008",
-        "settlement_type":"non_realtime"
+        "settlement_type":"non_realtime",
+        "settlement_time": "2020-09-30T15:00:00",
+        "settlement_status": "WAITING"
       }'
 ```
 
