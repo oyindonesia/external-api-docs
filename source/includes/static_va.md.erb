@@ -424,11 +424,13 @@ total_incoming_payment | Integer | Total incoming payment
 	"amount": 100000,
 	"partner_user_id": "oy0000000001",
 	"success": true,
-  "tx_date": "31/01/2020T01:01:01.000+0000",
-  "username_display": "VA Name",
-  "trx_expiration_date": "31/01/2020T01:01:01.000+0000",
-  "partner_trx_id": "TRX0002",
-  "trx_id": "12345-12345-12453-12455"
+    "tx_date": "31/01/2020T01:01:01.000+0000",
+    "username_display": "VA Name",
+    "trx_expiration_date": "31/01/2020T01:01:01.000+0000",
+    "partner_trx_id": "TRX0002",
+    "trx_id": "12345-12345-12453-12455",
+    "settlement_time": "31/01/2020T01:01:01.000+0000"
+    "settlement_status": "WAITING"
 }
 ```
 
@@ -447,6 +449,8 @@ username_display | String(255) | Customizable VA display name that will be seen 
 trx_expiration_date | Long | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
 trx_id | String (255) | Unique ID of incoming payment
+settlement_time | Timestamp | Actual date transaction is updated to account statement or If delayed settlement, expected date transaction will be updated to account statement, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
+settlement_status | String(255) | SUCCESS If transaction already updated to account statement, WAITING If transaction still in delayed settlement report
 
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator
