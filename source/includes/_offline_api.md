@@ -297,7 +297,7 @@ Payment Status | State | Meaning
 299 | Final | Transaction Canceled
 300 | Final | Transaction is FAILED
 429 | Final | Request Rejected (Too Many Request to specific endpoint)
-990 | Final | \|*parameter_name*\| is null or not valid
+990 | Final | Parameter / object is not valid
 
 ## API Offline Channel
 
