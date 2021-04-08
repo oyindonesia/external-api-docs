@@ -276,7 +276,7 @@ These are the list of possible status codes for API Offline:
 
 Payment Status | State | Meaning
 ---------- | ------- | -------
-000 | Final | Transasction Request has been completed (SUCCESS)
+000 | Final | Transaction Request has been completed (SUCCESS)
 102 | Non-Final | Request is In Progress (Waiting for Deposit or Withdrawal)
 201 | Final | Request is Rejected (User ID is not Found)
 202 | Final | Request is Rejected (User ID is not Active)
@@ -295,8 +295,9 @@ Payment Status | State | Meaning
 297 | Non-Final | Cash out/in in-progress
 298 | Non-Final | Transaction cannot be cancelled
 299 | Final | Transaction Canceled
-429 | Final | Request Rejected (Too Many Request to specific endpoint)
 300 | Final | Transaction is FAILED
+429 | Final | Request Rejected (Too Many Request to specific endpoint)
+990 | Final | \|*parameter_name*\| is null or not valid
 
 ## API Offline Channel
 
