@@ -6271,7 +6271,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <td>amount</td>
 <td>BigDecimal</td>
 <td>TRUE</td>
-<td>The amount that going to withdraw or deposit (Accept non fraction number)</td>
+<td>The amount that going to withdraw or deposit (Accepts multiple of 50.000)</td>
 </tr>
 <tr>
 <td>transaction_type</td>
@@ -6439,7 +6439,7 @@ POST https://partner.oyindonesia.com/api/offline-info <span class="se">\</span>
     </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15 10:12:16.786"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>To get status of a transaction request, you can call this API. You may need to call this API few times until getting a final status (success / failed) or implment callback transaction.</p>
+<p>To get status of a transaction request, you can call this API. You may need to call this API few times until getting a final status (success / failed) or implement callback transaction.</p>
 
 <p>This API offers an option to send you a callback status of the transaction request to a specific URL.
 Please contact us and submit a callback URL if you need a callback status of a transaction request.</p>
@@ -6824,6 +6824,27 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <tr>
 <td>ALFAMART</td>
 <td>CASH OUT</td>
+</tr>
+</tbody></table>
+
+<p>and their respective maximum amount per transaction is as follows</p>
+
+<table><thead>
+<tr>
+<th>Offline Channel</th>
+<th>Cash Out</th>
+<th>Cash In</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CRM</td>
+<td>5.000.000</td>
+<td>5.000.000</td>
+</tr>
+<tr>
+<td>ALFAMART</td>
+<td>2.500.000</td>
+<td>N/A</td>
 </tr>
 </tbody></table>
 
