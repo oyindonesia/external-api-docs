@@ -4970,7 +4970,7 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
 <h1 id='fund-acceptance'>Fund Acceptance</h1>
 <p>There are two products that fall under the category of funds acceptance which are Payment Checkout and Invoicing. </p>
 
-<p>Payment Checkout product will allow you to receive funds from your customers by choosing from our various payment channels such as bank transfer or credit/debit card. </p>
+<p>Payment Checkout product will allow you to receive funds from your customers by choosing from our various payment channels such as bank transfer or cards. </p>
 
 <p>Similarly, Invoicing will let you to bill your customers for service/items purchased by sending a payment checkout link to your customer&#39;s email by attatching/creating an invoice via our API.</p>
 
@@ -5103,7 +5103,7 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
 <tr>
 <td>list_disabled_payment_methods</td>
 <td>String</td>
-<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, DEBIT_CARD,QRIS)</td>
+<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
 <td>There must be at least 1 payment method is enabled.</td>
 </tr>
 <tr>
@@ -5275,7 +5275,7 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
 <tr>
 <td>list_disabled_payment_methods</td>
 <td>String</td>
-<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, DEBIT_CARD,QRIS)</td>
+<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
 <td>There must be at least 1 payment method is enabled.</td>
 </tr>
 <tr>
@@ -5338,7 +5338,7 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
         "amount":75000,
         "is_open":false,
         "step":"select-payment-method",
-        "list_disabled_payment_methods":"CC",
+        "list_disabled_payment_methods":"CREDIT_CARD",
         "list_enabled_payment_banks": "008", 
         "included_admin_fee": true, "expiration": 7,
         "description":"payment for March 2020", 
@@ -5626,7 +5626,7 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"settlement_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"realtime"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sender_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"008"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-12T16:25:33"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"paid_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
@@ -5729,7 +5729,7 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <tr>
 <td>payment_method</td>
 <td>String</td>
-<td>The payment method used in a transaction such as CC (Credit Card), DC (Debit Card) or VA (Virtual Account)</td>
+<td>The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), or VA (Virtual Account)</td>
 </tr>
 <tr>
 <td>created</td>
@@ -6030,8 +6030,8 @@ curl <span class="nt">-X</span> POST <span class="se">\</span>
 <tr>
 <td>listDisabledPaymentMethods</td>
 <td>String</td>
-<td>List Of Disable Payment Method **(VA</td>
-<td>DEBIT_CARD</td>
+<td>List Of Disable Payment Method (VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well.</td>
+<td></td>
 </tr>
 <tr>
 <td>listEnabledBanks</td>
