@@ -274,30 +274,38 @@ last_updated_date | String(19) | Latest status change of a transaction. Example 
 
 These are the list of possible status codes for API Offline:
 
-Payment Status | State | Meaning
----------- | ------- | -------
-000 | Final | Transaction Request has been completed (SUCCESS)
-102 | Non-Final | Request is In Progress (Waiting for Deposit or Withdrawal)
-201 | Final | Request is Rejected (User ID is not Found)
-202 | Final | Request is Rejected (User ID is not Active)
-203 | Final | Request is Rejected (Duplicate Partner Tx ID)
-204 | Final | Request is Rejected (Partner Tx ID is Not Found)
-206 | Final | Request is Rejected (Partner Deposit Balance is Not Enough)
-207 | Final | Request is Rejected (Request IP Address is not Registered)
-208 | Final | Request is Rejected (API Key is not Valid)
-215 | Final | Request is Rejected (Invalid denom amount request)
-220 | Final | Request is Rejected (Offline channel is not valid or not elegible to process Withdrawal/Deposit Transaction)
-221 | Final | Request is Rejected (Invalid transaction type)
-222 | Final | Transaction is EXPIRED
-224 | Final | Request is Rejected (Amount disburse does not reach Min amount)
-225 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
-296 | Non-Final | There is still an active transaction for this phone number
-297 | Non-Final | Cash out/in in-progress
-298 | Non-Final | Transaction cannot be cancelled
-299 | Final | Transaction Canceled
-300 | Final | Transaction is FAILED
-429 | Final | Request Rejected (Too Many Request to specific endpoint)
-990 | Final | Parameter / object is not valid
+### Transaction Status
+
+Payment Status | State     | Meaning
+-------------- | --------- | -------
+000            | Final     | Transaction Request has been completed (SUCCESS)
+102            | Non-Final | Request is In Progress (Waiting for Deposit or Withdrawal)
+222            | Final     | Transaction Expired (EXPIRED)
+297            | Non-Final | Cash out/in in-progress
+299            | Final     | Transaction Canceled (CANCELED)
+300            | Final     | Transaction Failed (FAILED) 
+
+### Status Codes
+
+Payment Status | State     | Meaning
+-------------- | --------- | -------
+201            | Final     | Request is Rejected (User ID is not Found)
+202            | Final     | Request is Rejected (User ID is not Active)
+203            | Final     | Request is Rejected (Duplicate Partner Tx ID)
+204            | Final     | Request is Rejected (Partner Tx ID is Not Found)
+206            | Final     | Request is Rejected (Partner Deposit Balance is Not Enough)
+207            | Final     | Request is Rejected (Request IP Address is not Registered)
+208            | Final     | Request is Rejected (API Key is not Valid)
+215            | Final     | Request is Rejected (Invalid denom amount request)
+220            | Final     | Request is Rejected (Offline channel is not valid or not elegible to process Withdrawal/Deposit Transaction)
+221            | Final     | Request is Rejected (Invalid transaction type)
+224            | Final     | Request is Rejected (Amount disburse does not reach Min amount)
+225            | Final     | Request is Rejected (Max amount per transaction exceed for disburse)
+296            | Non-Final | There is still an active transaction for this phone number
+298            | Non-Final | Transaction cannot be cancelled
+429            | Final     | Request Rejected (Too Many Request to specific endpoint)
+990            | Final     | Parameter / object is not valid
+
 
 ## API Offline Channel
 
