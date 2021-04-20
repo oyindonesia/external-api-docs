@@ -6708,6 +6708,37 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <td>Request is In Progress (Waiting for Deposit or Withdrawal)</td>
 </tr>
 <tr>
+<td>222</td>
+<td>Final</td>
+<td>Transaction Expired (EXPIRED)</td>
+</tr>
+<tr>
+<td>297</td>
+<td>Non-Final</td>
+<td>Cash out/in in-progress</td>
+</tr>
+<tr>
+<td>299</td>
+<td>Final</td>
+<td>Transaction Canceled (CANCELED)</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Final</td>
+<td>Transaction Failed (FAILED)</td>
+</tr>
+</tbody></table>
+
+<p>The following status codes are for rejected requests</p>
+
+<table><thead>
+<tr>
+<th>Payment Status</th>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
 <td>201</td>
 <td>Final</td>
 <td>Request is Rejected (User ID is not Found)</td>
@@ -6758,11 +6789,6 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <td>Request is Rejected (Invalid transaction type)</td>
 </tr>
 <tr>
-<td>222</td>
-<td>Final</td>
-<td>Transaction is EXPIRED</td>
-</tr>
-<tr>
 <td>224</td>
 <td>Final</td>
 <td>Request is Rejected (Amount disburse does not reach Min amount)</td>
@@ -6778,24 +6804,9 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <td>There is still an active transaction for this phone number</td>
 </tr>
 <tr>
-<td>297</td>
-<td>Non-Final</td>
-<td>Cash out/in in-progress</td>
-</tr>
-<tr>
 <td>298</td>
 <td>Non-Final</td>
 <td>Transaction cannot be cancelled</td>
-</tr>
-<tr>
-<td>299</td>
-<td>Final</td>
-<td>Transaction Canceled</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Final</td>
-<td>Transaction is FAILED</td>
 </tr>
 <tr>
 <td>429</td>
