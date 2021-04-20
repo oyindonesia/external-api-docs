@@ -274,8 +274,6 @@ last_updated_date | String(19) | Latest status change of a transaction. Example 
 
 These are the list of possible status codes for API Offline:
 
-### Transaction Status
-
 Payment Status | State     | Meaning
 -------------- | --------- | -------
 000            | Final     | Transaction Request has been completed (SUCCESS)
@@ -285,7 +283,7 @@ Payment Status | State     | Meaning
 299            | Final     | Transaction Canceled (CANCELED)
 300            | Final     | Transaction Failed (FAILED) 
 
-### Status Codes
+The following status codes are for rejected requests
 
 Payment Status | State     | Meaning
 -------------- | --------- | -------
