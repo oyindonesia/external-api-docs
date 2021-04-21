@@ -394,7 +394,8 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
     "is_single_use": false,
     "expiration_time": 30,
     "username_display": "test",
-    "bank_code": "002",
+    "is_lifetime": false,
+    "email": "email@domain.com",
     "trx_expiration_time":5,
     "partner_trx_id":"TRX0002",
     "trx_counter": 1
