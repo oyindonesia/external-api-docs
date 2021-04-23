@@ -232,36 +232,6 @@ recurring_frequency | Integer | The interval of a recurring invoice to be sent t
 
 The data on the callback will be sent using JSON format via POST data to your web hook.
 
-Parameter | Type | Description
---------- | ---- | -----------
-partner_tx_id | String | A unique transaction ID provided by partner
-tx_ref_number | String | OY's internal unique transaction ID
-amount | BigDecimal | The amount of a transaction that is paid
-sender_name | String | Name of a payer for a transaction
-sender_phone | String | Phone number of a payer for a transaction
-sender_note | String | Additional notes from a payer for a transaction
-status | String | The status of a transaction (e.g. success/failed/processing)
-sender_bank | String | The bank code used by a payer to do payment
-payment_method | String | The payment method used by user to complete a payment.
-settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
-created | DateTime | The timestamp which indicates the creation time of a payment checkout link
-updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
-is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
-description | String | The description of the payment checkout/invoice link.
-expiration | DateTime | The expiration time of the payment checkout/invoice link
-email | String | The email address for the payment checkout/invoice link to be sent
-paid_amount | BigDecimal | The total amount that a user has paid
-settlement_time | DateTime | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement
-settlement_status | String | Status of the settlement (e.g. success/waiting)
-
-Additional data on the callback if invoice = true
-
-Parameter | Type | Description
---------- | ---- | -----------
-invoice_ID | String | The invoice id.
-full_name | String | The full name.
-
-
 ```shell
 curl -X POST \
   https://partner.url.com/api/callback\
@@ -317,6 +287,35 @@ curl -X POST \
         "settlement_status": "WAITING"
       }'
 ```
+
+Parameter | Type | Description
+--------- | ---- | -----------
+partner_tx_id | String | A unique transaction ID provided by partner
+tx_ref_number | String | OY's internal unique transaction ID
+amount | BigDecimal | The amount of a transaction that is paid
+sender_name | String | Name of a payer for a transaction
+sender_phone | String | Phone number of a payer for a transaction
+sender_note | String | Additional notes from a payer for a transaction
+status | String | The status of a transaction (e.g. success/failed/processing)
+sender_bank | String | The bank code used by a payer to do payment
+payment_method | String | The payment method used by user to complete a payment.
+settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
+created | DateTime | The timestamp which indicates the creation time of a payment checkout link
+updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
+is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
+description | String | The description of the payment checkout/invoice link.
+expiration | DateTime | The expiration time of the payment checkout/invoice link
+email | String | The email address for the payment checkout/invoice link to be sent
+paid_amount | BigDecimal | The total amount that a user has paid
+settlement_time | DateTime | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement
+settlement_status | String | Status of the settlement (e.g. success/waiting)
+
+Additional data on the callback if invoice = true
+
+Parameter | Type | Description
+--------- | ---- | -----------
+invoice_ID | String | The invoice id.
+full_name | String | The full name.
 
 ## Payment Checkout Status
 
