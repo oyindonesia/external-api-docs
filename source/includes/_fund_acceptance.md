@@ -251,7 +251,7 @@ description | String | The description of the payment checkout/invoice link.
 expiration | DateTime | The expiration time of the payment checkout/invoice link
 email | String | The email address for the payment checkout/invoice link to be sent
 paid_amount | BigDecimal | The total amount that a user has paid
-settlement_time | DateTime | The timestamp indicating when the transaction is updated or expected to be updated to account statement
+settlement_time | DateTime | The timestamp indicating when the fund will be settled to partner’s account statement
 settlement_status | String | Status of the settlement (e.g. success/waiting)
 
 Additional data on the callback if invoice = true
@@ -410,7 +410,7 @@ expiration | String | To set the expiration of the payment link (dd-MM-yyyy HH:m
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not.
 updated | String | The timestamp which indicates the latest updated time of a payment checkout link due to status update
 email | String | The email address where the payment checkout link will be sent to
-settlement_time | String | The timestamp indiciating when the transaction is updated or expected to be updated to account statement (Only available once status of the payment link is SUCCESS)
+settlement_time | String | The timestamp indicating when the fund will be settled to partner’s account statement (Only available once status of the payment link is SUCCESS)
 settlement_status | String | The status of the settlement (Only available once status of the payment link is SUCCESS)
 
 ## API Delete
