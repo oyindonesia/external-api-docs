@@ -451,7 +451,7 @@ username_display | String(255) | Customizable VA display name that will be seen 
 trx_expiration_date | Long | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
 trx_id | String (255) | Unique ID of incoming payment
-settlement_time | Timestamp | The timestamp indicating when the fund will be settled to partner’s account statement, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
+settlement_time | Timestamp | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 settlement_status | String(255) | The status of the settlement
 
 ## VA aggregator Bank Code
