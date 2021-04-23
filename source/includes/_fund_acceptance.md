@@ -259,33 +259,6 @@ curl -X POST \
         "settlement_status": "WAITING"
       }'
 
-curl -X POST \
-  https://partner.url.com/api/callback\
-  -H 'cache-control: no-cache' \
-  -H 'content-type: application/json' \
-  -d '{
-        "partner_tx_id":"51f5640c-5d79-4957-8781-bbb6e122e51f",
-        "amount":15600,
-        "sender_phone":"6282114845847",
-        "sender_note":"notes",
-        "created":"2020-09-29T21:00:32",
-        "tx_ref_number":"2009LJBNDOQ3",
-        "description":"desc",
-        "sender_name":"Sender API",
-        "full_name":"Roberto Fernandez",
-        "paid_amount":15600,
-        "invoice_ID":"4f539bce-8fe3-4514-b4e2-c171fd85d1fd",
-        "expiration":"2020-10-18T15:00:00",
-        "invoice":true,
-        "updated":"2020-09-29T21:00:54",
-        "payment_method":"VA",
-        "email":"",
-        "status":"complete",
-        "sender_bank":"008",
-        "settlement_type":"non_realtime",
-        "settlement_time": "2020-09-30T15:00:00",
-        "settlement_status": "WAITING"
-      }'
 ```
 
 Parameter | Type | Description
