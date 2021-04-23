@@ -5407,7 +5407,60 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
 </tbody></table>
 <h2 id='payment-checkout-callback-parameters'>Payment Checkout Callback Parameters</h2>
 <p>The data on the callback will be sent using JSON format via POST data to your web hook.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
+  https://partner.url.com/api/callback<span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+        "partner_tx_id":"938bca2f-7771-47a1-9315-13507cf7bba3",
+        "amount":60000,
+        "sender_phone":"082114845847",
+        "sender_note":"sender notes",
+        "created":"2020-09-29T20:57:41",
+        "tx_ref_number":"20097G1X2329",
+        "sender_name":"Sender Name",
+        "invoice":false,
+        "updated":"2020-09-29T20:59:08",
+        "payment_method":"VA",
+        "status":"complete",
+        "sender_bank":"008",
+        "settlement_type":"non_realtime",
+        "description":"description",
+        "expiration":"2020-10-18T15:00:00",
+        "email":"email@gmail.com",
+        "paid_amount": 70000,
+        "settlement_time": "2020-09-30T15:00:00",
+        "settlement_status": "WAITING"
+      }'</span>
 
+curl <span class="nt">-X</span> POST <span class="se">\</span>
+  https://partner.url.com/api/callback<span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+        "partner_tx_id":"51f5640c-5d79-4957-8781-bbb6e122e51f",
+        "amount":15600,
+        "sender_phone":"6282114845847",
+        "sender_note":"notes",
+        "created":"2020-09-29T21:00:32",
+        "tx_ref_number":"2009LJBNDOQ3",
+        "description":"desc",
+        "sender_name":"Sender API",
+        "full_name":"Roberto Fernandez",
+        "paid_amount":15600,
+        "invoice_ID":"4f539bce-8fe3-4514-b4e2-c171fd85d1fd",
+        "expiration":"2020-10-18T15:00:00",
+        "invoice":true,
+        "updated":"2020-09-29T21:00:54",
+        "payment_method":"VA",
+        "email":"",
+        "status":"complete",
+        "sender_bank":"008",
+        "settlement_type":"non_realtime",
+        "settlement_time": "2020-09-30T15:00:00",
+        "settlement_status": "WAITING"
+      }'</span>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5532,60 +5585,7 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
 <td>The full name.</td>
 </tr>
 </tbody></table>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
-  https://partner.url.com/api/callback<span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-        "partner_tx_id":"938bca2f-7771-47a1-9315-13507cf7bba3",
-        "amount":60000,
-        "sender_phone":"082114845847",
-        "sender_note":"sender notes",
-        "created":"2020-09-29T20:57:41",
-        "tx_ref_number":"20097G1X2329",
-        "sender_name":"Sender Name",
-        "invoice":false,
-        "updated":"2020-09-29T20:59:08",
-        "payment_method":"VA",
-        "status":"complete",
-        "sender_bank":"008",
-        "settlement_type":"non_realtime",
-        "description":"description",
-        "expiration":"2020-10-18T15:00:00",
-        "email":"email@gmail.com",
-        "paid_amount": 70000,
-        "settlement_time": "2020-09-30T15:00:00",
-        "settlement_status": "WAITING"
-      }'</span>
-
-curl <span class="nt">-X</span> POST <span class="se">\</span>
-  https://partner.url.com/api/callback<span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-        "partner_tx_id":"51f5640c-5d79-4957-8781-bbb6e122e51f",
-        "amount":15600,
-        "sender_phone":"6282114845847",
-        "sender_note":"notes",
-        "created":"2020-09-29T21:00:32",
-        "tx_ref_number":"2009LJBNDOQ3",
-        "description":"desc",
-        "sender_name":"Sender API",
-        "full_name":"Roberto Fernandez",
-        "paid_amount":15600,
-        "invoice_ID":"4f539bce-8fe3-4514-b4e2-c171fd85d1fd",
-        "expiration":"2020-10-18T15:00:00",
-        "invoice":true,
-        "updated":"2020-09-29T21:00:54",
-        "payment_method":"VA",
-        "email":"",
-        "status":"complete",
-        "sender_bank":"008",
-        "settlement_type":"non_realtime",
-        "settlement_time": "2020-09-30T15:00:00",
-        "settlement_status": "WAITING"
-      }'</span>
-</code></pre></div><h2 id='payment-checkout-status'>Payment Checkout Status</h2>
+<h2 id='payment-checkout-status'>Payment Checkout Status</h2>
 <table><thead>
 <tr>
 <th>Payment Status</th>
