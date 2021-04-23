@@ -246,13 +246,13 @@ payment_method | String | The payment method used by user to complete a payment.
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 created | DateTime | The timestamp which indicates the creation time of a payment checkout link
 updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
-is_invoice | Boolean | The invoice which indicates the transaction is invoice or not.
+is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
 description | String | The description of the payment checkout/invoice link.
-expiration | DateTime | The expiration time of the payment checkout/invoice link.
-email | String | the email address for the payment checkout/invoice link to be sent.
-paid_amount | BigDecimal | the total amount that a user has paid.
-settlement_time | DateTime | The timestamp which indicates the time this transaction is updated to account statement. If delayed settlement, this will refer to expected date transaction will be updated to account statement.
-settlement_status | String | SUCCESS If transaction already updated to account statement, WAITING If transaction still in delayed settlement report.
+expiration | DateTime | The expiration time of the payment checkout/invoice link
+email | String | The email address for the payment checkout/invoice link to be sent
+paid_amount | BigDecimal | The total amount that a user has paid
+settlement_time | DateTime | The timestamp indicating when the transaction is updated or expected to be updated to account statement
+settlement_status | String | Status of the settlement (e.g. success/waiting)
 
 Additional data on the callback if invoice = true
 
@@ -370,7 +370,9 @@ curl -X GET \
   "expiration": "2021-01-13T16:25:14",
   "is_invoice": false,
   "updated": "2021-01-12T16:26:17",
-  "email": ""
+  "email": "",
+  "settlement_time": "2021-01-13T15:00:00",
+  "settlement_status": "WAITING"
 }
 ```
 
@@ -404,10 +406,12 @@ payment_method | String | The payment method used in a transaction. Choices are:
 created | String | The timestamp which indicates the creation time of a payment checkout link
 description | String | Description of the payment checkout link.
 paid_amount | BigDecimal | the total amount that a user has paid.
-expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)
+expiration | String | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not.
 updated | String | The timestamp which indicates the latest updated time of a payment checkout link due to status update
-email | String | The email address where the payment checkout link will be sent to.
+email | String | The email address where the payment checkout link will be sent to
+settlement_time | String | The timestamp indiciating when the transaction is updated or expected to be updated to account statement (Only available once status of the payment link is SUCCESS)
+settlement_status | String | The status of the settlement (Only available once status of the payment link is SUCCESS)
 
 ## API Delete
 
