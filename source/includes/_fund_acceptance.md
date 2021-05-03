@@ -282,6 +282,7 @@ email | String | The email address for the payment checkout/invoice link to be s
 paid_amount | BigDecimal | The total amount that a user has paid
 settlement_time | DateTime | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement
 settlement_status | String | Status of the settlement (e.g. success/waiting)
+settlement_status | String | Status of the email sending 
 
 Additional data on the callback if invoice = true
 
