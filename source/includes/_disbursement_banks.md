@@ -86,7 +86,7 @@ Bank Codes | Bank Name
 472	| Bank Jasa Jakarta
 484	| Bank KEB HANA
 485	| Bank MNC INTERNATIONAL
-490	| Bank YUDHA BHAKTI
+490	| Bank YUDHA BHAKTI/ Bank Neo Commerce
 494	| Bank Rakyat Indonesia AGRONIAGA
 498	| Bank SBI Indonesia (Indomonex)
 501	| Bank Royal
@@ -100,7 +100,7 @@ Bank Codes | Bank Name
 526	| Bank DINAR
 535	| Bank KESEJAHTERAAN EKONOMI
 536	| Bank BCA SYARIAH
-542	| Bank ARTOS
+542	| Bank ARTOS/ Bank Jago
 547	| Bank BTPN SYARIAH
 548	| Bank MULTIARTA SENTOSA
 553	| Bank Mayora
@@ -116,4 +116,3 @@ ovo | OVO
 linkaja | LinkAja
 dana    | Dana
 gopay	| Gopay
-
