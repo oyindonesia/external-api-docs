@@ -4092,6 +4092,11 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>Request is Rejected (Virtual account is not enabled for this bank)</td>
 </tr>
 <tr>
+<td>226</td>
+<td>Final</td>
+<td>Request is rejected (Transaction expiry time exceeds VA expiry time)</td>
+</tr>
+<tr>
 <td>999</td>
 <td>Non-Final</td>
 <td>Internal Server Error</td>
@@ -5121,7 +5126,7 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
 <tr>
 <td>list_disabled_payment_methods</td>
 <td>String</td>
-<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
+<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
 <td>There must be at least 1 payment method is enabled.</td>
 </tr>
 <tr>
@@ -5129,6 +5134,12 @@ https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span
 <td>String</td>
 <td>To configure banks to be enabled for VA payment method.</td>
 <td>List of eligible bank codes: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB).</td>
+</tr>
+<tr>
+<td>list_enabled_ewallet</td>
+<td>String</td>
+<td>To configure list of e-wallets to be enabled on payment method page.</td>
+<td>List of eligible e-wallet: &quot;shopeepay_ewallet&quot;.</td>
 </tr>
 <tr>
 <td>expiration</td>
