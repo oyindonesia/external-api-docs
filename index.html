@@ -516,6 +516,35 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#api-transactions-data" class="toc-h1 toc-link" data-title="API Transactions Data">API Transactions Data</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#account-linking-process" class="toc-h2 toc-link" data-title="Account Linking Process">Account Linking Process</a>
+                  </li>
+                  <li>
+                    <a href="#check-registration-status" class="toc-h2 toc-link" data-title="Check Registration Status">Check Registration Status</a>
+                  </li>
+                  <li>
+                    <a href="#list-of-registered-accounts" class="toc-h2 toc-link" data-title="List of Registered Accounts">List of Registered Accounts</a>
+                  </li>
+                  <li>
+                    <a href="#transactions-data-bank-codes" class="toc-h2 toc-link" data-title="Transactions Data Bank Codes">Transactions Data Bank Codes</a>
+                  </li>
+                  <li>
+                    <a href="#initialize-account-statement" class="toc-h2 toc-link" data-title="Initialize Account Statement">Initialize Account Statement</a>
+                  </li>
+                  <li>
+                    <a href="#get-account-statement" class="toc-h2 toc-link" data-title="Get Account Statement">Get Account Statement</a>
+                  </li>
+                  <li>
+                    <a href="#check-account-statement-status-callback" class="toc-h2 toc-link" data-title="Check Account Statement Status/Callback">Check Account Statement Status/Callback</a>
+                  </li>
+                  <li>
+                    <a href="#account-deactivate-process" class="toc-h2 toc-link" data-title="Account Deactivate Process">Account Deactivate Process</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='mailto:business@oyindonesia.com'>Ask for Integration</a></li>
@@ -6884,6 +6913,884 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <td>ALFAMART</td>
 <td>2.500.000</td>
 <td>N/A</td>
+</tr>
+</tbody></table>
+<h1 id='api-transactions-data'>API Transactions Data</h1>
+<p>API Transactions Data allows you to retrieve your user bank account statement data whom has successfully linked their bank account(s) to OY </p>
+
+<p><img src="images/images/api_tx_data_flow-3f15ed16.png" alt="import" /></p>
+<h2 id='account-linking-process'>Account Linking Process</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> <span class="se">\</span>
+POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/account/register'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'X-Api-Key: 1234'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: satsat'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "partner_user_id": "username0001"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"registration_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"register-transactions.oyindonesia.com/register-transactions/a3cfeaf9c84047708545cbd650b47afe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a3cfeaf9c84047708545cbd650b47afe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to link a bank account so it&#39;s historical transaction data can be retrieved.</p>
+<h3 id='https-request'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/register</code><br>
+<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account/register</code></p>
+<h3 id='header-parameters'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner username</td>
+</tr>
+<tr>
+<td>X-Api-Key</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner API Key</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>TRUE</td>
+<td>A unique identifier of a user which transaction data will be retrieved</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>registration_link</td>
+<td>String</td>
+<td>Registration link</td>
+</tr>
+<tr>
+<td>token</td>
+<td>String</td>
+<td>Registration link token to validate the registration link</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of request registration link <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+</tbody></table>
+
+<p>Once a link is returned with its temporary token, user will need to access the link and input their banking credentials by checking the consent check box for the product’s terms and condition and clicking the “Register” button.</p>
+
+<p>User will be prompted with a page to notify that the linking process is still in progress since the process might take a few minutes. User can safely close the pop-up and linking status can be checked using <a href="#check-registration-status">API Check Registration Status endpoint</a>.</p>
+<h3 id='list-of-response-codes'>List of Response Codes</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>201</td>
+<td>User not found</td>
+</tr>
+<tr>
+<td>202</td>
+<td>User is not active</td>
+</tr>
+<tr>
+<td>207</td>
+<td>IP Address is not registered</td>
+</tr>
+<tr>
+<td>208</td>
+<td>API Key is not valid</td>
+</tr>
+<tr>
+<td>900</td>
+<td>Unexpected error</td>
+</tr>
+</tbody></table>
+<h2 id='check-registration-status'>Check Registration Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--location</span> <span class="nt">--request</span> <span class="se">\</span>
+  POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/account/check-registration-status'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'X-Api-Key: 1234'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: satsat'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "registration_token": "a3cfeaf9c84047708545cbd650b47afe"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this, when token on the payload is invalid:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"permanent_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"237"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Temporary token is invalid"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this, when the registration is in process:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"permanent_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"102"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request is In progress"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this, when the registration is success:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"permanent_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f2eaf327ec23dac249d82dc75734941b5e3752f9583ab5752ca9292d6d4eb1dc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to check the status of a bank account registration/linking process</p>
+<h3 id='https-request-2'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/check-registration-status</code><br>
+<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account/check-registration-status</code></p>
+<h3 id='request-parameters-2'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>registration_token</td>
+<td>string</td>
+<td>TRUE</td>
+<td>Registration token</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-2'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>permanent_token</td>
+<td>String</td>
+<td>The token to be used to retrieve users&#39; banking historical transaction data</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>The status of a bank account registration/linking process <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+</tbody></table>
+<h3 id='list-of-response-codes-2'>List of Response Codes</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>237</td>
+<td>Invalid temporary token</td>
+</tr>
+<tr>
+<td>102</td>
+<td>In progress</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Failed</td>
+</tr>
+<tr>
+<td>202</td>
+<td>User is not active</td>
+</tr>
+<tr>
+<td>207</td>
+<td>IP Address is not registered</td>
+</tr>
+<tr>
+<td>208</td>
+<td>API Key is not valid</td>
+</tr>
+<tr>
+<td>900</td>
+<td>Unexpected error</td>
+</tr>
+</tbody></table>
+<h2 id='list-of-registered-accounts'>List of Registered Accounts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--location</span> <span class="nt">--request</span> <span class="se">\</span>
+  POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/account/registered-accounts'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'X-Api-Key: 1234'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: satsat'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "partner_user_id": "username0001"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"0952736319"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"permanent_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69e6a50a90d71f2191aab78b1a184acbb96b898a0b0833361cc45e9a0b5d7fcb"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"linking_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-30 03:11:03"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"0952736319"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"permanent_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d2f61174a3c0c98c8f736a964e13b06865bde95cf88aebc264732593ebfe4a1e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"linking_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-04-29 06:47:45"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to retrieve bank accounts related information of a user ID that has been successfully linked to a user ID</p>
+<h3 id='https-request-3'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/registered-accounts</code><br>
+<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account/registered-accounts</code></p>
+<h3 id='header-parameters-2'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner username</td>
+</tr>
+<tr>
+<td>X-Api-Key</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner API Key</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-3'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>TRUE</td>
+<td>A unique identifier of a user which transaction data will be retrieved</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-3'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>array of Object</td>
+<td>Array of registered account data <code>{ bank_code: string, bank_account_number: string[], permanent_token: string linking_date: string, account_status: string }</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>The status of a bank account registration/linking process <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+</tbody></table>
+<h3 id='list-of-response-codes-3'>List of Response Codes</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>244</td>
+<td>Invalid partner user id</td>
+</tr>
+<tr>
+<td>202</td>
+<td>User is not active</td>
+</tr>
+<tr>
+<td>207</td>
+<td>IP Address is not registered</td>
+</tr>
+<tr>
+<td>208</td>
+<td>API Key is not valid</td>
+</tr>
+<tr>
+<td>900</td>
+<td>Unexpected error</td>
+</tr>
+</tbody></table>
+<h2 id='transactions-data-bank-codes'>Transactions Data Bank Codes</h2>
+<p>These are the lis of available bank on our API Transactions Data service:</p>
+
+<table><thead>
+<tr>
+<th>Bank Code</th>
+<th>Bank Name</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>008</td>
+<td>Mandiri</td>
+</tr>
+<tr>
+<td>014</td>
+<td>BCA</td>
+</tr>
+<tr>
+<td>009</td>
+<td>BNI</td>
+</tr>
+</tbody></table>
+<h2 id='initialize-account-statement'>Initialize Account Statement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--location</span> <span class="nt">--request</span> <span class="se">\</span>
+  POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/account-statement/init'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'X-Api-Key: 1234'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'X-Oy-Username: satsat'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "account_number": "8691502376",
+    "bank_code": "014",
+    "account_type": "INDIVIDUAL",
+    "start_date": "2021-02-13",
+    "end_date": "2021-04-13",
+    "permanent_token": "f2eaf327ec23dac249d82dc75734941b5e3752f9583ab5752ca9292d6d4eb1dc",
+    "ignore_start_date": true
+</span></code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this, when success:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"account_statement_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ljhahd12je8sdca93"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"102"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preparing data"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this, when failed:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"account_statement_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bank account not found"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to initialize the account statement data to be fetched. Upon successful account statement initialization, Partner will receive a callback that a data is ready.</p>
+<h3 id='https-request-4'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account-statement/init</code><br>
+<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account-statement/init</code></p>
+<h3 id='header-parameters-3'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner username</td>
+</tr>
+<tr>
+<td>X-Api-Key</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner API Key</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-4'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bank_code</td>
+<td>String</td>
+<td>TRUE</td>
+<td>The bank code of the user&#39;s bank account (please refer to <a href="#transactions-data-bank-codes">the Bank Codes section</a>)</td>
+</tr>
+<tr>
+<td>account_type</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Type of bank accounts (currently only &quot;Individual&quot; is available)</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>String</td>
+<td>TRUE</td>
+<td>The account number which data will be retrieved that has been successfully linked</td>
+</tr>
+<tr>
+<td>start_date</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Start date of account statement in &quot;YYYY-MM-dd&quot; format</td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>String</td>
+<td>TRUE</td>
+<td>End date of account statement in &quot;YYYY-MM-dd&quot; format</td>
+</tr>
+<tr>
+<td>permanent_token</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Permanent token to access credentials related to account number</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-4'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>account_statement_id</td>
+<td>Array of Object</td>
+<td>ID of account statement used for fetching the data, if the data is available</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>The status of initialization account statement process <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+</tbody></table>
+<h3 id='list-of-response-codes-4'>List of Response Codes</h3>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Failed</td>
+</tr>
+<tr>
+<td>244</td>
+<td>Invalid partner user id</td>
+</tr>
+<tr>
+<td>237</td>
+<td>Invalid temporary token</td>
+</tr>
+<tr>
+<td>205</td>
+<td>Bank code is not found</td>
+</tr>
+<tr>
+<td>209</td>
+<td>Account number is not found</td>
+</tr>
+<tr>
+<td>201</td>
+<td>User is not found</td>
+</tr>
+<tr>
+<td>202</td>
+<td>User is not active</td>
+</tr>
+<tr>
+<td>207</td>
+<td>IP Address is not registered</td>
+</tr>
+<tr>
+<td>208</td>
+<td>API Key is not valid</td>
+</tr>
+<tr>
+<td>900</td>
+<td>Unexpected error</td>
+</tr>
+</tbody></table>
+<h2 id='get-account-statement'>Get Account Statement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--location</span> <span class="nt">--request</span> <span class="se">\</span>
+  POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/account-statement/status'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'X-Oy-Username: satsat'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: 1234'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-raw</span> <span class="s1">'{
+      "id": "eb74c36d-efb3-4b98-97aa-ad23940e4cde",
+      "send_callback": false
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this, when success:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-03-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transfer from Aldo Adiyasa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Data ready for retrieval"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this, when failed:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this, when in progress:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"102"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Preparing data"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to fetch transaction details based on initialized account statements</p>
+<h3 id='https-request-5'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&amp;page=[page_number]</code><br>
+<strong>[Staging]</strong> <code>GET https://partner-dev.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&amp;page=[page_number]</code></p>
+<h3 id='header-parameters-4'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner username</td>
+</tr>
+<tr>
+<td>X-Api-Key</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner API Key</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-5'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Id of account statement</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Integer</td>
+<td>TRUE</td>
+<td>Pagination offset - each page contains max. of 1000 row of transactions</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-5'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>Array of Object</td>
+<td>List of object <code>{ date: &lt;timestamp&gt;, id: &lt;id&gt;, description: &lt;description&gt;, type: &lt;CR/DB&gt;, amount: &lt;amount&gt; }</code></td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>The status of get account statement process <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+</tbody></table>
+<h2 id='check-account-statement-status-callback'>Check Account Statement Status/Callback</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--location</span> <span class="nt">--request</span> <span class="se">\</span>
+  POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/account-statement/status'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'X-Oy-Username: satsat'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-api-key: 1234'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-raw</span> <span class="s1">'{
+      "id": "eb74c36d-efb3-4b98-97aa-ad23940e4cde",
+      "send_callback": false
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"total_transactions"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Data ready for retrieval"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to check/re-send callbacks for initialized account statements. This endpoint should also be used to check how many pages an account statement has.</p>
+<h3 id='https-request-6'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account-statement/status</code><br>
+<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account-statement/status</code></p>
+<h3 id='header-parameters-5'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner username</td>
+</tr>
+<tr>
+<td>X-Api-Key</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner API Key</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-6'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Id of account statement</td>
+</tr>
+<tr>
+<td>resend-callback</td>
+<td>Boolean</td>
+<td>TRUE</td>
+<td>Flag to indicate if callback need to be resend or not</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-6'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total_transactions</td>
+<td>Integer</td>
+<td>Amount of transactions in account statement</td>
+</tr>
+<tr>
+<td>total_pages</td>
+<td>Integer</td>
+<td>Amount of pages in account statement</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>The status of check status of get account statement process <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+</tbody></table>
+<h2 id='account-deactivate-process'>Account Deactivate Process</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--location</span> <span class="nt">--request</span> <span class="se">\</span>
+  POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/account/unlink'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'X-Api-Key: 1234'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'x-oy-username: satsat'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">--data-raw</span> <span class="s1">'{
+      "permanent_token": "f2eaf327ec23dac249d82dc75734941b5e3752f9583ab5752ca9292d6d4eb1dc",
+      "partner_user_id": "username0001"
+  }'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to revoke access to a user’s banking credential. This endpoint is mandatory for Partner to provide to its users so they can revoke Partner’s access to user’s banking information at anytime.</p>
+<h3 id='https-request-7'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/unlink</code><br>
+<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account/unlink</code></p>
+<h3 id='header-parameters-6'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner username</td>
+</tr>
+<tr>
+<td>X-Api-Key</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner API Key</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-7'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>permanent_token</td>
+<td>String</td>
+<td>TRUE</td>
+<td>The token that is retrieved after successful linking</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String</td>
+<td>TRUE</td>
+<td>A unique identifier of a user</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-7'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of account deactivate process <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 </tbody></table>
 
