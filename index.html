@@ -413,52 +413,6 @@
               </ul>
           </li>
           <li>
-            <a href="#kyc" class="toc-h1 toc-link" data-title="KYC">KYC</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#verify-id-card" class="toc-h2 toc-link" data-title="Verify ID-Card">Verify ID-Card</a>
-                  </li>
-                  <li>
-                    <a href="#verify-phone-number" class="toc-h2 toc-link" data-title="Verify Phone Number">Verify Phone Number</a>
-                  </li>
-                  <li>
-                    <a href="#check-status-kyc" class="toc-h2 toc-link" data-title="Check Status KYC">Check Status KYC</a>
-                  </li>
-                  <li>
-                    <a href="#kyc-response-callback" class="toc-h2 toc-link" data-title="KYC Response Callback">KYC Response Callback</a>
-                  </li>
-                  <li>
-                    <a href="#kyc-response-codes" class="toc-h2 toc-link" data-title="KYC Response Codes">KYC Response Codes</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#pfm" class="toc-h1 toc-link" data-title="PFM">PFM</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#connect-internet-banking" class="toc-h2 toc-link" data-title="Connect internet banking">Connect internet banking</a>
-                  </li>
-                  <li>
-                    <a href="#get-connected-accounts" class="toc-h2 toc-link" data-title="Get connected accounts">Get connected accounts</a>
-                  </li>
-                  <li>
-                    <a href="#get-balance" class="toc-h2 toc-link" data-title="Get Balance">Get Balance</a>
-                  </li>
-                  <li>
-                    <a href="#get-mutations" class="toc-h2 toc-link" data-title="Get Mutations">Get Mutations</a>
-                  </li>
-                  <li>
-                    <a href="#pfm-callback-response" class="toc-h2 toc-link" data-title="PFM Callback Response">PFM Callback Response</a>
-                  </li>
-                  <li>
-                    <a href="#pfm-bank-codes" class="toc-h2 toc-link" data-title="PFM Bank Codes">PFM Bank Codes</a>
-                  </li>
-                  <li>
-                    <a href="#pfm-response-codes" class="toc-h2 toc-link" data-title="PFM Response Codes">PFM Response Codes</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#fund-acceptance" class="toc-h1 toc-link" data-title="Fund Acceptance">Fund Acceptance</a>
               <ul class="toc-list-h2">
                   <li>
@@ -529,7 +483,7 @@
                     <a href="#list-of-registered-accounts" class="toc-h2 toc-link" data-title="List of Registered Accounts">List of Registered Accounts</a>
                   </li>
                   <li>
-                    <a href="#transactions-data-bank-codes" class="toc-h2 toc-link" data-title="Transactions Data Bank Codes">Transactions Data Bank Codes</a>
+                    <a href="#bank-codes" class="toc-h2 toc-link" data-title="Bank Codes">Bank Codes</a>
                   </li>
                   <li>
                     <a href="#initialize-account-statement" class="toc-h2 toc-link" data-title="Initialize Account Statement">Initialize Account Statement</a>
@@ -4157,868 +4111,6 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>Request is Rejected (Invalid Format)</td>
 </tr>
 </tbody></table>
-<h1 id='kyc'>KYC</h1>
-<p>KYC APIs will allow you to verify whether the user-supplied identity card is valid or not. KYC API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
-
-<p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
-<h2 id='verify-id-card'>Verify ID-Card</h2>
-<p>Verification using id-card will be handle asynchronous, and we will send KYC response via callback url. For detail callback, you can see <a href="#kyc-response-callback">KYC Response Callback</a></p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-POST https://partner.oyindonesia.com/api/kyc/id-card <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{
-    "personal_information": "rsa_encrypted_personal_information", 
-    "address": "rsa_encrypted_address", 
-    "id_card_photo": "aes_encrypted_base64_encode_of_id_card_photo", 
-    "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Request processed"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/kyc/id-card</code></p>
-<h3 id='request-attribute'>Request Attribute</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>True</td>
-<td>Name of user</td>
-</tr>
-<tr>
-<td>address</td>
-<td>String</td>
-<td>True</td>
-<td>Home address based on ID Card</td>
-</tr>
-<tr>
-<td>nik</td>
-<td>String</td>
-<td>True</td>
-<td>ID card number</td>
-</tr>
-<tr>
-<td>id_card_photo</td>
-<td>String</td>
-<td>True</td>
-<td>Id Card Photo, encode to base64 string</td>
-</tr>
-<tr>
-<td>selfie_card_photo</td>
-<td>String</td>
-<td>True</td>
-<td>Selfie with id card, encode to base64 String</td>
-</tr>
-<tr>
-<td>phone_number</td>
-<td>String</td>
-<td>True</td>
-<td>Phone number to be verified</td>
-</tr>
-<tr>
-<td>email</td>
-<td>String</td>
-<td>False</td>
-<td>Email</td>
-</tr>
-<tr>
-<td>business_address</td>
-<td>String</td>
-<td>True</td>
-<td>Business address</td>
-</tr>
-</tbody></table>
-<h3 id='request-body'>Request Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Encryption</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>personal_information</td>
-<td>String</td>
-<td>User personal information consisting of <code>{name: &lt;name&gt;, email: &lt;email&gt;, phone_number: &lt;phone_number&gt;, nik: &lt;nik&gt;, secret: &lt;secret&gt;}</code></td>
-<td>RSA</td>
-</tr>
-<tr>
-<td>address</td>
-<td>String</td>
-<td>Address information consisting of <code>{home: &lt;home&gt;, business: &lt;business&gt;}</code></td>
-<td>RSA</td>
-</tr>
-<tr>
-<td>id_card_photo</td>
-<td>String</td>
-<td>Base64 encode of Id card photo</td>
-<td>AES</td>
-</tr>
-<tr>
-<td>selfie_card_photo</td>
-<td>String</td>
-<td>Base64 encode of selfie card photo</td>
-<td>AES</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
-</tr>
-</tbody></table>
-<h2 id='verify-phone-number'>Verify Phone Number</h2>
-<p>Verification using phone number.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-POST https://partner.oyindonesia.com/kyc/id-card <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\ </span>
-<span class="nt">-d</span> <span class="s1">'{
-    "name": "name of user",
-    "address": "home address",
-    "nik": "id card number",
-    "phone_number": "phone number"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Request processed"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-2'>HTTPS Request</h3>
-<p><code>POST BASE_URL/kyc/phone-number</code></p>
-<h3 id='request-attributes'>Request Attributes</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>String</td>
-<td>True</td>
-<td>Name of user</td>
-</tr>
-<tr>
-<td>address</td>
-<td>String</td>
-<td>True</td>
-<td>Home address</td>
-</tr>
-<tr>
-<td>nik</td>
-<td>String</td>
-<td>True</td>
-<td>ID card number</td>
-</tr>
-<tr>
-<td>phone_number</td>
-<td>String</td>
-<td>False</td>
-<td>Phone number of user, use +62 format</td>
-</tr>
-</tbody></table>
-<h3 id='request-body-2'>Request Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Encryption</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>personal_information</td>
-<td>String</td>
-<td>Personal information consisting of <code>{name: &lt;name&gt;, phone_number: &lt;phone_number&gt;, nik: &lt;nik&gt;}</code></td>
-<td>RSA</td>
-</tr>
-<tr>
-<td>address</td>
-<td>String</td>
-<td>Address consisting of <code>{home: &lt;home&gt;}</code></td>
-<td>RSA</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-2'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
-</tr>
-</tbody></table>
-<h2 id='check-status-kyc'>Check Status KYC</h2>
-<p>There are some cases send callback can be failed, so client cannot get kyc status from callback, to handle this we suggest to check kyc status using this API.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-POST https://partner.oyindonesia.com/kyc/status <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{
-    "personal_information": "rsa_encryption_personal_information"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"nik"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ENCRYPTED_NIK"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"signature"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OY_GENERATE_SIGNATURE"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-3'>HTTPS Request</h3>
-<p><code>POST BASE_URL/kyc/status</code></p>
-<h3 id='request-attributes-2'>Request Attributes</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>nik</td>
-<td>String</td>
-<td>True</td>
-<td>ID card number</td>
-</tr>
-</tbody></table>
-<h3 id='request-body-3'>Request Body</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Encryption</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>personal_information</td>
-<td>String</td>
-<td>Personal information consisting of <code>{nik: &lt;nik&gt;}</code></td>
-<td>RSA</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-3'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Object</td>
-<td>Detail data of response in Object <code>{nik: &lt;encrypted nik&gt;, signature: &lt;OY! signature&gt;}</code></td>
-</tr>
-</tbody></table>
-<h2 id='kyc-response-callback'>KYC Response Callback</h2>
-<blockquote>
-<p>Response callback:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"verified"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"nik"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ENCRYPTED_NIK"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"signature"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OY_GENERATE_SIGNATURE"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Once data have been verified, our system will make a callback to your system.</p>
-<h3 id='callback-parameters'>Callback Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#kyc-response-codes">KYC Response Codes</a></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Object</td>
-<td>Detail data of response in Object <code>{nik: &lt;encrypted nik&gt;, signature: &lt;OY! signature&gt;}</code></td>
-</tr>
-</tbody></table>
-<h2 id='kyc-response-codes'>KYC Response Codes</h2>
-<p>These are the list of possible status codes for KYC response status:</p>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>State</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>000</td>
-<td>Final</td>
-<td>Response success without error</td>
-</tr>
-<tr>
-<td>001</td>
-<td>Final</td>
-<td>Data on request body is empty or invalid</td>
-</tr>
-<tr>
-<td>002</td>
-<td>Final</td>
-<td>Request is rejected (Name is not the same as id card)</td>
-</tr>
-<tr>
-<td>003</td>
-<td>Final</td>
-<td>Request is Rejected (Address is not the same as id card)</td>
-</tr>
-<tr>
-<td>004</td>
-<td>Final</td>
-<td>Request is Rejected (NIK is not the same as id card)</td>
-</tr>
-<tr>
-<td>005</td>
-<td>Final</td>
-<td>Request is Rejected (ID card photo is not clear)</td>
-</tr>
-<tr>
-<td>006</td>
-<td>Final</td>
-<td>Request is Rejected (Face is not the same as photo on id card)</td>
-</tr>
-<tr>
-<td>007</td>
-<td>Final</td>
-<td>Data not found. ID Card number not registered</td>
-</tr>
-<tr>
-<td>008</td>
-<td>Final</td>
-<td>Image size more than 1MB</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Final</td>
-<td>Request Rejected (Too Many Request to specific endpoint)</td>
-</tr>
-<tr>
-<td>999</td>
-<td>Final</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
-<h1 id='pfm'>PFM</h1>
-<p>PFM APIs will allow you to connect with internet banking account. You can use it to check accounts, balance and mutations. PFM API can be requested through HTTPS Request to OY! API Base URL endpoint.</p>
-
-<p><a href='mailto:business@oyindonesia.com'>Contact us if you are interested!</a></p>
-<h2 id='connect-internet-banking'>Connect internet banking</h2>
-<p>Login and connect internet banking. This process is asynchronous, we will send response using callback url that you registered to us. For detail of callback response, see <a href="#pfm-callback-response">PFM Callback Response</a></p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-POST https://partner.oyindonesia.com/api/ibank/login <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-apikey:987654'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{
-    "data": "&lt;ENCRYPTED_USERNAME_PASSWORD&gt;",
-    "bank_code": "008",
-    "phone_number": "+62821123456789",
-    "email": "",
-    "tx_history_start_date": 1586734844000,
-    "tx_history_end_date": 1584056444000,
-    "user_consent": true
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing login to internet banking"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-12341-1231-1231"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request'>HTTPS Request</h3>
-<p><code>POST BASE_URL/api/ibank/login</code></p>
-<h3 id='request-parameters'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>data</td>
-<td>String</td>
-<td>True</td>
-<td>Encripted json of username and password.</td>
-</tr>
-<tr>
-<td>bank_code</td>
-<td>String</td>
-<td>True</td>
-<td>Code of bank, For list of bank code, see <a href="#pfm-bank-codes">PFM Bank Codes</a></td>
-</tr>
-<tr>
-<td>phone_number</td>
-<td>String</td>
-<td>True</td>
-<td>Phone number of user</td>
-</tr>
-<tr>
-<td>email</td>
-<td>String</td>
-<td>False</td>
-<td>Email of user</td>
-</tr>
-<tr>
-<td>tx_history_start_date</td>
-<td>Long</td>
-<td>False</td>
-<td>Start date mutations on millisecond, if empty will be used current date - 7</td>
-</tr>
-<tr>
-<td>tx_history_end_date</td>
-<td>Long</td>
-<td>False</td>
-<td>End date mutation on millisecond, if empty will be used current date</td>
-</tr>
-<tr>
-<td>user_consent</td>
-<td>Boolean</td>
-<td>True</td>
-<td>User consent to share specific information about user and user&#39;s account to OY! Indonesia for processing the user&#39;s data, if false we are unauthorized to process the data further</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Object</td>
-<td>Data of response in Object <code>{id:&lt;request_id&gt;}</code></td>
-</tr>
-</tbody></table>
-<h2 id='get-connected-accounts'>Get connected accounts</h2>
-<p>Get all connected accounts on specific Internet banking id (ibank ID)</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-GET https://partner.oyindonesia.com/api/ibank/:ibankId/accounts <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-apikey:987654'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-132131-13213-1312131"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678900"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAVING"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2134-4315-1234-5123-12331411"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"************1234"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CREDIT-CARD"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-2'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/ibank/:ibankId/accounts</code></p>
-<h3 id='url-parameter'>URL Parameter</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ibankId</td>
-<td>String</td>
-<td>Unique internet banking id</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-2'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Array of Object</td>
-<td>List of object <code>{id: &lt;id&gt;, account_number: &lt;account_number&gt;, account_type: &lt;account_type&gt;, bank: { code: &lt;code&gt;, name: &lt;name&gt;}}</code></td>
-</tr>
-</tbody></table>
-<h2 id='get-balance'>Get Balance</h2>
-<p>Get balance for specific account. This is required account ID as parameter.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-GET https://partner.oyindonesia.com/api/accounts/:accountId/balance 
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-apikey:987654'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345-132131-13213-1312131"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678900"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAVING"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">150000000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="mi">150091892829299</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-3'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/accounts/:accountId/balance</code></p>
-<h3 id='url-parameter-2'>URL Parameter</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>accountId</td>
-<td>String</td>
-<td>Unique account id</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-3'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Object</td>
-<td>Object of <code>{id: &lt;id&gt;, account_number: &lt;account_number&gt;, account_type: &lt;account_type&gt;, bank: { code: &lt;code&gt;, name: &lt;name&gt;}, balance: &lt;balance&gt;, last_updated: &lt;last_updated&gt;}</code></td>
-</tr>
-</tbody></table>
-<h2 id='get-mutations'>Get Mutations</h2>
-<p>Get mutations for specific account with time range. This is required account ID as parameter,</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="se">\</span>
-https://partner.oyindonesia.com/api/accounts/:accountId/mutations?startDate<span class="o">=</span>2020-01-01&amp;endDate<span class="o">=</span>2020-01-30 <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
-<span class="nt">-H</span> <span class="s1">'x-oy-apikey:987654'</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured similar like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-123131-132132-131231"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"food"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000000035000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"balance_flow"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"transaction_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">15818182101011</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB DEBIT DOMESTIK TANGGAL :21/09 TRN DEBIT DOM 008 KFC DRIVE THRU SAM"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-123131-132132-131231"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"food"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">35000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000000000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"balance_flow"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"transaction_date"</span><span class="p">:</span><span class="w"> </span><span class="mi">15881818220012</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB DEBIT DOMESTIK TANGGAL :24/11 TRN DEBIT DOM 022 PANCIOUS PANCAKE H"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-4'>HTTPS Request</h3>
-<p><code>GET BASE_URL/api/account/:accountId/mutations</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>accountId</td>
-<td>String</td>
-<td>Unique account id</td>
-</tr>
-</tbody></table>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>startDate</td>
-<td>String</td>
-<td>Start date of transaction, using format yyyy-MM-dd</td>
-</tr>
-<tr>
-<td>endDate</td>
-<td>String</td>
-<td>End date of transaction, using format yyyy-MM-dd</td>
-</tr>
-</tbody></table>
-<h3 id='response-parameters-4'>Response Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
-</tr>
-<tr>
-<td>data</td>
-<td>Object</td>
-<td>Object of <code>{id: &lt;id&gt;, category: &lt;category&gt;, amount: &lt;amount&gt;, balance_flow: &lt;balance_flow&gt;, transaction_date: &lt;transaction_date&gt;, description: &lt;description&gt;, status: &lt;status&gt;}</code></td>
-</tr>
-</tbody></table>
-<h2 id='pfm-callback-response'>PFM Callback Response</h2>
-<blockquote>
-<p>Response Callback</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Succeess"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"encrypted callback response"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Once data have been connected, our system will make a callback to your system.</p>
-<h3 id='callback-parameters'>Callback Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-<th>Encryption</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. For list of status code, see <a href="#pfm-response-codes">PFM Response Codes</a></td>
-<td>-</td>
-</tr>
-<tr>
-<td>data</td>
-<td>Object</td>
-<td>Data of response in Object in encrypted of <code>{&quot;id&quot;:&quot;1234-1234-1234-1241&quot;,&quot;phone_number&quot;:&quot;&lt;phone_number&gt;&quot;,&quot;bank_code&quot;:&quot;&lt;bank_code&gt;&quot;,&quot;tx_history_start_date&quot;:&lt;start_date_of_mutation&gt;,&quot;tx_history_end_date&quot;:&lt;end_date_of_mutations&gt;,&quot;accounts&quot;:[{&quot;id&quot;:&quot;&lt;account_id&gt;&quot;,&quot;account_number&quot;:&quot;&lt;account_number&gt;&quot;,&quot;account_type&quot;:&quot;&lt;account_type&gt;&quot;,&quot;bank&quot;:{&quot;code&quot;:&quot;&lt;bank_code&gt;&quot;,&quot;name&quot;:&quot;&lt;bank_name&gt;&quot;},&quot;balance&quot;:&lt;current_balance&gt;,&quot;last_updated&quot;:&lt;last_updated_date&gt;,&quot;mutation&quot;:[{&quot;id&quot;:&quot;&lt;transaction_id&gt;&quot;,&quot;category&quot;:&quot;&lt;category&gt;&quot;,&quot;amount&quot;:&lt;balance&gt;,&quot;balance_flow&quot;:&lt;flow&gt;,&quot;transaction_date&quot;:&lt;transaction_date&gt;,&quot;description&quot;:&quot;&lt;description&gt;&quot;,&quot;status&quot;:&quot;&lt;status&gt;&quot;}]}]}</code></td>
-<td>AES</td>
-</tr>
-</tbody></table>
-<h2 id='pfm-bank-codes'>PFM Bank Codes</h2>
-<p>These are the lis of available bank on our PFM service:</p>
-
-<table><thead>
-<tr>
-<th>Bank Code</th>
-<th>Bank Name</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>008</td>
-<td>Mandiri</td>
-</tr>
-<tr>
-<td>014</td>
-<td>BCA</td>
-</tr>
-<tr>
-<td>009</td>
-<td>BNI</td>
-</tr>
-</tbody></table>
-<h2 id='pfm-response-codes'>PFM Response Codes</h2>
-<p>These are the list of possible status codes for PFM response status:</p>
-
-<table><thead>
-<tr>
-<th>Status Code</th>
-<th>State</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>000</td>
-<td>Final</td>
-<td>Response success without error</td>
-</tr>
-<tr>
-<td>001</td>
-<td>Final</td>
-<td>Processing login to internet banking</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Final</td>
-<td>Failed</td>
-</tr>
-<tr>
-<td>301</td>
-<td>Final</td>
-<td>Failed Authentication</td>
-</tr>
-<tr>
-<td>302</td>
-<td>Final</td>
-<td>Error wrong encryption</td>
-</tr>
-<tr>
-<td>303</td>
-<td>Final</td>
-<td>Bank code is not valid</td>
-</tr>
-<tr>
-<td>304</td>
-<td>Final</td>
-<td>User consent is false</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Final</td>
-<td>Request Rejected (Too Many Request to specific endpoint)</td>
-</tr>
-<tr>
-<td>999</td>
-<td>Final</td>
-<td>Internal Server Error</td>
-</tr>
-</tbody></table>
 <h1 id='fund-acceptance'>Fund Acceptance</h1>
 <p>There are two products that fall under the category of funds acceptance which are Payment Checkout and Invoicing. </p>
 
@@ -6945,7 +6037,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <p>Use this API to link a bank account so it&#39;s historical transaction data can be retrieved.</p>
 <h3 id='https-request'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/register</code><br>
-<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account/register</code></p>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/transaction-data/account/register</code></p>
 <h3 id='header-parameters'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -7089,7 +6181,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <p>Use this API to check the status of a bank account registration/linking process</p>
 <h3 id='https-request-2'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/check-registration-status</code><br>
-<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account/check-registration-status</code></p>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/transaction-data/account/check-registration-status</code></p>
 <h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -7209,7 +6301,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <p>Use this API to retrieve bank accounts related information of a user ID that has been successfully linked to a user ID</p>
 <h3 id='https-request-3'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/registered-accounts</code><br>
-<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account/registered-accounts</code></p>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/transaction-data/account/registered-accounts</code></p>
 <h3 id='header-parameters-2'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -7299,26 +6391,30 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>Unexpected error</td>
 </tr>
 </tbody></table>
-<h2 id='transactions-data-bank-codes'>Transactions Data Bank Codes</h2>
+<h2 id='bank-codes'>Bank Codes</h2>
 <p>These are the lis of available bank on our API Transactions Data service:</p>
 
 <table><thead>
 <tr>
 <th>Bank Code</th>
 <th>Bank Name</th>
+<th>Limitation</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>008</td>
 <td>Mandiri</td>
+<td>Maximum of 12 months historical account statement data</td>
 </tr>
 <tr>
 <td>014</td>
 <td>BCA</td>
+<td>Maximum of 3 months historical account statement data</td>
 </tr>
 <tr>
 <td>009</td>
 <td>BNI</td>
+<td>Maximum of 6 months historical account statement data</td>
 </tr>
 </tbody></table>
 <h2 id='initialize-account-statement'>Initialize Account Statement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--location</span> <span class="nt">--request</span> <span class="se">\</span>
@@ -7360,7 +6456,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <p>Use this API to initialize the account statement data to be fetched. Upon successful account statement initialization, Partner will receive a callback that a data is ready.</p>
 <h3 id='https-request-4'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account-statement/init</code><br>
-<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account-statement/init</code></p>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/transaction-data/account-statement/init</code></p>
 <h3 id='header-parameters-3'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -7396,7 +6492,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>bank_code</td>
 <td>String</td>
 <td>TRUE</td>
-<td>The bank code of the user&#39;s bank account (please refer to <a href="#transactions-data-bank-codes">the Bank Codes section</a>)</td>
+<td>The bank code of the user&#39;s bank account (please refer to <a href="#bank-codes">the Bank Codes section</a>)</td>
 </tr>
 <tr>
 <td>account_type</td>
@@ -7553,7 +6649,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <p>Use this API to fetch transaction details based on initialized account statements</p>
 <h3 id='https-request-5'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&amp;page=[page_number]</code><br>
-<strong>[Staging]</strong> <code>GET https://partner-dev.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&amp;page=[page_number]</code></p>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&amp;page=[page_number]</code></p>
 <h3 id='header-parameters-4'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -7642,7 +6738,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <p>Use this API to check/re-send callbacks for initialized account statements. This endpoint should also be used to check how many pages an account statement has.</p>
 <h3 id='https-request-6'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account-statement/status</code><br>
-<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account-statement/status</code></p>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/transaction-data/account-statement/status</code></p>
 <h3 id='header-parameters-5'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -7734,7 +6830,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <p>Use this API to revoke access to a user’s banking credential. This endpoint is mandatory for Partner to provide to its users so they can revoke Partner’s access to user’s banking information at anytime.</p>
 <h3 id='https-request-7'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/unlink</code><br>
-<strong>[Staging]</strong> <code>POST https://partner-dev.oyindonesia.com/api/transaction-data/account/unlink</code></p>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/transaction-data/account/unlink</code></p>
 <h3 id='header-parameters-6'>Header Parameters</h3>
 <table><thead>
 <tr>
