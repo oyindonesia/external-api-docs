@@ -37,7 +37,7 @@ Use this API to link a bank account so it's historical transaction data can be r
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account/register`<br>
-**[Staging]** `POST https://partner-dev.oyindonesia.com/api/transaction-data/account/register`
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account/register`
 
 ### Header Parameters
 
@@ -129,7 +129,7 @@ Use this API to check the status of a bank account registration/linking process
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account/check-registration-status`<br>
-**[Staging]** `POST https://partner-dev.oyindonesia.com/api/transaction-data/account/check-registration-status`
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account/check-registration-status`
 
 ### Request Parameters
 
@@ -207,7 +207,7 @@ Use this API to retrieve bank accounts related information of a user ID that has
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account/registered-accounts`<br>
-**[Staging]** `POST https://partner-dev.oyindonesia.com/api/transaction-data/account/registered-accounts`
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account/registered-accounts`
 
 ### Header Parameters
 
@@ -241,15 +241,15 @@ Code | Description
 208 | API Key is not valid
 900 | Unexpected error
 
-## Transactions Data Bank Codes
+## Bank Codes
 
 These are the lis of available bank on our API Transactions Data service:
 
-Bank Code | Bank Name
---------- | ---------
-008 | Mandiri
-014 | BCA
-009 | BNI
+Bank Code | Bank Name | Limitation
+--------- | --------- | ----------
+008 | Mandiri | Maximum of 12 months historical account statement data
+014 | BCA | Maximum of 3 months historical account statement data
+009 | BNI | Maximum of 6 months historical account statement data
 
 ## Initialize Account Statement
 
@@ -297,7 +297,7 @@ Use this API to initialize the account statement data to be fetched. Upon succes
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account-statement/init`<br>
-**[Staging]** `POST https://partner-dev.oyindonesia.com/api/transaction-data/account-statement/init`
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account-statement/init`
 
 ### Header Parameters
 
@@ -310,7 +310,7 @@ X-Api-Key | String | TRUE | Partner API Key
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-bank_code | String | TRUE | The bank code of the user's bank account (please refer to [the Bank Codes section](#transactions-data-bank-codes))
+bank_code | String | TRUE | The bank code of the user's bank account (please refer to [the Bank Codes section](#bank-codes))
 account_type | String | TRUE | Type of bank accounts (currently only "Individual" is available)
 account_number | String | TRUE | The account number which data will be retrieved that has been successfully linked
 start_date | String | TRUE | Start date of account statement in "YYYY-MM-dd" format
@@ -403,7 +403,7 @@ Use this API to fetch transaction details based on initialized account statement
 
 ### HTTPS Request
 **[Production]** `GET https://partner.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&page=[page_number]`<br>
-**[Staging]** `GET https://partner-dev.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&page=[page_number]`
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&page=[page_number]`
 
 ### Header Parameters
 
@@ -458,7 +458,7 @@ Use this API to check/re-send callbacks for initialized account statements. This
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account-statement/status`<br>
-**[Staging]** `POST https://partner-dev.oyindonesia.com/api/transaction-data/account-statement/status`
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account-statement/status`
 
 ### Header Parameters
 
@@ -513,7 +513,7 @@ Use this API to revoke access to a user’s banking credential. This endpoint is
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account/unlink`<br>
-**[Staging]** `POST https://partner-dev.oyindonesia.com/api/transaction-data/account/unlink`
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account/unlink`
 
 ### Header Parameters
 
