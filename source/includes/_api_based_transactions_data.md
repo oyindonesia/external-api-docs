@@ -70,7 +70,7 @@ User will be prompted with a page to notify that the linking process is still in
 Code | Description
 ---- | -----------
 000 | Success
-201 | User not found
+201 | User is not found
 202 | User is not active
 207 | IP Address is not registered
 208 | API Key is not valid
@@ -149,12 +149,13 @@ status | Object | The status of a bank account registration/linking process `{co
 Code | Description
 ---- | -----------
 000 | Success
-237 | Invalid temporary token
 102 | In progress
-300 | Failed
+201 | User is not found
 202 | User is not active
 207 | IP Address is not registered
 208 | API Key is not valid
+237 | Invalid temporary token
+300 | Failed
 900 | Unexpected error
 
 ## List of Registered Accounts
@@ -235,10 +236,11 @@ status | Object | The status of a bank account registration/linking process `{co
 Code | Description
 ---- | -----------
 000 | Success
-244 | Invalid partner user id
+201 | User is not found
 202 | User is not active
 207 | IP Address is not registered
 208 | API Key is not valid
+244 | Invalid partner user id
 900 | Unexpected error
 
 ## Bank Codes
@@ -330,16 +332,17 @@ status | Object | The status of initialization account statement process `{code:
 Code | Description
 ---- | -----------
 000 | Success
-300 | Failed
-244 | Invalid partner user id
-237 | Invalid temporary token
-205 | Bank code is not found
-209 | Account number is not found
+101 | Request is processed
 201 | User is not found
 202 | User is not active
 207 | IP Address is not registered
 208 | API Key is not valid
+211 | Bank code is not available for this service
+238 | Invalid permanent token
+242 | Start date tx data unavailable
+300 | Failed
 900 | Unexpected error
+990 | Invalid object or parameter
 
 ## Get Account Statement
 
@@ -419,13 +422,32 @@ Parameter | Type | Required | Description
 id | String | TRUE | Id of account statement
 page | Integer | TRUE | Pagination offset - each page contains max. of 1000 row of transactions
 
-
 ### Response Parameters
 
 Parameter | Type | Description
 --------- | ---- | -----------
 data | Array of Object | List of object `{ date: <timestamp>, id: <id>, description: <description>, type: <CR/DB>, amount: <amount> }`
 status | Object | The status of get account statement process `{code: <status_code>, message: <status_message>}`
+
+### List of Response Codes
+
+Code | Description
+---- | -----------
+000 | Success
+101 | Request is processed
+201 | User is not found
+202 | User is not active
+207 | IP Address is not registered
+208 | API Key is not valid
+209 | Bank account number is not found
+211 | Bank code is not available for this service
+238 | Invalid permanent token
+239 | Account statement is not found
+240 | Failed when trying to login to internet banking
+242 | Start date tx data unavailable
+300 | Failed
+900 | Unexpected error
+990 | Invalid object or parameter
 
 ## Check Account Statement Status/Callback
 
@@ -483,6 +505,26 @@ total_transactions |  Integer| Amount of transactions in account statement
 total_pages | Integer | Amount of pages in account statement
 status | Object | The status of check status of get account statement process `{code: <status_code>, message: <status_message>}`
 
+### List of Response Codes
+
+Code | Description
+---- | -----------
+000 | Success
+101 | Request is processed
+201 | User is not found
+202 | User is not active
+207 | IP Address is not registered
+208 | API Key is not valid
+209 | Bank account number is not found
+211 | Bank code is not available for this service
+238 | Invalid permanent token
+239 | Account statement is not found
+240 | Failed when trying to login to internet banking
+242 | Start date tx data unavailable
+300 | Failed
+900 | Unexpected error
+990 | Invalid object or parameter
+
 ## Account Deactivate Process
 
 ```shell
@@ -536,3 +578,15 @@ partner_user_id | String | TRUE | A unique identifier of a user
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of account deactivate process `{code: <status_code>, message: <status_message>}`
+
+### List of Response Codes
+
+Code | Description
+---- | -----------
+000 | Success
+201 | User is not found
+202 | User is not active
+207 | IP Address is not registered
+208 | API Key is not valid
+238 | Invalid permanent token
+900 | Unexpected error
