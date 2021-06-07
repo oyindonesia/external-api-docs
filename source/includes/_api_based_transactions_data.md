@@ -37,7 +37,7 @@ Use this API to link a bank account so it's historical transaction data can be r
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account/register`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account/register`
+**[Staging]** `UPCOMING`
 
 ### Header Parameters
 
@@ -129,7 +129,7 @@ Use this API to check the status of a bank account registration/linking process
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account/check-registration-status`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account/check-registration-status`
+**[Staging]** `UPCOMING`
 
 ### Request Parameters
 
@@ -208,7 +208,7 @@ Use this API to retrieve bank accounts related information of a user ID that has
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account/registered-accounts`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account/registered-accounts`
+**[Staging]** `UPCOMING`
 
 ### Header Parameters
 
@@ -299,7 +299,7 @@ Use this API to initialize the account statement data to be fetched. Upon succes
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account-statement/init`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account-statement/init`
+**[Staging]** `UPCOMING`
 
 ### Header Parameters
 
@@ -406,7 +406,7 @@ Use this API to fetch transaction details based on initialized account statement
 
 ### HTTPS Request
 **[Production]** `GET https://partner.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&page=[page_number]`<br>
-**[Staging]** `GET https://api-stg.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&page=[page_number]`
+**[Staging]** `UPCOMING`
 
 ### Header Parameters
 
@@ -480,7 +480,7 @@ Use this API to check/re-send callbacks for initialized account statements. This
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account-statement/status`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account-statement/status`
+**[Staging]** `UPCOMING`
 
 ### Header Parameters
 
@@ -555,7 +555,7 @@ Use this API to revoke access to a user’s banking credential. This endpoint is
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account/unlink`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/transaction-data/account/unlink`
+**[Staging]** `UPCOMING`
 
 ### Header Parameters
 
