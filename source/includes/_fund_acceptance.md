@@ -32,7 +32,8 @@ curl -X POST \
         "include_admin_fee":false,
         "list_disabled_payment_methods":"",
         "list_enabled_banks":"",
-        "expiration":"2020-08-08 08:09:12"
+        "expiration":"2020-08-08 08:09:12",
+        "va_display_name":"Display Name on VA"
     }'
 ```
 
@@ -78,6 +79,7 @@ list_disabled_payment_methods | String | To configure payment methods to be disa
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
 list_enabled_ewallet | String | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet".
 expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
+va_display_name | String | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
 
 
 ### Response Parameters
