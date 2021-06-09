@@ -416,7 +416,7 @@ Parameter | Type | Required | Description
 X-Oy-Username | String | TRUE | Partner username
 X-Api-Key | String | TRUE | Partner API Key
 
-### Request Parameters
+### Request Query Parameters
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
