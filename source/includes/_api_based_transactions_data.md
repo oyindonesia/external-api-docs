@@ -89,18 +89,6 @@ Code | Description
 }'
 ```
 
-> The above command returns JSON structured similar like this, when token on the payload is invalid:
-
-```json
-{
-    "permanent_token": null,
-    "status": {
-        "code": "237",
-        "message": "Temporary token is invalid"
-    }
-}
-```
-
 > The above command returns JSON structured similar like this, when the registration is in process:
 
 ```json
@@ -109,6 +97,18 @@ Code | Description
     "status": {
         "code": "102",
         "message": "Request is In progress"
+    }
+}
+```
+
+> The above command returns JSON structured similar like this, when token on the payload is invalid:
+
+```json
+{
+    "permanent_token": null,
+    "status": {
+        "code": "237",
+        "message": "Temporary token is invalid"
     }
 }
 ```
@@ -130,6 +130,13 @@ Use this API to check the status of a bank account registration/linking process
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/transaction-data/account/check-registration-status`<br>
 **[Staging]** `UPCOMING`
+
+### Header Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+X-Oy-Username | String | TRUE | Partner username
+X-Api-Key | String | TRUE | Partner API Key
 
 ### Request Parameters
 
@@ -268,7 +275,6 @@ Bank Code | Bank Name | Limitation
     "start_date": "2021-02-13",
     "end_date": "2021-04-13",
     "permanent_token": "f2eaf327ec23dac249d82dc75734941b5e3752f9583ab5752ca9292d6d4eb1dc",
-    "ignore_start_date": true
 ```
 
 > The above command returns JSON structured similar like this, when success:
@@ -348,14 +354,9 @@ Code | Description
 
 ```shell
   curl --location --request \
-  POST 'https://partner.oyindonesia.com/api/transaction-data/account-statement/status' \
-  --header 'X-Oy-Username: satsat' \
-  --header 'x-api-key: 1234' \
-  --header 'Content-Type: application/json' \
-  --data-raw '{
-      "id": "eb74c36d-efb3-4b98-97aa-ad23940e4cde",
-      "send_callback": false
-  }'
+  GET 'https://partner.oyindonesia.com/api/transaction-data/account-statement/mutations?id=ljhahd12je8sdca93&page=1' \
+--header 'x-oy-username: satsat3' \
+--header 'x-api-key: 1234' \
 ```
 
 > The above command returns JSON structured similar like this, when success:
@@ -494,7 +495,7 @@ X-Api-Key | String | TRUE | Partner API Key
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 id | String | TRUE | Id of account statement
-resend-callback | Boolean | TRUE | Flag to indicate if callback need to be resend or not
+send_callback | Boolean | TRUE | Flag to indicate if callback need to be resend or not
 
 
 ### Response Parameters
