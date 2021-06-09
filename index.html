@@ -4140,7 +4140,8 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
         "include_admin_fee":false,
         "list_disabled_payment_methods":"",
         "list_enabled_banks":"",
-        "expiration":"2020-08-08 08:09:12"
+        "expiration":"2020-08-08 08:09:12",
+        "va_display_name":"Display Name on VA"
     }'</span>
 </code></pre></div><h3 id='https-request'>HTTPS Request</h3>
 <p><strong>[Production]</strong> POST <code>https://partner.oyindonesia.com/api/payment-checkout/create-v2</code><br/>
@@ -4267,6 +4268,12 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>datetime</td>
 <td>To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)</td>
 <td>Expiration date will be defaulted to 24 hours if it is not defined.</td>
+</tr>
+<tr>
+<td>va_display_name</td>
+<td>String</td>
+<td>Optional parameter, name to display on Bank Transfer VA Name</td>
+<td>Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters'>Response Parameters</h3>
@@ -6146,17 +6153,6 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 }'</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured similar like this, when token on the payload is invalid:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"permanent_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"237"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Temporary token is invalid"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
 <p>The above command returns JSON structured similar like this, when the registration is in process:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -6164,6 +6160,17 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"102"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request is In progress"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this, when token on the payload is invalid:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"permanent_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"237"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Temporary token is invalid"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -6182,6 +6189,28 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <h3 id='https-request-2'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/check-registration-status</code><br>
 <strong>[Staging]</strong> <code>UPCOMING</code></p>
+<h3 id='header-parameters-2'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner username</td>
+</tr>
+<tr>
+<td>X-Api-Key</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Partner API Key</td>
+</tr>
+</tbody></table>
 <h3 id='request-parameters-2'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -6306,7 +6335,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <h3 id='https-request-3'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/registered-accounts</code><br>
 <strong>[Staging]</strong> <code>UPCOMING</code></p>
-<h3 id='header-parameters-2'>Header Parameters</h3>
+<h3 id='header-parameters-3'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6437,7 +6466,6 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
     "start_date": "2021-02-13",
     "end_date": "2021-04-13",
     "permanent_token": "f2eaf327ec23dac249d82dc75734941b5e3752f9583ab5752ca9292d6d4eb1dc",
-    "ignore_start_date": true
 </span></code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this, when success:</p>
@@ -6465,7 +6493,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <h3 id='https-request-4'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account-statement/init</code><br>
 <strong>[Staging]</strong> <code>UPCOMING</code></p>
-<h3 id='header-parameters-3'>Header Parameters</h3>
+<h3 id='header-parameters-4'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6609,14 +6637,9 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </tr>
 </tbody></table>
 <h2 id='get-account-statement'>Get Account Statement</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>  curl <span class="nt">--location</span> <span class="nt">--request</span> <span class="se">\</span>
-  POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/account-statement/status'</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'X-Oy-Username: satsat'</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'x-api-key: 1234'</span> <span class="se">\</span>
-  <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">--data-raw</span> <span class="s1">'{
-      "id": "eb74c36d-efb3-4b98-97aa-ad23940e4cde",
-      "send_callback": false
-  }'</span>
+  GET <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/account-statement/mutations?id=ljhahd12je8sdca93&amp;page=1'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: satsat3'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: 1234'</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured similar like this, when success:</p>
@@ -6662,7 +6685,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <h3 id='https-request-5'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/transaction-data/account-statement/mutations?id=[account_statement_id]&amp;page=[page_number]</code><br>
 <strong>[Staging]</strong> <code>UPCOMING</code></p>
-<h3 id='header-parameters-4'>Header Parameters</h3>
+<h3 id='header-parameters-5'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6684,7 +6707,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>Partner API Key</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-5'>Request Parameters</h3>
+<h3 id='request-query-parameters'>Request Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6819,7 +6842,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <h3 id='https-request-6'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account-statement/status</code><br>
 <strong>[Staging]</strong> <code>UPCOMING</code></p>
-<h3 id='header-parameters-5'>Header Parameters</h3>
+<h3 id='header-parameters-6'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6841,7 +6864,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>Partner API Key</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-6'>Request Parameters</h3>
+<h3 id='request-parameters-5'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6857,7 +6880,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>Id of account statement</td>
 </tr>
 <tr>
-<td>resend-callback</td>
+<td>send_callback</td>
 <td>Boolean</td>
 <td>TRUE</td>
 <td>Flag to indicate if callback need to be resend or not</td>
@@ -6979,7 +7002,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <h3 id='https-request-7'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/transaction-data/account/unlink</code><br>
 <strong>[Staging]</strong> <code>UPCOMING</code></p>
-<h3 id='header-parameters-6'>Header Parameters</h3>
+<h3 id='header-parameters-7'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7001,7 +7024,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>Partner API Key</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-7'>Request Parameters</h3>
+<h3 id='request-parameters-6'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
