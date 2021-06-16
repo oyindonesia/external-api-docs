@@ -77,7 +77,7 @@ step | String | Accessing specific page of the payment checkout URL. Possible va
 include_admin_fee | Boolean | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
 list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
-list_enabled_ewallet | String | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet".
+list_enabled_ewallet | String | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet", "linkaja_ewallet".
 expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
 va_display_name | String | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
 
@@ -377,7 +377,7 @@ sender_note | String | Additional notes from a payer for a transaction
 status | String | The status of a payment link
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
-payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), or VA (Virtual Account)
+payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), Shopor VA (Virtual Account)
 created | String | The timestamp which indicates the creation time of a payment checkout link
 description | String | Description of the payment checkout link.
 paid_amount | BigDecimal | the total amount that a user has paid.
@@ -526,7 +526,7 @@ notes | String | Payment Notes / Subject | Cicilan Mobil - 5
 email | String | Payment Sender Email | johndoe@gmail.com
 senderPhoneNumber | String | Payment Sender Phone Number | 081234567890
 includeAdminFee | Boolean | Admin fee bills destination between partner or user | true
-listDisabledPaymentMethods | String | List Of Disable Payment Method (VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well.
+listDisabledPaymentMethods | String | List Of Disable Payment Method (VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well.
 listEnabledBanks | String | Payment Method List Enable Bank for VA Payment Method: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB). | 002,008
 expirationTime | String | Payment Exporation Date and Time | "2020-08-12 00:00:00"
 invoiceData | Invoice | Data For Invoice Payment will be null | CREDIT_CARD)** | null
