@@ -377,7 +377,7 @@ sender_note | String | Additional notes from a payer for a transaction
 status | String | The status of a payment link
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
-payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), Shopor VA (Virtual Account)
+payment_method | String | The payment method used in a transaction. Choices are: 'CC' (Cards), 'QRIS', 'EWALLET' (ShopeePay or LinkAja), or 'VA' (Virtual Account)
 created | String | The timestamp which indicates the creation time of a payment checkout link
 description | String | Description of the payment checkout link.
 paid_amount | BigDecimal | the total amount that a user has paid.
