@@ -14,6 +14,8 @@ Response Code | State | Description
 217 | Final | Request is Rejected (VA Number is still active for this partner user id)
 219 | Final | Request is Rejected (Virtual account is not enabled for this bank)
 226 | Final | Request is rejected (Transaction expiry time exceeds VA expiry time)
+245 | Final | Request is rejected (Min expiry time is 60 minutes)
+246 | Final | Request is rejected (Failed update va)
 999 | Non-Final | Internal Server Error
 
 IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:
