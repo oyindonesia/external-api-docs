@@ -5,10 +5,6 @@
 <strong>[Staging Base URL]</strong>: <code>https://api-stg.oyindonesia.com</code></p>
 <h2 id='create-va-va-aggregator'>Create VA</h2>
 <p>Use this API to create new VA number</p>
-
-<blockquote>
-<p>Below is an example of the code for create new VA number</p>
-</blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/generate-static-va
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -237,10 +233,6 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 </tbody></table>
 <h2 id='get-va-info-va-aggregator'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
-
-<blockquote>
-<p>Below is an example of the code for get VA info</p>
-</blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -391,10 +383,6 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 </tbody></table>
 <h2 id='update-va-va-aggregator'>Update VA</h2>
 <p>Update VA using unique VA id.</p>
-
-<blockquote>
-<p>Below is an example of the code for update VA</p>
-</blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -617,10 +605,6 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 </tbody></table>
 <h2 id='get-list-of-created-va-va-aggregator'>Get list of created VA</h2>
 <p>Get list of created VA</p>
-
-<blockquote>
-<p>Below is an example of the code for get list of created VA</p>
-</blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -729,10 +713,6 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 </tbody></table>
 <h2 id='get-list-of-transaction-for-va-va-aggregator'>Get List of Transaction for VA</h2>
 <p>Get list of incoming transaction for specific va number.</p>
-
-<blockquote>
-<p>Below is an example of the code for get list incoming transaction</p>
-</blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
