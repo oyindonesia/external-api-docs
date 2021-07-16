@@ -11,6 +11,8 @@ API VA aggregator allows you to create a unique Virtual Account (VA) number as a
 
 Use this API to create new VA number
 
+> Below is an example of the code for create new VA number
+
 ```shell
 curl -X \
 POST <%= config[:endpoint_prod] %>/api/generate-static-va
@@ -105,6 +107,8 @@ counter_incoming_payment | Integer | Count total incoming payment of VA
 
 Get VA info using Unique VA id.
 
+> Below is an example of the code for get VA info
+
 ```shell
 curl -X \
 GET <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212121-212121
@@ -179,6 +183,8 @@ trx_counter | Int | Transaction counter to limit number of transaction that can 
 
 Update VA using unique VA id.
 
+> Below is an example of the code for update VA
+
 ```shell
 curl -X \
 PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212121-212121
@@ -198,6 +204,8 @@ PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212
     "trx_counter": 1
 }'
 ```
+
+> The above command returns JSON structured similar like this:
 
 ```json
 {
@@ -268,6 +276,8 @@ counter_incoming_payment | Integer | Count total incoming payment of VA
 ## Get list of created VA
 
 Get list of created VA
+
+> Below is an example of the code for get list of created VA
 
 ```shell
 curl -X \
@@ -351,6 +361,8 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 ## Get List of Transaction for VA
 
 Get list of incoming transaction for specific va number.
+
+> Below is an example of the code for get list incoming transaction
 
 ```shell
 curl -X \

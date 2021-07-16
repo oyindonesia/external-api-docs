@@ -4,6 +4,8 @@ Disbursement APIs allow you to instruct OY to disburse fund to any bank accounts
 
 ## Disbursement
 
+> Below is an example of the code for disbursement
+
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/remit \
@@ -111,6 +113,8 @@ last_updated_date | String(19) | Latest status change of a disbursement. Example
 
 ## Get Disbursement Status
 
+> Below is an example of the code for get disbursement status
+
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/remit-status \
@@ -179,6 +183,8 @@ last_updated_date | String(19) | Latest status change of a disbursement. Example
 
 ## Get Balance
 
+> Below is an example of the code for get balance
+
 ```shell
 curl -X \
 GET https://partner.oyindonesia.com/api/balance \
@@ -228,6 +234,9 @@ timestamp | String(19) | Execution time of Disbursement in OY! system ("dd-MM-yy
 This set of APIs will allow you to schedule disbursement to any bank account on a specified date.
 
 ### Create Scheduled Disbursement
+
+> Below is an example of the code for create scheduled disbursement
+
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/scheduled-remit \
@@ -313,6 +322,8 @@ timestamp | String(19) | Time of scheduled disbursement creation in OY! system (
 ### Get Detail of Scheduled Disbursement
 This endpoint allows you to get detail of a created scheduled disbursement.
 
+> Below is an example of the code for get scheduled disbursement
+
 ```shell
 curl -X \
 GET https://partner.oyindonesia.com/api/scheduled-remit \
@@ -375,6 +386,8 @@ timestamp | String(19) | Time of scheduled disbursement creation in OY! system (
 
 ### Get List of Scheduled Disbursement
 This endpoint allows you get list of scheduled disbursement with or without applying filter on status and processing date (`trigger_date`/`schedule_date`)
+
+> Below is an example of the code for get list scheduled disbursement
 
 ```shell
 curl -X \
@@ -468,6 +481,8 @@ data | List of Object | List of scheduled disburse detail according to given lim
 ### Update Scheduled Disbursement
 This endpoint allows you to update created scheduled disbursement up to a day before the `schedule_date`/`trigger_date`. For non-trigger based scheduled disburse, only update to `schedule_date` is allowed. For trigger-based scheduled disburse, only update to `trigger_date` is allowed.
 
+> Below is an example of the code for update scheduled disbursement
+
 ```shell
 curl -X \
 PUT https://partner.oyindonesia.com/api/scheduled-remit \
@@ -534,6 +549,8 @@ timestamp | String(19) | Time of scheduled disbursement update in OY! system ("d
 ### Cancel Scheduled Disbursement
 This endpoint allows you to cancel created scheduled disbursement up to a day before the `schedule_date`/`trigger_date`.
 
+> Below is an example of the code for cancel scheduled disbursement
+
 ```shell
 curl -X \
 DELETE https://partner.oyindonesia.com/api/scheduled-remit \
@@ -596,6 +613,8 @@ timestamp | String(19) | Time of scheduled disbursement cancellation in OY! syst
 
 ### Retry Scheduled Disbursement
 This endpoint will allow you to create a new scheduled disbursement based on the detail of a previous failed/cancelled scheduled disbursement.
+
+> Below is an example of the code for retry failed/canceled scheduled disbursement
 
 ```shell
 curl -X \
