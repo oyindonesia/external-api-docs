@@ -8,7 +8,6 @@ PFM APIs will allow you to connect with internet banking account. You can use it
 
 Login and connect internet banking. This process is asynchronous, we will send response using callback url that you registered to us. For detail of callback response, see [PFM Callback Response](#pfm-callback-response)
 
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/ibank/login \
@@ -25,6 +24,174 @@ POST https://partner.oyindonesia.com/api/ibank/login \
     "tx_history_end_date": 1584056444000,
     "user_consent": true
 }'
+```
+
+```dart
+var headers = {
+  'X-OY-Username': '{{username}}',
+  'X-OY-ApiKey': '{{api-key}}',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/ibank/login'));
+request.body = json.encode({
+  "data": "E/jbnaskjdfbafbauodfboqfd+euMPl9/qlkjwdneqwjbdnq",
+  "bank_code": "009",
+  "phone_number": "+628000000",
+  "user_consent": true
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/ibank/login"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+	"data":"E/jbnaskjdfbafbauodfboqfd+euMPl9/qlkjwdneqwjbdnq",
+	"bank_code": "009",
+	"phone_number": "+628000000",
+	"user_consent": true
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("X-OY-Username", "{{username}}")
+  req.Header.Add("X-OY-ApiKey", "{{api-key}}")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"data\":\"E/jbnaskjdfbafbauodfboqfd+euMPl9/qlkjwdneqwjbdnq\",\n\t\"bank_code\": \"009\",\n\t\"phone_number\": \"+628000000\",\n\t\"user_consent\": true\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/ibank/login")
+  .method("POST", body)
+  .addHeader("X-OY-Username", "{{username}}")
+  .addHeader("X-OY-ApiKey", "{{api-key}}")
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "data": "E/jbnaskjdfbafbauodfboqfd+euMPl9/qlkjwdneqwjbdnq",
+  "bank_code": "009",
+  "phone_number": "+628000000",
+  "user_consent": true
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/ibank/login");
+xhr.setRequestHeader("X-OY-Username", "{{username}}");
+xhr.setRequestHeader("X-OY-ApiKey", "{{api-key}}");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/ibank/login');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'X-OY-Username' => '{{username}}',
+  'X-OY-ApiKey' => '{{api-key}}',
+  'Content-Type' => 'application/json'
+));
+$request->setBody('{\n	"data":"E/jbnaskjdfbafbauodfboqfd+euMPl9/qlkjwdneqwjbdnq",\n	"bank_code": "009",\n	"phone_number": "+628000000",\n	"user_consent": true\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "data": "E/jbnaskjdfbafbauodfboqfd+euMPl9/qlkjwdneqwjbdnq",
+  "bank_code": "009",
+  "phone_number": "+628000000",
+  "user_consent": True
+})
+headers = {
+  'X-OY-Username': '{{username}}',
+  'X-OY-ApiKey': '{{api-key}}',
+  'Content-Type': 'application/json'
+}
+conn.request("POST", "/api/ibank/login", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
 ```
 
 > The above command returns JSON structured similar like this:

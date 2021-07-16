@@ -809,7 +809,7 @@ html, body {
     padding-top: 2em;
     padding-bottom: 2em;
     padding: 2em $main-padding;
-    border-radius: 0 0 8px 8px;
+    border-radius: 8px;
   }
 
   blockquote {
@@ -821,6 +821,10 @@ html, body {
       background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
       color: #A6B8C8;
+    }
+
+    & + .highlight pre.highlight{
+      border-radius: 0 0 8px 8px;
     }
   }
 }

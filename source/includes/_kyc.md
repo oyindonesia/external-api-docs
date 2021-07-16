@@ -9,7 +9,6 @@ KYC APIs will allow you to verify whether the user-supplied identity card is val
 
 Verification using id-card will be handle asynchronous, and we will send KYC response via callback url. For detail callback, you can see [KYC Response Callback](#kyc-response-callback)
 
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/kyc/id-card \
@@ -24,6 +23,171 @@ POST https://partner.oyindonesia.com/api/kyc/id-card \
     "selfie_card_photo": "aes_encrypted_base64_encode_of_selfie_with_id_card_photo"
 }'
 ```
+
+```dart
+var headers = {
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/kyc/id-card'));
+request.body = json.encode({
+  "personal_information": "O/3qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFf/5+InjHJPQbbgsimBWKW5kfA0N4dgweqwe/IZmBJjuWKBsGDA5OdUlWRkjGvRW43qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFfrZ9xGwTYAeF9s/qGuZ+iq6yteEa8YZwvvHADQ3GJTZ4Is58YvPUatBY1b8zlqeqweqweqweYabbnS3uNMuSXgxULmobBEI5E+k5GI8M=",
+  "address": "eqweqweqwe1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWzwe9wop/du1++we9wop/du1+/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVp/wdejklqwdblkqjVDvBjjRFvnnHpBF9OVgv0NnkQhQp7RMN1xqWtsszh5PVk=",
+  "id_card_photo": "cfePPfibHpj+VengZFvAOvtm16Lt2DQlHS6kzGajYY1fOzga01r5/PpYFyIk9L05QtV2GGxym5zw2So9jBZl2Q4hPAZZWKRU+134124/HYlCtr8O40IsVFZlUp1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWz+SBs9LumK5obHMKwe9wop/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVpSFPSztYT6Nzv6uCtF/wdejklqwdblkqj/Sh4UD5YSF4VES7dTxJZxggq81jg4u4XXAMgMsmbmwDhcl2i+no+72JtkCczGYBrM2kTCzwddCm23f/Zv68a98Fl1P+W8Rwuxj7d2Z2AjikkZzaeDjmh1BysweFXkBa8ODSgGbgErGuEOuFjzubSjdx/nMN5FMy37UjD5Vs09pMBNza4WFln4MuT51EP44zONIHvdKc84+vaNx4Pq4pbvispFn2Wf04thTNBgv86svqL2//XFm/AFYISn4xx5yFxlp+n/zsdl4J+xG+PUkV1SxVS/pjP1TbFv6j+Tz180yiKdiVcWOQ7p1ChWg4x="
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/kyc/id-card"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+	"personal_information": "O/3qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFf/5+InjHJPQbbgsimBWKW5kfA0N4dgweqwe/IZmBJjuWKBsGDA5OdUlWRkjGvRW43qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFfrZ9xGwTYAeF9s/qGuZ+iq6yteEa8YZwvvHADQ3GJTZ4Is58YvPUatBY1b8zlqeqweqweqweYabbnS3uNMuSXgxULmobBEI5E+k5GI8M=",
+    "address" : "eqweqweqwe1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWzwe9wop/du1++we9wop/du1+/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVp/wdejklqwdblkqjVDvBjjRFvnnHpBF9OVgv0NnkQhQp7RMN1xqWtsszh5PVk=",
+	"id_card_photo": "cfePPfibHpj+VengZFvAOvtm16Lt2DQlHS6kzGajYY1fOzga01r5/PpYFyIk9L05QtV2GGxym5zw2So9jBZl2Q4hPAZZWKRU+134124/HYlCtr8O40IsVFZlUp1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWz+SBs9LumK5obHMKwe9wop/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVpSFPSztYT6Nzv6uCtF/wdejklqwdblkqj/Sh4UD5YSF4VES7dTxJZxggq81jg4u4XXAMgMsmbmwDhcl2i+no+72JtkCczGYBrM2kTCzwddCm23f/Zv68a98Fl1P+W8Rwuxj7d2Z2AjikkZzaeDjmh1BysweFXkBa8ODSgGbgErGuEOuFjzubSjdx/nMN5FMy37UjD5Vs09pMBNza4WFln4MuT51EP44zONIHvdKc84+vaNx4Pq4pbvispFn2Wf04thTNBgv86svqL2//XFm/AFYISn4xx5yFxlp+n/zsdl4J+xG+PUkV1SxVS/pjP1TbFv6j+Tz180yiKdiVcWOQ7p1ChWg4x="
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "{{username}}")
+  req.Header.Add("x-api-key", "{{api-key}}")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"personal_information\": \"O/3qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFf/5+InjHJPQbbgsimBWKW5kfA0N4dgweqwe/IZmBJjuWKBsGDA5OdUlWRkjGvRW43qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFfrZ9xGwTYAeF9s/qGuZ+iq6yteEa8YZwvvHADQ3GJTZ4Is58YvPUatBY1b8zlqeqweqweqweYabbnS3uNMuSXgxULmobBEI5E+k5GI8M=\",\n    \"address\" : \"eqweqweqwe1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWzwe9wop/du1++we9wop/du1+/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVp/wdejklqwdblkqjVDvBjjRFvnnHpBF9OVgv0NnkQhQp7RMN1xqWtsszh5PVk=\",\n\t\"id_card_photo\": \"cfePPfibHpj+VengZFvAOvtm16Lt2DQlHS6kzGajYY1fOzga01r5/PpYFyIk9L05QtV2GGxym5zw2So9jBZl2Q4hPAZZWKRU+134124/HYlCtr8O40IsVFZlUp1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWz+SBs9LumK5obHMKwe9wop/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVpSFPSztYT6Nzv6uCtF/wdejklqwdblkqj/Sh4UD5YSF4VES7dTxJZxggq81jg4u4XXAMgMsmbmwDhcl2i+no+72JtkCczGYBrM2kTCzwddCm23f/Zv68a98Fl1P+W8Rwuxj7d2Z2AjikkZzaeDjmh1BysweFXkBa8ODSgGbgErGuEOuFjzubSjdx/nMN5FMy37UjD5Vs09pMBNza4WFln4MuT51EP44zONIHvdKc84+vaNx4Pq4pbvispFn2Wf04thTNBgv86svqL2//XFm/AFYISn4xx5yFxlp+n/zsdl4J+xG+PUkV1SxVS/pjP1TbFv6j+Tz180yiKdiVcWOQ7p1ChWg4x=\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/kyc/id-card")
+  .method("POST", body)
+  .addHeader("x-oy-username", "{{username}}")
+  .addHeader("x-api-key", "{{api-key}}")
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "personal_information": "O/3qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFf/5+InjHJPQbbgsimBWKW5kfA0N4dgweqwe/IZmBJjuWKBsGDA5OdUlWRkjGvRW43qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFfrZ9xGwTYAeF9s/qGuZ+iq6yteEa8YZwvvHADQ3GJTZ4Is58YvPUatBY1b8zlqeqweqweqweYabbnS3uNMuSXgxULmobBEI5E+k5GI8M=",
+  "address": "eqweqweqwe1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWzwe9wop/du1++we9wop/du1+/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVp/wdejklqwdblkqjVDvBjjRFvnnHpBF9OVgv0NnkQhQp7RMN1xqWtsszh5PVk=",
+  "id_card_photo": "cfePPfibHpj+VengZFvAOvtm16Lt2DQlHS6kzGajYY1fOzga01r5/PpYFyIk9L05QtV2GGxym5zw2So9jBZl2Q4hPAZZWKRU+134124/HYlCtr8O40IsVFZlUp1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWz+SBs9LumK5obHMKwe9wop/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVpSFPSztYT6Nzv6uCtF/wdejklqwdblkqj/Sh4UD5YSF4VES7dTxJZxggq81jg4u4XXAMgMsmbmwDhcl2i+no+72JtkCczGYBrM2kTCzwddCm23f/Zv68a98Fl1P+W8Rwuxj7d2Z2AjikkZzaeDjmh1BysweFXkBa8ODSgGbgErGuEOuFjzubSjdx/nMN5FMy37UjD5Vs09pMBNza4WFln4MuT51EP44zONIHvdKc84+vaNx4Pq4pbvispFn2Wf04thTNBgv86svqL2//XFm/AFYISn4xx5yFxlp+n/zsdl4J+xG+PUkV1SxVS/pjP1TbFv6j+Tz180yiKdiVcWOQ7p1ChWg4x="
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/kyc/id-card");
+xhr.setRequestHeader("x-oy-username", "{{username}}");
+xhr.setRequestHeader("x-api-key", "{{api-key}}");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/kyc/id-card');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => '{{username}}',
+  'x-api-key' => '{{api-key}}',
+  'Content-Type' => 'application/json'
+));
+$request->setBody('{\n	"personal_information": "O/3qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFf/5+InjHJPQbbgsimBWKW5kfA0N4dgweqwe/IZmBJjuWKBsGDA5OdUlWRkjGvRW43qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFfrZ9xGwTYAeF9s/qGuZ+iq6yteEa8YZwvvHADQ3GJTZ4Is58YvPUatBY1b8zlqeqweqweqweYabbnS3uNMuSXgxULmobBEI5E+k5GI8M=",\n    "address" : "eqweqweqwe1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWzwe9wop/du1++we9wop/du1+/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVp/wdejklqwdblkqjVDvBjjRFvnnHpBF9OVgv0NnkQhQp7RMN1xqWtsszh5PVk=",\n	"id_card_photo": "cfePPfibHpj+VengZFvAOvtm16Lt2DQlHS6kzGajYY1fOzga01r5/PpYFyIk9L05QtV2GGxym5zw2So9jBZl2Q4hPAZZWKRU+134124/HYlCtr8O40IsVFZlUp1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWz+SBs9LumK5obHMKwe9wop/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVpSFPSztYT6Nzv6uCtF/wdejklqwdblkqj/Sh4UD5YSF4VES7dTxJZxggq81jg4u4XXAMgMsmbmwDhcl2i+no+72JtkCczGYBrM2kTCzwddCm23f/Zv68a98Fl1P+W8Rwuxj7d2Z2AjikkZzaeDjmh1BysweFXkBa8ODSgGbgErGuEOuFjzubSjdx/nMN5FMy37UjD5Vs09pMBNza4WFln4MuT51EP44zONIHvdKc84+vaNx4Pq4pbvispFn2Wf04thTNBgv86svqL2//XFm/AFYISn4xx5yFxlp+n/zsdl4J+xG+PUkV1SxVS/pjP1TbFv6j+Tz180yiKdiVcWOQ7p1ChWg4x="\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "personal_information": "O/3qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFf/5+InjHJPQbbgsimBWKW5kfA0N4dgweqwe/IZmBJjuWKBsGDA5OdUlWRkjGvRW43qeqwiheqowieh4jgRAUjTQ9oVDgJ0o3X4yT5Cw3NUMec5GEMSjLxIxCHCDtyVUg7UTiKGAgrbRuscpXMGobVrPaqTkWXNFqywHOZFfrZ9xGwTYAeF9s/qGuZ+iq6yteEa8YZwvvHADQ3GJTZ4Is58YvPUatBY1b8zlqeqweqweqweYabbnS3uNMuSXgxULmobBEI5E+k5GI8M=",
+  "address": "eqweqweqwe1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWzwe9wop/du1++we9wop/du1+/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVp/wdejklqwdblkqjVDvBjjRFvnnHpBF9OVgv0NnkQhQp7RMN1xqWtsszh5PVk=",
+  "id_card_photo": "cfePPfibHpj+VengZFvAOvtm16Lt2DQlHS6kzGajYY1fOzga01r5/PpYFyIk9L05QtV2GGxym5zw2So9jBZl2Q4hPAZZWKRU+134124/HYlCtr8O40IsVFZlUp1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRF1rV/wqdebqwdjlq1B8TPi+YunepcdTWZSRFbkTlsyr3sk5Aan/cQUWKkbISCXYywjJ/RtvMkm+R3dLt1zL3NUH3L63ASAq+VoLbw/JwQAWz+SBs9LumK5obHMKwe9wop/du1+sF3qNjiZJPMUHq0satpdpgRSJ4+ZhVgEtUAhvUEr3ZzDhUCRX6wm8aRwDyz2ZRU3Vo8/3e12/NgKIWsXeqPcSNUn2FqnUugDToVpSFPSztYT6Nzv6uCtF/wdejklqwdblkqj/Sh4UD5YSF4VES7dTxJZxggq81jg4u4XXAMgMsmbmwDhcl2i+no+72JtkCczGYBrM2kTCzwddCm23f/Zv68a98Fl1P+W8Rwuxj7d2Z2AjikkZzaeDjmh1BysweFXkBa8ODSgGbgErGuEOuFjzubSjdx/nMN5FMy37UjD5Vs09pMBNza4WFln4MuT51EP44zONIHvdKc84+vaNx4Pq4pbvispFn2Wf04thTNBgv86svqL2//XFm/AFYISn4xx5yFxlp+n/zsdl4J+xG+PUkV1SxVS/pjP1TbFv6j+Tz180yiKdiVcWOQ7p1ChWg4x="
+})
+headers = {
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}',
+  'Content-Type': 'application/json'
+}
+conn.request("POST", "/api/kyc/id-card", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
 
 > The above command returns JSON structured similar like this:
 

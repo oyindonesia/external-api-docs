@@ -4,8 +4,6 @@ API Offline enables your user to withdraw and deposit money from OY offline chan
 
 ## Initiate Transaction
 
-> Below is an example of the code for initiate transaction
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/offline-create \
@@ -20,6 +18,177 @@ POST https://partner.oyindonesia.com/api/offline-create \
    "transaction_type":"CASH_OUT",
    "offline_channel":"CRM"
 }'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/offline-create'));
+request.body = json.encode({
+  "partner_trx_id": "oyonoy-00007",
+  "receiver_phone_number": "081223738047",
+  "amount": 50000,
+  "transaction_type": "CASH_IN",
+  "offline_channel": "CRM"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/offline-create"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+    "partner_trx_id": "oyonoy-00007",
+    "receiver_phone_number": "081223738047",
+    "amount": 50000,
+    "transaction_type": "CASH_IN",
+    "offline_channel": "CRM"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("x-oy-username", "{{username}}")
+  req.Header.Add("x-api-key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"oyonoy-00007\",\n    \"receiver_phone_number\": \"081223738047\",\n    \"amount\": 50000,\n    \"transaction_type\": \"CASH_IN\",\n    \"offline_channel\": \"CRM\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/offline-create")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("x-oy-username", "{{username}}")
+  .addHeader("x-api-key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_trx_id": "oyonoy-00007",
+  "receiver_phone_number": "081223738047",
+  "amount": 50000,
+  "transaction_type": "CASH_IN",
+  "offline_channel": "CRM"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/offline-create");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("x-oy-username", "{{username}}");
+xhr.setRequestHeader("x-api-key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/offline-create');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'x-oy-username' => '{{username}}',
+  'x-api-key' => '{{api-key}}'
+));
+$request->setBody('{\n    "partner_trx_id": "oyonoy-00007",\n    "receiver_phone_number": "081223738047",\n    "amount": 50000,\n    "transaction_type": "CASH_IN",\n    "offline_channel": "CRM"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_trx_id": "oyonoy-00007",
+  "receiver_phone_number": "081223738047",
+  "amount": 50000,
+  "transaction_type": "CASH_IN",
+  "offline_channel": "CRM"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+}
+conn.request("POST", "/api/offline-create", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
 ```
 
 > The above command returns JSON structured similar like this:
@@ -72,8 +241,6 @@ expired_at | String(19) | The time that the transaction will expire and won't be
 
 ## Cancel Transaction
 
-> Below is an example of the code for cancel transaction
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/offline-cancel \
@@ -84,6 +251,161 @@ POST https://partner.oyindonesia.com/api/offline-cancel \
 -d '{
    "partner_trx_id":"withdraw_request_123"
 }'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/offline-cancel'));
+request.body = json.encode({
+  "partner_trx_id": "oyonoy-00003"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/offline-cancel"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+    "partner_trx_id": "oyonoy-00003"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("x-oy-username", "{{username}}")
+  req.Header.Add("x-api-key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"oyonoy-00003\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/offline-cancel")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("x-oy-username", "{{username}}")
+  .addHeader("x-api-key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_trx_id": "oyonoy-00003"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/offline-cancel");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("x-oy-username", "{{username}}");
+xhr.setRequestHeader("x-api-key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/offline-cancel');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'x-oy-username' => '{{username}}',
+  'x-api-key' => '{{api-key}}'
+));
+$request->setBody('{\n    "partner_trx_id": "oyonoy-00003"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_trx_id": "oyonoy-00003"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+}
+conn.request("POST", "/api/offline-cancel", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
 ```
 
 > The above command returns JSON structured similar like this:
@@ -118,8 +440,6 @@ timestamp | String(19) | Execution time of the request in OY! system ("yyyy-MM-d
 
 ## Transaction Info
 
-> Below is an example of the code for transaction info 
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/offline-info \
@@ -131,6 +451,165 @@ POST https://partner.oyindonesia.com/api/offline-info \
    "partner_trx_id":"withdraw_request_123",
    "send_callback":"true"
 }'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api-offline/tx-info'));
+request.body = json.encode({
+  "partner_trx_id": "oyonoy-00002",
+  "send_callback": false
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api-offline/tx-info"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+    "partner_trx_id": "oyonoy-00002",
+    "send_callback": false
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("x-oy-username", "{{username}}")
+  req.Header.Add("x-api-key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"oyonoy-00002\",\n    \"send_callback\": false\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api-offline/tx-info")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("x-oy-username", "{{username}}")
+  .addHeader("x-api-key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_trx_id": "oyonoy-00002",
+  "send_callback": false
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api-offline/tx-info");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("x-oy-username", "{{username}}");
+xhr.setRequestHeader("x-api-key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api-offline/tx-info');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'x-oy-username' => '{{username}}',
+  'x-api-key' => '{{api-key}}'
+));
+$request->setBody('{\n    "partner_trx_id": "oyonoy-00002",\n    "send_callback": false\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_trx_id": "oyonoy-00002",
+  "send_callback": False
+})
+headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+}
+conn.request("POST", "/api-offline/tx-info", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
 ```
 
 > The above command returns JSON structured similar like this:
@@ -186,8 +665,6 @@ expired_at | String(19) | The time that the transaction will expire and won't be
 
 ## Refresh Code
 
-> Below is an example of the code for refresh code
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/offline-refresh-code \
@@ -199,6 +676,164 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code \
    "partner_trx_id":"withdraw_request_123"
 }'
 ```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api-offline/refresh-code'));
+request.body = json.encode({
+  "partner_trx_id": "oyonoy-00002"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api-offline/refresh-code"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+    "partner_trx_id": "oyonoy-00002"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("x-oy-username", "{{username}}")
+  req.Header.Add("x-api-key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"oyonoy-00002\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api-offline/refresh-code")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("x-oy-username", "{{username}}")
+  .addHeader("x-api-key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_trx_id": "oyonoy-00002"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api-offline/refresh-code");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("x-oy-username", "{{username}}");
+xhr.setRequestHeader("x-api-key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api-offline/refresh-code');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'x-oy-username' => '{{username}}',
+  'x-api-key' => '{{api-key}}'
+));
+$request->setBody('{\n    "partner_trx_id": "oyonoy-00002"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_trx_id": "oyonoy-00002"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+}
+conn.request("POST", "/api-offline/refresh-code", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
 
 > The above command returns JSON structured similar like this:
 
