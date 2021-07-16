@@ -4,8 +4,6 @@ API Offline enables your user to withdraw and deposit money from OY offline chan
 
 ## Initiate Transaction
 
-> Below is an example of the code for initiate transaction
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/offline-create \
@@ -243,8 +241,6 @@ expired_at | String(19) | The time that the transaction will expire and won't be
 
 ## Cancel Transaction
 
-> Below is an example of the code for cancel transaction
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/offline-cancel \
@@ -443,8 +439,6 @@ partner_trx_id | String(255) | Unique Payout ID for a specific request, generate
 timestamp | String(19) | Execution time of the request in OY! system ("yyyy-MM-dd HH:mm:ss.SSS")
 
 ## Transaction Info
-
-> Below is an example of the code for transaction info 
 
 ```shell
 curl -X \
@@ -670,8 +664,6 @@ inactive_at | String(19) | The time that the unique code will expire and need to
 expired_at | String(19) | The time that the transaction will expire and won't be able to be withdrawn or deposited ("yyyy-MM-dd HH:mm:ss.SSS")
 
 ## Refresh Code
-
-> Below is an example of the code for refresh code
 
 ```shell
 curl -X \

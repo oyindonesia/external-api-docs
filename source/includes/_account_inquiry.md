@@ -8,8 +8,6 @@ A scheduler will run every day to check if there is `UNPAID` invoice that needs 
 
 ## Account Inquiry
 
-> Below is an example of the code for account inquiry
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/account-inquiry \

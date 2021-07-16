@@ -9,8 +9,6 @@ KYC APIs will allow you to verify whether the user-supplied identity card is val
 
 Verification using id-card will be handle asynchronous, and we will send KYC response via callback url. For detail callback, you can see [KYC Response Callback](#kyc-response-callback)
 
-> Below is an example of the code for verify ID-card
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/kyc/id-card \

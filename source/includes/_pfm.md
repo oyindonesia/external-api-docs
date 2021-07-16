@@ -8,8 +8,6 @@ PFM APIs will allow you to connect with internet banking account. You can use it
 
 Login and connect internet banking. This process is asynchronous, we will send response using callback url that you registered to us. For detail of callback response, see [PFM Callback Response](#pfm-callback-response)
 
-> Below is an example of the code for connect internet banking 
-
 ```shell
 curl -X \
 POST https://partner.oyindonesia.com/api/ibank/login \
