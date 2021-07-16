@@ -6,6 +6,8 @@ API Transactions Data allows you to retrieve your user bank account statement da
 
 ## Account Linking Process
 
+> Below is an example of the code for account linking
+
 ```shell
 curl --location --request \
 POST 'https://partner.oyindonesia.com/api/transaction-data/account/register' \
@@ -77,6 +79,8 @@ Code | Description
 900 | Unexpected error
 
 ## Check Registration Status
+
+> Below is an example of the code for check registration status
 
 ```shell
   curl --location --request \
@@ -166,6 +170,8 @@ Code | Description
 900 | Unexpected error
 
 ## List of Registered Accounts
+
+> Below is an example of the code for get list of registered account
 
 ```shell
   curl --location --request \
@@ -262,6 +268,8 @@ Bank Code | Bank Name | Limitation
 
 ## Initialize Account Statement
 
+> Below is an example of the code for initialize account statement
+
 ```shell
   curl --location --request \
   POST 'https://partner.oyindonesia.com/api/transaction-data/account-statement/init' \
@@ -351,6 +359,8 @@ Code | Description
 990 | Invalid object or parameter
 
 ## Get Account Statement
+
+> Below is an example of the code for get account statement
 
 ```shell
   curl --location --request \
@@ -452,6 +462,8 @@ Code | Description
 
 ## Check Account Statement Status/Callback
 
+> Below is an example of the code for check account statement status
+
 ```shell
   curl --location --request \
   POST 'https://partner.oyindonesia.com/api/transaction-data/account-statement/status' \
@@ -527,6 +539,8 @@ Code | Description
 990 | Invalid object or parameter
 
 ## Account Deactivate Process
+
+> Below is an example of the code for account deactive process
 
 ```shell
   curl --location --request \

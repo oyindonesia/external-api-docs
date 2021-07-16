@@ -234,6 +234,8 @@ timestamp | Timestamp | UTC Timestamp api hit (Format: `yyyy-MM-ddTHH:mm:ss`)
 
 ## Get Account Inquiry Invoices
 
+> Below is an example of the code for account inquiry invoices
+
 ```shell
 curl -X \
 GET https://partner.oyindonesia.com/api/account-inquiry/invoices \
@@ -309,6 +311,8 @@ data | Array of objects | List of objects `{"invoice_id": <invoice_id>, "tx_date
 
 ## Get Account Inquiry Invoice by ID
 
+> Below is an example of the code for account inquiry invoice by ID
+
 ```shell
 curl -X \
 GET https://partner.oyindonesia.com/api/account-inquiry/invoices/e972bfcb-fcc4-4732-8887-91a589a0b54a \
@@ -364,6 +368,8 @@ invoice_status | String | status of the invoice: `INITIATED`, `UNPAID`, or `PAID
 due_at | String | UTC due timestamp for the invoice
 
 ## Pay Account Inquiry Invoice
+
+> Below is an example of the code for pay account inquiry invoice
 
 ```shell
 curl -X \

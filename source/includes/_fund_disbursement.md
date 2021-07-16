@@ -295,7 +295,7 @@ last_updated_date | String(19) | Latest status change of a disbursement. Example
 
 ## Get Disbursement Status
 
-> Below is an example of the code for get disbursement status 
+> Below is an example of the code for get disbursement status
 
 ```shell
 curl -X \
@@ -526,7 +526,8 @@ last_updated_date | String(19) | Latest status change of a disbursement. Example
 
 ## Get Balance
 
-> Below is an example of the code for get balance 
+> Below is an example of the code for get balance
+
 ```shell
 curl -X \
 GET https://partner.oyindonesia.com/api/balance \
@@ -724,7 +725,7 @@ This set of APIs will allow you to schedule disbursement to any bank account on 
 
 ### Create Scheduled Disbursement
 
-> Below is an example of the code for create scheduled disbursement 
+> Below is an example of the code for create scheduled disbursement
 
 ```shell
 curl -X \
@@ -1017,7 +1018,7 @@ timestamp | String(19) | Time of scheduled disbursement creation in OY! system (
 ### Get Detail of Scheduled Disbursement
 This endpoint allows you to get detail of a created scheduled disbursement.
 
-> Below is an example of the code for get scheduled disbursement 
+> Below is an example of the code for get scheduled disbursement
 
 ```shell
 curl -X \
@@ -1575,7 +1576,7 @@ timestamp | String(19) | Time of scheduled disbursement update in OY! system ("d
 ### Cancel Scheduled Disbursement
 This endpoint allows you to cancel created scheduled disbursement up to a day before the `schedule_date`/`trigger_date`.
 
-> Below is an example of the code for cancel scheduled disbursement 
+> Below is an example of the code for cancel scheduled disbursement
 
 ```shell
 curl -X \
@@ -1802,7 +1803,7 @@ timestamp | String(19) | Time of scheduled disbursement cancellation in OY! syst
 ### Retry Scheduled Disbursement
 This endpoint will allow you to create a new scheduled disbursement based on the detail of a previous failed/cancelled scheduled disbursement.
 
-> Below is an example of the code for retry failed/cancelled scheduled disbursement
+> Below is an example of the code for retry failed/canceled scheduled disbursement
 
 ```shell
 curl -X \
