@@ -367,11 +367,13 @@ html, body {
   }
 
   .toc-list-h3 {
+    display: none;
     background-color: #F4F4F5;
     font-weight: 500;
     border-radius: 8px;
     margin: $spacing-m $spacing-m $spacing-m $spacing-xl;
     padding: 0;
+    transition: .2s opacity ease,.5s visibility ease;
   }
 
   .toc-h1{
@@ -823,7 +825,13 @@ html, body {
       color: #A6B8C8;
     }
 
-    & + .highlight pre.highlight{
+    & + .highlight pre.highlight, 
+    & + .highlight+.highlight pre.highlight,
+    & + .highlight+.highlight+.highlight pre.highlight,
+    & + .highlight+.highlight+.highlight+.highlight pre.highlight,
+    & + .highlight+.highlight+.highlight+.highlight+.highlight pre.highlight,
+    & + .highlight+.highlight+.highlight+.highlight+.highlight+.highlight pre.highlight,
+    & + .highlight+.highlight+.highlight+.highlight+.highlight+.highlight+.highlight pre.highlight{
       border-radius: 0 0 8px 8px;
     }
   }

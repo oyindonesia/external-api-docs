@@ -34,6 +34,189 @@ POST <%= config[:endpoint_prod] %>/api/generate-static-va
 }'
 ```
 
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/generate-static-va'));
+request.body = json.encode({
+  "partner_user_id": "johnDoe42",
+  "amount": 120000,
+  "bank_code": "008",
+  "is_open": false,
+  "is_single_use": true,
+  "is_lifetime": false,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/generate-static-va"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+	"partner_user_id": "johnDoe42",
+	"amount": 120000,
+	"bank_code": "008",
+	"is_open": false,
+	"is_single_use": true,
+	"is_lifetime": false,
+	"username_display": "john doe",
+	"email": "john.doe@email.com"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"partner_user_id\": \"johnDoe42\",\n\t\"amount\": 120000,\n\t\"bank_code\": \"008\",\n\t\"is_open\": false,\n\t\"is_single_use\": true,\n\t\"is_lifetime\": false,\n\t\"username_display\": \"john doe\",\n\t\"email\": \"john.doe@email.com\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/generate-static-va")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_user_id": "johnDoe42",
+  "amount": 120000,
+  "bank_code": "008",
+  "is_open": false,
+  "is_single_use": true,
+  "is_lifetime": false,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/generate-static-va");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/generate-static-va');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('{\n	"partner_user_id": "johnDoe42",\n	"amount": 120000,\n	"bank_code": "008",\n	"is_open": false,\n	"is_single_use": true,\n	"is_lifetime": false,\n	"username_display": "john doe",\n	"email": "john.doe@email.com"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_user_id": "johnDoe42",
+  "amount": 120000,
+  "bank_code": "008",
+  "is_open": False,
+  "is_single_use": True,
+  "is_lifetime": False,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("POST", "/api/generate-static-va", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
 > The above command returns JSON structured similar like this:
 
 ```json
@@ -112,6 +295,146 @@ GET <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212
 -H 'accept: application/json' \
 -H 'x-oy-username: username' \
 -H 'x-api-key: apikey'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api_key}}'
+};
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/static-virtual-account/2c26f23d-2dfa-44d1-9202-f8c1f907a983'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/static-virtual-account/2c26f23d-2dfa-44d1-9202-f8c1f907a983"
+  method := "GET"
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, nil)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api_key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/static-virtual-account/2c26f23d-2dfa-44d1-9202-f8c1f907a983")
+  .method("GET", null)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api_key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/static-virtual-account/2c26f23d-2dfa-44d1-9202-f8c1f907a983");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api_key}}");
+
+xhr.send();
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/static-virtual-account/2c26f23d-2dfa-44d1-9202-f8c1f907a983');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api_key}}'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = ''
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api_key}}'
+}
+conn.request("GET", "/api/static-virtual-account/2c26f23d-2dfa-44d1-9202-f8c1f907a983", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
 ```
 
 > The above command returns JSON structured similar like this:
@@ -199,6 +522,189 @@ PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212
 }'
 ```
 
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('PUT', Uri.parse('{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09'));
+request.body = json.encode({
+  "partner_user_id": "johnDoe42",
+  "amount": 220000,
+  "bank_code": "008",
+  "is_open": false,
+  "is_single_use": true,
+  "is_lifetime": false,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09"
+  method := "PUT"
+
+  payload := strings.NewReader(`{
+	"partner_user_id": "johnDoe42",
+	"amount": 220000,
+	"bank_code": "008",
+	"is_open": false,
+	"is_single_use": true,
+	"is_lifetime": false,
+	"username_display": "john doe",
+	"email": "john.doe@email.com"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"partner_user_id\": \"johnDoe42\",\n\t\"amount\": 220000,\n\t\"bank_code\": \"008\",\n\t\"is_open\": false,\n\t\"is_single_use\": true,\n\t\"is_lifetime\": false,\n\t\"username_display\": \"john doe\",\n\t\"email\": \"john.doe@email.com\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09")
+  .method("PUT", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_user_id": "johnDoe42",
+  "amount": 220000,
+  "bank_code": "008",
+  "is_open": false,
+  "is_single_use": true,
+  "is_lifetime": false,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("PUT", "%7B%7Bbase_url%7D%7D/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09');
+$request->setMethod(HTTP_Request2::METHOD_PUT);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('{\n	"partner_user_id": "johnDoe42",\n	"amount": 220000,\n	"bank_code": "008",\n	"is_open": false,\n	"is_single_use": true,\n	"is_lifetime": false,\n	"username_display": "john doe",\n	"email": "john.doe@email.com"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_user_id": "johnDoe42",
+  "amount": 220000,
+  "bank_code": "008",
+  "is_open": False,
+  "is_single_use": True,
+  "is_lifetime": False,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("PUT", "/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
 > The above command returns JSON structured similar like this:
 
 ```json
@@ -278,6 +784,187 @@ GET <%= config[:endpoint_prod] %>/api/static-virtual-account?offset=0&limit=10
 -H 'accept: application/json' \
 -H 'x-oy-username: username' \
 -H 'x-api-key: apikey'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/static-virtual-account?offset=0&limit=5'));
+request.body = json.encode({
+  "partner_user_id": "johnDoe42",
+  "amount": 220000,
+  "bank_code": "008",
+  "is_open": false,
+  "is_single_use": true,
+  "is_lifetime": false,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/static-virtual-account?offset=0&limit=5"
+  method := "GET"
+
+  payload := strings.NewReader(`{
+	"partner_user_id": "johnDoe42",
+	"amount": 220000,
+	"bank_code": "008",
+	"is_open": false,
+	"is_single_use": true,
+	"is_lifetime": false,
+	"username_display": "john doe",
+	"email": "john.doe@email.com"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/static-virtual-account?offset=0&limit=5")
+  .method("GET", null)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_user_id": "johnDoe42",
+  "amount": 220000,
+  "bank_code": "008",
+  "is_open": false,
+  "is_single_use": true,
+  "is_lifetime": false,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/static-virtual-account?offset=0&limit=5");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/static-virtual-account?offset=0&limit=5');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('{\n	"partner_user_id": "johnDoe42",\n	"amount": 220000,\n	"bank_code": "008",\n	"is_open": false,\n	"is_single_use": true,\n	"is_lifetime": false,\n	"username_display": "john doe",\n	"email": "john.doe@email.com"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_user_id": "johnDoe42",
+  "amount": 220000,
+  "bank_code": "008",
+  "is_open": False,
+  "is_single_use": True,
+  "is_lifetime": False,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("GET", "/api/static-virtual-account?offset=0&limit=5", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
 ```
 
 > The above command returns JSON structured similar like this:
@@ -361,6 +1048,188 @@ GET <%= config[:endpoint_prod] %>/api/va-tx-history/12345676788898?offset=0&limi
 -H 'accept: application/json' \
 -H 'x-oy-username: username' \
 -H 'x-api-key: apikey'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&limit=5'));
+request.body = json.encode({
+  "partner_user_id": "johnDoe42",
+  "amount": 220000,
+  "bank_code": "008",
+  "is_open": false,
+  "is_single_use": true,
+  "is_lifetime": false,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&limit=5"
+  method := "GET"
+
+  payload := strings.NewReader(`{
+	"partner_user_id": "johnDoe42",
+	"amount": 220000,
+	"bank_code": "008",
+	"is_open": false,
+	"is_single_use": true,
+	"is_lifetime": false,
+	"username_display": "john doe",
+	"email": "john.doe@email.com"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&limit=5")
+  .method("GET", null)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_user_id": "johnDoe42",
+  "amount": 220000,
+  "bank_code": "008",
+  "is_open": false,
+  "is_single_use": true,
+  "is_lifetime": false,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&limit=5");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&limit=5');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('{\n	"partner_user_id": "johnDoe42",\n	"amount": 220000,\n	"bank_code": "008",\n	"is_open": false,\n	"is_single_use": true,\n	"is_lifetime": false,\n	"username_display": "john doe",\n	"email": "john.doe@email.com"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_user_id": "johnDoe42",
+  "amount": 220000,
+  "bank_code": "008",
+  "is_open": False,
+  "is_single_use": True,
+  "is_lifetime": False,
+  "username_display": "john doe",
+  "email": "john.doe@email.com"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("GET", "/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&limit=5", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
 ```
 
 > The above command returns JSON structured similar like this:

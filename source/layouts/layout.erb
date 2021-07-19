@@ -137,7 +137,7 @@ under the License.
                   <li>
                     <a href="#<%= h2[:id] %>" class="toc-h2 toc-link" data-title="<%= h2[:title] %>">
                       <% if h2[:children].length > 0 %>
-                        <%= h2[:content] %> <%= image_tag "arrow-bottom.svg", class: 'active-parent icon-arrow'%>
+                        <%= h2[:content] %> <%= image_tag "arrow-bottom.svg", class: 'icon-arrow'%>
                       <% else %>
                         <%= h2[:content] %> <%= image_tag "arrow-right.svg", class: 'icon-arrow'%>
                       <% end %>
