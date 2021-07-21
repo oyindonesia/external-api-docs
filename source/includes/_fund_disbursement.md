@@ -202,7 +202,6 @@ data = res.read()
 print(data.decode("utf-8"))
 ```
 
-
 > The above command returns JSON structured similar like this:
 
 ```json

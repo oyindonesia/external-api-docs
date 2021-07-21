@@ -791,6 +791,134 @@ curl -X GET \
   -H 'x-api-key:yourapikey'
 ```
 
+```dart
+var headers = {
+  'Content-Type': 'application/json'
+};
+var request = http.Request('GET', Uri.parse('https://partner.oyindonesia.com/api/payment-checkout/status?partner_tx_id=abc6&send_callback=false'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/payment-checkout/status?partner_tx_id=abc6&send_callback=false"
+  method := "GET"
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, nil)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/payment-checkout/status?partner_tx_id=abc6&send_callback=false")
+  .method("GET", null)
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://partner.oyindonesia.com/api/payment-checkout/status?partner_tx_id=abc6&send_callback=false");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send();
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/payment-checkout/status?partner_tx_id=abc6&send_callback=false');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = ''
+headers = {
+  'Content-Type': 'application/json'
+}
+conn.request("GET", "/api/payment-checkout/status?partner_tx_id=abc6&send_callback=false", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
 > The above command returns JSON structured similar like this:
 
 ```json
@@ -867,6 +995,136 @@ curl -X DELETE \
   -H 'X-Oy-Username: yourusername' 
 ```
 
+```dart
+var headers = {
+  'Content-Type': 'application/json'
+};
+var request = http.Request('DELETE', Uri.parse('https://partner.oyindonesia.com/api/payment-checkout/4fce3338-e2b7-400d-98d1-f117c0e0fcb4'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/payment-checkout/4fce3338-e2b7-400d-98d1-f117c0e0fcb4"
+  method := "DELETE"
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, nil)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/payment-checkout/4fce3338-e2b7-400d-98d1-f117c0e0fcb4")
+  .method("DELETE", body)
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("DELETE", "https://partner.oyindonesia.com/api/payment-checkout/4fce3338-e2b7-400d-98d1-f117c0e0fcb4");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send();
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/payment-checkout/4fce3338-e2b7-400d-98d1-f117c0e0fcb4');
+$request->setMethod(HTTP_Request2::METHOD_DELETE);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = ''
+headers = {
+  'Content-Type': 'application/json'
+}
+conn.request("DELETE", "/api/payment-checkout/4fce3338-e2b7-400d-98d1-f117c0e0fcb4", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
 ### HTTPS Request
 
 **[Production]** DELETE `https://partner.oyindonesia.com/api/payment-checkout/{payment_link_id_or_partner_tx_id}`<br/>
@@ -919,6 +1177,134 @@ curl -X GET \
   -H 'content-type: application/json' \
   -H 'X-Api-key: apikeymu' \
   -H 'X-Oy-Username: yourusername'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json'
+};
+var request = http.Request('GET', Uri.parse('https://partner.oyindonesia.com/api/payment-checkout/aa2d30f7-6e45-464b-bd4f-7e042f7e114b'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/payment-checkout/aa2d30f7-6e45-464b-bd4f-7e042f7e114b"
+  method := "GET"
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, nil)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/payment-checkout/aa2d30f7-6e45-464b-bd4f-7e042f7e114b")
+  .method("GET", null)
+  .addHeader("Content-Type", "application/json")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://partner.oyindonesia.com/api/payment-checkout/aa2d30f7-6e45-464b-bd4f-7e042f7e114b");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send();
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/payment-checkout/aa2d30f7-6e45-464b-bd4f-7e042f7e114b');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = ''
+headers = {
+  'Content-Type': 'application/json'
+}
+conn.request("GET", "/api/payment-checkout/aa2d30f7-6e45-464b-bd4f-7e042f7e114b", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
 ```
 
 ### HTTPS Request
