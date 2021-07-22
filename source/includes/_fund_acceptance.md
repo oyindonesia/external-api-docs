@@ -33,6 +33,7 @@ curl -X POST \
         "list_disabled_payment_methods":"",
         "list_enabled_banks":"",
         "expiration":"2020-08-08 08:09:12",
+        "due_date":"2020-08-08 07:00:00",
         "va_display_name":"Display Name on VA"
     }'
 ```
@@ -50,7 +51,7 @@ request.body = json.encode({
   "notes": "",
   "sender_name": "Mochamad Suryono",
   "amount": 10000,
-  "email": "yono@oyindonesia.com",
+  "email": "yono@oyindonesia.com;inka@oyindonesia.com",
   "phone_number": "085712163208",
   "is_open": true,
   "step": "input-amount",
@@ -58,7 +59,8 @@ request.body = json.encode({
   "list_disabled_payment_methods": "",
   "list_enabled_banks": "002, 008, 009, 013, 022",
   "list_enabled_ewallet": "shopeepay_ewallet",
-  "expiration": "2021-06-14 13:00:00"
+  "expiration": "2021-06-14 13:00:00",
+  "due_date": "2021-06-14 12:00:00"
 });
 request.headers.addAll(headers);
 
@@ -93,7 +95,7 @@ func main() {
     "notes": "",
     "sender_name" : "Mochamad Suryono", 
     "amount" : 10000,
-    "email": "yono@oyindonesia.com",
+    "email": "yono@oyindonesia.com;inka@oyindonesia.com",
     "phone_number": "085712163208", 
     "is_open" : true,
     "step": "input-amount",
@@ -101,7 +103,8 @@ func main() {
     "list_disabled_payment_methods": "",
     "list_enabled_banks": "002, 008, 009, 013, 022",
     "list_enabled_ewallet": "shopeepay_ewallet",
-    "expiration": "2021-06-14 13:00:00"
+    "expiration": "2021-06-14 13:00:00",
+    "due_date": "2021-06-14 12:00:00"
 }`)
 
   client := &http.Client {
@@ -136,7 +139,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"description\": \"Prod Test API\",\n    \"partner_tx_id\": \"\",\n    \"notes\": \"\",\n    \"sender_name\" : \"Mochamad Suryono\", \n    \"amount\" : 10000,\n    \"email\": \"yono@oyindonesia.com\",\n    \"phone_number\": \"085712163208\", \n    \"is_open\" : true,\n    \"step\": \"input-amount\",\n    \"include_admin_fee\" : true,\n    \"list_disabled_payment_methods\": \"\",\n    \"list_enabled_banks\": \"002, 008, 009, 013, 022\",\n    \"list_enabled_ewallet\": \"shopeepay_ewallet\",\n    \"expiration\": \"2021-06-14 13:00:00\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"description\": \"Prod Test API\",\n    \"partner_tx_id\": \"\",\n    \"notes\": \"\",\n    \"sender_name\" : \"Mochamad Suryono\", \n    \"amount\" : 10000,\n    \"email\": \"yono@oyindonesia.com;inka@oyindonesia.com\",\n    \"phone_number\": \"085712163208\", \n    \"is_open\" : true,\n    \"step\": \"input-amount\",\n    \"include_admin_fee\" : true,\n    \"list_disabled_payment_methods\": \"\",\n    \"list_enabled_banks\": \"002, 008, 009, 013, 022\",\n    \"list_enabled_ewallet\": \"shopeepay_ewallet\",\n    \"expiration\": \"2021-06-14 13:00:00\",\n    \"due_date\": \"2021-06-14 12:00:00\"\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/payment-checkout/create-v2")
   .method("POST", body)
@@ -162,7 +165,8 @@ var data = JSON.stringify({
   "list_disabled_payment_methods": "",
   "list_enabled_banks": "002, 008, 009, 013, 022",
   "list_enabled_ewallet": "shopeepay_ewallet",
-  "expiration": "2021-06-14 13:00:00"
+  "expiration": "2021-06-14 13:00:00",
+  "due_date": "2021-06-14 12:00:00"
 });
 
 var xhr = new XMLHttpRequest();
@@ -196,7 +200,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n    "description": "Prod Test API",\n    "partner_tx_id": "",\n    "notes": "",\n    "sender_name" : "Mochamad Suryono", \n    "amount" : 10000,\n    "email": "yono@oyindonesia.com",\n    "phone_number": "085712163208", \n    "is_open" : true,\n    "step": "input-amount",\n    "include_admin_fee" : true,\n    "list_disabled_payment_methods": "",\n    "list_enabled_banks": "002, 008, 009, 013, 022",\n    "list_enabled_ewallet": "shopeepay_ewallet",\n    "expiration": "2021-06-14 13:00:00"\n}');
+$request->setBody('{\n    "description": "Prod Test API",\n    "partner_tx_id": "",\n    "notes": "",\n    "sender_name" : "Mochamad Suryono", \n    "amount" : 10000,\n    "email": "yono@oyindonesia.com",\n    "phone_number": "085712163208", \n    "is_open" : true,\n    "step": "input-amount",\n    "include_admin_fee" : true,\n    "list_disabled_payment_methods": "",\n    "list_enabled_banks": "002, 008, 009, 013, 022",\n    "list_enabled_ewallet": "shopeepay_ewallet",\n    "expiration": "2021-06-14 13:00:00",\n    "due_date": "2021-06-14 12:00:00"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -231,7 +235,8 @@ payload = json.dumps({
   "list_disabled_payment_methods": "",
   "list_enabled_banks": "002, 008, 009, 013, 022",
   "list_enabled_ewallet": "shopeepay_ewallet",
-  "expiration": "2021-06-14 13:00:00"
+  "expiration": "2021-06-14 13:00:00",
+  "due_date": "2021-06-14 12:00:00",
 })
 headers = {
   'Content-Type': 'application/json',
@@ -278,7 +283,7 @@ description | String | Description of the payment checkout link. | Only accepts 
 notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
 amount | Integer | The amount of a transaction to be paid. | Minimum amount is IDR 15,000.
-email | String | The email address where the payment checkout link will be sent to. | - 
+email | String | The email addresses where the payment checkout link will be sent to. | Up to 3 emails separated by ";"
 phone_number | Numeric | Phone number of the payer for a transaction. | Do not use special character (e.g. "+")
 is_open	| Boolean | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
 step | String | Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method). | If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.
@@ -287,6 +292,7 @@ list_disabled_payment_methods | String | To configure payment methods to be disa
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
 list_enabled_ewallet | String | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet".
 expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
+due_date | datetime | To set the transaction due date of the payment link (dd-MM-yyyy HH:mm:ss) | Transaction due date should equal or before expiration date. As default, transaction due date will be same as expiration date if it is not defined.
 va_display_name | String | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
 
 
@@ -324,6 +330,7 @@ curl -X POST \
         "list_disabled_payment_methods":"",
         "list_enabled_banks":"013",
         "expiration":"2020-07-28 19:15:13",
+        "due_date":"2020-07-28 18:00:00",
         "partner_user_id":"partner user id", 
         "full_name" : "Raymond",
         "is_va_lifetime": false,
@@ -361,6 +368,7 @@ request.body = json.encode({
   "list_disabled_payment_methods": "",
   "list_enabled_banks": "002, 008, 009, 013, 022",
   "expiration": "2021-03-13 00:00:00",
+  "due_date": "2021-03-12 12:00:00",
   "partner_user_id": "OYON-CHECKOUT000003",
   "full_name": "Mochamad Suryono",
   "is_va_lifetime": false,
@@ -417,6 +425,7 @@ func main() {
     "list_disabled_payment_methods": "",
     "list_enabled_banks": "002, 008, 009, 013, 022",
     "expiration": "2021-03-13 00:00:00",
+    "due_date": "2021-03-12 12:00:00",
     "partner_user_id": "OYON-CHECKOUT000003",
     "full_name": "Mochamad Suryono",
     "is_va_lifetime": false,
@@ -464,7 +473,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"description\": \"testdesc\",\n    \"notes\": \"testnote\",\n    \"partner_tx_id\": \"ab9c\",\n    \"sender_name\" : \"Mochamad Suryono\", \n    \"amount\" : \"15000\",\n    \"email\": \"yono@oyindonesia.com\",\n    \"phone_number\": \"085712163208\", \n    \"is_open\" : true,\n    \"step\": \"input-amount\",\n    \"include_admin_fee\" : false,\n    \"list_disabled_payment_methods\": \"\",\n    \"list_enabled_banks\": \"002, 008, 009, 013, 022\",\n    \"expiration\": \"2021-03-13 00:00:00\",\n    \"partner_user_id\": \"OYON-CHECKOUT000003\",\n    \"full_name\": \"Mochamad Suryono\",\n    \"is_va_lifetime\": false,\n    \"attachment\": \"JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9GaWx0ZXIvRmxhdGVEZWNvZGUvTGVuZ3RoIDQ5Nj4+c3RyZWFtCnicrZVdb9MwFIbv/SsOd51EwrHjz0tKhxQk2IciJMS4CG46lbVNyYcE/HqcbNloh5xO8U3OUXJ8Hr/2aweBQkQBQRjhnnZLfpJ5RhIJQhjIluQ8I1eEwYfubVeHMFRnW/LmPQWKkK3I7Cz70dU+lfTN/hnE3ChJY9SPA0U3EPvP1S2ZXXx5Bemnzxfpu/OuGcLtfxp+/ebisp+QH8VkrNjhHJ9QaV23xRKyciKIGuCGjYPmv6cq0idKWuRNEYDlV7VoixAgwcdEXeZVsysqyH5BughA88t6uy3bXQNO3XRbCEq9pKr8sw5gPuXT8zGv7/JNCOeh9mAYMoxQRcyEMJ5KRlEmokkI63lVrSgqi8JEWlsV8ZURkRFMR1pILkVuZcJYCEd69V7vY3eZxYj4GvEkGsaMK5SAMTcauYsKje6aObskUsGWaKr7bPOYHUd7/8XIocZlx9H2DfuSh+Qw2AG4GZLDYMlqmLfHEQIS/XyBaOf++5uoqG213jfrcjfVfAYdi/tY0288noxBrpqpvwoh1AjjslrbqUo6j/kpWdnkG7iZpYvrm7MQmyOe045vBhkhDbFFI6gTz6Jvj9zqCd+frz/5MRMvOvyeBUxGRM3bvIHvRZXvmryGu7Jq901ZhTDJqEweC+xlvkTqX6+ILeYKZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8L1RhYnMvUy9Hcm91cDw8L1MvVHJhbnNwYXJlbmN5L1R5cGUvR3JvdXAvQ1MvRGV2aWNlUkdCPj4vQ29udGVudHMgMyAwIFIvVHlwZS9QYWdlL1Jlc291cmNlczw8L0NvbG9yU3BhY2U8PC9DUy9EZXZpY2VSR0I+Pi9Qcm9jU2V0IFsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXS9Gb250PDwvRjEgMiAwIFI+Pj4+L1BhcmVudCA0IDAgUi9Sb3RhdGUgOTAvTWVkaWFCb3hbMCAwIDU5NSA4NDJdPj4KZW5kb2JqCjUgMCBvYmoKWzEgMCBSL1hZWiAwIDYwNSAwXQplbmRvYmoKMiAwIG9iago8PC9TdWJ0eXBlL1R5cGUxL1R5cGUvRm9udC9CYXNlRm9udC9IZWx2ZXRpY2EvRW5jb2RpbmcvV2luQW5zaUVuY29kaW5nPj4KZW5kb2JqCjQgMCBvYmoKPDwvS2lkc1sxIDAgUl0vVHlwZS9QYWdlcy9Db3VudCAxL0lUWFQoMi4xLjcpPj4KZW5kb2JqCjYgMCBvYmoKPDwvTmFtZXNbKEpSX1BBR0VfQU5DSE9SXzBfMSkgNSAwIFJdPj4KZW5kb2JqCjcgMCBvYmoKPDwvRGVzdHMgNiAwIFI+PgplbmRvYmoKOCAwIG9iago8PC9OYW1lcyA3IDAgUi9UeXBlL0NhdGFsb2cvUGFnZXMgNCAwIFIvVmlld2VyUHJlZmVyZW5jZXM8PC9QcmludFNjYWxpbmcvQXBwRGVmYXVsdD4+Pj4KZW5kb2JqCjkgMCBvYmoKPDwvTW9kRGF0ZShEOjIwMjAwNzI5MTE1MzE1WikvQ3JlYXRvcihKYXNwZXJSZXBvcnRzIExpYnJhcnkgdmVyc2lvbiBudWxsKS9DcmVhdGlvbkRhdGUoRDoyMDIwMDcyOTExNTMxNVopL1Byb2R1Y2VyKGlUZXh0IDIuMS43IGJ5IDFUM1hUKT4+CmVuZG9iagp4cmVmCjAgMTAKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwNTc4IDAwMDAwIG4gCjAwMDAwMDA4NjQgMDAwMDAgbiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwOTUyIDAwMDAwIG4gCjAwMDAwMDA4MjkgMDAwMDAgbiAKMDAwMDAwMTAxNSAwMDAwMCBuIAowMDAwMDAxMDY5IDAwMDAwIG4gCjAwMDAwMDExMDEgMDAwMDAgbiAKMDAwMDAwMTIwNCAwMDAwMCBuIAp0cmFpbGVyCjw8L0luZm8gOSAwIFIvSUQgWzwzZWMyMWUyNjkwNjcxYzViYTliNjUxODNhY2IxOTM3ND48NzZhNzM1MWE1YmY4ZmMxNDNmY2NlZmUwYjRjMzA4MWI+XS9Sb290IDggMCBSL1NpemUgMTA+PgpzdGFydHhyZWYKMTM1OAolJUVPRgo=\",\n    \"invoice_items\": [\n        {\n            \"item\": \"McDonald's Big Mac\",\n            \"description\": \"Oyon Meals\",\n            \"quantity\": 3,\n            \"date_of_purchase\": \"2021-03-12\",\n            \"price_per_item\": 50000\n        }\n    ]\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"description\": \"testdesc\",\n    \"notes\": \"testnote\",\n    \"partner_tx_id\": \"ab9c\",\n    \"sender_name\" : \"Mochamad Suryono\", \n    \"amount\" : \"15000\",\n    \"email\": \"yono@oyindonesia.com\",\n    \"phone_number\": \"085712163208\", \n    \"is_open\" : true,\n    \"step\": \"input-amount\",\n    \"include_admin_fee\" : false,\n    \"list_disabled_payment_methods\": \"\",\n    \"list_enabled_banks\": \"002, 008, 009, 013, 022\",\n    \"expiration\": \"2021-03-13 00:00:00\",\n    \"due_date\":\"2021-03-12 12:00:00\",\n    \"partner_user_id\": \"OYON-CHECKOUT000003\",\n    \"full_name\": \"Mochamad Suryono\",\n    \"is_va_lifetime\": false,\n    \"attachment\": \"JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9GaWx0ZXIvRmxhdGVEZWNvZGUvTGVuZ3RoIDQ5Nj4+c3RyZWFtCnicrZVdb9MwFIbv/SsOd51EwrHjz0tKhxQk2IciJMS4CG46lbVNyYcE/HqcbNloh5xO8U3OUXJ8Hr/2aweBQkQBQRjhnnZLfpJ5RhIJQhjIluQ8I1eEwYfubVeHMFRnW/LmPQWKkK3I7Cz70dU+lfTN/hnE3ChJY9SPA0U3EPvP1S2ZXXx5Bemnzxfpu/OuGcLtfxp+/ebisp+QH8VkrNjhHJ9QaV23xRKyciKIGuCGjYPmv6cq0idKWuRNEYDlV7VoixAgwcdEXeZVsysqyH5BughA88t6uy3bXQNO3XRbCEq9pKr8sw5gPuXT8zGv7/JNCOeh9mAYMoxQRcyEMJ5KRlEmokkI63lVrSgqi8JEWlsV8ZURkRFMR1pILkVuZcJYCEd69V7vY3eZxYj4GvEkGsaMK5SAMTcauYsKje6aObskUsGWaKr7bPOYHUd7/8XIocZlx9H2DfuSh+Qw2AG4GZLDYMlqmLfHEQIS/XyBaOf++5uoqG213jfrcjfVfAYdi/tY0288noxBrpqpvwoh1AjjslrbqUo6j/kpWdnkG7iZpYvrm7MQmyOe045vBhkhDbFFI6gTz6Jvj9zqCd+frz/5MRMvOvyeBUxGRM3bvIHvRZXvmryGu7Jq901ZhTDJqEweC+xlvkTqX6+ILeYKZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8L1RhYnMvUy9Hcm91cDw8L1MvVHJhbnNwYXJlbmN5L1R5cGUvR3JvdXAvQ1MvRGV2aWNlUkdCPj4vQ29udGVudHMgMyAwIFIvVHlwZS9QYWdlL1Jlc291cmNlczw8L0NvbG9yU3BhY2U8PC9DUy9EZXZpY2VSR0I+Pi9Qcm9jU2V0IFsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXS9Gb250PDwvRjEgMiAwIFI+Pj4+L1BhcmVudCA0IDAgUi9Sb3RhdGUgOTAvTWVkaWFCb3hbMCAwIDU5NSA4NDJdPj4KZW5kb2JqCjUgMCBvYmoKWzEgMCBSL1hZWiAwIDYwNSAwXQplbmRvYmoKMiAwIG9iago8PC9TdWJ0eXBlL1R5cGUxL1R5cGUvRm9udC9CYXNlRm9udC9IZWx2ZXRpY2EvRW5jb2RpbmcvV2luQW5zaUVuY29kaW5nPj4KZW5kb2JqCjQgMCBvYmoKPDwvS2lkc1sxIDAgUl0vVHlwZS9QYWdlcy9Db3VudCAxL0lUWFQoMi4xLjcpPj4KZW5kb2JqCjYgMCBvYmoKPDwvTmFtZXNbKEpSX1BBR0VfQU5DSE9SXzBfMSkgNSAwIFJdPj4KZW5kb2JqCjcgMCBvYmoKPDwvRGVzdHMgNiAwIFI+PgplbmRvYmoKOCAwIG9iago8PC9OYW1lcyA3IDAgUi9UeXBlL0NhdGFsb2cvUGFnZXMgNCAwIFIvVmlld2VyUHJlZmVyZW5jZXM8PC9QcmludFNjYWxpbmcvQXBwRGVmYXVsdD4+Pj4KZW5kb2JqCjkgMCBvYmoKPDwvTW9kRGF0ZShEOjIwMjAwNzI5MTE1MzE1WikvQ3JlYXRvcihKYXNwZXJSZXBvcnRzIExpYnJhcnkgdmVyc2lvbiBudWxsKS9DcmVhdGlvbkRhdGUoRDoyMDIwMDcyOTExNTMxNVopL1Byb2R1Y2VyKGlUZXh0IDIuMS43IGJ5IDFUM1hUKT4+CmVuZG9iagp4cmVmCjAgMTAKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwNTc4IDAwMDAwIG4gCjAwMDAwMDA4NjQgMDAwMDAgbiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwOTUyIDAwMDAwIG4gCjAwMDAwMDA4MjkgMDAwMDAgbiAKMDAwMDAwMTAxNSAwMDAwMCBuIAowMDAwMDAxMDY5IDAwMDAwIG4gCjAwMDAwMDExMDEgMDAwMDAgbiAKMDAwMDAwMTIwNCAwMDAwMCBuIAp0cmFpbGVyCjw8L0luZm8gOSAwIFIvSUQgWzwzZWMyMWUyNjkwNjcxYzViYTliNjUxODNhY2IxOTM3ND48NzZhNzM1MWE1YmY4ZmMxNDNmY2NlZmUwYjRjMzA4MWI+XS9Sb290IDggMCBSL1NpemUgMTA+PgpzdGFydHhyZWYKMTM1OAolJUVPRgo=\",\n    \"invoice_items\": [\n        {\n            \"item\": \"McDonald's Big Mac\",\n            \"description\": \"Oyon Meals\",\n            \"quantity\": 3,\n            \"date_of_purchase\": \"2021-03-12\",\n            \"price_per_item\": 50000\n        }\n    ]\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/payment-checkout/create-invoice")
   .method("POST", body)
@@ -490,6 +499,7 @@ var data = JSON.stringify({
   "list_disabled_payment_methods": "",
   "list_enabled_banks": "002, 008, 009, 013, 022",
   "expiration": "2021-03-13 00:00:00",
+  "due_date": "2021-03-12 12:00:00",
   "partner_user_id": "OYON-CHECKOUT000003",
   "full_name": "Mochamad Suryono",
   "is_va_lifetime": false,
@@ -536,7 +546,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n    "description": "testdesc",\n    "notes": "testnote",\n    "partner_tx_id": "ab9c",\n    "sender_name" : "Mochamad Suryono", \n    "amount" : "15000",\n    "email": "yono@oyindonesia.com",\n    "phone_number": "085712163208", \n    "is_open" : true,\n    "step": "input-amount",\n    "include_admin_fee" : false,\n    "list_disabled_payment_methods": "",\n    "list_enabled_banks": "002, 008, 009, 013, 022",\n    "expiration": "2021-03-13 00:00:00",\n    "partner_user_id": "OYON-CHECKOUT000003",\n    "full_name": "Mochamad Suryono",\n    "is_va_lifetime": false,\n    "attachment": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9GaWx0ZXIvRmxhdGVEZWNvZGUvTGVuZ3RoIDQ5Nj4+c3RyZWFtCnicrZVdb9MwFIbv/SsOd51EwrHjz0tKhxQk2IciJMS4CG46lbVNyYcE/HqcbNloh5xO8U3OUXJ8Hr/2aweBQkQBQRjhnnZLfpJ5RhIJQhjIluQ8I1eEwYfubVeHMFRnW/LmPQWKkK3I7Cz70dU+lfTN/hnE3ChJY9SPA0U3EPvP1S2ZXXx5Bemnzxfpu/OuGcLtfxp+/ebisp+QH8VkrNjhHJ9QaV23xRKyciKIGuCGjYPmv6cq0idKWuRNEYDlV7VoixAgwcdEXeZVsysqyH5BughA88t6uy3bXQNO3XRbCEq9pKr8sw5gPuXT8zGv7/JNCOeh9mAYMoxQRcyEMJ5KRlEmokkI63lVrSgqi8JEWlsV8ZURkRFMR1pILkVuZcJYCEd69V7vY3eZxYj4GvEkGsaMK5SAMTcauYsKje6aObskUsGWaKr7bPOYHUd7/8XIocZlx9H2DfuSh+Qw2AG4GZLDYMlqmLfHEQIS/XyBaOf++5uoqG213jfrcjfVfAYdi/tY0288noxBrpqpvwoh1AjjslrbqUo6j/kpWdnkG7iZpYvrm7MQmyOe045vBhkhDbFFI6gTz6Jvj9zqCd+frz/5MRMvOvyeBUxGRM3bvIHvRZXvmryGu7Jq901ZhTDJqEweC+xlvkTqX6+ILeYKZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8L1RhYnMvUy9Hcm91cDw8L1MvVHJhbnNwYXJlbmN5L1R5cGUvR3JvdXAvQ1MvRGV2aWNlUkdCPj4vQ29udGVudHMgMyAwIFIvVHlwZS9QYWdlL1Jlc291cmNlczw8L0NvbG9yU3BhY2U8PC9DUy9EZXZpY2VSR0I+Pi9Qcm9jU2V0IFsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXS9Gb250PDwvRjEgMiAwIFI+Pj4+L1BhcmVudCA0IDAgUi9Sb3RhdGUgOTAvTWVkaWFCb3hbMCAwIDU5NSA4NDJdPj4KZW5kb2JqCjUgMCBvYmoKWzEgMCBSL1hZWiAwIDYwNSAwXQplbmRvYmoKMiAwIG9iago8PC9TdWJ0eXBlL1R5cGUxL1R5cGUvRm9udC9CYXNlRm9udC9IZWx2ZXRpY2EvRW5jb2RpbmcvV2luQW5zaUVuY29kaW5nPj4KZW5kb2JqCjQgMCBvYmoKPDwvS2lkc1sxIDAgUl0vVHlwZS9QYWdlcy9Db3VudCAxL0lUWFQoMi4xLjcpPj4KZW5kb2JqCjYgMCBvYmoKPDwvTmFtZXNbKEpSX1BBR0VfQU5DSE9SXzBfMSkgNSAwIFJdPj4KZW5kb2JqCjcgMCBvYmoKPDwvRGVzdHMgNiAwIFI+PgplbmRvYmoKOCAwIG9iago8PC9OYW1lcyA3IDAgUi9UeXBlL0NhdGFsb2cvUGFnZXMgNCAwIFIvVmlld2VyUHJlZmVyZW5jZXM8PC9QcmludFNjYWxpbmcvQXBwRGVmYXVsdD4+Pj4KZW5kb2JqCjkgMCBvYmoKPDwvTW9kRGF0ZShEOjIwMjAwNzI5MTE1MzE1WikvQ3JlYXRvcihKYXNwZXJSZXBvcnRzIExpYnJhcnkgdmVyc2lvbiBudWxsKS9DcmVhdGlvbkRhdGUoRDoyMDIwMDcyOTExNTMxNVopL1Byb2R1Y2VyKGlUZXh0IDIuMS43IGJ5IDFUM1hUKT4+CmVuZG9iagp4cmVmCjAgMTAKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwNTc4IDAwMDAwIG4gCjAwMDAwMDA4NjQgMDAwMDAgbiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwOTUyIDAwMDAwIG4gCjAwMDAwMDA4MjkgMDAwMDAgbiAKMDAwMDAwMTAxNSAwMDAwMCBuIAowMDAwMDAxMDY5IDAwMDAwIG4gCjAwMDAwMDExMDEgMDAwMDAgbiAKMDAwMDAwMTIwNCAwMDAwMCBuIAp0cmFpbGVyCjw8L0luZm8gOSAwIFIvSUQgWzwzZWMyMWUyNjkwNjcxYzViYTliNjUxODNhY2IxOTM3ND48NzZhNzM1MWE1YmY4ZmMxNDNmY2NlZmUwYjRjMzA4MWI+XS9Sb290IDggMCBSL1NpemUgMTA+PgpzdGFydHhyZWYKMTM1OAolJUVPRgo=",\n    "invoice_items": [\n        {\n            "item": "McDonald\'s Big Mac",\n            "description": "Oyon Meals",\n            "quantity": 3,\n            "date_of_purchase": "2021-03-12",\n            "price_per_item": 50000\n        }\n    ]\n}');
+$request->setBody('{\n    "description": "testdesc",\n    "notes": "testnote",\n    "partner_tx_id": "ab9c",\n    "sender_name" : "Mochamad Suryono", \n    "amount" : "15000",\n    "email": "yono@oyindonesia.com",\n    "phone_number": "085712163208", \n    "is_open" : true,\n    "step": "input-amount",\n    "include_admin_fee" : false,\n    "list_disabled_payment_methods": "",\n    "list_enabled_banks": "002, 008, 009, 013, 022",\n    "expiration": "2021-03-13 00:00:00",\n    "due_date": "2021-03-12 12:00:00",\n    "partner_user_id": "OYON-CHECKOUT000003",\n    "full_name": "Mochamad Suryono",\n    "is_va_lifetime": false,\n    "attachment": "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9GaWx0ZXIvRmxhdGVEZWNvZGUvTGVuZ3RoIDQ5Nj4+c3RyZWFtCnicrZVdb9MwFIbv/SsOd51EwrHjz0tKhxQk2IciJMS4CG46lbVNyYcE/HqcbNloh5xO8U3OUXJ8Hr/2aweBQkQBQRjhnnZLfpJ5RhIJQhjIluQ8I1eEwYfubVeHMFRnW/LmPQWKkK3I7Cz70dU+lfTN/hnE3ChJY9SPA0U3EPvP1S2ZXXx5Bemnzxfpu/OuGcLtfxp+/ebisp+QH8VkrNjhHJ9QaV23xRKyciKIGuCGjYPmv6cq0idKWuRNEYDlV7VoixAgwcdEXeZVsysqyH5BughA88t6uy3bXQNO3XRbCEq9pKr8sw5gPuXT8zGv7/JNCOeh9mAYMoxQRcyEMJ5KRlEmokkI63lVrSgqi8JEWlsV8ZURkRFMR1pILkVuZcJYCEd69V7vY3eZxYj4GvEkGsaMK5SAMTcauYsKje6aObskUsGWaKr7bPOYHUd7/8XIocZlx9H2DfuSh+Qw2AG4GZLDYMlqmLfHEQIS/XyBaOf++5uoqG213jfrcjfVfAYdi/tY0288noxBrpqpvwoh1AjjslrbqUo6j/kpWdnkG7iZpYvrm7MQmyOe045vBhkhDbFFI6gTz6Jvj9zqCd+frz/5MRMvOvyeBUxGRM3bvIHvRZXvmryGu7Jq901ZhTDJqEweC+xlvkTqX6+ILeYKZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8L1RhYnMvUy9Hcm91cDw8L1MvVHJhbnNwYXJlbmN5L1R5cGUvR3JvdXAvQ1MvRGV2aWNlUkdCPj4vQ29udGVudHMgMyAwIFIvVHlwZS9QYWdlL1Jlc291cmNlczw8L0NvbG9yU3BhY2U8PC9DUy9EZXZpY2VSR0I+Pi9Qcm9jU2V0IFsvUERGIC9UZXh0IC9JbWFnZUIgL0ltYWdlQyAvSW1hZ2VJXS9Gb250PDwvRjEgMiAwIFI+Pj4+L1BhcmVudCA0IDAgUi9Sb3RhdGUgOTAvTWVkaWFCb3hbMCAwIDU5NSA4NDJdPj4KZW5kb2JqCjUgMCBvYmoKWzEgMCBSL1hZWiAwIDYwNSAwXQplbmRvYmoKMiAwIG9iago8PC9TdWJ0eXBlL1R5cGUxL1R5cGUvRm9udC9CYXNlRm9udC9IZWx2ZXRpY2EvRW5jb2RpbmcvV2luQW5zaUVuY29kaW5nPj4KZW5kb2JqCjQgMCBvYmoKPDwvS2lkc1sxIDAgUl0vVHlwZS9QYWdlcy9Db3VudCAxL0lUWFQoMi4xLjcpPj4KZW5kb2JqCjYgMCBvYmoKPDwvTmFtZXNbKEpSX1BBR0VfQU5DSE9SXzBfMSkgNSAwIFJdPj4KZW5kb2JqCjcgMCBvYmoKPDwvRGVzdHMgNiAwIFI+PgplbmRvYmoKOCAwIG9iago8PC9OYW1lcyA3IDAgUi9UeXBlL0NhdGFsb2cvUGFnZXMgNCAwIFIvVmlld2VyUHJlZmVyZW5jZXM8PC9QcmludFNjYWxpbmcvQXBwRGVmYXVsdD4+Pj4KZW5kb2JqCjkgMCBvYmoKPDwvTW9kRGF0ZShEOjIwMjAwNzI5MTE1MzE1WikvQ3JlYXRvcihKYXNwZXJSZXBvcnRzIExpYnJhcnkgdmVyc2lvbiBudWxsKS9DcmVhdGlvbkRhdGUoRDoyMDIwMDcyOTExNTMxNVopL1Byb2R1Y2VyKGlUZXh0IDIuMS43IGJ5IDFUM1hUKT4+CmVuZG9iagp4cmVmCjAgMTAKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwNTc4IDAwMDAwIG4gCjAwMDAwMDA4NjQgMDAwMDAgbiAKMDAwMDAwMDAxNSAwMDAwMCBuIAowMDAwMDAwOTUyIDAwMDAwIG4gCjAwMDAwMDA4MjkgMDAwMDAgbiAKMDAwMDAwMTAxNSAwMDAwMCBuIAowMDAwMDAxMDY5IDAwMDAwIG4gCjAwMDAwMDExMDEgMDAwMDAgbiAKMDAwMDAwMTIwNCAwMDAwMCBuIAp0cmFpbGVyCjw8L0luZm8gOSAwIFIvSUQgWzwzZWMyMWUyNjkwNjcxYzViYTliNjUxODNhY2IxOTM3ND48NzZhNzM1MWE1YmY4ZmMxNDNmY2NlZmUwYjRjMzA4MWI+XS9Sb290IDggMCBSL1NpemUgMTA+PgpzdGFydHhyZWYKMTM1OAolJUVPRgo=",\n    "invoice_items": [\n        {\n            "item": "McDonald\'s Big Mac",\n            "description": "Oyon Meals",\n            "quantity": 3,\n            "date_of_purchase": "2021-03-12",\n            "price_per_item": 50000\n        }\n    ]\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -571,6 +581,7 @@ payload = json.dumps({
   "list_disabled_payment_methods": "",
   "list_enabled_banks": "002, 008, 009, 013, 022",
   "expiration": "2021-03-13 00:00:00",
+  "due_date": "2021-03-12 12:00:00",
   "partner_user_id": "OYON-CHECKOUT000003",
   "full_name": "Mochamad Suryono",
   "is_va_lifetime": False,
@@ -624,7 +635,7 @@ description | String | Description of the payment checkout link. | Only accepts 
 notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
 amount | Integer | The amount of a transaction to be paid. | Minimum amount is IDR 15,000.
-email | String | The email address where the payment checkout link will be sent to. | - 
+email | String | The email address where the payment checkout link will be sent to. | Up to 3 emails separated by ";"
 phone_number | Numeric | Phone number of the payer for a transaction. | Do not use special character (e.g. "+").
 is_open	| Boolean | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
 step | String | Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method). | If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.
@@ -632,6 +643,7 @@ include_admin_fee | Boolean | Admin fee will be added to the specified amount or
 list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
 expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss) | -
+due_date | datetime | To set the transaction due date of the payment (dd-MM-yyyy HH:mm:ss) | Transaction due date should equal or before expiration. As default, transaction due date will be same as expiration if it is not defined.
 partner_user_id | String | Username assigned to the customer by partner. | - 
 full_name | String | The customer's full name. | -
 is_va_lifetime | Boolean | To enable VA static confirugation for a payment . | If this is set as true and the partner_user_id is already associated to specific VAs, then the same VA numbers will be used for this partner_tx_id instead of generating new VA number. Partner_user_id and VA payment method must be specified to use this parameter.
@@ -661,7 +673,8 @@ curl -X POST \
         "step":"select-payment-method",
         "list_disabled_payment_methods":"CREDIT_CARD",
         "list_enabled_payment_banks": "008", 
-        "included_admin_fee": true, "expiration": 7,
+        "included_admin_fee": true, 
+        "expiration": 7,
         "description":"payment for March 2020", 
         "partner_user_id": "merchant A", 
         "is_va_lifetime" : true , 
@@ -722,6 +735,7 @@ curl -X POST \
         "settlement_type":"non_realtime",
         "description":"description",
         "expiration":"2020-10-18T15:00:00",
+        "due_date": "2020-10-18T14:00:00",
         "email":"email@gmail.com",
         "paid_amount": 70000,
         "settlement_time": "2020-09-30T15:00:00",
@@ -747,7 +761,8 @@ updated | DateTime | The timestamp which indicates the latest updated time of a 
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
 description | String | The description of the payment checkout/invoice link.
 expiration | DateTime | The expiration time of the payment checkout/invoice link
-email | String | The email address for the payment checkout/invoice link to be sent
+due_date | DateTime | The transaction due date of the payment checkout/invoice
+email | String | The email addresses for the payment checkout/invoice link to be sent
 paid_amount | BigDecimal | The total amount that a user has paid
 settlement_time | DateTime | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement
 settlement_status | String | Status of the settlement (e.g. success/waiting)
@@ -937,6 +952,7 @@ print(data.decode("utf-8"))
   "description": "",
   "paid_amount": 100000,
   "expiration": "2021-01-13T16:25:14",
+  "due_date": "2021-01-13T15:00:00",
   "is_invoice": false,
   "updated": "2021-01-12T16:26:17",
   "email": "",
@@ -976,9 +992,10 @@ created | String | The timestamp which indicates the creation time of a payment 
 description | String | Description of the payment checkout link.
 paid_amount | BigDecimal | the total amount that a user has paid.
 expiration | String | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)
+due_date | String | To set the transaction due date of the payment (dd-MM-yyyy HH:mm:ss)
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not.
 updated | String | The timestamp which indicates the latest updated time of a payment checkout link due to status update
-email | String | The email address where the payment checkout link will be sent to
+email | String | The email addresses where the payment checkout link will be sent to
 settlement_time | String | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)
 settlement_status | String | The status of the settlement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)
 
@@ -1336,6 +1353,7 @@ print(data.decode("utf-8"))
         "listDisabledPaymentMethods": "",
         "listEnabledBanks": "008",
         "expirationTime": "2020-08-12 00:00:00",
+        "due_date": "2020-08-11 12:00:00",
         "invoiceData": {
             "fullName": "John Dooe",
             "isVaLifetime": false,
@@ -1375,12 +1393,13 @@ description | String | Payment Description | Tagihan Cicilan Mobil
 isOpen | Boolean | Payment Editable Amount Capability | true
 step | String | Partner Step State | CREATED
 notes | String | Payment Notes / Subject | Cicilan Mobil - 5
-email | String | Payment Sender Email | johndoe@gmail.com
+email | String | Payment Sender Email(s) | johndoe@gmail.com
 senderPhoneNumber | String | Payment Sender Phone Number | 081234567890
 includeAdminFee | Boolean | Admin fee bills destination between partner or user | true
 listDisabledPaymentMethods | String | List Of Disable Payment Method (VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well.
 listEnabledBanks | String | Payment Method List Enable Bank for VA Payment Method: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB). | 002,008
-expirationTime | String | Payment Exporation Date and Time | "2020-08-12 00:00:00"
+expirationTime | String | Payment Expiration Date and Time | "2020-08-12 00:00:00"
+due_date | String | Payment Transaction Due Date | "2020-08-11 12:00:00"
 invoiceData | Invoice | Data For Invoice Payment will be null | CREDIT_CARD)** | null
 
 ### Invoice Response Parameters
