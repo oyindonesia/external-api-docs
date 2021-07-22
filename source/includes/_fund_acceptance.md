@@ -25,7 +25,7 @@ curl -X POST \
         "notes":"notes",
         "sender_name":"Sender name",
         "amount":50000,
-        "email":"",
+        "email":"johndoe@gmail.com;jane@gmail.com",
         "phone_number":"",
         "is_open":false,
         "step":"input-amount",
@@ -51,7 +51,7 @@ request.body = json.encode({
   "notes": "",
   "sender_name": "Mochamad Suryono",
   "amount": 10000,
-  "email": "yono@oyindonesia.com;inka@oyindonesia.com",
+  "email": "johndoe@gmail.com;jane@gmail.com",
   "phone_number": "085712163208",
   "is_open": true,
   "step": "input-amount",
@@ -95,7 +95,7 @@ func main() {
     "notes": "",
     "sender_name" : "Mochamad Suryono", 
     "amount" : 10000,
-    "email": "yono@oyindonesia.com;inka@oyindonesia.com",
+    "email": "johndoe@gmail.com;jane@gmail.com",
     "phone_number": "085712163208", 
     "is_open" : true,
     "step": "input-amount",
@@ -139,7 +139,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"description\": \"Prod Test API\",\n    \"partner_tx_id\": \"\",\n    \"notes\": \"\",\n    \"sender_name\" : \"Mochamad Suryono\", \n    \"amount\" : 10000,\n    \"email\": \"yono@oyindonesia.com;inka@oyindonesia.com\",\n    \"phone_number\": \"085712163208\", \n    \"is_open\" : true,\n    \"step\": \"input-amount\",\n    \"include_admin_fee\" : true,\n    \"list_disabled_payment_methods\": \"\",\n    \"list_enabled_banks\": \"002, 008, 009, 013, 022\",\n    \"list_enabled_ewallet\": \"shopeepay_ewallet\",\n    \"expiration\": \"2021-06-14 13:00:00\",\n    \"due_date\": \"2021-06-14 12:00:00\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"description\": \"Prod Test API\",\n    \"partner_tx_id\": \"\",\n    \"notes\": \"\",\n    \"sender_name\" : \"Mochamad Suryono\", \n    \"amount\" : 10000,\n    \"email\": \"johndoe@gmail.com;jane@gmail.com\",\n    \"phone_number\": \"085712163208\", \n    \"is_open\" : true,\n    \"step\": \"input-amount\",\n    \"include_admin_fee\" : true,\n    \"list_disabled_payment_methods\": \"\",\n    \"list_enabled_banks\": \"002, 008, 009, 013, 022\",\n    \"list_enabled_ewallet\": \"shopeepay_ewallet\",\n    \"expiration\": \"2021-06-14 13:00:00\",\n    \"due_date\": \"2021-06-14 12:00:00\"\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/payment-checkout/create-v2")
   .method("POST", body)
@@ -157,7 +157,7 @@ var data = JSON.stringify({
   "notes": "",
   "sender_name": "Mochamad Suryono",
   "amount": 10000,
-  "email": "yono@oyindonesia.com",
+  "email": "johndoe@gmail.com;jane@gmail.com",
   "phone_number": "085712163208",
   "is_open": true,
   "step": "input-amount",
@@ -200,7 +200,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n    "description": "Prod Test API",\n    "partner_tx_id": "",\n    "notes": "",\n    "sender_name" : "Mochamad Suryono", \n    "amount" : 10000,\n    "email": "yono@oyindonesia.com",\n    "phone_number": "085712163208", \n    "is_open" : true,\n    "step": "input-amount",\n    "include_admin_fee" : true,\n    "list_disabled_payment_methods": "",\n    "list_enabled_banks": "002, 008, 009, 013, 022",\n    "list_enabled_ewallet": "shopeepay_ewallet",\n    "expiration": "2021-06-14 13:00:00",\n    "due_date": "2021-06-14 12:00:00"\n}');
+$request->setBody('{\n    "description": "Prod Test API",\n    "partner_tx_id": "",\n    "notes": "",\n    "sender_name" : "Mochamad Suryono", \n    "amount" : 10000,\n    "email": "johndoe@gmail.com;jane@gmail.com",\n    "phone_number": "085712163208", \n    "is_open" : true,\n    "step": "input-amount",\n    "include_admin_fee" : true,\n    "list_disabled_payment_methods": "",\n    "list_enabled_banks": "002, 008, 009, 013, 022",\n    "list_enabled_ewallet": "shopeepay_ewallet",\n    "expiration": "2021-06-14 13:00:00",\n    "due_date": "2021-06-14 12:00:00"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -291,8 +291,8 @@ include_admin_fee | Boolean | Admin fee will be added to the specified amount or
 list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
 list_enabled_ewallet | String | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet".
-expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
-due_date | datetime | To set the transaction due date of the payment link (dd-MM-yyyy HH:mm:ss) | Transaction due date should equal or before expiration date. As default, transaction due date will be same as expiration date if it is not defined.
+expiration | datetime | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
+due_date | datetime | To set the transaction due date of the payment link (yyyy-MM-dd HH:mm:ss) | Transaction due date should equal or before expiration date. As default, transaction due date will be same as expiration date if it is not defined.
 va_display_name | String | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
 
 
@@ -642,8 +642,8 @@ step | String | Accessing specific page of the payment checkout URL. Possible va
 include_admin_fee | Boolean | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
 list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
-expiration | datetime | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss) | -
-due_date | datetime | To set the transaction due date of the payment (dd-MM-yyyy HH:mm:ss) | Transaction due date should equal or before expiration. As default, transaction due date will be same as expiration if it is not defined.
+expiration | datetime | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | -
+due_date | datetime | To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss) | Transaction due date should equal or before expiration. As default, transaction due date will be same as expiration if it is not defined.
 partner_user_id | String | Username assigned to the customer by partner. | - 
 full_name | String | The customer's full name. | -
 is_va_lifetime | Boolean | To enable VA static confirugation for a payment . | If this is set as true and the partner_user_id is already associated to specific VAs, then the same VA numbers will be used for this partner_tx_id instead of generating new VA number. Partner_user_id and VA payment method must be specified to use this parameter.
@@ -678,7 +678,7 @@ curl -X POST \
         "description":"payment for March 2020", 
         "partner_user_id": "merchant A", 
         "is_va_lifetime" : true , 
-        "email" : "johnsmith@example.com",
+        "email" : "johndoe@gmail.com;jane@gmail.com",
         "recurring_start_date" : "10/11/2020", 
         "recurring_end_date": "10/11/2021", 
         "recurring_frequency": 30
@@ -736,7 +736,7 @@ curl -X POST \
         "description":"description",
         "expiration":"2020-10-18T15:00:00",
         "due_date": "2020-10-18T14:00:00",
-        "email":"email@gmail.com",
+        "email":"johndoe@gmail.com;jane@gmail.com",
         "paid_amount": 70000,
         "settlement_time": "2020-09-30T15:00:00",
         "settlement_status": "WAITING"
@@ -762,7 +762,7 @@ is_invoice | Boolean | The invoice which indicates the transaction is invoice or
 description | String | The description of the payment checkout/invoice link.
 expiration | DateTime | The expiration time of the payment checkout/invoice link
 due_date | DateTime | The transaction due date of the payment checkout/invoice
-email | String | The email addresses for the payment checkout/invoice link to be sent
+email | String | The email addresses for the payment checkout/invoice link to be sent. You can add up to 3 emails separated by ";"
 paid_amount | BigDecimal | The total amount that a user has paid
 settlement_time | DateTime | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement
 settlement_status | String | Status of the settlement (e.g. success/waiting)
@@ -955,7 +955,7 @@ print(data.decode("utf-8"))
   "due_date": "2021-01-13T15:00:00",
   "is_invoice": false,
   "updated": "2021-01-12T16:26:17",
-  "email": "",
+  "email": "johndoe@gmail.com;jane@gmail.com",
   "settlement_time": "2021-01-13T15:00:00",
   "settlement_status": "WAITING"
 }
@@ -991,11 +991,11 @@ payment_method | String | The payment method used in a transaction. Choices are:
 created | String | The timestamp which indicates the creation time of a payment checkout link
 description | String | Description of the payment checkout link.
 paid_amount | BigDecimal | the total amount that a user has paid.
-expiration | String | To set the expiration of the payment link (dd-MM-yyyy HH:mm:ss)
-due_date | String | To set the transaction due date of the payment (dd-MM-yyyy HH:mm:ss)
+expiration | String | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss)
+due_date | String | To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss)
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not.
 updated | String | The timestamp which indicates the latest updated time of a payment checkout link due to status update
-email | String | The email addresses where the payment checkout link will be sent to
+email | String | The email addresses where the payment checkout link will be sent to. You can add up to 3 emails separated by ";"
 settlement_time | String | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)
 settlement_status | String | The status of the settlement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)
 
@@ -1393,13 +1393,13 @@ description | String | Payment Description | Tagihan Cicilan Mobil
 isOpen | Boolean | Payment Editable Amount Capability | true
 step | String | Partner Step State | CREATED
 notes | String | Payment Notes / Subject | Cicilan Mobil - 5
-email | String | Payment Sender Email(s) | johndoe@gmail.com
+email | String | Payment Sender Email(s).You can add up to 3 emails separated by ";" | johndoe@gmail.com;jane@gmail.com
 senderPhoneNumber | String | Payment Sender Phone Number | 081234567890
 includeAdminFee | Boolean | Admin fee bills destination between partner or user | true
 listDisabledPaymentMethods | String | List Of Disable Payment Method (VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well.
 listEnabledBanks | String | Payment Method List Enable Bank for VA Payment Method: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB). | 002,008
 expirationTime | String | Payment Expiration Date and Time | "2020-08-12 00:00:00"
-due_date | String | Payment Transaction Due Date | "2020-08-11 12:00:00"
+due_date | String | Transaction Due Date | "2020-08-11 12:00:00"
 invoiceData | Invoice | Data For Invoice Payment will be null | CREDIT_CARD)** | null
 
 ### Invoice Response Parameters
