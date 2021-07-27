@@ -213,7 +213,7 @@ print(data.decode("utf-8"))
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/offline-create`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/offline-create`
+**[Staging]** `TBD`
 
 ### Request Parameters
 
@@ -423,7 +423,7 @@ print(data.decode("utf-8"))
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/offline-cancel`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/offline-cancel`
+**[Staging]** `TBD`
 
 ### Request Parameters
 
@@ -639,7 +639,7 @@ Please contact us and submit a callback URL if you need a callback status of a t
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/offline-info`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/offline-info`
+**[Staging]** `TBD`
 
 ### Request Parameters
 
@@ -854,7 +854,7 @@ A transaction will be valid for 24 hours with a default 3-hours validity for eac
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/offline-refresh-code`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/offline-refresh-code`
+**[Staging]** `TBD`
 
 ### Request Parameters
 
