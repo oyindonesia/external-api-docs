@@ -80,10 +80,20 @@
           $best.addClass("active-parent");
           $best.siblings(tocListSelectorChild).addClass("active");
         }
+        if ($best.siblings(".toc-list-h4").length > 0) {
+          $best.addClass("active-parent");
+          $best.siblings(".toc-list-h4").addClass("active");
+        }
+        if ($best.hasClass("toc-h4")) {
+          $best.parents(".toc-list-h4").siblings(".toc-h3").addClass("active-parent");
+          $best.parents(".toc-list-h4").addClass("active");
+        }
         $toc.find(tocListSelector).filter(":not(.active)").slideUp(150);
         $toc.find(tocListSelector).filter(".active").slideDown(150);
         $toc.find(tocListSelectorChild).filter(":not(.active)").slideUp(150);
         $toc.find(tocListSelectorChild).filter(".active").slideDown(150);
+        $toc.find('.toc-list-h4').filter(":not(.active)").slideUp(150);
+        $toc.find('.toc-list-h4').filter(".active").slideDown(150);
         if (window.history.replaceState) {
           window.history.replaceState(null, "", best);
         }
