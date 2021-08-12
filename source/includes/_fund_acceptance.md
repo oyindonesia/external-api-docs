@@ -290,7 +290,7 @@ step | String | Accessing specific page of the payment checkout URL. Possible va
 include_admin_fee | Boolean | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
 list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
-list_enabled_ewallet | String | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet".
+list_enabled_ewallet | String | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet", "dana_ewallet", "linkaja_ewallet", "ovo_ewallet".
 expiration | datetime | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
 due_date | datetime | To set the transaction due date of the payment link (yyyy-MM-dd HH:mm:ss) | Transaction due date should equal or before expiration date. As default, transaction due date will be same as expiration date if it is not defined.
 va_display_name | String | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
@@ -987,7 +987,7 @@ sender_note | String | Additional notes from a payer for a transaction
 status | String | The status of a payment link
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
-payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), or VA (Virtual Account)
+payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), or VA (Virtual Account)
 created | String | The timestamp which indicates the creation time of a payment checkout link
 description | String | Description of the payment checkout link.
 paid_amount | BigDecimal | the total amount that a user has paid.
