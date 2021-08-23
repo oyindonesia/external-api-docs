@@ -1,4 +1,4 @@
-# Account Inquiry RELEASE-23 august 2021
+# Account Inquiry
 
 Account Inquiry APIs allow you to get beneficiary account details. 
 
@@ -6,7 +6,7 @@ Invoice will be created on the first API hit of the day with status `INITIATED`.
 
 A scheduler will run every day to check if there is `UNPAID` invoice that needs to be paid to prevent the inquiry service to be blocked by our system and the invoice status will be updated to `PAID`. In the event that there is insufficient balance when the scheduler runs, it is the partner responsibility to ensure the invoice is paid accordingly via the payment endpoint or the business portal.
 
-## Account Inquiry NEW
+## Account Inquiry
 
 ```shell
 curl -X \
