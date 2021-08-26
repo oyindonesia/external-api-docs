@@ -15,7 +15,7 @@ Response Code | State | Description
 208 | Final | Request is Rejected (API Key is not Valid)
 209 | Final | Request is Rejected (Bank Account is not found)
 210 | Final | Request is Rejected (Amount is not valid)
-215 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
+225 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
 300 | Final | Disbursement is FAILED
 301 | Non-Final | Pending (When there is a unclear answer from Banks Network)
 999 | Non-Final | Internal Server Error
