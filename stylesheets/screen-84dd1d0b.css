@@ -442,6 +442,20 @@ html, body {
   -webkit-text-size-adjust: none;
   /* Never autoresize text */ }
 
+.tags {
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  padding: 4px 8px;
+  color: white;
+  border-radius: 4px;
+  text-transform: capitalize;
+  font-weight: normal; }
+  .tags.beta {
+    background-color: #F38827; }
+  .tags.new {
+    background-color: #0D47A1; }
+
 .search {
   position: relative; }
   .search input {
@@ -701,6 +715,11 @@ html, body {
   .toc-wrapper .toc-link.active-parent {
     background-color: #FFFF;
     color: #425466; }
+  .toc-wrapper .toc-link .toc-link-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
   .toc-wrapper .toc-list-h2 {
     display: none;
     background-color: #FFFF;
@@ -1013,6 +1032,11 @@ html, body {
   border-radius: 0 0 8px 8px; }
 
 @media (max-width: 1024px) {
+  .content > h1, .content > h2, .content > h3, .content > h4, .content > h5, .content > h6 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; }
+
   .header-logo-container {
     width: 214px; }
   .header-section > *:not(:last-child) {

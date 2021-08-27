@@ -1,9 +1,9 @@
-<h1 id='va-aggregator'>VA Aggregator</h1>
+<h1 id='va-aggregator' type='normal'>VA Aggregator</h1>
 <p>API VA aggregator allows you to create a unique Virtual Account (VA) number as a payment method for your customers.</p>
-<h3 id='va-aggregator-api-base-url-'>VA Aggregator API Base URL</h3>
+<h3 id='va-aggregator-api-base-url-' type='normal'>VA Aggregator API Base URL</h3>
 <p><strong>[Production Base URL]</strong>: <code>https://partner.oyindonesia.com</code><br/>
 <strong>[Staging Base URL]</strong>: <code>https://api-stg.oyindonesia.com</code></p>
-<h2 id='create-va-va-aggregator'>Create VA</h2>
+<h2 id='create-va-va-aggregator' type='normal'>Create VA</h2>
 <p>Use this API to create new VA number</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/generate-static-va
@@ -214,10 +214,10 @@ POST https://partner.oyindonesia.com/api/generate-static-va
     </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-create-va'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-create-va' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/generate-static-va</code> <br/>
 <strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/generate-static-va</code></p>
-<h3 id='request-parameters-create-va'>Request Parameters</h3>
+<h3 id='request-parameters-create-va' type='normal'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -312,7 +312,7 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-create-va'>Response Parameters</h3>
+<h3 id='response-parameters-create-va' type='normal'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -396,7 +396,7 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <td>Count total incoming payment of VA</td>
 </tr>
 </tbody></table>
-<h2 id='get-va-info-va-aggregator'>Get VA Info</h2>
+<h2 id='get-va-info-va-aggregator' type='normal'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
@@ -553,10 +553,10 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-get-va-info'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-get-va-info' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
 <strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-get-va-info'>URL Parameters</h3>
+<h3 id='url-parameters-get-va-info' type='normal'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -574,7 +574,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Unique VA id, you can get this once you success created VA</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-get-va-info'>Response Parameters</h3>
+<h3 id='response-parameters-get-va-info' type='normal'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -668,7 +668,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
 </tbody></table>
-<h2 id='update-va-va-aggregator'>Update VA</h2>
+<h2 id='update-va-va-aggregator' type='normal'>Update VA</h2>
 <p>Update VA using unique VA id.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
@@ -876,10 +876,10 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
     </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"counter_incoming_payment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-update-va'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-update-va' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>PUT https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
 <strong>[Staging]</strong> <code>PUT https://api-stg.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code></p>
-<h3 id='url-parameter-update-va'>URL Parameter</h3>
+<h3 id='url-parameter-update-va' type='normal'>URL Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -897,7 +897,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Unique VA ID, you can get this once you success created VA</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-update-va'>Request Parameters</h3>
+<h3 id='request-parameters-update-va' type='normal'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -971,7 +971,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Update transaction counter to limit number of transaction that can be receive by va number</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-update-va'>Response Parameters</h3>
+<h3 id='response-parameters-update-va' type='normal'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1055,7 +1055,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Count total incoming payment of VA</td>
 </tr>
 </tbody></table>
-<h2 id='get-list-of-created-va-va-aggregator'>Get list of created VA</h2>
+<h2 id='get-list-of-created-va-va-aggregator' type='normal'>Get list of created VA</h2>
 <p>Get list of created VA</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
@@ -1277,10 +1277,10 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-get-list-of-created-va'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-get-list-of-created-va' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code> <br/>
 <strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/static-virtual-account?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
-<h3 id='request-parameters-get-list-of-created-va'>Request Parameters</h3>
+<h3 id='request-parameters-get-list-of-created-va' type='normal'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1302,7 +1302,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 <td>max item to fetch, default is 10, if empty will used default value</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-get-list-of-created-va'>Response Parameters</h3>
+<h3 id='response-parameters-get-list-of-created-va' type='normal'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1326,7 +1326,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 </tbody></table>
-<h2 id='get-list-of-transaction-for-va-va-aggregator'>Get List of Transaction for VA</h2>
+<h2 id='get-list-of-transaction-for-va-va-aggregator' type='normal'>Get List of Transaction for VA</h2>
 <p>Get list of incoming transaction for specific va number.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
@@ -1527,10 +1527,10 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
     </span><span class="nl">"number_of_transaction"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_incoming_payment"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='https-request-get-list-of-transaction-for-va'>HTTPS Request</h3>
+</span></code></pre></div><h3 id='https-request-get-list-of-transaction-for-va' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code> <br/>
 <strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/va-tx-history/&lt;ID&gt;?offset=&lt;offset&gt;&amp;limit=&lt;limit&gt;</code></p>
-<h3 id='url-parameter-get-list-of-transaction-for-va'>URL Parameter</h3>
+<h3 id='url-parameter-get-list-of-transaction-for-va' type='normal'>URL Parameter</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1548,7 +1548,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>Unique VA ID, you can get this once you success created VA</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-get-list-of-transaction-for-va'>Request Parameters</h3>
+<h3 id='request-parameters-get-list-of-transaction-for-va' type='normal'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1573,7 +1573,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>max item to fetch, default is 10, if empty will used default value</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-get-list-of-transaction-for-va'>Response Parameters</h3>
+<h3 id='response-parameters-get-list-of-transaction-for-va' type='normal'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1607,7 +1607,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>Total incoming payment</td>
 </tr>
 </tbody></table>
-<h2 id='partner-callback-va-aggregator-va-aggregator'>Partner Callback Va Aggregator</h2>
+<h2 id='partner-callback-va-aggregator-va-aggregator' type='normal'>Partner Callback Va Aggregator</h2>
 <blockquote>
 <p>Response callback:</p>
 </blockquote>
@@ -1626,7 +1626,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Once user successfully do the payment, our system will make a callback to your system</p>
-<h3 id='callback-parameters-partner-callback-va-aggregator'>Callback Parameters</h3>
+<h3 id='callback-parameters-partner-callback-va-aggregator' type='normal'>Callback Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1690,7 +1690,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>The status of the settlement</td>
 </tr>
 </tbody></table>
-<h2 id='va-aggregator-bank-code-va-aggregator'>VA aggregator Bank Code</h2><h3 id='available-bank-for-va-aggregator-va-aggregator-bank-code'>Available Bank for VA aggregator</h3>
+<h2 id='va-aggregator-bank-code-va-aggregator' type='normal'>VA aggregator Bank Code</h2><h3 id='available-bank-for-va-aggregator-va-aggregator-bank-code' type='normal'>Available Bank for VA aggregator</h3>
 <table><thead>
 <tr>
 <th>Bank Code</th>
@@ -1722,9 +1722,9 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>Bank BCA</td>
 </tr>
 </tbody></table>
-<h2 id='list-of-documents-va-aggregator'>List of Documents</h2>
+<h2 id='list-of-documents-va-aggregator' type='normal'>List of Documents</h2>
 <p>To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.</p>
-<h3 id='common-documents-list-of-documents'>Common Documents</h3>
+<h3 id='common-documents-list-of-documents' type='normal'>Common Documents</h3>
 <table><thead>
 <tr>
 <th>No</th>
@@ -1740,7 +1740,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>National ID</td>
 </tr>
 </tbody></table>
-<h3 id='documents-for-foundation-or-donation-partner-list-of-documents'>Documents for Foundation, or Donation Partner</h3>
+<h3 id='documents-for-foundation-or-donation-partner-list-of-documents' type='normal'>Documents for Foundation, or Donation Partner</h3>
 <table><thead>
 <tr>
 <th>No</th>
@@ -1776,7 +1776,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>Sertifikat Yayasan</td>
 </tr>
 </tbody></table>
-<h3 id='documents-for-other-company-list-of-documents'>Documents for Other Company</h3>
+<h3 id='documents-for-other-company-list-of-documents' type='normal'>Documents for Other Company</h3>
 <table><thead>
 <tr>
 <th>No</th>
@@ -1800,7 +1800,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>Decree of Minister Justine and Human Right</td>
 </tr>
 </tbody></table>
-<h2 id='va-aggregator-status-va-aggregator'>VA aggregator Status</h2><h3 id='available-status-for-va-aggregator-va-aggregator-status'>Available Status for VA aggregator</h3>
+<h2 id='va-aggregator-status-va-aggregator' type='normal'>VA aggregator Status</h2><h3 id='available-status-for-va-aggregator-va-aggregator-status' type='normal'>Available Status for VA aggregator</h3>
 <table><thead>
 <tr>
 <th>Status</th>
