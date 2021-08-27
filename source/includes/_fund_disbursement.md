@@ -247,11 +247,12 @@ trx_id | String(36) | Unique Payout ID from OY!. Partner can use this ID for set
 partner_trx_id | String(255) | Unique Payout ID which partner put on the Request
 timestamp | String(19) | Execution time of Disbursement in OY! system ("dd-MM-yyyy HH:mm:ss")
 
-> **[Staging]** You can replicate error response code (final) based on [Fund Disbursement Response Codes](#fund-disbursement-response-codes-) by fill in `recipient_account` value using following format `<desired response code>0000`
+> **[Staging]** You can replicate error response code (final) based on [Fund Disbursement Response Codes](#fund-disbursement-response-codes-) by fill in `recipient_account` value using following format `<desired response code>0000`.
+> Another value not following the format will be processed normally.
 
 example:
 
-a request with `"recipient_account": "2100000"` will return response with `"status": { "code": "210", message": "Request is Rejected (Amount is not valid)"`
+a request with `"recipient_account": "2100000"` will return response with `"status": { "code": "210", message": "Request is Rejected (Amount is not valid)"}`
 
 ## Partner Callback
 
