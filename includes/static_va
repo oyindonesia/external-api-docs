@@ -1721,6 +1721,10 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>014</td>
 <td>Bank BCA</td>
 </tr>
+<tr>
+<td>213</td>
+<td>Bank BTPN</td>
+</tr>
 </tbody></table>
 <h2 id='list-of-documents-va-aggregator' type='normal'>List of Documents</h2>
 <p>To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.</p>
