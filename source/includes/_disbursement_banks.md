@@ -109,6 +109,7 @@ Bank Codes | Bank Name
 564	| Bank MANTAP
 566	| Bank VICTORIA INTL
 567	| HARDA
+688 | BPR KS
 945	| IBK
 949	| Bank CTBC Indonesia
 950	| Bank COMMONWEALTH
