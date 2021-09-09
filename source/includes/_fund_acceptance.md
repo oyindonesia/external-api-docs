@@ -727,7 +727,7 @@ curl -X POST \
         "created":"2020-09-29T20:57:41",
         "tx_ref_number":"20097G1X2329",
         "sender_name":"Sender Name",
-        "invoice":false,
+        "is_invoice":false,
         "updated":"2020-09-29T20:59:08",
         "payment_method":"VA",
         "status":"complete",
