@@ -7816,6 +7816,16 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>Request is rejected (Transaction expiry time exceeds VA expiry time)</td>
 </tr>
 <tr>
+<td>245</td>
+<td>Final</td>
+<td>Request is rejected (Min expiry time is 60 minutes)</td>
+</tr>
+<tr>
+<td>246</td>
+<td>Final</td>
+<td>Request is rejected (Failed update va)</td>
+</tr>
+<tr>
 <td>999</td>
 <td>Non-Final</td>
 <td>Internal Server Error</td>
@@ -8744,7 +8754,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
         "created":"2020-09-29T20:57:41",
         "tx_ref_number":"20097G1X2329",
         "sender_name":"Sender Name",
-        "invoice":false,
+        "is_invoice":false,
         "updated":"2020-09-29T20:59:08",
         "payment_method":"VA",
         "status":"complete",
