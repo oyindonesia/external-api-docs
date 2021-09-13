@@ -374,6 +374,48 @@
             </a>
           </li>
           <li>
+            <a href="#postman" class="toc-h1 toc-link" data-title="Postman">
+              <span class="toc-link-content">
+                Postman
+              </span>
+                <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow parent" alt="" />
+            </a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getting-started-postman" class="toc-h2 toc-link" data-title="Getting Started">
+                     <span class="toc-link-content">
+                        Getting Started
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#api-authorization-postman" class="toc-h2 toc-link" data-title="API Authorization">
+                     <span class="toc-link-content">
+                        API Authorization
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#create-a-postman-variable-environment-postman" class="toc-h2 toc-link" data-title="Create a Postman Variable Environment">
+                     <span class="toc-link-content">
+                        Create a Postman Variable Environment
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#test-one-of-our-api-calls-postman" class="toc-h2 toc-link" data-title="Test one of our API Calls">
+                     <span class="toc-link-content">
+                        Test one of our API Calls
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">
               <span class="toc-link-content">
                 Authentication
@@ -1491,48 +1533,6 @@
                         </li>
                     </ul>
                   </li>
-                  <li>
-                    <a href="#postman-fund-acceptance" class="toc-h2 toc-link" data-title="POSTMAN">
-                     <span class="toc-link-content">
-                        POSTMAN
-                      </span>
-                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
-                    </a>
-                    <ul class="toc-list-h3">
-                        <li>
-                          <a href="#import-oy-payment-checkout-postman-collection-to-postman-postman" class="toc-h3 toc-link" data-title="Import OY! Payment Checkout Postman Collection to Postman">
-                            <span class="toc-link-content">
-                              Import OY! Payment Checkout Postman Collection to Postman
-                            </span>
-                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#api-authorization-postman" class="toc-h3 toc-link" data-title="API Authorization">
-                            <span class="toc-link-content">
-                              API Authorization
-                            </span>
-                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#create-a-postman-variable-environment-postman" class="toc-h3 toc-link" data-title="Create a Postman Variable Environment">
-                            <span class="toc-link-content">
-                              Create a Postman Variable Environment
-                            </span>
-                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#test-one-of-our-api-calls-postman" class="toc-h3 toc-link" data-title="Test one of our API Calls">
-                            <span class="toc-link-content">
-                              Test one of our API Calls
-                            </span>
-                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                          </a>
-                        </li>
-                    </ul>
-                  </li>
               </ul>
           </li>
           <li>
@@ -2115,6 +2115,74 @@
 <li>Partner can topup OY! Account Deposit via Virtual Accounts</li>
 <li>Once Deposit balance is active, Partner can use the API services provided</li>
 </ol>
+<h1 id='postman' type='normal'>Postman</h1>
+<p>Postman is a free web testing service that provides an easy, fast, and solid software for developers to learn and maintain a web service contract from both the provider and consumer. As such, Postman has become a widely used tool for contract testing and reference due to its User Experience.</p>
+
+<p>To streamline development and integration with OY!, we have created a Postman Collection at your disposal. Get started by installing Postman here.</p>
+
+<p>Prerequisites: You must have received an authorization Username and API Key from us to access our feature. Contact us at partner@oyindonesia.com to receive your authorization information now.</p>
+<h2 id='getting-started-postman' type='normal'>Getting Started</h2>
+<p>The easiest way to get started using our API is to use our Postman Collection. Postman is a free client application that enables you to make calls using API easily. To make integrating with our API easier, we have created Postman Collection of all our endpoints so that you can test our APIs more easily.</p>
+
+<p>The following is an outline of actions to get started with Postman</p>
+
+<p><a href="https://app.getpostman.com/run-collection/893ce0e3ece7fffdb235?action=collection%2Fimport"><img src="images/button_postman-8b11e6b5.svg" alt="Run in Postman" /></a></p>
+
+<p>You’ll need to create a OY! indonesia account to access OY! APIs via Postman Collection</p>
+<h2 id='api-authorization-postman' type='normal'>API Authorization</h2>
+<ul>
+<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. </li>
+<li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
+<li>Open the “Headers” tab and add the following key-value pairs: <strong>Content-Type</strong> with <strong>application/json</strong>, <strong>X-Oy-Username</strong> with your <strong>username</strong> and <strong>X-Api-Key</strong> with your <strong>API Key</strong></li>
+</ul>
+
+<p><img src="images/images/postman_checkout_header-f3a257d2.png" alt="header" /></p>
+
+<ul>
+<li>Your Authorization header configuration has been complete. Click the blue “Send” button and check your response window to retrieve your payment information response. </li>
+</ul>
+
+<p><img src="images/images/postman_checkout_header_finish-44fd7390.png" alt="header_result" /></p>
+<h2 id='create-a-postman-variable-environment-postman' type='normal'>Create a Postman Variable Environment</h2>
+<p>The Postman Variable Environment provides you with the capabilities to save authorization configurations. You can use these saved configurations for all your Postman Requests. This step is optional.</p>
+
+<ul>
+<li>Locate the gear icon at the upper right corner of your Postman screen</li>
+<li>On the pop-up menu, click “Add” and give an Environment name. For example, “OY! Payment”</li>
+</ul>
+
+<p><img src="images/images/postman_checkout_add_environtment-2c6ba8d2.png" alt="header" /></p>
+
+<ul>
+<li>Add <strong>base_url</strong> in the Variable column and set the value to <strong>https://partner.oyindonesia.com</strong> in Current Value column</li>
+<li>Add <strong>username</strong> in the Variable column and set the value to your <strong>username</strong> in the Current Value column</li>
+<li>Add <strong>api_key</strong> in the Variable column and set the value to your <strong>API Key</strong> value in the Current Value column</li>
+<li>Click “Add” to save. You can later re-visit and update these values.</li>
+</ul>
+
+<p><img src="images/images/postman_checkout_setup_environtment-fda59661.png" alt="header" /></p>
+
+<ul>
+<li>To utilize the created environment, locate the environment management menu at the upper left corner of your screen. It should be to the left of the eye icon. </li>
+<li>In the drop down menu, choose the environment that you have just created. </li>
+</ul>
+
+<p><img src="images/images/postman_checkout_choose_environtment-2c54b8f9.png" alt="header" /></p>
+
+<p>You just set your authorization value header with environment variable which already configured.</p>
+<h2 id='test-one-of-our-api-calls-postman' type='normal'>Test one of our API Calls</h2>
+<ul>
+<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. </li>
+<li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
+<li>Replace <a href="https://partner.oyindonesia.com">https://partner.oyindonesia.com</a> in the GET url with <strong>{{base_url}}</strong> as the value </li>
+<li>Replace the <strong>X-Oy-Username</strong> key-value pair to <strong>{{username}}</strong> as the value </li>
+<li>Replace the <strong>X-Api-Key</strong> key-value pair to <strong>{{api_key}}</strong> as the value</li>
+<li>Click the blue “Send” button and check your response window to retrieve your payment information response.</li>
+</ul>
+
+<p><img src="images/images/postman_checkout_detail-1255093a.png" alt="header" /></p>
+
+<p>If you were able to complete all these steps, your environment is working perfectly and is on the right track. Feel free to test out our other API products or contact us at <a href="partner@oyindonesia.com">partner@oyindonesia.com</a> if you encountered any difficulties testing our Postman Collection. </p>
 <h1 id='authentication' type='normal'>Authentication</h1>
 <p>OY! API uses pair of <code>API Key</code> and <code>IP Address</code> to authenticate a partner request. Partner needs to register a unique <code>IP Address</code> which will be used as originating request for the API Services.</p>
 
@@ -9840,78 +9908,6 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>User does not have access to the payment link</td>
 </tr>
 </tbody></table>
-<h2 id='postman-fund-acceptance' type='normal'>POSTMAN</h2>
-<p>Postman is a free web testing service that provides an easy, fast, and solid software for developers to learn and maintain a web service contract from both the provider and consumer. As such, Postman has become a widely used tool for contract testing and reference due to its User Experience. </p>
-
-<p>To streamline development and integration with OY!, we have created a Postman Collection at your disposal. Get started by installing Postman here.</p>
-
-<p>Prerequisites: You must have received an authorization <strong>Username</strong> and <strong>API Key</strong> from us to access our feature. Contact us at <a href="partner@oyindonesia.com">partner@oyindonesia.com</a> to receive your authorization information now. </p>
-<h3 id='import-oy-payment-checkout-postman-collection-to-postman-postman' type='normal'>Import OY! Payment Checkout Postman Collection to Postman</h3>
-<ul>
-<li>Locate the “Import” button at the upper left corner of your Postman screen</li>
-<li>On the pop-up menu, navigate to the “Link” tab and enter this <a href="https://www.getpostman.com/collections/36bb9f0160c5e40c4893">URL</a>, click “Continue” then “Import”</li>
-</ul>
-
-<p><img src="images/images/postman_checkout_import_link-d403af37.png" alt="import" /></p>
-
-<ul>
-<li>A notification on the bottom left corner of your dashboard should appear, indicating that you have successfully imported the collection</li>
-<li>Locate the “Collections” tab on the left menu bar of your Postman dashboard to find that a collection named “Payment Checkout Postman” has been added</li>
-</ul>
-<h3 id='api-authorization-postman' type='normal'>API Authorization</h3>
-<ul>
-<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. </li>
-<li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
-<li>Open the “Headers” tab and add the following key-value pairs: <strong>Content-Type</strong> with <strong>application/json</strong>, <strong>X-Oy-Username</strong> with your <strong>username</strong> and <strong>X-Api-Key</strong> with your <strong>API Key</strong></li>
-</ul>
-
-<p><img src="images/images/postman_checkout_header-f3a257d2.png" alt="header" /></p>
-
-<ul>
-<li>Your Authorization header configuration has been complete. Click the blue “Send” button and check your response window to retrieve your payment information response. </li>
-</ul>
-
-<p><img src="images/images/postman_checkout_header_finish-44fd7390.png" alt="header_result" /></p>
-<h3 id='create-a-postman-variable-environment-postman' type='normal'>Create a Postman Variable Environment</h3>
-<p>The Postman Variable Environment provides you with the capabilities to save authorization configurations. You can use these saved configurations for all your Postman Requests. This step is optional.</p>
-
-<ul>
-<li>Locate the gear icon at the upper right corner of your Postman screen</li>
-<li>On the pop-up menu, click “Add” and give an Environment name. For example, “OY! Payment”</li>
-</ul>
-
-<p><img src="images/images/postman_checkout_add_environtment-2c6ba8d2.png" alt="header" /></p>
-
-<ul>
-<li>Add <strong>base_url</strong> in the Variable column and set the value to <strong>https://partner.oyindonesia.com</strong> in Current Value column</li>
-<li>Add <strong>username</strong> in the Variable column and set the value to your <strong>username</strong> in the Current Value column</li>
-<li>Add <strong>api_key</strong> in the Variable column and set the value to your <strong>API Key</strong> value in the Current Value column</li>
-<li>Click “Add” to save. You can later re-visit and update these values.</li>
-</ul>
-
-<p><img src="images/images/postman_checkout_setup_environtment-fda59661.png" alt="header" /></p>
-
-<ul>
-<li>To utilize the created environment, locate the environment management menu at the upper left corner of your screen. It should be to the left of the eye icon. </li>
-<li>In the drop down menu, choose the environment that you have just created. </li>
-</ul>
-
-<p><img src="images/images/postman_checkout_choose_environtment-2c54b8f9.png" alt="header" /></p>
-
-<p>You just set your authorization value header with environment variable which already configured.</p>
-<h3 id='test-one-of-our-api-calls-postman' type='normal'>Test one of our API Calls</h3>
-<ul>
-<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. </li>
-<li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
-<li>Replace <a href="https://partner.oyindonesia.com">https://partner.oyindonesia.com</a> in the GET url with <strong>{{base_url}}</strong> as the value </li>
-<li>Replace the <strong>X-Oy-Username</strong> key-value pair to <strong>{{username}}</strong> as the value </li>
-<li>Replace the <strong>X-Api-Key</strong> key-value pair to <strong>{{api_key}}</strong> as the value</li>
-<li>Click the blue “Send” button and check your response window to retrieve your payment information response.</li>
-</ul>
-
-<p><img src="images/images/postman_checkout_detail-1255093a.png" alt="header" /></p>
-
-<p>If you were able to complete all these steps, your environment is working perfectly and is on the right track. Feel free to test out our other API products or contact us at <a href="partner@oyindonesia.com">partner@oyindonesia.com</a> if you encountered any difficulties testing our Postman Collection. </p>
 <h1 id='api-offline' type='normal'>API Offline</h1>
 <p>API Offline enables your user to withdraw and deposit money from OY offline channel such as Cash Recycle Machine (CRM) and convenience store.</p>
 <h2 id='initiate-transaction-api-offline' type='normal'>Initiate Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
