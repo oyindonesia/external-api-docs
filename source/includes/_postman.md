@@ -12,7 +12,7 @@ The easiest way to get started using our API is to use our Postman Collection. P
 
 The following is an outline of actions to get started with Postman
 
-[![Run in Postman](images/button_postman.svg)](https://app.getpostman.com/run-collection/1dd40b2f4a76f6465ae8?action=collection%2Fimport)
+[![Run in Postman](images/button_postman.svg)](https://app.getpostman.com/run-collection/893ce0e3ece7fffdb235?action=collection%2Fimport)
 
 You’ll need to create a OY! indonesia account to access OY! APIs via Postman Collection
 
