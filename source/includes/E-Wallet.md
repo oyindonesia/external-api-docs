@@ -292,6 +292,22 @@ If your settlement is non-real time, for every transaction whose payment method 
 
 ### Callback Parameters
 
+> Response callback:
+
+```json
+{
+	"success": true,
+  "trx_id": "789467agf238893894rfcw7978iu7g7e",
+  "customer_id": "my_user_id",
+	"amount": 75000,
+  "ewallet_code": "shopeepay_ewallet",
+  "mobile_number": "6282114845847",
+  "success_redirect_url": "https://myweb.com/usertx/123456",
+  "settlement_time": "01/02/2020T15:00:00.000+0000",
+  "settlement_status": "WAITING"
+}
+```
+
 Parameter | Type | Description
 --------- | ---- | -------- | 
 success | boolean | The status of the payment and it is always set to to true
