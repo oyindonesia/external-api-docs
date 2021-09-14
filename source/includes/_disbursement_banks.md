@@ -77,12 +77,10 @@ Bank Codes | Bank Name
 212	| Bank Woori Saudara
 213	| Bank BTPN
 405	| Bank Victoria Syariah
-422	| Bank BRI Syariah
 425	| Bank Jabar Banten Syariah
 426	| Bank Mega
-427	| Bank BNI SYARIAH
 441	| Bank Bukopin
-451	| Bank Syariah Mandiri
+451	| Bank Syariah Indonesia
 472	| Bank Jasa Jakarta
 484	| Bank KEB HANA
 485	| Bank MNC INTERNATIONAL
