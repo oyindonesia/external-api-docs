@@ -1,6 +1,6 @@
-<h1 id='api-e-wallet-aggregator' type='normal'>API E-Wallet Aggregator</h1>
+<h1 id='api-e-wallet-aggregator-coming-soon' type='normal'>API E-Wallet Aggregator (Coming Soon)</h1>
 <p>E-Wallet Aggregator API allows partners to seamlessly charge and receive payments directly from top e-wallet issuers. With one integration, they are able to get access to all of OY’s available e-wallets ((OVO, ShopeePay, LinkAja, and DANA) and upcoming e-wallet integrations.</p>
-<h2 id='create-e-wallet-transaction-api-e-wallet-aggregator' type='normal'>Create E-Wallet Transaction</h2>
+<h2 id='create-e-wallet-transaction-api-e-wallet-aggregator-coming-soon' type='normal'>Create E-Wallet Transaction</h2>
 <p>Use this API to create an e-wallet transaction for your user</p>
 <h3 id='https-request-create-e-wallet-transaction' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/e-wallet-aggregator/create-transaction</code> <br/></p>
@@ -363,7 +363,7 @@
     </span><span class="nl">"ewallet_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopeepay_ewallet"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ewallet_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://someewalletlink.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='e-wallet-transaction-callback-api-e-wallet-aggregator' type='normal'>E-Wallet Transaction Callback</h2>
+</span></code></pre></div><h2 id='e-wallet-transaction-callback-api-e-wallet-aggregator-coming-soon' type='normal'>E-Wallet Transaction Callback</h2>
 <p>The E-Wallet Transaction Callback will be sent as a POST request (using JSON format) to your web hook. Please inform your Callback web hook to our business representative or to partner@oyindonesia.com</p>
 
 <p>You will receive the callback when your user has successfully paid the e-wallet transaction. (Note: We send the callback ONLY for a successful transaction.</p>
@@ -448,7 +448,7 @@
 <td>Status of the settlement (e.g. success/waiting)</td>
 </tr>
 </tbody></table>
-<h2 id='check-e-wallet-transaction-status-api-e-wallet-aggregator' type='normal'>Check E-Wallet Transaction Status</h2>
+<h2 id='check-e-wallet-transaction-status-api-e-wallet-aggregator-coming-soon' type='normal'>Check E-Wallet Transaction Status</h2>
 <p>Use this API to check the status of an e-wallet transaction.</p>
 <h3 id='https-request-check-e-wallet-transaction-status' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/e-wallet-aggregator/check-status</code> <br/></p>
@@ -703,7 +703,7 @@
     </span><span class="nl">"ewallet_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopeepay_ewallet"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ewallet_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://someewalletlink.com"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='e-wallet-details-api-e-wallet-aggregator' type='normal'>E-Wallet Details</h2>
+</span></code></pre></div><h2 id='e-wallet-details-api-e-wallet-aggregator-coming-soon' type='normal'>E-Wallet Details</h2>
 <table><thead>
 <tr>
 <th>E-Wallet Issuer</th>
@@ -742,7 +742,7 @@
 <td>Support</td>
 </tr>
 </tbody></table>
-<h2 id='e-wallet-transaction-status-api-e-wallet-aggregator' type='normal'>E-Wallet Transaction Status</h2>
+<h2 id='e-wallet-transaction-status-api-e-wallet-aggregator-coming-soon' type='normal'>E-Wallet Transaction Status</h2>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -770,7 +770,7 @@
 <td>Expiration time is reached with no payment received</td>
 </tr>
 </tbody></table>
-<h2 id='list-of-status-codes-api-e-wallet-aggregator' type='normal'>List of Status Codes</h2><h3 id='create-e-wallet-transaction-list-of-status-codes' type='normal'>Create E-Wallet Transaction</h3>
+<h2 id='list-of-status-codes-api-e-wallet-aggregator-coming-soon' type='normal'>List of Status Codes</h2><h3 id='create-e-wallet-transaction-list-of-status-codes' type='normal'>Create E-Wallet Transaction</h3>
 <p>(Coming Soon)</p>
 <h3 id='check-e-wallet-transaction-status-list-of-status-codes' type='normal'>Check E-Wallet Transaction Status</h3>
 <p>(Coming Soon)</p>
