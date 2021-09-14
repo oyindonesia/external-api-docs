@@ -570,26 +570,3 @@ EXPIRED | Expiration time is reached with no payment received
 ### Check E-Wallet Transaction Status
 
 (Coming Soon)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
