@@ -2222,26 +2222,8 @@
                      <span class="toc-link-content">
                         List of Status Codes
                       </span>
-                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                     </a>
-                    <ul class="toc-list-h3">
-                        <li>
-                          <a href="#create-e-wallet-transaction-list-of-status-codes" class="toc-h3 toc-link" data-title="Create E-Wallet Transaction">
-                            <span class="toc-link-content">
-                              Create E-Wallet Transaction
-                            </span>
-                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#check-e-wallet-transaction-status-list-of-status-codes" class="toc-h3 toc-link" data-title="Check E-Wallet Transaction Status">
-                            <span class="toc-link-content">
-                              Check E-Wallet Transaction Status
-                            </span>
-                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                          </a>
-                        </li>
-                    </ul>
                   </li>
               </ul>
           </li>
@@ -13968,7 +13950,8 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
     </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my_user_id"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC123456527"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ewallet_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopeepay_ewallet"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ewallet_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://someewalletlink.com"</span><span class="w">
+    </span><span class="nl">"ewallet_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://someewalletlink.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marked as WAITING_PAYMENT by creation service"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <table><thead>
@@ -14035,6 +14018,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>ewallet_url</td>
 <td>String(255)</td>
 <td>EWallet URL passed from the e-wallet issuers to be used for payment purposes</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>String(255)</td>
+<td>Reason for the status given</td>
 </tr>
 </tbody></table>
 <h2 id='e-wallet-details-api-e-wallet-aggregator-coming-soon' type='normal'>E-Wallet Details</h2>
@@ -14104,10 +14092,85 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>Expiration time is reached with no payment received</td>
 </tr>
 </tbody></table>
-<h2 id='list-of-status-codes-api-e-wallet-aggregator-coming-soon' type='normal'>List of Status Codes</h2><h3 id='create-e-wallet-transaction-list-of-status-codes' type='normal'>Create E-Wallet Transaction</h3>
-<p>(Coming Soon)</p>
-<h3 id='check-e-wallet-transaction-status-list-of-status-codes' type='normal'>Check E-Wallet Transaction Status</h3>
-<p>(Coming Soon)</p>
+<h2 id='list-of-status-codes-api-e-wallet-aggregator-coming-soon' type='normal'>List of Status Codes</h2>
+<table><thead>
+<tr>
+<th>Response Code</th>
+<th>State</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Final</td>
+<td>Response success without error</td>
+</tr>
+<tr>
+<td>990</td>
+<td>Final</td>
+<td>Request is Rejected (Parameter is invalid)</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Final</td>
+<td>Request is Rejected (User is not active/registered for this feature)</td>
+</tr>
+<tr>
+<td>203</td>
+<td>Final</td>
+<td>Request is Rejected (Duplicate Partner Trx ID)</td>
+</tr>
+<tr>
+<td>204</td>
+<td>Final</td>
+<td>Request is Rejected (Partner Trx ID not found)</td>
+</tr>
+<tr>
+<td>207</td>
+<td>Final</td>
+<td>Request is Rejected (Request IP Address is not Registered)</td>
+</tr>
+<tr>
+<td>208</td>
+<td>Final</td>
+<td>Request is Rejected (API Key is not Valid)</td>
+</tr>
+<tr>
+<td>248</td>
+<td>Non-Final</td>
+<td>Request is Rejected (Ewallet/Vendor Server Error)</td>
+</tr>
+<tr>
+<td>250</td>
+<td>Final</td>
+<td>Request is Rejected (EWallet code is not available)</td>
+</tr>
+<tr>
+<td>251</td>
+<td>Final</td>
+<td>Request is rejected (EWallet code is disabled)</td>
+</tr>
+<tr>
+<td>252</td>
+<td>Non-Final</td>
+<td>Request is rejected (Creation/Check Status request failed)</td>
+</tr>
+<tr>
+<td>253</td>
+<td>Final</td>
+<td>Request is Rejected (Partner credential not found or invalid on e-wallet server)</td>
+</tr>
+<tr>
+<td>254</td>
+<td>Final</td>
+<td>Request is Rejected (User credential not found, blocked, or invalid)</td>
+</tr>
+<tr>
+<td>999</td>
+<td>Non-Final</td>
+<td>Internal Server Error</td>
+</tr>
+</tbody></table>
 <h1 id='docs-changelog' type='normal'>Docs Changelog</h1>
 <p>tbd</p>
 
