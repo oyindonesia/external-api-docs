@@ -563,10 +563,20 @@ EXPIRED | Expiration time is reached with no payment received
 
 ## List of Status Codes
 
-### Create E-Wallet Transaction
+Response Code | State | Description
+---------- | ------- | -------
+000 | Final | Response success without error
+990 | Final | Request is Rejected (Parameter is invalid)
+202 | Final | Request is Rejected (User is not active/registered for this feature)
+203 | Final | Request is Rejected (Duplicate Partner Trx ID)
+204 | Final | Request is Rejected (Tx Id is not found)
+207 | Final | Request is Rejected (Request IP Address is not Registered)
+208 | Final | Request is Rejected (API Key is not Valid)
+248 | Non-Final | Request is Rejected (Ewallet/Vendor Server Error)
+250 | Final | Request is Rejected (EWallet code is not available)
+251 | Final | Request is rejected (EWallet code is disabled)
+252 | Non-Final | Request is rejected (Creation/Check Status request failed)
+253 | Final | Request is Rejected (Partner credential not found or invalid on e-wallet server)
+254 | Final | Request is Rejected (User credential not found, blocked, or invalid)
+999 | Non-Final | Internal Server Error
 
-(Coming Soon)
-
-### Check E-Wallet Transaction Status
-
-(Coming Soon)
