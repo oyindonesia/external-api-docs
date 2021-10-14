@@ -35,7 +35,7 @@ request.body = json.encode({
   "amount": 15000,
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
-  "email": "yono@oyindonesia.com"
+  "email": "business.support@oyindonesia.com"
 });
 request.headers.addAll(headers);
 
@@ -70,7 +70,7 @@ func main() {
 	"amount": 15000,
 	"note": "Test API Disburse",
 	"partner_trx_id": "OYON0000064",
-	"email": "yono@oyindonesia.com"
+	"email": "business.support@oyindonesia.com"
 }`)
 
   client := &http.Client {
@@ -106,7 +106,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"yono@oyindonesia.com\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"business.support@oyindonesia.com\"\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/remit")
   .method("POST", body)
@@ -125,7 +125,7 @@ var data = JSON.stringify({
   "amount": 15000,
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
-  "email": "yono@oyindonesia.com"
+  "email": "business.support@oyindonesia.com"
 });
 
 var xhr = new XMLHttpRequest();
@@ -161,7 +161,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n	"recipient_bank": "008",\n	"recipient_account": "0201245681",\n	"amount": 15000,\n	"note": "Test API Disburse",\n	"partner_trx_id": "OYON0000064",\n	"email": "yono@oyindonesia.com"\n}');
+$request->setBody('{\n	"recipient_bank": "008",\n	"recipient_account": "0201245681",\n	"amount": 15000,\n	"note": "Test API Disburse",\n	"partner_trx_id": "OYON0000064",\n	"email": "business.support@oyindonesia.com"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -188,7 +188,7 @@ payload = json.dumps({
   "amount": 15000,
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
-  "email": "yono@oyindonesia.com"
+  "email": "business.support@oyindonesia.com"
 })
 headers = {
   'Content-Type': 'application/json',
@@ -759,11 +759,11 @@ request.body = json.encode({
   "amount": 15000,
   "note": "note",
   "partner_trx_id": "partner-trx-id-006",
-  "email": "yono@oyindonesia.com",
+  "email": "business.support@oyindonesia.com",
   "schedule_date": null,
   "is_trigger_based": true,
   "trigger_date": "01-07-2021",
-  "trigger_email": "yono@oyindonesia.com",
+  "trigger_email": "business.support@oyindonesia.com",
   "cs_phone_number": "085712163208",
   "cs_email": "device_test@oyindonesia.com"
 });
@@ -800,11 +800,11 @@ func main() {
 	"amount": 15000,
 	"note": "note",
 	"partner_trx_id": "partner-trx-id-006",
-	"email": "yono@oyindonesia.com",
+	"email": "business.support@oyindonesia.com",
     "schedule_date": null,
     "is_trigger_based": true,
     "trigger_date": "01-07-2021",
-    "trigger_email": "yono@oyindonesia.com",
+    "trigger_email": "business.support@oyindonesia.com",
     "cs_phone_number": "085712163208",
     "cs_email": "device_test@oyindonesia.com"
 }`)
@@ -842,7 +842,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"recipient_bank\": \"008\",\n    \"recipient_account\": \"0393500100\",\n\t\"amount\": 15000,\n\t\"note\": \"note\",\n\t\"partner_trx_id\": \"partner-trx-id-006\",\n\t\"email\": \"yono@oyindonesia.com\",\n    \"schedule_date\": null,\n    \"is_trigger_based\": true,\n    \"trigger_date\": \"01-07-2021\",\n    \"trigger_email\": \"yono@oyindonesia.com\",\n    \"cs_phone_number\": \"085712163208\",\n    \"cs_email\": \"device_test@oyindonesia.com\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"recipient_bank\": \"008\",\n    \"recipient_account\": \"0393500100\",\n\t\"amount\": 15000,\n\t\"note\": \"note\",\n\t\"partner_trx_id\": \"partner-trx-id-006\",\n\t\"email\": \"business.support@oyindonesia.com\",\n    \"schedule_date\": null,\n    \"is_trigger_based\": true,\n    \"trigger_date\": \"01-07-2021\",\n    \"trigger_email\": \"business.support@oyindonesia.com\",\n    \"cs_phone_number\": \"085712163208\",\n    \"cs_email\": \"device_test@oyindonesia.com\"\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/scheduled-remit")
   .method("POST", body)
@@ -861,11 +861,11 @@ var data = JSON.stringify({
   "amount": 15000,
   "note": "note",
   "partner_trx_id": "partner-trx-id-006",
-  "email": "yono@oyindonesia.com",
+  "email": "business.support@oyindonesia.com",
   "schedule_date": null,
   "is_trigger_based": true,
   "trigger_date": "01-07-2021",
-  "trigger_email": "yono@oyindonesia.com",
+  "trigger_email": "business.support@oyindonesia.com",
   "cs_phone_number": "085712163208",
   "cs_email": "device_test@oyindonesia.com"
 });
@@ -903,7 +903,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n	"recipient_bank": "008",\n    "recipient_account": "0393500100",\n	"amount": 15000,\n	"note": "note",\n	"partner_trx_id": "partner-trx-id-006",\n	"email": "yono@oyindonesia.com",\n    "schedule_date": null,\n    "is_trigger_based": true,\n    "trigger_date": "01-07-2021",\n    "trigger_email": "yono@oyindonesia.com",\n    "cs_phone_number": "085712163208",\n    "cs_email": "device_test@oyindonesia.com"\n}');
+$request->setBody('{\n	"recipient_bank": "008",\n    "recipient_account": "0393500100",\n	"amount": 15000,\n	"note": "note",\n	"partner_trx_id": "partner-trx-id-006",\n	"email": "business.support@oyindonesia.com",\n    "schedule_date": null,\n    "is_trigger_based": true,\n    "trigger_date": "01-07-2021",\n    "trigger_email": "business.support@oyindonesia.com",\n    "cs_phone_number": "085712163208",\n    "cs_email": "device_test@oyindonesia.com"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -930,11 +930,11 @@ payload = json.dumps({
   "amount": 15000,
   "note": "note",
   "partner_trx_id": "partner-trx-id-006",
-  "email": "yono@oyindonesia.com",
+  "email": "business.support@oyindonesia.com",
   "schedule_date": None,
   "is_trigger_based": True,
   "trigger_date": "01-07-2021",
-  "trigger_email": "yono@oyindonesia.com",
+  "trigger_email": "business.support@oyindonesia.com",
   "cs_phone_number": "085712163208",
   "cs_email": "device_test@oyindonesia.com"
 })
