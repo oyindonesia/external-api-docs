@@ -1699,7 +1699,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 </thead><tbody>
 <tr>
 <td>002</td>
-<td>Bank BRI</td>
+<td>Bank BRI (temporarily disabled)</td>
 </tr>
 <tr>
 <td>013</td>
@@ -1711,7 +1711,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 </tr>
 <tr>
 <td>008</td>
-<td>Bank Mandiri</td>
+<td>Bank Mandiri (temporarily disabled)</td>
 </tr>
 <tr>
 <td>009</td>
