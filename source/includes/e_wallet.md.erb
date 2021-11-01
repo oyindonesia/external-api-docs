@@ -32,10 +32,9 @@ curl -X POST \
         "partner_trx_id": "ABC123456527",
         "sub_merchant_id": "zx88989F",
         "amount": 75000,
-        "email": "johndoe@gmail.com;jane@gmail.com",
+        "email": "johndoe@gmail.com",
         "ewallet_code": "shopeepay_ewallet",
         "mobile_number": "6282114845847",
-        "redirect_url_env": "app",
         "success_redirect_url":"https://myweb.com/usertx/123456",
         "expiration_time": 15
     }'
@@ -53,10 +52,9 @@ request.body = json.encode({
  "partner_trx_id": "ABC123456527",
  "sub_merchant_id": "zx88989F",
  "amount": 75000,
- "email": "johndoe@gmail.com;jane@gmail.com",
+ "email": "johndoe@gmail.com",
  "ewallet_code": "shopeepay_ewallet",
  "mobile_number": "6282114845847",
- "redirect_url_env": "app",
  "success_redirect_url":"https://myweb.com/usertx/123456",
  "expiration_time": 15
 });
@@ -92,10 +90,9 @@ func main() {
      "partner_trx_id": "ABC123456527",
      "sub_merchant_id": "zx88989F",
      "amount": 75000,
-     "email": "johndoe@gmail.com;jane@gmail.com",
+     "email": "johndoe@gmail.com",
      "ewallet_code": "shopeepay_ewallet",
      "mobile_number": "6282114845847",
-     "redirect_url_env": "app",
      "success_redirect_url":"https://myweb.com/usertx/123456",
      "expiration_time": 15
 }`)
@@ -132,7 +129,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"customer_id\": \"my_user_id\",\n\t\"partner_trx_id\": \"ABC123456527\",\n\t\"sub_merchant_id\": \"zx88989F\",\n\t\"amount\": 75000,\n\t\"email\": \"john.doe@email.com\",\n\t\"ewallet_code\": \"shopeepay_ewallet\",\n\t\"mobile_number\": \"6282114845847\",\n\t\"expiration_time\": 15,\n\t\"redirect_url_env\": \"app\",\n\t\"success_redirect_url\": \"https://myweb.com/usertx/123456\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"customer_id\": \"my_user_id\",\n\t\"partner_trx_id\": \"ABC123456527\",\n\t\"sub_merchant_id\": \"zx88989F\",\n\t\"amount\": 75000,\n\t\"email\": \"john.doe@email.com\",\n\t\"ewallet_code\": \"shopeepay_ewallet\",\n\t\"mobile_number\": \"6282114845847\",\n\t\"expiration_time\": 15,\n\t\"success_redirect_url\": \"https://myweb.com/usertx/123456\"\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/e-wallet-aggregator/create-transaction")
   .method("POST", body)
@@ -149,10 +146,9 @@ var data = JSON.stringify({
     "partner_trx_id": "ABC123456527",
     "sub_merchant_id": "zx88989F",
     "amount": 75000,
-    "email": "johndoe@gmail.com;jane@gmail.com",
+    "email": "johndoe@gmail.com",
     "ewallet_code": "shopeepay_ewallet",
     "mobile_number": "6282114845847",
-    "redirect_url_env": "app",
     "success_redirect_url":"https://myweb.com/usertx/123456",
     "expiration_time": 15
 });
@@ -188,7 +184,7 @@ $request->setHeader(array(
   'X-Oy-Username' => '{{username}}',
   'X-Api-Key' => '{{api-key}}'
 ));
-$request->setBody('{\n	"customer_id": "my_user_id",\n "partner_trx_id": "ABC123456527",\n "sub_merchant_id": "zx88989F",\n "amount": 75000,\n	"email": "johndoe@gmail.com;jane@gmail.com",\n	"ewallet_code": "shopeepay_ewallet",\n	"mobile_number": "6282114845847",\n	"redirect_url_env": "app",\n "success_redirect_url":"https://myweb.com/usertx/123456",\n "expiration_time": 15\n}');
+$request->setBody('{\n	"customer_id": "my_user_id",\n "partner_trx_id": "ABC123456527",\n "sub_merchant_id": "zx88989F",\n "amount": 75000,\n	"email": "johndoe@gmail.com",\n	"ewallet_code": "shopeepay_ewallet",\n	"mobile_number": "6282114845847",\n "success_redirect_url":"https://myweb.com/usertx/123456",\n "expiration_time": 15\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -214,10 +210,9 @@ payload = json.dumps({
   "partner_trx_id": "ABC123456527",
   "sub_merchant_id": "zx88989F",
   "amount": 75000,
-  "email": "johndoe@gmail.com;jane@gmail.com",
+  "email": "johndoe@gmail.com",
   "ewallet_code": "shopeepay_ewallet",
   "mobile_number": "6282114845847",
-  "redirect_url_env": "app",
   "success_redirect_url":"https://myweb.com/usertx/123456",
   "expiration_time": 15
 })
@@ -259,7 +254,6 @@ amount | BigDecimal | TRUE| - | Transaction amount. Min = 1,000. Max = 10,000,00
 email | String(255) | FALSE | - | Customer's email
 ewallet_code | String(255) | TRUE | - | The ewallet issuer that the customer will use to pay. Refer to table "E-Wallet Details" for the list of codes
 mobile_number | String(255) | CONDITIONAL | - | Customer mobile number (format 628xxxxxxxxxx) used on their ewallet account. Only required if ewallet_code is equal to "ovo_ewallet"
-redirect_url_env | String(255) | CONDITIONAL | "web" | Indicates the environment that you use to redirect the customers back once payment has been completed in e-wallet issuers. Possible values: "web" or "app". Only used if ewallet_code is equal to "dana_ewallet"
 success_redirect_url | String(255) | CONDITIONAL | - | Indicates the URL of your environment (to redirect the customers back once payment has been  completed in e-wallet issuers.)  Accepts HTTP links and URL  scheme formats.  Required if ewallet_code = DANA or LINKAJA or SHOPEEPAY.
 expiration_time | Long | FALSE | Maximum expiration time (in minutes) for each ewallet issuer | Expiration time of the transaction in minute  e.g If you want the transaction to be expired after 5 minutes, you just have to set expiration_time to 5.  Each ewallet type might have different expiration time rule, please see table "E-Wallet Details"
 
@@ -270,6 +264,7 @@ Parameter | Type | Description
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. See table "Response Code" for more details
 ewallet_trx_status | String(20) | Always filled with WAITING_PAYMENT if a transaction is successfully created
 trx_id | String(255) | Filled with a unique transaction identifier from OY
+ref_number | String(255) | Filled with a unique transaction identifier from OY, can also be used to mock callback in staging environment
 customer_id | String(255) | ID generated by Partner for a specific user/customer
 partner_trx_id | String(255) | ID generated by Partner for a specific transaction
 amount | String(255) | Transaction amount |
@@ -313,6 +308,7 @@ Parameter | Type | Description
 success | boolean | The status of the payment and it is always set to to true
 partner_trx_id  | String(255) | ID generated by Partner for a specific transaction
 trx_id | String(255) | Filled with a unique transaction identifier from OY
+ref_number | String(255) | Filled with a unique transaction identifier from OY, can also be used to mock callback in staging environment
 customer_id | String(255) | ID generated by Partner for a specific user/customer
 amount | BigDecimal | Transaction amount
 ewallet_code | String(255) | The ewallet issuer that the customer used to pay. Refer to this for the list of available ewallet codes
