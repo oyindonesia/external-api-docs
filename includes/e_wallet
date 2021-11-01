@@ -36,10 +36,9 @@
         "partner_trx_id": "ABC123456527",
         "sub_merchant_id": "zx88989F",
         "amount": 75000,
-        "email": "johndoe@gmail.com;jane@gmail.com",
+        "email": "johndoe@gmail.com",
         "ewallet_code": "shopeepay_ewallet",
         "mobile_number": "6282114845847",
-        "redirect_url_env": "app",
         "success_redirect_url":"https://myweb.com/usertx/123456",
         "expiration_time": 15
     }'</span>
@@ -54,10 +53,9 @@
  <span class="s">"partner_trx_id"</span><span class="o">:</span> <span class="s">"ABC123456527"</span><span class="o">,</span>
  <span class="s">"sub_merchant_id"</span><span class="o">:</span> <span class="s">"zx88989F"</span><span class="o">,</span>
  <span class="s">"amount"</span><span class="o">:</span> <span class="mi">75000</span><span class="o">,</span>
- <span class="s">"email"</span><span class="o">:</span> <span class="s">"johndoe@gmail.com;jane@gmail.com"</span><span class="o">,</span>
+ <span class="s">"email"</span><span class="o">:</span> <span class="s">"johndoe@gmail.com"</span><span class="o">,</span>
  <span class="s">"ewallet_code"</span><span class="o">:</span> <span class="s">"shopeepay_ewallet"</span><span class="o">,</span>
  <span class="s">"mobile_number"</span><span class="o">:</span> <span class="s">"6282114845847"</span><span class="o">,</span>
- <span class="s">"redirect_url_env"</span><span class="o">:</span> <span class="s">"app"</span><span class="o">,</span>
  <span class="s">"success_redirect_url"</span><span class="o">:</span><span class="s">"https://myweb.com/usertx/123456"</span><span class="o">,</span>
  <span class="s">"expiration_time"</span><span class="o">:</span> <span class="mi">15</span>
 <span class="o">});</span>
@@ -90,10 +88,9 @@
      "partner_trx_id": "ABC123456527",
      "sub_merchant_id": "zx88989F",
      "amount": 75000,
-     "email": "johndoe@gmail.com;jane@gmail.com",
+     "email": "johndoe@gmail.com",
      "ewallet_code": "shopeepay_ewallet",
      "mobile_number": "6282114845847",
-     "redirect_url_env": "app",
      "success_redirect_url":"https://myweb.com/usertx/123456",
      "expiration_time": 15
 }`</span><span class="p">)</span>
@@ -127,7 +124,7 @@
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n\t\"customer_id\": \"my_user_id\",\n\t\"partner_trx_id\": \"ABC123456527\",\n\t\"sub_merchant_id\": \"zx88989F\",\n\t\"amount\": 75000,\n\t\"email\": \"john.doe@email.com\",\n\t\"ewallet_code\": \"shopeepay_ewallet\",\n\t\"mobile_number\": \"6282114845847\",\n\t\"expiration_time\": 15,\n\t\"redirect_url_env\": \"app\",\n\t\"success_redirect_url\": \"https://myweb.com/usertx/123456\"\n}"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n\t\"customer_id\": \"my_user_id\",\n\t\"partner_trx_id\": \"ABC123456527\",\n\t\"sub_merchant_id\": \"zx88989F\",\n\t\"amount\": 75000,\n\t\"email\": \"john.doe@email.com\",\n\t\"ewallet_code\": \"shopeepay_ewallet\",\n\t\"mobile_number\": \"6282114845847\",\n\t\"expiration_time\": 15,\n\t\"success_redirect_url\": \"https://myweb.com/usertx/123456\"\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/e-wallet-aggregator/create-transaction"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
@@ -141,10 +138,9 @@
     <span class="dl">"</span><span class="s2">partner_trx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ABC123456527</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">sub_merchant_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">zx88989F</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">75000</span><span class="p">,</span>
-    <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">johndoe@gmail.com;jane@gmail.com</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">johndoe@gmail.com</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">ewallet_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">shopeepay_ewallet</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">mobile_number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">6282114845847</span><span class="dl">"</span><span class="p">,</span>
-    <span class="dl">"</span><span class="s2">redirect_url_env</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">app</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">success_redirect_url</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">https://myweb.com/usertx/123456</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">expiration_time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">15</span>
 <span class="p">});</span>
@@ -177,7 +173,7 @@
   <span class="s1">'X-Oy-Username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
   <span class="s1">'X-Api-Key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "customer_id": "my_user_id",\n "partner_trx_id": "ABC123456527",\n "sub_merchant_id": "zx88989F",\n "amount": 75000,\n  "email": "johndoe@gmail.com;jane@gmail.com",\n  "ewallet_code": "shopeepay_ewallet",\n  "mobile_number": "6282114845847",\n "redirect_url_env": "app",\n "success_redirect_url":"https://myweb.com/usertx/123456",\n "expiration_time": 15\n}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "customer_id": "my_user_id",\n "partner_trx_id": "ABC123456527",\n "sub_merchant_id": "zx88989F",\n "amount": 75000,\n  "email": "johndoe@gmail.com",\n "ewallet_code": "shopeepay_ewallet",\n  "mobile_number": "6282114845847",\n "success_redirect_url":"https://myweb.com/usertx/123456",\n "expiration_time": 15\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -200,10 +196,9 @@
   <span class="s">"partner_trx_id"</span><span class="p">:</span> <span class="s">"ABC123456527"</span><span class="p">,</span>
   <span class="s">"sub_merchant_id"</span><span class="p">:</span> <span class="s">"zx88989F"</span><span class="p">,</span>
   <span class="s">"amount"</span><span class="p">:</span> <span class="mi">75000</span><span class="p">,</span>
-  <span class="s">"email"</span><span class="p">:</span> <span class="s">"johndoe@gmail.com;jane@gmail.com"</span><span class="p">,</span>
+  <span class="s">"email"</span><span class="p">:</span> <span class="s">"johndoe@gmail.com"</span><span class="p">,</span>
   <span class="s">"ewallet_code"</span><span class="p">:</span> <span class="s">"shopeepay_ewallet"</span><span class="p">,</span>
   <span class="s">"mobile_number"</span><span class="p">:</span> <span class="s">"6282114845847"</span><span class="p">,</span>
-  <span class="s">"redirect_url_env"</span><span class="p">:</span> <span class="s">"app"</span><span class="p">,</span>
   <span class="s">"success_redirect_url"</span><span class="p">:</span><span class="s">"https://myweb.com/usertx/123456"</span><span class="p">,</span>
   <span class="s">"expiration_time"</span><span class="p">:</span> <span class="mi">15</span>
 <span class="p">})</span>
@@ -293,13 +288,6 @@
 <td>Customer mobile number (format 628xxxxxxxxxx) used on their ewallet account. Only required if ewallet_code is equal to &quot;ovo_ewallet&quot;</td>
 </tr>
 <tr>
-<td>redirect_url_env</td>
-<td>String(255)</td>
-<td>CONDITIONAL</td>
-<td>&quot;web&quot;</td>
-<td>Indicates the environment that you use to redirect the customers back once payment has been completed in e-wallet issuers. Possible values: &quot;web&quot; or &quot;app&quot;. Only used if ewallet_code is equal to &quot;dana_ewallet&quot;</td>
-</tr>
-<tr>
 <td>success_redirect_url</td>
 <td>String(255)</td>
 <td>CONDITIONAL</td>
@@ -336,6 +324,11 @@
 <td>trx_id</td>
 <td>String(255)</td>
 <td>Filled with a unique transaction identifier from OY</td>
+</tr>
+<tr>
+<td>ref_number</td>
+<td>String(255)</td>
+<td>Filled with a unique transaction identifier from OY, can also be used to mock callback in staging environment</td>
 </tr>
 <tr>
 <td>customer_id</td>
@@ -411,6 +404,11 @@
 <td>trx_id</td>
 <td>String(255)</td>
 <td>Filled with a unique transaction identifier from OY</td>
+</tr>
+<tr>
+<td>ref_number</td>
+<td>String(255)</td>
+<td>Filled with a unique transaction identifier from OY, can also be used to mock callback in staging environment</td>
 </tr>
 <tr>
 <td>customer_id</td>
