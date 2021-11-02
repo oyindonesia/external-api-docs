@@ -20,6 +20,24 @@ $(function () {
     adjustLanguageSelectorWidth();
   });
   adjustLanguageSelectorWidth();
+
+  bodymovin.loadAnimation({
+    container: document.getElementById('container'), // required
+    path: '/images/lottie/middle.json', // required
+    renderer: 'svg', // required
+    loop: true, // optional
+    autoplay: true, // optional
+    name: "Demo Animation", // optional
+  });
+
+  bodymovin.loadAnimation({
+    container: document.getElementById('bebas'), // required
+    path: '/images/lottie/middle.json', // required
+    renderer: 'svg', // required
+    loop: true, // optional
+    autoplay: true, // optional
+    name: "Demo Animation", // optional
+  });
 });
 
 window.onpopstate = function () {
