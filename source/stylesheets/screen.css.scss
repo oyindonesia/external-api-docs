@@ -56,6 +56,11 @@ html, body {
   }
 }
 
+.lottie {
+  max-width: 45%;
+  margin-bottom: 144px;
+}
+
 .search {
   position: relative;
 
@@ -895,6 +900,10 @@ html, body {
       align-items: flex-start;
     }
   }
+
+  .lottie {
+    max-width: 100%;
+  }
   
   .header{
     &-logo {
@@ -992,6 +1001,11 @@ html, body {
     padding: 0 $spacing-s;
     &.use-language{
       margin-top: $header-height + 2*$header-v-padding + $language-selector-mobile-height;      
+    }
+
+    & > p.lottie{
+      margin-top: 16px;
+      margin-bottom: 0;
     }
   }
 

@@ -1429,3 +1429,148 @@ Reason | Message
 **Invalid IP Address** | Invalid IP Address
 **Invalid API Key** | Invalid API Key
 **Restricted Access** | User does not have access to the payment link
+
+## Displaying Payment Checkout Page on Frontend
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec augue vitae massa condimentum tempus a non augue. Aliquam erat volutpat. Etiam velit quam, rhoncus et leo eget, fringilla egestas mauris. Vestibulum est sem, lobortis eget quam sed, fermentum bibendum nunc. Cras accumsan laoreet odio ut iaculis. Sed turpis tortor, pulvinar et vestibulum sed, pulvinar aliquet nisl. Integer euismod lacinia dui ut maximus. Morbi vitae mauris tincidunt nulla fermentum pellentesque a vitae lacus. Donec id tempor nibh. Integer viverra sem elit, id congue mi gravida nec. Sed imperdiet nunc vitae eleifend mollis. Aliquam condimentum efficitur sem, et semper sem imperdiet id. Vivamus ligula tellus, fermentum sed neque nec, aliquam varius sem.
+
+```jsx
+import React from 'react';
+import classNames from 'classnames';
+import styles from './paycheckout_popup.module.css';
+
+function PaycheckoutPopUp({
+  position = "center",
+  show,
+  onClose,
+  paymentLinkId,
+}) {
+
+  return (
+    <div>
+      {/* The Modal container*/}
+      
+        {/* Modal content */}
+        
+          <iframe 
+            width="400"
+            height="800"
+            src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
+            title="OY! Indonesia Payment Checkout">
+          </iframe>
+
+          {/* Trigger/Close The Modal */}
+    </div>
+  );
+}
+```
+
+<p class="lottie" id="payment-link-demo-middle"></p>
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at augue sed massa feugiat euismod non semper erat. Etiam ac tincidunt leo, a mattis velit. Etiam quis mollis nunc, vitae consectetur ex. Donec a purus id orci sodales interdum quis non metus. Fusce arcu tortor, maximus pretium lobortis nec, ultricies sit amet sem. Integer cursus lorem nec aliquet fermentum. Duis semper iaculis dolor, vel pulvinar diam sagittis sit amet. Etiam non laoreet mauris, vel euismod lorem. Mauris at mattis massa, eget eleifend massa. Proin faucibus libero sed lacus suscipit sodales. Aenean eget nibh purus. Duis ultrices eleifend hendrerit. Pellentesque id ipsum vel enim consectetur pretium.
+
+Etiam auctor, urna sit amet cursus laoreet, justo magna posuere metus, id egestas urna magna sed libero. Nam ultricies sagittis suscipit. Ut pharetra sem sed mauris eleifend, id hendrerit est tristique. Pellentesque dictum at nisi id faucibus. Phasellus tempus varius scelerisque. Duis tortor metus, auctor sed metus sed, aliquet vehicula ex. Sed in interdum tellus. Duis accumsan sed mauris sit amet pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus venenatis tortor, in mollis nisi gravida in. Cras ut ultricies ex, id pharetra enim. Quisque dignissim accumsan tempor. Vivamus faucibus, lorem at tempor tincidunt, ante arcu cursus turpis, eu molestie arcu augue eu enim. Ut quis tortor eu est blandit venenatis eget eu nisi.
+
+Donec in ex et risus scelerisque mattis. Integer nec varius lectus. Suspendisse aliquet hendrerit leo, id molestie augue porttitor non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse in posuere diam. Morbi at libero a diam luctus dictum. Phasellus imperdiet sit amet dui sed porta. Nunc vitae placerat elit. Ut ut magna dui. Nullam vestibulum nibh risus, vel fringilla nunc venenatis a. Phasellus elementum suscipit ipsum id lacinia. Aliquam bibendum in nulla et luctus. Praesent auctor sed ipsum eu vestibulum. Ut interdum mauris rhoncus consectetur ullamcorper. Ut rhoncus scelerisque tristique. Nullam sapien ipsum, interdum sit amet orci nec, laoreet congue magna.
+
+```jsx
+import React from 'react';
+import classNames from 'classnames';
+import styles from './paycheckout_popup.module.css';
+
+function PaycheckoutPopUp({
+  position = "left",
+  show,
+  onClose,
+  paymentLinkId,
+}) {
+
+  return (
+    <div>
+      {/* The Modal container*/}
+      
+        {/* Modal content */}
+        
+          <iframe 
+            width="400"
+            height="800"
+            src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
+            title="OY! Indonesia Payment Checkout">
+          </iframe>
+
+          {/* Trigger/Close The Modal */}
+    </div>
+  );
+}
+```
+
+<p class="lottie" id="payment-link-demo-left"></p>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at augue sed massa feugiat euismod non semper erat. Etiam ac tincidunt leo, a mattis velit. Etiam quis mollis nunc, vitae consectetur ex. Donec a purus id orci sodales interdum quis non metus. Fusce arcu tortor, maximus pretium lobortis nec, ultricies sit amet sem. Integer cursus lorem nec aliquet fermentum. Duis semper iaculis dolor, vel pulvinar diam sagittis sit amet. Etiam non laoreet mauris, vel euismod lorem. Mauris at mattis massa, eget eleifend massa. Proin faucibus libero sed lacus suscipit sodales. Aenean eget nibh purus. Duis ultrices eleifend hendrerit. Pellentesque id ipsum vel enim consectetur pretium.
+
+Etiam auctor, urna sit amet cursus laoreet, justo magna posuere metus, id egestas urna magna sed libero. Nam ultricies sagittis suscipit. Ut pharetra sem sed mauris eleifend, id hendrerit est tristique. Pellentesque dictum at nisi id faucibus. Phasellus tempus varius scelerisque. Duis tortor metus, auctor sed metus sed, aliquet vehicula ex. Sed in interdum tellus. Duis accumsan sed mauris sit amet pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus venenatis tortor, in mollis nisi gravida in. Cras ut ultricies ex, id pharetra enim. Quisque dignissim accumsan tempor. Vivamus faucibus, lorem at tempor tincidunt, ante arcu cursus turpis, eu molestie arcu augue eu enim. Ut quis tortor eu est blandit venenatis eget eu nisi.
+
+Donec in ex et risus scelerisque mattis. Integer nec varius lectus. Suspendisse aliquet hendrerit leo, id molestie augue porttitor non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse in posuere diam. Morbi at libero a diam luctus dictum. Phasellus imperdiet sit amet dui sed porta. Nunc vitae placerat elit. Ut ut magna dui. Nullam vestibulum nibh risus, vel fringilla nunc venenatis a. Phasellus elementum suscipit ipsum id lacinia. Aliquam bibendum in nulla et luctus. Praesent auctor sed ipsum eu vestibulum. Ut interdum mauris rhoncus consectetur ullamcorper. Ut rhoncus scelerisque tristique. Nullam sapien ipsum, interdum sit amet orci nec, laoreet congue magna.
+
+```jsx
+import React from 'react';
+import classNames from 'classnames';
+import styles from './paycheckout_popup.module.css';
+
+function PaycheckoutPopUp({
+  position = "right",
+  show,
+  onClose,
+  paymentLinkId,
+}) {
+
+  return (
+    <div>
+      {/* The Modal container*/}
+      
+        {/* Modal content */}
+        
+          <iframe 
+            width="400"
+            height="800"
+            src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
+            title="OY! Indonesia Payment Checkout">
+          </iframe>
+
+          {/* Trigger/Close The Modal */}
+    </div>
+  );
+}
+```
+
+<p class="lottie" id="payment-link-demo-right"></p>
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec augue vitae massa condimentum tempus a non augue. Aliquam erat volutpat. Etiam velit quam, rhoncus et leo eget, fringilla egestas mauris. Vestibulum est sem, lobortis eget quam sed, fermentum bibendum nunc. Cras accumsan laoreet odio ut iaculis. Sed turpis tortor, pulvinar et vestibulum sed, pulvinar aliquet nisl. Integer euismod lacinia dui ut maximus. Morbi vitae mauris tincidunt nulla fermentum pellentesque a vitae lacus. Donec id tempor nibh. Integer viverra sem elit, id congue mi gravida nec. Sed imperdiet nunc vitae eleifend mollis. Aliquam condimentum efficitur sem, et semper sem imperdiet id. Vivamus ligula tellus, fermentum sed neque nec, aliquam varius sem.
+
+```jsx
+import React from 'react';
+import styles from './paycheckout_slide.module.css';
+
+function PaycheckoutSlide({
+    show, 
+    onClose,
+    paymentLinkId,
+  }) {
+
+  return (
+    <div>
+      {/* The Modal container*/}
+        {/* Modal content */}
+          <iframe 
+            width="400"
+            src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
+            title="OY! Indonesia Payment Checkout">
+          </iframe>
+    </div>
+  );
+}
+```
+
+<p class="lottie" id="payment-link-demo-right-stick"></p>

@@ -20,6 +20,42 @@ $(function () {
     adjustLanguageSelectorWidth();
   });
   adjustLanguageSelectorWidth();
+
+  bodymovin.loadAnimation({
+    container: document.getElementById('payment-link-demo-left'), // required
+    path: '/images/lottie/Payment Link Demo Left.json', // required
+    renderer: 'svg', // required
+    loop: true, // optional
+    autoplay: true, // optional
+    name: "Demo Animation Payment Link Left", // optional
+  });
+
+  bodymovin.loadAnimation({
+    container: document.getElementById('payment-link-demo-middle'), // required
+    path: '/images/lottie/Payment Link Demo Middle.json', // required
+    renderer: 'svg', // required
+    loop: true, // optional
+    autoplay: true, // optional
+    name: "Demo Animation Payment Link Middle", // optional
+  });
+
+  bodymovin.loadAnimation({
+    container: document.getElementById('payment-link-demo-right'), // required
+    path: '/images/lottie/Payment Link Demo Right.json', // required
+    renderer: 'svg', // required
+    loop: true, // optional
+    autoplay: true, // optional
+    name: "Demo Animation Payment Link Right", // optional
+  });
+
+  bodymovin.loadAnimation({
+    container: document.getElementById('payment-link-demo-right-stick'), // required
+    path: '/images/lottie/Payment Link Demo Right Stick.json', // required
+    renderer: 'svg', // required
+    loop: true, // optional
+    autoplay: true, // optional
+    name: "Demo Animation Payment Link Right Stick", // optional
+  });
 });
 
 window.onpopstate = function () {
