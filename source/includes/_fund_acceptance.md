@@ -1430,13 +1430,13 @@ Reason | Message
 **Invalid API Key** | Invalid API Key
 **Restricted Access** | User does not have access to the payment link
 
-## Displaying Payment Checkout Page on Frontend
+## Pop!: Seamless Payment Experience
 
-Displaying our payment checkout page on your front-end web environment is now made easier than ever. Our payment checkout offers a seamless user experience in a way that can be catered to your UI needs.
+With Pop!, displaying our payment checkout page on your front-end web environment is now made easier than ever. Our payment checkout offers a seamless user experience in a way that can be catered to your UI needs.
 
 This section covers a demonstration and a snippet code on how to display a payment checkout page in 4 styles/locations: Center, Right, Left, and Slide Right.
 
-### Displaying Payment Checkout Page at the Center of Your Website
+### Pop! - Center
 
 ```jsx
 import React from 'react';
@@ -1472,7 +1472,7 @@ function PaycheckoutPopUp({
 <p class="lottie" id="payment-link-demo-middle"></p>
 
 
-### Displaying Payment Checkout Page on the Left Side of Your Website
+### Pop! - Left
 
 ```jsx
 import React from 'react';
@@ -1508,7 +1508,7 @@ function PaycheckoutPopUp({
 <p class="lottie" id="payment-link-demo-left"></p>
 
 
-### Displaying Payment Checkout Page on the Right Side of Your Website
+### Pop! - Right
 
 ```jsx
 import React from 'react';
@@ -1544,7 +1544,7 @@ function PaycheckoutPopUp({
 <p class="lottie" id="payment-link-demo-right"></p>
 
 
-### Displaying Payment Checkout Page on the Right Side (in a Sliding Style)
+### Pop! - Slide Right
 
 ```jsx
 import React from 'react';
