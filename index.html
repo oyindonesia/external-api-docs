@@ -283,12 +283,13 @@
 }
     </style>
     <link href="images/favicon-d4b7ffd6.ico" rel="icon" type="image/ico" />
-    <link href="stylesheets/screen-84dd1d0b.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-9a43d321.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-99cffe79.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-1e8d440a.js"></script>
+      <script src="javascripts/all-49e091b9.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js">
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -1527,6 +1528,48 @@
                           <a href="#failed-return-message-api-get" class="toc-h3 toc-link" data-title="Failed Return Message">
                             <span class="toc-link-content">
                               Failed Return Message
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#pop-seamless-payment-experience-fund-acceptance" class="toc-h2 toc-link" data-title="Pop!: Seamless Payment Experience">
+                     <span class="toc-link-content">
+                        Pop!: Seamless Payment Experience
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#pop-center-pop-seamless-payment-experience" class="toc-h3 toc-link" data-title="Pop! - Center">
+                            <span class="toc-link-content">
+                              Pop! - Center
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#pop-left-pop-seamless-payment-experience" class="toc-h3 toc-link" data-title="Pop! - Left">
+                            <span class="toc-link-content">
+                              Pop! - Left
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#pop-right-pop-seamless-payment-experience" class="toc-h3 toc-link" data-title="Pop! - Right">
+                            <span class="toc-link-content">
+                              Pop! - Right
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#pop-slide-right-pop-seamless-payment-experience" class="toc-h3 toc-link" data-title="Pop! - Slide Right">
+                            <span class="toc-link-content">
+                              Pop! - Slide Right
                             </span>
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
@@ -10044,6 +10087,123 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <td>User does not have access to the payment link</td>
 </tr>
 </tbody></table>
+<h2 id='pop-seamless-payment-experience-fund-acceptance' type='normal'>Pop!: Seamless Payment Experience</h2>
+<p>With Pop!, displaying our payment checkout page on your front-end web environment is now made easier than ever. Our payment checkout offers a seamless user experience in a way that can be catered to your UI needs.</p>
+
+<p>This section covers a demonstration and a snippet code on how to display a payment checkout page in 4 styles/locations: Center, Right, Left, and Slide Right.</p>
+<h3 id='pop-center-pop-seamless-payment-experience' type='normal'>Pop! - Center</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">classNames</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">classnames</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./paycheckout_popup.module.css</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">PaycheckoutPopUp</span><span class="p">({</span>
+  <span class="nx">position</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">center</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nx">show</span><span class="p">,</span>
+  <span class="nx">onClose</span><span class="p">,</span>
+  <span class="nx">paymentLinkId</span><span class="p">,</span>
+<span class="p">})</span> <span class="p">{</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="cm">/* The Modal container*/</span><span class="si">}</span>
+
+        <span class="si">{</span><span class="cm">/* Modal content */</span><span class="si">}</span>
+
+          <span class="p">&lt;</span><span class="nt">iframe</span> 
+            <span class="na">width</span><span class="p">=</span><span class="s">"400"</span>
+            <span class="na">height</span><span class="p">=</span><span class="s">"800"</span>
+            <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="s2">`https://pay-dev.oyindonesia.com/</span><span class="p">${</span><span class="nx">paymentLinkId</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span>
+            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Checkout"</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+          <span class="si">{</span><span class="cm">/* Trigger/Close The Modal */</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p class="lottie" id="payment-link-demo-middle"></p>
+<h3 id='pop-left-pop-seamless-payment-experience' type='normal'>Pop! - Left</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">classNames</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">classnames</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./paycheckout_popup.module.css</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">PaycheckoutPopUp</span><span class="p">({</span>
+  <span class="nx">position</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">left</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nx">show</span><span class="p">,</span>
+  <span class="nx">onClose</span><span class="p">,</span>
+  <span class="nx">paymentLinkId</span><span class="p">,</span>
+<span class="p">})</span> <span class="p">{</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="cm">/* The Modal container*/</span><span class="si">}</span>
+
+        <span class="si">{</span><span class="cm">/* Modal content */</span><span class="si">}</span>
+
+          <span class="p">&lt;</span><span class="nt">iframe</span> 
+            <span class="na">width</span><span class="p">=</span><span class="s">"400"</span>
+            <span class="na">height</span><span class="p">=</span><span class="s">"800"</span>
+            <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="s2">`https://pay-dev.oyindonesia.com/</span><span class="p">${</span><span class="nx">paymentLinkId</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span>
+            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Checkout"</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+          <span class="si">{</span><span class="cm">/* Trigger/Close The Modal */</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p class="lottie" id="payment-link-demo-left"></p>
+<h3 id='pop-right-pop-seamless-payment-experience' type='normal'>Pop! - Right</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">classNames</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">classnames</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./paycheckout_popup.module.css</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">PaycheckoutPopUp</span><span class="p">({</span>
+  <span class="nx">position</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">right</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nx">show</span><span class="p">,</span>
+  <span class="nx">onClose</span><span class="p">,</span>
+  <span class="nx">paymentLinkId</span><span class="p">,</span>
+<span class="p">})</span> <span class="p">{</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="cm">/* The Modal container*/</span><span class="si">}</span>
+
+        <span class="si">{</span><span class="cm">/* Modal content */</span><span class="si">}</span>
+
+          <span class="p">&lt;</span><span class="nt">iframe</span> 
+            <span class="na">width</span><span class="p">=</span><span class="s">"400"</span>
+            <span class="na">height</span><span class="p">=</span><span class="s">"800"</span>
+            <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="s2">`https://pay-dev.oyindonesia.com/</span><span class="p">${</span><span class="nx">paymentLinkId</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span>
+            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Checkout"</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+
+          <span class="si">{</span><span class="cm">/* Trigger/Close The Modal */</span><span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p class="lottie" id="payment-link-demo-right"></p>
+<h3 id='pop-slide-right-pop-seamless-payment-experience' type='normal'>Pop! - Slide Right</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./paycheckout_slide.module.css</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">PaycheckoutSlide</span><span class="p">({</span>
+    <span class="nx">show</span><span class="p">,</span> 
+    <span class="nx">onClose</span><span class="p">,</span>
+    <span class="nx">paymentLinkId</span><span class="p">,</span>
+  <span class="p">})</span> <span class="p">{</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="si">{</span><span class="cm">/* The Modal container*/</span><span class="si">}</span>
+        <span class="si">{</span><span class="cm">/* Modal content */</span><span class="si">}</span>
+          <span class="p">&lt;</span><span class="nt">iframe</span> 
+            <span class="na">width</span><span class="p">=</span><span class="s">"400"</span>
+            <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="s2">`https://pay-dev.oyindonesia.com/</span><span class="p">${</span><span class="nx">paymentLinkId</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span>
+            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Checkout"</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p class="lottie" id="payment-link-demo-right-stick"></p>
 <h1 id='api-offline' type='normal'>API Offline</h1>
 <p>API Offline enables your user to withdraw and deposit money from OY offline channel such as Cash Recycle Machine (CRM) and convenience store.</p>
 <h2 id='initiate-transaction-api-offline' type='normal'>Initiate Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
