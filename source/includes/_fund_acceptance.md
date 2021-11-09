@@ -1429,3 +1429,145 @@ Reason | Message
 **Invalid IP Address** | Invalid IP Address
 **Invalid API Key** | Invalid API Key
 **Restricted Access** | User does not have access to the payment link
+
+## Pop!: Seamless Payment Experience
+
+With Pop!, displaying our payment checkout page on your front-end web environment is now made easier than ever. Our payment checkout offers a seamless user experience in a way that can be catered to your UI needs.
+
+This section covers a demonstration and a snippet code on how to display a payment checkout page in 4 styles/locations: Center, Right, Left, and Slide Right.
+
+### Pop! - Center
+
+```jsx
+import React from 'react';
+import classNames from 'classnames';
+import styles from './paycheckout_popup.module.css';
+
+function PaycheckoutPopUp({
+  position = "center",
+  show,
+  onClose,
+  paymentLinkId,
+}) {
+
+  return (
+    <div>
+      {/* The Modal container*/}
+      
+        {/* Modal content */}
+        
+          <iframe 
+            width="400"
+            height="800"
+            src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
+            title="OY! Indonesia Payment Checkout">
+          </iframe>
+
+          {/* Trigger/Close The Modal */}
+    </div>
+  );
+}
+```
+
+<p class="lottie" id="payment-link-demo-middle"></p>
+
+
+### Pop! - Left
+
+```jsx
+import React from 'react';
+import classNames from 'classnames';
+import styles from './paycheckout_popup.module.css';
+
+function PaycheckoutPopUp({
+  position = "left",
+  show,
+  onClose,
+  paymentLinkId,
+}) {
+
+  return (
+    <div>
+      {/* The Modal container*/}
+      
+        {/* Modal content */}
+        
+          <iframe 
+            width="400"
+            height="800"
+            src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
+            title="OY! Indonesia Payment Checkout">
+          </iframe>
+
+          {/* Trigger/Close The Modal */}
+    </div>
+  );
+}
+```
+
+<p class="lottie" id="payment-link-demo-left"></p>
+
+
+### Pop! - Right
+
+```jsx
+import React from 'react';
+import classNames from 'classnames';
+import styles from './paycheckout_popup.module.css';
+
+function PaycheckoutPopUp({
+  position = "right",
+  show,
+  onClose,
+  paymentLinkId,
+}) {
+
+  return (
+    <div>
+      {/* The Modal container*/}
+      
+        {/* Modal content */}
+        
+          <iframe 
+            width="400"
+            height="800"
+            src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
+            title="OY! Indonesia Payment Checkout">
+          </iframe>
+
+          {/* Trigger/Close The Modal */}
+    </div>
+  );
+}
+```
+
+<p class="lottie" id="payment-link-demo-right"></p>
+
+
+### Pop! - Slide Right
+
+```jsx
+import React from 'react';
+import styles from './paycheckout_slide.module.css';
+
+function PaycheckoutSlide({
+    show, 
+    onClose,
+    paymentLinkId,
+  }) {
+
+  return (
+    <div>
+      {/* The Modal container*/}
+        {/* Modal content */}
+          <iframe 
+            width="400"
+            src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
+            title="OY! Indonesia Payment Checkout">
+          </iframe>
+    </div>
+  );
+}
+```
+
+<p class="lottie" id="payment-link-demo-right-stick"></p>
