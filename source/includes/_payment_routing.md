@@ -4,8 +4,8 @@ Payment Routing offers you with end to end solutions from accept payment to disb
 
 ## Payment Routing Base URL
 
-[Production Base URL]: https://partner.oyindonesia.com
-[Staging Base URL]: https://api-stg.oyindonesia.com
+**[Production Base URL]** : `https://partner.oyindonesia.com`<br/>
+**[Staging Base URL]** : `https://api-stg.oyindonesia.com`
 
 ## Create and Update Payment Routing
 
@@ -266,8 +266,8 @@ print(data.decode("utf-8"))
 
 ### HTTPS Request
 Endpoint:  
-[Production] POST _https://partner.oyindonesia.com/api/payment-routing/create-transaction_ (https://partner.oyindonesia.com/api/payment-routing/create-transaction)
-[Staging] POST https://api-stg.oyindonesia.com/api/payment-routing/create-transaction
+**[Production]** `POST _https://partner.oyindonesia.com/api/payment-routing/create-transaction_ (https://partner.oyindonesia.com/api/payment-routing/create-transaction)`<br/>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/payment-routing/create-transaction`
 
 ### Header
 | Field  | Description |  Example   |
@@ -532,8 +532,8 @@ print(data.decode("utf-8"))
 
 ### HTTP Request
 Endpoint:  
-[Production] POST https://partner.oyindonesia.com/api/payment-routing/check-status 
-[Staging] POST https://api-stg.oyindonesia.com/api/payment-routing/check-status
+**[Production]** `POST https://partner.oyindonesia.com/api/payment-routing/check-status`<br/> 
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/payment-routing/check-status`
 
 ### Header
 | Field  | Description |  Example   |
