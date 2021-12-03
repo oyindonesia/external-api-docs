@@ -266,7 +266,7 @@ print(data.decode("utf-8"))
 
 ### HTTPS Request
 Endpoint:  
-**[Production]** `POST _https://partner.oyindonesia.com/api/payment-routing/create-transaction_ (https://partner.oyindonesia.com/api/payment-routing/create-transaction)`<br/>
+**[Production]** `POST https://partner.oyindonesia.com/api/payment-routing/create-transaction` <br/>
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/payment-routing/create-transaction`
 
 ### Header
@@ -543,6 +543,7 @@ Endpoint:
 
 ### Request Parameter
 | Parameter  | Type |  Required   | Default | Description |
+| ------------- |:-------------:| :----------: | :-------------:| :----------: |
 |partner_tx_id|String|FALSE|-|Unique partner transaction ID
 |send_callback|Boolean|TRUE|-|If set true, we also send response as a callback to partner|
 
