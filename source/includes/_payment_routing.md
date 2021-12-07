@@ -11,7 +11,7 @@ Payment Routing offers you with end to end solutions from accept payment to disb
 
 This endpoint will trigger the **creation** of payment routing and will be using the same API to handle the **update** requests.
 
-``` shell
+```shell
 curl --location --request POST 'http://172.11.74.145:8080//api/payment-routing/create-transaction' \
 --header 'Content-Type: application/json' \
 --header 'x-oy-username: pejetaja' \
@@ -37,10 +37,10 @@ curl --location --request POST 'http://172.11.74.145:8080//api/payment-routing/c
 ``` dart
 var headers = {
   'Content-Type': 'application/json',
-  'x-oy-username': 'pejetaja',
-  'x-api-key': 'test'
+  'x-oy-username': 'your-username',
+  'x-api-key': 'your-api-key'
 };
-var request = http.Request('POST', Uri.parse('http://172.11.74.145:8080//api/payment-routing/create-transaction'));
+var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/payment-routing/create-transaction'));
 request.body = json.encode({
   "partner_user_id": "USR-20211117-1029",
   "partner_trx_id": "TRX-20211117-1030",
@@ -80,7 +80,7 @@ import (
 
 func main() {
 
-  url := "http://172.11.74.145:8080//api/payment-routing/create-transaction"
+  url := "https://partner.oyindonesia.com/api/payment-routing/create-transaction"
   method := "POST"
 
   payload := strings.NewReader(`{
@@ -109,8 +109,8 @@ func main() {
     return
   }
   req.Header.Add("Content-Type", "application/json")
-  req.Header.Add("x-oy-username", "pejetaja")
-  req.Header.Add("x-api-key", "test")
+  req.Header.Add("x-oy-username", "your-username")
+  req.Header.Add("x-api-key", "your-api-key")
 
   res, err := client.Do(req)
   if err != nil {
@@ -134,11 +134,11 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"VA\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}");
 Request request = new Request.Builder()
-  .url("http://172.11.74.145:8080//api/payment-routing/create-transaction")
+  .url("https://partner.oyindonesia.com/api/payment-routing/create-transaction")
   .method("POST", body)
   .addHeader("Content-Type", "application/json")
-  .addHeader("x-oy-username", "pejetaja")
-  .addHeader("x-api-key", "test")
+  .addHeader("x-oy-username", "your-username")
+  .addHeader("x-api-key", "your-api-key")
   .build();
 Response response = client.newCall(request).execute();
 ```
@@ -172,10 +172,10 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("POST", "http://172.11.74.145:8080//api/payment-routing/create-transaction");
+xhr.open("POST", "https://partner.oyindonesia.com/api/payment-routing/create-transaction");
 xhr.setRequestHeader("Content-Type", "application/json");
-xhr.setRequestHeader("x-oy-username", "pejetaja");
-xhr.setRequestHeader("x-api-key", "test");
+xhr.setRequestHeader("x-oy-username", "your-username");
+xhr.setRequestHeader("x-api-key", "your-api-key");
 
 xhr.send(data);
 ```
@@ -184,15 +184,15 @@ xhr.send(data);
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('http://172.11.74.145:8080//api/payment-routing/create-transaction');
+$request->setUrl('https://partner.oyindonesia.com/api/payment-routing/create-transaction');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
 ));
 $request->setHeader(array(
   'Content-Type' => 'application/json',
-  'x-oy-username' => 'pejetaja',
-  'x-api-key' => 'test'
+  'x-oy-username' => 'your-username',
+  'x-api-key' => 'your-api-key'
 ));
 $request->setBody('{\n    "partner_user_id": "USR-20211117-1029",\n    "partner_trx_id": "TRX-20211117-1030",\n    "need_frontend": false,\n    "sender_email": "sender@gmail.com",\n    "receive_amount": 14000,\n    "list_enable_payment_method": "VA",\n    "list_enable_sof": "002",\n    "va_display_name": "partner_brand",\n    "payment_routing": [{\n        "recipient_bank": "014",\n        "recipient_account": "1234567890",\n        "recipient_amount": 10000,\n        "recipient_email": "recipient_bca@gmail.com"\n    }]\n}');
 try {
@@ -214,7 +214,7 @@ catch(HTTP_Request2_Exception $e) {
 import http.client
 import json
 
-conn = http.client.HTTPSConnection("172.11.74.145", undefined)
+conn = http.client.HTTPSConnection("https://partner.oyindonesia.com", undefined)
 payload = json.dumps({
   "partner_user_id": "USR-20211117-1029",
   "partner_trx_id": "TRX-20211117-1030",
@@ -235,10 +235,10 @@ payload = json.dumps({
 })
 headers = {
   'Content-Type': 'application/json',
-  'x-oy-username': 'pejetaja',
-  'x-api-key': 'test'
+  'x-oy-username': 'your-username',
+  'x-api-key': 'your-api-key'
 }
-conn.request("POST", "//api/payment-routing/create-transaction", payload, headers)
+conn.request("POST", "/api/payment-routing/create-transaction", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -266,7 +266,7 @@ print(data.decode("utf-8"))
 
 ### HTTPS Request
 Endpoint:  
-[Production] POST _https://partner.oyindonesia.com/api/payment-routing/create-transaction_ (https://partner.oyindonesia.com/api/payment-routing/create-transaction)
+[Production] POST https://partner.oyindonesia.com/api/payment-routing/create-transaction
 [Staging] POST https://api-stg.oyindonesia.com/api/payment-routing/create-transaction
 
 ### Header
@@ -327,10 +327,10 @@ Use those mock receiver bank account for testing Payment Routing purpose. To sim
 And endpoint to check status of payment routing transaction.
 
 ```shell
-curl --location --request POST 'http://172.11.74.145:8080//api/payment-routing/check-status' \
+curl --location --request POST 'https://partner.oyindonesia.com/api/payment-routing/check-status' \
 --header 'Content-Type: application/json' \
---header 'x-oy-username: pejetaja' \
---header 'x-api-key: test' \
+--header 'x-oy-username: your-username' \
+--header 'x-api-key: your-api-key' \
 --data-raw '{
     "partner_trx_id": "TRX-20211117-1030",
     "send_callback": true
@@ -341,10 +341,10 @@ curl --location --request POST 'http://172.11.74.145:8080//api/payment-routing/c
 ```dart
 var headers = {
   'Content-Type': 'application/json',
-  'x-oy-username': 'pejetaja',
-  'x-api-key': 'test'
+  'x-oy-username': 'your-username',
+  'x-api-key': 'your-api-key'
 };
-var request = http.Request('POST', Uri.parse('http://172.11.74.145:8080//api/payment-routing/check-status'));
+var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/payment-routing/check-status'));
 request.body = json.encode({
   "partner_trx_id": "TRX-20211117-1030",
   "send_callback": true
@@ -374,7 +374,7 @@ import (
 
 func main() {
 
-  url := "http://172.11.74.145:8080//api/payment-routing/check-status"
+  url := "https://partner.oyindonesia.com/api/payment-routing/check-status"
   method := "POST"
 
   payload := strings.NewReader(`{
@@ -391,8 +391,8 @@ func main() {
     return
   }
   req.Header.Add("Content-Type", "application/json")
-  req.Header.Add("x-oy-username", "pejetaja")
-  req.Header.Add("x-api-key", "test")
+  req.Header.Add("x-oy-username", "your-username")
+  req.Header.Add("x-api-key", "your-api-key")
 
   res, err := client.Do(req)
   if err != nil {
@@ -416,11 +416,11 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"send_callback\": true\n}");
 Request request = new Request.Builder()
-  .url("http://172.11.74.145:8080//api/payment-routing/check-status")
+  .url("https://partner.oyindonesia.com/api/payment-routing/check-status")
   .method("POST", body)
   .addHeader("Content-Type", "application/json")
-  .addHeader("x-oy-username", "pejetaja")
-  .addHeader("x-api-key", "test")
+  .addHeader("x-oy-username", "your-username")
+  .addHeader("x-api-key", "your-api-key")
   .build();
 Response response = client.newCall(request).execute();
 ```
@@ -440,10 +440,10 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("POST", "http://172.11.74.145:8080//api/payment-routing/check-status");
+xhr.open("POST", "https://partner.oyindonesia.com/api/payment-routing/check-status");
 xhr.setRequestHeader("Content-Type", "application/json");
-xhr.setRequestHeader("x-oy-username", "pejetaja");
-xhr.setRequestHeader("x-api-key", "test");
+xhr.setRequestHeader("x-oy-username", "your-username");
+xhr.setRequestHeader("x-api-key", "your-api-key");
 
 xhr.send(data);
 ```
@@ -452,15 +452,15 @@ xhr.send(data);
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('http://172.11.74.145:8080//api/payment-routing/check-status');
+$request->setUrl('https://partner.oyindonesia.com/api/payment-routing/check-status');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
 ));
 $request->setHeader(array(
   'Content-Type' => 'application/json',
-  'x-oy-username' => 'pejetaja',
-  'x-api-key' => 'test'
+  'x-oy-username' => 'your-username',
+  'x-api-key' => 'your-api-key'
 ));
 $request->setBody('{\n    "partner_trx_id": "TRX-20211117-1030",\n    "send_callback": true\n}');
 try {
@@ -482,17 +482,17 @@ catch(HTTP_Request2_Exception $e) {
 import http.client
 import json
 
-conn = http.client.HTTPSConnection("172.11.74.145", undefined)
+conn = http.client.HTTPSConnection("https://partner.oyindonesia.com/", undefined)
 payload = json.dumps({
   "partner_trx_id": "TRX-20211117-1030",
   "send_callback": True
 })
 headers = {
   'Content-Type': 'application/json',
-  'x-oy-username': 'pejetaja',
-  'x-api-key': 'test'
+  'x-oy-username': 'your-username',
+  'x-api-key': 'your-api-key'
 }
-conn.request("POST", "//api/payment-routing/check-status", payload, headers)
+conn.request("POST", "/api/payment-routing/check-status", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -543,6 +543,7 @@ Endpoint:
 
 ### Request Parameter
 | Parameter  | Type |  Required   | Default | Description |
+| ------------- |:-------------:| :----------: | :-------------:| :----------: |
 |partner_tx_id|String|FALSE|-|Unique partner transaction ID
 |send_callback|Boolean|TRUE|-|If set true, we also send response as a callback to partner|
 
