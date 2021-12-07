@@ -12,10 +12,10 @@ Payment Routing offers you with end to end solutions from accept payment to disb
 This endpoint will trigger the **creation** of payment routing and will be using the same API to handle the **update** requests.
 
 ```shell
-curl --location --request POST 'http://172.11.74.145:8080//api/payment-routing/create-transaction' \
+curl --location --request POST 'https://partner.oyindonesia.com/api/payment-routing/create-transaction' \
 --header 'Content-Type: application/json' \
---header 'x-oy-username: pejetaja' \
---header 'x-api-key: test' \
+--header 'x-oy-username: your-username' \
+--header 'x-api-key: your-api-key' \
 --data-raw '{
     "partner_user_id": "USR-20211117-1029",
     "partner_trx_id": "TRX-20211117-1030",
