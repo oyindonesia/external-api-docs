@@ -496,7 +496,7 @@ print(data.decode("utf-8"))
 }
 ```
 
-To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success / failed)
+To get status of a disbursement request, you can call this API. You may need to call this API few times until getting a final status (success/failed). We suggest to check the status after the remit API timed out or 60 seconds after the disbursement requested
 
 This API offers an option to send you a callback status of the disbursement request to a specific URL.
 Please contact us and submit a callback URL if you need a callback status of a disbursement request.
