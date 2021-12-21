@@ -115,3 +115,4 @@ ovo | OVO
 linkaja | LinkAja
 dana    | Dana
 gopay	| Gopay
+shopeepay   | ShopeePay
