@@ -530,14 +530,15 @@ var headers = {
 };
 var request = http.Request('PUT', Uri.parse('{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09'));
 request.body = json.encode({
-  "partner_user_id": "johnDoe42",
-  "amount": 220000,
-  "bank_code": "008",
-  "is_open": false,
-  "is_single_use": true,
+  "amount": 50000,
+  "is_single_use": false,
+  "expiration_time": 30,
+  "username_display": "test",
   "is_lifetime": false,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
+  "email": "email@domain.com",
+  "trx_expiration_time":5,
+  "partner_trx_id":"TRX0002",
+  "trx_counter": 1
 });
 request.headers.addAll(headers);
 
@@ -567,14 +568,15 @@ func main() {
   method := "PUT"
 
   payload := strings.NewReader(`{
-	"partner_user_id": "johnDoe42",
-	"amount": 220000,
-	"bank_code": "008",
-	"is_open": false,
+	"amount": 50000,
 	"is_single_use": true,
-	"is_lifetime": false,
+	"expiration_time": 30,
 	"username_display": "john doe",
-	"email": "john.doe@email.com"
+	"is_lifetime": false,
+	"email": "john.doe@email.com",
+	"trx_expiration_time":5,
+  "partner_trx_id":"TRX0002",
+  "trx_counter": 1
 }`)
 
   client := &http.Client {
@@ -622,14 +624,15 @@ Response response = client.newCall(request).execute();
 
 ```javascript
 var data = JSON.stringify({
-  "partner_user_id": "johnDoe42",
-  "amount": 220000,
-  "bank_code": "008",
-  "is_open": false,
-  "is_single_use": true,
+  "amount": 50000,
+  "is_single_use": false,
+  "expiration_time": 30,
+  "username_display": "test",
   "is_lifetime": false,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
+  "email": "email@domain.com",
+  "trx_expiration_time":5,
+  "partner_trx_id":"TRX0002",
+  "trx_counter": 1
 });
 
 var xhr = new XMLHttpRequest();
@@ -663,7 +666,7 @@ $request->setHeader(array(
   'X-Oy-Username' => '{{username}}',
   'X-Api-Key' => '{{api-key}}'
 ));
-$request->setBody('{\n	"partner_user_id": "johnDoe42",\n	"amount": 220000,\n	"bank_code": "008",\n	"is_open": false,\n	"is_single_use": true,\n	"is_lifetime": false,\n	"username_display": "john doe",\n	"email": "john.doe@email.com"\n}');
+$request->setBody('{\n	"amount": 50000,\n	"is_single_use": false,\n	"expiration_time": 30,\n	"username_display": "test",\n	"is_lifetime": false,\n	"email": "email@domain.com",\n	"trx_expiration_time": 5,\n	"partner_trx_id": "TRX0002",\n	"trx_counter": 1\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -685,14 +688,15 @@ import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
 payload = json.dumps({
-  "partner_user_id": "johnDoe42",
-  "amount": 220000,
-  "bank_code": "008",
-  "is_open": False,
-  "is_single_use": True,
-  "is_lifetime": False,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
+  "amount": 50000,
+  "is_single_use": false,
+  "expiration_time": 30,
+  "username_display": "test",
+  "is_lifetime": false,
+  "email": "email@domain.com",
+  "trx_expiration_time":5,
+  "partner_trx_id":"TRX0002",
+  "trx_counter": 1
 })
 headers = {
   'Content-Type': 'application/json',
