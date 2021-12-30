@@ -32,14 +32,18 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <span class="o">};</span>
 <span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'POST'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/generate-static-va'</span><span class="o">));</span>
 <span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
-  <span class="s">"partner_user_id"</span><span class="o">:</span> <span class="s">"johnDoe42"</span><span class="o">,</span>
-  <span class="s">"amount"</span><span class="o">:</span> <span class="mi">120000</span><span class="o">,</span>
-  <span class="s">"bank_code"</span><span class="o">:</span> <span class="s">"008"</span><span class="o">,</span>
-  <span class="s">"is_open"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-  <span class="s">"is_single_use"</span><span class="o">:</span> <span class="kc">true</span><span class="o">,</span>
-  <span class="s">"is_lifetime"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-  <span class="s">"username_display"</span><span class="o">:</span> <span class="s">"john doe"</span><span class="o">,</span>
-  <span class="s">"email"</span><span class="o">:</span> <span class="s">"john.doe@email.com"</span>
+   <span class="s">"partner_user_id"</span><span class="o">:</span><span class="s">"51200021"</span><span class="o">,</span>
+   <span class="s">"bank_code"</span><span class="o">:</span> <span class="s">"002"</span><span class="o">,</span>
+   <span class="s">"amount"</span><span class="o">:</span> <span class="mi">0</span><span class="o">,</span>
+   <span class="s">"is_open"</span><span class="o">:</span> <span class="kc">true</span><span class="o">,</span>
+   <span class="s">"is_single_use"</span> <span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
+   <span class="s">"is_lifetime"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
+   <span class="s">"expiration_time"</span><span class="o">:</span> <span class="mi">5</span><span class="o">,</span>
+   <span class="s">"username_display"</span><span class="o">:</span> <span class="s">"va name"</span><span class="o">,</span>
+   <span class="s">"email"</span><span class="o">:</span> <span class="s">"email@mail.com"</span><span class="o">,</span>
+   <span class="s">"trx_expiration_time"</span><span class="o">:</span> <span class="mi">5</span><span class="o">,</span>
+   <span class="s">"partner_trx_id"</span><span class="o">:</span> <span class="s">"TRX0001"</span><span class="o">,</span>
+   <span class="s">"trx_counter"</span> <span class="o">:</span> <span class="mi">1</span>
 <span class="o">});</span>
 <span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
 
@@ -66,14 +70,18 @@ POST https://partner.oyindonesia.com/api/generate-static-va
   <span class="n">method</span> <span class="o">:=</span> <span class="s">"POST"</span>
 
   <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
-    "partner_user_id": "johnDoe42",
-    "amount": 120000,
-    "bank_code": "008",
-    "is_open": false,
-    "is_single_use": true,
-    "is_lifetime": false,
-    "username_display": "john doe",
-    "email": "john.doe@email.com"
+    "partner_user_id":"51200021",
+  "bank_code": "002",
+  "amount": 0,
+  "is_open": true,
+  "is_single_use" : false,
+  "is_lifetime": false,
+  "expiration_time": 5,
+  "username_display": "va name",
+  "email": "email@mail.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0001",
+  "trx_counter" : 1
 }`</span><span class="p">)</span>
 
   <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
@@ -105,7 +113,7 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n\t\"partner_user_id\": \"johnDoe42\",\n\t\"amount\": 120000,\n\t\"bank_code\": \"008\",\n\t\"is_open\": false,\n\t\"is_single_use\": true,\n\t\"is_lifetime\": false,\n\t\"username_display\": \"john doe\",\n\t\"email\": \"john.doe@email.com\"\n}"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n\"partner_user_id\":\"51200021\",\n\"bank_code\": \"002\",\n\"amount\": 0,\n\"is_open\": true,\n\"is_single_use\" : false,\n\"is_lifetime\": false,\n\"expiration_time\": 5,\n\"username_display\": \"va name\",\n\"email\": \"email@mail.com\",\n\"trx_expiration_time\": 5,\n\"partner_trx_id\": \"TRX0001\",\n\"trx_counter\" : 1\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/generate-static-va"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
@@ -115,14 +123,18 @@ POST https://partner.oyindonesia.com/api/generate-static-va
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">partner_user_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">johnDoe42</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">120000</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">bank_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">008</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_open</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_single_use</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">partner_user_id</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">51200021</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">bank_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">002</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">is_open</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">is_single_use</span><span class="dl">"</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">is_lifetime</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">username_display</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john doe</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john.doe@email.com</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">expiration_time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">username_display</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">va name</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">email@mail.com</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">trx_expiration_time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">partner_trx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">TRX0001</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">trx_counter</span><span class="dl">"</span> <span class="p">:</span> <span class="mi">1</span>
 <span class="p">});</span>
 
 <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
@@ -153,7 +165,7 @@ POST https://partner.oyindonesia.com/api/generate-static-va
   <span class="s1">'X-Oy-Username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
   <span class="s1">'X-Api-Key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "partner_user_id": "johnDoe42",\n   "amount": 120000,\n "bank_code": "008",\n   "is_open": false,\n "is_single_use": true,\n    "is_lifetime": false,\n "username_display": "john doe",\n   "email": "john.doe@email.com"\n}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'"{\n\"partner_user_id\":\"51200021\",\n\"bank_code\": \"002\",\n\"amount\": 0,\n\"is_open\": true,\n\"is_single_use\" : false,\n\"is_lifetime\": false,\n\"expiration_time\": 5,\n\"username_display\": \"va name\",\n\"email\": \"email@mail.com\",\n\"trx_expiration_time\": 5,\n\"partner_trx_id\": \"TRX0001\",\n\"trx_counter\" : 1\n}"'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -172,14 +184,18 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"{{base_url}}"</span><span class="p">)</span>
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
-  <span class="s">"partner_user_id"</span><span class="p">:</span> <span class="s">"johnDoe42"</span><span class="p">,</span>
-  <span class="s">"amount"</span><span class="p">:</span> <span class="mi">120000</span><span class="p">,</span>
-  <span class="s">"bank_code"</span><span class="p">:</span> <span class="s">"008"</span><span class="p">,</span>
-  <span class="s">"is_open"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">"is_single_use"</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-  <span class="s">"is_lifetime"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">"username_display"</span><span class="p">:</span> <span class="s">"john doe"</span><span class="p">,</span>
-  <span class="s">"email"</span><span class="p">:</span> <span class="s">"john.doe@email.com"</span>
+  <span class="s">"partner_user_id"</span><span class="p">:</span><span class="s">"51200021"</span><span class="p">,</span>
+  <span class="s">"bank_code"</span><span class="p">:</span> <span class="s">"002"</span><span class="p">,</span>
+  <span class="s">"amount"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s">"is_open"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s">"is_single_use"</span> <span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s">"is_lifetime"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s">"expiration_time"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s">"username_display"</span><span class="p">:</span> <span class="s">"va name"</span><span class="p">,</span>
+  <span class="s">"email"</span><span class="p">:</span> <span class="s">"email@mail.com"</span><span class="p">,</span>
+  <span class="s">"trx_expiration_time"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s">"partner_trx_id"</span><span class="p">:</span> <span class="s">"TRX0001"</span><span class="p">,</span>
+  <span class="s">"trx_counter"</span> <span class="p">:</span> <span class="mi">1</span>
 <span class="p">})</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
@@ -200,10 +216,10 @@ POST https://partner.oyindonesia.com/api/generate-static-va
         </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789182827272"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582783668175</span><span class="p">,</span><span class="w">
     </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
@@ -1073,16 +1089,6 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
   <span class="s">'X-Api-Key'</span><span class="o">:</span> <span class="s">'{{api-key}}'</span>
 <span class="o">};</span>
 <span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/static-virtual-account?offset=0&amp;limit=5'</span><span class="o">));</span>
-<span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
-  <span class="s">"partner_user_id"</span><span class="o">:</span> <span class="s">"johnDoe42"</span><span class="o">,</span>
-  <span class="s">"amount"</span><span class="o">:</span> <span class="mi">220000</span><span class="o">,</span>
-  <span class="s">"bank_code"</span><span class="o">:</span> <span class="s">"008"</span><span class="o">,</span>
-  <span class="s">"is_open"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-  <span class="s">"is_single_use"</span><span class="o">:</span> <span class="kc">true</span><span class="o">,</span>
-  <span class="s">"is_lifetime"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-  <span class="s">"username_display"</span><span class="o">:</span> <span class="s">"john doe"</span><span class="o">,</span>
-  <span class="s">"email"</span><span class="o">:</span> <span class="s">"john.doe@email.com"</span>
-<span class="o">});</span>
 <span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
 
 <span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">send</span><span class="o">();</span>
@@ -1107,20 +1113,9 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
   <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/static-virtual-account?offset=0&amp;limit=5"</span>
   <span class="n">method</span> <span class="o">:=</span> <span class="s">"GET"</span>
 
-  <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
-    "partner_user_id": "johnDoe42",
-    "amount": 220000,
-    "bank_code": "008",
-    "is_open": false,
-    "is_single_use": true,
-    "is_lifetime": false,
-    "username_display": "john doe",
-    "email": "john.doe@email.com"
-}`</span><span class="p">)</span>
-
   <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
   <span class="p">}</span>
-  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
 
   <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -1154,18 +1149,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"{{api-key}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">partner_user_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">johnDoe42</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">220000</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">bank_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">008</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_open</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_single_use</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_lifetime</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">username_display</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john doe</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john.doe@email.com</span><span class="dl">"</span>
-<span class="p">});</span>
-
-<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -1179,7 +1163,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Oy-Username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{username}}</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{api-key}}</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
@@ -1193,7 +1177,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
   <span class="s1">'X-Oy-Username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
   <span class="s1">'X-Api-Key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "partner_user_id": "johnDoe42",\n   "amount": 220000,\n "bank_code": "008",\n   "is_open": false,\n "is_single_use": true,\n    "is_lifetime": false,\n "username_display": "john doe",\n   "email": "john.doe@email.com"\n}'</span><span class="p">);</span>
+
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -1211,16 +1195,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"{{base_url}}"</span><span class="p">)</span>
-<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
-  <span class="s">"partner_user_id"</span><span class="p">:</span> <span class="s">"johnDoe42"</span><span class="p">,</span>
-  <span class="s">"amount"</span><span class="p">:</span> <span class="mi">220000</span><span class="p">,</span>
-  <span class="s">"bank_code"</span><span class="p">:</span> <span class="s">"008"</span><span class="p">,</span>
-  <span class="s">"is_open"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">"is_single_use"</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-  <span class="s">"is_lifetime"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">"username_display"</span><span class="p">:</span> <span class="s">"john doe"</span><span class="p">,</span>
-  <span class="s">"email"</span><span class="p">:</span> <span class="s">"john.doe@email.com"</span>
-<span class="p">})</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'X-Oy-Username'</span><span class="p">:</span> <span class="s">'{{username}}'</span><span class="p">,</span>
@@ -1333,7 +1308,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 <h2 id='get-list-of-transaction-for-va-va-aggregator' type='normal'>Get List of Transaction for VA</h2>
 <p>Get list of incoming transaction for specific va number.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
+GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
@@ -1344,16 +1319,6 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
   <span class="s">'X-Api-Key'</span><span class="o">:</span> <span class="s">'{{api-key}}'</span>
 <span class="o">};</span>
 <span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&amp;limit=5'</span><span class="o">));</span>
-<span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
-  <span class="s">"partner_user_id"</span><span class="o">:</span> <span class="s">"johnDoe42"</span><span class="o">,</span>
-  <span class="s">"amount"</span><span class="o">:</span> <span class="mi">220000</span><span class="o">,</span>
-  <span class="s">"bank_code"</span><span class="o">:</span> <span class="s">"008"</span><span class="o">,</span>
-  <span class="s">"is_open"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-  <span class="s">"is_single_use"</span><span class="o">:</span> <span class="kc">true</span><span class="o">,</span>
-  <span class="s">"is_lifetime"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-  <span class="s">"username_display"</span><span class="o">:</span> <span class="s">"john doe"</span><span class="o">,</span>
-  <span class="s">"email"</span><span class="o">:</span> <span class="s">"john.doe@email.com"</span>
-<span class="o">});</span>
 <span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
 
 <span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">send</span><span class="o">();</span>
@@ -1379,20 +1344,9 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
   <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&amp;limit=5"</span>
   <span class="n">method</span> <span class="o">:=</span> <span class="s">"GET"</span>
 
-  <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
-    "partner_user_id": "johnDoe42",
-    "amount": 220000,
-    "bank_code": "008",
-    "is_open": false,
-    "is_single_use": true,
-    "is_lifetime": false,
-    "username_display": "john doe",
-    "email": "john.doe@email.com"
-}`</span><span class="p">)</span>
-
   <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
   <span class="p">}</span>
-  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
 
   <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -1426,18 +1380,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"{{api-key}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">partner_user_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">johnDoe42</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">220000</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">bank_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">008</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_open</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_single_use</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_lifetime</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">username_display</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john doe</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john.doe@email.com</span><span class="dl">"</span>
-<span class="p">});</span>
-
-<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -1451,7 +1394,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Oy-Username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{username}}</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{api-key}}</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
@@ -1465,7 +1408,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
   <span class="s1">'X-Oy-Username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
   <span class="s1">'X-Api-Key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "partner_user_id": "johnDoe42",\n   "amount": 220000,\n "bank_code": "008",\n   "is_open": false,\n "is_single_use": true,\n    "is_lifetime": false,\n "username_display": "john doe",\n   "email": "john.doe@email.com"\n}'</span><span class="p">);</span>
+
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -1483,16 +1426,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/12345676788898?offset<span
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"{{base_url}}"</span><span class="p">)</span>
-<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
-  <span class="s">"partner_user_id"</span><span class="p">:</span> <span class="s">"johnDoe42"</span><span class="p">,</span>
-  <span class="s">"amount"</span><span class="p">:</span> <span class="mi">220000</span><span class="p">,</span>
-  <span class="s">"bank_code"</span><span class="p">:</span> <span class="s">"008"</span><span class="p">,</span>
-  <span class="s">"is_open"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">"is_single_use"</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-  <span class="s">"is_lifetime"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">"username_display"</span><span class="p">:</span> <span class="s">"john doe"</span><span class="p">,</span>
-  <span class="s">"email"</span><span class="p">:</span> <span class="s">"john.doe@email.com"</span>
-<span class="p">})</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'X-Oy-Username'</span><span class="p">:</span> <span class="s">'{{username}}'</span><span class="p">,</span>
