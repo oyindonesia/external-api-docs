@@ -611,7 +611,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"partner_user_id\": \"johnDoe42\",\n\t\"amount\": 220000,\n\t\"bank_code\": \"008\",\n\t\"is_open\": false,\n\t\"is_single_use\": true,\n\t\"is_lifetime\": false,\n\t\"username_display\": \"john doe\",\n\t\"email\": \"john.doe@email.com\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"amount\": 50000,\n\t\"is_single_use\": false,\n\t\"expiration_time\": 30,\n\t\"username_display\": "test",\n\t\"is_lifetime\": false,\n\t\"email\": "email@domain.com",\n\t\"trx_expiration_time\": 5,\n\t\"partner_trx_id\": \"TRX0002\",\n\t\"trx_counter\": 1\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09")
   .method("PUT", body)
