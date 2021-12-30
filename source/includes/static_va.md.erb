@@ -42,14 +42,18 @@ var headers = {
 };
 var request = http.Request('POST', Uri.parse('{{base_url}}/api/generate-static-va'));
 request.body = json.encode({
-  "partner_user_id": "johnDoe42",
-  "amount": 120000,
-  "bank_code": "008",
-  "is_open": false,
-  "is_single_use": true,
-  "is_lifetime": false,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
+   "partner_user_id":"51200021",
+   "bank_code": "002",
+   "amount": 0,
+   "is_open": true,
+   "is_single_use" : false,
+   "is_lifetime": false,
+   "expiration_time": 5,
+   "username_display": "va name",
+   "email": "email@mail.com",
+   "trx_expiration_time": 5,
+   "partner_trx_id": "TRX0001",
+   "trx_counter" : 1
 });
 request.headers.addAll(headers);
 
@@ -79,14 +83,18 @@ func main() {
   method := "POST"
 
   payload := strings.NewReader(`{
-	"partner_user_id": "johnDoe42",
-	"amount": 120000,
-	"bank_code": "008",
-	"is_open": false,
-	"is_single_use": true,
-	"is_lifetime": false,
-	"username_display": "john doe",
-	"email": "john.doe@email.com"
+	"partner_user_id":"51200021",
+  "bank_code": "002",
+  "amount": 0,
+  "is_open": true,
+  "is_single_use" : false,
+  "is_lifetime": false,
+  "expiration_time": 5,
+  "username_display": "va name",
+  "email": "email@mail.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0001",
+  "trx_counter" : 1
 }`)
 
   client := &http.Client {
@@ -121,7 +129,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"partner_user_id\": \"johnDoe42\",\n\t\"amount\": 120000,\n\t\"bank_code\": \"008\",\n\t\"is_open\": false,\n\t\"is_single_use\": true,\n\t\"is_lifetime\": false,\n\t\"username_display\": \"john doe\",\n\t\"email\": \"john.doe@email.com\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n\"partner_user_id\":\"51200021\",\n\"bank_code\": \"002\",\n\"amount\": 0,\n\"is_open\": true,\n\"is_single_use\" : false,\n\"is_lifetime\": false,\n\"expiration_time\": 5,\n\"username_display\": \"va name\",\n\"email\": \"email@mail.com\",\n\"trx_expiration_time\": 5,\n\"partner_trx_id\": \"TRX0001\",\n\"trx_counter\" : 1\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/generate-static-va")
   .method("POST", body)
@@ -134,14 +142,18 @@ Response response = client.newCall(request).execute();
 
 ```javascript
 var data = JSON.stringify({
-  "partner_user_id": "johnDoe42",
-  "amount": 120000,
-  "bank_code": "008",
-  "is_open": false,
-  "is_single_use": true,
+  "partner_user_id":"51200021",
+  "bank_code": "002",
+  "amount": 0,
+  "is_open": true,
+  "is_single_use" : false,
   "is_lifetime": false,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
+  "expiration_time": 5,
+  "username_display": "va name",
+  "email": "email@mail.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0001",
+  "trx_counter" : 1
 });
 
 var xhr = new XMLHttpRequest();
@@ -175,7 +187,7 @@ $request->setHeader(array(
   'X-Oy-Username' => '{{username}}',
   'X-Api-Key' => '{{api-key}}'
 ));
-$request->setBody('{\n	"partner_user_id": "johnDoe42",\n	"amount": 120000,\n	"bank_code": "008",\n	"is_open": false,\n	"is_single_use": true,\n	"is_lifetime": false,\n	"username_display": "john doe",\n	"email": "john.doe@email.com"\n}');
+$request->setBody('"{\n\"partner_user_id\":\"51200021\",\n\"bank_code\": \"002\",\n\"amount\": 0,\n\"is_open\": true,\n\"is_single_use\" : false,\n\"is_lifetime\": false,\n\"expiration_time\": 5,\n\"username_display\": \"va name\",\n\"email\": \"email@mail.com\",\n\"trx_expiration_time\": 5,\n\"partner_trx_id\": \"TRX0001\",\n\"trx_counter\" : 1\n}"');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -197,14 +209,18 @@ import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
 payload = json.dumps({
-  "partner_user_id": "johnDoe42",
-  "amount": 120000,
-  "bank_code": "008",
-  "is_open": False,
-  "is_single_use": True,
-  "is_lifetime": False,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
+  "partner_user_id":"51200021",
+  "bank_code": "002",
+  "amount": 0,
+  "is_open": true,
+  "is_single_use" : false,
+  "is_lifetime": false,
+  "expiration_time": 5,
+  "username_display": "va name",
+  "email": "email@mail.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0001",
+  "trx_counter" : 1
 })
 headers = {
   'Content-Type': 'application/json',
@@ -226,10 +242,10 @@ print(data.decode("utf-8"))
         "code": "000",
         "message": "Success"
     },
-    "amount": 500000,
+    "amount": 0,
     "va_number": "123456789182827272",
     "bank_code": "002",
-    "is_open": false,
+    "is_open": true,
     "is_single_use": false,
     "expiration_time": 1582783668175,
     "va_status": "WAITING_PAYMENT",
@@ -797,16 +813,6 @@ var headers = {
   'X-Api-Key': '{{api-key}}'
 };
 var request = http.Request('GET', Uri.parse('{{base_url}}/api/static-virtual-account?offset=0&limit=5'));
-request.body = json.encode({
-  "partner_user_id": "johnDoe42",
-  "amount": 220000,
-  "bank_code": "008",
-  "is_open": false,
-  "is_single_use": true,
-  "is_lifetime": false,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
-});
 request.headers.addAll(headers);
 
 http.StreamedResponse response = await request.send();
@@ -834,20 +840,9 @@ func main() {
   url := "%7B%7Bbase_url%7D%7D/api/static-virtual-account?offset=0&limit=5"
   method := "GET"
 
-  payload := strings.NewReader(`{
-	"partner_user_id": "johnDoe42",
-	"amount": 220000,
-	"bank_code": "008",
-	"is_open": false,
-	"is_single_use": true,
-	"is_lifetime": false,
-	"username_display": "john doe",
-	"email": "john.doe@email.com"
-}`)
-
   client := &http.Client {
   }
-  req, err := http.NewRequest(method, url, payload)
+  req, err := http.NewRequest(method, url)
 
   if err != nil {
     fmt.Println(err)
@@ -887,17 +882,6 @@ Response response = client.newCall(request).execute();
 ```
 
 ```javascript
-var data = JSON.stringify({
-  "partner_user_id": "johnDoe42",
-  "amount": 220000,
-  "bank_code": "008",
-  "is_open": false,
-  "is_single_use": true,
-  "is_lifetime": false,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
-});
-
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
@@ -912,7 +896,7 @@ xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("X-Oy-Username", "{{username}}");
 xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
 
-xhr.send(data);
+xhr.send();
 ```
 
 ```php
@@ -929,7 +913,7 @@ $request->setHeader(array(
   'X-Oy-Username' => '{{username}}',
   'X-Api-Key' => '{{api-key}}'
 ));
-$request->setBody('{\n	"partner_user_id": "johnDoe42",\n	"amount": 220000,\n	"bank_code": "008",\n	"is_open": false,\n	"is_single_use": true,\n	"is_lifetime": false,\n	"username_display": "john doe",\n	"email": "john.doe@email.com"\n}');
+
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -950,16 +934,7 @@ import http.client
 import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
-payload = json.dumps({
-  "partner_user_id": "johnDoe42",
-  "amount": 220000,
-  "bank_code": "008",
-  "is_open": False,
-  "is_single_use": True,
-  "is_lifetime": False,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
-})
+payload = ''
 headers = {
   'Content-Type': 'application/json',
   'X-Oy-Username': '{{username}}',
@@ -1047,7 +1022,7 @@ Get list of incoming transaction for specific va number.
 
 ```shell
 curl -X \
-GET <%= config[:endpoint_prod] %>/api/va-tx-history/12345676788898?offset=0&limit=10
+GET <%= config[:endpoint_prod] %>/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&limit=10
 -H 'content-type: application/json' \
 -H 'accept: application/json' \
 -H 'x-oy-username: username' \
@@ -1061,16 +1036,6 @@ var headers = {
   'X-Api-Key': '{{api-key}}'
 };
 var request = http.Request('GET', Uri.parse('{{base_url}}/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&limit=5'));
-request.body = json.encode({
-  "partner_user_id": "johnDoe42",
-  "amount": 220000,
-  "bank_code": "008",
-  "is_open": false,
-  "is_single_use": true,
-  "is_lifetime": false,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
-});
 request.headers.addAll(headers);
 
 http.StreamedResponse response = await request.send();
@@ -1099,20 +1064,9 @@ func main() {
   url := "%7B%7Bbase_url%7D%7D/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset=0&limit=5"
   method := "GET"
 
-  payload := strings.NewReader(`{
-	"partner_user_id": "johnDoe42",
-	"amount": 220000,
-	"bank_code": "008",
-	"is_open": false,
-	"is_single_use": true,
-	"is_lifetime": false,
-	"username_display": "john doe",
-	"email": "john.doe@email.com"
-}`)
-
   client := &http.Client {
   }
-  req, err := http.NewRequest(method, url, payload)
+  req, err := http.NewRequest(method, url)
 
   if err != nil {
     fmt.Println(err)
@@ -1152,17 +1106,6 @@ Response response = client.newCall(request).execute();
 ```
 
 ```javascript
-var data = JSON.stringify({
-  "partner_user_id": "johnDoe42",
-  "amount": 220000,
-  "bank_code": "008",
-  "is_open": false,
-  "is_single_use": true,
-  "is_lifetime": false,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
-});
-
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
@@ -1177,7 +1120,7 @@ xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("X-Oy-Username", "{{username}}");
 xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
 
-xhr.send(data);
+xhr.send();
 ```
 
 ```php
@@ -1194,7 +1137,7 @@ $request->setHeader(array(
   'X-Oy-Username' => '{{username}}',
   'X-Api-Key' => '{{api-key}}'
 ));
-$request->setBody('{\n	"partner_user_id": "johnDoe42",\n	"amount": 220000,\n	"bank_code": "008",\n	"is_open": false,\n	"is_single_use": true,\n	"is_lifetime": false,\n	"username_display": "john doe",\n	"email": "john.doe@email.com"\n}');
+
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -1215,16 +1158,7 @@ import http.client
 import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
-payload = json.dumps({
-  "partner_user_id": "johnDoe42",
-  "amount": 220000,
-  "bank_code": "008",
-  "is_open": False,
-  "is_single_use": True,
-  "is_lifetime": False,
-  "username_display": "john doe",
-  "email": "john.doe@email.com"
-})
+payload = ''
 headers = {
   'Content-Type': 'application/json',
   'X-Oy-Username': '{{username}}',
