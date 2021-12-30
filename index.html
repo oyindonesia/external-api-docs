@@ -6994,14 +6994,15 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <span class="o">};</span>
 <span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'PUT'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09'</span><span class="o">));</span>
 <span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
-  <span class="s">"partner_user_id"</span><span class="o">:</span> <span class="s">"johnDoe42"</span><span class="o">,</span>
-  <span class="s">"amount"</span><span class="o">:</span> <span class="mi">220000</span><span class="o">,</span>
-  <span class="s">"bank_code"</span><span class="o">:</span> <span class="s">"008"</span><span class="o">,</span>
-  <span class="s">"is_open"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-  <span class="s">"is_single_use"</span><span class="o">:</span> <span class="kc">true</span><span class="o">,</span>
+  <span class="s">"amount"</span><span class="o">:</span> <span class="mi">50000</span><span class="o">,</span>
+  <span class="s">"is_single_use"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
+  <span class="s">"expiration_time"</span><span class="o">:</span> <span class="mi">30</span><span class="o">,</span>
+  <span class="s">"username_display"</span><span class="o">:</span> <span class="s">"test"</span><span class="o">,</span>
   <span class="s">"is_lifetime"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
-  <span class="s">"username_display"</span><span class="o">:</span> <span class="s">"john doe"</span><span class="o">,</span>
-  <span class="s">"email"</span><span class="o">:</span> <span class="s">"john.doe@email.com"</span>
+  <span class="s">"email"</span><span class="o">:</span> <span class="s">"email@domain.com"</span><span class="o">,</span>
+  <span class="s">"trx_expiration_time"</span><span class="o">:</span><span class="mi">5</span><span class="o">,</span>
+  <span class="s">"partner_trx_id"</span><span class="o">:</span><span class="s">"TRX0002"</span><span class="o">,</span>
+  <span class="s">"trx_counter"</span><span class="o">:</span> <span class="mi">1</span>
 <span class="o">});</span>
 <span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
 
@@ -7028,14 +7029,15 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
   <span class="n">method</span> <span class="o">:=</span> <span class="s">"PUT"</span>
 
   <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
-    "partner_user_id": "johnDoe42",
-    "amount": 220000,
-    "bank_code": "008",
-    "is_open": false,
+    "amount": 50000,
     "is_single_use": true,
-    "is_lifetime": false,
+    "expiration_time": 30,
     "username_display": "john doe",
-    "email": "john.doe@email.com"
+    "is_lifetime": false,
+    "email": "john.doe@email.com",
+    "trx_expiration_time":5,
+  "partner_trx_id":"TRX0002",
+  "trx_counter": 1
 }`</span><span class="p">)</span>
 
   <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
@@ -7077,14 +7079,15 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">partner_user_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">johnDoe42</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">220000</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">bank_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">008</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_open</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_single_use</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">is_single_use</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">expiration_time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">username_display</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">is_lifetime</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">username_display</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john doe</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">john.doe@email.com</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">email@domain.com</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">trx_expiration_time</span><span class="dl">"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">partner_trx_id</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">TRX0002</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">trx_counter</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">});</span>
 
 <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
@@ -7115,7 +7118,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
   <span class="s1">'X-Oy-Username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
   <span class="s1">'X-Api-Key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "partner_user_id": "johnDoe42",\n   "amount": 220000,\n "bank_code": "008",\n   "is_open": false,\n "is_single_use": true,\n    "is_lifetime": false,\n "username_display": "john doe",\n   "email": "john.doe@email.com"\n}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "amount": 50000,\n  "is_single_use": false,\n   "expiration_time": 30,\n    "username_display": "test",\n   "is_lifetime": false,\n "email": "email@domain.com",\n  "trx_expiration_time": 5,\n "partner_trx_id": "TRX0002",\n  "trx_counter": 1\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -7134,14 +7137,15 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"{{base_url}}"</span><span class="p">)</span>
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
-  <span class="s">"partner_user_id"</span><span class="p">:</span> <span class="s">"johnDoe42"</span><span class="p">,</span>
-  <span class="s">"amount"</span><span class="p">:</span> <span class="mi">220000</span><span class="p">,</span>
-  <span class="s">"bank_code"</span><span class="p">:</span> <span class="s">"008"</span><span class="p">,</span>
-  <span class="s">"is_open"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">"is_single_use"</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
-  <span class="s">"is_lifetime"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
-  <span class="s">"username_display"</span><span class="p">:</span> <span class="s">"john doe"</span><span class="p">,</span>
-  <span class="s">"email"</span><span class="p">:</span> <span class="s">"john.doe@email.com"</span>
+  <span class="s">"amount"</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+  <span class="s">"is_single_use"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s">"expiration_time"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+  <span class="s">"username_display"</span><span class="p">:</span> <span class="s">"test"</span><span class="p">,</span>
+  <span class="s">"is_lifetime"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+  <span class="s">"email"</span><span class="p">:</span> <span class="s">"email@domain.com"</span><span class="p">,</span>
+  <span class="s">"trx_expiration_time"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+  <span class="s">"partner_trx_id"</span><span class="p">:</span><span class="s">"TRX0002"</span><span class="p">,</span>
+  <span class="s">"trx_counter"</span><span class="p">:</span> <span class="mi">1</span>
 <span class="p">})</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
