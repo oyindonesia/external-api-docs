@@ -813,31 +813,31 @@ PDAMDKIAETRA |	PDAM DKIAETRA
 ### PBB
 Product Id | Product Description
 ---------- | -------------------
-PBBKOT |.BOGOR	PBB Kota Bogor
-PBBKOT |.CIMAHI	PBB Kota Cimahi
-PBBKOT |.DEPOK	PBB Kota Depok
-PBBKOT |.BEKASI	PBB Kota Bekasi
-PBBKOT |.BANDUNG	PBB Kota Bandung
-PBBKOT |.BANJAR	PBB Kota Banjar
-PBBKOT |.CIREBON	PBB Kota Cirebon
-PBBKOT |.SUKABUMI	PBB Kota Sukabumi
-PBBKAB |.BANDUNG	PBB Kabupaten Bandung
-PBBKAB |.BANDUNGBARAT	PBB Kabupaten Bandung Barat
-PBBKAB |.SUBANG	PBB Kabupaten Subang
-PBBKAB |.BOGORCIBINONG	PBB Kabupaten Bogor Cibinong
-PBBKAB |.CIAMIS	PBB Kabupaten Ciamis
-PBBKAB |.CIANJUR	PBB Kabupaten Cianjur
-PBBKAB |.PURWAKARTA	PBB Kabupaten Purwakarta
-PBBKAB |.SUKABUMI	PBB Kabupaten Sukabumi
-PBBKAB |.SUMEDANG	PBB Kabupaten Sumedang
-PBBKAB |.CIREBON	PBB Kabupaten Cirebon
-PBBKAB |.GARUT	PBB Kabupaten Garut
-PBBKAB |.INDRAMAYU	PBB Kabupaten Indramayu
-PBBKAB |.KARAWANG	PBB Kabupaten Karawang
-PBBKAB |.KUNINGAN	PBB Kabupaten Kuningan
-PBBKAB |.MAJALENGKA	PBB Kabupaten Majalengka
-PBBKAB |.TASIKMALAYA	PBB Kabupaten Tasikmalaya
-PBBKAB |.PANGANDARAN	PBB Kabupaten Pangandaran
+PBBKOT.BOGOR |	PBB Kota Bogor
+PBBKOT.CIMAHI |	PBB Kota Cimahi
+PBBKOT.DEPOK |	PBB Kota Depok
+PBBKOT.BEKASI |	PBB Kota Bekasi
+PBBKOT.BANDUNG |	PBB Kota Bandung
+PBBKOT.BANJAR |	PBB Kota Banjar
+PBBKOT.CIREBON |	PBB Kota Cirebon
+PBBKOT.SUKABUMI |	PBB Kota Sukabumi
+PBBKAB.BANDUNG |	PBB Kabupaten Bandung
+PBBKAB.BANDUNGBARAT |	PBB Kabupaten Bandung Barat
+PBBKAB.SUBANG |	PBB Kabupaten Subang
+PBBKAB.BOGORCIBINONG |	PBB Kabupaten Bogor Cibinong
+PBBKAB.CIAMIS |	PBB Kabupaten Ciamis
+PBBKAB.CIANJUR |	PBB Kabupaten Cianjur
+PBBKAB.PURWAKARTA |	PBB Kabupaten Purwakarta
+PBBKAB.SUKABUMI |	PBB Kabupaten Sukabumi
+PBBKAB.SUMEDANG |	PBB Kabupaten Sumedang
+PBBKAB.CIREBON |	PBB Kabupaten Cirebon
+PBBKAB.GARUT |	PBB Kabupaten Garut
+PBBKAB.INDRAMAYU |	PBB Kabupaten Indramayu
+PBBKAB.KARAWANG |	PBB Kabupaten Karawang
+PBBKAB.KUNINGAN |	PBB Kabupaten Kuningan
+PBBKAB.MAJALENGKA |	PBB Kabupaten Majalengka
+PBBKAB.TASIKMALAYA |	PBB Kabupaten Tasikmalaya
+PBBKAB.PANGANDARAN |	PBB Kabupaten Pangandaran
 
 ## Biller API Response Codes
 
