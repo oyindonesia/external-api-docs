@@ -18,7 +18,7 @@ You’ll need to create a OY! indonesia account to access OY! APIs via Postman C
 
 ## API Authorization
 
-* On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. 
+* On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Link Postman collection to test. 
 * The screenshot below uses Detail > Get Detail Payment/Invoice as an example
 * Open the “Headers” tab and add the following key-value pairs: **Content-Type** with **application/json**, **X-Oy-Username** with your **username** and **X-Api-Key** with your **API Key**
 
@@ -55,7 +55,7 @@ You just set your authorization value header with environment variable which alr
 
 ## Test one of our API Calls
 
-* On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. 
+* On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Link Postman collection to test. 
 * The screenshot below uses Detail > Get Detail Payment/Invoice as an example
 * Replace [https://partner.oyindonesia.com](https://partner.oyindonesia.com) in the GET url with **{{base_url}}** as the value 
 * Replace the **X-Oy-Username** key-value pair to **{{username}}** as the value 

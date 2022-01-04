@@ -1,16 +1,16 @@
 # Fund Acceptance
 
-There are two products that fall under the category of funds acceptance which are Payment Checkout and Invoicing. 
+There are two products that fall under the category of funds acceptance which are Payment Link and Invoicing. 
 
-Payment Checkout product will allow you to receive funds from your customers by choosing from our various payment channels such as bank transfer or cards. 
+Payment Link product will allow you to receive funds from your customers by choosing from our various payment channels such as bank transfer or cards. 
 
-Similarly, Invoicing will let you to bill your customers for service/items purchased by sending a payment checkout link to your customer's email by attatching/creating an invoice via our API.
+Similarly, Invoicing will let you to bill your customers for service/items purchased by sending a payment link to your customer's email by attatching/creating an invoice via our API.
 
 All payment link and/or details can be monitored by using our dashboard and various API endpoints. 
 
-## API Create (Payment Checkout)
+## API Create (Payment Link)
 
-An endpoint to create payment checkout URL which return parameters by encapsulation.
+An endpoint to create payment link URL which return parameters by encapsulation.
 
 ```shell
 curl -X POST \
@@ -272,21 +272,21 @@ print(data.decode("utf-8"))
 Parameters | Type | Description
 ---- | ---- | ----
 X-Api-Key | String | API Key for establishing connection to this particular endpoint
-X-Oy-Username | String | The registered partner username which access is enabled for payment checkout product
+X-Oy-Username | String | The registered partner username which access is enabled for payment link product
 
 ### Request Parameters
 
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 partner_tx_id | String | A unique transaction ID provided by partner. | A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics. If empty then OY will generate automatically.
-description | String | Description of the payment checkout link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
+description | String | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
 amount | Integer | The amount of a transaction to be paid. | Minimum amount is IDR 15,000.
-email | String | The email addresses where the payment checkout link will be sent to. | Up to 3 emails separated by ";"
+email | String | The email addresses where the payment link will be sent to. | Up to 3 emails separated by ";"
 phone_number | Numeric | Phone number of the payer for a transaction. | Do not use special character (e.g. "+")
 is_open	| Boolean | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
-step | String | Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method). | If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.
+step | String | Accessing specific page of the payment link URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method). | If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.
 include_admin_fee | Boolean | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
 list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
@@ -307,7 +307,7 @@ email_status | String | email status
 
 ## API Create (Invoicing)
 
-Our Invoicing product is leveraging most parameters that are defined for our payment checkout in the above section with some additional parameters that are only applicable for Inovicing product. 
+Our Invoicing product is leveraging most parameters that are defined for our payment link in the above section with some additional parameters that are only applicable for Inovicing product. 
 
 ```shell
 curl -X POST \
@@ -631,14 +631,14 @@ print(data.decode("utf-8"))
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 partner_tx_id | String | A unique transaction ID provided by partner. | A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics. If empty then OY will generate automatically.
-description | String | Description of the payment checkout link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
+description | String | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
 amount | Integer | The amount of a transaction to be paid. | Minimum amount is IDR 15,000.
-email | String | The email address where the payment checkout link will be sent to. | Up to 3 emails separated by ";"
+email | String | The email address where the payment link will be sent to. | Up to 3 emails separated by ";"
 phone_number | Numeric | Phone number of the payer for a transaction. | Do not use special character (e.g. "+").
 is_open	| Boolean | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
-step | String | Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method). | If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.
+step | String | Accessing specific page of the payment link URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method). | If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.
 include_admin_fee | Boolean | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
 list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
@@ -702,7 +702,7 @@ curl -X POST \
 
 ### Request Parameters
 
-*Note: all parameters from API Create (Payment Checkout and Invoicing) are still applicable. Below is the list of the additional specific parameters for Recurring Invoice feature.
+*Note: all parameters from API Create (Payment Link and Invoicing) are still applicable. Below is the list of the additional specific parameters for Recurring Invoice feature.
 
 Parameters | Type | Description
 ---- | ---- | ------
@@ -710,7 +710,7 @@ recurring_start_date | String | Defining the date when the first invoice will be
 recurring_end_date | String | Username assigned to the customer by partner. 
 recurring_frequency | Integer | The interval of a recurring invoice to be sent to customers (in days).
 
-## Payment Checkout Callback Parameters
+## Payment Link Callback Parameters
 
 The data on the callback will be sent using JSON format via POST data to your web hook.
 
@@ -756,13 +756,13 @@ status | String | The status of a transaction (e.g. success/failed/processing)
 sender_bank | String | The bank code used by a payer to do payment
 payment_method | String | The payment method used by user to complete a payment.
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
-created | DateTime | The timestamp which indicates the creation time of a payment checkout link
-updated | DateTime | The timestamp which indicates the latest updated time of a payment checkout link due to status update
+created | DateTime | The timestamp which indicates the creation time of a payment link
+updated | DateTime | The timestamp which indicates the latest updated time of a payment link due to status update
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
-description | String | The description of the payment checkout/invoice link.
-expiration | DateTime | The expiration time of the payment checkout/invoice link
-due_date | DateTime | The transaction due date of the payment checkout/invoice
-email | String | The email addresses for the payment checkout/invoice link to be sent. You can add up to 3 emails separated by ";"
+description | String | The description of the payment link/invoice link.
+expiration | DateTime | The expiration time of the payment link/invoice link
+due_date | DateTime | The transaction due date of the payment link/invoice
+email | String | The email addresses for the payment link/invoice link to be sent. You can add up to 3 emails separated by ";"
 paid_amount | BigDecimal | The total amount that a user has paid
 settlement_time | DateTime | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement
 settlement_status | String | Status of the settlement (e.g. success/waiting)
@@ -774,7 +774,7 @@ Parameter | Type | Description
 invoice_ID | String | The invoice id.
 full_name | String | The full name.
 
-## Payment Checkout Status
+## Payment Link Status
 
 Payment Status | Type | Description
 ---- | ---- | ----
@@ -784,7 +784,7 @@ charge_in_progress | String | OTP for card payment method has been succesfully e
 charge_sucess | String | Card payment has been successfully received by OY
 failed | String | OTP for card payment method has been succesfully entered but payment is rejected or QRIS has expired
 complete | String | Transaction has been succesfully completed
-closed | String | Payment checkout link has  been deleted
+closed | String | Payment link has  been deleted
 
 ## API Payment Status
 
@@ -966,7 +966,7 @@ print(data.decode("utf-8"))
 Parameters | Type | Description
 ---- | ---- | ----
 x-api-key | String | API Key for establishing connection to this particular endpoint
-x-oy-username | String | The registered partner username which access is enabled for payment checkout product
+x-oy-username | String | The registered partner username which access is enabled for payment link product
 
 ### Request Parameters
 
@@ -988,14 +988,14 @@ status | String | The status of a payment link
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
 payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), or VA (Virtual Account)
-created | String | The timestamp which indicates the creation time of a payment checkout link
-description | String | Description of the payment checkout link.
+created | String | The timestamp which indicates the creation time of a payment link
+description | String | Description of the payment link.
 paid_amount | BigDecimal | the total amount that a user has paid.
 expiration | String | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss)
 due_date | String | To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss)
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not.
-updated | String | The timestamp which indicates the latest updated time of a payment checkout link due to status update
-email | String | The email addresses where the payment checkout link will be sent to. You can add up to 3 emails separated by ";"
+updated | String | The timestamp which indicates the latest updated time of a payment link due to status update
+email | String | The email addresses where the payment link will be sent to. You can add up to 3 emails separated by ";"
 settlement_time | String | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)
 settlement_status | String | The status of the settlement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)
 
@@ -1432,9 +1432,9 @@ Reason | Message
 
 ## Pop!: Seamless Payment Experience
 
-With Pop!, displaying our payment checkout page on your front-end web environment is now made easier than ever. Our payment checkout offers a seamless user experience in a way that can be catered to your UI needs.
+With Pop!, displaying our payment link page on your front-end web environment is now made easier than ever. Our payment link offers a seamless user experience in a way that can be catered to your UI needs.
 
-This section covers a demonstration and a snippet code on how to display a payment checkout page in 4 styles/locations: Center, Right, Left, and Slide Right.
+This section covers a demonstration and a snippet code on how to display a payment link page in 4 styles/locations: Center, Right, Left, and Slide Right.
 
 ### Pop! - Center
 
@@ -1460,7 +1460,7 @@ function PaycheckoutPopUp({
             width="400"
             height="800"
             src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
-            title="OY! Indonesia Payment Checkout">
+            title="OY! Indonesia Payment Link">
           </iframe>
 
           {/* Trigger/Close The Modal */}
@@ -1496,7 +1496,7 @@ function PaycheckoutPopUp({
             width="400"
             height="800"
             src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
-            title="OY! Indonesia Payment Checkout">
+            title="OY! Indonesia Payment Link">
           </iframe>
 
           {/* Trigger/Close The Modal */}
@@ -1532,7 +1532,7 @@ function PaycheckoutPopUp({
             width="400"
             height="800"
             src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
-            title="OY! Indonesia Payment Checkout">
+            title="OY! Indonesia Payment Link">
           </iframe>
 
           {/* Trigger/Close The Modal */}
@@ -1563,7 +1563,7 @@ function PaycheckoutSlide({
           <iframe 
             width="400"
             src={`https://pay-dev.oyindonesia.com/${paymentLinkId}`}
-            title="OY! Indonesia Payment Checkout">
+            title="OY! Indonesia Payment Link">
           </iframe>
     </div>
   );

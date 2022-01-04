@@ -280,7 +280,7 @@ Endpoint:
 | ------------- |:-------------:| :----------: |:-----:|:-----:|
 |partner_user_id   | String    |   Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.| - |  Unique partner user id |
 | partner_trx_id  | String     |  FALSE | - | Unique partner transaction ID |
-| need_frontend | Boolean     |  TRUE | -| Partner need UI or not, if true, we will route to payment checkout, otherwise will be route to va aggregator. |
+| need_frontend | Boolean     |  TRUE | -| Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator. |
 | sender_email | String     |  FALSE | - | Email of sender |
 | receive_amount | Numeric     |  TRUE | - | The amount of a transaction to be paid, min. amount is 100000 |
 | list_enable_payment_method | String; comma separated     |  TRUE | - | To configure payment methods to be enabled in the payment method page; If need_frontend is false only can accept VA. |
@@ -305,7 +305,7 @@ Endpoint:
 |receive_amount|Numeric|amount to be received|
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Trasnaction Expiration Time|
 |payment_info|Object|Payment info object|
-|payment_checkout_url|String|generated url for payment checkout; conditional only if request need_frontend is TRUE|
+|payment_checkout_url|String|generated url for payment link; conditional only if request need_frontend is TRUE|
 |va_number|String|Generated VA number; conditional only if request need_frontend is FALSE|
 |va_display_name|String|VA display name; conditional only if request need_frontend is FALSE|
 
@@ -557,7 +557,7 @@ This response body is also the payment routing callback to partner.
 |partner_tx_id|String|Partner transaction ID|
 |payment_status|String|Receive money status|
 |trx_expiration_time|partner_user_id|Transaction expiration time|
-|need_frontend|Boolean|Partner need UI or not, if true, we will route to payment checkout, otherwise will be route to va aggregator.|
+|need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
 |payment_info|Object|Payment info Object|
 |payment_checkout_url|String|generated va number; conditional only if request need_frontend is false|
 |va_display_name|String|generated va number; conditional only if request need_frontend is false|
@@ -575,13 +575,13 @@ This response body is also the payment routing callback to partner.
 ## List of Payment Routing Status
 | Status               | Description                                                                                                                                            |
 |:----------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| CREATED              | For Payement Checkout, Payment Checkout Link has been created.                                                                                         |
-| WAITING PAYMENT      | For Payment Checkout, user already choose a payment method in payment checkout but has not done the payment yet.   For VA, VA number has been created. |
+| CREATED              | For Payment Link, Payment Link has been created.                                                                                         |
+| WAITING PAYMENT      | For Payment Link, user already choose a payment method in payment link but has not done the payment yet.   For VA, VA number has been created. |
 | PAYMENT IN PROGRESS  | User has made a payment and currently being processed by OY!                                                                                           |
 | DISBURSE IN PROGRESS | Money has been successfuly received and is being forwared to each recipient.                                                                           |
 | COMPLETE             | Money has been successfully received by recipients.                                                                                                    |
 | INCOMPLETE           | Money received but forwarding money to recipients process is totally or partially failed.                                                              |
-| EXPIRED              | Payment Checkout Link or VA number has been expired.                                                                                                   |
+| EXPIRED              | Payment Link or VA number has been expired.                                                                                                   |
 
 ## List of Disbursement Status
 
