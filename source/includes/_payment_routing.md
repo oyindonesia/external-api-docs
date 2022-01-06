@@ -109,8 +109,8 @@ func main() {
     return
   }
   req.Header.Add("Content-Type", "application/json")
-  req.Header.Add("x-oy-username", "pejetaja")
-  req.Header.Add("x-api-key", "test")
+  req.Header.Add("x-oy-username", "yourusername")
+  req.Header.Add("x-api-key", "apikeymu")
 
   res, err := client.Do(req)
   if err != nil {
@@ -134,11 +134,11 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"VA\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}");
 Request request = new Request.Builder()
-  .url("http://172.11.74.145:8080//api/payment-routing/create-transaction")
+  .url("https://partner.oyindonesia.com/api/payment-routing/create-transaction")
   .method("POST", body)
   .addHeader("Content-Type", "application/json")
-  .addHeader("x-oy-username", "pejetaja")
-  .addHeader("x-api-key", "test")
+  .addHeader("x-oy-username", "yourusername")
+  .addHeader("x-api-key", "apikeymu")
   .build();
 Response response = client.newCall(request).execute();
 ```
@@ -172,10 +172,10 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("POST", "http://172.11.74.145:8080//api/payment-routing/create-transaction");
+xhr.open("POST", "https://partner.oyindonesia.com/api/payment-routing/create-transaction");
 xhr.setRequestHeader("Content-Type", "application/json");
-xhr.setRequestHeader("x-oy-username", "pejetaja");
-xhr.setRequestHeader("x-api-key", "test");
+xhr.setRequestHeader("x-oy-username", "yourusername");
+xhr.setRequestHeader("x-api-key", "apikeymu");
 
 xhr.send(data);
 ```
@@ -184,15 +184,15 @@ xhr.send(data);
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('http://172.11.74.145:8080//api/payment-routing/create-transaction');
+$request->setUrl('https://partner.oyindonesia.com/api/payment-routing/create-transaction');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
 ));
 $request->setHeader(array(
   'Content-Type' => 'application/json',
-  'x-oy-username' => 'pejetaja',
-  'x-api-key' => 'test'
+  'x-oy-username' => 'yourusername',
+  'x-api-key' => 'apikeymu'
 ));
 $request->setBody('{\n    "partner_user_id": "USR-20211117-1029",\n    "partner_trx_id": "TRX-20211117-1030",\n    "need_frontend": false,\n    "sender_email": "sender@gmail.com",\n    "receive_amount": 14000,\n    "list_enable_payment_method": "VA",\n    "list_enable_sof": "002",\n    "va_display_name": "partner_brand",\n    "payment_routing": [{\n        "recipient_bank": "014",\n        "recipient_account": "1234567890",\n        "recipient_amount": 10000,\n        "recipient_email": "recipient_bca@gmail.com"\n    }]\n}');
 try {
@@ -214,7 +214,7 @@ catch(HTTP_Request2_Exception $e) {
 import http.client
 import json
 
-conn = http.client.HTTPSConnection("172.11.74.145", undefined)
+conn = http.client.HTTPSConnection("https://partner.oyindonesia.com", undefined)
 payload = json.dumps({
   "partner_user_id": "USR-20211117-1029",
   "partner_trx_id": "TRX-20211117-1030",
@@ -235,10 +235,10 @@ payload = json.dumps({
 })
 headers = {
   'Content-Type': 'application/json',
-  'x-oy-username': 'pejetaja',
-  'x-api-key': 'test'
+  'x-oy-username': 'yourusername',
+  'x-api-key': 'apikeymu'
 }
-conn.request("POST", "//api/payment-routing/create-transaction", payload, headers)
+conn.request("POST", "/api/payment-routing/create-transaction", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -273,7 +273,7 @@ Endpoint:
 | Field  | Description |  Example   |
 | ------------- |:-------------:| ---------- |
 | x-oy-username    |Partner username    |   username    |
-| x-oy-api-key      | Partner api key     | 6e87432c-2726-11ec-9621-0242ac130002 |
+| x-api-key      | Partner api key     | 6e87432c-2726-11ec-9621-0242ac130002 |
 
 ### Request Parameters
 | Parameter  | Type |  Required   | Default | Description |
@@ -283,8 +283,8 @@ Endpoint:
 | need_frontend | Boolean     |  TRUE | -| Partner need UI or not, if true, we will route to payment checkout, otherwise will be route to va aggregator. |
 | sender_email | String     |  FALSE | - | Email of sender |
 | receive_amount | Numeric     |  TRUE | - | The amount of a transaction to be paid, min. amount is 100000 |
-| list_enable_payment_method | String; comma separated     |  TRUE | - | To configure payment methods to be enabled in the payment method page; If need_frontend is false only can accept VA. |
-| list_enable_sof | String; comma separated      |  TRUE | - | To configure list of source of fund (banks or ewallets) to be enabled in the payment method page; If need_frontend is false, this parameter should have only have one bank code. |
+| list_enable_payment_method | String; comma separated     |  TRUE | - | To configure payment methods to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with VA,EWALLET,QRIS,CREDIT_CARD. If need_frontend is FALSE only can accept VA. |
+| list_enable_sof | String; comma separated      |  TRUE | - | To configure list of source of fund (banks or ewallets) to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with 008,009,dana_ewallet,linkaja_ewallet. If need_frontend is FALSE, this parameter should have only have one bank code. |
 | va_display_name | String     |  FALSE | Partner's brand name | Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name |
 | trx_expiration_time| Date string; yyyy-mm-dd hh:mm:ss format     |  FALSE | 24 hours | Set expiration time of transaction. If empty use default 24h.  Min exp time is 1 hour.|
 | trx_counter | Numeric     |  FALSE | 1/-1 | Only applicable if you choose VA. It is a transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times. |
@@ -327,10 +327,10 @@ Use those mock receiver bank account for testing Payment Routing purpose. To sim
 And endpoint to check status of payment routing transaction.
 
 ```shell
-curl --location --request POST 'http://172.11.74.145:8080//api/payment-routing/check-status' \
+curl --location --request POST 'https://partner.oyindonesia.com/api/payment-routing/check-status' \
 --header 'Content-Type: application/json' \
---header 'x-oy-username: pejetaja' \
---header 'x-api-key: test' \
+--header 'x-oy-username: yourusername' \
+--header 'x-api-key: apikeymu' \
 --data-raw '{
     "partner_trx_id": "TRX-20211117-1030",
     "send_callback": true
@@ -341,10 +341,10 @@ curl --location --request POST 'http://172.11.74.145:8080//api/payment-routing/c
 ```dart
 var headers = {
   'Content-Type': 'application/json',
-  'x-oy-username': 'pejetaja',
-  'x-api-key': 'test'
+  'x-oy-username': 'yourusername',
+  'x-api-key': 'apikeymu'
 };
-var request = http.Request('POST', Uri.parse('http://172.11.74.145:8080//api/payment-routing/check-status'));
+var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/payment-routing/check-status'));
 request.body = json.encode({
   "partner_trx_id": "TRX-20211117-1030",
   "send_callback": true
@@ -374,7 +374,7 @@ import (
 
 func main() {
 
-  url := "http://172.11.74.145:8080//api/payment-routing/check-status"
+  url := "https://partner.oyindonesia.com/api/payment-routing/check-status"
   method := "POST"
 
   payload := strings.NewReader(`{
@@ -391,8 +391,8 @@ func main() {
     return
   }
   req.Header.Add("Content-Type", "application/json")
-  req.Header.Add("x-oy-username", "pejetaja")
-  req.Header.Add("x-api-key", "test")
+  req.Header.Add("x-oy-username", "yourusername")
+  req.Header.Add("x-api-key", "apikeymu")
 
   res, err := client.Do(req)
   if err != nil {
@@ -440,10 +440,10 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("POST", "http://172.11.74.145:8080//api/payment-routing/check-status");
+xhr.open("POST", "https://partner.oyindonesia.com/api/payment-routing/check-status");
 xhr.setRequestHeader("Content-Type", "application/json");
-xhr.setRequestHeader("x-oy-username", "pejetaja");
-xhr.setRequestHeader("x-api-key", "test");
+xhr.setRequestHeader("x-oy-username", "yourusername");
+xhr.setRequestHeader("x-api-key", "apikeymu");
 
 xhr.send(data);
 ```
@@ -452,15 +452,15 @@ xhr.send(data);
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('http://172.11.74.145:8080//api/payment-routing/check-status');
+$request->setUrl('https://partner.oyindonesia.com/api/payment-routing/check-status');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
 ));
 $request->setHeader(array(
   'Content-Type' => 'application/json',
-  'x-oy-username' => 'pejetaja',
-  'x-api-key' => 'test'
+  'x-oy-username' => 'yourusername',
+  'x-api-key' => 'apikeymu'
 ));
 $request->setBody('{\n    "partner_trx_id": "TRX-20211117-1030",\n    "send_callback": true\n}');
 try {
@@ -482,17 +482,17 @@ catch(HTTP_Request2_Exception $e) {
 import http.client
 import json
 
-conn = http.client.HTTPSConnection("172.11.74.145", undefined)
+conn = http.client.HTTPSConnection("https://partner.oyindonesia.com", undefined)
 payload = json.dumps({
   "partner_trx_id": "TRX-20211117-1030",
   "send_callback": True
 })
 headers = {
   'Content-Type': 'application/json',
-  'x-oy-username': 'pejetaja',
-  'x-api-key': 'test'
+  'x-oy-username': 'yourusername',
+  'x-api-key': 'apikeymu'
 }
-conn.request("POST", "//api/payment-routing/check-status", payload, headers)
+conn.request("POST", "/api/payment-routing/check-status", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -539,13 +539,13 @@ Endpoint:
 | Field  | Description |  Example   |
 | ------------- |:-------------:| ---------- |
 | x-oy-username    |Partner username    |   username    |
-| x-oy-api-key      | Partner api key     | 6e87432c-2726-11ec-9621-0242ac130002 |
+| x-api-key      | Partner api key     | 6e87432c-2726-11ec-9621-0242ac130002 |
 
 ### Request Parameter
 | Parameter  | Type |  Required   | Default | Description |
 | ------------- |:-------------:| :----------: | :-------------:| :----------: |
-|partner_tx_id|String|FALSE|-|Unique partner transaction ID
-|send_callback|Boolean|TRUE|-|If set true, we also send response as a callback to partner|
+|partner_tx_id|String|TRUE|-|Unique partner transaction ID
+|send_callback|Boolean|FALSE|-|If set true, we also send response as a callback to partner|
 
 ### Responses Parameter
 This response body is also the payment routing callback to partner.
