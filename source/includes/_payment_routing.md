@@ -11,6 +11,7 @@ Payment Routing offers you with end to end solutions from accept payment to disb
 
 This endpoint will trigger the **creation** of payment routing and will be using the same API to handle the **update** requests.
 
+
 ``` shell
 curl --location --request POST 'https://partner.oyindonesia.com/api/payment-routing/create-transaction' \
 --header 'Content-Type: application/json' \
@@ -39,6 +40,7 @@ var headers = {
   'Content-Type': 'application/json',
   'x-oy-username': 'yourusername',
   'x-api-key': 'apikeymu'
+
 };
 var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/payment-routing/create-transaction'));
 request.body = json.encode({
@@ -416,11 +418,11 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"send_callback\": true\n}");
 Request request = new Request.Builder()
-  .url("http://172.11.74.145:8080//api/payment-routing/check-status")
+  .url("https://partner.oyindonesia.com/api/payment-routing/check-status")
   .method("POST", body)
   .addHeader("Content-Type", "application/json")
-  .addHeader("x-oy-username", "pejetaja")
-  .addHeader("x-api-key", "test")
+  .addHeader("x-oy-username", "yourusername")
+  .addHeader("x-api-key", "apikeymu")
   .build();
 Response response = client.newCall(request).execute();
 ```
@@ -546,6 +548,7 @@ Endpoint:
 | ------------- |:-------------:| :----------: | :-------------:| :----------: |
 |partner_tx_id|String|TRUE|-|Unique partner transaction ID
 |send_callback|Boolean|FALSE|-|If set true, we also send response as a callback to partner|
+
 
 ### Responses Parameter
 This response body is also the payment routing callback to partner.
