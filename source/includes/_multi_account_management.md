@@ -184,7 +184,7 @@ print(data.decode("utf-8"))
 }
 ```
 
-Use this API to get partner balance.
+Use this API to get child balance.
 
 ### HTTPS Request
 **[Production]** `GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance?child_username=<child_username>`<br>
@@ -203,8 +203,8 @@ Parameter | Type | Description
 status | Object | Status of Request in Object `{code: <status_code>, message: <status_message>}`
 data | Object | Response data `{balances: <balances>, timeStamp: <timeStamp>}`
 balances | Array of Objects | List of Objects `{username: <username>, balance: <balance>, overdraftBalance: <overdraftBalance>, overbookingBalance: <overbookingBalance>, pendingBalance: <pendingBalance>, availableBalance: <availableBalance>}`
-balance | BigDecimal | Remaining balance (Accept non fraction number)
 username | String(255) | Child username whom balance info is returned
+balance | BigDecimal | Remaining balance (Accept non fraction number)
 overdraftBalance | BigDecimal | Remaining overdraft balance (Accept non fraction number)
 overbookingBalance | BigDecimal | Remaining overbooking balance (Accept non fraction number)
 pendingBalance | BigDecimal | The cumulative balance of your pending transactions.
