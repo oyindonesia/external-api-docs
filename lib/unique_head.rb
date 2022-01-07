@@ -23,6 +23,13 @@ class UniqueHeadCounter < Middleman::Renderers::MiddlemanRedcarpetHTML
         friendly_text = friendly_text[0, friendly_text.length-1]
       end
     end
+    if(friendly_text.include? "comingsoon")
+      idxTrim = friendly_text.index('comingsoon')
+      friendly_text = friendly_text[0, idxTrim]
+      if friendly_text[friendly_text.length-1] == '-'
+        friendly_text = friendly_text[0, friendly_text.length-1]
+      end
+    end
     if friendly_text.strip.length == 0
       # Looks like parameterize removed the whole thing! It removes many unicode
       # characters like Chinese and Russian. To get a unique URL, let's just
@@ -52,6 +59,10 @@ class UniqueHeadCounter < Middleman::Renderers::MiddlemanRedcarpetHTML
       idxTrim = text.index("NEW")
       content = text[0,idxTrim]
       return "<h#{header_level} id='#{friendly_text}' type='new'>#{content} <span class='tags new'>NEW</span> </h#{header_level}>"
+    elsif(text.include? "COMINGSOON")
+      idxTrim = text.index("COMINGSOON")
+      content = text[0,idxTrim]
+      return "<h#{header_level} id='#{friendly_text}' type='comingsoon'>#{content} <span class='tags comingsoon'>Coming Soon</span> </h#{header_level}>"
     else
       return "<h#{header_level} id='#{friendly_text}' type='normal'>#{text}</h#{header_level}>"
     end

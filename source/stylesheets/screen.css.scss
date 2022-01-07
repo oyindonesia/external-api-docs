@@ -48,7 +48,7 @@ html, body {
   border-radius: 4px;
   text-transform: capitalize;
   font-weight: normal;
-  &.beta{
+  &.beta, &.comingsoon{
     background-color: #F38827;
   }
   &.new{
