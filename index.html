@@ -14598,10 +14598,10 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <strong>[Staging Base URL]</strong> : <code>https://api-stg.oyindonesia.com</code></p>
 <h2 id='create-and-update-payment-routing-payment-routing' type='normal'>Create and Update Payment Routing</h2>
 <p>This endpoint will trigger the <strong>creation</strong> of payment routing and will be using the same API to handle the <strong>update</strong> requests.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'http://172.11.74.145:8080//api/payment-routing/create-transaction'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://partner.oyindonesia.com/api/payment-routing/create-transaction'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: pejetaja'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: test'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: yourusername'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikeymu'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
     "partner_user_id": "USR-20211117-1029",
     "partner_trx_id": "TRX-20211117-1030",
@@ -14620,10 +14620,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
   <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
-  <span class="s">'x-oy-username'</span><span class="o">:</span> <span class="s">'pejetaja'</span><span class="o">,</span>
-  <span class="s">'x-api-key'</span><span class="o">:</span> <span class="s">'test'</span>
+  <span class="s">'x-oy-username'</span><span class="o">:</span> <span class="s">'yourusername'</span><span class="o">,</span>
+  <span class="s">'x-api-key'</span><span class="o">:</span> <span class="s">'apikeymu'</span>
+
 <span class="o">};</span>
-<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'POST'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'http://172.11.74.145:8080//api/payment-routing/create-transaction'</span><span class="o">));</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'POST'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'https://partner.oyindonesia.com/api/payment-routing/create-transaction'</span><span class="o">));</span>
 <span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
   <span class="s">"partner_user_id"</span><span class="o">:</span> <span class="s">"USR-20211117-1029"</span><span class="o">,</span>
   <span class="s">"partner_trx_id"</span><span class="o">:</span> <span class="s">"TRX-20211117-1030"</span><span class="o">,</span>
@@ -14660,7 +14661,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-  <span class="n">url</span> <span class="o">:=</span> <span class="s">"http://172.11.74.145:8080//api/payment-routing/create-transaction"</span>
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://partner.oyindonesia.com/api/payment-routing/create-transaction"</span>
   <span class="n">method</span> <span class="o">:=</span> <span class="s">"POST"</span>
 
   <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
@@ -14689,8 +14690,8 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
     <span class="k">return</span>
   <span class="p">}</span>
   <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
-  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-oy-username"</span><span class="p">,</span> <span class="s">"pejetaja"</span><span class="p">)</span>
-  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-api-key"</span><span class="p">,</span> <span class="s">"test"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-oy-username"</span><span class="p">,</span> <span class="s">"yourusername"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-api-key"</span><span class="p">,</span> <span class="s">"apikeymu"</span><span class="p">)</span>
 
   <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
   <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
@@ -14711,11 +14712,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
 <span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"VA\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"http://172.11.74.145:8080//api/payment-routing/create-transaction"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://partner.oyindonesia.com/api/payment-routing/create-transaction"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-oy-username"</span><span class="o">,</span> <span class="s">"pejetaja"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"test"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-oy-username"</span><span class="o">,</span> <span class="s">"yourusername"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"apikeymu"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
@@ -14746,24 +14747,24 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">http://172.11.74.145:8080//api/payment-routing/create-transaction</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://partner.oyindonesia.com/api/payment-routing/create-transaction</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">pejetaja</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yourusername</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">apikeymu</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'http://172.11.74.145:8080//api/payment-routing/create-transaction'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://partner.oyindonesia.com/api/payment-routing/create-transaction'</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_POST</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
 <span class="p">));</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeader</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'pejetaja'</span><span class="p">,</span>
-  <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'test'</span>
+  <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'yourusername'</span><span class="p">,</span>
+  <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'apikeymu'</span>
 <span class="p">));</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_user_id": "USR-20211117-1029",\n    "partner_trx_id": "TRX-20211117-1030",\n    "need_frontend": false,\n    "sender_email": "sender@gmail.com",\n    "receive_amount": 14000,\n    "list_enable_payment_method": "VA",\n    "list_enable_sof": "002",\n    "va_display_name": "partner_brand",\n    "payment_routing": [{\n        "recipient_bank": "014",\n        "recipient_account": "1234567890",\n        "recipient_amount": 10000,\n        "recipient_email": "recipient_bca@gmail.com"\n    }]\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
@@ -14782,7 +14783,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"172.11.74.145"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"https://partner.oyindonesia.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
   <span class="s">"partner_user_id"</span><span class="p">:</span> <span class="s">"USR-20211117-1029"</span><span class="p">,</span>
   <span class="s">"partner_trx_id"</span><span class="p">:</span> <span class="s">"TRX-20211117-1030"</span><span class="p">,</span>
@@ -14803,10 +14804,10 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <span class="p">})</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'x-oy-username'</span><span class="p">:</span> <span class="s">'pejetaja'</span><span class="p">,</span>
-  <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">'test'</span>
+  <span class="s">'x-oy-username'</span><span class="p">:</span> <span class="s">'yourusername'</span><span class="p">,</span>
+  <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">'apikeymu'</span>
 <span class="p">}</span>
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"//api/payment-routing/create-transaction"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/api/payment-routing/create-transaction"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
@@ -14847,7 +14848,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>username</td>
 </tr>
 <tr>
-<td>x-oy-api-key</td>
+<td>x-api-key</td>
 <td style="text-align: center">Partner api key</td>
 <td>6e87432c-2726-11ec-9621-0242ac130002</td>
 </tr>
@@ -14902,14 +14903,14 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">String; comma separated</td>
 <td style="text-align: center">TRUE</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">To configure payment methods to be enabled in the payment method page; If need_frontend is false only can accept VA.</td>
+<td style="text-align: center">To configure payment methods to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with VA,EWALLET,QRIS,CREDIT_CARD. If need_frontend is FALSE only can accept VA.</td>
 </tr>
 <tr>
 <td>list_enable_sof</td>
 <td style="text-align: center">String; comma separated</td>
 <td style="text-align: center">TRUE</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">To configure list of source of fund (banks or ewallets) to be enabled in the payment method page; If need_frontend is false, this parameter should have only have one bank code.</td>
+<td style="text-align: center">To configure list of source of fund (banks or ewallets) to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with 008,009,dana_ewallet,linkaja_ewallet. If need_frontend is FALSE, this parameter should have only have one bank code.</td>
 </tr>
 <tr>
 <td>va_display_name</td>
@@ -15066,10 +15067,10 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </tbody></table>
 <h2 id='check-status-payment-routing-transaction-payment-routing' type='normal'>Check Status Payment Routing Transaction</h2>
 <p>And endpoint to check status of payment routing transaction.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'http://172.11.74.145:8080//api/payment-routing/check-status'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://partner.oyindonesia.com/api/payment-routing/check-status'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-oy-username: pejetaja'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'x-api-key: test'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: yourusername'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikeymu'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
     "partner_trx_id": "TRX-20211117-1030",
     "send_callback": true
@@ -15077,10 +15078,10 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 
 </code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
   <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
-  <span class="s">'x-oy-username'</span><span class="o">:</span> <span class="s">'pejetaja'</span><span class="o">,</span>
-  <span class="s">'x-api-key'</span><span class="o">:</span> <span class="s">'test'</span>
+  <span class="s">'x-oy-username'</span><span class="o">:</span> <span class="s">'yourusername'</span><span class="o">,</span>
+  <span class="s">'x-api-key'</span><span class="o">:</span> <span class="s">'apikeymu'</span>
 <span class="o">};</span>
-<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'POST'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'http://172.11.74.145:8080//api/payment-routing/check-status'</span><span class="o">));</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'POST'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'https://partner.oyindonesia.com/api/payment-routing/check-status'</span><span class="o">));</span>
 <span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
   <span class="s">"partner_trx_id"</span><span class="o">:</span> <span class="s">"TRX-20211117-1030"</span><span class="o">,</span>
   <span class="s">"send_callback"</span><span class="o">:</span> <span class="kc">true</span>
@@ -15107,7 +15108,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-  <span class="n">url</span> <span class="o">:=</span> <span class="s">"http://172.11.74.145:8080//api/payment-routing/check-status"</span>
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://partner.oyindonesia.com/api/payment-routing/check-status"</span>
   <span class="n">method</span> <span class="o">:=</span> <span class="s">"POST"</span>
 
   <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
@@ -15124,8 +15125,8 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
     <span class="k">return</span>
   <span class="p">}</span>
   <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
-  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-oy-username"</span><span class="p">,</span> <span class="s">"pejetaja"</span><span class="p">)</span>
-  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-api-key"</span><span class="p">,</span> <span class="s">"test"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-oy-username"</span><span class="p">,</span> <span class="s">"yourusername"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-api-key"</span><span class="p">,</span> <span class="s">"apikeymu"</span><span class="p">)</span>
 
   <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
   <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
@@ -15146,11 +15147,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
 <span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"send_callback\": true\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"http://172.11.74.145:8080//api/payment-routing/check-status"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://partner.oyindonesia.com/api/payment-routing/check-status"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-oy-username"</span><span class="o">,</span> <span class="s">"pejetaja"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"test"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-oy-username"</span><span class="o">,</span> <span class="s">"yourusername"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"apikeymu"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
@@ -15167,24 +15168,24 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">http://172.11.74.145:8080//api/payment-routing/check-status</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://partner.oyindonesia.com/api/payment-routing/check-status</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">pejetaja</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yourusername</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">apikeymu</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'http://172.11.74.145:8080//api/payment-routing/check-status'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://partner.oyindonesia.com/api/payment-routing/check-status'</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_POST</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
 <span class="p">));</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeader</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'pejetaja'</span><span class="p">,</span>
-  <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'test'</span>
+  <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'yourusername'</span><span class="p">,</span>
+  <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'apikeymu'</span>
 <span class="p">));</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_trx_id": "TRX-20211117-1030",\n    "send_callback": true\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
@@ -15203,17 +15204,17 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"172.11.74.145"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"https://partner.oyindonesia.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
   <span class="s">"partner_trx_id"</span><span class="p">:</span> <span class="s">"TRX-20211117-1030"</span><span class="p">,</span>
   <span class="s">"send_callback"</span><span class="p">:</span> <span class="bp">True</span>
 <span class="p">})</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
-  <span class="s">'x-oy-username'</span><span class="p">:</span> <span class="s">'pejetaja'</span><span class="p">,</span>
-  <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">'test'</span>
+  <span class="s">'x-oy-username'</span><span class="p">:</span> <span class="s">'yourusername'</span><span class="p">,</span>
+  <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">'apikeymu'</span>
 <span class="p">}</span>
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"//api/payment-routing/check-status"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/api/payment-routing/check-status"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
@@ -15266,7 +15267,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>username</td>
 </tr>
 <tr>
-<td>x-oy-api-key</td>
+<td>x-api-key</td>
 <td style="text-align: center">Partner api key</td>
 <td>6e87432c-2726-11ec-9621-0242ac130002</td>
 </tr>
@@ -15284,14 +15285,14 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <td>partner_tx_id</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">FALSE</td>
+<td style="text-align: center">TRUE</td>
 <td style="text-align: center">-</td>
 <td style="text-align: center">Unique partner transaction ID</td>
 </tr>
 <tr>
 <td>send_callback</td>
 <td style="text-align: center">Boolean</td>
-<td style="text-align: center">TRUE</td>
+<td style="text-align: center">FALSE</td>
 <td style="text-align: center">-</td>
 <td style="text-align: center">If set true, we also send response as a callback to partner</td>
 </tr>
