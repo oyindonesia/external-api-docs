@@ -1283,15 +1283,15 @@
             </a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#api-create-payment-checkout-fund-acceptance" class="toc-h2 toc-link" data-title="API Create (Payment Checkout)">
+                    <a href="#api-create-payment-link-fund-acceptance" class="toc-h2 toc-link" data-title="API Create (Payment Link)">
                      <span class="toc-link-content">
-                        API Create (Payment Checkout)
+                        API Create (Payment Link)
                       </span>
                          <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
                     </a>
                     <ul class="toc-list-h3">
                         <li>
-                          <a href="#https-request-api-create-payment-checkout" class="toc-h3 toc-link" data-title="HTTPS Request">
+                          <a href="#https-request-api-create-payment-link" class="toc-h3 toc-link" data-title="HTTPS Request">
                             <span class="toc-link-content">
                               HTTPS Request
                             </span>
@@ -1299,7 +1299,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#request-headers-api-create-payment-checkout" class="toc-h3 toc-link" data-title="Request Headers">
+                          <a href="#request-headers-api-create-payment-link" class="toc-h3 toc-link" data-title="Request Headers">
                             <span class="toc-link-content">
                               Request Headers
                             </span>
@@ -1307,7 +1307,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#request-parameters-api-create-payment-checkout" class="toc-h3 toc-link" data-title="Request Parameters">
+                          <a href="#request-parameters-api-create-payment-link" class="toc-h3 toc-link" data-title="Request Parameters">
                             <span class="toc-link-content">
                               Request Parameters
                             </span>
@@ -1315,7 +1315,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#response-parameters-api-create-payment-checkout" class="toc-h3 toc-link" data-title="Response Parameters">
+                          <a href="#response-parameters-api-create-payment-link" class="toc-h3 toc-link" data-title="Response Parameters">
                             <span class="toc-link-content">
                               Response Parameters
                             </span>
@@ -1377,17 +1377,17 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="#payment-checkout-callback-parameters-fund-acceptance" class="toc-h2 toc-link" data-title="Payment Checkout Callback Parameters">
+                    <a href="#payment-link-callback-parameters-fund-acceptance" class="toc-h2 toc-link" data-title="Payment Link Callback Parameters">
                      <span class="toc-link-content">
-                        Payment Checkout Callback Parameters
+                        Payment Link Callback Parameters
                       </span>
                         <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                     </a>
                   </li>
                   <li>
-                    <a href="#payment-checkout-status-fund-acceptance" class="toc-h2 toc-link" data-title="Payment Checkout Status">
+                    <a href="#payment-link-status-fund-acceptance" class="toc-h2 toc-link" data-title="Payment Link Status">
                      <span class="toc-link-content">
-                        Payment Checkout Status
+                        Payment Link Status
                       </span>
                         <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                     </a>
@@ -2632,7 +2632,7 @@
 <p>You’ll need to create a OY! indonesia account to access OY! APIs via Postman Collection</p>
 <h2 id='api-authorization-postman' type='normal'>API Authorization</h2>
 <ul>
-<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. </li>
+<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Link Postman collection to test. </li>
 <li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
 <li>Open the “Headers” tab and add the following key-value pairs: <strong>Content-Type</strong> with <strong>application/json</strong>, <strong>X-Oy-Username</strong> with your <strong>username</strong> and <strong>X-Api-Key</strong> with your <strong>API Key</strong></li>
 </ul>
@@ -2673,7 +2673,7 @@
 <p>You just set your authorization value header with environment variable which already configured.</p>
 <h2 id='test-one-of-our-api-calls-postman' type='normal'>Test one of our API Calls</h2>
 <ul>
-<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Checkout Postman collection to test. </li>
+<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Link Postman collection to test. </li>
 <li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
 <li>Replace <a href="https://partner.oyindonesia.com">https://partner.oyindonesia.com</a> in the GET url with <strong>{{base_url}}</strong> as the value </li>
 <li>Replace the <strong>X-Oy-Username</strong> key-value pair to <strong>{{username}}</strong> as the value </li>
@@ -8367,15 +8367,15 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 </tr>
 </tbody></table>
 <h1 id='fund-acceptance' type='normal'>Fund Acceptance</h1>
-<p>There are two products that fall under the category of funds acceptance which are Payment Checkout and Invoicing. </p>
+<p>There are two products that fall under the category of funds acceptance which are Payment Link and Invoicing. </p>
 
-<p>Payment Checkout product will allow you to receive funds from your customers by choosing from our various payment channels such as bank transfer or cards. </p>
+<p>Payment Link product will allow you to receive funds from your customers by choosing from our various payment channels such as bank transfer or cards. </p>
 
-<p>Similarly, Invoicing will let you to bill your customers for service/items purchased by sending a payment checkout link to your customer&#39;s email by attatching/creating an invoice via our API.</p>
+<p>Similarly, Invoicing will let you to bill your customers for service/items purchased by sending a payment link to your customer&#39;s email by attatching/creating an invoice via our API.</p>
 
 <p>All payment link and/or details can be monitored by using our dashboard and various API endpoints. </p>
-<h2 id='api-create-payment-checkout-fund-acceptance' type='normal'>API Create (Payment Checkout)</h2>
-<p>An endpoint to create payment checkout URL which return parameters by encapsulation.</p>
+<h2 id='api-create-payment-link-fund-acceptance' type='normal'>API Create (Payment Link)</h2>
+<p>An endpoint to create payment link URL which return parameters by encapsulation.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
   https://partner.oyindonesia.com/api/payment-checkout/create-v2 <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
@@ -8592,7 +8592,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
-</code></pre></div><h3 id='https-request-api-create-payment-checkout' type='normal'>HTTPS Request</h3>
+</code></pre></div><h3 id='https-request-api-create-payment-link' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> POST <code>https://partner.oyindonesia.com/api/payment-checkout/create-v2</code><br/>
 <strong>[Staging]</strong> POST <code>https://api-stg.oyindonesia.com/api/payment-checkout/create-v2</code></p>
 
@@ -8606,7 +8606,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
         </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCESSED"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"payment_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-headers-api-create-payment-checkout' type='normal'>Request Headers</h3>
+</span></code></pre></div><h3 id='request-headers-api-create-payment-link' type='normal'>Request Headers</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
@@ -8622,10 +8622,10 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>X-Oy-Username</td>
 <td>String</td>
-<td>The registered partner username which access is enabled for payment checkout product</td>
+<td>The registered partner username which access is enabled for payment link product</td>
 </tr>
 </tbody></table>
-<h3 id='request-parameters-api-create-payment-checkout' type='normal'>Request Parameters</h3>
+<h3 id='request-parameters-api-create-payment-link' type='normal'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
@@ -8643,7 +8643,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>description</td>
 <td>String</td>
-<td>Description of the payment checkout link.</td>
+<td>Description of the payment link.</td>
 <td>Only accepts alphabets (A-Z), numeric (0-9) and space as input.</td>
 </tr>
 <tr>
@@ -8667,7 +8667,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>email</td>
 <td>String</td>
-<td>The email addresses where the payment checkout link will be sent to.</td>
+<td>The email addresses where the payment link will be sent to.</td>
 <td>Up to 3 emails separated by &quot;;&quot;</td>
 </tr>
 <tr>
@@ -8685,7 +8685,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>step</td>
 <td>String</td>
-<td>Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method).</td>
+<td>Accessing specific page of the payment link URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method).</td>
 <td>If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.</td>
 </tr>
 <tr>
@@ -8731,7 +8731,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.</td>
 </tr>
 </tbody></table>
-<h3 id='response-parameters-api-create-payment-checkout' type='normal'>Response Parameters</h3>
+<h3 id='response-parameters-api-create-payment-link' type='normal'>Response Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8766,7 +8766,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 </tr>
 </tbody></table>
 <h2 id='api-create-invoicing-fund-acceptance' type='normal'>API Create (Invoicing)</h2>
-<p>Our Invoicing product is leveraging most parameters that are defined for our payment checkout in the above section with some additional parameters that are only applicable for Inovicing product. </p>
+<p>Our Invoicing product is leveraging most parameters that are defined for our payment link in the above section with some additional parameters that are only applicable for Inovicing product. </p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
   https://partner.oyindonesia.com/api/payment-checkout/create-invoice<span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
@@ -9076,7 +9076,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>description</td>
 <td>String</td>
-<td>Description of the payment checkout link.</td>
+<td>Description of the payment link.</td>
 <td>Only accepts alphabets (A-Z), numeric (0-9) and space as input.</td>
 </tr>
 <tr>
@@ -9100,7 +9100,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>email</td>
 <td>String</td>
-<td>The email address where the payment checkout link will be sent to.</td>
+<td>The email address where the payment link will be sent to.</td>
 <td>Up to 3 emails separated by &quot;;&quot;</td>
 </tr>
 <tr>
@@ -9118,7 +9118,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>step</td>
 <td>String</td>
-<td>Accessing specific page of the payment checkout URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method).</td>
+<td>Accessing specific page of the payment link URL. Possible values for this parameter are either (input-amount, input-personal-info, select-payment-method).</td>
 <td>If step = input-personal-info then the amount parameter must be defined. And if step = select-payment-method then the amount and sender_name parameters must be defined.</td>
 </tr>
 <tr>
@@ -9224,7 +9224,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
         </span><span class="nl">"email_status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"delivered"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-parameters-api-create-recurring-invoice-coming-soon' type='normal'>Request Parameters</h3>
-<p>*Note: all parameters from API Create (Payment Checkout and Invoicing) are still applicable. Below is the list of the additional specific parameters for Recurring Invoice feature.</p>
+<p>*Note: all parameters from API Create (Payment Link and Invoicing) are still applicable. Below is the list of the additional specific parameters for Recurring Invoice feature.</p>
 
 <table><thead>
 <tr>
@@ -9249,7 +9249,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>The interval of a recurring invoice to be sent to customers (in days).</td>
 </tr>
 </tbody></table>
-<h2 id='payment-checkout-callback-parameters-fund-acceptance' type='normal'>Payment Checkout Callback Parameters</h2>
+<h2 id='payment-link-callback-parameters-fund-acceptance' type='normal'>Payment Link Callback Parameters</h2>
 <p>The data on the callback will be sent using JSON format via POST data to your web hook.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="se">\</span>
   https://partner.url.com/api/callback<span class="se">\</span>
@@ -9339,12 +9339,12 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>created</td>
 <td>DateTime</td>
-<td>The timestamp which indicates the creation time of a payment checkout link</td>
+<td>The timestamp which indicates the creation time of a payment link</td>
 </tr>
 <tr>
 <td>updated</td>
 <td>DateTime</td>
-<td>The timestamp which indicates the latest updated time of a payment checkout link due to status update</td>
+<td>The timestamp which indicates the latest updated time of a payment link due to status update</td>
 </tr>
 <tr>
 <td>is_invoice</td>
@@ -9354,22 +9354,22 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>description</td>
 <td>String</td>
-<td>The description of the payment checkout/invoice link.</td>
+<td>The description of the payment link/invoice link.</td>
 </tr>
 <tr>
 <td>expiration</td>
 <td>DateTime</td>
-<td>The expiration time of the payment checkout/invoice link</td>
+<td>The expiration time of the payment link/invoice link</td>
 </tr>
 <tr>
 <td>due_date</td>
 <td>DateTime</td>
-<td>The transaction due date of the payment checkout/invoice</td>
+<td>The transaction due date of the payment link/invoice</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String</td>
-<td>The email addresses for the payment checkout/invoice link to be sent. You can add up to 3 emails separated by &quot;;&quot;</td>
+<td>The email addresses for the payment link/invoice link to be sent. You can add up to 3 emails separated by &quot;;&quot;</td>
 </tr>
 <tr>
 <td>paid_amount</td>
@@ -9408,7 +9408,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>The full name.</td>
 </tr>
 </tbody></table>
-<h2 id='payment-checkout-status-fund-acceptance' type='normal'>Payment Checkout Status</h2>
+<h2 id='payment-link-status-fund-acceptance' type='normal'>Payment Link Status</h2>
 <table><thead>
 <tr>
 <th>Payment Status</th>
@@ -9449,7 +9449,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>closed</td>
 <td>String</td>
-<td>Payment checkout link has  been deleted</td>
+<td>Payment link has  been deleted</td>
 </tr>
 </tbody></table>
 <h2 id='api-payment-status-fund-acceptance' type='normal'>API Payment Status</h2>
@@ -9619,7 +9619,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>x-oy-username</td>
 <td>String</td>
-<td>The registered partner username which access is enabled for payment checkout product</td>
+<td>The registered partner username which access is enabled for payment link product</td>
 </tr>
 </tbody></table>
 <h3 id='request-parameters-api-payment-status' type='normal'>Request Parameters</h3>
@@ -9702,12 +9702,12 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>created</td>
 <td>String</td>
-<td>The timestamp which indicates the creation time of a payment checkout link</td>
+<td>The timestamp which indicates the creation time of a payment link</td>
 </tr>
 <tr>
 <td>description</td>
 <td>String</td>
-<td>Description of the payment checkout link.</td>
+<td>Description of the payment link.</td>
 </tr>
 <tr>
 <td>paid_amount</td>
@@ -9732,12 +9732,12 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>updated</td>
 <td>String</td>
-<td>The timestamp which indicates the latest updated time of a payment checkout link due to status update</td>
+<td>The timestamp which indicates the latest updated time of a payment link due to status update</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String</td>
-<td>The email addresses where the payment checkout link will be sent to. You can add up to 3 emails separated by &quot;;&quot;</td>
+<td>The email addresses where the payment link will be sent to. You can add up to 3 emails separated by &quot;;&quot;</td>
 </tr>
 <tr>
 <td>settlement_time</td>
@@ -10350,9 +10350,9 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 </tr>
 </tbody></table>
 <h2 id='pop-seamless-payment-experience-fund-acceptance' type='normal'>Pop!: Seamless Payment Experience</h2>
-<p>With Pop!, displaying our payment checkout page on your front-end web environment is now made easier than ever. Our payment checkout offers a seamless user experience in a way that can be catered to your UI needs.</p>
+<p>With Pop!, displaying our payment link page on your front-end web environment is now made easier than ever. Our payment link offers a seamless user experience in a way that can be catered to your UI needs.</p>
 
-<p>This section covers a demonstration and a snippet code on how to display a payment checkout page in 4 styles/locations: Center, Right, Left, and Slide Right.</p>
+<p>This section covers a demonstration and a snippet code on how to display a payment link page in 4 styles/locations: Center, Right, Left, and Slide Right.</p>
 <h3 id='pop-center-pop-seamless-payment-experience' type='normal'>Pop! - Center</h3><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">classNames</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">classnames</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="nx">styles</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./paycheckout_popup.module.css</span><span class="dl">'</span><span class="p">;</span>
@@ -10374,7 +10374,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
             <span class="na">width</span><span class="p">=</span><span class="s">"400"</span>
             <span class="na">height</span><span class="p">=</span><span class="s">"800"</span>
             <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="s2">`https://pay-dev.oyindonesia.com/</span><span class="p">${</span><span class="nx">paymentLinkId</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span>
-            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Checkout"</span><span class="p">&gt;</span>
+            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Link"</span><span class="p">&gt;</span>
           <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 
           <span class="si">{</span><span class="cm">/* Trigger/Close The Modal */</span><span class="si">}</span>
@@ -10404,7 +10404,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
             <span class="na">width</span><span class="p">=</span><span class="s">"400"</span>
             <span class="na">height</span><span class="p">=</span><span class="s">"800"</span>
             <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="s2">`https://pay-dev.oyindonesia.com/</span><span class="p">${</span><span class="nx">paymentLinkId</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span>
-            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Checkout"</span><span class="p">&gt;</span>
+            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Link"</span><span class="p">&gt;</span>
           <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 
           <span class="si">{</span><span class="cm">/* Trigger/Close The Modal */</span><span class="si">}</span>
@@ -10434,7 +10434,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
             <span class="na">width</span><span class="p">=</span><span class="s">"400"</span>
             <span class="na">height</span><span class="p">=</span><span class="s">"800"</span>
             <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="s2">`https://pay-dev.oyindonesia.com/</span><span class="p">${</span><span class="nx">paymentLinkId</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span>
-            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Checkout"</span><span class="p">&gt;</span>
+            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Link"</span><span class="p">&gt;</span>
           <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
 
           <span class="si">{</span><span class="cm">/* Trigger/Close The Modal */</span><span class="si">}</span>
@@ -10459,7 +10459,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
           <span class="p">&lt;</span><span class="nt">iframe</span> 
             <span class="na">width</span><span class="p">=</span><span class="s">"400"</span>
             <span class="na">src</span><span class="p">=</span><span class="si">{</span><span class="s2">`https://pay-dev.oyindonesia.com/</span><span class="p">${</span><span class="nx">paymentLinkId</span><span class="p">}</span><span class="s2">`</span><span class="si">}</span>
-            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Checkout"</span><span class="p">&gt;</span>
+            <span class="na">title</span><span class="p">=</span><span class="s">"OY! Indonesia Payment Link"</span><span class="p">&gt;</span>
           <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">);</span>
@@ -14882,7 +14882,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">Boolean</td>
 <td style="text-align: center">TRUE</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">Partner need UI or not, if true, we will route to payment checkout, otherwise will be route to va aggregator.</td>
+<td style="text-align: center">Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.</td>
 </tr>
 <tr>
 <td>sender_email</td>
@@ -15022,7 +15022,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <td>payment_checkout_url</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">generated url for payment checkout; conditional only if request need_frontend is TRUE</td>
+<td style="text-align: center">generated url for payment link; conditional only if request need_frontend is TRUE</td>
 </tr>
 <tr>
 <td>va_number</td>
@@ -15335,7 +15335,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <td>need_frontend</td>
 <td style="text-align: center">Boolean</td>
-<td style="text-align: center">Partner need UI or not, if true, we will route to payment checkout, otherwise will be route to va aggregator.</td>
+<td style="text-align: center">Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.</td>
 </tr>
 <tr>
 <td>payment_info</td>
@@ -15412,11 +15412,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </thead><tbody>
 <tr>
 <td style="text-align: center">CREATED</td>
-<td style="text-align: center">For Payement Checkout, Payment Checkout Link has been created.</td>
+<td style="text-align: center">For Payment Link, Payment Link has been created.</td>
 </tr>
 <tr>
 <td style="text-align: center">WAITING PAYMENT</td>
-<td style="text-align: center">For Payment Checkout, user already choose a payment method in payment checkout but has not done the payment yet.   For VA, VA number has been created.</td>
+<td style="text-align: center">For Payment Link, user already choose a payment method in payment link but has not done the payment yet.   For VA, VA number has been created.</td>
 </tr>
 <tr>
 <td style="text-align: center">PAYMENT IN PROGRESS</td>
@@ -15436,7 +15436,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </tr>
 <tr>
 <td style="text-align: center">EXPIRED</td>
-<td style="text-align: center">Payment Checkout Link or VA number has been expired.</td>
+<td style="text-align: center">Payment Link or VA number has been expired.</td>
 </tr>
 </tbody></table>
 <h2 id='list-of-disbursement-status-payment-routing' type='normal'>List of Disbursement Status</h2>
