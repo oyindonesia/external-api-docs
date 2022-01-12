@@ -2397,6 +2397,84 @@
               </ul>
           </li>
           <li>
+            <a href="#api-multi-account-management" class="toc-h1 toc-link" data-title="API Multi Account Management">
+              <span class="toc-link-content">
+                API Multi Account Management
+              </span>
+                <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow parent" alt="" />
+            </a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#disburse-with-child-balance-api-multi-account-management" class="toc-h2 toc-link" data-title="Disburse with Child Balance">
+                     <span class="toc-link-content">
+                        Disburse with Child Balance
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#https-request-disburse-with-child-balance" class="toc-h3 toc-link" data-title="HTTPS Request">
+                            <span class="toc-link-content">
+                              HTTPS Request
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#request-parameters-disburse-with-child-balance" class="toc-h3 toc-link" data-title="Request Parameters">
+                            <span class="toc-link-content">
+                              Request Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#response-parameters-disburse-with-child-balance" class="toc-h3 toc-link" data-title="Response Parameters">
+                            <span class="toc-link-content">
+                              Response Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#get-child-balance-api-multi-account-management" class="toc-h2 toc-link" data-title="Get Child Balance">
+                     <span class="toc-link-content">
+                        Get Child Balance
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#https-request-get-child-balance" class="toc-h3 toc-link" data-title="HTTPS Request">
+                            <span class="toc-link-content">
+                              HTTPS Request
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#request-parameters-get-child-balance" class="toc-h3 toc-link" data-title="Request Parameters">
+                            <span class="toc-link-content">
+                              Request Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#response-parameters-get-child-balance" class="toc-h3 toc-link" data-title="Response Parameters">
+                            <span class="toc-link-content">
+                              Response Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#biller-api" class="toc-h1 toc-link" data-title="Biller API  Coming Soon ">
               <span class="toc-link-content">
                 Biller API  <span class="tags comingsoon">Coming Soon</span> 
@@ -15477,6 +15555,553 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <td>FAILED FORCE CREDIT</td>
 <td>When force credit process is failed</td>
+</tr>
+</tbody></table>
+<h1 id='api-multi-account-management' type='normal'>API Multi Account Management</h1>
+<p>Multi Account Management APIs allow you to interact with parent/child accounts in OY.</p>
+<h2 id='disburse-with-child-balance-api-multi-account-management' type='normal'>Disburse with Child Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+  "recipient_bank": "014", 
+  "recipient_account": "1239812390", 
+  "amount":125000, 
+  "note":"Split lunch bill", 
+  "partner_trx_id":"1234-asdf",
+  "email" :"napoleon@email.com test@email.com",
+  "child_balance":"Alice"
+}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
+  <span class="s">'Accept'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
+  <span class="s">'x-oy-username'</span><span class="o">:</span> <span class="s">'{{username}}'</span><span class="o">,</span>
+  <span class="s">'x-api-key'</span><span class="o">:</span> <span class="s">'{{api-key}}'</span>
+<span class="o">};</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'POST'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/remit'</span><span class="o">));</span>
+<span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
+  <span class="s">"recipient_bank"</span><span class="o">:</span> <span class="s">"008"</span><span class="o">,</span>
+  <span class="s">"recipient_account"</span><span class="o">:</span> <span class="s">"0201245681"</span><span class="o">,</span>
+  <span class="s">"amount"</span><span class="o">:</span> <span class="mi">15000</span><span class="o">,</span>
+  <span class="s">"note"</span><span class="o">:</span> <span class="s">"Test API Disburse"</span><span class="o">,</span>
+  <span class="s">"partner_trx_id"</span><span class="o">:</span> <span class="s">"OYON0000064"</span><span class="o">,</span>
+  <span class="s">"email"</span><span class="o">:</span> <span class="s">"business.support@oyindonesia.com"</span>
+  <span class="s">"child_balance"</span><span class="o">:</span><span class="s">"Alice"</span>
+<span class="o">});</span>
+<span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
+
+<span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">send</span><span class="o">();</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">await</span> <span class="n">response</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">bytesToString</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="k">else</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">reasonPhrase</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"fmt"</span>
+  <span class="s">"strings"</span>
+  <span class="s">"net/http"</span>
+  <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/remit"</span>
+  <span class="n">method</span> <span class="o">:=</span> <span class="s">"POST"</span>
+
+  <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
+    "recipient_bank": "008",
+    "recipient_account": "0201245681",
+    "amount": 15000,
+    "note": "Test API Disburse",
+    "partner_trx_id": "OYON0000064",
+    "email": "business.support@oyindonesia.com"
+    "child_balance":"Alice"
+}`</span><span class="p">)</span>
+
+  <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-oy-username"</span><span class="p">,</span> <span class="s">"{{username}}"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-api-key"</span><span class="p">,</span> <span class="s">"{{api-key}}"</span><span class="p">)</span>
+
+  <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+
+  <span class="n">body</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"business.support@oyindonesia.com\", \"child_balance\":\"Alice\"\n}"</span><span class="o">);</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/remit"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-oy-username"</span><span class="o">,</span> <span class="s">"{{username}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"{{api-key}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">recipient_bank</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">008</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">recipient_account</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0201245681</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">15000</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">note</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Test API Disburse</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">partner_trx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OYON0000064</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">business.support@oyindonesia.com</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">child_balance</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Alice</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">%7B%7Bbase_url%7D%7D/api/remit</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{username}}</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{api-key}}</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'{{base_url}}/api/remit'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_POST</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeader</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
+  <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "recipient_bank": "008",\n  "recipient_account": "0201245681",\n    "amount": 15000,\n  "note": "Test API Disburse",\n  "partner_trx_id": "OYON0000064",\n  "email": "business.support@oyindonesia.com",\n "child_balance": "Alice"\n}'</span><span class="p">);</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"{{base_url}}"</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
+  <span class="s">"recipient_bank"</span><span class="p">:</span> <span class="s">"008"</span><span class="p">,</span>
+  <span class="s">"recipient_account"</span><span class="p">:</span> <span class="s">"0201245681"</span><span class="p">,</span>
+  <span class="s">"amount"</span><span class="p">:</span> <span class="mi">15000</span><span class="p">,</span>
+  <span class="s">"note"</span><span class="p">:</span> <span class="s">"Test API Disburse"</span><span class="p">,</span>
+  <span class="s">"partner_trx_id"</span><span class="p">:</span> <span class="s">"OYON0000064"</span><span class="p">,</span>
+  <span class="s">"email"</span><span class="p">:</span> <span class="s">"business.support@oyindonesia.com"</span>
+  <span class="s">"child_balance"</span><span class="p">:</span> <span class="s">"Alice"</span>
+<span class="p">})</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'x-oy-username'</span><span class="p">:</span> <span class="s">'{{username}}'</span><span class="p">,</span>
+  <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">'{{api-key}}'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/api/remit"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"101"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Request is Processed"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="mi">125000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="s2">"1239812390"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="s2">"ABC-456"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="s2">"1234-asdf"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="s2">"16-10-2019 10:23:42"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to start disbursing money from child account to a specific beneficiary account.</p>
+<h3 id='https-request-disburse-with-child-balance' type='normal'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/remit</code><br>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/remit</code></p>
+<h3 id='request-parameters-disburse-with-child-balance' type='normal'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recipient_bank</td>
+<td>String(3)</td>
+<td>TRUE</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+</tr>
+<tr>
+<td>recipient_account</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Beneficiary account number, numeric only</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigInteger</td>
+<td>TRUE</td>
+<td>Amount of disbursement (Accept Non-Decimal Number), min amount 10000</td>
+</tr>
+<tr>
+<td>note</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>Add Note to the payout</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Unique Payout ID for a specific request, generated by partner</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>Email for invoice notification (Optional). Email can be more than one but not more that five separated by a whitespace.</td>
+</tr>
+<tr>
+<td>child_balance</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>Child username whom balance will be used for disbursement, if Multi Account Management config is active (Optional). By default will be using client’s own balance.</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-disburse-with-child-balance' type='normal'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigInteger</td>
+<td>Amount of disbursement (Accept Non-Decimal Number)</td>
+</tr>
+<tr>
+<td>recipient_bank</td>
+<td>String(3)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+</tr>
+<tr>
+<td>recipient_account</td>
+<td>String(255)</td>
+<td>Beneficiary account number</td>
+</tr>
+<tr>
+<td>trx_id</td>
+<td>String(36)</td>
+<td>Unique Payout ID from OY!. Partner can use this ID for settlement</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Unique Payout ID which partner put on the Request</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String(19)</td>
+<td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;)</td>
+</tr>
+</tbody></table>
+
+<p><strong>[Staging only]</strong></p>
+
+<p>You can replicate error response code (final) based on <a href="#fund-disbursement-response-codes-">Fund Disbursement Response Codes</a> by fill in <code>recipient_account</code> value using following format <code>&lt;desired response code&gt;0000</code>.
+Another value not following the format will be processed normally.</p>
+
+<p>example:</p>
+
+<p>a request with <code>&quot;recipient_account&quot;: &quot;2100000&quot;</code> will return response with <code>&quot;status&quot;: { &quot;code&quot;: &quot;210&quot;, message&quot;: &quot;Request is Rejected (Amount is not valid)&quot;}</code></p>
+<h2 id='get-child-balance-api-multi-account-management' type='normal'>Get Child Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'X-OY-Username: janedoe'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'X-Api-Key: 7654321'</span>
+</code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="s">'x-oy-username'</span><span class="o">:</span> <span class="s">'{{username}}'</span><span class="o">,</span>
+  <span class="s">'x-api-key'</span><span class="o">:</span> <span class="s">'{{api-key}}'</span><span class="o">,</span>
+  <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
+  <span class="s">'Accept'</span><span class="o">:</span> <span class="s">'application/json'</span>
+<span class="o">};</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/v2/multi-account/child/balance'</span><span class="o">));</span>
+
+<span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
+
+<span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">send</span><span class="o">();</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">await</span> <span class="n">response</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">bytesToString</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="k">else</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">reasonPhrase</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"fmt"</span>
+  <span class="s">"net/http"</span>
+  <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/v2/multi-account/child/balance"</span>
+  <span class="n">method</span> <span class="o">:=</span> <span class="s">"GET"</span>
+
+  <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-oy-username"</span><span class="p">,</span> <span class="s">"{{username}}"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-api-key"</span><span class="p">,</span> <span class="s">"{{api-key}}"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+
+  <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+
+  <span class="n">body</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/v2/multi-account/child/balance"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-oy-username"</span><span class="o">,</span> <span class="s">"{{username}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"{{api-key}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">%7B%7Bbase_url%7D%7D/api/v2/multi-account/child/balance</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{username}}</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{api-key}}</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'{{base_url}}/api/v2/multi-account/child/balance'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeader</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
+  <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span><span class="p">,</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"{{base_url}}"</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'x-oy-username'</span><span class="p">:</span> <span class="s">'{{username}}'</span><span class="p">,</span>
+  <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">'{{api-key}}'</span><span class="p">,</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/multi-account/child/balance"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nl">"balances"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JohnDoe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="mf">100000000.0000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"overdraftBalance"</span><span class="p">:</span><span class="mf">500000.0000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"overbookingBalance"</span><span class="p">:</span><span class="mf">200000.0000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"pendingBalance"</span><span class="p">:</span><span class="mf">2000000.0000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"availableBalance"</span><span class="p">:</span><span class="mf">98500000.0000</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"timeStamp"</span><span class="p">:</span><span class="s2">"10-12-2019 12:15:37"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Use this API to get child balance.</p>
+<h3 id='https-request-get-child-balance' type='normal'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance?child_username=&lt;child_username&gt;</code><br>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v2/multi-account/child/balance?child_username=&lt;child_username&gt;</code></p>
+<h3 id='request-parameters-get-child-balance' type='normal'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>child_username</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>Child username whom balance info will be returned. If not specified, all child balances will be returned.</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-get-child-balance' type='normal'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Request in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Response data <code>{balances: &lt;balances&gt;, timeStamp: &lt;timeStamp&gt;}</code></td>
+</tr>
+<tr>
+<td>balances</td>
+<td>Array of Objects</td>
+<td>List of Objects <code>{username: &lt;username&gt;, balance: &lt;balance&gt;, overdraftBalance: &lt;overdraftBalance&gt;, overbookingBalance: &lt;overbookingBalance&gt;, pendingBalance: &lt;pendingBalance&gt;, availableBalance: &lt;availableBalance&gt;}</code></td>
+</tr>
+<tr>
+<td>username</td>
+<td>String(255)</td>
+<td>Child username whom balance info is returned</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>BigDecimal</td>
+<td>Remaining balance (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>overdraftBalance</td>
+<td>BigDecimal</td>
+<td>Remaining overdraft balance (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>overbookingBalance</td>
+<td>BigDecimal</td>
+<td>Remaining overbooking balance (Accept non fraction number)</td>
+</tr>
+<tr>
+<td>pendingBalance</td>
+<td>BigDecimal</td>
+<td>The cumulative balance of your pending transactions.</td>
+</tr>
+<tr>
+<td>availableBalance</td>
+<td>BigDecimal</td>
+<td>The total cumulative money of Balance + Available Overdraft - Pending Balance that you can use for disbursement.</td>
+</tr>
+<tr>
+<td>timeStamp</td>
+<td>String(19)</td>
+<td>Execution time of Request in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;).</td>
 </tr>
 </tbody></table>
 <h1 id='biller-api' type='comingsoon'>Biller API  <span class='tags comingsoon'>Coming Soon</span> </h1>
