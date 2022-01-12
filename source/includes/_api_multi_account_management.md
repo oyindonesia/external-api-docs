@@ -462,7 +462,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Request in Object `{code: <status_code>, message: <status_message>}`
 data | Object | Response data `{balances: <balances>, timeStamp: <timeStamp>}`
-balances | Array of Objects | List of Objects `{username: <username>, balance: <balance>, overdraftBalance: <overdraftBalance>, overbookingBalance: <overbookingBalance>, pendingBalance: <pendingBalance>, availableBalance: <availableBalance>}`
+balances | Array of Objects | List of Objects consist of `username` of the child, `balance`, `overdraftBalance`, `overbookingBalance`, `pendingBalance`, and `availableBalance`
 username | String(255) | Child username whom balance info is returned
 balance | BigDecimal | Remaining balance (Accept non fraction number)
 overdraftBalance | BigDecimal | Remaining overdraft balance (Accept non fraction number)
