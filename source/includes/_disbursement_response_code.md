@@ -16,7 +16,6 @@ Response Code | State | Description
 209 | Final | Request is Rejected (Bank Account is not found)
 210 | Final | Request is Rejected (Amount is not valid)
 225 | Final | Request is Rejected (Max amount per transaction exceed for disburse)
-257 | Final | Request is Rejected (Disbursement with the same Partner Tx ID is still in process)
 300 | Final | Disbursement is FAILED
 301 | Non-Final | Pending (When there is a unclear answer from Banks Network)
 999 | Non-Final | Internal Server Error
@@ -27,5 +26,6 @@ Response Code | Description
 ---------- | -------
 201 | Request is Rejected (User ID is not Found)
 202 | Request is Rejected (User ID is not Active)
+257 | Request is Rejected (Disbursement with the same Partner Tx ID is still in process)
 429 | Request Rejected (Too Many Request to specific endpoint)
 990 | Request is Rejected (Invalid Format)
