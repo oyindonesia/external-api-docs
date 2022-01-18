@@ -25,18 +25,18 @@ curl -X POST \
   <%= config[:endpoint_prod] %>/api/e-wallet-aggregator/create-transaction \
   -H 'content-type: application/json' \
   -H 'accept: application/json' \
-  -H 'x-api-key: apikeymu' \
+  -H 'x-api-key: yourapikey' \
   -H 'x-oy-username: yourusername' \
   -d '{
-        "customer_id": "my_user_id",
+        "customer_id": "your_customer_user_id",
         "partner_trx_id": "YAYBC123456527",
-        "sub_merchant_id": "zx88989F",
-        "amount": 75000,
-        "email": "johndoe@gmail.com",
-        "ewallet_code": "shopeepay_ewallet",
-        "mobile_number": "6282114845847",
-        "success_redirect_url":"https://myweb.com/usertx/123456",
-        "expiration_time": 15
+        "sub_merchant_id": "sprx88989F",
+        "amount": 125000,
+        "email": "mirajane@yahoo.com",
+        "ewallet_code": "dana_ewallet",
+        "mobile_number": "628091486790",
+        "success_redirect_url":"https://yourweb.com/usertx/123456",
+        "expiration_time": 120
     }'
 ```
 
