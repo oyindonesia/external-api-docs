@@ -29,18 +29,18 @@
   https://partner.oyindonesia.com/api/e-wallet-aggregator/create-transaction <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'x-api-key: apikeymu'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'x-api-key: yourapikey'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'x-oy-username: yourusername'</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
-        "customer_id": "my_user_id",
+        "customer_id": "your_customer_user_id",
         "partner_trx_id": "YAYBC123456527",
-        "sub_merchant_id": "zx88989F",
-        "amount": 75000,
-        "email": "johndoe@gmail.com",
-        "ewallet_code": "shopeepay_ewallet",
-        "mobile_number": "6282114845847",
-        "success_redirect_url":"https://myweb.com/usertx/123456",
-        "expiration_time": 15
+        "sub_merchant_id": "sprx88989F",
+        "amount": 125000,
+        "email": "mirajane@yahoo.com",
+        "ewallet_code": "dana_ewallet",
+        "mobile_number": "628091486790",
+        "success_redirect_url":"https://yourweb.com/usertx/123456",
+        "expiration_time": 120
     }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
   <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
