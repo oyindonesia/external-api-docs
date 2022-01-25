@@ -10763,7 +10763,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <td>amount</td>
 <td>BigDecimal</td>
 <td>TRUE</td>
-<td>The amount that going to withdraw or deposit (Accepts multiple of 50.000)</td>
+<td>The amount that going to withdraw or deposit (Only accepts multiple of 50.000 for cash-out transaction)</td>
 </tr>
 <tr>
 <td>transaction_type</td>
@@ -10807,6 +10807,16 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <td>Amount of transaction</td>
 </tr>
 <tr>
+<td>admin_fee</td>
+<td>BigDecimal</td>
+<td>Amount of admin fee</td>
+</tr>
+<tr>
+<td>total_amount</td>
+<td>BigDecimal</td>
+<td>Sum of amount and admin fee</td>
+</tr>
+<tr>
 <td>code</td>
 <td>String(6)</td>
 <td>Required unique code for Deposit or Withdrawal process</td>
@@ -10837,6 +10847,12 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <td>The time that the transaction will expire and won&#39;t be able to be withdrawn or deposited (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li><code>inactive_at</code> is only applicable for Alfamart Cash-Out &amp; CRM. Indomaret Cash-In code stays valid for 24 hours</li>
+<li>Indomaret Cash-In receives any cash denom start from <strong>2.000 to 100.000</strong> with <em>minimum amount of 10.000 and maximum amount of 5.000.000 (including admin fee)</em></li>
+<li><code>admin_fee</code> is available to you in each transaction. You can choose to charge it to yourselves or to your end users. <code>total_amount</code> will reflect the sume of admin_fee and amount</li>
+</ul>
 <h2 id='cancel-transaction-api-offline' type='normal'>Cancel Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/offline-cancel <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -11038,6 +11054,10 @@ POST https://partner.oyindonesia.com/api/offline-cancel <span class="se">\</span
 <td>Execution time of the request in OY! system (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li>Cancellation is only applicable for <strong>Alfamart Cash-Out &amp; CRM</strong> transactions, Indomaret Cash-In transaction <em>cannot be cancelled</em>.</li>
+</ul>
 <h2 id='transaction-info-api-offline' type='normal'>Transaction Info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/offline-info <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -11199,6 +11219,8 @@ POST https://partner.oyindonesia.com/api/offline-info <span class="se">\</span>
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">55000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"897412"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-10-2020 17:12:16"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"receiver_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6281234567890"</span><span class="p">,</span><span class="w">
@@ -11267,6 +11289,16 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <td>Amount of transaction</td>
 </tr>
 <tr>
+<td>admin_fee</td>
+<td>BigDecimal</td>
+<td>Amount of admin fee</td>
+</tr>
+<tr>
+<td>total_amount</td>
+<td>BigDecimal</td>
+<td>Sum of amount and admin fee</td>
+</tr>
+<tr>
 <td>code</td>
 <td>String(6)</td>
 <td>Required unique code for Deposit or Withdrawal Process</td>
@@ -11297,6 +11329,10 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <td>The time that the transaction will expire and won&#39;t be able to be withdrawn or deposited (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li><code>inactive_at</code> is only applicable for Alfamart Cash-Out &amp; CRM. Indomaret Cash-In code stays <strong>valid</strong> for 24 hours</li>
+</ul>
 <h2 id='refresh-code-api-offline' type='normal'>Refresh Code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -11514,6 +11550,10 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <td>The time that the transaction will expire and won&#39;t be able to be withdrawn or deposited (&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;)</td>
 </tr>
 </tbody></table>
+
+<ul>
+<li>Refresh code is only applicable for <strong>Alfamart Cash-Out &amp; CRM transactions</strong>, Indomaret Cash-In transaction <em>cannot be refreshed.</em></li>
+</ul>
 <h2 id='callback-api-offline' type='normal'>Callback</h2>
 <blockquote>
 <p>Response callback:</p>
@@ -11524,6 +11564,8 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">55000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"897412"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-10-2020 17:12:16"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"receiver_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6281234567890"</span><span class="p">,</span><span class="w">
@@ -11564,6 +11606,16 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <td>amount</td>
 <td>BigDecimal</td>
 <td>Amount of transaction</td>
+</tr>
+<tr>
+<td>admin_fee</td>
+<td>BigDecimal</td>
+<td>Amount of admin fee</td>
+</tr>
+<tr>
+<td>total_amount</td>
+<td>BigDecimal</td>
+<td>Sum of amount and admin fee</td>
 </tr>
 <tr>
 <td>code</td>
@@ -11727,6 +11779,11 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <td>Final</td>
 <td>Parameter / object is not valid</td>
 </tr>
+<tr>
+<td>999</td>
+<td>Final</td>
+<td>Internal Server Error</td>
+</tr>
 </tbody></table>
 <h2 id='api-offline-channel-api-offline' type='normal'>API Offline Channel</h2>
 <p>These are the list of Oy! offline channel</p>
@@ -11743,7 +11800,11 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 </tr>
 <tr>
 <td>ALFAMART</td>
-<td>CASH OUT</td>
+<td>CASH IN, CASH OUT</td>
+</tr>
+<tr>
+<td>INDOMARET</td>
+<td>CASH IN</td>
 </tr>
 </tbody></table>
 
@@ -11764,7 +11825,12 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <tr>
 <td>ALFAMART</td>
 <td>2.500.000</td>
+<td>5.000.000</td>
+</tr>
+<tr>
+<td>INDOMARET</td>
 <td>N/A</td>
+<td>5.000.000</td>
 </tr>
 </tbody></table>
 <h1 id='api-transactions-data' type='normal'>API Transactions Data</h1>
