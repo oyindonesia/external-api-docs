@@ -241,9 +241,9 @@ timestamp | String(19) | Execution time of the request in OY! system ("yyyy-MM-d
 inactive_at | String(19) | The time that the unique code will expire and need to be refreshed ("yyyy-MM-dd HH:mm:ss.SSS")
 expired_at | String(19) | The time that the transaction will expire and won't be able to be withdrawn or deposited ("yyyy-MM-dd HH:mm:ss.SSS")
 
-* `inactive_at` is only applicable for Alfamart Cash-Out & CRM. Indomaret Cash-In code stays valid for 24 hours
-* Indomaret Cash-In receives any cash denom start from **2.000 to 100.000** with _minimum amount of 10.000 and maximum amount of 5.000.000 (including admin fee)_
-* `admin_fee` is available to you in each transaction. You can choose to charge it to yourselves or to your end users. `total_amount` will reflect the sume of admin_fee and amount
+* `inactive_at` is only applicable for **Alfamart Cash-Out & CRM**. Indomaret Cash-In code stays _valid for 24 hours_
+* Indomaret Cash-In receives any cash denom start from **2.000 to 100.000** with minimum amount of _10.000_ and maximum amount of _5.000.000 (including admin fee)_
+* `admin_fee` is available to you in each transaction. `total_amount` will reflect the sum of admin_fee and amount
 
 
 
@@ -677,7 +677,7 @@ timestamp | String(19) | Execution time of the request in OY! system ("yyyy-MM-d
 inactive_at | String(19) | The time that the unique code will expire and need to be refreshed ("yyyy-MM-dd HH:mm:ss.SSS")
 expired_at | String(19) | The time that the transaction will expire and won't be able to be withdrawn or deposited ("yyyy-MM-dd HH:mm:ss.SSS")
 
-* `inactive_at` is only applicable for Alfamart Cash-Out & CRM. Indomaret Cash-In code stays **valid** for 24 hours
+* `inactive_at` is only applicable for **Alfamart Cash-Out & CRM**. Indomaret Cash-In code stays alid for 24 hours
 
 ## Refresh Code
 
@@ -866,7 +866,7 @@ print(data.decode("utf-8"))
 }
 ```
 
-A transaction will be valid for 24 hours with a default 3-hours validity for each unique code . Use this API to refresh the unique code that have expired in which transaction is still valid.
+A transaction will be valid for 24 hours with a default 3-hours validity for each unique code (Applicable for CRM transaction). Use this API to refresh the unique code that have expired in which transaction is still valid.
 
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/offline-refresh-code`<br>
