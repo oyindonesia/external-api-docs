@@ -1,6 +1,6 @@
-# Send WhatsApp COMINGSOON
+# API Send WhatsApp COMINGSOON
 
-OY's API Collection for sending Whatsapp Notifications.
+OY's API Collection for sending Whatsapp Notifications. Currently, WatsApp can only be enabled for Payment Link and Invoice product. Contact your Business Representative if you'd like to activate this feature.
 
 ## Send Payment/Invoice Link WhatsApp Notification
 
@@ -206,12 +206,6 @@ print(data.decode("utf-8"))
 
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/whatsapp/send-link`
 
-### Flow
-
-<Fill below with proper image>
-[Image: Screen Shot 2022-01-28 at 09.10.16.png]
-
-
 ### Request Headers
 
 |Parameter	|Type	|Description	|
@@ -231,7 +225,7 @@ print(data.decode("utf-8"))
 |Parameter	|Type	|Description	|
 |---	|---	|---	|
 |status	|Object	|Status of response in Object `{code: <status_code>, message: <status_message>}`.	|
-|data	|Object	|The API's response data in an Object, details are in the separate table below.	|
+|data	|Object	|The API's response data in an Object, details are in the [Response Data Parameters table](#response-data-parameters-send-payment-invoice-link-whatsapp-notification).	|
 
 ### Response Data Parameters
 
