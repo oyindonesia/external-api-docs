@@ -460,7 +460,7 @@ POST https://partner.oyindonesia.com/api/offline-info \
 -H 'x-oy-username:myuser' \
 -H 'x-api-key:7654321' \
 -d '{
-   "partner_trx_id":"withdraw_request_123",
+   "partner_trx_id":"oyonoy-00002",
    "send_callback":"true"
 }'
 ```
@@ -632,7 +632,7 @@ print(data.decode("utf-8"))
         "code": "000",
         "message": "Success"
     },
-    "partner_trx_id": "568c3e91-ffec-446e-8684-5c696eeba2da",
+    "partner_trx_id": "oyonoy-00002",
     "trx_id": "4c466140-6b15-41c7-9499-a01e2978f9ec",
     "amount": 100000.0000,
     "code": "1911452620835003",
