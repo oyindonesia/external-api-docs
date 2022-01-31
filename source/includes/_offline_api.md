@@ -15,8 +15,8 @@ POST https://partner.oyindonesia.com/api/offline-create \
    "partner_trx_id":"withdraw_request_123",
    "receiver_phone_number":"081234567890",
    "amount":50000,
-   "transaction_type":"CASH_OUT",
-   "offline_channel":"CRM"
+   "transaction_type":"CASH_IN",
+   "offline_channel":"INDOMARET"
 }'
 ```
 
@@ -32,7 +32,7 @@ request.body = json.encode({
   "receiver_phone_number": "081223738047",
   "amount": 50000,
   "transaction_type": "CASH_IN",
-  "offline_channel": "CRM"
+  "offline_channel": "INDOMARET"
 });
 request.headers.addAll(headers);
 
@@ -66,7 +66,7 @@ func main() {
     "receiver_phone_number": "081223738047",
     "amount": 50000,
     "transaction_type": "CASH_IN",
-    "offline_channel": "CRM"
+    "offline_channel": "INDOMARET"
 }`)
 
   client := &http.Client {
@@ -101,7 +101,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"oyonoy-00007\",\n    \"receiver_phone_number\": \"081223738047\",\n    \"amount\": 50000,\n    \"transaction_type\": \"CASH_IN\",\n    \"offline_channel\": \"CRM\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"oyonoy-00007\",\n    \"receiver_phone_number\": \"081223738047\",\n    \"amount\": 50000,\n    \"transaction_type\": \"CASH_IN\",\n    \"offline_channel\": \"INDOMARET\"\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/offline-create")
   .method("POST", body)
@@ -118,7 +118,7 @@ var data = JSON.stringify({
   "receiver_phone_number": "081223738047",
   "amount": 50000,
   "transaction_type": "CASH_IN",
-  "offline_channel": "CRM"
+  "offline_channel": "INDOMARET"
 });
 
 var xhr = new XMLHttpRequest();
@@ -152,7 +152,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n    "partner_trx_id": "oyonoy-00007",\n    "receiver_phone_number": "081223738047",\n    "amount": 50000,\n    "transaction_type": "CASH_IN",\n    "offline_channel": "CRM"\n}');
+$request->setBody('{\n    "partner_trx_id": "oyonoy-00007",\n    "receiver_phone_number": "081223738047",\n    "amount": 50000,\n    "transaction_type": "CASH_IN",\n    "offline_channel": "INDOMARET"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -178,7 +178,7 @@ payload = json.dumps({
   "receiver_phone_number": "081223738047",
   "amount": 50000,
   "transaction_type": "CASH_IN",
-  "offline_channel": "CRM"
+  "offline_channel": "INDOMARET"
 })
 headers = {
   'Content-Type': 'application/json',
@@ -196,17 +196,19 @@ print(data.decode("utf-8"))
 ```json
 {
     "status": {
-        "code": "000",
-        "message": "Success"
+        "code": "100",
+        "message": "In Progress"
     },
     "amount": 50000,
-    "code": "897412",
+    "admin_fee": 500,
+    "total_amount": 50500,
+    "code": "12312313132131",
     "timestamp": "14-10-2020 17:12:16",
     "receiver_phone_number": "+6281234567890",
-    "partner_trx_id": "withdrawal-request-123",
+    "partner_trx_id": "oyonoy-00007",
     "trx_id": "1234-5678",
-    "transaction_type": "CASH_OUT",
-    "inactive_at": "2020-10-14 13:12:16.786",
+    "transaction_type": "CASH_IN",
+    "inactive_at": "2020-10-15 10:12:16.786",
     "expired_at": "2020-10-15 10:12:16.786"
 }
 ```
@@ -458,7 +460,7 @@ POST https://partner.oyindonesia.com/api/offline-info \
 -H 'x-oy-username:myuser' \
 -H 'x-api-key:7654321' \
 -d '{
-   "partner_trx_id":"withdraw_request_123",
+   "partner_trx_id":"oyonoy-00002",
    "send_callback":"true"
 }'
 ```
@@ -630,17 +632,18 @@ print(data.decode("utf-8"))
         "code": "000",
         "message": "Success"
     },
-    "amount": 50000,
-    "admin_fee": 5000,
-    "total_amount": 55000,
-    "code": "897412",
-    "timestamp": "14-10-2020 17:12:16",
-    "receiver_phone_number": "+6281234567890",
-    "partner_trx_id": "withdrawal-request-123",
-    "trx_id": "1234-5678",
-    "transaction_type": "CASH_OUT",
-    "inactive_at": "2020-10-14 13:12:16.786",
-    "expired_at": "2020-10-15 10:12:16.786"
+    "partner_trx_id": "oyonoy-00002",
+    "trx_id": "4c466140-6b15-41c7-9499-a01e2978f9ec",
+    "amount": 100000.0000,
+    "code": "1911452620835003",
+    "receiver_phone_number": "+62812123890",
+    "transaction_type": "CASH_IN",
+    "offline_channel": "INDOMARET",
+    "timestamp": "2022-01-27 15:49:53.707",
+    "admin_fee": 5000.0000,
+    "total_amount": 105000.0000,
+    "inactive_at": "2022-01-26 13:18:52.541",
+    "expired_at": "2022-01-26 13:18:52.541"
 }
 ```
 
@@ -673,6 +676,7 @@ total_amount | BigDecimal | Sum of amount and admin fee
 code | String(6) | Required unique code for Deposit or Withdrawal Process
 receiver_phone_number | String(255) | User's phone number that will be used for withdraw or deposit process
 transaction_type | String(255) | Type of transaction. CASH_OUT for withdrawal and CASH_IN for deposit.
+offline_channel | String(255) | Offlien channel of transaction. (e.g ALFAMART, INDOMARET or CRM)
 timestamp | String(19) | Execution time of the request in OY! system ("yyyy-MM-dd HH:mm:ss.SSS")
 inactive_at | String(19) | The time that the unique code will expire and need to be refreshed ("yyyy-MM-dd HH:mm:ss.SSS")
 expired_at | String(19) | The time that the transaction will expire and won't be able to be withdrawn or deposited ("yyyy-MM-dd HH:mm:ss.SSS")
@@ -900,17 +904,18 @@ expired_at | String(19) | The time that the transaction will expire and won't be
         "code": "000",
         "message": "Success"
     },
-    "amount": 50000,
-    "admin_fee": 5000,
-    "total_amount": 55000,
-    "code": "897412",
-    "timestamp": "14-10-2020 17:12:16",
-    "receiver_phone_number": "+6281234567890",
-    "partner_trx_id": "withdrawal-request-123",
-    "trx_id": "1234-5678",
-    "transaction_type": "CASH_OUT",
-    "created_date": "2020-10-14 13:12:16.786",
-    "last_updated_date": "2020-10-15 10:12:16.786"
+    "partner_trx_id": "568c3e91-ffec-446e-8684-5c696eeba2da",
+    "trx_id": "4c466140-6b15-41c7-9499-a01e2978f9ec",
+    "amount": 100000.0000,
+    "code": "1911452620835003",
+    "receiver_phone_number": "+62812123890",
+    "transaction_type": "CASH_IN",
+    "offline_channel": "INDOMARET",
+    "timestamp": "2022-01-27 15:49:53.707",
+    "admin_fee": 5000.0000,
+    "total_amount": 105000.0000,
+    "inactive_at": "2022-01-26 13:18:52.541",
+    "expired_at": "2022-01-26 13:18:52.541"
 }
 ```
 
@@ -931,6 +936,7 @@ total_amount | BigDecimal | Sum of amount and admin fee
 code | String(6) | Required unique code for Deposit or Withdrawal process
 receiver_phone_number | String(255) | User's phone number that will be used for withdraw or deposit process 
 transaction_type | String(255) | Type of transaction. CASH_OUT for withdrawal and CASH_IN for deposit.
+offline_channel | String(255) | Offlien channel of transaction. (e.g ALFAMART, INDOMARET or CRM)
 timestamp | String(19) | Execution time of the request in OY! system ("yyyy-MM-dd HH:mm:ss.SSS")
 created_date | String(19) | Executionn time of trasaction in OY! system ("yyyy-MM-dd HH:mm:ss.SSS")
 last_updated_date | String(19) | Latest status change of a transaction. Example from 'Pending' to 'Success' ("yyyy-MM-dd HH:mm:ss.SSS")
