@@ -266,7 +266,7 @@ a request with `"recipient_account": "2100000"` will return response with `"stat
 
 ```shell
 curl -X \
-GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance \
+GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance \
 -H 'Content-Type: application/json' \
 -H 'Accept: application/json' \
 -H 'X-OY-Username: janedoe' \
@@ -280,7 +280,7 @@ var headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 };
-var request = http.Request('GET', Uri.parse('{{base_url}}/api/v2/multi-account/child/balance'));
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/v1/multi-account/child/balance'));
 
 request.headers.addAll(headers);
 
@@ -305,7 +305,7 @@ import (
 
 func main() {
 
-  url := "%7B%7Bbase_url%7D%7D/api/v2/multi-account/child/balance"
+  url := "%7B%7Bbase_url%7D%7D/api/v1/multi-account/child/balance"
   method := "GET"
 
   client := &http.Client {
@@ -341,7 +341,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 Request request = new Request.Builder()
-  .url("{{base_url}}/api/v2/multi-account/child/balance")
+  .url("{{base_url}}/api/v1/multi-account/child/balance")
   .method("GET", null)
   .addHeader("x-oy-username", "{{username}}")
   .addHeader("x-api-key", "{{api-key}}")
@@ -362,7 +362,7 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/v2/multi-account/child/balance");
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/v1/multi-account/child/balance");
 xhr.setRequestHeader("x-oy-username", "{{username}}");
 xhr.setRequestHeader("x-api-key", "{{api-key}}");
 xhr.setRequestHeader("Content-Type", "application/json");
@@ -375,7 +375,7 @@ xhr.send();
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('{{base_url}}/api/v2/multi-account/child/balance');
+$request->setUrl('{{base_url}}/api/v1/multi-account/child/balance');
 $request->setMethod(HTTP_Request2::METHOD_GET);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -413,7 +413,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
-conn.request("GET", "/api/v2/multi-account/child/balance", payload, headers)
+conn.request("GET", "/api/v1/multi-account/child/balance", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -433,8 +433,6 @@ print(data.decode("utf-8"))
       {
         "username": "JohnDoe",
         "balance":100000000.0000,
-        "overdraftBalance":500000.0000,
-        "overbookingBalance":200000.0000,
         "pendingBalance":2000000.0000,
         "availableBalance":98500000.0000
       }
@@ -447,8 +445,8 @@ print(data.decode("utf-8"))
 Use this API to get child balance.
 
 ### HTTPS Request
-**[Production]** `GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance?child_username=<child_username>`<br>
-**[Staging]** `GET https://api-stg.oyindonesia.com/api/v2/multi-account/child/balance?child_username=<child_username>`
+**[Production]** `GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance?child_username=<child_username>`<br>
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/v1/multi-account/child/balance?child_username=<child_username>`
 
 ### Request Parameters
 
