@@ -15982,7 +15982,7 @@ Another value not following the format will be processed normally.</p>
 
 <p>a request with <code>&quot;recipient_account&quot;: &quot;2100000&quot;</code> will return response with <code>&quot;status&quot;: { &quot;code&quot;: &quot;210&quot;, message&quot;: &quot;Request is Rejected (Amount is not valid)&quot;}</code></p>
 <h2 id='get-child-balance-api-multi-account-management' type='normal'>Get Child Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'X-OY-Username: janedoe'</span> <span class="se">\</span>
@@ -15993,7 +15993,7 @@ GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span cla
   <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
   <span class="s">'Accept'</span><span class="o">:</span> <span class="s">'application/json'</span>
 <span class="o">};</span>
-<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/v2/multi-account/child/balance'</span><span class="o">));</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/v1/multi-account/child/balance'</span><span class="o">));</span>
 
 <span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
 
@@ -16015,7 +16015,7 @@ GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span cla
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-  <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/v2/multi-account/child/balance"</span>
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/v1/multi-account/child/balance"</span>
   <span class="n">method</span> <span class="o">:=</span> <span class="s">"GET"</span>
 
   <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
@@ -16048,7 +16048,7 @@ GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span cla
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/v2/multi-account/child/balance"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/v1/multi-account/child/balance"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-oy-username"</span><span class="o">,</span> <span class="s">"{{username}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"{{api-key}}"</span><span class="o">)</span>
@@ -16066,7 +16066,7 @@ GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span cla
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">%7B%7Bbase_url%7D%7D/api/v2/multi-account/child/balance</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">%7B%7Bbase_url%7D%7D/api/v1/multi-account/child/balance</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{username}}</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{api-key}}</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
@@ -16076,7 +16076,7 @@ GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span cla
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'{{base_url}}/api/v2/multi-account/child/balance'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'{{base_url}}/api/v1/multi-account/child/balance'</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
@@ -16111,7 +16111,7 @@ GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span cla
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/multi-account/child/balance"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v1/multi-account/child/balance"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
@@ -16129,8 +16129,6 @@ GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span cla
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JohnDoe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"balance"</span><span class="p">:</span><span class="mf">100000000.0000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"overdraftBalance"</span><span class="p">:</span><span class="mf">500000.0000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"overbookingBalance"</span><span class="p">:</span><span class="mf">200000.0000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"pendingBalance"</span><span class="p">:</span><span class="mf">2000000.0000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"availableBalance"</span><span class="p">:</span><span class="mf">98500000.0000</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -16141,8 +16139,8 @@ GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance <span cla
 </span></code></pre></div>
 <p>Use this API to get child balance.</p>
 <h3 id='https-request-get-child-balance' type='normal'>HTTPS Request</h3>
-<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/v2/multi-account/child/balance?child_username=&lt;child_username&gt;</code><br>
-<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v2/multi-account/child/balance?child_username=&lt;child_username&gt;</code></p>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance?child_username=&lt;child_username&gt;</code><br>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v1/multi-account/child/balance?child_username=&lt;child_username&gt;</code></p>
 <h3 id='request-parameters-get-child-balance' type='normal'>Request Parameters</h3>
 <table><thead>
 <tr>
