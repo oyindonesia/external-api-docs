@@ -10,6 +10,7 @@ Response Code | State | Description
 211 | Final | Request is Rejected (Bank code is not available for this service)
 212 | Final | Request is Rejected (Given amount are lesser than allowed value for static va)
 214 | Final | Request is Rejected (Failed to generate static va)
+214 | Final | Request is Rejected (Amount type is not supported for the requested bank code)
 216 | Final | Request is Rejected (VA Id is empty)
 217 | Final | Request is Rejected (VA Number is still active for this partner user id)
 219 | Final | Request is Rejected (Virtual account is not enabled for this bank)
