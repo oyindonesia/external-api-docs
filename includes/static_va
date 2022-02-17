@@ -1631,37 +1631,37 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <h2 id='va-aggregator-bank-code-va-aggregator' type='normal'>VA aggregator Bank Code</h2><h3 id='available-bank-for-va-aggregator-va-aggregator-bank-code' type='normal'>Available Bank for VA aggregator</h3>
 <table><thead>
 <tr>
-<th>Bank Code</th>
-<th>Bank Name</th>
+<th>Bank (Virtual Account)</th>
+<th>Capability (Open Amount/Closed Amount)</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>002</td>
-<td>Bank BRI</td>
+<td>BNI</td>
+<td>Closed Amount</td>
 </tr>
 <tr>
-<td>013</td>
-<td>Bank Permata</td>
-</tr>
-<tr>
-<td>022</td>
-<td>Bank CIMB Niaga</td>
-</tr>
-<tr>
-<td>008</td>
 <td>Bank Mandiri</td>
+<td>Open Amount, Closed Amount</td>
 </tr>
 <tr>
-<td>009</td>
-<td>Bank BNI</td>
+<td>BRI</td>
+<td>Open Amount, Closed Amount</td>
 </tr>
 <tr>
-<td>014</td>
-<td>Bank BCA</td>
+<td>BCA</td>
+<td>Open Amount, Closed Amount</td>
 </tr>
 <tr>
-<td>213</td>
-<td>Bank BTPN</td>
+<td>Bank Permata</td>
+<td>Open Amount, Closed Amount</td>
+</tr>
+<tr>
+<td>CIMB Niaga</td>
+<td>Open Amount, Closed Amount</td>
+</tr>
+<tr>
+<td>BTPN</td>
+<td>Open Amount, Closed Amount</td>
 </tr>
 </tbody></table>
 <h2 id='list-of-documents-va-aggregator' type='normal'>List of Documents</h2>
