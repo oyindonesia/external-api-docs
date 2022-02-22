@@ -243,8 +243,10 @@ expired_at | String(19) | The time that the transaction will expire and won't be
 
 **Important Notes**
 `inactive_at` is only applicable for **Alfamart Cash-Out & CRM**. Cash-In (Alfamart & Indomaret) code stays valid for **24 hours**
+
 Cash-In transaction receives any cash denom starting from **2.000 to 100.000** with minimum amount of **10.000** and maximum amount of **5.000.000 (including admin fee)**
-* `admin_fee` will be available to you in each transaction and `total_amount` will reflect the sum of `admin_fee` and `amount`
+
+`admin_fee` will be available to you in each transaction and `total_amount` will reflect the sum of `admin_fee` and `amount`
 
 
 
@@ -448,6 +450,7 @@ partner_trx_id | String(255) | Unique Payout ID for a specific request, generate
 timestamp | String(19) | Execution time of the request in OY! system ("yyyy-MM-dd HH:mm:ss.SSS")
 
 **Important Notes** 
+
 Cancellation is only applicable for **Alfamart Cash-Out & CRM** transactions, Cash-In transactions _cannot be cancelled_.
 
 ## Transaction Info
@@ -680,6 +683,7 @@ inactive_at | String(19) | The time that the unique code will expire and need to
 expired_at | String(19) | The time that the transaction will expire and won't be able to be withdrawn or deposited ("yyyy-MM-dd HH:mm:ss.SSS")
 
 **Important Notes**
+
  `inactive_at` is only applicable for **Alfamart Cash-Out & CRM**. Cash-In code stays valid for 24 hours.
 
 ## Refresh Code
@@ -892,6 +896,7 @@ inactive_at | String(19) | The time that the unique code will expire and need to
 expired_at | String(19) | The time that the transaction will expire and won't be able to be withdrawn or deposited ("yyyy-MM-dd HH:mm:ss.SSS")
 
 **Important Notes** 
+
 Refresh code is only applicable for **Alfamart Cash-Out & CRM transactions**, Cash-In transactions _cannot be refreshed._
 
 ## Callback
