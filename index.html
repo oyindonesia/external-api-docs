@@ -10885,11 +10885,10 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 </tr>
 </tbody></table>
 
-<ul>
-<li><code>inactive_at</code> is only applicable for <strong>Alfamart Cash-Out &amp; CRM</strong>. Indomaret Cash-In code stays <em>valid for 24 hours</em></li>
-<li>Indomaret Cash-In receives any cash denom start from <strong>2.000 to 100.000</strong> with minimum amount of <em>10.000</em> and maximum amount of <em>5.000.000 (including admin fee)</em></li>
-<li><code>admin_fee</code> is available to you in each transaction. <code>total_amount</code> will reflect the sum of admin_fee and amount</li>
-</ul>
+<p><strong>Important Notes</strong>
+<code>inactive_at</code> is only applicable for <strong>Alfamart Cash-Out &amp; CRM</strong>. Cash-In (Alfamart &amp; Indomaret) code stays valid for <strong>24 hours</strong>
+Cash-In transaction receives any cash denom starting from <strong>2.000 to 100.000</strong> with minimum amount of <strong>10.000</strong> and maximum amount of <strong>5.000.000 (including admin fee)</strong>
+* <code>admin_fee</code> will be available to you in each transaction and <code>total_amount</code> will reflect the sum of <code>admin_fee</code> and <code>amount</code></p>
 <h2 id='cancel-transaction-api-offline' type='normal'>Cancel Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/offline-cancel <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -11092,9 +11091,8 @@ POST https://partner.oyindonesia.com/api/offline-cancel <span class="se">\</span
 </tr>
 </tbody></table>
 
-<ul>
-<li>Cancellation is only applicable for <strong>Alfamart Cash-Out &amp; CRM</strong> transactions, Indomaret Cash-In transaction <em>cannot be cancelled</em>.</li>
-</ul>
+<p><strong>Important Notes</strong> 
+Cancellation is only applicable for <strong>Alfamart Cash-Out &amp; CRM</strong> transactions, Cash-In transactions <em>cannot be cancelled</em>.</p>
 <h2 id='transaction-info-api-offline' type='normal'>Transaction Info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/offline-info <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -11373,9 +11371,8 @@ Please contact us and submit a callback URL if you need a callback status of a t
 </tr>
 </tbody></table>
 
-<ul>
-<li><code>inactive_at</code> is only applicable for <strong>Alfamart Cash-Out &amp; CRM</strong>. Indomaret Cash-In code stays alid for 24 hours</li>
-</ul>
+<p><strong>Important Notes</strong>
+ <code>inactive_at</code> is only applicable for <strong>Alfamart Cash-Out &amp; CRM</strong>. Cash-In code stays valid for 24 hours.</p>
 <h2 id='refresh-code-api-offline' type='normal'>Refresh Code</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -11594,9 +11591,8 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 </tr>
 </tbody></table>
 
-<ul>
-<li>Refresh code is only applicable for <strong>Alfamart Cash-Out &amp; CRM transactions</strong>, Indomaret Cash-In transaction <em>cannot be refreshed.</em></li>
-</ul>
+<p><strong>Important Notes</strong> 
+Refresh code is only applicable for <strong>Alfamart Cash-Out &amp; CRM transactions</strong>, Cash-In transactions <em>cannot be refreshed.</em></p>
 <h2 id='callback-api-offline' type='normal'>Callback</h2>
 <blockquote>
 <p>Response callback:</p>
@@ -11835,7 +11831,7 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 </tr>
 </tbody></table>
 <h2 id='api-offline-channel-api-offline' type='normal'>API Offline Channel</h2>
-<p>These are the list of Oy! offline channel</p>
+<p>These are the list of OY! offline channel</p>
 
 <table><thead>
 <tr>
