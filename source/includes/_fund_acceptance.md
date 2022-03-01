@@ -21,6 +21,7 @@ curl -X POST \
   -H 'X-Oy-Username: yourusername' \
   -d '{
         "partner_tx_id":"partnerTxId",
+        "child_balance":"child123",
         "description":"description",
         "notes":"notes",
         "sender_name":"Sender name",
@@ -47,6 +48,7 @@ var request = http.Request('POST', Uri.parse('{{base_url}}/api/payment-checkout/
 request.body = json.encode({
   "description": "Prod Test API",
   "partner_tx_id": "",
+  "child_balance":"child123",
   "notes": "",
   "sender_name": "Mochamad Suryono",
   "amount": 10000,
@@ -90,6 +92,7 @@ func main() {
   payload := strings.NewReader(`{
     "description": "Prod Test API",
     "partner_tx_id": "",
+    "child_balance":"child123",
     "notes": "",
     "sender_name" : "Mochamad Suryono", 
     "amount" : 10000,
@@ -151,6 +154,7 @@ Response response = client.newCall(request).execute();
 var data = JSON.stringify({
   "description": "Prod Test API",
   "partner_tx_id": "",
+  "child_balance":"child123",
   "notes": "",
   "sender_name": "Mochamad Suryono",
   "amount": 10000,
@@ -220,6 +224,7 @@ conn = http.client.HTTPSConnection("{{base_url}}")
 payload = json.dumps({
   "description": "Prod Test API",
   "partner_tx_id": "",
+  "child_balance":"child123",
   "notes": "",
   "sender_name": "Mochamad Suryono",
   "amount": 10000,
@@ -259,6 +264,7 @@ print(data.decode("utf-8"))
         "message": "success",
         "email_status": "PROCESSED",
         "payment_link_id": "id"
+        "child_balance":"child123",
 }
 ```
 
@@ -274,6 +280,7 @@ X-Oy-Username | String | The registered partner username which access is enabled
 Parameters | Type | Description | Limitation
 ---- | ---- | ------ | -------
 partner_tx_id | String | A unique transaction ID provided by partner. | A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics. If empty then OY will generate automatically.
+child_balance | String | An optional parameter. Applicable for MAM transaction. Fill this with the username of your child account if you want to create a transaction on behalf of the child (the payment will go to the child account's balance)
 description | String | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
@@ -296,6 +303,7 @@ Parameter | Type | Description
 status | Boolean | true / false
 url | String | Payment link which used for payment
 payment_link_id | String | A unique transaction ID provided by partner
+child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in response.
 message | String | Message response
 email_status | String | email status
 
@@ -734,6 +742,7 @@ curl -X POST \
 Parameter | Type | Description
 --------- | ---- | -----------
 partner_tx_id | String | A unique transaction ID provided by partner
+child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback
 tx_ref_number | String | OY's internal unique transaction ID
 amount | BigDecimal | The amount of a transaction that is paid
 sender_name | String | Name of a payer for a transaction
@@ -927,6 +936,7 @@ print(data.decode("utf-8"))
 {
   "partner_tx_id": "partner000001",
   "tx_ref_number": "1234567",
+  "child_balance": "child123",
   "amount": 15000,
   "sender_name": "Budi",
   "sender_phone": "+6281111111",
@@ -966,6 +976,7 @@ send_callback | Boolean | A flag to indiciate if the latest callback of a transa
 Parameter | Type | Description
 ---- | ---- | ----
 partner_tx_id | String | A unique transaction ID provided by partner
+child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request Create Payment Link, we will not pass this parameter in the response
 tx_ref_number | String | OY's internal unique transaction ID
 amount | BigDecimal | The amount of a transaction that is paid
 sender_name | String | Name of a payer for a transaction
@@ -1155,6 +1166,7 @@ Parameters | Type | Description
 ---- | ---- | ------
 status | Boolean | TRUE if delete is successful and FALSE otherwise
 message | String | Return message
+child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback
 
 
 ### Return Message
@@ -1322,6 +1334,7 @@ print(data.decode("utf-8"))
 {
     "data": {
         "partnerTxId": "abc10",
+        "child_balance":"child123",
         "paymentLinkId": "703e05c0-48e3-47bd-9c22-670941d4d5fe",
         "amount": 15000,
         "username": "justkhals",
@@ -1367,6 +1380,7 @@ payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in 
 Parameters | Type | Description | Example Value
 ---- | ---- | ------ | -------
 partnerTxId | String | Payment Partner Tx Id | abc123
+child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback | child123
 paymentLinkId | String | Payment Link Id | 35281815-4784-4f55-9a61-090f5c17a191
 amount | Integer | Payment Amount | 30000
 username | String | Partner Username | johndoe
