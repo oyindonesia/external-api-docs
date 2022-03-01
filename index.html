@@ -6891,7 +6891,7 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <td>String(3)</td>
 <td>TRUE</td>
 <td>-</td>
-<td>Bank code which the VA number will be generated</td>
+<td>Bank code which the VA number will be generated. Refer to <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>amount</td>
@@ -7000,7 +7000,7 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
-<td>Bank code for VA, see <a href="#static-va-bank-code">VA Bank Code</a></td>
+<td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
@@ -7020,7 +7020,7 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
-<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
+<td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
@@ -8268,35 +8268,43 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <table><thead>
 <tr>
 <th>Bank (Virtual Account)</th>
+<th>Bank Code</th>
 <th>Capability (Open Amount/Closed Amount)</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>BNI</td>
+<td>009</td>
 <td>Closed Amount</td>
 </tr>
 <tr>
 <td>Bank Mandiri</td>
+<td>008</td>
 <td>Open Amount, Closed Amount</td>
 </tr>
 <tr>
 <td>BRI</td>
+<td>O02</td>
 <td>Open Amount, Closed Amount</td>
 </tr>
 <tr>
 <td>BCA</td>
+<td>014</td>
 <td>Open Amount, Closed Amount</td>
 </tr>
 <tr>
-<td>Bank Permata</td>
+<td>Bank Permata/Permata Syariah</td>
+<td>013</td>
 <td>Open Amount, Closed Amount</td>
 </tr>
 <tr>
-<td>CIMB Niaga</td>
+<td>CIMB Niaga/CIMB Niaga Syariah</td>
+<td>022</td>
 <td>Open Amount, Closed Amount</td>
 </tr>
 <tr>
 <td>BTPN</td>
+<td>213</td>
 <td>Open Amount, Closed Amount</td>
 </tr>
 </tbody></table>
