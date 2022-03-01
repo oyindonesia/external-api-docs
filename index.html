@@ -8539,6 +8539,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
   <span class="nt">-H</span> <span class="s1">'X-Oy-Username: yourusername'</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
         "partner_tx_id":"partnerTxId",
+        "child_balance":"child123",
         "description":"description",
         "notes":"notes",
         "sender_name":"Sender name",
@@ -8562,6 +8563,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
   <span class="s">"description"</span><span class="o">:</span> <span class="s">"Prod Test API"</span><span class="o">,</span>
   <span class="s">"partner_tx_id"</span><span class="o">:</span> <span class="s">""</span><span class="o">,</span>
+  <span class="s">"child_balance"</span><span class="o">:</span><span class="s">"child123"</span><span class="o">,</span>
   <span class="s">"notes"</span><span class="o">:</span> <span class="s">""</span><span class="o">,</span>
   <span class="s">"sender_name"</span><span class="o">:</span> <span class="s">"Mochamad Suryono"</span><span class="o">,</span>
   <span class="s">"amount"</span><span class="o">:</span> <span class="mi">10000</span><span class="o">,</span>
@@ -8602,6 +8604,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
   <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
     "description": "Prod Test API",
     "partner_tx_id": "",
+    "child_balance":"child123",
     "notes": "",
     "sender_name" : "Mochamad Suryono", 
     "amount" : 10000,
@@ -8657,6 +8660,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
   <span class="dl">"</span><span class="s2">description</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Prod Test API</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">partner_tx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">child_balance</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">child123</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">notes</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">sender_name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Mochamad Suryono</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
@@ -8720,6 +8724,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
   <span class="s">"description"</span><span class="p">:</span> <span class="s">"Prod Test API"</span><span class="p">,</span>
   <span class="s">"partner_tx_id"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+  <span class="s">"child_balance"</span><span class="p">:</span><span class="s">"child123"</span><span class="p">,</span>
   <span class="s">"notes"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
   <span class="s">"sender_name"</span><span class="p">:</span> <span class="s">"Mochamad Suryono"</span><span class="p">,</span>
   <span class="s">"amount"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
@@ -8755,6 +8760,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCESSED"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"payment_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w">
+        </span><span class="nl">"child_balance"</span><span class="p">:</span><span class="s2">"child123"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='request-headers-api-create-payment-link' type='normal'>Request Headers</h3>
 <table><thead>
@@ -8789,6 +8795,12 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>String</td>
 <td>A unique transaction ID provided by partner.</td>
 <td>A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics. If empty then OY will generate automatically.</td>
+</tr>
+<tr>
+<td>child_balance</td>
+<td>String</td>
+<td>An optional parameter. Applicable for MAM transaction. Fill this with the username of your child account if you want to create a transaction on behalf of the child (the payment will go to the child account&#39;s balance)</td>
+<td></td>
 </tr>
 <tr>
 <td>description</td>
@@ -8897,6 +8909,11 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>payment_link_id</td>
 <td>String</td>
 <td>A unique transaction ID provided by partner</td>
+</tr>
+<tr>
+<td>child_balance</td>
+<td>String</td>
+<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in response.</td>
 </tr>
 <tr>
 <td>message</td>
@@ -9424,6 +9441,11 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>A unique transaction ID provided by partner</td>
 </tr>
 <tr>
+<td>child_balance</td>
+<td>String</td>
+<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback</td>
+</tr>
+<tr>
 <td>tx_ref_number</td>
 <td>String</td>
 <td>OY&#39;s internal unique transaction ID</td>
@@ -9716,6 +9738,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"partner_tx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner000001"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tx_ref_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"child_balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"child123"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sender_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Budi"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sender_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6281111111"</span><span class="p">,</span><span class="w">
@@ -9785,6 +9808,11 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>partner_tx_id</td>
 <td>String</td>
 <td>A unique transaction ID provided by partner</td>
+</tr>
+<tr>
+<td>child_balance</td>
+<td>String</td>
+<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request Create Payment Link, we will not pass this parameter in the response</td>
 </tr>
 <tr>
 <td>tx_ref_number</td>
@@ -10045,6 +10073,11 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>String</td>
 <td>Return message</td>
 </tr>
+<tr>
+<td>child_balance</td>
+<td>String</td>
+<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback</td>
+</tr>
 </tbody></table>
 <h3 id='return-message-api-delete' type='normal'>Return Message</h3>
 <table><thead>
@@ -10214,6 +10247,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partnerTxId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"child_balance"</span><span class="p">:</span><span class="s2">"child123"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"paymentLinkId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"703e05c0-48e3-47bd-9c22-670941d4d5fe"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">15000</span><span class="p">,</span><span class="w">
         </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"justkhals"</span><span class="p">,</span><span class="w">
@@ -10273,6 +10307,12 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>String</td>
 <td>Payment Partner Tx Id</td>
 <td>abc123</td>
+</tr>
+<tr>
+<td>child_balance</td>
+<td>String</td>
+<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback</td>
+<td>child123</td>
 </tr>
 <tr>
 <td>paymentLinkId</td>
