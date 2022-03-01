@@ -621,7 +621,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
-<td>Bank code for VA</td>
+<td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>bank_name</td>
@@ -646,7 +646,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
-<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
+<td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
@@ -1022,7 +1022,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
-<td>Bank code for VA</td>
+<td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
@@ -1042,7 +1042,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
-<td>Status of VA, see <a href="#static-va-status">VA Status</a></td>
+<td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
