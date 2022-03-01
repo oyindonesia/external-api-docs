@@ -267,7 +267,7 @@ print(data.decode("utf-8"))
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
 partner_user_id | String(255) | TRUE | - | Partner unique ID for specific user
-bank_code | String(3) | TRUE | - | Bank code which the VA number will be generated
+bank_code | String(3) | TRUE | - | Bank code which the VA number will be generated. Refer to [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
 amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
 is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 is_single_use | Boolean | FALSE | false | True means that this VA should be closed once there is a successful payment that is being made to this VA.
@@ -288,11 +288,11 @@ amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
 id | String(36) | Unique VA ID
 partner_user_id | String(255) | Your unique ID for specific user
-bank_code | String(3) | Bank code for VA, see [VA Bank Code](#static-va-bank-code)
+bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
-va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
+va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
 partner_trx_id | String(255) | Partner unique Transaction ID of a VA
@@ -1266,15 +1266,15 @@ settlement_status | String(255) | The status of the settlement
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator
 
-| Bank (Virtual Account) | Capability (Open Amount/Closed Amount)         |
-| ---------------------- | ---------------------------------------------- | 
-| BNI                    | Closed Amount                                  | 
-| Bank Mandiri           | Open Amount, Closed Amount                     |                  
-| BRI                    | Open Amount, Closed Amount                     | 
-| BCA                    | Open Amount, Closed Amount                     | 
-| Bank Permata           | Open Amount, Closed Amount                     |
-| CIMB Niaga             | Open Amount, Closed Amount                     | 
-| BTPN                   | Open Amount, Closed Amount                     | 
+| Bank (Virtual Account) | Bank Code                                      | Capability (Open Amount/Closed Amount)         |
+| ---------------------- | ---------------------------------------------- | ---------------------------------------------- | 
+| BNI                    | 009                                            | Closed Amount                                  | 
+| Bank Mandiri           | 008                                            | Open Amount, Closed Amount                     | 
+| BRI                    | O02                                            | Open Amount, Closed Amount                     | 
+| BCA                    | 014                                            | Open Amount, Closed Amount                     | 
+| Bank Permata/Permata Syariah| 013                                       | Open Amount, Closed Amount                     | 
+| CIMB Niaga/CIMB Niaga Syariah| 022                                      | Open Amount, Closed Amount                     | 
+| BTPN                   | 213                                            | Open Amount, Closed Amount                     | 
 
 
 ## List of Documents
