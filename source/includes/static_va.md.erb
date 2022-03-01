@@ -499,12 +499,12 @@ id | String |  Unique VA id
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
-bank_code | String(3) | Bank code for VA
+bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
 bank_name | String(10) | Bank name of the VA
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA.
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
-va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
+va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 partner_user_id | String(255) | Partner unique ID for specific user
 created | Long | Unix timestamp in milliseconds when VA created
@@ -781,11 +781,11 @@ id | String |  Unique VA id
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
 amount | BigDecimal | Amount of VA transaction
 va_number | String(20) | Generated VA number
-bank_code | String(3) | Bank code for VA
+bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
 is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
 is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA.
 expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
-va_status | String(16) | Status of VA, see [VA Status](#static-va-status)
+va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 partner_user_id | String(255) | Partner unique ID for specific user
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
