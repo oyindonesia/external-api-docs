@@ -765,11 +765,11 @@ Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
 amount | BigDecimal | FALSE | - | Amount your user must paid to complete the transaction
 is_single_use | Boolean | FALSE |  false | True means that this VA should be closed once there is a successful payment that is being made to this VA.
-expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour
+expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour. If you want to deactivate/cancel the VA, pass "0" in the expiration_time
 username_display | String | - | - | Customizable VA display name that will be seen by user, If empty willl be using partner username
 is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 email | String(50) | FALSE | - | Email of user, using email standard format
-trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5.
+trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If you want to make the trx_expiration_time expired, pass "0" in the trx_expiration_time
 partner_trx_id | String(255) | - | Partner unique Transaction ID of a VA
 trx_counter | Int | FALSE | -1/1 | Update transaction counter to limit number of transaction that can be receive by va number
 
