@@ -7582,7 +7582,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Long</td>
 <td>FALSE</td>
 <td>-</td>
-<td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour</td>
+<td>Expiration time of the VA in minutes, if empty VA will be expired in 24 hour. If you want to deactivate/cancel the VA, pass &quot;0&quot; in the expiration_time</td>
 </tr>
 <tr>
 <td>username_display</td>
@@ -7610,7 +7610,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Long</td>
 <td>FALSE</td>
 <td>-</td>
-<td>Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5.</td>
+<td>Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If you want to make the trx_expiration_time expired, pass &quot;0&quot; in the trx_expiration_time</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
