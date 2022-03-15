@@ -2663,6 +2663,48 @@
                     </ul>
                   </li>
                   <li>
+                    <a href="#get-bill-payment-status-biller-api-2" class="toc-h2 toc-link" data-title="Get Bill Payment Status">
+                     <span class="toc-link-content">
+                        Get Bill Payment Status
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#https-request-callback-parameters-2" class="toc-h3 toc-link" data-title="HTTPS Request">
+                            <span class="toc-link-content">
+                              HTTPS Request
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#response-parameters-callback-parameters-2" class="toc-h3 toc-link" data-title="Response Parameters">
+                            <span class="toc-link-content">
+                              Response Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#api-biller-response-codes-biller-api" class="toc-h2 toc-link" data-title="API Biller Response Codes">
+                     <span class="toc-link-content">
+                        API Biller Response Codes
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#api-biller-status-biller-api" class="toc-h2 toc-link" data-title="API Biller Status">
+                     <span class="toc-link-content">
+                        API Biller Status
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
                     <a href="#biller-products-list-biller-api" class="toc-h2 toc-link" data-title="Biller Products List">
                      <span class="toc-link-content">
                         Biller Products List
@@ -2670,6 +2712,14 @@
                          <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
                     </a>
                     <ul class="toc-list-h3">
+                        <li>
+                          <a href="#insurance-biller-products-list" class="toc-h3 toc-link" data-title="Insurance">
+                            <span class="toc-link-content">
+                              Insurance
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
                         <li>
                           <a href="#pln-biller-products-list" class="toc-h3 toc-link" data-title="PLN">
                             <span class="toc-link-content">
@@ -2679,9 +2729,17 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#telkom-biller-products-list" class="toc-h3 toc-link" data-title="Telkom">
+                          <a href="#internet-biller-products-list" class="toc-h3 toc-link" data-title="Internet">
                             <span class="toc-link-content">
-                              Telkom
+                              Internet
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#tv-cable-biller-products-list" class="toc-h3 toc-link" data-title="TV Cable">
+                            <span class="toc-link-content">
+                              TV Cable
                             </span>
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
@@ -2710,15 +2768,15 @@
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
                         </li>
+                        <li>
+                          <a href="#voucher-biller-products-list" class="toc-h3 toc-link" data-title="Voucher">
+                            <span class="toc-link-content">
+                              Voucher
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
                     </ul>
-                  </li>
-                  <li>
-                    <a href="#biller-api-response-codes-biller-api" class="toc-h2 toc-link" data-title="Biller API Response Codes">
-                     <span class="toc-link-content">
-                        Biller API Response Codes
-                      </span>
-                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                    </a>
                   </li>
               </ul>
           </li>
@@ -16729,7 +16787,7 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 <p>Use this API to do Inquiry and get detail information on the Bill before paying.</p>
 <h3 id='https-request-bill-inquiry' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>Coming Soon</code><br>
-<strong>[Staging]</strong> <code>Coming Soon</code></p>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/v2/bill</code></p>
 <h3 id='request-parameters-bill-inquiry' type='normal'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -16756,6 +16814,18 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 <td>String(255)</td>
 <td>TRUE</td>
 <td>Unique Payout ID for a specific request, generated by partner</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigInteger</td>
+<td>FALSE</td>
+<td>Product denom/amount, only for PLN Prepaid 20.000, 50.000, 100.000, 200.000, 500.000, 1.000.000</td>
+</tr>
+<tr>
+<td>additional_data</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>Additonal data for BPJS (number of months) or PBB (tax year)</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-bill-inquiry' type='normal'>Response Parameters</h3>
@@ -16992,7 +17062,7 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
 <p>This API will enable you to do payment for your bill. You need to do inquiry first before calling this API.</p>
 <h3 id='https-request-pay-bill' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>Coming Soon</code><br>
-<strong>[Staging]</strong> <code>Coming Soon</code></p>
+<strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/v2/bill/payment</code></p>
 <h3 id='request-parameters-pay-bill' type='normal'>Request Parameters</h3>
 <table><thead>
 <tr>
@@ -17333,7 +17403,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 <p>This endpoint allows you to get the status of an inquiried bill.</p>
 <h4 id='https-request-callback-parameters' type='normal'>HTTPS Request</h4>
 <p><strong>[Production]</strong> <code>Coming Soon</code><br>
-<strong>[Staging]</strong> <code>Coming Soon</code></p>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v2/bill/list</code></p>
 <h4 id='request-parameters-callback-parameters' type='normal'>Request Parameters</h4>
 <table><thead>
 <tr>
@@ -17404,8 +17474,348 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 <td>Additional detailed data from biller</td>
 </tr>
 </tbody></table>
+<h2 id='get-bill-payment-status-biller-api-2' type='normal'>Get Bill Payment Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
+  <span class="s">'Accept'</span><span class="o">:</span> <span class="s">'application/json'</span>
+<span class="o">};</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/v2/bill/products'</span><span class="o">));</span>
+<span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
+  <span class="s">"partner_tx_id"</span><span class="o">:</span> <span class="s">"partner-tx-id-001"</span>
+<span class="o">});</span>
+<span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
+
+<span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">send</span><span class="o">();</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">await</span> <span class="n">response</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">bytesToString</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="k">else</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">reasonPhrase</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"fmt"</span>
+  <span class="s">"strings"</span>
+  <span class="s">"net/http"</span>
+  <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/v2/bill/products"</span>
+  <span class="n">method</span> <span class="o">:=</span> <span class="s">"GET"</span>
+
+  <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+
+  <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+
+  <span class="n">body</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/v2/bill/products"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">%7B%7Bbase_url%7D%7D/api/v2/bill/products</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'{{base_url}}/api/v2/bill/products'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeader</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"{{base_url}}"</span><span class="p">)</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/bill/status"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> 
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"product_list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"plnpre"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pln prepaid"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">2500.0000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">50000.0000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"is_available"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+  </span><span class="err">}</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows you to get the status of an inquiried bill.</p>
+<h4 id='https-request-callback-parameters-2' type='normal'>HTTPS Request</h4>
+<p><strong>[Production]</strong> <code>Coming Soon</code><br>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v2/bill/products</code></p>
+<h4 id='response-parameters-callback-parameters-2' type='normal'>Response Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Data object that wraps the response parameters</td>
+</tr>
+<tr>
+<td>product_list</td>
+<td>Array of Object</td>
+<td>List of API Biller Product Object</td>
+</tr>
+<tr>
+<td>product_id</td>
+<td>String(255)</td>
+<td>OY&#39;s Biller ID, see [Biller Products List]</td>
+</tr>
+<tr>
+<td>description</td>
+<td>String(255)</td>
+<td>Product Description / Name</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Bill&#39;s amount (excluding admin fee). Value will be 0 if bill is postpaid.</td>
+</tr>
+<tr>
+<td>admin_fee</td>
+<td>BigDecimal</td>
+<td>Bill&#39;s total amount (including admin fee, penalty, or other applicable fees)</td>
+</tr>
+<tr>
+<td>is_available</td>
+<td>Boolean</td>
+<td>Product availabilty</td>
+</tr>
+</tbody></table>
+<h2 id='api-biller-response-codes-biller-api' type='normal'>API Biller Response Codes</h2>
+<p>These are the list of possible response codes for API Offline:</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Final</td>
+<td>Inquiry or Payment Request has been completed (SUCCESS)</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Non-Final</td>
+<td>Request is In Progress</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Final</td>
+<td>Transaction Failed (FAILED)</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Final</td>
+<td>Transaction Pending (PENDING)</td>
+</tr>
+</tbody></table>
+
+<p>The following status codes are for rejected requests</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>State</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>201</td>
+<td>Final</td>
+<td>Request is Rejected (User ID is not Found)</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Final</td>
+<td>Request is Rejected (User ID is not Active)</td>
+</tr>
+<tr>
+<td>203</td>
+<td>Final</td>
+<td>Request is Rejected (Duplicate Partner Tx ID)</td>
+</tr>
+<tr>
+<td>204</td>
+<td>Final</td>
+<td>Request is Rejected (Partner Tx ID is Not Found)</td>
+</tr>
+<tr>
+<td>205</td>
+<td>Final</td>
+<td>Request is Rejected (Biller product_id is not available at this moment)</td>
+</tr>
+<tr>
+<td>206</td>
+<td>Final</td>
+<td>Request is Rejected (Partner Deposit Balance is Not Enough)</td>
+</tr>
+<tr>
+<td>207</td>
+<td>Final</td>
+<td>Request is Rejected (Request IP Address is not Registered)</td>
+</tr>
+<tr>
+<td>208</td>
+<td>Final</td>
+<td>Request is Rejected (API Key is not Valid)</td>
+</tr>
+<tr>
+<td>210</td>
+<td>Final</td>
+<td>Request is Rejected (Invalid denom amount request)</td>
+</tr>
+<tr>
+<td>290</td>
+<td>Final</td>
+<td>Request is Rejected (Parameter / object is not valid)</td>
+</tr>
+<tr>
+<td>999</td>
+<td>Final</td>
+<td>Internal Server Error</td>
+</tr>
+</tbody></table>
+<h2 id='api-biller-status-biller-api' type='normal'>API Biller Status</h2>
+<p>These are all the status that apply to API Biller product
+Status         | Meaning
+-------------- | -------
+INQUIRY        | Bill has been inquired and may be paid
+IN_PROGRESS    | Processing payment request to biller provider
+PENDING        | Unknown status from biller provider and will be resolved manually
+SUCCESS        | Bill payment success
+FAILED         | Bill payment failed</p>
 <h2 id='biller-products-list-biller-api' type='normal'>Biller Products List</h2>
 <p>Here is the list of available bill products in our Biller Service</p>
+<h3 id='insurance-biller-products-list' type='normal'>Insurance</h3>
+<table><thead>
+<tr>
+<th>Product Id</th>
+<th>Product Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BPJSKS</td>
+<td>BPJS KESEHATAN</td>
+</tr>
+<tr>
+<td>ASRJWS</td>
+<td>ASURANSI JIWASRAYA/ASURANSI IFG LIFE</td>
+</tr>
+<tr>
+<td>ASRTOKIOS</td>
+<td>TOKIO MARINE</td>
+</tr>
+<tr>
+<td>ASRBINT1</td>
+<td>ASURANSI BINTANG PAKET 1</td>
+</tr>
+<tr>
+<td>ASRBINT2</td>
+<td>ASURANSI BINTANG PAKET 2</td>
+</tr>
+<tr>
+<td>ASRCAR</td>
+<td>CENTRAL ASIA RAYA</td>
+</tr>
+<tr>
+<td>ASRPRU</td>
+<td>PRUDENTIAL PREMI LANJUTAN</td>
+</tr>
+</tbody></table>
 <h3 id='pln-biller-products-list' type='normal'>PLN</h3>
 <table><thead>
 <tr>
@@ -17414,15 +17824,15 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>PLNPRE</td>
-<td>Prepaid PLN</td>
+<td>PLNPOST</td>
+<td>PLN POSTPAID</td>
 </tr>
 <tr>
-<td>PLNPOST</td>
-<td>Postpaid PLN</td>
+<td>PLNPRE</td>
+<td>PLN PREPAID</td>
 </tr>
 </tbody></table>
-<h3 id='telkom-biller-products-list' type='normal'>Telkom</h3>
+<h3 id='internet-biller-products-list' type='normal'>Internet</h3>
 <table><thead>
 <tr>
 <th>Product Id</th>
@@ -17430,8 +17840,56 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>0001</td>
-<td>Telkom</td>
+<td>TELKOM</td>
+<td>TELKOM / TELKOM SPEEDY</td>
+</tr>
+<tr>
+<td>MYREPUBLIC</td>
+<td>MYREPUBLIC</td>
+</tr>
+</tbody></table>
+<h3 id='tv-cable-biller-products-list' type='normal'>TV Cable</h3>
+<table><thead>
+<tr>
+<th>Product Id</th>
+<th>Product Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>TVBIG</td>
+<td>BIG TV</td>
+</tr>
+<tr>
+<td>TVINDVS</td>
+<td>INDOVISION</td>
+</tr>
+<tr>
+<td>TVINDVS</td>
+<td>TOPTV</td>
+</tr>
+<tr>
+<td>TVINDVS</td>
+<td>OKEVISION</td>
+</tr>
+<tr>
+<td>TVNEX</td>
+<td>NEX MEDIA</td>
+</tr>
+<tr>
+<td>TVTLKMV</td>
+<td>TRANSVISION</td>
+</tr>
+<tr>
+<td>TVTLKMV</td>
+<td>TELKOMVISION</td>
+</tr>
+<tr>
+<td>TVTLKMV</td>
+<td>YESTV</td>
+</tr>
+<tr>
+<td>TVTOPAS</td>
+<td>TOPAS TV</td>
 </tr>
 </tbody></table>
 <h3 id='multifinance-biller-products-list' type='normal'>Multifinance</h3>
@@ -17442,104 +17900,108 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>MCF</td>
-<td>MCF</td>
-</tr>
-<tr>
-<td>MAF</td>
-<td>MAF</td>
-</tr>
-<tr>
-<td>MF</td>
-<td>MF</td>
-</tr>
-<tr>
-<td>SMF</td>
-<td>Smart Finance</td>
-</tr>
-<tr>
-<td>WKF</td>
-<td>WOKA FINANCE</td>
-</tr>
-<tr>
-<td>CVK</td>
-<td>KAMM</td>
-</tr>
-<tr>
 <td>ALF</td>
-<td>Alijarah</td>
+<td>AL IJARAH FINANCE</td>
 </tr>
 <tr>
 <td>APF</td>
-<td>Arta Prima Finance</td>
-</tr>
-<tr>
-<td>BMF</td>
-<td>Bima Finance</td>
-</tr>
-<tr>
-<td>BPRKM</td>
-<td>BPR Kredit Finance</td>
-</tr>
-<tr>
-<td>TGR</td>
-<td>Tiga Raksa</td>
-</tr>
-<tr>
-<td>THR</td>
-<td>Trihamas</td>
-</tr>
-<tr>
-<td>MTF</td>
-<td>Mandiri Tunas Finance</td>
-</tr>
-<tr>
-<td>TOP</td>
-<td>Mitra Dana Top Finance</td>
-</tr>
-<tr>
-<td>GBL</td>
-<td>Globalindo Multifinance</td>
-</tr>
-<tr>
-<td>EDV</td>
-<td>Esta Dana Ventura</td>
-</tr>
-<tr>
-<td>MBF</td>
-<td>Mizuho Balimor Finance</td>
-</tr>
-<tr>
-<td>TNK</td>
-<td>Tunaiku</td>
-</tr>
-<tr>
-<td>AMM</td>
-<td>Koperasi Anugerah Mega Multidana</td>
-</tr>
-<tr>
-<td>PMT</td>
-<td>Permata Finance</td>
-</tr>
-<tr>
-<td>MDL</td>
-<td>Mandala</td>
-</tr>
-<tr>
-<td>TPF</td>
-<td>Transpasific Finance</td>
+<td>ARTHA PRIMA FINANCE</td>
 </tr>
 <tr>
 <td>BPFI</td>
-<td>Batavia Properindo Finance</td>
+<td>BATAVIA FINANCE</td>
+</tr>
+<tr>
+<td>BMF</td>
+<td>BIMA FINANCE</td>
+</tr>
+<tr>
+<td>BPRKM</td>
+<td>BPR KM</td>
+</tr>
+<tr>
+<td>BPRNBP</td>
+<td>BPR NBP</td>
 </tr>
 <tr>
 <td>CITRA</td>
-<td>Cakrawala Citramega Multifinance</td>
+<td>CAKRAWALA CITRAMEGA MULTIFINANCE</td>
+</tr>
+<tr>
+<td>EDV</td>
+<td>ESTA DANA VENTURA</td>
+</tr>
+<tr>
+<td>JGDR</td>
+<td>JAGADIRI</td>
+</tr>
+<tr>
+<td>KAMM</td>
+<td>KOPERASI ANUGRAH MEGA MANDIRI</td>
 </tr>
 <tr>
 <td>NRC</td>
-<td>Koperasi Nusa Raya Cipta</td>
+<td>KOPERASI NRC</td>
+</tr>
+<tr>
+<td>MDL</td>
+<td>MANDALA</td>
+</tr>
+<tr>
+<td>MTF</td>
+<td>MANDIRI TUNAS FINANCE</td>
+</tr>
+<tr>
+<td>MAF</td>
+<td>MEGA AUTO FINANCE</td>
+</tr>
+<tr>
+<td>MCF</td>
+<td>MEGA CENTRAL FINANCE</td>
+</tr>
+<tr>
+<td>MF</td>
+<td>MEGA FINANCE</td>
+</tr>
+<tr>
+<td>MBF</td>
+<td>MIZUHO BALIMOR FINANCE</td>
+</tr>
+<tr>
+<td>PMT</td>
+<td>PERMATA FINANCE</td>
+</tr>
+<tr>
+<td>DTPR</td>
+<td>PRIMA PEGADAIAN</td>
+</tr>
+<tr>
+<td>DTPU</td>
+<td>PUTRA PEGADAIAN</td>
+</tr>
+<tr>
+<td>SMMF</td>
+<td>SINARMAS</td>
+</tr>
+<tr>
+<td>SMF</td>
+<td>SMART FINANCE</td>
+</tr>
+<tr>
+<td>SOL</td>
+<td>SOLITE</td>
+</tr>
+<tr>
+<td>TOP</td>
+<td>TOP FINANCE</td>
+</tr>
+<tr>
+<td>TPF</td>
+<td>TRANS PACIFIC</td>
+</tr>
+<tr>
+<td>THR</td>
+<td>TRIHAMAS FINANCE</td>
 </tr>
 </tbody></table>
 <h3 id='pdam-biller-products-list' type='normal'>PDAM</h3>
@@ -17550,84 +18012,80 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>1027</td>
-<td>PDAM Tapin</td>
+<td>PDAMKAB.MOJOKERTO</td>
+<td>PDAM KAB MOJOKERTO</td>
 </tr>
 <tr>
-<td>1028</td>
-<td>PDAM Semarang</td>
+<td>PDAMKAB.SIDOARJO</td>
+<td>PDAM KAB SIDOARJO</td>
 </tr>
 <tr>
-<td>1029</td>
-<td>PDAM Bangkalan</td>
+<td>PDAMKAB.BOJONEGORO</td>
+<td>PDAM KAB BOJONEGORO</td>
 </tr>
 <tr>
-<td>1031</td>
-<td>PDAM Kab Mojokerto</td>
+<td>PDAMKAB.MALANG</td>
+<td>PDAM KAB MALANG</td>
 </tr>
 <tr>
-<td>1032</td>
-<td>PDAM Kab Sidoarjo</td>
+<td>PDAMKAB.BOGOR</td>
+<td>PDAM KAB BOGOR</td>
 </tr>
 <tr>
-<td>1030</td>
-<td>PDAM Kab Bojonegoro</td>
+<td>PDAMAETRA</td>
+<td>PDAM AETRA</td>
 </tr>
 <tr>
-<td>1026</td>
-<td>PDAM Jember</td>
+<td>PDAMPALYJA</td>
+<td>PDAM PALYJA</td>
 </tr>
 <tr>
-<td>1025</td>
-<td>PDAM Kab Kasleman</td>
+<td>PDAMKAB.BANDUNG</td>
+<td>PDAM BANDUNG KOT</td>
 </tr>
 <tr>
-<td>1022</td>
-<td>PDAM Kab Malang</td>
+<td>PDAMKAB.BANGKALAN</td>
+<td>PDAM BANGKALAN KAB</td>
 </tr>
 <tr>
-<td>1020</td>
-<td>PDAM Surabaya</td>
+<td>PDAMKAB.CILACAP</td>
+<td>PDAM CILACAP KAB</td>
 </tr>
 <tr>
-<td>1018</td>
-<td>PDAM Kab Bogor</td>
+<td>PDAMKAB.JEMBER</td>
+<td>PDAM JEMBER KAB</td>
 </tr>
 <tr>
-<td>1013</td>
-<td>PDAM Makassar</td>
+<td>PDAMKOT.LAMPUNG</td>
+<td>PDAM LAMPUNG KOT</td>
 </tr>
 <tr>
-<td>1012</td>
-<td>PDAM Cilacap</td>
+<td>PDAMKOT.MATARAM</td>
+<td>PDAM MATARAM KOT</td>
 </tr>
 <tr>
-<td>1007</td>
-<td>PDAM Aetra</td>
+<td>PDAMKOT.PALEMBANG</td>
+<td>PDAM PALEMBANG KOT</td>
 </tr>
 <tr>
-<td>1006</td>
-<td>PDAM Palyja</td>
+<td>PDAMKAB.SEMARANG</td>
+<td>PDAM SEMARANG KAB</td>
 </tr>
 <tr>
-<td>9008</td>
-<td>PDAM Bandung</td>
+<td>PDAMKOT.SURABAYA</td>
+<td>PDAM SURABAYA KOT</td>
 </tr>
 <tr>
-<td>9033</td>
-<td>PDAM Lampung</td>
+<td>PDAMKAB.TAPIN</td>
+<td>PDAM TAPIN KAB</td>
 </tr>
 <tr>
-<td>9034</td>
-<td>PDAM Mataram</td>
+<td>PDAMKETAPANG</td>
+<td>PDAM KETAPANG</td>
 </tr>
 <tr>
-<td>9005</td>
-<td>PDAM Palembang</td>
-</tr>
-<tr>
-<td>PDAMDKIAETRA</td>
-<td>PDAM DKIAETRA</td>
+<td>PDAMMAKASAR</td>
+<td>PDAM MAKASAR</td>
 </tr>
 </tbody></table>
 <h3 id='pbb-biller-products-list' type='normal'>PBB</h3>
@@ -17638,108 +18096,434 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 </tr>
 </thead><tbody>
 <tr>
-<td>PBBKOT.BOGOR</td>
-<td>PBB Kota Bogor</td>
-</tr>
-<tr>
-<td>PBBKOT.CIMAHI</td>
-<td>PBB Kota Cimahi</td>
-</tr>
-<tr>
-<td>PBBKOT.DEPOK</td>
-<td>PBB Kota Depok</td>
-</tr>
-<tr>
-<td>PBBKOT.BEKASI</td>
-<td>PBB Kota Bekasi</td>
-</tr>
-<tr>
-<td>PBBKOT.BANDUNG</td>
-<td>PBB Kota Bandung</td>
-</tr>
-<tr>
-<td>PBBKOT.BANJAR</td>
-<td>PBB Kota Banjar</td>
-</tr>
-<tr>
-<td>PBBKOT.CIREBON</td>
-<td>PBB Kota Cirebon</td>
-</tr>
-<tr>
-<td>PBBKOT.SUKABUMI</td>
-<td>PBB Kota Sukabumi</td>
+<td>PBBDKI.JAKARTA</td>
+<td>PBB DKI JAKARTA</td>
 </tr>
 <tr>
 <td>PBBKAB.BANDUNG</td>
-<td>PBB Kabupaten Bandung</td>
+<td>PBB KAB. BANDUNG</td>
 </tr>
 <tr>
 <td>PBBKAB.BANDUNGBARAT</td>
-<td>PBB Kabupaten Bandung Barat</td>
+<td>PBB KAB. BANDUNG BARAT</td>
 </tr>
 <tr>
-<td>PBBKAB.SUBANG</td>
-<td>PBB Kabupaten Subang</td>
+<td>PBBKAB.BANJARNEGARA</td>
+<td>PBB KAB. BANJAR NEGARA</td>
+</tr>
+<tr>
+<td>PBBKAB.BANYUMAS</td>
+<td>PBB KAB. BANYUMAS</td>
+</tr>
+<tr>
+<td>PBBKAB.BATANG</td>
+<td>PBB KAB. BATANG</td>
+</tr>
+<tr>
+<td>PBBKAB.BEKASICIKARANG</td>
+<td>PBB KAB. BEKASI CIKARANG</td>
+</tr>
+<tr>
+<td>PBBKAB.BLORA</td>
+<td>PBB KAB. BLORA</td>
 </tr>
 <tr>
 <td>PBBKAB.BOGORCIBINONG</td>
-<td>PBB Kabupaten Bogor Cibinong</td>
+<td>PBB KAB. BOGOR CIBINONG</td>
+</tr>
+<tr>
+<td>PBBKAB.BOYOLALI</td>
+<td>PBB KAB BOYOLALI</td>
+</tr>
+<tr>
+<td>PBBKAB.BREBES</td>
+<td>PBB KAB. BREBES</td>
 </tr>
 <tr>
 <td>PBBKAB.CIAMIS</td>
-<td>PBB Kabupaten Ciamis</td>
+<td>PBB KAB. CIAMIS</td>
 </tr>
 <tr>
 <td>PBBKAB.CIANJUR</td>
-<td>PBB Kabupaten Cianjur</td>
+<td>PBB KAB. CIANJUR</td>
 </tr>
 <tr>
-<td>PBBKAB.PURWAKARTA</td>
-<td>PBB Kabupaten Purwakarta</td>
-</tr>
-<tr>
-<td>PBBKAB.SUKABUMI</td>
-<td>PBB Kabupaten Sukabumi</td>
-</tr>
-<tr>
-<td>PBBKAB.SUMEDANG</td>
-<td>PBB Kabupaten Sumedang</td>
+<td>PBBKAB.CILACAP</td>
+<td>PBB KAB. CILACAP</td>
 </tr>
 <tr>
 <td>PBBKAB.CIREBON</td>
-<td>PBB Kabupaten Cirebon</td>
+<td>PBB KAB. CIREBON</td>
+</tr>
+<tr>
+<td>PBBKAB.DEMAK</td>
+<td>PBB KAB. DEMAK</td>
 </tr>
 <tr>
 <td>PBBKAB.GARUT</td>
-<td>PBB Kabupaten Garut</td>
+<td>PBB KAB. GARUT</td>
+</tr>
+<tr>
+<td>PBBKAB.GROBOGAN</td>
+<td>PBB KAB. GROBOGAN</td>
 </tr>
 <tr>
 <td>PBBKAB.INDRAMAYU</td>
-<td>PBB Kabupaten Indramayu</td>
+<td>PBB KAB. INDRAMAYU</td>
+</tr>
+<tr>
+<td>PBBKAB.JEPARA</td>
+<td>PBB KAB. JEPARA</td>
+</tr>
+<tr>
+<td>PBBKAB.KARANGAYAR</td>
+<td>PBB KAB. KARANGAYAR</td>
 </tr>
 <tr>
 <td>PBBKAB.KARAWANG</td>
-<td>PBB Kabupaten Karawang</td>
+<td>PBB KAB. KARAWANG</td>
+</tr>
+<tr>
+<td>PBBKAB.KEBUMEN</td>
+<td>PBB KAB. KEBUMEN</td>
+</tr>
+<tr>
+<td>PBBKAB.KENDAL</td>
+<td>PBB KAB. KENDAL</td>
+</tr>
+<tr>
+<td>PBBKAB.KLATEN</td>
+<td>PBB KAB. KLATEN</td>
+</tr>
+<tr>
+<td>PBBKAB.KUDUS</td>
+<td>PBB KAB. KUDUS</td>
 </tr>
 <tr>
 <td>PBBKAB.KUNINGAN</td>
-<td>PBB Kabupaten Kuningan</td>
+<td>PBB KAB. KUNINGAN</td>
+</tr>
+<tr>
+<td>PBBKAB.LEBAK</td>
+<td>PBB KAB. LEBAK</td>
+</tr>
+<tr>
+<td>PBBKAB.MAGELANG</td>
+<td>PBB KAB. MAGELANG</td>
 </tr>
 <tr>
 <td>PBBKAB.MAJALENGKA</td>
-<td>PBB Kabupaten Majalengka</td>
+<td>PBB KAB. MAJALENGKA</td>
 </tr>
 <tr>
-<td>PBBKAB.TASIKMALAYA</td>
-<td>PBB Kabupaten Tasikmalaya</td>
+<td>PBBKAB.PANDEGLANG</td>
+<td>PBB KAB. PANDEGLANG</td>
 </tr>
 <tr>
 <td>PBBKAB.PANGANDARAN</td>
-<td>PBB Kabupaten Pangandaran</td>
+<td>PBB KAB. PANGANDARAN</td>
+</tr>
+<tr>
+<td>PBBKAB.PATI</td>
+<td>PBB KAB.PATI</td>
+</tr>
+<tr>
+<td>PBBKAB.PEKALONGAN</td>
+<td>PBB KAB. PEKALONGAN</td>
+</tr>
+<tr>
+<td>PBBKAB.PEMALANG</td>
+<td>PBB KAB. PEMALANG</td>
+</tr>
+<tr>
+<td>PBBKAB.PURBALINGGA</td>
+<td>PBB KAB.PURBALINGGA</td>
+</tr>
+<tr>
+<td>PBBKAB.PURWAKARTA</td>
+<td>PBB KAB. PURWAKARTA</td>
+</tr>
+<tr>
+<td>PBBKAB.PURWOREJO</td>
+<td>PBB KAB. PURWOREJO</td>
+</tr>
+<tr>
+<td>PBBKAB.REMBANG</td>
+<td>PBB KAB. REMBANG</td>
+</tr>
+<tr>
+<td>PBBKAB.SEMARANG</td>
+<td>PBB KAB. SEMARANG</td>
+</tr>
+<tr>
+<td>PBBKAB.SERANG</td>
+<td>PBB KAB. SERANG</td>
+</tr>
+<tr>
+<td>PBBKAB.SRAGEN</td>
+<td>PBB KAB. SRAGEN</td>
+</tr>
+<tr>
+<td>PBBKAB.SUBANG</td>
+<td>PBB KOTA SUBANG</td>
+</tr>
+<tr>
+<td>PBBKAB.SUKABUMI</td>
+<td>PBB KAB. SUKABUMI</td>
+</tr>
+<tr>
+<td>PBBKAB.SUKAHARJO</td>
+<td>PBB KAB. SUKAHARJO</td>
+</tr>
+<tr>
+<td>PBBKAB.SUMEDANG</td>
+<td>PBB KAB. SUMEDANG</td>
+</tr>
+<tr>
+<td>PBBKAB.TANGERANG</td>
+<td>PBB KAB. TANGERANG</td>
+</tr>
+<tr>
+<td>PBBKAB.TASIKMALAYA</td>
+<td>PBB KAB. TASIKMALAYA</td>
+</tr>
+<tr>
+<td>PBBKAB.TEGAL</td>
+<td>PBB KAB.TEGAL</td>
+</tr>
+<tr>
+<td>PBBKAB.TEMANGGUNG</td>
+<td>PBB KAB. TEMANGGUNG</td>
+</tr>
+<tr>
+<td>PBBKAB.WONOGIRI</td>
+<td>PBB KAB.WONOGIRI</td>
+</tr>
+<tr>
+<td>PBBKAB.WONOSOBO</td>
+<td>PBB KAB. WONOSOBO</td>
+</tr>
+<tr>
+<td>PBBKOT.BANDUNG</td>
+<td>PBB KOTA BANDUNG</td>
+</tr>
+<tr>
+<td>PBBKOT.BANJAR</td>
+<td>PBB KOTA BANJAR</td>
+</tr>
+<tr>
+<td>PBBKOT.BATAM</td>
+<td>PBB KOTA BATAM</td>
+</tr>
+<tr>
+<td>PBBKOT.BEKASI</td>
+<td>PBB KOTA BEKASI</td>
+</tr>
+<tr>
+<td>PBBKOT.BOGOR</td>
+<td>PBB KOTA BOGOR</td>
+</tr>
+<tr>
+<td>PBBKOT.CILEGON</td>
+<td>PBB KOTA CILEGON</td>
+</tr>
+<tr>
+<td>PBBKOT.CIMAHI</td>
+<td>PBB KOTA CIMAHI</td>
+</tr>
+<tr>
+<td>PBBKOT.CIREBON</td>
+<td>PBB KOTA CIREBON</td>
+</tr>
+<tr>
+<td>PBBKOT.DEPOK</td>
+<td>PBB KOTA DEPOK</td>
+</tr>
+<tr>
+<td>PBBKOT.MAGELANG</td>
+<td>PBB KOTA MAGELANG</td>
+</tr>
+<tr>
+<td>PBBKOT.PEKALONGAN</td>
+<td>PBB KOTA PEKALONGAN</td>
+</tr>
+<tr>
+<td>PBBKOT.PEKANBARU</td>
+<td>PBB KOTA PEKAN BARU</td>
+</tr>
+<tr>
+<td>PBBKOT.SALATIGA</td>
+<td>PBB KOTA SALATIGA</td>
+</tr>
+<tr>
+<td>PBBKOT.SEMARANG</td>
+<td>PBB KOTA SEMARANG</td>
+</tr>
+<tr>
+<td>PBBKOT.SERANG</td>
+<td>PBB KOTA SERANG</td>
+</tr>
+<tr>
+<td>PBBKOT.SUKABUMI</td>
+<td>PBB KOTA SUKABUMI</td>
+</tr>
+<tr>
+<td>PBBKOT.SURAKARTA</td>
+<td>PBB KOTA SURAKARTA</td>
+</tr>
+<tr>
+<td>PBBKOT.TANGERANG</td>
+<td>PBB KOTA TANGERANG</td>
+</tr>
+<tr>
+<td>PBBKOT.TANGERANGSELATAN</td>
+<td>PBB KOTA TANGERANG SELATAN</td>
+</tr>
+<tr>
+<td>PBBKOT.TASIKMALAYA</td>
+<td>PBB KOTA TASIKMALAYA</td>
+</tr>
+<tr>
+<td>PBBKOT.TEGAL</td>
+<td>PBB KOTA TEGAL</td>
 </tr>
 </tbody></table>
-<h2 id='biller-api-response-codes-biller-api' type='normal'>Biller API Response Codes</h2>
-<p>The response codes for API Biller is coming soon!</p>
+<h3 id='voucher-biller-products-list' type='normal'>Voucher</h3>
+<table><thead>
+<tr>
+<th>Product Id</th>
+<th>Product Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AS100</td>
+<td>AS 100.000</td>
+</tr>
+<tr>
+<td>AS10</td>
+<td>AS 10.000</td>
+</tr>
+<tr>
+<td>AS25</td>
+<td>AS 25.000</td>
+</tr>
+<tr>
+<td>AS50</td>
+<td>AS 50.000</td>
+</tr>
+<tr>
+<td>AS5</td>
+<td>AS 5.000</td>
+</tr>
+<tr>
+<td>SIM100</td>
+<td>SIMPATI 100.000</td>
+</tr>
+<tr>
+<td>SIM10</td>
+<td>SIMPATI 10.000</td>
+</tr>
+<tr>
+<td>SIM20</td>
+<td>SIMPATI 20.000</td>
+</tr>
+<tr>
+<td>SIM50</td>
+<td>SIMPATI 50.000</td>
+</tr>
+<tr>
+<td>SIM5</td>
+<td>SIMPATI 5.000</td>
+</tr>
+<tr>
+<td>MR20</td>
+<td>MENTARI REGULAR 20.000</td>
+</tr>
+<tr>
+<td>MR100</td>
+<td>MENTARI REGULAR 100.000</td>
+</tr>
+<tr>
+<td>MR10</td>
+<td>MENTARI REGULAR 10.000</td>
+</tr>
+<tr>
+<td>MR25</td>
+<td>MENTARI REGULAR 25.000</td>
+</tr>
+<tr>
+<td>MR50</td>
+<td>MENTARI REGULAR 50.000</td>
+</tr>
+<tr>
+<td>MR5</td>
+<td>MENTARI REGULAR 5.000</td>
+</tr>
+<tr>
+<td>IMR100</td>
+<td>IM3 REGULAR 100.000</td>
+</tr>
+<tr>
+<td>IMR10</td>
+<td>IM3 REGULAR 10.000</td>
+</tr>
+<tr>
+<td>IMR25</td>
+<td>IM3 REGULAR 25.000</td>
+</tr>
+<tr>
+<td>IMR50</td>
+<td>IM3 REGULAR 50.000</td>
+</tr>
+<tr>
+<td>IMR5</td>
+<td>IM3 REGULAR 5.000</td>
+</tr>
+<tr>
+<td>IMR20</td>
+<td>IM3 REGULAR 20.000</td>
+</tr>
+<tr>
+<td>AXP100</td>
+<td>AXIS 100.000</td>
+</tr>
+<tr>
+<td>AXP10</td>
+<td>AXIS 10.000</td>
+</tr>
+<tr>
+<td>AXP25</td>
+<td>AXIS 25.000</td>
+</tr>
+<tr>
+<td>AXP50</td>
+<td>AXIS 50.000</td>
+</tr>
+<tr>
+<td>AXP5</td>
+<td>AXIS 5.000</td>
+</tr>
+<tr>
+<td>XLV100</td>
+<td>XL VOUCHER 100.000</td>
+</tr>
+<tr>
+<td>XLV10</td>
+<td>XL VOUCHER 10.000</td>
+</tr>
+<tr>
+<td>XLV25</td>
+<td>XL VOUCHER 25.000</td>
+</tr>
+<tr>
+<td>XLV50</td>
+<td>XL VOUCHER 50.000</td>
+</tr>
+<tr>
+<td>XLV5</td>
+<td>XL VOUCHER 5.000</td>
+</tr>
+</tbody></table>
 <h1 id='docs-changelog' type='normal'>Docs Changelog</h1>
 <p>tbd</p>
 
