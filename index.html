@@ -2663,9 +2663,9 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="#get-bill-payment-status-biller-api-2" class="toc-h2 toc-link" data-title="Get Bill Payment Status">
+                    <a href="#get-bill-products-list-biller-api" class="toc-h2 toc-link" data-title="Get Bill Products List">
                      <span class="toc-link-content">
-                        Get Bill Payment Status
+                        Get Bill Products List
                       </span>
                          <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
                     </a>
@@ -17474,7 +17474,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 <td>Additional detailed data from biller</td>
 </tr>
 </tbody></table>
-<h2 id='get-bill-payment-status-biller-api-2' type='normal'>Get Bill Payment Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+<h2 id='get-bill-products-list-biller-api' type='normal'>Get Bill Products List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
@@ -17770,14 +17770,35 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 </tr>
 </tbody></table>
 <h2 id='api-biller-status-biller-api' type='normal'>API Biller Status</h2>
-<p>These are all the status that apply to API Biller product
-Status         | Meaning
--------------- | -------
-INQUIRY        | Bill has been inquired and may be paid
-IN_PROGRESS    | Processing payment request to biller provider
-PENDING        | Unknown status from biller provider and will be resolved manually
-SUCCESS        | Bill payment success
-FAILED         | Bill payment failed</p>
+<p>These are all the status that apply to API Biller product</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>INQUIRY</td>
+<td>Bill has been inquired and may be paid</td>
+</tr>
+<tr>
+<td>IN_PROGRESS</td>
+<td>Processing payment request to biller provider</td>
+</tr>
+<tr>
+<td>PENDING</td>
+<td>Unknown status from biller provider and will be resolved manually</td>
+</tr>
+<tr>
+<td>SUCCESS</td>
+<td>Bill payment success</td>
+</tr>
+<tr>
+<td>FAILED</td>
+<td>Bill payment failed</td>
+</tr>
+</tbody></table>
 <h2 id='biller-products-list-biller-api' type='normal'>Biller Products List</h2>
 <p>Here is the list of available bill products in our Biller Service</p>
 <h3 id='insurance-biller-products-list' type='normal'>Insurance</h3>
