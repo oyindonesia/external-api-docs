@@ -913,7 +913,7 @@ print(data.decode("utf-8"))
 }
 ```
 
-This endpoint allows you to get the status of an inquiried bill.
+This endpoint allows you to get the list of bill products available.
 
 #### HTTPS Request
 **[Production]** `Coming Soon`<br>
