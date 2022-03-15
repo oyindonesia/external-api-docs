@@ -744,7 +744,7 @@ customer_name | String(255) | Customer Name from biller
 total_amount | BigDecimal | Bill's total amount (including admin fee, penalty, or other applicable fees)
 additional_data | Object | Additional detailed data from biller
 
-## Get Bill Payment Status
+## Get Bill Products List
 
 ```shell
 curl -X \
@@ -962,6 +962,7 @@ Status         | State     | Meaning
 ## API Biller Status
 
 These are all the status that apply to API Biller product
+
 Status         | Meaning
 -------------- | -------
 INQUIRY        | Bill has been inquired and may be paid
