@@ -1141,7 +1141,7 @@ PBBKOT.TANGERANGSELATAN	| PBB KOTA TANGERANG SELATAN
 PBBKOT.TASIKMALAYA	| PBB KOTA TASIKMALAYA
 PBBKOT.TEGAL	| PBB KOTA TEGAL
 
-### Voucher
+### Voucher Pulsa
 Product Id | Product Description
 ---------- | -------------------
 AS100	| PULSA	AS 100.000
