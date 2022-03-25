@@ -1,4 +1,4 @@
-# Biller API COMINGSOON
+# Biller API
 
 Biller APIs allow you to instruct OY to do inquiry and pay bill to any available biller in Indonesia with ease and in real-time.
 
@@ -215,7 +215,7 @@ print(data.decode("utf-8"))
 Use this API to do Inquiry and get detail information on the Bill before paying.
 
 ### HTTPS Request
-**[Production]** `Coming Soon`<br>
+**[Production]** `POST https://partner.oyindonesia.com/api/v2/bill`<br>
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/v2/bill`
 
 ### Request Parameters
@@ -445,7 +445,7 @@ print(data.decode("utf-8"))
 This API will enable you to do payment for your bill. You need to do inquiry first before calling this API.
 
 ### HTTPS Request
-**[Production]** `Coming Soon`<br>
+**[Production]** `POST https://partner.oyindonesia.com/api/v2/bill/payment`<br>
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/v2/bill/payment`
 
 ### Request Parameters
@@ -721,8 +721,8 @@ print(data.decode("utf-8"))
 This endpoint allows you to get the status of an inquiried bill.
 
 #### HTTPS Request
-**[Production]** `Coming Soon`<br>
-**[Staging]** `GET https://api-stg.oyindonesia.com/api/v2/bill/list`
+**[Production]** `GET https://partner.oyindonesia.com/api/v2/bill/status`<br>
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/v2/bill/status`
 
 #### Request Parameters
 
@@ -916,7 +916,7 @@ print(data.decode("utf-8"))
 This endpoint allows you to get the list of bill products available.
 
 #### HTTPS Request
-**[Production]** `Coming Soon`<br>
+**[Production]** `GET https://partner.oyindonesia.com/api/v2/bill/products`<br>
 **[Staging]** `GET https://api-stg.oyindonesia.com/api/v2/bill/products`
 
 #### Response Parameters
@@ -934,7 +934,7 @@ is_available | Boolean | Product availabilty
 
 ## API Biller Response Codes
 
-These are the list of possible response codes for API Offline:
+These are the list of possible response codes for API Biller:
 
 Status         | State     | Meaning
 -------------- | --------- | -------
@@ -1141,38 +1141,38 @@ PBBKOT.TANGERANGSELATAN	| PBB KOTA TANGERANG SELATAN
 PBBKOT.TASIKMALAYA	| PBB KOTA TASIKMALAYA
 PBBKOT.TEGAL	| PBB KOTA TEGAL
 
-### Voucher
+### Voucher Pulsa
 Product Id | Product Description
 ---------- | -------------------
-AS100	|	AS 100.000
-AS10	|	AS 10.000
-AS25	|	AS 25.000
-AS50	|	AS 50.000
-AS5	|	AS 5.000
-SIM100	|	SIMPATI 100.000
-SIM10	|	SIMPATI 10.000
-SIM20	|	SIMPATI 20.000
-SIM50	|	SIMPATI 50.000
-SIM5	|	SIMPATI 5.000
-MR20	|	MENTARI REGULAR 20.000
-MR100	|	MENTARI REGULAR 100.000
-MR10	|	MENTARI REGULAR 10.000
-MR25	|	MENTARI REGULAR 25.000
-MR50	|	MENTARI REGULAR 50.000
-MR5	|	MENTARI REGULAR 5.000
-IMR100	|	IM3 REGULAR 100.000
-IMR10	|	IM3 REGULAR 10.000
-IMR25	|	IM3 REGULAR 25.000
-IMR50	|	IM3 REGULAR 50.000
-IMR5	|	IM3 REGULAR 5.000
-IMR20	|	IM3 REGULAR 20.000
-AXP100	|	AXIS 100.000
-AXP10	|	AXIS 10.000
-AXP25	|	AXIS 25.000
-AXP50	|	AXIS 50.000
-AXP5	|	AXIS 5.000
-XLV100	|	XL VOUCHER 100.000
-XLV10	|	XL VOUCHER 10.000
-XLV25	|	XL VOUCHER 25.000
-XLV50	|	XL VOUCHER 50.000
-XLV5	|	XL VOUCHER 5.000
+AS100	| PULSA	AS 100.000
+AS10	| PULSA	AS 10.000
+AS25	| PULSA	AS 25.000
+AS50	| PULSA	AS 50.000
+AS5	| PULSA	AS 5.000
+SIM100	| PULSA	SIMPATI 100.000
+SIM10	| PULSA	SIMPATI 10.000
+SIM20	| PULSA	SIMPATI 20.000
+SIM50	| PULSA	SIMPATI 50.000
+SIM5	| PULSA	SIMPATI 5.000
+MR20	| PULSA	MENTARI REGULAR 20.000
+MR100	| PULSA	MENTARI REGULAR 100.000
+MR10	| PULSA	MENTARI REGULAR 10.000
+MR25	| PULSA	MENTARI REGULAR 25.000
+MR50	| PULSA	MENTARI REGULAR 50.000
+MR5	| PULSA	MENTARI REGULAR 5.000
+IMR100	| PULSA	IM3 REGULAR 100.000
+IMR10	| PULSA	IM3 REGULAR 10.000
+IMR25	| PULSA	IM3 REGULAR 25.000
+IMR50	| PULSA	IM3 REGULAR 50.000
+IMR5	| PULSA	IM3 REGULAR 5.000
+IMR20	| PULSA	IM3 REGULAR 20.000
+AXP100	| PULSA	AXIS 100.000
+AXP10	| PULSA	AXIS 10.000
+AXP25	| PULSA	AXIS 25.000
+AXP50	| PULSA	AXIS 50.000
+AXP5	| PULSA	AXIS 5.000
+XLV100	| PULSA	XL VOUCHER 100.000
+XLV10	| PULSA	XL VOUCHER 10.000
+XLV25	| PULSA	XL VOUCHER 25.000
+XLV50	| PULSA	XL VOUCHER 50.000
+XLV5	| PULSA	XL VOUCHER 5.000
