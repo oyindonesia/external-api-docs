@@ -2535,9 +2535,9 @@
               </ul>
           </li>
           <li>
-            <a href="#biller-api" class="toc-h1 toc-link" data-title="Biller API  Coming Soon ">
+            <a href="#biller-api" class="toc-h1 toc-link" data-title="Biller API">
               <span class="toc-link-content">
-                Biller API  <span class="tags comingsoon">Coming Soon</span> 
+                Biller API
               </span>
                 <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow parent" alt="" />
             </a>
@@ -2769,9 +2769,9 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#voucher-biller-products-list" class="toc-h3 toc-link" data-title="Voucher">
+                          <a href="#voucher-pulsa-biller-products-list" class="toc-h3 toc-link" data-title="Voucher Pulsa">
                             <span class="toc-link-content">
-                              Voucher
+                              Voucher Pulsa
                             </span>
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
@@ -16595,7 +16595,7 @@ GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance <span cla
 <td>Filled with TRUE if a WA has successfully been sent to the WhatsApp number specified</td>
 </tr>
 </tbody></table>
-<h1 id='biller-api' type='comingsoon'>Biller API  <span class='tags comingsoon'>Coming Soon</span> </h1>
+<h1 id='biller-api' type='normal'>Biller API</h1>
 <p>Biller APIs allow you to instruct OY to do inquiry and pay bill to any available biller in Indonesia with ease and in real-time.</p>
 <h2 id='bill-inquiry-biller-api' type='normal'>Bill Inquiry</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
@@ -16786,7 +16786,7 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 </span></code></pre></div>
 <p>Use this API to do Inquiry and get detail information on the Bill before paying.</p>
 <h3 id='https-request-bill-inquiry' type='normal'>HTTPS Request</h3>
-<p><strong>[Production]</strong> <code>Coming Soon</code><br>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/v2/bill</code><br>
 <strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/v2/bill</code></p>
 <h3 id='request-parameters-bill-inquiry' type='normal'>Request Parameters</h3>
 <table><thead>
@@ -17061,7 +17061,7 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
 </span></code></pre></div>
 <p>This API will enable you to do payment for your bill. You need to do inquiry first before calling this API.</p>
 <h3 id='https-request-pay-bill' type='normal'>HTTPS Request</h3>
-<p><strong>[Production]</strong> <code>Coming Soon</code><br>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/v2/bill/payment</code><br>
 <strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/v2/bill/payment</code></p>
 <h3 id='request-parameters-pay-bill' type='normal'>Request Parameters</h3>
 <table><thead>
@@ -17402,8 +17402,8 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 </span></code></pre></div>
 <p>This endpoint allows you to get the status of an inquiried bill.</p>
 <h4 id='https-request-callback-parameters' type='normal'>HTTPS Request</h4>
-<p><strong>[Production]</strong> <code>Coming Soon</code><br>
-<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v2/bill/list</code></p>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/v2/bill/status</code><br>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v2/bill/status</code></p>
 <h4 id='request-parameters-callback-parameters' type='normal'>Request Parameters</h4>
 <table><thead>
 <tr>
@@ -17621,7 +17621,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 </span></code></pre></div>
 <p>This endpoint allows you to get the list of bill products available.</p>
 <h4 id='https-request-callback-parameters-2' type='normal'>HTTPS Request</h4>
-<p><strong>[Production]</strong> <code>Coming Soon</code><br>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/v2/bill/products</code><br>
 <strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v2/bill/products</code></p>
 <h4 id='response-parameters-callback-parameters-2' type='normal'>Response Parameters</h4>
 <table><thead>
@@ -17673,7 +17673,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 </tr>
 </tbody></table>
 <h2 id='api-biller-response-codes-biller-api' type='normal'>API Biller Response Codes</h2>
-<p>These are the list of possible response codes for API Offline:</p>
+<p>These are the list of possible response codes for API Biller:</p>
 
 <table><thead>
 <tr>
@@ -18409,7 +18409,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 <td>PBB KOTA TEGAL</td>
 </tr>
 </tbody></table>
-<h3 id='voucher-biller-products-list' type='normal'>Voucher</h3>
+<h3 id='voucher-pulsa-biller-products-list' type='normal'>Voucher Pulsa</h3>
 <table><thead>
 <tr>
 <th>Product Id</th>
@@ -18418,131 +18418,131 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 </thead><tbody>
 <tr>
 <td>AS100</td>
-<td>AS 100.000</td>
+<td>PULSA AS 100.000</td>
 </tr>
 <tr>
 <td>AS10</td>
-<td>AS 10.000</td>
+<td>PULSA AS 10.000</td>
 </tr>
 <tr>
 <td>AS25</td>
-<td>AS 25.000</td>
+<td>PULSA AS 25.000</td>
 </tr>
 <tr>
 <td>AS50</td>
-<td>AS 50.000</td>
+<td>PULSA AS 50.000</td>
 </tr>
 <tr>
 <td>AS5</td>
-<td>AS 5.000</td>
+<td>PULSA AS 5.000</td>
 </tr>
 <tr>
 <td>SIM100</td>
-<td>SIMPATI 100.000</td>
+<td>PULSA SIMPATI 100.000</td>
 </tr>
 <tr>
 <td>SIM10</td>
-<td>SIMPATI 10.000</td>
+<td>PULSA SIMPATI 10.000</td>
 </tr>
 <tr>
 <td>SIM20</td>
-<td>SIMPATI 20.000</td>
+<td>PULSA SIMPATI 20.000</td>
 </tr>
 <tr>
 <td>SIM50</td>
-<td>SIMPATI 50.000</td>
+<td>PULSA SIMPATI 50.000</td>
 </tr>
 <tr>
 <td>SIM5</td>
-<td>SIMPATI 5.000</td>
+<td>PULSA SIMPATI 5.000</td>
 </tr>
 <tr>
 <td>MR20</td>
-<td>MENTARI REGULAR 20.000</td>
+<td>PULSA MENTARI REGULAR 20.000</td>
 </tr>
 <tr>
 <td>MR100</td>
-<td>MENTARI REGULAR 100.000</td>
+<td>PULSA MENTARI REGULAR 100.000</td>
 </tr>
 <tr>
 <td>MR10</td>
-<td>MENTARI REGULAR 10.000</td>
+<td>PULSA MENTARI REGULAR 10.000</td>
 </tr>
 <tr>
 <td>MR25</td>
-<td>MENTARI REGULAR 25.000</td>
+<td>PULSA MENTARI REGULAR 25.000</td>
 </tr>
 <tr>
 <td>MR50</td>
-<td>MENTARI REGULAR 50.000</td>
+<td>PULSA MENTARI REGULAR 50.000</td>
 </tr>
 <tr>
 <td>MR5</td>
-<td>MENTARI REGULAR 5.000</td>
+<td>PULSA MENTARI REGULAR 5.000</td>
 </tr>
 <tr>
 <td>IMR100</td>
-<td>IM3 REGULAR 100.000</td>
+<td>PULSA IM3 REGULAR 100.000</td>
 </tr>
 <tr>
 <td>IMR10</td>
-<td>IM3 REGULAR 10.000</td>
+<td>PULSA IM3 REGULAR 10.000</td>
 </tr>
 <tr>
 <td>IMR25</td>
-<td>IM3 REGULAR 25.000</td>
+<td>PULSA IM3 REGULAR 25.000</td>
 </tr>
 <tr>
 <td>IMR50</td>
-<td>IM3 REGULAR 50.000</td>
+<td>PULSA IM3 REGULAR 50.000</td>
 </tr>
 <tr>
 <td>IMR5</td>
-<td>IM3 REGULAR 5.000</td>
+<td>PULSA IM3 REGULAR 5.000</td>
 </tr>
 <tr>
 <td>IMR20</td>
-<td>IM3 REGULAR 20.000</td>
+<td>PULSA IM3 REGULAR 20.000</td>
 </tr>
 <tr>
 <td>AXP100</td>
-<td>AXIS 100.000</td>
+<td>PULSA AXIS 100.000</td>
 </tr>
 <tr>
 <td>AXP10</td>
-<td>AXIS 10.000</td>
+<td>PULSA AXIS 10.000</td>
 </tr>
 <tr>
 <td>AXP25</td>
-<td>AXIS 25.000</td>
+<td>PULSA AXIS 25.000</td>
 </tr>
 <tr>
 <td>AXP50</td>
-<td>AXIS 50.000</td>
+<td>PULSA AXIS 50.000</td>
 </tr>
 <tr>
 <td>AXP5</td>
-<td>AXIS 5.000</td>
+<td>PULSA AXIS 5.000</td>
 </tr>
 <tr>
 <td>XLV100</td>
-<td>XL VOUCHER 100.000</td>
+<td>PULSA XL VOUCHER 100.000</td>
 </tr>
 <tr>
 <td>XLV10</td>
-<td>XL VOUCHER 10.000</td>
+<td>PULSA XL VOUCHER 10.000</td>
 </tr>
 <tr>
 <td>XLV25</td>
-<td>XL VOUCHER 25.000</td>
+<td>PULSA XL VOUCHER 25.000</td>
 </tr>
 <tr>
 <td>XLV50</td>
-<td>XL VOUCHER 50.000</td>
+<td>PULSA XL VOUCHER 50.000</td>
 </tr>
 <tr>
 <td>XLV5</td>
-<td>XL VOUCHER 5.000</td>
+<td>PULSA XL VOUCHER 5.000</td>
 </tr>
 </tbody></table>
 <h1 id='docs-changelog' type='normal'>Docs Changelog</h1>
