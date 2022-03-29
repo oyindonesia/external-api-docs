@@ -2611,40 +2611,6 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="#mock-value-for-staging-biller-api" class="toc-h2 toc-link" data-title="Mock Value for Staging">
-                     <span class="toc-link-content">
-                        Mock Value for Staging
-                      </span>
-                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
-                    </a>
-                    <ul class="toc-list-h3">
-                        <li>
-                          <a href="#inquiry-mock-value-for-staging" class="toc-h3 toc-link" data-title="Inquiry">
-                            <span class="toc-link-content">
-                              Inquiry
-                            </span>
-                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#payment-mock-value-for-staging" class="toc-h3 toc-link" data-title="Payment">
-                            <span class="toc-link-content">
-                              Payment
-                            </span>
-                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#test-scenario-mock-value-for-staging" class="toc-h3 toc-link" data-title="Test Scenario">
-                            <span class="toc-link-content">
-                              Test Scenario
-                            </span>
-                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                          </a>
-                        </li>
-                    </ul>
-                  </li>
-                  <li>
                     <a href="#partner-callback-biller-api" class="toc-h2 toc-link" data-title="Partner Callback">
                      <span class="toc-link-content">
                         Partner Callback
@@ -2737,6 +2703,40 @@
                       </span>
                         <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                     </a>
+                  </li>
+                  <li>
+                    <a href="#mock-value-for-staging-biller-api" class="toc-h2 toc-link" data-title="Mock Value for Staging">
+                     <span class="toc-link-content">
+                        Mock Value for Staging
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#inquiry-mock-value-for-staging" class="toc-h3 toc-link" data-title="Inquiry">
+                            <span class="toc-link-content">
+                              Inquiry
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#payment-mock-value-for-staging" class="toc-h3 toc-link" data-title="Payment">
+                            <span class="toc-link-content">
+                              Payment
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#test-scenario-mock-value-for-staging" class="toc-h3 toc-link" data-title="Test Scenario">
+                            <span class="toc-link-content">
+                              Test Scenario
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
                   </li>
                   <li>
                     <a href="#biller-products-list-biller-api" class="toc-h2 toc-link" data-title="Biller Products List">
@@ -3150,9 +3150,9 @@ POST https://partner.oyindonesia.com/api/account-inquiry <span class="se">\</spa
 </thead><tbody>
 <tr>
 <td>bank_code</td>
-<td>String(3)</td>
+<td>String(255)</td>
 <td>TRUE</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>account_number</td>
@@ -3177,7 +3177,7 @@ POST https://partner.oyindonesia.com/api/account-inquiry <span class="se">\</spa
 <tr>
 <td>bank_code</td>
 <td>String</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>account_number</td>
@@ -3788,9 +3788,9 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
+<td>String(255)</td>
 <td>TRUE</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -3849,8 +3849,8 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -3936,8 +3936,8 @@ Another value not following the format will be processed normally.</p>
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -4203,8 +4203,8 @@ Please contact us and submit a callback URL if you need a callback status of a d
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -4682,9 +4682,9 @@ POST https://partner.oyindonesia.com/api/scheduled-remit <span class="se">\</spa
 </thead><tbody>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
+<td>String(255)</td>
 <td>TRUE</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -4768,8 +4768,8 @@ POST https://partner.oyindonesia.com/api/scheduled-remit <span class="se">\</spa
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -5024,8 +5024,8 @@ GET https://partner.oyindonesia.com/api/scheduled-remit <span class="se">\</span
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -5460,8 +5460,8 @@ PUT https://partner.oyindonesia.com/api/scheduled-remit <span class="se">\</span
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -5718,8 +5718,8 @@ DELETE https://partner.oyindonesia.com/api/scheduled-remit <span class="se">\</s
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -5996,8 +5996,8 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -6098,8 +6098,8 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -16033,9 +16033,9 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 </thead><tbody>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
+<td>String(255)</td>
 <td>TRUE</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -16094,8 +16094,8 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 </tr>
 <tr>
 <td>recipient_bank</td>
-<td>String(3)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes">Disbursement Bank Codes</a></td>
+<td>String(255)</td>
+<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
@@ -17173,22 +17173,6 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
 <td>Bill&#39;s total amount (including admin fee, penalty, or other applicable fees)</td>
 </tr>
 </tbody></table>
-<h2 id='mock-value-for-staging-biller-api' type='normal'>Mock Value for Staging</h2><h3 id='inquiry-mock-value-for-staging' type='normal'>Inquiry</h3>
-<p>You can mock the inquiry to return failed status. To do this, fill in the <code>customer_id</code> to any number with the last number being <code>9</code>. When inquiring this customer id to any product, it will return failed response. <code>customer_id</code> with last character other than <code>9</code> will return success inquiry.</p>
-
-<p>example:</p>
-
-<p>a request with <code>&quot;customer_id&quot;: &quot;123456789&quot;</code> will mock the inquiry to return failed inquiry status.
-a request with <code>&quot;customer_id&quot;: &quot;987654321&quot;</code> will return success inquiry.</p>
-<h3 id='payment-mock-value-for-staging' type='normal'>Payment</h3>
-<p>You can replicate error response code (final) by filling in <code>customer_id</code> value using following format <code>&lt;desired response code&gt;0000</code>.
-Another value not following the format will be processed normally. The response codes that are available are <code>300</code> for FAILED, and <code>301</code> for PENDING.</p>
-
-<p>example:</p>
-
-<p>a request with <code>&quot;customer_id&quot;: &quot;3010000&quot;</code> will mock the payment callback to return pending status.</p>
-<h3 id='test-scenario-mock-value-for-staging' type='normal'>Test Scenario</h3>
-<p>To test out all scenarios of API Biller and ensure the flows in your integration are handled correctly, please visit <a href="https://docs.google.com/spreadsheets/d/1hKEfHOD5tvFptSzabncQpssCG5ECDlpO/edit#gid=1888060716">this link</a></p>
 <h2 id='partner-callback-biller-api' type='normal'>Partner Callback</h2>
 <blockquote>
 <p>Response callback:</p>
@@ -17849,6 +17833,22 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 <td>Bill payment failed</td>
 </tr>
 </tbody></table>
+<h2 id='mock-value-for-staging-biller-api' type='normal'>Mock Value for Staging</h2><h3 id='inquiry-mock-value-for-staging' type='normal'>Inquiry</h3>
+<p>You can mock the inquiry to return failed status. To do this, fill in the <code>customer_id</code> to any number with the last number being <code>9</code>. When inquiring this customer id to any product, it will return failed response. <code>customer_id</code> with last character other than <code>9</code> will return success inquiry.</p>
+
+<p>example:</p>
+
+<p>a request with <code>&quot;customer_id&quot;: &quot;123456789&quot;</code> will mock the inquiry to return failed inquiry status.
+a request with <code>&quot;customer_id&quot;: &quot;987654321&quot;</code> will return success inquiry.</p>
+<h3 id='payment-mock-value-for-staging' type='normal'>Payment</h3>
+<p>You can replicate error response code (final) by filling in <code>customer_id</code> value using following format <code>&lt;desired response code&gt;0000</code>.
+Another value not following the format will be processed normally. The response codes that are available are <code>300</code> for FAILED, and <code>301</code> for PENDING.</p>
+
+<p>example:</p>
+
+<p>a request with <code>&quot;customer_id&quot;: &quot;3010000&quot;</code> will mock the payment callback to return pending status.</p>
+<h3 id='test-scenario-mock-value-for-staging' type='normal'>Test Scenario</h3>
+<p>To test out all scenarios of API Biller and ensure the flows in your integration are handled correctly, please visit <a href="https://docs.google.com/spreadsheets/d/1hKEfHOD5tvFptSzabncQpssCG5ECDlpO/edit#gid=1888060716">this link</a></p>
 <h2 id='biller-products-list-biller-api' type='normal'>Biller Products List</h2>
 <p>Here is the list of available bill products in our Biller Service</p>
 <h3 id='insurance-biller-products-list' type='normal'>Insurance</h3>
