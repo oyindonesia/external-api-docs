@@ -214,7 +214,7 @@ Use this API to get beneficiary account details.
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-bank_code | String(3) | TRUE | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
+bank_code | String(255) | TRUE | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes-)
 account_number | String(255) | TRUE | Beneficiary account number
 
 ### Response Parameters
@@ -222,7 +222,7 @@ account_number | String(255) | TRUE | Beneficiary account number
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of inquiry `{code: <status_code>, message: <status_message>}`
-bank_code | String | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
+bank_code | String | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes-)
 account_number | String | Account Number of the Beneficiary Account
 account_name | String | Account Name of the Beneficiary Account
 id | String | Unique ID of the inquiry. ID will be provided only for `000` or `209` status. Otherwise, the ID will be `null`.
