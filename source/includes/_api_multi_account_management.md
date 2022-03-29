@@ -234,7 +234,7 @@ Use this API to start disbursing money from child account to a specific benefici
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-recipient_bank | String(3) | TRUE | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
+recipient_bank | String(255) | TRUE | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes-)
 recipient_account | String(255) | TRUE | Beneficiary account number, numeric only
 amount | BigInteger | TRUE | Amount of disbursement (Accept Non-Decimal Number), min amount 10000
 note | String(255) | FALSE | Add Note to the payout
@@ -247,7 +247,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
 amount | BigInteger | Amount of disbursement (Accept Non-Decimal Number)
-recipient_bank | String(3) | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes)
+recipient_bank | String(255) | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes-)
 recipient_account | String(255) | Beneficiary account number 
 trx_id | String(36) | Unique Payout ID from OY!. Partner can use this ID for settlement
 partner_trx_id | String(255) | Unique Payout ID which partner put on the Request
