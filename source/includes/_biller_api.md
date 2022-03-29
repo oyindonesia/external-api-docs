@@ -242,6 +242,17 @@ customer_name | String(255) | Customer Name from biller
 total_amount | BigDecimal | Bill's total amount (including admin fee, penalty, or other applicable fees)
 additional_data | Object | Additional detailed data from biller
 
+**[Staging only]**
+
+You can mock the inquiry to return failed status. To do this, fill in the `customer_id` to any number with the last number being `9`. When inquiring this customer id to any product, it will return failed response.
+
+You can also replicate error response code (final) by filling in `customer_id` value using following format `<desired response code>0000`.
+Another value not following the format will be processed normally. The response codes that are available are `300` for FAILED, and `301` for PENDING.
+
+example:
+
+a request with `"customer_id": "3010000"` will mock the payment callback to return pending status.
+
 ## Pay Bill
 
 ```shell
