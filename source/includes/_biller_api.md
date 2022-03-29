@@ -489,7 +489,9 @@ example:
 
 a request with `"customer_id": "3010000"` will mock the payment callback to return pending status.
 
-To test out all cases of API Biller, please visit [this link](https://docs.google.com/spreadsheets/d/1hKEfHOD5tvFptSzabncQpssCG5ECDlpO/edit#gid=1888060716)
+### Test Scenario
+
+To test out all scenarios of API Biller and ensure the flows in your integration are handled correctly, please visit [this link](https://docs.google.com/spreadsheets/d/1hKEfHOD5tvFptSzabncQpssCG5ECDlpO/edit#gid=1888060716)
 
 ## Partner Callback
 
