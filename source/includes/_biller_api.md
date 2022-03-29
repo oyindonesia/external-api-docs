@@ -242,15 +242,6 @@ customer_name | String(255) | Customer Name from biller
 total_amount | BigDecimal | Bill's total amount (including admin fee, penalty, or other applicable fees)
 additional_data | Object | Additional detailed data from biller
 
-### Inquiry Mock Value for Staging
-
-You can mock the inquiry to return failed status. To do this, fill in the `customer_id` to any number with the last number being `9`. When inquiring this customer id to any product, it will return failed response. `customer_id` with last character other than `9` will return success inquiry.
-
-example:
-
-a request with `"customer_id": "123456789"` will mock the inquiry to return failed inquiry status.
-a request with `"customer_id": "987654321"` will return success inquiry.
-
 ## Pay Bill
 
 ```shell
@@ -478,7 +469,18 @@ customer_name | String(255) | Customer Name from biller
 note | String(255) | Partner defined note for bill payment
 total_amount | BigDecimal | Bill's total amount (including admin fee, penalty, or other applicable fees)
 
-### Payment Mock Value for Staging
+## Mock Value for Staging
+
+### Inquiry
+
+You can mock the inquiry to return failed status. To do this, fill in the `customer_id` to any number with the last number being `9`. When inquiring this customer id to any product, it will return failed response. `customer_id` with last character other than `9` will return success inquiry.
+
+example:
+
+a request with `"customer_id": "123456789"` will mock the inquiry to return failed inquiry status.
+a request with `"customer_id": "987654321"` will return success inquiry.
+
+### Payment
 
 You can replicate error response code (final) by filling in `customer_id` value using following format `<desired response code>0000`.
 Another value not following the format will be processed normally. The response codes that are available are `300` for FAILED, and `301` for PENDING.
@@ -486,8 +488,6 @@ Another value not following the format will be processed normally. The response 
 example:
 
 a request with `"customer_id": "3010000"` will mock the payment callback to return pending status.
-
-## Staging Testcases
 
 To test out all cases of API Biller, please visit [this link](https://docs.google.com/spreadsheets/d/1hKEfHOD5tvFptSzabncQpssCG5ECDlpO/edit#gid=1888060716)
 
