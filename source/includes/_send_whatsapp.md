@@ -195,7 +195,7 @@ print(data.decode("utf-8"))
     "data": {
         "partner_tx_id": "partnerTxId",
         "whatsapp_number": "621234567890",
-        "success_sent": true,
+        "success_queued": true,
         "message_id" : "98ndyfs98fdysdf98y-sdiufhnudfsh4hr9h8"
     }
 }
