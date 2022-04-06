@@ -1,4 +1,4 @@
-# API Send WhatsApp COMINGSOON
+# API Send WhatsApp NEW
 
 OY's API Collection for sending Whatsapp Notifications. Currently, WhatsApp can only be enabled for Payment Link and Invoice product. Contact your Business Representative if you'd like to activate this feature.
 
