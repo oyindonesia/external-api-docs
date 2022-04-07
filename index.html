@@ -2475,9 +2475,9 @@
               </ul>
           </li>
           <li>
-            <a href="#api-send-whatsapp" class="toc-h1 toc-link" data-title="API Send WhatsApp  Coming Soon ">
+            <a href="#api-send-whatsapp" class="toc-h1 toc-link" data-title="API Send WhatsApp  NEW ">
               <span class="toc-link-content">
-                API Send WhatsApp  <span class="tags comingsoon">Coming Soon</span> 
+                API Send WhatsApp  <span class="tags new">NEW</span> 
               </span>
                 <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow parent" alt="" />
             </a>
@@ -16362,7 +16362,7 @@ GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance <span cla
 <td>Execution time of Request in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;).</td>
 </tr>
 </tbody></table>
-<h1 id='api-send-whatsapp' type='comingsoon'>API Send WhatsApp  <span class='tags comingsoon'>Coming Soon</span> </h1>
+<h1 id='api-send-whatsapp' type='new'>API Send WhatsApp  <span class='tags new'>NEW</span> </h1>
 <p>OY&#39;s API Collection for sending Whatsapp Notifications. Currently, WhatsApp can only be enabled for Payment Link and Invoice product. Contact your Business Representative if you&#39;d like to activate this feature.</p>
 <h2 id='send-payment-invoice-link-whatsapp-notification-api-send-whatsapp' type='normal'>Send Payment/Invoice Link WhatsApp Notification</h2>
 <p>Use this API to send a payment link and/or invoice link through WhatsApp (using OY’s pre-defined template).</p>
@@ -16535,7 +16535,8 @@ GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance <span cla
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"partner_tx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partnerTxId"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"whatsapp_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"621234567890"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"success_sent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="nl">"success_queued"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"98ndyfs98fdysdf98y-sdiufhnudfsh4hr9h8"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-send-payment-invoice-link-whatsapp-notification' type='normal'>HTTPS Request</h3>
@@ -16624,9 +16625,14 @@ GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance <span cla
 <td>The WhatsApp number of your users. (format 628xxxxxxxxxx)</td>
 </tr>
 <tr>
-<td>success_sent</td>
+<td>success_queued</td>
 <td>Boolean</td>
-<td>Filled with TRUE if a WA has successfully been sent to the WhatsApp number specified</td>
+<td>Filled with TRUE if a WA has successfully been successfully queued for sending</td>
+</tr>
+<tr>
+<td>message_id</td>
+<td>String(255)</td>
+<td>Unique ID generated for each WhatsApp message being sent (null if unsuccessfully queued)</td>
 </tr>
 </tbody></table>
 <h1 id='biller-api' type='normal'>Biller API</h1>
