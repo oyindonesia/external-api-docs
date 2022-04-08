@@ -310,6 +310,7 @@ Endpoint:
 |payment_checkout_url|String|generated url for payment link; conditional only if request need_frontend is TRUE|
 |va_number|String|Generated VA number; conditional only if request need_frontend is FALSE|
 |va_display_name|String|VA display name; conditional only if request need_frontend is FALSE|
+|qr_url|String|the URL of QR image|
 
 
 ### List of Disbursement Mock Account for Testing Purpose 
