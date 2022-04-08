@@ -575,6 +575,7 @@ This response body is also the payment routing callback to partner.
 |disbursement_trx_notes|String|Disbursement Transaction notes|
 |disbursement_trx_status|String|Disbursement transaction status. See List of Disbursement Status below|
 |email_status|String|Email sending status; Possible status:- SENT- UNSENT|
+|qr_url|String|the URL of QR image|
 
 ## List of Payment Routing Status
 | Status               | Description                                                                                                                                            |
