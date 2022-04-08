@@ -15372,6 +15372,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">String</td>
 <td style="text-align: center">VA display name; conditional only if request need_frontend is FALSE</td>
 </tr>
+<tr>
+<td>qr_url</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">the URL of QR image</td>
+</tr>
 </tbody></table>
 <h3 id='list-of-disbursement-mock-account-for-testing-purpose-create-and-update-payment-routing' type='normal'>List of Disbursement Mock Account for Testing Purpose</h3>
 <p>Use those mock receiver bank account for testing Payment Routing purpose. To simulate all available status of Payment Routing, you can combine those mocked bank account numbers. For example, if you want to see <code>INCOMPLETE</code> status, put two recipients in the payment_routing object with mocked bank account number <code>1234567890</code> and <code>1234567891</code>. For more information about payment Routing status, see List of Payment Routing section.</p>
@@ -15739,6 +15744,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>email_status</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">Email sending status; Possible status:- SENT- UNSENT</td>
+</tr>
+<tr>
+<td>qr_url</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">the URL of QR image</td>
 </tr>
 </tbody></table>
 <h2 id='list-of-payment-routing-status-payment-routing' type='normal'>List of Payment Routing Status</h2>
