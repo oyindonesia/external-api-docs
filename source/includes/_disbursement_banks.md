@@ -12,7 +12,6 @@ Bank Codes | Bank Name
 013 | Bank Permata Syariah
 014	| Bank BCA
 016	| BII Maybank
-016 | Maybank Syariah
 019	| Bank Panin
 022	| CIMB Niaga
 023	| Bank UOB INDONESIA
