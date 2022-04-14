@@ -290,12 +290,12 @@ Endpoint:
 | va_display_name | String     |  FALSE | Partner's brand name | Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name |
 | trx_expiration_time| Date string; yyyy-mm-dd hh:mm:ss format     |  FALSE | 24 hours | Set expiration time of transaction. If empty use default 24h.  Min exp time is 1 hour.|
 | trx_counter | Numeric     |  FALSE | 1/-1 | Only applicable if you choose VA. It is a transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times. |
-| payment_routing | List of Objects     |  FALSE | - | List of disburse recipient; min. is 1, max. is 10 |
-| recipient_bank | String     |  FALSE | - | Bank code of the recipient account |
-| recipient_account | String     |  FALSE | - | Recipient bank account number. For testing purpose, please see List of Disbursment Mock Account below |
-| recipient_amount | Numeric     |  FALSE | - | The amount of transaction to be disbursed |
-| recipient_note | String     |  FALSE | - | Notes for the disbursement|
-| recipient_email | String     |  FALSE | - | Email for disbursement notification, email can be up to 5, seperated by a whitespace|
+| payment_routing | List of Objects     |  TRUE | - | List of disburse recipient; min. is 1, max. is 10 |
+| recipient_bank | String     |  TRUE | - | Bank code of the recipient account |
+| recipient_account | String     |  TRUE| - | Recipient bank account number. For testing purpose, please see List of Disbursment Mock Account below |
+| recipient_amount | Numeric     |  TRUE| - | The amount of transaction to be disbursed |
+| recipient_note | String     |  TRUE | - | Notes for the disbursement|
+| recipient_email | String     |  TRUE | - | Email for disbursement notification, email can be up to 5, seperated by a whitespace|
 
 ### Response Parameters
 | Parameter  | Type |  Description   |
