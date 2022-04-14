@@ -15216,7 +15216,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">Boolean</td>
 <td style="text-align: center">TRUE</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.</td>
+<td style="text-align: center">Partner need UI or not, if true, we will route to payment link, otherwise will be route to API-based solution.</td>
 </tr>
 <tr>
 <td>sender_email</td>
@@ -15237,7 +15237,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">String; comma separated</td>
 <td style="text-align: center">TRUE</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">To configure payment methods to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with VA,EWALLET,QRIS,CREDIT_CARD. If need_frontend is FALSE only can accept VA.</td>
+<td style="text-align: center">To configure payment methods to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with VA,EWALLET,QRIS,CREDIT_CARD. If need_frontend is FALSE only can accept VA and QRIS.</td>
 </tr>
 <tr>
 <td>list_enable_sof</td>
@@ -15270,28 +15270,28 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <td>payment_routing</td>
 <td style="text-align: center">List of Objects</td>
-<td style="text-align: center">TRUE</td>
+<td style="text-align: center">FALSE</td>
 <td style="text-align: center">-</td>
 <td style="text-align: center">List of disburse recipient; min. is 1, max. is 10</td>
 </tr>
 <tr>
 <td>recipient_bank</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">TRUE</td>
+<td style="text-align: center">FALSE</td>
 <td style="text-align: center">-</td>
 <td style="text-align: center">Bank code of the recipient account</td>
 </tr>
 <tr>
 <td>recipient_account</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">TRUE</td>
+<td style="text-align: center">FALSE</td>
 <td style="text-align: center">-</td>
 <td style="text-align: center">Recipient bank account number. For testing purpose, please see List of Disbursment Mock Account below</td>
 </tr>
 <tr>
 <td>recipient_amount</td>
 <td style="text-align: center">Numeric</td>
-<td style="text-align: center">TRUE</td>
+<td style="text-align: center">FALSE</td>
 <td style="text-align: center">-</td>
 <td style="text-align: center">The amount of transaction to be disbursed</td>
 </tr>
