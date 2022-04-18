@@ -284,7 +284,7 @@ Endpoint:
 | partner_trx_id  | String     |  FALSE | - | Unique partner transaction ID |
 | need_frontend | Boolean     |  TRUE | -| Partner need UI or not, if true, we will route to payment link, otherwise will be route to API-based solution. |
 | sender_email | String     |  FALSE | - | Email of sender |
-| receive_amount | Numeric     |  TRUE | - | The amount of a transaction to be paid, min. amount is 100000 |
+| receive_amount | Numeric     |  TRUE | - | The amount of a transaction to be paid, min. amount is 10000 |
 | list_enable_payment_method | String; comma separated     |  TRUE | - | To configure payment methods to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with VA,EWALLET,QRIS,CREDIT_CARD. If need_frontend is FALSE only can accept VA and QRIS. |
 | list_enable_sof | String; comma separated      |  TRUE | - | To configure list of source of fund (banks or ewallets) to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with 008,009,dana_ewallet,linkaja_ewallet. If need_frontend is FALSE, this parameter should have only have one bank code. |
 | va_display_name | String     |  FALSE | Partner's brand name | Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name |
