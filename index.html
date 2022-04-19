@@ -9659,9 +9659,14 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 </tr>
 </thead><tbody>
 <tr>
+<td>created</td>
+<td>String</td>
+<td>Status that will be returned when the payment link is first created and user has not selected a payment method</td>
+</tr>
+<tr>
 <td>waiting_payment</td>
 <td>String</td>
-<td>Status that indicates transaction is yet to be paid</td>
+<td>Status that indicates that the user has selected a payment method</td>
 </tr>
 <tr>
 <td>expired</td>
@@ -9681,7 +9686,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <td>failed</td>
 <td>String</td>
-<td>OTP for card payment method has been succesfully entered but payment is rejected or QRIS has expired</td>
+<td>OTP for card payment method has been succesfully entered but payment is rejected or the selected payment channel has expired (but the link is still not yet expired)</td>
 </tr>
 <tr>
 <td>complete</td>
