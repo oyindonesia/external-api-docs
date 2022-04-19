@@ -310,7 +310,7 @@ Endpoint:
 |payment_checkout_url|String|generated url for payment link; conditional only if request need_frontend is TRUE|
 |va_number|String|Generated VA number; conditional only if request need_frontend is FALSE|
 |va_display_name|String|VA display name; conditional only if request need_frontend is FALSE|
-|qr_url|String|the URL of QR image|
+|qris_url|String|the URL of QR image|
 
 
 ### List of Disbursement Mock Account for Testing Purpose 
@@ -575,7 +575,7 @@ This response body is also the payment routing callback to partner.
 |disbursement_trx_notes|String|Disbursement Transaction notes|
 |disbursement_trx_status|String|Disbursement transaction status. See List of Disbursement Status below|
 |email_status|String|Email sending status; Possible status:- SENT- UNSENT|
-|qr_url|String|the URL of QR image|
+|qris_url|String|the URL of QR image|
 
 ## List of Payment Routing Status
 | Status               | Description                                                                                                                                            |
