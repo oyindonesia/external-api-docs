@@ -16678,7 +16678,17 @@ GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance <span cla
 <p>We can send multiple callback status updates for a single message depending on the situation. Each message is represented by the <code>message_id</code> we have provided. 
 The general order of a successful callback status request will however be:
 sent -&gt; delivered -&gt; read</p>
-<h3 id='status-descriptions-callback-whatsapp-sending' type='normal'>Status Descriptions</h3>
+
+<blockquote>
+<p>JSON Request Body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"partner_tx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8sd7ftbs97dgfdsg-dsfn87gsdf9b8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"whatsapp_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62123123123"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987ntdsfs8dn7f8ds7fy-0bsd7ftsd08b7f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='status-descriptions-callback-whatsapp-sending' type='normal'>Status Descriptions</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -16735,17 +16745,7 @@ sent -&gt; delivered -&gt; read</p>
 <td>Status of the message. Possible values are as provided in the previous table</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>JSON Request Body</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"partner_tx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8sd7ftbs97dgfdsg-dsfn87gsdf9b8"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"whatsapp_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62123123123"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987ntdsfs8dn7f8ds7fy-0bsd7ftsd08b7f"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='biller-api' type='normal'>Biller API</h1>
+<h1 id='biller-api' type='normal'>Biller API</h1>
 <p>Biller APIs allow you to instruct OY to do inquiry and pay bill to any available biller in Indonesia with ease and in real-time.</p>
 <h2 id='bill-inquiry-biller-api' type='normal'>Bill Inquiry</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
