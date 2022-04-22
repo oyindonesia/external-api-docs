@@ -245,6 +245,17 @@ We can send multiple callback status updates for a single message depending on t
 The general order of a successful callback status request will however be:
 sent -> delivered -> read
 
+> JSON Request Body
+
+```json
+{
+  "partner_tx_id": "8sd7ftbs97dgfdsg-dsfn87gsdf9b8",
+  "whatsapp_number": "62123123123",
+  "message_id": "987ntdsfs8dn7f8ds7fy-0bsd7ftsd08b7f",
+  "status": "read"
+}
+```
+
 ### Status Descriptions
 
 |Status |Description |
@@ -263,14 +274,3 @@ sent -> delivered -> read
 |whatsapp_number |String(255) |The WhatsApp number of your user (format: 62xxxxxxxx) |
 |message_id |String(255) |Message ID of the individual message that we sent |
 |status |String(255) |Status of the message. Possible values are as provided in the previous table |
-
-> JSON Request Body
-
-```json
-{
-  "partner_tx_id": "8sd7ftbs97dgfdsg-dsfn87gsdf9b8",
-  "whatsapp_number": "62123123123",
-  "message_id": "987ntdsfs8dn7f8ds7fy-0bsd7ftsd08b7f",
-  "status": "read"
-}
-```
