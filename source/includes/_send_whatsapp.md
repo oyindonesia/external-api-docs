@@ -251,7 +251,7 @@ sent -> delivered -> read
 |--- |--- |
 |sent |Message has been sent by our system. If the WhatsApp user blocks OY!'s WhatsApp business acount, this status will be final and will not be updated (there will be no following callback status for the message) |
 |delivered |Message has been delivered to the WhatsApp user but hasn't been read |
-|read |Message has been delivered to the WhatsApp user and has been read by the user |
+|read |Message has been delivered to the WhatsApp user and has been read by the user. This status is final and will not be updated (there will be no following callback status for the message) |
 |undelivered |Message has not been delivered. This status is final and will not be updated (there will be no following callback status for the message) |
 |failed |Message has failed to be delivered. This status is final and will not be updated (there will be no following callback status for the message) |
 
