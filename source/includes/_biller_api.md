@@ -940,7 +940,7 @@ Status         | State     | Meaning
 000            | Final     | Inquiry or Payment Request has been completed (SUCCESS)
 102            | Non-Final | Request is In Progress
 300            | Final     | Transaction Failed (FAILED) 
-400            | Final     | Transaction Pending (PENDING)
+400            | Non-Final | Transaction Pending (PENDING)
 
 The following status codes are for rejected requests
 
