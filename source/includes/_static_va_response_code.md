@@ -9,6 +9,7 @@ Response Code | State | Description
 208 | Final | Request is Rejected (API Key is not Valid)
 211 | Final | Request is Rejected (Bank code is not available for this service)
 212 | Final | Request is Rejected (Given amount are lesser than allowed value for static va)
+213 | Final | Request is Rejected (Given amount are greater than allowed value for static va)
 214 | Final | Request is Rejected (Failed to generate static va)
 214 | Final | Request is Rejected (Amount type is not supported for the requested bank code)
 216 | Final | Request is Rejected (VA Id is empty)
