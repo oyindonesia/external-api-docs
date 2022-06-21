@@ -955,6 +955,7 @@ Status         | State     | Meaning
 207            | Final     | Request is Rejected (Request IP Address is not Registered)
 208            | Final     | Request is Rejected (API Key is not Valid)
 210            | Final     | Request is Rejected (Invalid denom amount request)
+223            | Final     | Request is Rejected (Bill is already in progress, or already finished)
 290            | Final     | Request is Rejected (Parameter / object is not valid)
 999            | Final     | Internal Server Error
 
