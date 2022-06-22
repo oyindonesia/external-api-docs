@@ -6553,7 +6553,7 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 </tr>
 <tr>
 <td>535</td>
-<td>Bank KESEJAHTERAAN EKONOMI</td>
+<td>Bank Seabank Indonesia</td>
 </tr>
 <tr>
 <td>536</td>
@@ -6696,11 +6696,6 @@ POST https://partner.oyindonesia.com/api/scheduled-remit/retry <span class="se">
 <td>210</td>
 <td>Final</td>
 <td>Request is Rejected (Amount is not valid)</td>
-</tr>
-<tr>
-<td>225</td>
-<td>Final</td>
-<td>Request is Rejected (Max amount per transaction exceed for disburse)</td>
 </tr>
 <tr>
 <td>300</td>
@@ -17853,6 +17848,31 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 <td>Transaction Failed (FAILED)</td>
 </tr>
 <tr>
+<td>302</td>
+<td>Final</td>
+<td>Customer ID Not Found (FAILED)</td>
+</tr>
+<tr>
+<td>303</td>
+<td>Final</td>
+<td>Product Not Exist or Not Available (FAILED)</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Final</td>
+<td>Invalid Data (FAILED)</td>
+</tr>
+<tr>
+<td>305</td>
+<td>Final</td>
+<td>Customer ID Already Paid (FAILED)</td>
+</tr>
+<tr>
+<td>306</td>
+<td>Final</td>
+<td>System on the Cut-off Schedule (FAILED)</td>
+</tr>
+<tr>
 <td>400</td>
 <td>Non-Final</td>
 <td>Transaction Pending (PENDING)</td>
@@ -17916,7 +17936,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 <tr>
 <td>223</td>
 <td>Final</td>
-<td>Request is Rejected (Bill is already in progress, or already finished)</td>
+<td>Request is Rejected (Duplicate payment request)</td>
 </tr>
 <tr>
 <td>290</td>
@@ -18133,7 +18153,7 @@ Another value not following the format will be processed normally. The response 
 <td>JAGADIRI</td>
 </tr>
 <tr>
-<td>KAMM</td>
+<td>CVK</td>
 <td>KOPERASI ANUGRAH MEGA MANDIRI</td>
 </tr>
 <tr>
@@ -18197,7 +18217,7 @@ Another value not following the format will be processed normally. The response 
 <td>TRANS PACIFIC</td>
 </tr>
 <tr>
-<td>THR</td>
+<td>TRH</td>
 <td>TRIHAMAS FINANCE</td>
 </tr>
 </tbody></table>
