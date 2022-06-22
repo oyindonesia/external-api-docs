@@ -940,6 +940,11 @@ Status         | State     | Meaning
 000            | Final     | Inquiry or Payment Request has been completed (SUCCESS)
 102            | Non-Final | Request is In Progress
 300            | Final     | Transaction Failed (FAILED) 
+302            | Final     | Customer ID Not Found (FAILED)
+303            | Final     | Product Not Exist or Not Available (FAILED)
+304            | Final     | Invalid Data (FAILED)
+305            | Final     | Customer ID Already Paid (FAILED)
+306            | Final     | System on the Cut-off Schedule (FAILED)
 400            | Non-Final | Transaction Pending (PENDING)
 
 The following status codes are for rejected requests
@@ -955,7 +960,7 @@ Status         | State     | Meaning
 207            | Final     | Request is Rejected (Request IP Address is not Registered)
 208            | Final     | Request is Rejected (API Key is not Valid)
 210            | Final     | Request is Rejected (Invalid denom amount request)
-223            | Final     | Request is Rejected (Bill is already in progress, or already finished)
+223            | Final     | Request is Rejected (Duplicate payment request)
 290            | Final     | Request is Rejected (Parameter / object is not valid)
 999            | Final     | Internal Server Error
 
@@ -1046,7 +1051,7 @@ BPRNBP	|	BPR NBP
 CITRA	|	CAKRAWALA CITRAMEGA MULTIFINANCE
 EDV	|	ESTA DANA VENTURA
 JGDR	|	JAGADIRI
-KAMM	|	KOPERASI ANUGRAH MEGA MANDIRI
+CVK	|	KOPERASI ANUGRAH MEGA MANDIRI
 NRC	|	KOPERASI NRC
 MDL	|	MANDALA
 MTF	|	MANDIRI TUNAS FINANCE
@@ -1062,7 +1067,7 @@ SMF	|	SMART FINANCE
 SOL	|	SOLITE
 TOP	|	TOP FINANCE
 TPF	|	TRANS PACIFIC
-THR	|	TRIHAMAS FINANCE
+TRH	|	TRIHAMAS FINANCE
 
 ### PDAM
 Product Id | Product Description

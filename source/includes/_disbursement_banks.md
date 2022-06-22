@@ -95,7 +95,7 @@ Bank Codes | Bank Name
 521	| Bank SYARIAH BUKOPIN
 523	| Bank Sahabat Sampoerna
 526	| Bank DINAR
-535	| Bank KESEJAHTERAAN EKONOMI
+535	| Bank Seabank Indonesia
 536	| Bank BCA SYARIAH
 542	| Bank ARTOS/ Bank Jago
 547	| Bank BTPN SYARIAH
