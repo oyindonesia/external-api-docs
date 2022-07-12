@@ -307,10 +307,10 @@ Endpoint:
 |receive_amount|Numeric|amount to be received|
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Trasnaction Expiration Time|
 |payment_info|Object|Payment info object|
-|payment_checkout_url|String|generated url for payment link; conditional only if request need_frontend is TRUE|
-|va_number|String|Generated VA number; conditional only if request need_frontend is FALSE|
-|va_display_name|String|VA display name; conditional only if request need_frontend is FALSE|
-|qris_url|String|the URL of QR image|
+|payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
+|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 
 
 ### List of Disbursement Mock Account for Testing Purpose 
@@ -563,9 +563,10 @@ Endpoint:
 |trx_expiration_time|partner_user_id|Transaction expiration time|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
 |payment_info|Object|Payment info Object|
-|payment_checkout_url|String|generated va number; conditional only if request need_frontend is false|
-|va_display_name|String|generated va number; conditional only if request need_frontend is false|
-|qris_url|String|the URL of QR image|
+|payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
+|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 |payment_routing|List of Object|List of payment routing recipients. See row belows|
 |recipient_bank|String|Bank code of the recipient account|
 |recipient_account|String|Recipient's account number|
@@ -617,9 +618,10 @@ Once user successfully do the payment, our system will make a callback to your s
 |trx_expiration_time|partner_user_id|Transaction expiration time|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
 |payment_info|Object|Payment info Object|
-|payment_checkout_url|String|generated va number; conditional only if request need_frontend is false|
-|va_display_name|String|generated va number; conditional only if request need_frontend is false|
-|qris_url|String|the URL of QR image|
+|payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
+|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 |payment_routing|List of Object|List of payment routing recipients. See row belows|
 |recipient_bank|String|Bank code of the recipient account|
 |recipient_account|String|Recipient's account number|
