@@ -552,7 +552,6 @@ Endpoint:
 
 
 ### Responses Parameter
-This response body is also the payment routing callback to partner.
 
 | Parameter  | Type |  Description   |
 | ------------- |:-------------:| :----------: |
