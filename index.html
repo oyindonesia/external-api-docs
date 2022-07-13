@@ -10773,7 +10773,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 </code></pre></div>
 <p class="lottie" id="payment-link-demo-right-stick"></p>
 <h1 id='api-offline' type='normal'>API Offline</h1>
-<p>API Offline enables your user to withdraw and deposit money from OY offline channel such as Cash Recycle Machine (CRM) and convenience store.</p>
+<p>API Offline enables your users to withdraw and deposit money from OY offline channel such as Cash Recycle Machine (CRM) and convenience store.</p>
 <h2 id='initiate-transaction-api-offline' type='normal'>Initiate Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -10950,7 +10950,8 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
         </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"In Progress"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">451</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50500</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12312313132131"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-10-2020 17:12:16"</span><span class="p">,</span><span class="w">
@@ -10989,7 +10990,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <td>amount</td>
 <td>BigDecimal</td>
 <td>TRUE</td>
-<td>The amount that going to withdraw or deposit (Only accepts multiple of 50.000 for cash-out transaction)</td>
+<td>The amount that will be withdrawn or deposit (Only accepts multiplier of 50.000 for cash-out transaction)</td>
 </tr>
 <tr>
 <td>transaction_type</td>
@@ -11033,6 +11034,11 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <td>Amount of transaction</td>
 </tr>
 <tr>
+<td>tax</td>
+<td>BigDecimal</td>
+<td>Amount of tax</td>
+</tr>
+<tr>
 <td>admin_fee</td>
 <td>BigDecimal</td>
 <td>Amount of admin fee</td>
@@ -11040,7 +11046,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <tr>
 <td>total_amount</td>
 <td>BigDecimal</td>
-<td>Sum of amount and admin fee</td>
+<td>Sum of amount, admin fee and tax</td>
 </tr>
 <tr>
 <td>code</td>
@@ -11079,7 +11085,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 
 <p>Cash-In transaction receives any cash denom starting from <strong>2.000 to 100.000</strong> with minimum amount of <strong>10.000</strong> and maximum amount of <strong>5.000.000 (including admin fee)</strong></p>
 
-<p><code>admin_fee</code> will be available to you in each transaction and <code>total_amount</code> will reflect the sum of <code>admin_fee</code> and <code>amount</code></p>
+<p><code>admin_fee</code> will be available to you in each transaction and <code>total_amount</code> will reflect the sum of <code>admin_fee</code>, <code>tax</code> and <code>amount</code></p>
 <h2 id='cancel-transaction-api-offline' type='normal'>Cancel Transaction</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 POST https://partner.oyindonesia.com/api/offline-cancel <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -11453,13 +11459,14 @@ POST https://partner.oyindonesia.com/api/offline-info <span class="se">\</span>
     </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH_IN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"offline_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDOMARET"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-27 15:49:53.707"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">5000.0000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">4505.0000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">495.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">105000.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"inactive_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-26 13:18:52.541"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-26 13:18:52.541"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>To get status of a transaction request, you can call this API. You may need to call this API few times until getting a final status (success / failed) or implement callback transaction.</p>
+<p>To get status of a transaction request, you can call this API. You may need to call this API few times until getting a final status (success / failed) or you can implement callback transaction.</p>
 
 <p>This API offers an option to send you a callback status of the transaction request to a specific URL.
 Please contact us and submit a callback URL if you need a callback status of a transaction request.</p>
@@ -11522,9 +11529,14 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <td>Amount of admin fee</td>
 </tr>
 <tr>
+<td>tax</td>
+<td>BigDecimal</td>
+<td>Amount of tax</td>
+</tr>
+<tr>
 <td>total_amount</td>
 <td>BigDecimal</td>
-<td>Sum of amount and admin fee</td>
+<td>Sum of amount, tax and admin fee</td>
 </tr>
 <tr>
 <td>code</td>
@@ -11544,7 +11556,7 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <tr>
 <td>offline_channel</td>
 <td>String(255)</td>
-<td>Offlien channel of transaction. (e.g ALFAMART, INDOMARET or CRM)</td>
+<td>Offline channel for transaction. (e.g ALFAMART, INDOMARET or CRM)</td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -11729,7 +11741,7 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
     </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-15 10:12:16.786"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>A transaction will be valid for 24 hours with a default 3-hours validity for each unique code (Applicable for CRM transaction). Use this API to refresh the unique code that have expired in which transaction is still valid.</p>
+<p>A transaction is valid for 24 hours with a default 3-hours validity for each unique code (Applicable for CRM transaction). Use this API to refresh the unique code that have expired in which transaction is still valid.</p>
 <h3 id='https-request-refresh-code' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/offline-refresh-code</code><br>
 <strong>[Staging]</strong> <code>TBD</code></p>
@@ -11804,7 +11816,8 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
     </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH_IN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"offline_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDOMARET"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-27 15:49:53.707"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">5000.0000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">4505.0000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">495.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">105000.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"inactive_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-26 13:18:52.541"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-26 13:18:52.541"</span><span class="w">
@@ -11847,9 +11860,14 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <td>Amount of admin fee</td>
 </tr>
 <tr>
+<td>tax</td>
+<td>BigDecimal</td>
+<td>Amount of tax</td>
+</tr>
+<tr>
 <td>total_amount</td>
 <td>BigDecimal</td>
-<td>Sum of amount and admin fee</td>
+<td>Sum of amount, tax and admin fee</td>
 </tr>
 <tr>
 <td>code</td>
