@@ -307,10 +307,10 @@ Endpoint:
 |receive_amount|Numeric|amount to be received|
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Trasnaction Expiration Time|
 |payment_info|Object|Payment info object|
-|payment_checkout_url|String|generated url for payment link; conditional only if request need_frontend is TRUE|
-|va_number|String|Generated VA number; conditional only if request need_frontend is FALSE|
-|va_display_name|String|VA display name; conditional only if request need_frontend is FALSE|
-|qris_url|String|the URL of QR image|
+|payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
+|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 
 
 ### List of Disbursement Mock Account for Testing Purpose 
@@ -552,10 +552,10 @@ Endpoint:
 
 
 ### Responses Parameter
-This response body is also the payment routing callback to partner.
 
 | Parameter  | Type |  Description   |
 | ------------- |:-------------:| :----------: |
+|status|Object|Status of response in Object|
 |trx_id|String|payment routing transaction id|
 |partner_user_id|String|Partner user ID|
 |partner_tx_id|String|Partner transaction ID|
@@ -563,8 +563,10 @@ This response body is also the payment routing callback to partner.
 |trx_expiration_time|partner_user_id|Transaction expiration time|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
 |payment_info|Object|Payment info Object|
-|payment_checkout_url|String|generated va number; conditional only if request need_frontend is false|
-|va_display_name|String|generated va number; conditional only if request need_frontend is false|
+|payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
+|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 |payment_routing|List of Object|List of payment routing recipients. See row belows|
 |recipient_bank|String|Bank code of the recipient account|
 |recipient_account|String|Recipient's account number|
@@ -575,7 +577,61 @@ This response body is also the payment routing callback to partner.
 |disbursement_trx_notes|String|Disbursement Transaction notes|
 |disbursement_trx_status|String|Disbursement transaction status. See List of Disbursement Status below|
 |email_status|String|Email sending status; Possible status:- SENT- UNSENT|
-|qris_url|String|the URL of QR image|
+
+## Partner Callback Payment Routing
+Once user successfully do the payment, our system will make a callback to your system
+
+```json
+{
+    "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
+    "partner_user_id": "USR-20211117-1029",
+    "partner_trx_id": "TRX-20211117-1030",
+    "receive_amount": 14000,
+    "payment_status": "WAITING_PAYMENT",
+    "trx_expiration_time": "2021-12-02 18:59:31",
+    "need_frontend": false,
+    "payment_info": {
+        "va_number": "103406000000006289",
+        "va_display_name": "partner_brand"
+    },
+    "payment_routing": [
+        {
+            "recipient_bank": "014",
+            "recipient_account": "1234567890",
+            "recipient_account_name": "Katelin Bode",
+            "recipient_amount": 10000.0000,
+            "disbursement_trx_id": "35ff4e6b-e240-44b3-aff1-1151289e912e",
+            "trx_status": "WAITING"
+        }
+    ]
+}
+```
+
+### Callback Parameter
+
+| Parameter  | Type |  Description   |
+| ------------- |:-------------:| :----------: |
+|trx_id|String|payment routing transaction id|
+|partner_user_id|String|Partner user ID|
+|partner_tx_id|String|Partner transaction ID|
+|payment_status|String|Receive money status|
+|trx_expiration_time|partner_user_id|Transaction expiration time|
+|need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
+|payment_info|Object|Payment info Object|
+|payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
+|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
+|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
+|payment_routing|List of Object|List of payment routing recipients. See row belows|
+|recipient_bank|String|Bank code of the recipient account|
+|recipient_account|String|Recipient's account number|
+|recipient_account_name|String|Recipient's bank account name|
+|recipient_amount|Numeric|The amount of transaction to be disbursed|
+|recipient_email|String; e-mail format|Email for disbursement notification, email can be up to 5, seperated by a whitespace|
+|disbursement_trx_id|String|Disbursement transaction id|
+|disbursement_trx_notes|String|Disbursement Transaction notes|
+|disbursement_trx_status|String|Disbursement transaction status. See List of Disbursement Status below|
+|email_status|String|Email sending status; Possible status:- SENT- UNSENT|
 
 ## List of Payment Routing Status
 | Status               | Description                                                                                                                                            |
