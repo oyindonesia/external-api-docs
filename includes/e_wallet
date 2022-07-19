@@ -264,7 +264,7 @@
 <td>BigDecimal</td>
 <td>TRUE</td>
 <td>-</td>
-<td>Transaction amount. Min = 1,000. Max = 10,000,000</td>
+<td>Transaction amount. Min = 100. Max = 10,000,000</td>
 </tr>
 <tr>
 <td>email</td>
