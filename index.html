@@ -10951,7 +10951,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">451</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50500</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12312313132131"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-10-2020 17:12:16"</span><span class="p">,</span><span class="w">
@@ -11034,7 +11034,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <td>Amount of transaction</td>
 </tr>
 <tr>
-<td>tax</td>
+<td>tax_fee</td>
 <td>BigDecimal</td>
 <td>Amount of tax</td>
 </tr>
@@ -11046,7 +11046,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <tr>
 <td>total_amount</td>
 <td>BigDecimal</td>
-<td>Sum of amount, admin fee and tax</td>
+<td>Sum of amount, admin fee and tax fee</td>
 </tr>
 <tr>
 <td>code</td>
@@ -11460,7 +11460,7 @@ POST https://partner.oyindonesia.com/api/offline-info <span class="se">\</span>
     </span><span class="nl">"offline_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDOMARET"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-27 15:49:53.707"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">4505.0000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">495.0000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">495.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">105000.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"inactive_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-26 13:18:52.541"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-26 13:18:52.541"</span><span class="w">
@@ -11529,14 +11529,14 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <td>Amount of admin fee</td>
 </tr>
 <tr>
-<td>tax</td>
+<td>tax_fee</td>
 <td>BigDecimal</td>
 <td>Amount of tax</td>
 </tr>
 <tr>
 <td>total_amount</td>
 <td>BigDecimal</td>
-<td>Sum of amount, tax and admin fee</td>
+<td>Sum of amount, tax fee and admin fee</td>
 </tr>
 <tr>
 <td>code</td>
@@ -11817,7 +11817,7 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
     </span><span class="nl">"offline_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDOMARET"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-27 15:49:53.707"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">4505.0000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tax"</span><span class="p">:</span><span class="w"> </span><span class="mf">495.0000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tax_fee"</span><span class="p">:</span><span class="w"> </span><span class="mf">495.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"total_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">105000.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"inactive_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-26 13:18:52.541"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-26 13:18:52.541"</span><span class="w">
@@ -11860,14 +11860,14 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <td>Amount of admin fee</td>
 </tr>
 <tr>
-<td>tax</td>
+<td>tax_fee</td>
 <td>BigDecimal</td>
 <td>Amount of tax</td>
 </tr>
 <tr>
 <td>total_amount</td>
 <td>BigDecimal</td>
-<td>Sum of amount, tax and admin fee</td>
+<td>Sum of amount, tax_fee and admin fee</td>
 </tr>
 <tr>
 <td>code</td>
