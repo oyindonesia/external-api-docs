@@ -1671,6 +1671,11 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>213</td>
 <td>Open Amount, Closed Amount</td>
 </tr>
+<tr>
+<td>BSI (Bank Syariah Indonesia)</td>
+<td>451</td>
+<td>Closed Amount</td>
+</tr>
 </tbody></table>
 <h2 id='list-of-documents-va-aggregator' type='normal'>List of Documents</h2>
 <p>To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.</p>
