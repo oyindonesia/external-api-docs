@@ -201,11 +201,11 @@ print(data.decode("utf-8"))
     "product_id": "BPFI",
     "customer_id": "000372190053",
     "customer_name": "FIRDAUS", 
-    "total_amount": "835000", 
+    "amount": "835000", 
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
-      "admin_fee":15000,
+      "total_amount":835000,
       // and other data that is passed by Biller from vendor
     }
   },
@@ -437,7 +437,7 @@ print(data.decode("utf-8"))
         "partner_tx_id": "DEV123456789",
         "note": "note for payment",
         "customer_name": "FIRDAUS", 
-        "total_amount": 835000,
+        "amount": 835000,
     }
 }
 ```
@@ -485,11 +485,11 @@ total_amount | BigDecimal | Bill's total amount (including admin fee, penalty, o
     "product_id": "BPFI",
     "customer_id": "000372190053",
     "customer_name": "FIRDAUS", 
-    "total_amount": "835000", 
+    "amount": "835000", 
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
-      "admin_fee":15000,
+      "total_amount":835000,
       "receipt_code":"123123123123",
       "settlement_date":"2020-10-19 17:16:17",
       // and other data that is passed by Biller from vendor
@@ -704,11 +704,11 @@ print(data.decode("utf-8"))
     "product_id": "BPFI",
     "customer_id": "000372190053",
     "customer_name": "FIRDAUS", 
-    "total_amount": "835000", 
+    "amount": "835000", 
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
-      "admin_fee":15000,
+      "total_amount":835000,
       "receipt_code":"123123123123",
       "settlement_date":"2020-10-19 17:16:17",
       // and other data that is passed by biller from vendor
