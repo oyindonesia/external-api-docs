@@ -539,15 +539,667 @@ ewallet_code | String(255) | The ewallet issuer that the customer will use to pa
 ewallet_url | String(255) | EWallet URL passed from the e-wallet issuers to be used for payment purposes
 reason | String(255) | Reason for the status given
 
+## Refund E-Wallet Transaction
+Use this API to refund an e-wallet transaction that has been completed.
+
+### HTTPS Request
+
+**[Production]** `POST https://partner.oyindonesia.com/api/e-wallet-aggregator/refund ` <br/>
+
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/e-wallet-aggregator/refund`
+
+### Request Headers
+
+Parameter | Type | Description
+--------- | ---- | -------- |
+X-Api-Key | String | API Key used to connect to this particular endpoint
+X-Oy-Username | String | Your OY! account username
+
+### Request Parameters
+
+```shell
+curl -X POST \
+  <%= config[:endpoint_prod] %>/api/e-wallet-aggregator/refund \
+  -H 'content-type: application/json' \
+  -H 'accept: application/json' \
+  -H 'x-api-key: yourapikey' \
+  -H 'x-oy-username: yourusername' \
+  -d '{
+        "partner_trx_id": "ABC123456527",
+        "refund_amount": 10000
+    }'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/e-wallet-aggregator/refund'));
+request.body = json.encode({
+ "partner_trx_id": "ABC123456527",
+ "refund_amount": 10000
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/refund"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+     "partner_trx_id": "ABC123456527",
+     "refund_amount": 10000
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"partner_trx_id\": \"ABC123456527\",\n\t\"refund_amount\": 10000\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/e-wallet-aggregator/refund")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+    "partner_trx_id": "ABC123456527",
+    "refund_amount": 10000
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/refund");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/e-wallet-aggregator/refund');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('{\n  "partner_trx_id": "ABC123456527",\n "refund_amount": 10000\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_trx_id": "ABC123456527",
+  "refund_amount": 10000
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("POST", "/api/e-wallet-aggregator/refund", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "refund_id": "REFUND123",
+    "trx_id": "789467agf238893894rfcw7978iu7g7e",
+    "partner_trx_id": "ABC123456527",
+    "refund_amount": 10000,
+    "refund_status": "REFUND_ONPROCESS"
+}
+```
+
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+partner_trx_id | String(255) | TRUE | - | ID generated by Partner for a specific transaction
+amount | BigDecimal | TRUE | - | Amount to be refunded, can't be greater than the e-wallet transaction amount
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -------- |
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. See table "Response Code" for more details
+refund_id | String(255) | Filled with a unique refund identifier from OY. You will get refund ID if your request is successfully passed to e-wallet vendor. This can be used as a request parameter to call get refund status API.
+trx_id | String(255) | Filled with a unique transaction identifier from OY
+partner_trx_id | String(255) | ID generated by Partner for a specific transaction
+refund_amount | BigDecimal | Requested refund amount |
+refund_status | String(255) | Filled with REFUND_ONPROCESS if refund request is successful, otherwise filled with REFUND_FAILED, refer to "E-Wallet Refund Status" for more details
+
+## Get E-Wallet Refund Status
+
+### HTTPS Request
+
+**[Production]** `GET https://partner.oyindonesia.com/api/e-wallet-aggregator/get-refund ` <br/>
+
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/e-wallet-aggregator/get-refund`
+
+### Request Headers
+
+Parameter | Type | Description
+--------- | ---- | -------- |
+X-Api-Key | String | API Key used to connect to this particular endpoint
+X-Oy-Username | String | Your OY! account username
+
+### Request Parameters
+
+```shell
+curl -X GET \
+  <%= config[:endpoint_prod] %>/api/e-wallet-aggregator/get-refund \
+  -H 'content-type: application/json' \
+  -H 'accept: application/json' \
+  -H 'x-api-key: yourapikey' \
+  -H 'x-oy-username: yourusername' \
+  -d '{
+        "refund_id": "REFUND123"
+    }'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/e-wallet-aggregator/get-refund'));
+request.body = json.encode({
+ "refund_id": "REFUND123"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/get-refund"
+  method := "GET"
+
+  payload := strings.NewReader(`{
+     "refund_id": "REFUND123"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"refund_id\": \"REFUND123\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/e-wallet-aggregator/get-refund")
+  .method("GET", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+    "refund_id": "REFUND123"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/get-refund");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/e-wallet-aggregator/get-refund');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('{\n  "refund_id": "REFUND123"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "refund_id": "REFUND123"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("GET", "/api/e-wallet-aggregator/get-refund", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "refund_id": "REFUND123",
+    "refund_status: "REFUNDED",
+    "refund_amount": 10000
+}
+```
+
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+refund_id | String(255) | TRUE | - | Unique refund ID, you can get this once you have requested refund for an e-wallet transaction and the request is passed to e-wallet vendor
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -------- |
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. See table "Response Code" for more details
+refund_id | String(255) | Requested e-wallet refund ID
+refund_status | String(255) | Status of refund request, refer to "E-Wallet Refund Status" for more details
+refund_amount | BigDecimal | Requested refund amount 
+
+## Get List of E-Wallet Refund
+
+### HTTPS Request
+
+**[Production]** `GET https://partner.oyindonesia.com/api/e-wallet-aggregator/list-refund ` <br/>
+
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/e-wallet-aggregator/list-refund`
+
+### Request Headers
+
+Parameter | Type | Description
+--------- | ---- | -------- |
+X-Api-Key | String | API Key used to connect to this particular endpoint
+X-Oy-Username | String | Your OY! account username
+
+### Request Parameters
+
+```shell
+curl -X GET \
+  <%= config[:endpoint_prod] %>/api/e-wallet-aggregator/list-refund \
+  -H 'content-type: application/json' \
+  -H 'accept: application/json' \
+  -H 'x-api-key: yourapikey' \
+  -H 'x-oy-username: yourusername' \
+  -d '{
+        "partner_trx_id": "ABC123456527"
+    }'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/e-wallet-aggregator/list-refund'));
+request.body = json.encode({
+ "partner_trx_id": "ABC123456527"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/list-refund"
+  method := "GET"
+
+  payload := strings.NewReader(`{
+     "partner_trx_id": "ABC123456527"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"partner_trx_id\": \"ABC123456527"\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/e-wallet-aggregator/list-refund")
+  .method("GET", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+    "partner_trx_id": "ABC123456527"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/list-refund");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/e-wallet-aggregator/list-refund');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('{\n  "partner_trx_id": "ABC123456527"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_trx_id": "ABC123456527"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("GET", "/api/e-wallet-aggregator/list-refund", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "total": 2,
+    "data": [
+        {
+            "refund_id": "REFUND123",
+            "refund_status": "REFUNDED",
+            "refund_amount": 10000
+        },
+        {
+            "refund_id": "REFUND456",
+            "refund_status": "REFUND_FAILED",
+            "refund_amount": 10000
+        }
+    ]
+}
+```
+
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+partner_trx_id | String(255) | TRUE | - | ID generated by Partner for a specific transaction
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -------- |
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. See table "Response Code" for more details
+total | Integer | Total items
+data | Array of object | List of Object `{refund_id: <refund_id>, refund_status: <refund_status>, refund_amount: <refund_amount>}`
 
 ## E-Wallet Details
 
-E-Wallet Issuer | E-Wallet Code| Minimum Expiration Time | Maximum Expiration Time | Redirection Feature
---------- | ---- | -------- | ------- | ------- |
-OVO | ovo_ewallet | Parameter is ignored, always set to 55 seconds | Parameter is ignored, always set to 55 seconds | Not supported
-ShopeePay | shopeepay_ewallet | 1 minute | 60 minutes | Support
-Linkaja | linkaja_ewallet | Parameter is ignored, always set to 5 minutes | Parameter is ignored, always set to 5 minutes | Support
-DANA | dana_ewallet | 1 minute | 60 minutes | Support
+E-Wallet Issuer | E-Wallet Code| Minimum Expiration Time | Maximum Expiration Time | Redirection Feature | Refund Support
+--------- | ---- | -------- | ------- | ------- | ------- |
+OVO | ovo_ewallet | Parameter is ignored, always set to 55 seconds | Parameter is ignored, always set to 55 seconds | Not supported | Not supported
+ShopeePay | shopeepay_ewallet | 1 minute | 60 minutes | Support | Support full refund only
+Linkaja | linkaja_ewallet | Parameter is ignored, always set to 5 minutes | Parameter is ignored, always set to 5 minutes | Support | Support full and partial refund
+DANA | dana_ewallet | 1 minute | 60 minutes | Support | Support full and partial refund
 
 ## E-Wallet Transaction Status
 
@@ -559,6 +1211,14 @@ COMPLETE | Payment successfully received
 REFUNDED | Payment successfully refunded
 EXPIRED | Expiration time is reached with no payment received
 
+## E-Wallet Refund Status
+
+Status | Description|
+--------- | ---- |
+REFUND_FAILED | Refund request failed
+REFUND_ONPROCESS | Refund ongoing by e-wallet vendor
+REFUNDED | Payment has been refunded
+
 ## List of Status Codes
 
 Response Code | State | Description
@@ -568,13 +1228,15 @@ Response Code | State | Description
 202 | Final | Request is Rejected (User is not active/registered for this feature)
 203 | Final | Request is Rejected (Duplicate Partner Trx ID)
 204 | Final | Request is Rejected (Partner Trx ID not found)
+206 | Final | Request is Rejected (Balance is not enough)
 207 | Final | Request is Rejected (Request IP Address is not Registered)
 208 | Final | Request is Rejected (API Key is not Valid)
 248 | Non-Final | Request is Rejected (Ewallet/Vendor Server Error)
 250 | Final | Request is Rejected (EWallet code is not available)
 251 | Final | Request is rejected (EWallet code is disabled)
-252 | Non-Final | Request is rejected (Creation/Check Status request failed)
+252 | Non-Final | Request is rejected (Creation/Check Status/Refund request failed)
 253 | Final | Request is Rejected (Partner credential not found or invalid on e-wallet server)
 254 | Final | Request is Rejected (User credential not found, blocked, or invalid)
+255 | Final | Request is Rejected (Refund ID is not found)
 999 | Non-Final | Internal Server Error
 
