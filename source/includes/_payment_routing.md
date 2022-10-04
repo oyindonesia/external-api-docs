@@ -512,7 +512,8 @@ print(data.decode("utf-8"))
     "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
     "partner_user_id": "USR-20211117-1029",
     "partner_trx_id": "TRX-20211117-1030",
-    "receive_amount": 14000,
+    "request_amount": 14000,
+    "received_amount": 0,
     "payment_status": "WAITING_PAYMENT",
     "trx_expiration_time": "2021-12-02 18:59:31",
     "need_frontend": false,
@@ -547,7 +548,7 @@ Endpoint:
 ### Request Parameter
 | Parameter  | Type |  Required   | Default | Description |
 | ------------- |:-------------:| :----------: | :-------------:| :----------: |
-|partner_tx_id|String|TRUE|-|Unique partner transaction ID
+|partner_trx_id|String|TRUE|-|Unique partner transaction ID
 |send_callback|Boolean|FALSE|-|If set true, we also send response as a callback to partner|
 
 
@@ -558,7 +559,9 @@ Endpoint:
 |status|Object|Status of response in Object|
 |trx_id|String|payment routing transaction id|
 |partner_user_id|String|Partner user ID|
-|partner_tx_id|String|Partner transaction ID|
+|partner_trx_id|String|Partner transaction ID|
+|request_amount|Numeric|Amount requested to be paid by end user|
+|received_amount|Numeric|Amount received. If user has paid, then the amount will be equal to request_amount|
 |payment_status|String|Receive money status|
 |trx_expiration_time|partner_user_id|Transaction expiration time|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
@@ -613,7 +616,8 @@ Once user successfully do the payment, our system will make a callback to your s
 | ------------- |:-------------:| :----------: |
 |trx_id|String|payment routing transaction id|
 |partner_user_id|String|Partner user ID|
-|partner_tx_id|String|Partner transaction ID|
+|partner_trx_id|String|Partner transaction ID|
+|receive_amount|String|Amount to be received|
 |payment_status|String|Receive money status|
 |trx_expiration_time|partner_user_id|Transaction expiration time|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
