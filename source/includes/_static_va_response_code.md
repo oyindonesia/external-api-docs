@@ -18,6 +18,7 @@ Response Code | State | Description
 226 | Final | Request is rejected (Transaction expiry time exceeds VA expiry time)
 245 | Final | Request is rejected (Min expiry time is 60 minutes)
 246 | Final | Request is rejected (Failed update va)
+262 | Final | Request is rejected (VA Prefix for selected bank is not available for user's current risk level)
 999 | Non-Final | Internal Server Error
 
 IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:
