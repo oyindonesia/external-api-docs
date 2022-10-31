@@ -284,6 +284,8 @@ Once a disbursement request is finished, our system will make a callback status 
 
 Please contact us and submit a callback URL if you need a callback status of a disbursement request.
 
+We also have a resend callback feature which you can read about [here](https://docs.oyindonesia.com/#feature-resend-callback-sending-payments). 
+
 ### Callback Parameters
 
 Parameter | Type | Description
