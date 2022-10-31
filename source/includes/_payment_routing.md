@@ -288,7 +288,7 @@ Endpoint:
 | sender_email | String     |  FALSE | - | Email of sender |
 | receive_amount | Numeric     |  TRUE | - | The amount of a transaction to be paid, min. amount is 10000 |
 | va_display_name | String     |  FALSE | Partner's brand name | Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name |
-| trx_expiration_time| Date string; yyyy-mm-dd hh:mm:ss format     |  FALSE | 24 hours | Set expiration time of transaction. If empty use default 24h.  Min exp time is 1 hour.|
+| trx_expiration_time| Date string; yyyy-mm-dd hh:mm:ss format     |  FALSE | 24 hours | Set expiration time of transaction. If empty use default 24h.  Min exp time is 1 hour. This does not affect a QRIS validity period, as it is set to 30 minutes automatically. |
 | trx_counter | Numeric     |  FALSE | 1/-1 | Only applicable if you choose VA. It is a transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times. |
 | payment_routing | List of Objects     |  FALSE | - | List of disburse recipient; max. is 10 |
 | recipient_bank | String     |  TRUE | - | Bank code of the recipient account |
@@ -310,7 +310,7 @@ Endpoint:
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
 |va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
-|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
+|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
 
 <aside class="warning">
 Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods. Also note that BSI VAs currently do not support the reusable option, so make sure that partner_user_id is left empty if BSI is chosen in list_enable_sof.
@@ -603,7 +603,7 @@ Endpoint:
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
 |va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
-|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
+|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
 |payment_routing|List of Object|List of payment routing recipients. See row belows|
 |recipient_bank|String|Bank code of the recipient account|
 |recipient_account|String|Recipient's account number|
@@ -663,7 +663,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
 |va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
-|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
+|qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
 |payment_routing|List of Object|List of payment routing recipients. See row belows|
 |recipient_bank|String|Bank code of the recipient account|
 |recipient_account|String|Recipient's account number|
