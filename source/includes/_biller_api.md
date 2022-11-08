@@ -201,7 +201,8 @@ print(data.decode("utf-8"))
     "product_id": "BPFI",
     "customer_id": "000372190053",
     "customer_name": "FIRDAUS", 
-    "amount": "835000", 
+    "amount": 832500,
+    "admin_fee": 2500,
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
@@ -438,6 +439,7 @@ print(data.decode("utf-8"))
         "note": "note for payment",
         "customer_name": "FIRDAUS", 
         "amount": 835000,
+        "admin_fee": 2500,
     }
 }
 ```
@@ -485,7 +487,8 @@ total_amount | BigDecimal | Bill's total amount (including admin fee, penalty, o
     "product_id": "BPFI",
     "customer_id": "000372190053",
     "customer_name": "FIRDAUS", 
-    "amount": "835000", 
+    "amount": 835000,
+    "admin_fee": 2500,
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
@@ -704,7 +707,8 @@ print(data.decode("utf-8"))
     "product_id": "BPFI",
     "customer_id": "000372190053",
     "customer_name": "FIRDAUS", 
-    "amount": "835000", 
+    "amount": 835000, 
+    "admin_fee": 2500, 
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
