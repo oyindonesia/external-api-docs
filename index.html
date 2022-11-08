@@ -8859,6 +8859,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <span class="nt">-d</span> <span class="s1">'{
    "partner_trx_id":"withdraw_request_123",
    "receiver_phone_number":"081234567890",
+   "customer_id":"customer01",
    "amount":50000,
    "transaction_type":"CASH_IN",
    "offline_channel":"INDOMARET"
@@ -8871,7 +8872,8 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'POST'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/offline-create'</span><span class="o">));</span>
 <span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
   <span class="s">"partner_trx_id"</span><span class="o">:</span> <span class="s">"oyonoy-00007"</span><span class="o">,</span>
-  <span class="s">"receiver_phone_number"</span><span class="o">:</span> <span class="s">"081223738047"</span><span class="o">,</span>
+  <span class="s">"receiver_phone_number"</span><span class="o">:</span> <span class="s">"081234567890"</span><span class="o">,</span>
+  <span class="s">"customer_id"</span><span class="o">:</span> <span class="s">"customer01"</span><span class="o">,</span>
   <span class="s">"amount"</span><span class="o">:</span> <span class="mi">50000</span><span class="o">,</span>
   <span class="s">"transaction_type"</span><span class="o">:</span> <span class="s">"CASH_IN"</span><span class="o">,</span>
   <span class="s">"offline_channel"</span><span class="o">:</span> <span class="s">"INDOMARET"</span>
@@ -8902,7 +8904,8 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 
   <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
     "partner_trx_id": "oyonoy-00007",
-    "receiver_phone_number": "081223738047",
+    "receiver_phone_number": "081234567890",
+    "customer_id": "customer01",
     "amount": 50000,
     "transaction_type": "CASH_IN",
     "offline_channel": "INDOMARET"
@@ -8937,7 +8940,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_trx_id\": \"oyonoy-00007\",\n    \"receiver_phone_number\": \"081223738047\",\n    \"amount\": 50000,\n    \"transaction_type\": \"CASH_IN\",\n    \"offline_channel\": \"INDOMARET\"\n}"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_trx_id\": \"oyonoy-00007\",\n    \"receiver_phone_number\": \"081223738047\",\n    \"customer_id\": \"customer01\",\n    \"amount\": 50000,\n    \"transaction_type\": \"CASH_IN\",\n    \"offline_channel\": \"INDOMARET\"\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/offline-create"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
@@ -9003,6 +9006,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
   <span class="s">"partner_trx_id"</span><span class="p">:</span> <span class="s">"oyonoy-00007"</span><span class="p">,</span>
   <span class="s">"receiver_phone_number"</span><span class="p">:</span> <span class="s">"081223738047"</span><span class="p">,</span>
+  <span class="s">"customer_id"</span><span class="p">:</span> <span class="s">"customer01"</span><span class="p">,</span>
   <span class="s">"amount"</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
   <span class="s">"transaction_type"</span><span class="p">:</span> <span class="s">"CASH_IN"</span><span class="p">,</span>
   <span class="s">"offline_channel"</span><span class="p">:</span> <span class="s">"INDOMARET"</span>
@@ -9032,6 +9036,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12312313132131"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14-10-2020 17:12:16"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"receiver_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6281234567890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer01"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oyonoy-00007"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234-5678"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH_IN"</span><span class="p">,</span><span class="w">
@@ -9059,8 +9064,14 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <tr>
 <td>receiver_phone_number</td>
 <td>String(255)</td>
+<td>FALSE</td>
+<td>User&#39;s phone number</td>
+</tr>
+<tr>
+<td>customer_id</td>
+<td>String(255)</td>
 <td>TRUE</td>
-<td>User&#39;s phone number that will be used for withdraw or deposit process</td>
+<td>Customer&#39;s ID that will be used for withdraw or deposit process</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -9132,7 +9143,12 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <tr>
 <td>receiver_phone_number</td>
 <td>String(255)</td>
-<td>User&#39;s phone number that will be used for withdraw or deposit process</td>
+<td>User&#39;s phone number</td>
+</tr>
+<tr>
+<td>customer_id</td>
+<td>String(255)</td>
+<td>Customer&#39;s ID that will be used for withdraw or deposit process</td>
 </tr>
 <tr>
 <td>transaction_type</td>
@@ -9532,6 +9548,7 @@ POST https://partner.oyindonesia.com/api/offline-info <span class="se">\</span>
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1911452620835003"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"receiver_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+62812123890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer01"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH_IN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"offline_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDOMARET"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-27 15:49:53.707"</span><span class="p">,</span><span class="w">
@@ -9622,7 +9639,12 @@ Please contact us and submit a callback URL if you need a callback status of a t
 <tr>
 <td>receiver_phone_number</td>
 <td>String(255)</td>
-<td>User&#39;s phone number that will be used for withdraw or deposit process</td>
+<td>User&#39;s phone number</td>
+</tr>
+<tr>
+<td>customer_id</td>
+<td>String(255)</td>
+<td>Customer&#39;s ID that will be used for withdraw or deposit process</td>
 </tr>
 <tr>
 <td>transaction_type</td>
@@ -9889,6 +9911,7 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">100000.0000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1911452620835003"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"receiver_phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+62812123890"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"customer01"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transaction_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CASH_IN"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"offline_channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDOMARET"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-27 15:49:53.707"</span><span class="p">,</span><span class="w">
@@ -9953,7 +9976,12 @@ POST https://partner.oyindonesia.com/api/offline-refresh-code <span class="se">\
 <tr>
 <td>receiver_phone_number</td>
 <td>String(255)</td>
-<td>User&#39;s phone number that will be used for withdraw or deposit process</td>
+<td>User&#39;s phone number</td>
+</tr>
+<tr>
+<td>customer_id</td>
+<td>String(255)</td>
+<td>Customer&#39;s ID that will be used for withdraw or deposit process</td>
 </tr>
 <tr>
 <td>transaction_type</td>
