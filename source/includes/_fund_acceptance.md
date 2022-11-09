@@ -33,7 +33,6 @@ curl -X POST \
         "list_disabled_payment_methods":"",
         "list_enabled_banks":"",
         "expiration":"2020-08-08 08:09:12",
-        "due_date":"2020-08-08 07:00:00",
         "va_display_name":"Display Name on VA"
     }'
 ```
@@ -59,8 +58,7 @@ request.body = json.encode({
   "list_disabled_payment_methods": "",
   "list_enabled_banks": "002, 008, 009, 013, 022",
   "list_enabled_ewallet": "shopeepay_ewallet",
-  "expiration": "2021-06-14 13:00:00",
-  "due_date": "2021-06-14 12:00:00"
+  "expiration": "2021-06-14 13:00:00"
 });
 request.headers.addAll(headers);
 
@@ -103,8 +101,7 @@ func main() {
     "list_disabled_payment_methods": "",
     "list_enabled_banks": "002, 008, 009, 013, 022",
     "list_enabled_ewallet": "shopeepay_ewallet",
-    "expiration": "2021-06-14 13:00:00",
-    "due_date": "2021-06-14 12:00:00"
+    "expiration": "2021-06-14 13:00:00"
 }`)
 
   client := &http.Client {
@@ -139,7 +136,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"description\": \"Prod Test API\",\n    \"partner_tx_id\": \"\",\n    \"notes\": \"\",\n    \"sender_name\" : \"Mochamad Suryono\", \n    \"amount\" : 10000,\n    \"email\": \"johndoe@gmail.com;jane@gmail.com\",\n    \"phone_number\": \"085712163208\", \n    \"is_open\" : true,\n    \"include_admin_fee\" : true,\n    \"list_disabled_payment_methods\": \"\",\n    \"list_enabled_banks\": \"002, 008, 009, 013, 022\",\n    \"list_enabled_ewallet\": \"shopeepay_ewallet\",\n    \"expiration\": \"2021-06-14 13:00:00\",\n    \"due_date\": \"2021-06-14 12:00:00\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"description\": \"Prod Test API\",\n    \"partner_tx_id\": \"\",\n    \"notes\": \"\",\n    \"sender_name\" : \"Mochamad Suryono\", \n    \"amount\" : 10000,\n    \"email\": \"johndoe@gmail.com;jane@gmail.com\",\n    \"phone_number\": \"085712163208\", \n    \"is_open\" : true,\n    \"include_admin_fee\" : true,\n    \"list_disabled_payment_methods\": \"\",\n    \"list_enabled_banks\": \"002, 008, 009, 013, 022\",\n    \"list_enabled_ewallet\": \"shopeepay_ewallet\",\n    \"expiration\": \"2021-06-14 13:00:00\"\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/payment-checkout/create-v2")
   .method("POST", body)
@@ -165,8 +162,7 @@ var data = JSON.stringify({
   "list_disabled_payment_methods": "",
   "list_enabled_banks": "002, 008, 009, 013, 022",
   "list_enabled_ewallet": "shopeepay_ewallet",
-  "expiration": "2021-06-14 13:00:00",
-  "due_date": "2021-06-14 12:00:00"
+  "expiration": "2021-06-14 13:00:00"
 });
 
 var xhr = new XMLHttpRequest();
@@ -200,7 +196,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n    "description": "Prod Test API",\n    "partner_tx_id": "",\n    "notes": "",\n    "sender_name" : "Mochamad Suryono", \n    "amount" : 10000,\n    "email": "johndoe@gmail.com;jane@gmail.com",\n    "phone_number": "085712163208", \n    "is_open" : true,\n    "include_admin_fee" : true,\n    "list_disabled_payment_methods": "",\n    "list_enabled_banks": "002, 008, 009, 013, 022",\n    "list_enabled_ewallet": "shopeepay_ewallet",\n    "expiration": "2021-06-14 13:00:00",\n    "due_date": "2021-06-14 12:00:00"\n}');
+$request->setBody('{\n    "description": "Prod Test API",\n    "partner_tx_id": "",\n    "notes": "",\n    "sender_name" : "Mochamad Suryono", \n    "amount" : 10000,\n    "email": "johndoe@gmail.com;jane@gmail.com",\n    "phone_number": "085712163208", \n    "is_open" : true,\n    "include_admin_fee" : true,\n    "list_disabled_payment_methods": "",\n    "list_enabled_banks": "002, 008, 009, 013, 022",\n    "list_enabled_ewallet": "shopeepay_ewallet",\n    "expiration": "2021-06-14 13:00:00"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -235,8 +231,7 @@ payload = json.dumps({
   "list_disabled_payment_methods": "",
   "list_enabled_banks": "002, 008, 009, 013, 022",
   "list_enabled_ewallet": "shopeepay_ewallet",
-  "expiration": "2021-06-14 13:00:00",
-  "due_date": "2021-06-14 12:00:00",
+  "expiration": "2021-06-14 13:00:00"
 })
 headers = {
   'Content-Type': 'application/json',
@@ -293,7 +288,6 @@ list_disabled_payment_methods | String | To configure payment methods to be disa
 list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
 list_enabled_ewallet | String | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet", "dana_ewallet", "linkaja_ewallet", "ovo_ewallet".
 expiration | datetime | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
-due_date | datetime | To set the transaction due date of the payment link (yyyy-MM-dd HH:mm:ss) | Transaction due date should equal or before expiration date. As default, transaction due date will be same as expiration date if it is not defined.
 va_display_name | String | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
 
 
