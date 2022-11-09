@@ -15330,9 +15330,14 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 <td>Customer Name from biller</td>
 </tr>
 <tr>
-<td>total_amount</td>
+<td>amount</td>
 <td>BigDecimal</td>
-<td>Bill&#39;s total amount (including admin fee, penalty, or other applicable fees)</td>
+<td>Bill&#39;s amount (excluding admin fee).</td>
+</tr>
+<tr>
+<td>admin_fee</td>
+<td>BigDecimal</td>
+<td>Bill&#39;s admin fee</td>
 </tr>
 <tr>
 <td>additional_data</td>
@@ -15593,9 +15598,14 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
 <td>Partner defined note for bill payment</td>
 </tr>
 <tr>
-<td>total_amount</td>
+<td>amount</td>
 <td>BigDecimal</td>
-<td>Bill&#39;s total amount (including admin fee, penalty, or other applicable fees)</td>
+<td>Bill&#39;s amount (excluding admin fee).</td>
+</tr>
+<tr>
+<td>admin_fee</td>
+<td>BigDecimal</td>
+<td>Bill&#39;s admin fee</td>
 </tr>
 </tbody></table>
 <h2 id='partner-callback-biller-api' type='normal'>Partner Callback</h2>
@@ -15673,9 +15683,14 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
 <td>Customer Name from biller</td>
 </tr>
 <tr>
-<td>total_amount</td>
+<td>amount</td>
 <td>BigDecimal</td>
-<td>Bill&#39;s total amount (including admin fee, penalty, or other applicable fees)</td>
+<td>Bill&#39;s amount (excluding admin fee).</td>
+</tr>
+<tr>
+<td>admin_fee</td>
+<td>BigDecimal</td>
+<td>Bill&#39;s admin fee</td>
 </tr>
 <tr>
 <td>additional_data</td>
@@ -15925,9 +15940,14 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 <td>Customer Name from biller</td>
 </tr>
 <tr>
-<td>total_amount</td>
+<td>amount</td>
 <td>BigDecimal</td>
-<td>Bill&#39;s total amount (including admin fee, penalty, or other applicable fees)</td>
+<td>Bill&#39;s amount (excluding admin fee).</td>
+</tr>
+<tr>
+<td>admin_fee</td>
+<td>BigDecimal</td>
+<td>Bill&#39;s admin fee</td>
 </tr>
 <tr>
 <td>additional_data</td>
@@ -16120,12 +16140,12 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
-<td>Bill&#39;s amount (excluding admin fee). Value will be 0 if bill is postpaid.</td>
+<td>Bill&#39;s amount (excluding admin fee).</td>
 </tr>
 <tr>
 <td>admin_fee</td>
 <td>BigDecimal</td>
-<td>Bill&#39;s total amount (including admin fee, penalty, or other applicable fees)</td>
+<td>Bill&#39;s admin fee</td>
 </tr>
 <tr>
 <td>is_available</td>
