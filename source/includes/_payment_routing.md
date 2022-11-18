@@ -582,7 +582,7 @@ Endpoint:
 |email_status|String|Email sending status; Possible status:- SENT- UNSENT|
 
 ## Partner Callback Payment Routing
-Once user successfully do the payment, our system will make a callback via POST request to your system
+Once user successfully do the payment, our system will make a callback via HTTP POST request to your system
 
 ```json
 {
