@@ -1563,7 +1563,7 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
     </span><span class="nl">"settlement_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Once user successfully do the payment, our system will make a callback to your system</p>
+<p>Once user successfully do the payment, our system will make a callback via HTTP POST request to your system</p>
 <h3 id='callback-parameters-partner-callback-va-aggregator' type='normal'>Callback Parameters</h3>
 <table><thead>
 <tr>
