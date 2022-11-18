@@ -1245,7 +1245,7 @@ total_incoming_payment | Integer | Total incoming payment
 }
 ```
 
-Once user successfully do the payment, our system will make a callback to your system
+Once user successfully do the payment, our system will make a callback via POST request to your system
 
 ### Callback Parameters
 
@@ -1267,18 +1267,18 @@ settlement_status | String(255) | The status of the settlement
 ### Available Bank for VA aggregator
 
 | Bank (Virtual Account) | Bank Code                                      | Capability (Open Amount/Closed Amount)         |
-| ---------------------- | ---------------------------------------------- | ---------------------------------------------- | 
-| BNI                    | 009                                            | Closed Amount                                  | 
-| Bank Mandiri           | 008                                            | Open Amount, Closed Amount                     | 
-| BRI                    | O02                                            | Open Amount, Closed Amount                     | 
-| BCA                    | 014                                            | Open Amount, Closed Amount                     | 
-| Bank Permata/Permata Syariah| 013                                       | Open Amount, Closed Amount                     | 
-| CIMB Niaga/CIMB Niaga Syariah| 022                                      | Open Amount, Closed Amount                     | 
-| BTPN                   | 213                                            | Open Amount, Closed Amount                     | 
-| BSI (Bank Syariah Indonesia)| 451                                       | Closed Amount                                  | 
-| Maybank BII            | 016                                            | Open Amount, Closed Amount                     | 
-| KEB Hana               | 484                                            | Open Amount, Closed Amount                     | 
-| Bank Danamon           | 011                                            | Open Amount, Closed Amount                     | 
+| ---------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| BNI                    | 009                                            | Closed Amount                                  |
+| Bank Mandiri           | 008                                            | Open Amount, Closed Amount                     |
+| BRI                    | O02                                            | Open Amount, Closed Amount                     |
+| BCA                    | 014                                            | Open Amount, Closed Amount                     |
+| Bank Permata/Permata Syariah| 013                                       | Open Amount, Closed Amount                     |
+| CIMB Niaga/CIMB Niaga Syariah| 022                                      | Open Amount, Closed Amount                     |
+| BTPN                   | 213                                            | Open Amount, Closed Amount                     |
+| BSI (Bank Syariah Indonesia)| 451                                       | Closed Amount                                  |
+| Maybank BII            | 016                                            | Open Amount, Closed Amount                     |
+| KEB Hana               | 484                                            | Open Amount, Closed Amount                     |
+| Bank Danamon           | 011                                            | Open Amount, Closed Amount                     |
 
 ## List of Documents
 To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.
