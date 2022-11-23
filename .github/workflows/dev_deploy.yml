@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    # See PR description about the reason of using 20.04
+    # See https://github.com/oyindonesia/external-api-docs/pull/189 about the reason of using 20.04
     runs-on: ubuntu-20.04
     env:
       ruby-version: 2.5
