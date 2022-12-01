@@ -412,6 +412,10 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <td>Count total incoming payment of VA</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+</aside>
 <h2 id='get-va-info-va-aggregator' type='normal'>Get VA Info</h2>
 <p>Get VA info using Unique VA id.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
@@ -684,6 +688,10 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+</aside>
 <h2 id='update-va-va-aggregator' type='normal'>Update VA</h2>
 <p>Update VA using unique VA id.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
@@ -1628,6 +1636,10 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <td>The status of the settlement</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+</aside>
 <h2 id='va-aggregator-bank-code-va-aggregator' type='normal'>VA aggregator Bank Code</h2><h3 id='available-bank-for-va-aggregator-va-aggregator-bank-code' type='normal'>Available Bank for VA aggregator</h3>
 <table><thead>
 <tr>
