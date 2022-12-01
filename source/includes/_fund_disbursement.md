@@ -249,7 +249,8 @@ Use this API to start disbursing money to a specific beneficiary account.
 | partner_trx_id    | String(255) | Unique Disbursement ID which partner put on the Request                                        |
 | timestamp         | String(19)  | Execution time of Disbursement in OY! system ("dd-MM-yyyy HH:mm:ss in UTC Time zone")          |
 
-### Transaction Status: API Disbursement
+### Transaction Status: API Create Disbursement
+
 Below is the list of response codes that show the transaction status for API Create Disbursement:
 
 | Response Code | State     | Description                                                                        |
@@ -261,7 +262,8 @@ Below is the list of response codes that show the transaction status for API Cre
 | 300           | Final     | Transaction is FAILED                                                              |
 | 301           | Non-Final | Pending (When there is an unclear answer from Banks Network)                       |
 
-### Request Status: API Disbursement
+### Request Status: API Create Disbursement
+
 Below is the list of response codes that show the request status for API Create Disbursement:
 
 | Response Code | State     | Description                                                                        | Notes                                              |
@@ -283,7 +285,7 @@ Below is the list of response codes that show the request status for API Create 
 
 **[Staging only]**
 
-You can replicate error response code (final) based on [Fund Disbursement Response Codes](#fund-disbursement-response-codes-) by fill in `recipient_account` value using following format `<desired response code>0000`.
+You can replicate error response code (final) based on [Transaction Status](#transaction-status-api-create-disbursement-create-disbursement) and [Request Status](#request-status-api-create-disbursement-create-disbursement) by fill in `recipient_account` value using following format `<desired response code>0000`.
 Another value not following the format will be processed normally.
 
 example:
