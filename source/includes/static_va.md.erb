@@ -299,6 +299,9 @@ partner_trx_id | String(255) | Partner unique Transaction ID of a VA
 trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 counter_incoming_payment | Integer | Count total incoming payment of VA
 
+<aside class="warning">
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+</aside>
 
 ## Get VA Info
 
@@ -513,6 +516,9 @@ trx_expiration_time | Long | Transaction expiration time on Unix timestamp in mi
 partner_trx_id | String(255) | Partner unique Transaction ID of a VA
 trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 
+<aside class="warning">
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+</aside>
 
 ## Update VA
 
@@ -1263,8 +1269,9 @@ trx_id | String (255) | Unique ID of incoming payment
 settlement_time | Timestamp | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 settlement_status | String(255) | The status of the settlement
 
-#### Important Note for BSI VAs
-For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the `va_number` received (remove `6059` from the `va_number` with format `6059xxxxxxxxxxxx`). This does not apply to payments and inquiries using other methods.
+<aside class="warning">
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+</aside>
 
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator

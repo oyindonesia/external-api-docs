@@ -313,7 +313,7 @@ Endpoint:
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 
 <aside class="warning">
-Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the VA Number (remove 6059 from the VA number which has the form "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
 </aside>
 
 ### List of Disbursement Mock Account for Testing Purpose 
@@ -585,7 +585,7 @@ Endpoint:
 |email_status|String|Email sending status; Possible status:- SENT- UNSENT|
 
 <aside class="warning">
-Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the VA Number (remove 6059 from the VA number which has the form "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
 </aside>
 
 ## Partner Callback Payment Routing
@@ -645,7 +645,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 |email_status|String|Email sending status; Possible status:- SENT- UNSENT|
 
 <aside class="warning">
-Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the VA Number (remove 6059 from the VA number which has the form "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
 </aside>
 
 ## List of Payment Routing Status
