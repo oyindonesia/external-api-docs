@@ -308,10 +308,13 @@ Endpoint:
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Trasnaction Expiration Time|
 |payment_info|Object|Payment info object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
-|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA. For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the `va_number` (remove `6059` from the `va_number`)|
+|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
 |va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 
+<aside class="warning">
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the `va_number` (remove `6059` from the `va_number` which has the form `6059xxxxxxxxxxxx`). This does not apply to payments and inquiries involving a BSI VA using other methods
+</aside>
 
 ### List of Disbursement Mock Account for Testing Purpose 
 Use those mock receiver bank account for testing Payment Routing purpose. To simulate all available status of Payment Routing, you can combine those mocked bank account numbers. For example, if you want to see `INCOMPLETE` status, put two recipients in the payment_routing object with mocked bank account number `1234567890` and `1234567891`. For more information about payment Routing status, see List of Payment Routing section.
@@ -567,7 +570,7 @@ Endpoint:
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
 |payment_info|Object|Payment info Object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
-|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA. For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the `va_number` (remove `6059` from the `va_number`)|
+|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
 |va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 |payment_routing|List of Object|List of payment routing recipients. See row belows|
@@ -580,6 +583,10 @@ Endpoint:
 |disbursement_trx_notes|String|Disbursement Transaction notes|
 |disbursement_trx_status|String|Disbursement transaction status. See List of Disbursement Status below|
 |email_status|String|Email sending status; Possible status:- SENT- UNSENT|
+
+<aside class="warning">
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the `va_number` (remove `6059` from the `va_number` which has the form `6059xxxxxxxxxxxx`). This does not apply to payments and inquiries involving a BSI VA using other methods
+</aside>
 
 ## Partner Callback Payment Routing
 Once user successfully do the payment, our system will make a callback via HTTP POST request to your system
@@ -623,7 +630,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
 |payment_info|Object|Payment info Object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
-|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA. For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the `va_number` received (remove `6059` from the `va_number`)|
+|va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
 |va_display_name|String|VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 |payment_routing|List of Object|List of payment routing recipients. See row belows|
@@ -636,6 +643,10 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 |disbursement_trx_notes|String|Disbursement Transaction notes|
 |disbursement_trx_status|String|Disbursement transaction status. See List of Disbursement Status below|
 |email_status|String|Email sending status; Possible status:- SENT- UNSENT|
+
+<aside class="warning">
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the `va_number` (remove `6059` from the `va_number` which has the form `6059xxxxxxxxxxxx`). This does not apply to payments and inquiries involving a BSI VA using other methods
+</aside>
 
 ## List of Payment Routing Status
 | Status               | Description                                                                                                                                            |

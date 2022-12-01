@@ -1263,8 +1263,8 @@ trx_id | String (255) | Unique ID of incoming payment
 settlement_time | Timestamp | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 settlement_status | String(255) | The status of the settlement
 
-#### Special Note for BSI VAs
-For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number received (remove 6059 from the va_number).
+#### Important Note for BSI VAs
+For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the `va_number` received (remove `6059` from the `va_number` with format `6059xxxxxxxxxxxx`). This does not apply to payments and inquiries using other methods.
 
 ## VA aggregator Bank Code
 ### Available Bank for VA aggregator
