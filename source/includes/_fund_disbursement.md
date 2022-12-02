@@ -338,7 +338,7 @@ created_date | String(19) | Executionn time of Disbures in OY! system ("dd-MM-yy
 last_updated_date | String(19) | Latest status change of a disbursement. Example from 'Pending' to 'Success' ("dd-MM-yyyy HH:mm:ss in UTC Time zone")
 
 ### Transaction Status: API Disbursement
-Below is the list of response codes that show the transaction status for Create Disbursement API:
+Below is the list of response codes that show the transaction status for Disbursement Callback:
 
 | Response Code | State     | Description                                                  |
 |---------------|-----------|--------------------------------------------------------------|
