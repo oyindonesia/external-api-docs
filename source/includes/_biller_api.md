@@ -953,6 +953,7 @@ Status         | State     | Meaning
 304            | Final     | Invalid Data (FAILED)
 305            | Final     | Customer ID Already Paid (FAILED)
 306            | Final     | System on the Cut-off Schedule (FAILED)
+307            | Final     | Biller System Error (FAILED)
 400            | Non-Final | Transaction Pending (PENDING)
 
 The following status codes are for rejected requests
