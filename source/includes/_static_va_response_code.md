@@ -18,6 +18,7 @@ Response Code | State | Description
 226 | Final | Request is rejected (Transaction expiry time exceeds VA expiry time)
 245 | Final | Request is rejected (Min expiry time is 60 minutes)
 246 | Final | Request is rejected (Failed update va)
+260 | Final | Request is rejected (Given VA suffix is invalid)
 999 | Non-Final | Internal Server Error
 
 IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:
@@ -27,5 +28,6 @@ Response Code | Description
 201 | Request is Rejected (User ID is not Found)
 202 | Request is Rejected (User ID is not Active)
 202 | Request is Rejected (Multiple Use VA is not allowed for use)
+202 | Request is Rejected (Custom VA is not allowed for use)
 429 | Request Rejected (Too Many Request to specific endpoint)
 990 | Request is Rejected (Invalid Format)

@@ -776,7 +776,7 @@ username_display | String | - | - | Customizable VA display name that will be se
 is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 email | String(50) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If you want to make the trx_expiration_time expired, pass "0" in the trx_expiration_time
-partner_trx_id | String(255) | - | Partner unique Transaction ID of a VA
+partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
 trx_counter | Int | FALSE | -1/1 | Update transaction counter to limit number of transaction that can be receive by va number
 
 ### Response Parameters
@@ -1229,6 +1229,700 @@ status | Object | Status of response in Object `{code: <status_code>, message: <
 data  | Array of Object  | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>, va_history_id: <va_history_id>, settlement_time: <settlement_time>, settlement_status: <settlement_status>}`
 number_of_transaction  | Integer | Total transaction
 total_incoming_payment | Integer | Total incoming payment
+
+## Create Customized VA
+
+Use this API to create new VA number with customized VA suffix.
+
+```shell
+curl -X \
+POST <%= config[:endpoint_prod] %>/api/custom-va
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username: username' \
+-H 'x-api-key: apikey' \
+-d '{
+    "partner_user_id":"51200021",
+    "bank_code": "002",
+    "amount": 10000,
+    "is_open": false, 
+    "username_display": "va name",
+    "email": "email@mail.com",
+    "trx_expiration_time": 5,
+    "partner_trx_id": "TRX0001",
+    "va_suffix" : "081234567890"
+}'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/custom-va'));
+request.body = json.encode({
+    "partner_user_id":"51200021",
+    "bank_code": "002",
+    "amount": 10000,
+    "is_open": false, 
+    "username_display": "va name",
+    "email": "email@mail.com",
+    "trx_expiration_time": 5,
+    "partner_trx_id": "TRX0001",
+    "va_suffix" : "081234567890"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/custom-va"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "partner_user_id":"51200021",
+  "bank_code": "002",
+  "amount": 10000,
+  "is_open": false, 
+  "username_display": "va name",
+  "email": "email@mail.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0001",
+  "va_suffix" : "081234567890"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\"partner_user_id\":\"51200021\",\n\"bank_code\": \"002\",\n\"amount\": 10000,\n\"is_open\": false,\n\"username_display\": \"va name\",\n\"email\": \"email@mail.com\",\n\"trx_expiration_time\": 5,\n\"partner_trx_id\": \"TRX0001\",\n\"va_suffix\" : \"081234567890\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/custom-va")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_user_id":"51200021",
+  "bank_code": "002",
+  "amount": 10000,
+  "is_open": false, 
+  "username_display": "va name",
+  "email": "email@mail.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0001",
+  "va_suffix" : "081234567890"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/custom-va");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/custom-va');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('"{\n\"partner_user_id\":\"51200021\",\n\"bank_code\": \"002\",\n\"amount\": 10000,\n\"is_open\": false,\n\"username_display\": \"va name\",\n\"email\": \"email@mail.com\",\n\"trx_expiration_time\": 5,\n\"partner_trx_id\": \"TRX0001\",\n\"va_suffix\" : \"081234567890\"\n}"');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "partner_user_id":"51200021",
+  "bank_code": "002",
+  "amount": 10000,
+  "is_open": false, 
+  "username_display": "va name",
+  "email": "email@mail.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0001",
+  "va_suffix" : "081234567890"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("POST", "/api/custom-va", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "id": "12345b1-23be-45670-a123-5ca678f12b3e",
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "amount": 10000,
+    "va_number": "134789181234567890",
+    "bank_code": "002",
+    "is_open": false,
+    "va_status": "WAITING_PAYMENT",
+    "username_display": "va name",
+    "partner_user_id" : "51200021",
+    "trx_expiration_time": 1582783668175,
+    "partner_trx_id": "TRX0001"
+}
+```
+
+### HTTPS Request
+**[Production]** `POST <%= config[:endpoint_prod] %>/api/custom-va` <br/>
+**[Staging]** `POST <%= config[:endpoint_stg] %>/api/custom-va`
+
+### Request Parameters
+
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+partner_user_id | String(255) | TRUE | - | Partner unique ID for specific user
+bank_code | String(3) | TRUE | - | Bank code which the VA number will be generated. Refer to [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
+amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
+is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
+username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
+email | String(50) | FALSE | - | Email of user, using email standard format
+trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty, there will be no transaction expiration time.
+partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
+va_suffix | String (10-12) | TRUE | - | Customized VA suffix that will be used by user. Must consists of digit only. Please note that given suffix may be trimmed from the front if it exceeds maximum VA digit capacity.
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
+amount | BigDecimal | Amount of VA transaction
+va_number | String(20) | Generated VA number
+id | String(36) | Unique VA ID
+partner_user_id | String(255) | Your unique ID for specific user
+bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
+is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
+username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
+trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
+partner_trx_id | String(255) | Partner unique Transaction ID of a VA
+
+## Update Customized VA
+
+Update Customized VA using unique VA id.
+
+```shell
+curl -X \
+PUT <%= config[:endpoint_prod] %>/api/custom-va/1414255-12121-21212121-212121
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username: username' \
+-H 'x-api-key: apikey' \
+-d '{
+    "amount": 50000,
+    "username_display": "test",
+    "email": "email@domain.com",
+    "trx_expiration_time": 5,
+    "partner_trx_id": "TRX0002"
+}'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('PUT', Uri.parse('{{base_url}}/api/custom-va/2701b82a-89f8-4343-81a2-fa0c92edca09'));
+request.body = json.encode({
+  "amount": 50000,
+  "username_display": "test",
+  "email": "email@domain.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0002"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/custom-va/2701b82a-89f8-4343-81a2-fa0c92edca09"
+  method := "PUT"
+
+  payload := strings.NewReader(`{
+  "amount": 50000,
+  "username_display": "test",
+  "email": "email@domain.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0002"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"amount\": 50000,\n\t\"username_display\": "test",\n\t\"email\": "email@domain.com",\n\t\"trx_expiration_time\": 5,\n\t\"partner_trx_id\": \"TRX0002\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/custom-va/2701b82a-89f8-4343-81a2-fa0c92edca09")
+  .method("PUT", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "amount": 50000,
+  "username_display": "test",
+  "email": "email@domain.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0002"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("PUT", "%7B%7Bbase_url%7D%7D/api/custom-va/2701b82a-89f8-4343-81a2-fa0c92edca09");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/custom-va`/2701b82a-89f8-4343-81a2-fa0c92edca09');
+$request->setMethod(HTTP_Request2::METHOD_PUT);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('{\n  "amount": 50000,\n  "username_display": "test",\n "email": "email@domain.com",\n  "trx_expiration_time": 5,\n "partner_trx_id": "TRX0002"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "amount": 50000,
+  "username_display": "test",
+  "email": "email@domain.com",
+  "trx_expiration_time": 5,
+  "partner_trx_id": "TRX0002"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("PUT", "/api/custom-va/2701b82a-89f8-4343-81a2-fa0c92edca09", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "id": "1414255-12121-21212121-212121",
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "amount": 50000,
+    "va_number": "134789181234567890",
+    "bank_code": "002",
+    "is_open": false,
+    "va_status": "WAITING_PAYMENT",
+    "username_display": "test",
+    "partner_user_id": "12345677",
+    "trx_expiration_time": 1582802205412,
+    "partner_trx_id": "TRX0002",
+}
+```
+
+### HTTPS Request
+**[Production]** `PUT <%= config[:endpoint_prod] %>/api/custom-va/<ID>` <br/>
+**[Staging]** `PUT <%= config[:endpoint_stg] %>/api/custom-va/<ID>`
+
+### URL Parameter
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+ID | String(36) | TRUE | - | Unique VA id, you can get this once you have successfully created a customized VA
+
+### Request Parameters
+
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+amount | BigDecimal | FALSE | - | Amount your user must paid to complete the transaction
+username_display | String | - | - | Customizable VA display name that will be seen by user, If empty willl be using partner username
+email | String(50) | FALSE | - | Email of user, using email standard format
+trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If you want to make the trx_expiration_time expired, pass "0" in the trx_expiration_time
+partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+id | String |  Unique VA id
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
+amount | BigDecimal | Amount of VA transaction
+va_number | String(20) | Generated VA number
+bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
+is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
+username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
+partner_user_id | String(255) | Partner unique ID for specific user
+trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
+partner_trx_id | String(255) | Partner unique Transaction ID of a VA
+
+## Deactivate Customized VA 
+
+Use this API to deactivate an existing customized VA using unique VA id. 
+
+
+```shell
+curl -X \
+DELETE <%= config[:endpoint_prod] %>/api/custom-va/1414255-12121-21212121-212121
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username: username' \
+-H 'x-api-key: apikey'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api_key}}'
+};
+var request = http.Request('DELETE', Uri.parse('{{base_url}}/api/custom-va/2c26f23d-2dfa-44d1-9202-f8c1f907a983'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/custom-va/2c26f23d-2dfa-44d1-9202-f8c1f907a983"
+  method := "DELETE"
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, nil)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api_key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/custom-va/2c26f23d-2dfa-44d1-9202-f8c1f907a983")
+  .method("DELETE", null)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api_key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("DELETE", "%7B%7Bbase_url%7D%7D/api/custom-va/2c26f23d-2dfa-44d1-9202-f8c1f907a983");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api_key}}");
+
+xhr.send();
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/custom-va/2c26f23d-2dfa-44d1-9202-f8c1f907a983');
+$request->setMethod(HTTP_Request2::METHOD_DELETE);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api_key}}'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = ''
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api_key}}'
+}
+conn.request("DELETE", "/api/custom-va/2c26f23d-2dfa-44d1-9202-f8c1f907a983", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status": {
+        "code": "000",
+        "message": "Success"
+    }
+}
+```
+
+### HTTPS Request
+**[Production]** `DELETE <%= config[:endpoint_prod] %>/api/custom-va/<ID>` <br/>
+**[Staging]** `DELETE <%= config[:endpoint_stg] %>/api/custom-va/<ID>`
+
+### URL Parameters
+
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+ID | String(255) | TRUE | - | Unique VA id, you can get this once you have successfully created a customized VA
+
+### Response Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
 
 
 ## Partner Callback Va Aggregator
