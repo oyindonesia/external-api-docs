@@ -5,6 +5,233 @@ API Account Receivable is the newest feature that allows Partners to manage cust
 ## Create New Customer
 This endpoint enables the creation of new customers via API. Addition of new customer can also be done via dashboard at your convenience.
 
+```shell
+curl --location --request POST 'https://partner.oyindonesia.com/api/account-receivable/customers' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: api-key' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Acumen Metros",
+    "partner_customer_id": "customer_id",
+    "tax_type": "PPN_10_INCLUSIVE",
+    "address": "address",
+    "email": "email@address.com",
+    "pic_name": "Pic name",
+    "phone_number": "08123456789",
+    "pph_tax":"PPH_23_NON_NPWP"
+}'
+```
+
+```dart
+var headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/account-receivable/customers'));
+request.body = json.encode({
+  "name": "Acumen Metros",
+  "partner_customer_id": "customer_id",
+  "tax_type": "PPN_10_INCLUSIVE",
+  "address": "address",
+  "email": "email@address.com",
+  "pic_name": "Pic Name",
+  "phone_number": "0812345678",
+  "pph_tax": "PPH_23_NON_NPWP"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account-receivable/customers"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+    "name": "Acumen Metros",
+    "partner_customer_id": "customer_id",
+    "tax_type": "PPN_10_INCLUSIVE",
+    "address": "address",
+    "email": "email@address.com",
+    "pic_name": "Pic Name",
+    "phone_number": "0812345678",
+    "pph_tax":"PPH_23_NON_NPWP"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "username")
+  req.Header.Add("x-api-key", "api_key")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+  MediaType mediaType = MediaType.parse("application/json");
+  RequestBody body = RequestBody.create(mediaType, "{\n    \"name\": \"Acumen Metros\",\n    \"partner_customer_id\": \"customer_id\",\n    \"tax_type\": \"PPN_10_INCLUSIVE\",\n    \"address\": \"address\",\n    \"email\": \"email@address.com\",\n    \"pic_name\": \"Pic Name\",\n    \"phone_number\": \"0812345678\",\n    \"pph_tax\":\"PPH_23_NON_NPWP\"\n}");
+  Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account-receivable/customers")
+  .method("POST", body)
+  .addHeader("x-oy-username", "username")
+  .addHeader("x-api-key", "api_key")
+  .addHeader("Content-Type", "application/json")
+  .build();
+  Response response = client.newCall(request).execute();
+```
+
+```javascript
+// WARNING: For POST requests, body is set to null by browsers.
+var data = JSON.stringify({
+  "name": "Acumen Metros",
+  "partner_customer_id": "customer_id",
+  "tax_type": "PPN_10_INCLUSIVE",
+  "address": "address",
+  "email": "email@address.com",
+  "pic_name": "Pic Name",
+  "phone_number": "0812345678",
+  "pph_tax": "PPH_23_NON_NPWP"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://partner.oyindonesia.com/api/account-receivable/customers");
+xhr.setRequestHeader("x-oy-username", "username");
+xhr.setRequestHeader("x-api-key", "api_key");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account-receivable/customers');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => 'username',
+  'x-api-key' => 'api_key',
+  'Content-Type' => 'application/json'
+));
+$request->setBody('{\n    "name": "Acumen Metros",\n    "partner_customer_id": "customer_id",\n    "tax_type": "PPN_10_INCLUSIVE",\n    "address": "address",\n    "email": "email@address.com",\n    "pic_name": "Pic Name",\n    "phone_number": "0812345678",\n    "pph_tax":"PPH_23_NON_NPWP"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = json.dumps({
+  "name": "Acumen Metros",
+  "partner_customer_id": "customer_id",
+  "tax_type": "PPN_10_INCLUSIVE",
+  "address": "address",
+  "email": "email@address.com",
+  "pic_name": "Pic Name",
+  "phone_number": "0812345678",
+  "pph_tax": "PPH_23_NON_NPWP"
+})
+headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+}
+conn.request("POST", "/api/account-receivable/customers", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "data": {
+    "id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+    "status": "ACTIVE",
+    "partner_customer_id": "customer_id",
+    "name": "Acumen Metros",
+    "pic_name": "Pic Name",
+    "phone_number": "0812345678",
+    "tax_type": "PPN_10_INCLUSIVE",
+    "pph_tax": "PPH_23_NON_NPWP",
+    "email": "email@address.com",
+    "address": "address",
+    "total_piutang": null,
+    "can_be_deactivated": false
+  },
+  "status": {
+    "code": "000",
+    "message": "Success"
+  }
+}
+```
+
 ### HTTPS Request
 **[Production]** `POST https://partner.oyindonesia.com/api/account-receivable/customers` <br>
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/account-receivable/customers`
@@ -50,11 +277,241 @@ Status | Object | Status of response in Object {code: <status_code>, message: <s
 code | String | success status code
 message | String | success status message for further explanation
 
-
-
 ## Edit Customer
 
 This endpoint allows update of customer’s data, such as tax information or even deactivation of customer.
+
+```shell
+curl --location --request PUT 'https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: api_key' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Acumen Metros",
+    "partner_customer_id": "customer_id",
+    "tax_type": "NO_TAX",
+    "address": "",
+    "email": "new_email@address.com",
+    "pic_name": 123,
+    "phone_number": "082143207721",
+    "pph_tax": "PPH_23_NON_NPWP",
+    "status": "ACTIVE"
+}'
+```
+
+```dart
+var headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('PUT', Uri.parse('https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15'));
+request.body = json.encode({
+  "name": "Acumen Metros",
+  "partner_customer_id": "customer_id",
+  "tax_type": "NO_TAX",
+  "address": "",
+  "email": "new_email@address.com",
+  "pic_name": 123,
+  "phone_number": "082143207721",
+  "pph_tax": "PPH_23_NON_NPWP",
+  "status": "ACTIVE"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15"
+  method := "PUT"
+
+  payload := strings.NewReader(`{
+    "name": "Acumen Metros",
+    "partner_customer_id": "customer_id",
+    "tax_type": "NO_TAX",
+    "address": "",
+    "email": "new_email@address.com",
+    "pic_name": 123,
+    "phone_number": "082143207721",
+    "pph_tax": "PPH_23_NON_NPWP",
+    "status": "ACTIVE"
+}
+
+`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "username")
+  req.Header.Add("x-api-key", "api_key")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+  MediaType mediaType = MediaType.parse("application/json");
+  RequestBody body = RequestBody.create(mediaType, "{\n    \"name\": \"Acumen Metros\",\n    \"partner_customer_id\": \"customer_id\",\n    \"tax_type\": \"NO_TAX\",\n    \"address\": \"\",\n    \"email\": \"new_email@address.com\",\n    \"pic_name\": 123,\n    \"phone_number\": \"082143207721\",\n    \"pph_tax\": \"PPH_23_NON_NPWP\",\n    \"status\": \"ACTIVE\"\n}\n\n");
+  Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15")
+  .method("PUT", body)
+  .addHeader("x-oy-username", "username")
+  .addHeader("x-api-key", "api_key")
+  .addHeader("Content-Type", "application/json")
+  .build();
+  Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "name": "Acumen Metros",
+  "partner_customer_id": "customer_id",
+  "tax_type": "NO_TAX",
+  "address": "",
+  "email": "new_email@address.com",
+  "pic_name": 123,
+  "phone_number": "082143207721",
+  "pph_tax": "PPH_23_NON_NPWP",
+  "status": "ACTIVE"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("PUT", "https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15");
+xhr.setRequestHeader("x-oy-username", "username");
+xhr.setRequestHeader("x-api-key", "api_key");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15');
+$request->setMethod(HTTP_Request2::METHOD_PUT);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => 'username',
+  'x-api-key' => 'api_key',
+  'Content-Type' => 'application/json'
+));
+$request->setBody('{\n    "name": "Acumen Metros",\n    "partner_customer_id": "customer_id",\n    "tax_type": "NO_TAX",\n    "address": "",\n    "email": "new_email@address.com",\n    "pic_name": 123,\n    "phone_number": "082143207721",\n    "pph_tax": "PPH_23_NON_NPWP",\n    "status": "ACTIVE"\n}\n\n');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = json.dumps({
+  "name": "Acumen Metros",
+  "partner_customer_id": "customer_id",
+  "tax_type": "NO_TAX",
+  "address": "",
+  "email": "new_email@address.com",
+  "pic_name": 123,
+  "phone_number": "082143207721",
+  "pph_tax": "PPH_23_NON_NPWP",
+  "status": "ACTIVE"
+})
+headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+}
+conn.request("PUT", "/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "data": {
+    "id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+    "status": "ACTIVE",
+    "partner_customer_id": "customer_id",
+    "name": "Acumen Metros",
+    "pic_name": null,
+    "phone_number": "082143207721",
+    "tax_type": "NO_TAX",
+    "pph_tax": "PPH_23_NON_NPWP",
+    "email": "new_email@address.com",
+    "address": "",
+    "total_piutang": null,
+    "can_be_deactivated": false
+  },
+  "status": {
+    "code": "000",
+    "message": "Success"
+  }
+}
+```
 
 ### HTTPS Request
 
@@ -96,11 +553,157 @@ Status | Object | Status of response in Object {code: <status_code>, message: <s
 code | String | success status code
 message | String | success status message for further explanation
 
-
-
 ## Retrieve Customer's Details
 
 This endpoints allow Partners to retrieve existing customers details.
+
+```shell
+curl --location --request GET 'https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: api_key' 
+```
+
+```dart
+var headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  
+var request = http.Request('GET', Uri.parse('https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15"
+  method := "GET"
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, nil)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "username")
+  req.Header.Add("x-api-key", "api_key")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15")
+  .method("GET", body)
+  .addHeader("x-oy-username", "username")
+  .addHeader("x-api-key", "api_key")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => 'username',
+  'x-api-key' => 'api_key'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = ''
+headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key'
+}
+conn.request("GET", "/api/account-receivable/customers/8b57cbb0-41f9-48f2-b092-5fa999ddcb15", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "data": {
+    "id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+    "status": "ACTIVE",
+    "partner_customer_id": "customer_id",
+    "name": "Acumen Metros",
+    "pic_name": null,
+    "phone_number": "082143207721",
+    "tax_type": "NO_TAX",
+    "pph_tax": "PPH_23_NON_NPWP",
+    "email": "new_email@address.com",
+    "address": "",
+    "total_piutang": 0,
+    "can_be_deactivated": true
+  },
+  "status": {
+    "code": "000",
+    "message": "Success"
+  }
+}
+```
 
 ### HTTPS Request
 
@@ -127,10 +730,176 @@ Status | Object | Status of response in Object {code: <status_code>, message: <s
 code | String | success status code
 message | String | success status message for further explanation
 
-
 ## Filter & Search Customers
 
 This endpoint filters customer data based on criteria that can be set through API
+
+```shell
+curl --location --request GET 'https://partner.oyindonesia.com/api/account-receivable/customers' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: api_key' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    
+}'
+```
+
+```dart
+var headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('GET', Uri.parse('https://partner.oyindonesia.com/api/account-receivable/customers'));
+request.body = json.encode({});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account-receivable/customers"
+  method := "GET"
+
+  payload := strings.NewReader(`{
+    
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "username")
+  req.Header.Add("x-api-key", "api_key")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+  MediaType mediaType = MediaType.parse("application/json");
+  RequestBody body = RequestBody.create(mediaType, "{\n    \n}");
+  Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account-receivable/customers")
+  .method("GET", body)
+  .addHeader("x-oy-username", "username")
+  .addHeader("x-api-key", "api_key")
+  .addHeader("Content-Type", "application/json")
+  .build();
+  Response response = client.newCall(request).execute();
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account-receivable/customers');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => 'username',
+  'x-api-key' => 'api_key',
+  'Content-Type' => 'application/json'
+));
+$request->setBody('{\n    \n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = json.dumps({})
+headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+}
+conn.request("GET", "/api/account-receivable/customers", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "data": [
+    {
+      "id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+      "status": "ACTIVE",
+      "partner_customer_id": "customer_id",
+      "name": "Acumen Metros",
+      "pic_name": null,
+      "phone_number": "082143207721",
+      "tax_type": "NO_TAX",
+      "pph_tax": "PPH_23_NON_NPWP",
+      "email": "new_email@address.com",
+      "address": "",
+      "total_piutang": null,
+      "can_be_deactivated": true
+    }
+  ],
+  "status": {
+    "code": "000",
+    "message": "Success"
+  }
+}
+```
 
 ### HTTPS Request
 
@@ -172,11 +941,347 @@ Status | Object | Status of response in Object {code: <status_code>, message: <s
 code | String | success status code
 message | String | success status message for further explanation
 
-
-
 ## Create & Send Invoice
 
 This endpoint allows Partners to create Account Receivable Invoice through API and send invoice directly to customers via email.
+
+Use this API to create new VA number
+
+```shell
+curl --location --request POST 'https://partner.oyindonesia.com/api/account-receivable/invoices' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: api_key' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "invoice_number": "INV/2022/12/210205",
+    "invoice_date": "2022-12-21",
+    "due_date": "2022-12-25",
+    "customer_id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+    "expiration_date":"2022-12-25 12:58:01",
+    "invoice_items": [{
+        "price_per_item": 25600,
+        "description": "kopi susu",
+        "quantity": 4
+    }],
+    "additional_items": [{
+        "description": "Diskon",
+        "price_per_item": -5000,
+        "quantity": 1
+    }],
+    "message": null,
+    "attachments": [],
+    "save_as_default_message": false,
+    "payment_configuration": {
+        "include_admin_fee": true,
+        "list_disabled_payment_methods": "OFFLINE_CASH_IN",
+        "list_enabled_banks": "002,008,009,013,213",
+        "list_enabled_ewallet": "shopeepay_ewallet,linkaja_ewallet,dana_ewallet",
+        "list_enabled_offline_channel": ""
+    }
+}'
+```
+
+```dart
+var headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/account-receivable/invoices'));
+request.body = json.encode({
+  "invoice_number": "INV/2022/12/210205",
+  "invoice_date": "2022-12-21",
+  "due_date": "2022-12-25",
+  "customer_id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+  "expiration_date": "2022-12-25 12:58:01",
+  "invoice_items": [
+    {
+      "price_per_item": 25600,
+      "description": "kopi susu",
+      "quantity": 4
+    }
+  ],
+  "additional_items": [
+    {
+      "description": "Diskon",
+      "price_per_item": -5000,
+      "quantity": 1
+    }
+  ],
+  "message": null,
+  "attachments": [],
+  "save_as_default_message": false,
+  "payment_configuration": {
+    "include_admin_fee": true,
+    "list_disabled_payment_methods": "OFFLINE_CASH_IN",
+    "list_enabled_banks": "002,008,009,013,213",
+    "list_enabled_ewallet": "shopeepay_ewallet,linkaja_ewallet,dana_ewallet",
+    "list_enabled_offline_channel": ""
+  }
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account-receivable/invoices"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+    "invoice_number": "INV/2022/12/210205",
+    "invoice_date": "2022-12-21",
+    "due_date": "2022-12-25",
+    "customer_id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+    "expiration_date":"2022-12-25 12:58:01",
+    "invoice_items": [{
+        "price_per_item": 25600,
+        "description": "kopi susu",
+        "quantity": 4
+    }],
+    "additional_items": [{
+        "description": "Diskon",
+        "price_per_item": -5000,
+        "quantity": 1
+    }],
+    "message": null,
+    "attachments": [],
+    "save_as_default_message": false,
+    "payment_configuration": {
+        "include_admin_fee": true,
+        "list_disabled_payment_methods": "OFFLINE_CASH_IN",
+        "list_enabled_banks": "002,008,009,013,213",
+        "list_enabled_ewallet": "shopeepay_ewallet,linkaja_ewallet,dana_ewallet",
+        "list_enabled_offline_channel": ""
+    }
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "username")
+  req.Header.Add("x-api-key", "api_key")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+  MediaType mediaType = MediaType.parse("application/json");
+  RequestBody body = RequestBody.create(mediaType, "{\n    \"invoice_number\": \"INV/2022/12/210205\",\n    \"invoice_date\": \"2022-12-21\",\n    \"due_date\": \"2022-12-25\",\n    \"customer_id\": \"8b57cbb0-41f9-48f2-b092-5fa999ddcb15\",\n    \"expiration_date\":\"2022-12-25 12:58:01\",\n    \"invoice_items\": [{\n        \"price_per_item\": 25600,\n        \"description\": \"kopi susu\",\n        \"quantity\": 4\n    }],\n    \"additional_items\": [{\n        \"description\": \"Diskon\",\n        \"price_per_item\": -5000,\n        \"quantity\": 1\n    }],\n    \"message\": null,\n    \"attachments\": [],\n    \"save_as_default_message\": false,\n    \"payment_configuration\": {\n        \"include_admin_fee\": true,\n        \"list_disabled_payment_methods\": \"OFFLINE_CASH_IN\",\n        \"list_enabled_banks\": \"002,008,009,013,213\",\n        \"list_enabled_ewallet\": \"shopeepay_ewallet,linkaja_ewallet,dana_ewallet\",\n        \"list_enabled_offline_channel\": \"\"\n    }\n}");
+  Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account-receivable/invoices")
+  .method("POST", body)
+  .addHeader("x-oy-username", "username")
+  .addHeader("x-api-key", "api_key")
+  .addHeader("Content-Type", "application/json")
+  .build();
+  Response response = client.newCall(request).execute();
+```
+
+```javascript
+// WARNING: For POST requests, body is set to null by browsers.
+var data = JSON.stringify({
+  "invoice_number": "INV/2022/12/210205",
+  "invoice_date": "2022-12-21",
+  "due_date": "2022-12-25",
+  "customer_id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+  "expiration_date": "2022-12-25 12:58:01",
+  "invoice_items": [
+    {
+      "price_per_item": 25600,
+      "description": "kopi susu",
+      "quantity": 4
+    }
+  ],
+  "additional_items": [
+    {
+      "description": "Diskon",
+      "price_per_item": -5000,
+      "quantity": 1
+    }
+  ],
+  "message": null,
+  "attachments": [],
+  "save_as_default_message": false,
+  "payment_configuration": {
+    "include_admin_fee": true,
+    "list_disabled_payment_methods": "OFFLINE_CASH_IN",
+    "list_enabled_banks": "002,008,009,013,213",
+    "list_enabled_ewallet": "shopeepay_ewallet,linkaja_ewallet,dana_ewallet",
+    "list_enabled_offline_channel": ""
+  }
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://partner.oyindonesia.com/api/account-receivable/invoices");
+xhr.setRequestHeader("x-oy-username", "username");
+xhr.setRequestHeader("x-api-key", "api_key");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account-receivable/invoices');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => 'username',
+  'x-api-key' => 'api_key',
+  'Content-Type' => 'application/json'
+));
+$request->setBody('{\n    "invoice_number": "INV/2022/12/210205",\n    "invoice_date": "2022-12-21",\n    "due_date": "2022-12-25",\n    "customer_id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",\n    "expiration_date":"2022-12-25 12:58:01",\n    "invoice_items": [{\n        "price_per_item": 25600,\n        "description": "kopi susu",\n        "quantity": 4\n    }],\n    "additional_items": [{\n        "description": "Diskon",\n        "price_per_item": -5000,\n        "quantity": 1\n    }],\n    "message": null,\n    "attachments": [],\n    "save_as_default_message": false,\n    "payment_configuration": {\n        "include_admin_fee": true,\n        "list_disabled_payment_methods": "OFFLINE_CASH_IN",\n        "list_enabled_banks": "002,008,009,013,213",\n        "list_enabled_ewallet": "shopeepay_ewallet,linkaja_ewallet,dana_ewallet",\n        "list_enabled_offline_channel": ""\n    }\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = json.dumps({
+  "invoice_number": "INV/2022/12/210205",
+  "invoice_date": "2022-12-21",
+  "due_date": "2022-12-25",
+  "customer_id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+  "expiration_date": "2022-12-25 12:58:01",
+  "invoice_items": [
+    {
+      "price_per_item": 25600,
+      "description": "kopi susu",
+      "quantity": 4
+    }
+  ],
+  "additional_items": [
+    {
+      "description": "Diskon",
+      "price_per_item": -5000,
+      "quantity": 1
+    }
+  ],
+  "message": None,
+  "attachments": [],
+  "save_as_default_message": False,
+  "payment_configuration": {
+    "include_admin_fee": True,
+    "list_disabled_payment_methods": "OFFLINE_CASH_IN",
+    "list_enabled_banks": "002,008,009,013,213",
+    "list_enabled_ewallet": "shopeepay_ewallet,linkaja_ewallet,dana_ewallet",
+    "list_enabled_offline_channel": ""
+  }
+})
+headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+}
+conn.request("POST", "/api/account-receivable/invoices", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "data": {
+    "id": "c6733a50-f93b-489f-b12b-48f8cc67735e",
+    "status": "CREATED",
+    "customer_id": null,
+    "customer_name": "Acumen Metros",
+    "customer_phone_number": null,
+    "invoice_number": "INV/2022/12/210205",
+    "source_data": "API",
+    "invoice_date": 1671555600000,
+    "due_date": 1671901200000,
+    "expiration_date": 1671947881000,
+    "invoice_items": [
+      {
+        "description": "kopi susu",
+        "quantity": 4,
+        "price_per_item": 25600
+      }
+    ],
+    "message": null,
+    "attachments": [],
+    "payment_url": "https://pay-dev.oyindonesia.com/invoice/c6733a50-f93b-489f-b12b-48f8cc67735e",
+    "payment_date": null,
+    "admin_fee": null,
+    "amount_billed": null,
+    "amount_received": null,
+    "customer_email": null
+  },
+  "status": {
+    "code": "000",
+    "message": "Success"
+  }
+}
+```
 
 ### HTTPS Request
 
@@ -236,11 +1341,168 @@ Status | Object | Status of response in Object {code: <status_code>, message: <s
 code | String | success status code
 message | String | success status message
 
-
-
 ## Cancel Invoice
 
 An endpoint that allows invoice cancellation after creation
+
+```shell
+curl --location --request PUT 'https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: api_key' \
+--data-raw ''
+```
+
+```dart
+var headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key'
+};
+var request = http.Request('PUT', Uri.parse('https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e'));
+request.body = '''''';
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e"
+  method := "PUT"
+
+  payload := strings.NewReader(``)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "username")
+  req.Header.Add("x-api-key", "api_key")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+  MediaType mediaType = MediaType.parse("text/plain");
+  RequestBody body = RequestBody.create(mediaType, "");
+  Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e")
+  .method("PUT", body)
+  .addHeader("x-oy-username", "username")
+  .addHeader("x-api-key", "api_key")
+  .build();
+  Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = "";
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("PUT", "https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e");
+xhr.setRequestHeader("x-oy-username", "username");
+xhr.setRequestHeader("x-api-key", "api_key");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e');
+$request->setMethod(HTTP_Request2::METHOD_PUT);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => 'username',
+  'x-api-key' => 'api_key'
+));
+$request->setBody('');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = ''
+headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key'
+}
+conn.request("PUT", "/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "success": true,
+  "error": null,
+  "data": null,
+  "reason": null,
+  "status_code": 200
+}
+```
 
 ### HTTPS Request
 
@@ -266,11 +1528,202 @@ code | String | Success status code
 message | String | Success reason message
 reason | String | Reserve field to add additional notes for the response
 
-
-
 ## Get Invoice Details
 
 An endpoints that can provide details of an invoice including amount and status.
+
+```shell
+curl --location --request GET 'https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: api_key'
+```
+
+```dart
+var headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key'
+};
+var request = http.Request('GET', Uri.parse('https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e"
+  method := "GET"
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, nil)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "username")
+  req.Header.Add("x-api-key", "api_key")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+  MediaType mediaType = MediaType.parse("text/plain");
+  RequestBody body = RequestBody.create(mediaType, "");
+  Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e")
+  .method("GET", body)
+  .addHeader("x-oy-username", "username")
+  .addHeader("x-api-key", "api_key")
+  .build();
+  Response response = client.newCall(request).execute();
+```
+
+```javascript
+// WARNING: For GET requests, body is set to null by browsers.
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e");
+xhr.setRequestHeader("x-oy-username", "username");
+xhr.setRequestHeader("x-api-key", "api_key");
+
+xhr.send();
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => 'username',
+  'x-api-key' => 'api_key'
+));
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = ''
+headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key'
+}
+conn.request("GET", "/api/account-receivable/invoices/c6733a50-f93b-489f-b12b-48f8cc67735e", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "success": true,
+  "error": null,
+  "data": {
+    "id": "c6733a50-f93b-489f-b12b-48f8cc67735e",
+    "status": "CANCELLED",
+    "customer_id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+    "customer_name": "Acumen Metros",
+    "customer_email": "new_email@address.com",
+    "customer_phone_number": "082143207721",
+    "invoice_number": "INV/2022/12/210205",
+    "source_data": "API",
+    "message": null,
+    "attachments": [],
+    "invoice_date": "2022-12-21",
+    "payment_date": "2022-12-21 02:22:19",
+    "due_date": "2022-12-25",
+    "expiration_date": "2022-12-25 12:58:01",
+    "amount_billed": 93304.0000,
+    "amount_received": 0,
+    "admin_fee": null,
+    "payment_method": null,
+    "payment_url": "https://pay-dev.oyindonesia.com/invoice/c6733a50-f93b-489f-b12b-48f8cc67735e",
+    "invoice_items": [
+      {
+        "description": "kopi susu",
+        "quantity": 4,
+        "price_per_item": 25600
+      }
+    ],
+    "timeline_invoices": [
+      {
+        "status": "CREATED",
+        "action_stakeholder": "fajardev",
+        "action_date": "2022-12-21 02:07:00"
+      },
+      {
+        "status": "CANCELLED",
+        "action_stakeholder": "Acumen Metros",
+        "action_date": "2022-12-21 02:22:19"
+      }
+    ]
+  },
+  "reason": null,
+  "status_code": 200
+}
+```
 
 ### HTTPS Request
 
@@ -317,11 +1770,200 @@ action_stakeholder | String | Stakeholder that creates milestones
 action_date | date | date of milestones (when it was create, cancelled, paid)
 reason | String | Reserve Parameter to add additional notes for the response
 
-
-
 ## Filter and Search Invoice
 
 This endpoint allows Partners to filter and search invoices based on certain criteria
+
+```shell
+curl --location --request GET 'https://partner.oyindonesia.com/api/account-receivable/invoices?limit=10&offset=0&source_data=API' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: api_key' \
+--data-raw ''
+```
+
+```dart
+var headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key'
+};
+var request = http.Request('GET', Uri.parse('https://partner.oyindonesia.com/api/account-receivable/invoices?limit=10&offset=0&source_data=API'));
+request.body = '''''';
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account-receivable/invoices?limit=10&offset=0&source_data=API"
+  method := "GET"
+
+  payload := strings.NewReader(``)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "username")
+  req.Header.Add("x-api-key", "api_key")
+  
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+  MediaType mediaType = MediaType.parse("text/plain");
+  RequestBody body = RequestBody.create(mediaType, "");
+  Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account-receivable/invoices?limit=10&offset=0&source_data=API")
+  .method("GET", body)
+  .addHeader("x-oy-username", "username")
+  .addHeader("x-api-key", "api_key")
+  .build();
+  Response response = client.newCall(request).execute();
+```
+
+```javascript
+// WARNING: For GET requests, body is set to null by browsers.
+var data = "";
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://partner.oyindonesia.com/api/account-receivable/invoices?limit=10&offset=0&source_data=API");
+xhr.setRequestHeader("x-oy-username", "username");
+xhr.setRequestHeader("x-api-key", "api_key");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account-receivable/invoices?limit=10&offset=0&source_data=API');
+$request->setMethod(HTTP_Request2::METHOD_GET);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => 'username',
+  'x-api-key' => 'api_key'
+));
+$request->setBody('');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = ''
+headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key'
+}
+conn.request("GET", "/api/account-receivable/invoices?limit=10&offset=0&source_data=API", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "success": true,
+  "error": null,
+  "data": {
+    "page": 0,
+    "total": 1,
+    "limit": 10,
+    "data": [{
+      "id": "c6733a50-f93b-489f-b12b-48f8cc67735e",
+      "status": "CANCELLED",
+      "customer_id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+      "customer_name": "Acumen Metros",
+      "customer_phone_number": "082143207721",
+      "invoice_number": "INV/2022/12/210205",
+      "source_data": "API",
+      "invoice_date": 1671555600000,
+      "due_date": 1671901200000,
+      "expiration_date": 1671947881000,
+      "invoice_items": [{
+        "description": "kopi susu",
+        "quantity": 4,
+        "price_per_item": 25600
+      }],
+      "message": null,
+      "attachments": null,
+      "payment_url": "https://pay-dev.oyindonesia.com/invoice/c6733a50-f93b-489f-b12b-48f8cc67735e",
+      "payment_date": null,
+      "admin_fee": null,
+      "amount_billed": 93304,
+      "amount_received": 0,
+      "customer_email": "new_email@address.com"
+    }
+    ]
+  },
+  "reason": null,
+  "status_code": 200
+}
+```
 
 ### HTTPS Request
 
@@ -357,11 +1999,186 @@ message | String | Success reason message
 reason | String | Reserve field to add additional notes for the response
 status_code | Integer | Succes status code
 
-
-
 ## Resend Invoice
 
 This endpoint enables Partners to resend their invoices for reminder purposes. The API can be triggered to Email or Whatsapp. For Whatsapp, fees may occur.
+
+```shell
+curl --location --request POST 'http://172.11.25.113:8080/api/account-receivable/invoices/d24ee55f-7eaf-4269-b932-f123dec6f863/send' \
+--header 'x-oy-username: username' \
+--header 'x-api-key: api_key' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "channel" : "EMAIL"
+}'
+```
+
+```dart
+var headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/account-receivable/invoices/d24ee55f-7eaf-4269-b932-f123dec6f863/send'));
+request.body = json.encode({
+  "channel": "EMAIL"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account-receivable/invoices/d24ee55f-7eaf-4269-b932-f123dec6f863/send"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+    "channel" : "EMAIL"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("x-oy-username", "username")
+  req.Header.Add("x-api-key", "api_key")
+  req.Header.Add("Content-Type", "application/json")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+  MediaType mediaType = MediaType.parse("application/json");
+  RequestBody body = RequestBody.create(mediaType, "{\n    \"channel\" : \"EMAIL\"\n}");
+  Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account-receivable/invoices/d24ee55f-7eaf-4269-b932-f123dec6f863/send")
+  .method("POST", body)
+  .addHeader("x-oy-username", "username")
+  .addHeader("x-api-key", "api_key")
+  .addHeader("Content-Type", "application/json")
+  .build();
+  Response response = client.newCall(request).execute();
+```
+
+```javascript
+// WARNING: For POST requests, body is set to null by browsers.
+var data = JSON.stringify({
+  "channel": "EMAIL"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://partner.oyindonesia.com/api/account-receivable/invoices/d24ee55f-7eaf-4269-b932-f123dec6f863/send");
+xhr.setRequestHeader("x-oy-username", "username");
+xhr.setRequestHeader("x-api-key", "api_key");
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account-receivable/invoices/d24ee55f-7eaf-4269-b932-f123dec6f863/send');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'x-oy-username' => 'username',
+  'x-api-key' => 'api_key',
+  'Content-Type' => 'application/json'
+));
+$request->setBody('{\n    "channel" : "EMAIL"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("partner.oyindonesia.com")
+payload = json.dumps({
+  "channel": "EMAIL"
+})
+headers = {
+  'x-oy-username': 'username',
+  'x-api-key': 'api_key',
+  'Content-Type': 'application/json'
+}
+conn.request("POST", "/api/account-receivable/invoices/d24ee55f-7eaf-4269-b932-f123dec6f863/send", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+  "status": {
+    "code": "000",
+    "message": "Success"
+  }
+}
+```
 
 ### HTTPS Request
 
@@ -384,7 +2201,6 @@ Parameters | Type | Description
 Status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
 code | String | Success status code
 message | String | Success status message
-
 
 ## Response Code
 
