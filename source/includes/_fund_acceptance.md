@@ -279,10 +279,10 @@ child_balance | String | FALSE | An optional parameter. Applicable for MAM trans
 description | String | FALSE | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | FALSE | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | TRUE | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
-amount | Integer | TRUE | The amount of a transaction to be paid. | Minimum amount is IDR 15,000.
+amount | Integer | TRUE | The amount of a transaction to be paid. | Minimum amount is IDR 10,000.
 email | String | FALSE | The email addresses where the payment link will be sent to. | Up to 3 emails separated by ";"
 phone_number | Numeric | FALSE | Phone number of the payer for a transaction. | Do not use special character (e.g. "+")
-is_open	| Boolean | TRUE | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
+is_open	| Boolean | TRUE | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 10,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
 include_admin_fee | Boolean | TRUE | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
 list_disabled_payment_methods | String | TRUE | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
 list_enabled_banks | String | TRUE | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
