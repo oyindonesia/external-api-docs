@@ -272,23 +272,23 @@ X-Oy-Username | String | The registered partner username which access is enabled
 
 ### Request Parameters
 
-Parameters | Type | Description | Limitation
----- | ---- | ------ | -------
-partner_tx_id | String | A unique transaction ID provided by partner. | A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics. If empty then OY will generate automatically.
-child_balance | String | An optional parameter. Applicable for MAM transaction. Fill this with the username of your child account if you want to create a transaction on behalf of the child (the payment will go to the child account's balance)
-description | String | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
-notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
-sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
-amount | Integer | The amount of a transaction to be paid. | Minimum amount is IDR 15,000.
-email | String | The email addresses where the payment link will be sent to. | Up to 3 emails separated by ";"
-phone_number | Numeric | Phone number of the payer for a transaction. | Do not use special character (e.g. "+")
-is_open	| Boolean | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
-include_admin_fee | Boolean | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
-list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
-list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
-list_enabled_ewallet | String | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet", "dana_ewallet", "linkaja_ewallet", "ovo_ewallet".
-expiration | datetime | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
-va_display_name | String | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
+Parameters | Type | Required | Description | Limitation
+---- | ---- | ---- | ------ | -------
+partner_tx_id | String | FALSE | A unique transaction ID provided by partner. | A partner_tx_id that has been succesfully paid cannot be used anymore under the same username and only accepts alphanumerics. If empty then OY will generate automatically.
+child_balance | String | FALSE | An optional parameter. Applicable for MAM transaction. Fill this with the username of your child account if you want to create a transaction on behalf of the child (the payment will go to the child account's balance)
+description | String | FALSE | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
+notes | String | FALSE | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
+sender_name | String | TRUE | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
+amount | Integer | TRUE | The amount of a transaction to be paid. | Minimum amount is IDR 15,000.
+email | String | FALSE | The email addresses where the payment link will be sent to. | Up to 3 emails separated by ";"
+phone_number | Numeric | FALSE | Phone number of the payer for a transaction. | Do not use special character (e.g. "+")
+is_open	| Boolean | TRUE | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 15,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
+include_admin_fee | Boolean | TRUE | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
+list_disabled_payment_methods | String | TRUE | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
+list_enabled_banks | String | TRUE | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
+list_enabled_ewallet | String | TRUE | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet", "dana_ewallet", "linkaja_ewallet", "ovo_ewallet".
+expiration | datetime | FALSE | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
+va_display_name | String | FALSE | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
 
 
 ### Response Parameters
