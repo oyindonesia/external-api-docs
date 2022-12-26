@@ -316,6 +316,20 @@ Endpoint:
 Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
 </aside>
 
+### List of Allowed Payment Methods and SOF
+Below are the list and examples of possible values for both list_enable_payment_method and list_enable_sof. The requested SOF and/or payment method must be enabled on your account before your request is sent. Also note that the complete request examples provided only use `need_frontend = false`.
+#### Payment Methods
+| need_frontend | Possible Values |  Example |
+| :-----: | :---------: | :---------------: |
+| TRUE | VA, QRIS, EWALLET, CARDS | "VA,QRIS,CARDS" |
+| FALSE | VA, QRIS | "QRIS" |
+
+#### SOF
+| need_frontend | Possible Values |  Example |
+| :-----: | :---------: | :---------------: |
+| TRUE | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484, ewallet_dana, ewallet_ovo, ewallet_shopeepay, QRIS | "002, 009, ewallet_dana" |
+| FALSE | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484, QRIS | "016" |
+
 ### List of Disbursement Mock Account for Testing Purpose 
 Use those mock receiver bank account for testing Payment Routing purpose. To simulate all available status of Payment Routing, you can combine those mocked bank account numbers. For example, if you want to see `INCOMPLETE` status, put two recipients in the payment_routing object with mocked bank account number `1234567890` and `1234567891`. For more information about payment Routing status, see List of Payment Routing section.
 
