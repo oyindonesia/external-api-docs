@@ -327,7 +327,7 @@ Below are the list and examples of possible values for both list_enable_payment_
 #### SOF
 | need_frontend | Possible Values |  Example |
 | :-----: | :---------: | :---------------: |
-| TRUE | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484, ewallet_dana, ewallet_ovo, ewallet_shopeepay, QRIS | "002, 009, ewallet_dana" |
+| TRUE | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484, dana_ewallet, ovo_ewallet, shopeepay_ewallet, linkaja_ewallet, QRIS | "002, 009, dana_ewallet" |
 | FALSE | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484, QRIS | "016" |
 
 ### List of Disbursement Mock Account for Testing Purpose 
