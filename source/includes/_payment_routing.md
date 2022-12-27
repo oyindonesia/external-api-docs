@@ -283,10 +283,10 @@ Endpoint:
 |partner_user_id   | String    |   Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.| - |  Unique partner user id |
 | partner_trx_id  | String     |  FALSE | - | Unique partner transaction ID |
 | need_frontend | Boolean     |  TRUE | -| Partner need UI or not, if true, we will route to payment link, otherwise will be route to API-based solution. |
-| sender_email | String     |  FALSE | - | Email of sender |
-| receive_amount | Numeric     |  TRUE | - | The amount of a transaction to be paid, min. amount is 10000 |
 | list_enable_payment_method | String; comma separated     |  TRUE | - | To configure payment methods to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with VA,EWALLET,QRIS,CARDS. If need_frontend is FALSE only can accept VA and QRIS (CARDS and EWALLET is not allowed and will return an error if passed as a request parameter) |
 | list_enable_sof | String; comma separated      |  TRUE | - | To configure list of source of fund (banks or ewallets) to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with 008,009,dana_ewallet,linkaja_ewallet. If need_frontend is FALSE, this parameter should be filled only with one bank code or "QRIS" (will return an error otherwise) |
+| sender_email | String     |  FALSE | - | Email of sender |
+| receive_amount | Numeric     |  TRUE | - | The amount of a transaction to be paid, min. amount is 10000 |
 | va_display_name | String     |  FALSE | Partner's brand name | Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name |
 | trx_expiration_time| Date string; yyyy-mm-dd hh:mm:ss format     |  FALSE | 24 hours | Set expiration time of transaction. If empty use default 24h.  Min exp time is 1 hour.|
 | trx_counter | Numeric     |  FALSE | 1/-1 | Only applicable if you choose VA. It is a transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times. |
@@ -305,7 +305,7 @@ Endpoint:
 |partner_user_id|String|Partner user ID that you defined in the request parameter|
 |partner_trx_id|String|Partner transaction ID that you defined in the request parameter|
 |receive_amount|Numeric|amount to be received|
-|trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Trasnaction Expiration Time|
+|trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Transaction Expiration Time|
 |payment_info|Object|Payment info object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |va_number|String|Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA|
@@ -317,18 +317,35 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </aside>
 
 ### List of Allowed Payment Methods and SOF
-Below are the list and examples of possible values for both list_enable_payment_method and list_enable_sof. The requested SOF and/or payment method must be enabled on your account before your request is sent. Also note that the complete request examples provided only use `need_frontend = false`.
-#### Payment Methods
-| need_frontend | Possible Values |  Example |
-| :-----: | :---------: | :---------------: |
-| TRUE | VA, QRIS, EWALLET, CARDS | "VA,QRIS,CARDS" |
-| FALSE | VA, QRIS | "QRIS" |
+Below are the list and examples of possible values for both list_enable_payment_method and list_enable_sof based on the value of `need_frontend`. The requested SOF and/or payment method must be enabled on your account before your request is sent. Also note that the complete request examples provided only use `need_frontend = false`.
 
-#### SOF
-| need_frontend | Possible Values |  Example |
-| :-----: | :---------: | :---------------: |
-| TRUE | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484, dana_ewallet, ovo_ewallet, shopeepay_ewallet, linkaja_ewallet, QRIS | "002, 009, dana_ewallet" |
-| FALSE | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484, QRIS | "016" |
+#### need_frontend: true
+If `need_frontend: true`, the request should be filled with at least 1 list_enable_payment_method and 1 list_enable_sof.
+
+| Payment Method |  SOF |
+| :---------: | :---------------: |
+| VA | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484 |
+| QRIS | QRIS |
+| EWALLET | dana_ewallet, ovo_ewallet, shopeepay_ewallet, linkaja_ewallet |
+| CARDS | CARDS |
+
+#### need_frontend: false
+If `need_frontend: false`, the request should be filled only with 1 list_enable_payment_method and 1 list_enable_sof.
+
+| Payment Method |  SOF |
+| :---------: | :---------------: |
+| VA | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484 |
+| QRIS | QRIS |
+| EWALLET | n/a |
+| CARDS | n/a |
+
+#### Examples
+| need_frontend | Case | list_enable_payment_method | list_enable_sof |
+| :-----: | :------------: | :---------: | :---------: |
+| TRUE | VA and QRIS | VA,QRIS | 008,451,QRIS,002 |
+| TRUE | EWALLET, Credit Cards and VA | EWALLET,CARDS,VA | dana_ewallet,linkaja_ewallet,CARDS,484 |
+| FALSE | VA Only | VA | 009 |
+| FALSE | QRIS Only | QRIS | QRIS |
 
 ### List of Disbursement Mock Account for Testing Purpose 
 Use those mock receiver bank account for testing Payment Routing purpose. To simulate all available status of Payment Routing, you can combine those mocked bank account numbers. For example, if you want to see `INCOMPLETE` status, put two recipients in the payment_routing object with mocked bank account number `1234567890` and `1234567891`. For more information about payment Routing status, see List of Payment Routing section.
