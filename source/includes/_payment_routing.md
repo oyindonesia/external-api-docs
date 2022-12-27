@@ -319,8 +319,8 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 ### List of Allowed Payment Methods and SOF
 Below are the list and examples of possible values for both list_enable_payment_method and list_enable_sof based on the value of `need_frontend`. The requested SOF and/or payment method must be enabled on your account before your request is sent. Also note that the complete request examples provided only use `need_frontend = false`.
 
-#### need_frontend: true
-If `need_frontend: true`, the request should be filled with at least 1 list_enable_payment_method and 1 list_enable_sof.
+#### If need_frontend: true
+The request should be filled with at least 1 list_enable_payment_method and 1 list_enable_sof.
 
 | Payment Method |  SOF |
 | :---------: | :---------------: |
@@ -329,8 +329,8 @@ If `need_frontend: true`, the request should be filled with at least 1 list_enab
 | EWALLET | dana_ewallet, ovo_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CARDS |
 
-#### need_frontend: false
-If `need_frontend: false`, the request should be filled only with 1 list_enable_payment_method and 1 list_enable_sof.
+#### If need_frontend: false
+The request should be filled only with 1 list_enable_payment_method and 1 list_enable_sof.
 
 | Payment Method |  SOF |
 | :---------: | :---------------: |
