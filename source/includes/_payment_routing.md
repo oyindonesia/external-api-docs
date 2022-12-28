@@ -280,7 +280,7 @@ Endpoint:
 ### Request Parameters
 | Parameter  | Type |  Required   | Default | Description |
 | ------------- |:-------------:| :----------: |:-----:|:-----:|
-|partner_user_id   | String    |   Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.| - |  Unique partner user id |
+|partner_user_id   | String    |   Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.| - |  Unique partner user id. Will automatically be generated if left empty. If this field is left empty, the created VA will not be set as lifetime VA, but if it isn't empty, the created VA will be lifetime |
 | partner_trx_id  | String     |  FALSE | - | Unique partner transaction ID |
 | need_frontend | Boolean     |  TRUE | -| Partner need UI or not, if true, we will route to payment link, otherwise will be route to API-based solution. |
 | list_enable_payment_method | String; comma separated     |  TRUE | - | To configure payment methods to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with VA,EWALLET,QRIS,CARDS. If need_frontend is FALSE only can accept VA and QRIS (CARDS and EWALLET is not allowed and will return an error if passed as a request parameter) |
@@ -313,7 +313,7 @@ Endpoint:
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS|
 
 <aside class="warning">
-Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods. Also note that BSI VAs currently do not support the lifetime option, so make sure that partner_user_id is left empty if BSI is chosen in list_enable_sof.
 </aside>
 
 ### List of Allowed Payment Methods and SOF
