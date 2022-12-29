@@ -18849,7 +18849,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">String</td>
 <td style="text-align: center">Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">Unique partner user id</td>
+<td style="text-align: center">Unique partner user id. Will automatically be generated if left empty.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
@@ -19023,7 +19023,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </tbody></table>
 
 <aside class="warning">
-Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
+Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods. Also note that BSI VAs currently do not support the reusable option, so make sure that partner_user_id is left empty if BSI is chosen in list_enable_sof.
 </aside>
 <h3 id='list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing' type='normal'>List of Allowed Payment Methods and SOF</h3>
 <p>Below are the list and examples of possible values for both list_enable_payment_method and list_enable_sof based on the value of <code>need_frontend</code>. The requested SOF and/or payment method must be enabled on your account before your request is sent. Also note that the complete request examples provided only use <code>need_frontend = false</code>.</p>
