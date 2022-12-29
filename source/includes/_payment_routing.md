@@ -280,7 +280,7 @@ Endpoint:
 ### Request Parameters
 | Parameter  | Type |  Required   | Default | Description |
 | ------------- |:-------------:| :----------: |:-----:|:-----:|
-|partner_user_id   | String    |   Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.| - |  Unique partner user id. Will automatically be generated if left empty. If this field is left empty, the created VA will not be set as lifetime VA, but if it isn't empty, the created VA will be lifetime |
+|partner_user_id   | String    |   Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.| - |  Unique partner user id. Will automatically be generated if left empty. |
 | partner_trx_id  | String     |  FALSE | - | Unique partner transaction ID |
 | need_frontend | Boolean     |  TRUE | -| Partner need UI or not, if true, we will route to payment link, otherwise will be route to API-based solution. |
 | list_enable_payment_method | String; comma separated     |  TRUE | - | To configure payment methods to be enabled in the payment method page; For example, if need_frontend is TRUE, you can fill it with VA,EWALLET,QRIS,CARDS. If need_frontend is FALSE only can accept VA and QRIS (CARDS and EWALLET is not allowed and will return an error if passed as a request parameter) |
