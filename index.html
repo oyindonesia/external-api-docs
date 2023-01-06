@@ -18902,10 +18902,10 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </tr>
 <tr>
 <td>trx_expiration_time</td>
-<td style="text-align: center">Date string; yyyy-mm-dd hh:mm:ss format</td>
+<td style="text-align: center">Date string; yyyy-mm-dd hh:mm:ss format (UTC+7)</td>
 <td style="text-align: center">FALSE</td>
-<td style="text-align: center">24 hours</td>
-<td style="text-align: center">Set expiration time of transaction. If empty use default 24h.  Min exp time is 1 hour for non-QRIS transactions. For QRIS transactions (<code>need_frontend: false, list_enable_payment_method: &quot;QRIS&quot;, list_enable_sof: &quot;QRIS&quot;</code>), this value is limited to 1 minute - 1 hour after the request is sent, the QRIS validity period is dynamic within the aforementioned limit.</td>
+<td style="text-align: center">24 hours for non-QRIS, and 30 minutes for QRIS</td>
+<td style="text-align: center">Set expiration time of transaction. Will use the default values explained depending if the trx uses QRIS or not.  Min exp time is 1 hour for non-QRIS transactions. For QRIS transactions (<code>need_frontend: false, list_enable_payment_method: &quot;QRIS&quot;, list_enable_sof: &quot;QRIS&quot;</code>), this value is limited to 1 minute - 1 hour after the request is sent, the QRIS validity period is dynamic within the aforementioned limit.</td>
 </tr>
 <tr>
 <td>trx_counter</td>
