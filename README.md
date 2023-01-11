@@ -17,8 +17,8 @@
 `docker-compose build`
 2. Start the container:
 `docker-compose up -d`
-3.  To check the container logs:
-``docker-compose logs -f``
+3. To check the container logs:
+`docker-compose logs -f`
 4. Open the application in your web browser by visiting `http://localhost:4567/`
 
 **Features**
