@@ -2,7 +2,7 @@ version: '3'
 services:
   slate:
     build: .
-    command: ["/usr/local/bin/slate", "build"]
+    command: ["build"]
     volumes:
       - "./build:/srv/slate/build"
       - "./source:/srv/slate/source"
