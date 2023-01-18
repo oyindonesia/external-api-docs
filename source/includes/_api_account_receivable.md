@@ -262,6 +262,8 @@ pph_tax | NO_TAX/ *PPH_23_NON_NPWP* / *PPH_23_NPWP* | TRUE | PPH Tax type that i
 
 Parameters | Type | Description 
 ---- | ---- | ------
+success | Boolean | To determine result of endpoint
+error | Object | Specific code for cause of error and error message
 data | Object | Status of response in Object {id: <id>, partner_customer_id: <partner_customer_id>, status: <status>, name: <name>, tax_type: <tax_type>, address: <address>, email: <email>, pic_name: <pic_name>, phone_number: <phone_number>, pph_tax: <pph_tax>}
 id | String | customer primary id
 partner_customer_id | String | Inputted customer id name
@@ -273,9 +275,10 @@ email | String | Inputted customer's email
 pic_name | String | Inputted PIC name
 phone_number| String | Inputted customer's phone number
 pph_tax | PPH_23_NON_NPWP | Result of choosen enum
-Status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
-code | String | success status code
-message | String | success status message for further explanation
+reason| String | Reserved field to add additional notes for the response
+status_code | Integer | Response Status code  
+
+
 
 ## Edit Customer
 
@@ -538,6 +541,8 @@ status | ACTIVE/INACTIVE | TRUE | Changing status from Active to Inactive **only
 
 Parameters | Type | Description 
 ---- | ---- | ------
+success | Boolean | To determine result of endpoint
+error | Object | Specific code for cause of error and error message
 data | Object | Status of response in Object {id: <id>, partner_customer_id: <partner_customer_id>, status: <status>, name: <name>, tax_type: <tax_type>, address: <address>, email: <email>, pic_name: <pic_name>, phone_number: <phone_number>, pph_tax: <pph_tax>}
 id | String | customer primary id
 partner_customer_id | String | Inputted customer id name
@@ -549,9 +554,8 @@ email | String | Inputted customer's email
 pic_name | String | Inputted PIC name
 phone_number| String | Inputted customer's phone number
 pph_tax | PPH_23_NON_NPWP | Result of choosen enum
-Status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
-code | String | success status code
-message | String | success status message for further explanation
+reason| String | Reserved field to add additional notes for the response
+status_code | Integer | Response Status code  
 
 ## Retrieve Customer's Details
 
@@ -715,6 +719,8 @@ print(data.decode("utf-8"))
 
 Parameters | Type | Description 
 ---- | ---- | ------
+success | Boolean | To determine result of endpoint
+error | Object | Specific code for cause of error and error message
 data | Object | Status of response in Object {id: <id>, partner_customer_id: <partner_customer_id>, status: <status>, name: <name>, tax_type: <tax_type>, address: <address>, email: <email>, pic_name: <pic_name>, phone_number: <phone_number>, pph_tax: <pph_tax>}
 id | String | customer primary id
 partner_customer_id | String | Inputted customer id name
@@ -726,9 +732,10 @@ email | String | Inputted customer's email
 pic_name | String | Inputted PIC name
 phone_number| String | Inputted customer's phone number
 pph_tax | PPH_23_NON_NPWP | Result of choosen enum
-Status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
-code | String | success status code
-message | String | success status message for further explanation
+reason| String | Reserved field to add additional notes for the response
+status_code | Integer | Response Status code  
+
+ 
 
 ## Filter & Search Customers
 
@@ -926,6 +933,8 @@ pph_tax | FALSE | Filter based on PPh Tax Type |PPH_23_NON_NPWP
 
 Parameters | Type | Description 
 ---- | ---- | ------
+success | Boolean | To determine result of endpoint
+error | Object | Specific code for cause of error and error message
 data | Object | Status of response in Object {id: <id>, partner_customer_id: <partner_customer_id>, status: <status>, name: <name>, tax_type: <tax_type>, address: <address>, email: <email>, pic_name: <pic_name>, phone_number: <phone_number>, pph_tax: <pph_tax>}
 id | String | customer primary id
 partner_customer_id | String | Inputted customer id name
@@ -937,9 +946,8 @@ email | String | Inputted customer's email
 pic_name | String | Inputted PIC name
 phone_number| String | Inputted customer's phone number
 pph_tax | PPH_23_NON_NPWP | Result of choosen enum
-Status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
-code | String | success status code
-message | String | success status message for further explanation
+reason| String | Reserved field to add additional notes for the response
+status_code | Integer | Response Status code  
 
 ## Create & Send Invoice
 
@@ -1321,6 +1329,8 @@ list_enabled_offline_channel | String | TRUE | To configure list of offline chan
 
 Parameters | Type | Description 
 ---- | ---- | ------
+success | Boolean | To determine result of endpoint
+error | Object | Specific code for cause of error and error message
 data | Object | Status of response in Object {id: <id>, partner_customer_id: <partner_customer_id>, status: <status>, tax_type: <tax_type>, address: <address>, email: <email>, pic_name: <pic_name>, phone_number: <phone_number>, pph_tax: <pph_tax>}
 id | String | Unique Payment ID for a specific invoice, that is generated after successful invoice creation.
 status | String | Default status first time invoice created
@@ -1337,9 +1347,8 @@ quantity | Integer | Inputed quantity
 message | String | Inputed message
 attachments | String | inputted attachments
 payment_url | String | Payment link to pay this invoice
-Status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
-code | String | success status code
-message | String | success status message
+reason| String | Reserved field to add additional notes for the response
+status_code | Integer | Response Status code  
 
 ## Cancel Invoice
 
@@ -1527,6 +1536,7 @@ data | Object
 code | String | Success status code
 message | String | Success reason message
 reason | String | Reserve field to add additional notes for the response
+status_code | Integer | Response Status code  
 
 ## Get Invoice Details
 
@@ -1742,6 +1752,8 @@ id | String | TRUE | Unique Payment ID for a specific invoice, that is generated
 
 Parameters | Type | Description 
 ---- | ---- | ------
+success | Boolean | To determine result of endpoint
+error | Object | Specific code for cause of error and error message
 data | Object | Status of response in Object {id: <id>, partner_customer_id: <partner_customer_id>, status: <status>, tax_type: <tax_type>, address: <address>, email: <email>, pic_name: <pic_name>, phone_number: <phone_number>, pph_tax: <pph_tax>}
 id | String | Unique Payment ID for a specific invoice, that is generated after successful invoice creation.
 status | String | Default status first time invoice created
@@ -1769,6 +1781,7 @@ status | String | Status of the invoice at a point of time
 action_stakeholder | String | Stakeholder that creates milestones
 action_date | date | date of milestones (when it was create, cancelled, paid)
 reason | String | Reserve Parameter to add additional notes for the response
+status_code | Integer | Response Status code  
 
 ## Filter and Search Invoice
 
@@ -2198,9 +2211,11 @@ channel | String | True | **EMAIL**-> using partner email; **WHATSAPP**-> using 
 
 Parameters | Type | Description 
 ---- | ---- | ------
-Status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
-code | String | Success status code
-message | String | Success status message
+success | Boolean | To determine result of endpoint
+error | Object | Specific code for cause of error and error message
+data | Object | Always null, use success to determine the result of request
+reason| String | Reserved field to add additional notes for the response
+status_code | Integer | Response Status code  
 
 ## Response Code
 
@@ -2238,7 +2253,8 @@ These parameters will show up as part of the response parameter.
 
 Parameters | Type | Description 
 ---- | ---- | ------
-Data | Object | 
-Status | Object | Status of response in Object {code: <status_code>, message: <status_message>}
-code | String | Failed status code
-message | String | Failed reason message
+success | Boolean | Determine result of endpoint
+error | Object | Specific code for cause of error and error message
+data | Object | Always null, use success to determine the result of request
+reason | String | Reserved field to add additional notes for the response
+status_code | Integer | Response Status code  
