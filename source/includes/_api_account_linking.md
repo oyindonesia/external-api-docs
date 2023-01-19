@@ -1,4 +1,4 @@
-# API E-Wallet Account Linking
+# API Account Linking
 
 OY's API Collection to link user's phone number to e-wallets. Currently, this feature support to link user's phone number to DANA e-wallet. Contact your Business Representative if you'd like to activate this feature.
 
@@ -240,12 +240,13 @@ print(data.decode("utf-8"))
 ```
 
 2. At the end of account linking process, we will redirect the user to your redirect page with result status embedded in your redirect URL. Below are the example of redirect url result.
-|Redirect URL	|Result Status	|Redirect URL embedded with result status	|
+
+|Redirect URL	|Result Status	|Redirect URL Embedded with Result Status	|
 |---	|---	|---	|
 |`https://url.com/redirect`	|SUCCESS	|`https://url.com/redirect?result=SUCCESS`	|
 |`https://url.com/redirect`	|FAILED	|`https://url.com/redirect?result=FAILED`	|
 
-## Get User Balance
+## Get E-Wallet Account Balance
 
 After do account linking, user have the capability to see their e-wallet balance. Use this API to get user e-wallet balance.
 
