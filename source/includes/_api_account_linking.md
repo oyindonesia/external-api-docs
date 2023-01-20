@@ -7,7 +7,7 @@ OY's API Collection to link user's phone number to e-wallets. Currently, this fe
 Use this API to get the linking URL for your user.
 
 ```shell
-curl --location --request POST 'https://partner.oyindonesia.com/api/tokenization/linking' \
+curl --location --request POST 'https://partner.oyindonesia.com/api/account/linking' \
 --header 'Content-Type: application/json' \
 --header 'X-Oy-Username: yourusername' \
 --header 'X-Api-Key: yourapikey' \
@@ -26,7 +26,7 @@ var headers = {
   'x-api-key': 'yourapikey'
 
 };
-var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/tokenization/linking'));
+var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/account/linking'));
 request.body = json.encode({
   "partner_user_id": "USR-20230112-001",
     "phone_number": "082114845847",
@@ -53,7 +53,7 @@ import (
 
 func main() {
 
-  url := "https://partner.oyindonesia.com/api/tokenization/linking"
+  url := "https://partner.oyindonesia.com/api/account/linking"
   method := "POST"
 
   payload := strings.NewReader(`{
@@ -96,7 +96,7 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"phone_number\": \"082114845847\",\n    \"channel_code\": \"dana_ewallet\"\n}");
 Request request = new Request.Builder()
-  .url("https://partner.oyindonesia.com/api/tokenization/linking")
+  .url("https://partner.oyindonesia.com/api/account/linking")
   .method("POST", body)
   .addHeader("Content-Type", "application/json")
   .addHeader("x-oy-username", "yourusername")
@@ -121,7 +121,7 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("POST", "https://partner.oyindonesia.com/api/tokenization/linking");
+xhr.open("POST", "https://partner.oyindonesia.com/api/account/linking");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("x-oy-username", "yourusername");
 xhr.setRequestHeader("x-api-key", "yourapikey");
@@ -133,7 +133,7 @@ xhr.send(data);
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('https://partner.oyindonesia.com/api/tokenization/linking');
+$request->setUrl('https://partner.oyindonesia.com/api/account/linking');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -174,7 +174,7 @@ headers = {
   'x-oy-username': 'yourusername',
   'x-api-key': 'yourapikey'
 }
-conn.request("POST", "/api/tokenization/linking", payload, headers)
+conn.request("POST", "/api/account/linking", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -196,9 +196,9 @@ print(data.decode("utf-8"))
 
 ### HTTPS Request
 
-**[Production]** `POST https://partner.oyindonesia.com/api/tokenization/linking`
+**[Production]** `POST https://partner.oyindonesia.com/api/account/linking`
 
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/tokenization/linking`
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/account/linking`
 
 ### Request Headers
 
@@ -251,7 +251,7 @@ print(data.decode("utf-8"))
 After do account linking, user have the capability to see their e-wallet balance. Use this API to get user e-wallet balance.
 
 ```shell
-curl --location --request POST 'https://partner.oyindonesia.com/api/tokenization/balance' \
+curl --location --request POST 'https://partner.oyindonesia.com/api/account/balance' \
 --header 'Content-Type: application/json' \
 --header 'X-Oy-Username: yourusername' \
 --header 'X-Api-Key: yourapikey' \
@@ -269,7 +269,7 @@ var headers = {
   'x-api-key': 'yourapikey'
 
 };
-var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/tokenization/balance'));
+var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/account/balance'));
 request.body = json.encode({
   "partner_user_id": "USR-20230112-001",
     "channel_code": "dana_ewallet"
@@ -295,7 +295,7 @@ import (
 
 func main() {
 
-  url := "https://partner.oyindonesia.com/api/tokenization/balance"
+  url := "https://partner.oyindonesia.com/api/account/balance"
   method := "POST"
 
   payload := strings.NewReader(`{
@@ -337,7 +337,7 @@ OkHttpClient client = new OkHttpClient().newBuilder()
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"channel_code\": \"dana_ewallet\"\n}");
 Request request = new Request.Builder()
-  .url("https://partner.oyindonesia.com/api/tokenization/balance")
+  .url("https://partner.oyindonesia.com/api/account/balance")
   .method("POST", body)
   .addHeader("Content-Type", "application/json")
   .addHeader("x-oy-username", "yourusername")
@@ -361,7 +361,7 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("POST", "https://partner.oyindonesia.com/api/tokenization/balance");
+xhr.open("POST", "https://partner.oyindonesia.com/api/account/balance");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("x-oy-username", "yourusername");
 xhr.setRequestHeader("x-api-key", "yourapikey");
@@ -373,7 +373,7 @@ xhr.send(data);
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('https://partner.oyindonesia.com/api/tokenization/balance');
+$request->setUrl('https://partner.oyindonesia.com/api/account/balance');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -413,7 +413,7 @@ headers = {
   'x-oy-username': 'yourusername',
   'x-api-key': 'yourapikey'
 }
-conn.request("POST", "/api/tokenization/balance", payload, headers)
+conn.request("POST", "/api/account/balance", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -435,9 +435,9 @@ print(data.decode("utf-8"))
 
 ### HTTPS Request
 
-**[Production]** `POST https://partner.oyindonesia.com/api/tokenization/balance`
+**[Production]** `POST https://partner.oyindonesia.com/api/account/balance`
 
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/tokenization/balance`
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/account/balance`
 
 ### Request Headers
 
