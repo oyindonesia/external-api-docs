@@ -288,7 +288,7 @@ Endpoint:
 | sender_email | String     |  FALSE | - | Email of sender |
 | receive_amount | Numeric     |  TRUE | - | The amount of a transaction to be paid, min. amount is 10000 |
 | va_display_name | String     |  FALSE | Partner's brand name | Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name |
-| trx_expiration_time | Date string; yyyy-mm-dd hh:mm:ss format (UTC+7)    |  FALSE | 24 hours for non-QRIS, and 30 minutes for QRIS | Set expiration time of transaction. Will use the default values explained depending if the trx uses QRIS or not.  Min exp time is 1 hour for non-QRIS transactions. For QRIS transactions (`need_frontend: false, list_enable_payment_method: "QRIS", list_enable_sof: "QRIS"`), this value is limited to 1 minute - 1 hour after the request is sent, the QRIS validity period is dynamic within the aforementioned limit. |
+| trx_expiration_time | Date string; yyyy-mm-dd hh:mm:ss format (UTC+7)    |  FALSE | Refer to [Default Expiration Time](https://api-docs.oyindonesia.com/#transaction-expiration-time-guidelines-create-and-update-payment-routing) | Set expiration time of transaction. Please refer to [Transaction Expiration Time Guidelines](https://api-docs.oyindonesia.com/#transaction-expiration-time-guidelines-create-and-update-payment-routing) |
 | trx_counter | Numeric     |  FALSE | 1/-1 | Only applicable if you choose VA. It is a transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times. |
 | payment_routing | List of Objects     |  FALSE | - | List of disburse recipient; max. is 10 |
 | recipient_bank | String     |  TRUE | - | Bank code of the recipient account |
@@ -336,7 +336,7 @@ The request should be filled only with 1 list_enable_payment_method and 1 list_e
 | :---------: | :---------------: |
 | VA | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484 |
 | QRIS | QRIS |
-| EWALLET | n/a |
+| EWALLET | dana_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | n/a |
 
 #### Examples
@@ -346,6 +346,16 @@ The request should be filled only with 1 list_enable_payment_method and 1 list_e
 | TRUE | EWALLET, Credit Cards and VA | EWALLET,CARDS,VA | dana_ewallet,linkaja_ewallet,CARDS,484 |
 | FALSE | VA Only | VA | 009 |
 | FALSE | QRIS Only | QRIS | QRIS |
+| FALSE | EWALLET Only | EWALLET | dana_ewallet |
+
+### Transaction Expiration Time Guidelines
+The table below lists the valid expiration times for transactions based on the payment method and source of funds. Unless specified, the default expiration time is 24 hours and the minimum expiration time is 1 hour.
+
+| Payment Method |  SOF | Default Expiration Time | Expiration Time |
+| :---------: | :---------------: | :---------------: | :---------------: |
+| QRIS | QRIS | 30 minutes | Limited to 1 minute - 1 hour after the request is sent. The QRIS validity period is dynamic within the aforementioned limit.
+| EWALLET | dana_ewallet, shopeepay_ewallet | 60 minutes | 1 minute - 60 minutes.
+| EWALLET | linkaja_ewallet | 10 minutes | 10 minutes, regardless of the expiration time specified in the request.
 
 ### List of Disbursement Mock Account for Testing Purpose 
 Use those mock receiver bank account for testing Payment Routing purpose. To simulate all available status of Payment Routing, you can combine those mocked bank account numbers. For example, if you want to see `INCOMPLETE` status, put two recipients in the payment_routing object with mocked bank account number `1234567890` and `1234567891`. For more information about payment Routing status, see List of Payment Routing section.
