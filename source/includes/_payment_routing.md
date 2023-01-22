@@ -290,6 +290,7 @@ Endpoint:
 | va_display_name | String     |  FALSE | Partner's brand name | Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name |
 | trx_expiration_time | Date string; yyyy-mm-dd hh:mm:ss format (UTC+7)    |  FALSE | Refer to [Default Expiration Time](https://api-docs.oyindonesia.com/#transaction-expiration-time-guidelines-create-and-update-payment-routing) | Set expiration time of transaction. Please refer to [Transaction Expiration Time Guidelines](https://api-docs.oyindonesia.com/#transaction-expiration-time-guidelines-create-and-update-payment-routing) |
 | trx_counter | Numeric     |  FALSE | 1/-1 | Only applicable if you choose VA. It is a transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times. |
+| success_redirect_url | String | CONDITIONAL | - | Indicates the URL of your environment to redirect customers back to once payment has been completed in e-wallet issuers. Accepts both HTTP links and URL scheme formats. Required if the EWALLET payment method is used and `need_frontend` is set to false. |
 | payment_routing | List of Objects     |  FALSE | - | List of disburse recipient; max. is 10 |
 | recipient_bank | String     |  TRUE | - | Bank code of the recipient account |
 | recipient_account | String     |  TRUE| - | Recipient bank account number. For testing purpose, please see List of Disbursment Mock Account below |
