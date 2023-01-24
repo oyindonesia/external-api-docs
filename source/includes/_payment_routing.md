@@ -356,7 +356,7 @@ The table below lists the valid expiration times for transactions based on the p
 | :---------: | :---------------: | :---------------: | :---------------: |
 | QRIS | QRIS | 30 minutes | Limited to 1 minute - 1 hour after the request is sent. The QRIS validity period is dynamic within the aforementioned limit.
 | EWALLET | dana_ewallet, shopeepay_ewallet | 60 minutes | 1 minute - 60 minutes.
-| EWALLET | linkaja_ewallet | 10 minutes | 10 minutes, regardless of the expiration time specified in the request.
+| EWALLET | linkaja_ewallet | 5 minutes | 5 minutes, regardless of the expiration time specified in the request.
 
 ### List of Disbursement Mock Account for Testing Purpose 
 Use those mock receiver bank account for testing Payment Routing purpose. To simulate all available status of Payment Routing, you can combine those mocked bank account numbers. For example, if you want to see `INCOMPLETE` status, put two recipients in the payment_routing object with mocked bank account number `1234567890` and `1234567891`. For more information about payment Routing status, see List of Payment Routing section.
