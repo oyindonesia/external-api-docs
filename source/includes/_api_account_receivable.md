@@ -225,10 +225,10 @@ print(data.decode("utf-8"))
     "total_piutang": null,
     "can_be_deactivated": false
   },
-  "status": {
-    "code": "000",
-    "message": "Success"
-  }
+  "error": null,
+  "status": true,
+  "reason": null,
+  "status_code": 200
 }
 ```
 
@@ -509,10 +509,10 @@ print(data.decode("utf-8"))
     "total_piutang": null,
     "can_be_deactivated": false
   },
-  "status": {
-    "code": "000",
-    "message": "Success"
-  }
+  "error": null,
+  "status": true,
+  "reason": null,
+  "status_code": 200
 }
 ```
 
@@ -702,10 +702,10 @@ print(data.decode("utf-8"))
     "total_piutang": 0,
     "can_be_deactivated": true
   },
-  "status": {
-    "code": "000",
-    "message": "Success"
-  }
+  "error": null,
+  "status": true,
+  "reason": null,
+  "status_code": 200
 }
 ```
 
@@ -901,10 +901,10 @@ print(data.decode("utf-8"))
       "can_be_deactivated": true
     }
   ],
-  "status": {
-    "code": "000",
-    "message": "Success"
-  }
+  "error": null,
+  "status": true,
+  "reason": null,
+  "status_code": 200
 }
 ```
 
@@ -1284,10 +1284,10 @@ print(data.decode("utf-8"))
     "amount_received": null,
     "customer_email": null
   },
-  "status": {
-    "code": "000",
-    "message": "Success"
-  }
+  "error": null,
+  "status": true,
+  "reason": null,
+  "status_code": 200
 }
 ```
 
@@ -2186,10 +2186,11 @@ print(data.decode("utf-8"))
 
 ```json
 {
-  "status": {
-    "code": "000",
-    "message": "Success"
-  }
+  "success":true,
+  "error":null,
+  "data":null,
+  "reason":null,
+  "status_code":200
 }
 ```
 
