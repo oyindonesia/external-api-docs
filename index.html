@@ -23029,7 +23029,7 @@ Another value not following the format will be processed normally. The response 
 <td>String(255)</td>
 <td>TRUE</td>
 <td>-</td>
-<td>The e-wallet type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
+<td>The payment channel type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-get-linking-url' type='normal'>Response Parameters</h3>
@@ -23053,7 +23053,7 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <td>channel_code</td>
 <td>String(255)</td>
-<td>The e-wallet type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
+<td>The payment channel type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
 </tr>
 <tr>
 <td>linking_url</td>
@@ -23062,10 +23062,13 @@ Another value not following the format will be processed normally. The response 
 </tr>
 </tbody></table>
 <h2 id='how-we-notify-account-linking-result-api-account-linking' type='normal'>How we notify account linking result?</h2>
-<ol>
-<li>The E-Wallet Account Linking Callback will be sent as a POST request (using JSON format) to your web hook. Please inform your callback web hook to our business representative or to partner@oyindonesia.com. (Note: We send the callback ONLY for a successful account linking)
-&gt; Response callback:</li>
-</ol>
+<ul>
+<li>The E-Wallet Account Linking Callback will be sent as a POST request (using JSON format) to your web hook. Please inform your callback web hook to our business representative or to partner@oyindonesia.com. (Note: We send the callback ONLY for a successful account linking)</li>
+</ul>
+
+<blockquote>
+<p>The response callback will looks like this:</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"789467agf238893894rfcw7978iu7g7e"</span><span class="p">,</span><span class="w">
@@ -23075,9 +23078,9 @@ Another value not following the format will be processed normally. The response 
     </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/02/2020T15:00:00.000+0000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<ol>
-<li>At the end of account linking process, we will redirect the user to your redirect page with result status embedded in your redirect URL. Below are the example of redirect url result.</li>
-</ol>
+<ul>
+<li>Other than that, at the end of account linking process, we will redirect the user to your redirect page with result status embedded in your redirect URL. Below are the example of redirect url result.</li>
+</ul>
 
 <table><thead>
 <tr>
@@ -23329,7 +23332,7 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <td>channel_code</td>
 <td>String(255)</td>
-<td>The e-wallet type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
+<td>The payment channel type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
 </tr>
 <tr>
 <td>amount</td>
