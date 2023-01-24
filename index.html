@@ -2767,6 +2767,14 @@
                           </ul>
                         </li>
                         <li>
+                          <a href="#transaction-expiration-time-guidelines-create-and-update-payment-routing" class="toc-h3 toc-link" data-title="Transaction Expiration Time Guidelines">
+                            <span class="toc-link-content">
+                              Transaction Expiration Time Guidelines
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
                           <a href="#list-of-disbursement-mock-account-for-testing-purpose-create-and-update-payment-routing" class="toc-h3 toc-link" data-title="List of Disbursement Mock Account for Testing Purpose">
                             <span class="toc-link-content">
                               List of Disbursement Mock Account for Testing Purpose
@@ -19075,8 +19083,8 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>trx_expiration_time</td>
 <td style="text-align: center">Date string; yyyy-mm-dd hh:mm:ss format (UTC+7)</td>
 <td style="text-align: center">FALSE</td>
-<td style="text-align: center">24 hours for non-QRIS, and 30 minutes for QRIS</td>
-<td style="text-align: center">Set expiration time of transaction. Will use the default values explained depending if the trx uses QRIS or not.  Min exp time is 1 hour for non-QRIS transactions. For QRIS transactions (<code>need_frontend: false, list_enable_payment_method: &quot;QRIS&quot;, list_enable_sof: &quot;QRIS&quot;</code>), this value is limited to 1 minute - 1 hour after the request is sent, the QRIS validity period is dynamic within the aforementioned limit.</td>
+<td style="text-align: center">Refer to <a href="https://api-docs.oyindonesia.com/#transaction-expiration-time-guidelines-create-and-update-payment-routing">Default Expiration Time</a></td>
+<td style="text-align: center">Set expiration time of transaction. Please refer to <a href="https://api-docs.oyindonesia.com/#transaction-expiration-time-guidelines-create-and-update-payment-routing">Transaction Expiration Time Guidelines</a></td>
 </tr>
 <tr>
 <td>trx_counter</td>
@@ -19084,6 +19092,13 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">FALSE</td>
 <td style="text-align: center">1/-1</td>
 <td style="text-align: center">Only applicable if you choose VA. It is a transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times.</td>
+</tr>
+<tr>
+<td>success_redirect_url</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">CONDITIONAL</td>
+<td style="text-align: center">-</td>
+<td style="text-align: center">Indicates the URL of your environment to redirect customers back to once payment has been completed in e-wallet issuers. Accepts both HTTP links and URL scheme formats. Required if the EWALLET payment method is used and <code>need_frontend</code> is set to false.</td>
 </tr>
 <tr>
 <td>payment_routing</td>
@@ -19243,7 +19258,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </tr>
 <tr>
 <td style="text-align: center">EWALLET</td>
-<td style="text-align: center">n/a</td>
+<td style="text-align: center">dana_ewallet, shopeepay_ewallet, linkaja_ewallet</td>
 </tr>
 <tr>
 <td style="text-align: center">CARDS</td>
@@ -19282,6 +19297,42 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">QRIS Only</td>
 <td style="text-align: center">QRIS</td>
 <td style="text-align: center">QRIS</td>
+</tr>
+<tr>
+<td style="text-align: center">FALSE</td>
+<td style="text-align: center">EWALLET Only</td>
+<td style="text-align: center">EWALLET</td>
+<td style="text-align: center">dana_ewallet</td>
+</tr>
+</tbody></table>
+<h3 id='transaction-expiration-time-guidelines-create-and-update-payment-routing' type='normal'>Transaction Expiration Time Guidelines</h3>
+<p>The table below lists the valid expiration times for transactions based on the payment method and source of funds. Unless specified, the default expiration time is 24 hours and the minimum expiration time is 1 hour.</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">Payment Method</th>
+<th style="text-align: center">SOF</th>
+<th style="text-align: center">Default Expiration Time</th>
+<th style="text-align: center">Expiration Time</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">QRIS</td>
+<td style="text-align: center">QRIS</td>
+<td style="text-align: center">30 minutes</td>
+<td style="text-align: center">Limited to 1 minute - 1 hour after the request is sent. The QRIS validity period is dynamic within the aforementioned limit.</td>
+</tr>
+<tr>
+<td style="text-align: center">EWALLET</td>
+<td style="text-align: center">dana_ewallet, shopeepay_ewallet</td>
+<td style="text-align: center">60 minutes</td>
+<td style="text-align: center">1 minute - 60 minutes.</td>
+</tr>
+<tr>
+<td style="text-align: center">EWALLET</td>
+<td style="text-align: center">linkaja_ewallet</td>
+<td style="text-align: center">5 minutes</td>
+<td style="text-align: center">5 minutes, regardless of the expiration time specified in the request.</td>
 </tr>
 </tbody></table>
 <h3 id='list-of-disbursement-mock-account-for-testing-purpose-create-and-update-payment-routing' type='normal'>List of Disbursement Mock Account for Testing Purpose</h3>
