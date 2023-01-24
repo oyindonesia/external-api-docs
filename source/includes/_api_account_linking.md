@@ -240,7 +240,7 @@ print(data.decode("utf-8"))
 }
 ```
 
-- At the end of account linking process, we will redirect the user to your redirect page with result status embedded in your redirect URL. Below are the example of redirect url result.
+- Other than that, at the end of account linking process, we will redirect the user to your redirect page with result status embedded in your redirect URL. Below are the example of redirect url result.
 
 |Redirect URL	|Result Status	|Redirect URL Embedded with Result Status	|
 |---	|---	|---	|
