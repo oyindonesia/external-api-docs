@@ -19206,6 +19206,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">String</td>
 <td style="text-align: center">the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.</td>
 </tr>
+<tr>
+<td>ewallet_url</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
+</tr>
 </tbody></table>
 
 <aside class="warning">
@@ -19677,6 +19682,11 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.</td>
 </tr>
 <tr>
+<td>ewallet_url</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
+</tr>
+<tr>
 <td>payment_routing</td>
 <td style="text-align: center">List of Object</td>
 <td style="text-align: center">List of payment routing recipients. See row belows</td>
@@ -19823,6 +19833,11 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>qris_url</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.</td>
+</tr>
+<tr>
+<td>ewallet_url</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
 </tr>
 <tr>
 <td>payment_routing</td>
