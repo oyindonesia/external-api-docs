@@ -14,7 +14,8 @@ curl --location --request POST 'https://partner.oyindonesia.com/api/account/link
 --data-raw '{
     "partner_user_id": "USR-20230112-001",
     "phone_number": "082114845847",
-    "channel_code": "dana_ewallet"
+    "channel_code": "dana_ewallet",
+    "payment_method": "EWALLET"
 }
 '
 ```
@@ -30,7 +31,8 @@ var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/ap
 request.body = json.encode({
   "partner_user_id": "USR-20230112-001",
     "phone_number": "082114845847",
-    "channel_code": "dana_ewallet"
+    "channel_code": "dana_ewallet",
+    "payment_method": "EWALLET"
 });
 request.headers.addAll(headers);
 
@@ -59,7 +61,8 @@ func main() {
   payload := strings.NewReader(`{
     "partner_user_id": "USR-20230112-001",
     "phone_number": "082114845847",
-    "channel_code": "dana_ewallet"
+    "channel_code": "dana_ewallet",
+    "payment_method": "EWALLET"
 }`)
 
   client := &http.Client {
@@ -94,7 +97,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"phone_number\": \"082114845847\",\n    \"channel_code\": \"dana_ewallet\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"phone_number\": \"082114845847\",\n    \"channel_code\": \"dana_ewallet\",\n    \"payment_method\": \"EWALLET\"\n}");
 Request request = new Request.Builder()
   .url("https://partner.oyindonesia.com/api/account/linking")
   .method("POST", body)
@@ -109,7 +112,8 @@ Response response = client.newCall(request).execute();
 var data = JSON.stringify({
   "partner_user_id": "USR-20230112-001",
   "phone_number": "082114845847",
-  "channel_code": "dana_ewallet"
+  "channel_code": "dana_ewallet",
+  "payment_method": "EWALLET"
 });
 
 var xhr = new XMLHttpRequest();
@@ -143,7 +147,7 @@ $request->setHeader(array(
   'x-oy-username' => 'yourusername',
   'x-api-key' => 'yourapikey'
 ));
-$request->setBody('{\n    "partner_user_id": "USR-20230112-001",\n    "phone_number": "082114845847",\n    "channel_code": "dana_ewallet"\n}');
+$request->setBody('{\n    "partner_user_id": "USR-20230112-001",\n    "phone_number": "082114845847",\n    "channel_code": "dana_ewallet",\n    "payment_method": "EWALLET"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -167,7 +171,8 @@ conn = http.client.HTTPSConnection("https://partner.oyindonesia.com", undefined)
 payload = json.dumps({
   "partner_user_id": "USR-20230112-001",
   "phone_number": "082114845847",
-  "channel_code": "dana_ewallet"
+  "channel_code": "dana_ewallet",
+  "payment_method": "EWALLET"
 })
 headers = {
   'Content-Type': 'application/json',
@@ -184,13 +189,15 @@ print(data.decode("utf-8"))
 
 ```json
 {
-    "status": {
-        "code": "000",
-        "message": "Success"
+    "success": true,
+    "error": null,
+    "data": {
+        "partner_user_id": "USR-20230112-001",
+        "channel_code": "DANA_EWALLET",
+        "linking_url": "https://generated-linking-url"
     },
-    "partner_user_id": "USR-20230112-001",
-    "channel_code": "dana_ewallet",
-    "linking_url": "https://generated-linking-url"
+    "reason": null,
+    "status_code": 200
 }
 ```
 
@@ -240,12 +247,12 @@ print(data.decode("utf-8"))
 }
 ```
 
-- Other than that, at the end of account linking process, we will redirect the user to your redirect page with result status embedded in your redirect URL. Below are the example of redirect url result.
+- Other than that, at the end of account linking process, we will redirect the user to your redirect page with `partner_user_id` and result status embedded in your redirect URL. Below are the example of redirect url result.
 
-|Redirect URL	|Result Status	|Redirect URL Embedded with Result Status	|
+|Redirect URL	|Result Status	|Partner User ID	|Redirect URL Embedded with Result Status	|
 |---	|---	|---	|
-|`https://url.com/redirect`	|SUCCESS	|`https://url.com/redirect?result=SUCCESS`	|
-|`https://url.com/redirect`	|FAILED	|`https://url.com/redirect?result=FAILED`	|
+|`https://url.com/redirect`	|SUCCESS	|789467agf238893894rfcw7978iu7g7e	|`https://url.com/redirect?partner_user_id=789467agf238893894rfcw7978iu7g7e?result=SUCCESS`	|
+|`https://url.com/redirect`	|FAILED	|789467agf238893894rfcw7978iu7g7e	|`https://url.com/redirect?partner_user_id=789467agf238893894rfcw7978iu7g7e?result=FAILED`	|
 
 ## Get E-Wallet Account Balance
 
