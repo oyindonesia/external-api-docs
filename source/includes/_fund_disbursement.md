@@ -259,6 +259,7 @@ Below is the list of response codes that show the transaction status for API Cre
 | 101           | Non-Final | Transaction is Processed                                                           |
 | 102           | Non-Final | Transaction is In Progress                                                         |
 | 206           | Final     | Transaction is FAILED (Partner Deposit Balance is Not Enough)                      |
+| 225           | Final     | Max amount per transaction exceed for disburse |
 | 300           | Final     | Transaction is FAILED                                                              |
 | 301           | Non-Final | Pending (When there is an unclear answer from Banks Network)                       |
 
