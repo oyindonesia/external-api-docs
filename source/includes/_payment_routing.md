@@ -306,7 +306,7 @@ Endpoint:
 |trx_id|String|Payment Routing ID defined by OY!|
 |partner_user_id|String|Partner user ID that you defined in the request parameter|
 |partner_trx_id|String|Partner transaction ID that you defined in the request parameter|
-|receive_amount|Numeric|amount to be received|
+|receive_amount|Numeric|amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.|
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Transaction Expiration Time|
 |payment_info|Object|Payment info object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
