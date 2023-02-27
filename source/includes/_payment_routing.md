@@ -334,7 +334,7 @@ The request should be filled with at least 1 list_enable_payment_method and 1 li
 | EWALLET | dana_ewallet, ovo_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
 
-If you use BANK_TRANSFER payment method and 014 sof, you can either be routed to use VA BCA or unique code BCA (unique code BCA is soon to be enabled if `need_frontend = true`). For other sof with BANK_TRANSFER payment method, you will be routed to use VA.
+If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA (unique code BCA is soon to be enabled if `need_frontend = true`). For other sof with BANK_TRANSFER payment method, you will be routed to use VA.
 
 #### If need_frontend: false
 The request should be filled only with 1 list_enable_payment_method and 1 list_enable_sof.
@@ -346,7 +346,7 @@ The request should be filled only with 1 list_enable_payment_method and 1 list_e
 | EWALLET | dana_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
 
-If you use BANK_TRANSFER payment method and 014 sof, you can either be routed to use VA BCA or unique code BCA. For other sof with BANK_TRANSFER payment method, you will be routed to use VA.
+If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. For other sof with BANK_TRANSFER payment method, you will be routed to use VA.
 
 #### Examples
 | need_frontend | Case | list_enable_payment_method | list_enable_sof |
