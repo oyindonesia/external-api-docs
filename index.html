@@ -19214,6 +19214,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">VA display name if you use VA or bank account&#39;s owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
+<td>bank_code</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">Bank code for the destination VA number or bank account; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
+</tr>
+<tr>
 <td>qris_url</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.</td>
