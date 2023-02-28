@@ -680,7 +680,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 |trx_id|String|payment routing transaction id|
 |partner_user_id|String|Partner user ID|
 |partner_trx_id|String|Partner transaction ID|
-|receive_amount|String|Amount to be received|
+|receive_amount|String|Amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.|
 |payment_status|String|Receive money status|
 |trx_expiration_time|partner_user_id|Transaction expiration time|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
