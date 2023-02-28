@@ -280,8 +280,8 @@ Endpoint:
 ### Request Parameters
 | Parameter  | Type |  Required   | Default | Description |
 | ------------- |:-------------:| :----------: |:-----:|:-----:|
-|partner_user_id   | String    |   Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.| - |  Unique partner user id. Will automatically be generated if left empty. |
-| partner_trx_id  | String     |  FALSE | - | Unique partner transaction ID |
+|partner_user_id   | String    |   Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.| - |  Unique partner user id. |
+| partner_trx_id  | String     |  FALSE | - | Unique partner transaction ID. Will automatically be generated if left empty. |
 | need_frontend | Boolean     |  TRUE | -| Partner need UI or not, if true, we will route to payment link, otherwise will be route to API-based solution. |
 | list_enable_payment_method | String; comma separated     |  TRUE | - | To configure payment methods to be enabled in the payment method page.  |
 | list_enable_sof | String; comma separated      |  TRUE | - | To configure list of source of fund (banks or ewallets) to be enabled in the payment method page. For additional detail please refer to [List Allowed Payment Methods and SOF](https://api-docs.oyindonesia.com/#if-need_frontend-true-list-of-allowed-payment-methods-and-sof) |
