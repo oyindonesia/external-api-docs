@@ -18773,7 +18773,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
     "need_frontend": false,
     "sender_email": "sender@gmail.com",
     "receive_amount": 14000,
-    "list_enable_payment_method": "VA",
+    "list_enable_payment_method": "BANK_TRANSFER",
     "list_enable_sof": "002",
     "va_display_name": "partner_brand",
     "payment_routing": [{
@@ -18835,7 +18835,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
     "need_frontend": false,
     "sender_email": "sender@gmail.com",
     "receive_amount": 14000,
-    "list_enable_payment_method": "VA",
+    "list_enable_payment_method": "BANK_TRANSFER",
     "list_enable_sof": "002",
     "va_display_name": "partner_brand",
     "payment_routing": [{
@@ -18875,7 +18875,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"VA\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"BANK_TRANSFER\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://partner.oyindonesia.com/api/payment-routing/create-transaction"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
@@ -18890,7 +18890,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
   <span class="dl">"</span><span class="s2">need_frontend</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">sender_email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sender@gmail.com</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">receive_amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">14000</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">list_enable_payment_method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">VA</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">list_enable_payment_method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BANK_TRANSFER</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">list_enable_sof</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">002</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">va_display_name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">partner_brand</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">payment_routing</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
@@ -18931,7 +18931,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
   <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'yourusername'</span><span class="p">,</span>
   <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'apikeymu'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_user_id": "USR-20211117-1029",\n    "partner_trx_id": "TRX-20211117-1030",\n    "need_frontend": false,\n    "sender_email": "sender@gmail.com",\n    "receive_amount": 14000,\n    "list_enable_payment_method": "VA",\n    "list_enable_sof": "002",\n    "va_display_name": "partner_brand",\n    "payment_routing": [{\n        "recipient_bank": "014",\n        "recipient_account": "1234567890",\n        "recipient_amount": 10000,\n        "recipient_email": "recipient_bca@gmail.com"\n    }]\n}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_user_id": "USR-20211117-1029",\n    "partner_trx_id": "TRX-20211117-1030",\n    "need_frontend": false,\n    "sender_email": "sender@gmail.com",\n    "receive_amount": 14000,\n    "list_enable_payment_method": "BANK_TRANSFER",\n    "list_enable_sof": "002",\n    "va_display_name": "partner_brand",\n    "payment_routing": [{\n        "recipient_bank": "014",\n        "recipient_account": "1234567890",\n        "recipient_amount": 10000,\n        "recipient_email": "recipient_bca@gmail.com"\n    }]\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -18955,7 +18955,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
   <span class="s">"need_frontend"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
   <span class="s">"sender_email"</span><span class="p">:</span> <span class="s">"sender@gmail.com"</span><span class="p">,</span>
   <span class="s">"receive_amount"</span><span class="p">:</span> <span class="mi">14000</span><span class="p">,</span>
-  <span class="s">"list_enable_payment_method"</span><span class="p">:</span> <span class="s">"VA"</span><span class="p">,</span>
+  <span class="s">"list_enable_payment_method"</span><span class="p">:</span> <span class="s">"BANK_TRANSFER"</span><span class="p">,</span>
   <span class="s">"list_enable_sof"</span><span class="p">:</span> <span class="s">"002"</span><span class="p">,</span>
   <span class="s">"va_display_name"</span><span class="p">:</span> <span class="s">"partner_brand"</span><span class="p">,</span>
   <span class="s">"payment_routing"</span><span class="p">:</span> <span class="p">[</span>
@@ -19075,14 +19075,14 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">Numeric</td>
 <td style="text-align: center">TRUE</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">The amount of a transaction to be paid, min. amount is 10000</td>
+<td style="text-align: center">The amount of a transaction to be paid, min. amount is 10000, except if you use unique code BCA which has min. amount 11000</td>
 </tr>
 <tr>
 <td>va_display_name</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">FALSE</td>
 <td style="text-align: center">Partner&#39;s brand name</td>
-<td style="text-align: center">Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name</td>
+<td style="text-align: center">Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name. This parameter will be used only if you use BANK_TRANSFER payment method and routed to VA.</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
@@ -19096,7 +19096,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">Numeric</td>
 <td style="text-align: center">FALSE</td>
 <td style="text-align: center">1/-1</td>
-<td style="text-align: center">Only applicable if you choose VA. It is a transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times.</td>
+<td style="text-align: center">A transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times. This parameter will be used only if you use BANK_TRANSFER payment method and routed to VA.</td>
 </tr>
 <tr>
 <td>success_redirect_url</td>
@@ -19186,7 +19186,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <td>receive_amount</td>
 <td style="text-align: center">Numeric</td>
-<td style="text-align: center">amount to be received</td>
+<td style="text-align: center">amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
@@ -19204,14 +19204,14 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">generated url for payment link; conditional, only exist if request need_frontend is TRUE</td>
 </tr>
 <tr>
-<td>va_number</td>
+<td>account_number</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA</td>
+<td style="text-align: center">Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
-<td>va_display_name</td>
+<td>account_name</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA</td>
+<td style="text-align: center">VA display name if you use VA or bank account&#39;s owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>qris_url</td>
@@ -19227,6 +19227,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>cards_url</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;CARDS&#39;.</td>
+</tr>
+<tr>
+<td>unique_code_detail</td>
+<td style="text-align: center">Object</td>
+<td style="text-align: center">Contains two objects of number: <code>amount</code> which is the requested amount and <code>unique_code</code> which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.</td>
 </tr>
 </tbody></table>
 
@@ -19245,7 +19250,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: center">VA</td>
+<td style="text-align: center">BANK_TRANSFER</td>
 <td style="text-align: center">002, 008, 009, 011, 014, 016, 022, 213, 451, 484</td>
 </tr>
 <tr>
@@ -19261,6 +19266,8 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">CC_DC</td>
 </tr>
 </tbody></table>
+
+<p>If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA (unique code BCA is soon to be enabled if <code>need_frontend = true</code>). For other sof with BANK_TRANSFER payment method, you will be routed to use VA.</p>
 <h4 id='if-need_frontend-false-list-of-allowed-payment-methods-and-sof' type='normal'>If need_frontend: false</h4>
 <p>The request should be filled only with 1 list_enable_payment_method and 1 list_enable_sof.</p>
 
@@ -19271,7 +19278,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </tr>
 </thead><tbody>
 <tr>
-<td style="text-align: center">VA</td>
+<td style="text-align: center">BANK_TRANSFER</td>
 <td style="text-align: center">002, 008, 009, 011, 014, 016, 022, 213, 451, 484</td>
 </tr>
 <tr>
@@ -19287,6 +19294,8 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">CC_DC</td>
 </tr>
 </tbody></table>
+
+<p>If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. For other sof with BANK_TRANSFER payment method, you will be routed to use VA.</p>
 <h4 id='examples-list-of-allowed-payment-methods-and-sof' type='normal'>Examples</h4>
 <table><thead>
 <tr>
@@ -19298,20 +19307,20 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </thead><tbody>
 <tr>
 <td style="text-align: center">TRUE</td>
-<td style="text-align: center">VA and QRIS</td>
-<td style="text-align: center">VA,QRIS</td>
+<td style="text-align: center">BANK_TRANSFER and QRIS</td>
+<td style="text-align: center">BANK_TRANSFER,QRIS</td>
 <td style="text-align: center">008,451,QRIS,002</td>
 </tr>
 <tr>
 <td style="text-align: center">TRUE</td>
-<td style="text-align: center">EWALLET, Credit Cards and VA</td>
-<td style="text-align: center">EWALLET,CARDS,VA</td>
+<td style="text-align: center">EWALLET, Credit Cards and BANK_TRANSFER</td>
+<td style="text-align: center">EWALLET,CARDS,BANK_TRANSFER</td>
 <td style="text-align: center">dana_ewallet,linkaja_ewallet,CARDS,484</td>
 </tr>
 <tr>
 <td style="text-align: center">FALSE</td>
-<td style="text-align: center">VA Only</td>
-<td style="text-align: center">VA</td>
+<td style="text-align: center">BANK_TRANSFER Only</td>
+<td style="text-align: center">BANK_TRANSFER</td>
 <td style="text-align: center">009</td>
 </tr>
 <tr>
@@ -19367,6 +19376,12 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">CC_DC</td>
 <td style="text-align: center">60 minutes</td>
 <td style="text-align: center">60 minutes, regardless of the expiration time specified in the request.</td>
+</tr>
+<tr>
+<td style="text-align: center">BANK_TRANSFER (unique code BCA only)</td>
+<td style="text-align: center">014</td>
+<td style="text-align: center">3 hours</td>
+<td style="text-align: center">Limited to 1 minute - 3 hours after the request is sent, and maximum at 20:30 (UTC+7). If default expiration time (3 hours) exceeds 20:30, then the expiration time will be 20:30.</td>
 </tr>
 </tbody></table>
 <h3 id='list-of-disbursement-mock-account-for-testing-purpose-create-and-update-payment-routing' type='normal'>List of Disbursement Mock Account for Testing Purpose</h3>
@@ -19668,7 +19683,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>received_amount</td>
 <td style="text-align: center">Numeric</td>
-<td style="text-align: center">Amount received. If user has paid, then the amount will be equal to request_amount</td>
+<td style="text-align: center">Amount received. If user has paid, then the amount will be equal to request_amount. If you use unique code BCA, this number will contain the amount received subtracted by 3 digits generated unique code.</td>
 </tr>
 <tr>
 <td>payment_status</td>
@@ -19696,14 +19711,14 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">generated url for payment link; conditional, only exist if request need_frontend is TRUE</td>
 </tr>
 <tr>
-<td>va_number</td>
+<td>account_number</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA</td>
+<td style="text-align: center">Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
-<td>va_display_name</td>
+<td>account_name</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA</td>
+<td style="text-align: center">VA display name if you use VA or bank account&#39;s owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>qris_url</td>
@@ -19719,6 +19734,11 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>cards_url</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;CARDS&#39;.</td>
+</tr>
+<tr>
+<td>unique_code_detail</td>
+<td style="text-align: center">Object</td>
+<td style="text-align: center">Contains two objects of number: <code>amount</code> which is the requested amount and <code>unique_code</code> which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.</td>
 </tr>
 <tr>
 <td>payment_routing</td>
@@ -19826,7 +19846,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>receive_amount</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Amount to be received</td>
+<td style="text-align: center">Amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.</td>
 </tr>
 <tr>
 <td>payment_status</td>
@@ -19854,14 +19874,14 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">generated url for payment link; conditional, only exist if request need_frontend is TRUE</td>
 </tr>
 <tr>
-<td>va_number</td>
+<td>account_number</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Generated VA number; conditional, only exist if request need_frontend is FALSE and payment_method is VA</td>
+<td style="text-align: center">Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
-<td>va_display_name</td>
+<td>account_name</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">VA display name; conditional, only exist if request need_frontend is FALSE and payment_method is VA</td>
+<td style="text-align: center">VA display name if you use VA or bank account&#39;s owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>qris_url</td>
@@ -19877,6 +19897,11 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>cards_url</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;CARDS&#39;.</td>
+</tr>
+<tr>
+<td>unique_code_detail</td>
+<td style="text-align: center">Object</td>
+<td style="text-align: center">Contains two objects of number: amount which is the requested amount and unique_code which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.</td>
 </tr>
 <tr>
 <td>payment_routing</td>
