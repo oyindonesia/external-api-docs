@@ -617,7 +617,7 @@ Endpoint:
 |partner_user_id|String|Partner user ID|
 |partner_trx_id|String|Partner transaction ID|
 |request_amount|Numeric|Amount requested to be paid by end user|
-|received_amount|Numeric|Amount received. If user has paid, then the amount will be equal to request_amount|
+|received_amount|Numeric|Amount received. If user has paid, then the amount will be equal to request_amount. If you use unique code BCA, this number will contain the amount received subtracted by 3 digits generated unique code.|
 |payment_status|String|Receive money status|
 |trx_expiration_time|partner_user_id|Transaction expiration time|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
