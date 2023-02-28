@@ -312,6 +312,7 @@ Endpoint:
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |account_number|String|Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |account_name|String|VA display name if you use VA or bank account's owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
+|bank_code|String|Bank code for the destination VA number or bank account; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
 |ewallet_url|String| A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
 |cards_url|String| URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'CARDS'.|
