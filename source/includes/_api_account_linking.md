@@ -262,7 +262,7 @@ The field `data` in response parameters will contain below informations.
 - Other than that, at the end of account linking process, we will redirect the user to your redirect page with `partner_user_id` and result status embedded in your redirect URL. Below are the example of redirect url result.
 
 |Redirect URL	|Result Status	|Partner User ID	|Redirect URL Embedded with Result Status	|
-|---	|---	|---	|
+|---	|---	|---	|---	|
 |`https://url.com/redirect`	|SUCCESS	|789467agf238893894rfcw7978iu7g7e	|`https://url.com/redirect?result=SUCCESS&partner_user_id=789467agf238893894rfcw7978iu7g7e&channelCode=dana_ewallet&paymentMethod=EWALLET`	|
 |`https://url.com/redirect`	|FAILED	|789467agf238893894rfcw7978iu7g7e	|`https://url.com/redirect?result=FAILED&partner_user_id=789467agf238893894rfcw7978iu7g7e&channelCode=dana_ewallet&paymentMethod=EWALLET`	|
 
