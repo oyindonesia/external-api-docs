@@ -3354,6 +3354,14 @@
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
                         </li>
+                        <li>
+                          <a href="#account-linking-response-data-get-linking-url" class="toc-h3 toc-link" data-title="Account Linking Response Data">
+                            <span class="toc-link-content">
+                              Account Linking Response Data
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
                     </ul>
                   </li>
                   <li>
@@ -22954,6 +22962,7 @@ Another value not following the format will be processed normally. The response 
 <span class="nt">--data-raw</span> <span class="s1">'{
     "partner_user_id": "USR-20230112-001",
     "phone_number": "082114845847",
+    "payment_method": "EWALLET",
     "channel_code": "dana_ewallet"
 }
 '</span>
@@ -22967,6 +22976,7 @@ Another value not following the format will be processed normally. The response 
 <span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
   <span class="s">"partner_user_id"</span><span class="o">:</span> <span class="s">"USR-20230112-001"</span><span class="o">,</span>
     <span class="s">"phone_number"</span><span class="o">:</span> <span class="s">"082114845847"</span><span class="o">,</span>
+    <span class="s">"payment_method"</span><span class="o">:</span> <span class="s">"EWALLET"</span><span class="o">,</span>
     <span class="s">"channel_code"</span><span class="o">:</span> <span class="s">"dana_ewallet"</span>
 <span class="o">});</span>
 <span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
@@ -22993,6 +23003,7 @@ Another value not following the format will be processed normally. The response 
   <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
     "partner_user_id": "USR-20230112-001",
     "phone_number": "082114845847",
+    "payment_method": "EWALLET",
     "channel_code": "dana_ewallet"
 }`</span><span class="p">)</span>
 
@@ -23025,7 +23036,7 @@ Another value not following the format will be processed normally. The response 
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"phone_number\": \"082114845847\",\n    \"channel_code\": \"dana_ewallet\"\n}"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"phone_number\": \"082114845847\",\n    \"payment_method\": \"EWALLET\",\n    \"channel_code\": \"dana_ewallet\"\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://partner.oyindonesia.com/api/account/linking"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
@@ -23037,6 +23048,7 @@ Another value not following the format will be processed normally. The response 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
   <span class="dl">"</span><span class="s2">partner_user_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USR-20230112-001</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">phone_number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">082114845847</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">payment_method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">EWALLET</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">channel_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">dana_ewallet</span><span class="dl">"</span>
 <span class="p">});</span>
 
@@ -23068,7 +23080,7 @@ Another value not following the format will be processed normally. The response 
   <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'yourusername'</span><span class="p">,</span>
   <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'yourapikey'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_user_id": "USR-20230112-001",\n    "phone_number": "082114845847",\n    "channel_code": "dana_ewallet"\n}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_user_id": "USR-20230112-001",\n    "phone_number": "082114845847",\n    "payment_method": "EWALLET",\n    "channel_code": "dana_ewallet"\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -23089,6 +23101,7 @@ Another value not following the format will be processed normally. The response 
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
   <span class="s">"partner_user_id"</span><span class="p">:</span> <span class="s">"USR-20230112-001"</span><span class="p">,</span>
   <span class="s">"phone_number"</span><span class="p">:</span> <span class="s">"082114845847"</span><span class="p">,</span>
+  <span class="s">"payment_method"</span><span class="p">:</span> <span class="s">"EWALLET"</span><span class="p">,</span>
   <span class="s">"channel_code"</span><span class="p">:</span> <span class="s">"dana_ewallet"</span>
 <span class="p">})</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -23105,13 +23118,15 @@ Another value not following the format will be processed normally. The response 
 <p>The above command returns JSON structured similar like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USR-20230112-001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"channel_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DANA_EWALLET"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"linking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://generated-linking-url"</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USR-20230112-001"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"channel_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dana_ewallet"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"linking_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://generated-linking-url"</span><span class="w">
+    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-get-linking-url' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/account/linking</code></p>
@@ -23161,6 +23176,13 @@ Another value not following the format will be processed normally. The response 
 <td>The user phone number (format 08xxxxxxxxxx)</td>
 </tr>
 <tr>
+<td>payment_method</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>The payment method type that user want to linked to (Currently only support <code>EWALLET</code>. In the future we will have another payment method type, such as <code>CARDS</code>)</td>
+</tr>
+<tr>
 <td>channel_code</td>
 <td>String(255)</td>
 <td>TRUE</td>
@@ -23177,10 +23199,41 @@ Another value not following the format will be processed normally. The response 
 </tr>
 </thead><tbody>
 <tr>
-<td>status</td>
-<td>Object</td>
-<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>.</td>
+<td>success</td>
+<td>Boolean</td>
+<td>Will be <code>true</code> if the account linking process is successful and vice versa</td>
 </tr>
+<tr>
+<td>error</td>
+<td>Object</td>
+<td>Error detail of the account linking process in Object <code>{code: &lt;error_code&gt;, message: &lt;error_message&gt;}</code>.    This value is not null if the value of field <code>success</code> is <code>false</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Account linking data in Object <code>{partner_user_id: &lt;partner_user_id&gt;, channel_code: &lt;channel_code&gt;, linking_url: &lt;linking_url&gt;}</code>. The detail will be explained in the next section</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>String(255)</td>
+<td>Will be filled with error reason if the linking status is failed</td>
+</tr>
+<tr>
+<td>status_code</td>
+<td>Integer</td>
+<td>Will be <code>200</code> if the account linking process is success and will be the same as error code if the linking process is failed</td>
+</tr>
+</tbody></table>
+<h3 id='account-linking-response-data-get-linking-url' type='normal'>Account Linking Response Data</h3>
+<p>The field <code>data</code> in response parameters will contain below informations.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
@@ -23215,27 +23268,13 @@ Another value not following the format will be processed normally. The response 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <ul>
-<li>Other than that, at the end of account linking process, we will redirect the user to your redirect page with result status embedded in your redirect URL. Below are the example of redirect url result.</li>
+<li>Other than that, at the end of account linking process, we will redirect the user to your redirect page with <code>partner_user_id</code> and result status embedded in your redirect URL. Below are the example of redirect url result.</li>
 </ul>
 
-<table><thead>
-<tr>
-<th>Redirect URL</th>
-<th>Result Status</th>
-<th>Redirect URL Embedded with Result Status</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>https://url.com/redirect</code></td>
-<td>SUCCESS</td>
-<td><code>https://url.com/redirect?result=SUCCESS</code></td>
-</tr>
-<tr>
-<td><code>https://url.com/redirect</code></td>
-<td>FAILED</td>
-<td><code>https://url.com/redirect?result=FAILED</code></td>
-</tr>
-</tbody></table>
+<p>|Redirect URL   |Result Status  |Partner User ID    |Redirect URL Embedded with Result Status   |
+|---    |---    |---    |
+|<code>https://url.com/redirect</code> |SUCCESS    |789467agf238893894rfcw7978iu7g7e   |<code>https://url.com/redirect?result=SUCCESS&amp;partner_user_id=789467agf238893894rfcw7978iu7g7e&amp;channelCode=dana_ewallet&amp;paymentMethod=EWALLET</code>  |
+|<code>https://url.com/redirect</code> |FAILED |789467agf238893894rfcw7978iu7g7e   |<code>https://url.com/redirect?result=FAILED&amp;partner_user_id=789467agf238893894rfcw7978iu7g7e&amp;channelCode=dana_ewallet&amp;paymentMethod=EWALLET</code>   |</p>
 <h2 id='get-e-wallet-account-balance-api-account-linking' type='normal'>Get E-Wallet Account Balance</h2>
 <p>After do account linking, user have the capability to see their e-wallet balance. Use this API to get user e-wallet balance.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://partner.oyindonesia.com/api/account/balance'</span> <span class="se">\</span>
