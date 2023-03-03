@@ -23271,10 +23271,27 @@ Another value not following the format will be processed normally. The response 
 <li>Other than that, at the end of account linking process, we will redirect the user to your redirect page with <code>partner_user_id</code> and result status embedded in your redirect URL. Below are the example of redirect url result.</li>
 </ul>
 
-<p>|Redirect URL   |Result Status  |Partner User ID    |Redirect URL Embedded with Result Status   |
-|---    |---    |---    |
-|<code>https://url.com/redirect</code> |SUCCESS    |789467agf238893894rfcw7978iu7g7e   |<code>https://url.com/redirect?result=SUCCESS&amp;partner_user_id=789467agf238893894rfcw7978iu7g7e&amp;channelCode=dana_ewallet&amp;paymentMethod=EWALLET</code>  |
-|<code>https://url.com/redirect</code> |FAILED |789467agf238893894rfcw7978iu7g7e   |<code>https://url.com/redirect?result=FAILED&amp;partner_user_id=789467agf238893894rfcw7978iu7g7e&amp;channelCode=dana_ewallet&amp;paymentMethod=EWALLET</code>   |</p>
+<table><thead>
+<tr>
+<th>Redirect URL</th>
+<th>Result Status</th>
+<th>Partner User ID</th>
+<th>Redirect URL Embedded with Result Status</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>https://url.com/redirect</code></td>
+<td>SUCCESS</td>
+<td>789467agf238893894rfcw7978iu7g7e</td>
+<td><code>https://url.com/redirect?result=SUCCESS&amp;partner_user_id=789467agf238893894rfcw7978iu7g7e&amp;channelCode=dana_ewallet&amp;paymentMethod=EWALLET</code></td>
+</tr>
+<tr>
+<td><code>https://url.com/redirect</code></td>
+<td>FAILED</td>
+<td>789467agf238893894rfcw7978iu7g7e</td>
+<td><code>https://url.com/redirect?result=FAILED&amp;partner_user_id=789467agf238893894rfcw7978iu7g7e&amp;channelCode=dana_ewallet&amp;paymentMethod=EWALLET</code></td>
+</tr>
+</tbody></table>
 <h2 id='get-e-wallet-account-balance-api-account-linking' type='normal'>Get E-Wallet Account Balance</h2>
 <p>After do account linking, user have the capability to see their e-wallet balance. Use this API to get user e-wallet balance.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://partner.oyindonesia.com/api/account/balance'</span> <span class="se">\</span>
