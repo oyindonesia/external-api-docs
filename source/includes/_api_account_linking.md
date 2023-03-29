@@ -301,6 +301,203 @@ card_expiry_mmyy | String | CC_DC | Card expiry in `mmyy` format (example: `0139
 
 <!-- Bikin section unlink, get linking data -->
 
+## Get User Account Linking Data
+
+Use this API to get user account linking data
+
+## Unlink User Account
+
+Use this API to unlink user account
+
+```shell
+curl --location --request POST 'https://partner.oyindonesia.com/api/account/unlink' \
+--header 'Content-Type: application/json' \
+--header 'X-Oy-Username: yourusername' \
+--header 'X-Api-Key: yourapikey' \
+--data-raw '{
+    "partner_user_id": "USR-20230112-001",
+    "payment_method": "CARDS",
+    "channel_code": "CC_DC"
+}
+'
+```
+
+``` dart
+var headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': 'yourusername',
+  'x-api-key': 'yourapikey'
+
+};
+var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/account/unlink'));
+request.body = json.encode({
+    "partner_user_id": "USR-20230112-001",
+    "payment_method": "CARDS",
+    "channel_code": "CC_DC"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://partner.oyindonesia.com/api/account/unlink"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+    "partner_user_id": "USR-20230112-001",
+    "payment_method": "CARDS",
+    "channel_code": "CC_DC"
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("x-oy-username", "yourusername")
+  req.Header.Add("x-api-key", "yourapikey")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"payment_method\": \"CARDS\",\n    \"channel_code\": \"CC_DC\"\n}");
+Request request = new Request.Builder()
+  .url("https://partner.oyindonesia.com/api/account/unlink")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("x-oy-username", "yourusername")
+  .addHeader("x-api-key", "yourapikey")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "partner_user_id": "USR-20230112-001",
+  "payment_method": "CARDS",
+  "channel_code": "CC_DC"
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "https://partner.oyindonesia.com/api/account/unlink");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("x-oy-username", "yourusername");
+xhr.setRequestHeader("x-api-key", "yourapikey");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('https://partner.oyindonesia.com/api/account/unlink');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'x-oy-username' => 'yourusername',
+  'x-api-key' => 'yourapikey'
+));
+$request->setBody('{\n    "partner_user_id": "USR-20230112-001",\n    "payment_method": "CARDS",\n    "channel_code": "CC_DC"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("https://partner.oyindonesia.com", undefined)
+payload = json.dumps({
+  "partner_user_id": "USR-20230112-001",
+  "payment_method": "CARDS",
+  "channel_code": "CC_DC"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'x-oy-username': 'yourusername',
+  'x-api-key': 'yourapikey'
+}
+conn.request("POST", "/api/account/unlink", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status_code": 200,
+    "success": true,
+    "data": {
+      "partner_user_id": "USR-20230112-001",
+      "payment_method": "CARDS",
+      "channel_code": "CC_DC",
+      "status": "UNLINKED"
+    }
+}
+```
+
 ## Get E-Wallet Account Balance
 
 After do account linking, user have the capability to see their e-wallet balance. Use this API to get user e-wallet balance.
