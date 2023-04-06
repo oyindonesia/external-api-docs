@@ -8956,15 +8956,15 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>list_disabled_payment_methods</td>
 <td>String</td>
 <td>TRUE</td>
-<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
+<td>To configure payment methods to be disabled (e.g. BANK_TRANSFER, CREDIT_CARD, QRIS, EWALLET). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
 <td>There must be at least 1 payment method is enabled.</td>
 </tr>
 <tr>
 <td>list_enabled_banks</td>
 <td>String</td>
 <td>TRUE</td>
-<td>To configure banks to be enabled for VA payment method.</td>
-<td>List of eligible bank codes: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB).</td>
+<td>To configure banks to be enabled for BANK_TRANSFER payment method.</td>
+<td>List of eligible bank codes: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB), &quot;213&quot; (BSI), &quot;016&quot; (Maybank), &quot;484&quot; (Hana), &quot;011&quot; (Danamon), and &quot;014&quot; (BCA). Unique code is only available for BCA.</td>
 </tr>
 <tr>
 <td>list_enabled_ewallet</td>
@@ -9963,7 +9963,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>payment_method</td>
 <td>String</td>
-<td>The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), or VA (Virtual Account)</td>
+<td>The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)</td>
 </tr>
 <tr>
 <td>created</td>
@@ -10507,13 +10507,13 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>listDisabledPaymentMethods</td>
 <td>String</td>
-<td>List Of Disable Payment Method (VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well.</td>
+<td>List Of Disable Payment Method (VA, CREDIT_CARD, QRIS, BANK_TRANSFER). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well. When BANK_TRANSFER is included, it means only unique code is disabled.</td>
 <td></td>
 </tr>
 <tr>
 <td>listEnabledBanks</td>
 <td>String</td>
-<td>Payment Method List Enable Bank for VA Payment Method: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB).</td>
+<td>Payment Method List Enable Bank for VA or Unique Code Payment Method: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB), &quot;213&quot; (BSI), &quot;016&quot; (Maybank), &quot;484&quot; (Hana), &quot;011&quot; (Danamon), and &quot;014&quot; (BCA). Unique code is only available for BCA.</td>
 <td>002,008</td>
 </tr>
 <tr>
