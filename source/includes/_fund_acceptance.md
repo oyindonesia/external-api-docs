@@ -284,8 +284,8 @@ email | String | FALSE | The email addresses where the payment link will be sent
 phone_number | Numeric | FALSE | Phone number of the payer for a transaction. | Do not use special character (e.g. "+")
 is_open	| Boolean | TRUE | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 10,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
 include_admin_fee | Boolean | TRUE | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
-list_disabled_payment_methods | String | TRUE | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
-list_enabled_banks | String | TRUE | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
+list_disabled_payment_methods | String | TRUE | To configure payment methods to be disabled (e.g. BANK_TRANSFER, CREDIT_CARD, QRIS, EWALLET). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
+list_enabled_banks | String | TRUE | To configure banks to be enabled for BANK_TRANSFER payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB), "213" (BSI), "016" (Maybank), "484" (Hana), "011" (Danamon), and "014" (BCA). Unique code is only available for BCA.
 list_enabled_ewallet | String | TRUE | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet", "dana_ewallet", "linkaja_ewallet", "ovo_ewallet".
 expiration | datetime | FALSE | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
 va_display_name | String | FALSE | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
@@ -980,7 +980,7 @@ sender_note | String | Additional notes from a payer for a transaction
 status | String | The status of a payment link
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
-payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), or VA (Virtual Account)
+payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)
 created | String | The timestamp which indicates the creation time of a payment link
 description | String | Description of the payment link.
 paid_amount | BigDecimal | the total amount that a user has paid.
@@ -1390,8 +1390,8 @@ notes | String | Payment Notes / Subject | Cicilan Mobil - 5
 email | String | Payment Sender Email(s).You can add up to 3 emails separated by ";" | johndoe@gmail.com;jane@gmail.com
 senderPhoneNumber | String | Payment Sender Phone Number | 081234567890
 includeAdminFee | Boolean | Admin fee bills destination between partner or user | true
-listDisabledPaymentMethods | String | List Of Disable Payment Method (VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well.
-listEnabledBanks | String | Payment Method List Enable Bank for VA Payment Method: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB). | 002,008
+listDisabledPaymentMethods | String | List Of Disable Payment Method (VA, CREDIT_CARD, QRIS, BANK_TRANSFER). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well. When BANK_TRANSFER is included, it means only unique code is disabled.
+listEnabledBanks | String | Payment Method List Enable Bank for VA or Unique Code Payment Method: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB), "213" (BSI), "016" (Maybank), "484" (Hana), "011" (Danamon), and "014" (BCA). Unique code is only available for BCA. | 002,008
 expirationTime | String | Payment Expiration Date and Time | "2020-08-12 00:00:00"
 due_date | String | Transaction Due Date | "2020-08-11 12:00:00"
 invoiceData | Invoice | Data For Invoice Payment will be null | CREDIT_CARD)** | null
