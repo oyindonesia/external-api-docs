@@ -19,6 +19,7 @@ curl --location --request POST 'https://partner.oyindonesia.com/api/payment-rout
 --header 'x-api-key: apikeymu' \
 --data-raw '{
     "partner_user_id": "USR-20211117-1029",
+    "use_linked_account": false,
     "partner_trx_id": "TRX-20211117-1030",
     "need_frontend": false,
     "sender_email": "sender@gmail.com",
@@ -45,6 +46,7 @@ var headers = {
 var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/api/payment-routing/create-transaction'));
 request.body = json.encode({
   "partner_user_id": "USR-20211117-1029",
+  "use_linked_account": false,
   "partner_trx_id": "TRX-20211117-1030",
   "need_frontend": false,
   "sender_email": "sender@gmail.com",
@@ -87,6 +89,7 @@ func main() {
 
   payload := strings.NewReader(`{
     "partner_user_id": "USR-20211117-1029",
+    "use_linked_account": false,
     "partner_trx_id": "TRX-20211117-1030",
     "need_frontend": false,
     "sender_email": "sender@gmail.com",
@@ -134,7 +137,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"BANK_TRANSFER\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"use_linked_account\": false,\n \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"BANK_TRANSFER\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}");
 Request request = new Request.Builder()
   .url("https://partner.oyindonesia.com/api/payment-routing/create-transaction")
   .method("POST", body)
@@ -148,6 +151,7 @@ Response response = client.newCall(request).execute();
 ```javascript
 var data = JSON.stringify({
   "partner_user_id": "USR-20211117-1029",
+  "use_linked_account": false,
   "partner_trx_id": "TRX-20211117-1030",
   "need_frontend": false,
   "sender_email": "sender@gmail.com",
@@ -196,7 +200,7 @@ $request->setHeader(array(
   'x-oy-username' => 'yourusername',
   'x-api-key' => 'apikeymu'
 ));
-$request->setBody('{\n    "partner_user_id": "USR-20211117-1029",\n    "partner_trx_id": "TRX-20211117-1030",\n    "need_frontend": false,\n    "sender_email": "sender@gmail.com",\n    "receive_amount": 14000,\n    "list_enable_payment_method": "BANK_TRANSFER",\n    "list_enable_sof": "002",\n    "va_display_name": "partner_brand",\n    "payment_routing": [{\n        "recipient_bank": "014",\n        "recipient_account": "1234567890",\n        "recipient_amount": 10000,\n        "recipient_email": "recipient_bca@gmail.com"\n    }]\n}');
+$request->setBody('{\n    "partner_user_id": "USR-20211117-1029",\n  "use_linked_account": false,\n  "partner_trx_id": "TRX-20211117-1030",\n    "need_frontend": false,\n    "sender_email": "sender@gmail.com",\n    "receive_amount": 14000,\n    "list_enable_payment_method": "BANK_TRANSFER",\n    "list_enable_sof": "002",\n    "va_display_name": "partner_brand",\n    "payment_routing": [{\n        "recipient_bank": "014",\n        "recipient_account": "1234567890",\n        "recipient_amount": 10000,\n        "recipient_email": "recipient_bca@gmail.com"\n    }]\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -219,6 +223,7 @@ import json
 conn = http.client.HTTPSConnection("https://partner.oyindonesia.com", undefined)
 payload = json.dumps({
   "partner_user_id": "USR-20211117-1029",
+  "use_linked_account": False,
   "partner_trx_id": "TRX-20211117-1030",
   "need_frontend": False,
   "sender_email": "sender@gmail.com",
@@ -256,6 +261,7 @@ print(data.decode("utf-8"))
     },
     "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
     "partner_user_id": "USR-20211117-1029",
+    "use_linked_account": false,
     "partner_trx_id": "TRX-20211117-1030",
     "receive_amount": 14000,
     "trx_expiration_time": "2021-12-02 18:59:31",
@@ -280,7 +286,8 @@ Endpoint:
 ### Request Parameters
 | Parameter  | Type |  Required   | Default | Description |
 | ------------- |:-------------:| :----------: |:-----:|:-----:|
-|partner_user_id   | String    |   Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.| - |  Unique partner user id. Will automatically be generated if left empty on VA payment method with `need_frontend: false`. |
+|partner_user_id   | String    |   Applicable for VA and EWallet with `need_frontend: false`. If you want the VA to be reusable for each users (multiple use) or create EWallet Direct Payment transaction, you are required define this parameter.| - |  Unique partner user id. Will automatically be generated if left empty on VA payment method with `need_frontend: false`. For EWallet Direct Payment, it is required to register `partner_user_id` using Account Linking API first.|
+| use_linked_account | Boolean | Applicable for EWallet with `need_frontend: false`. | `false` | If `true`, then EWallet Direct Payment transaction will be created. Else, regular EWallet transaction will be created. |
 | partner_trx_id  | String     |  FALSE | - | Unique partner transaction ID. Will automatically be generated if left empty. |
 | need_frontend | Boolean     |  TRUE | -| Partner need UI or not, if true, we will route to payment link, otherwise will be route to API-based solution. |
 | list_enable_payment_method | String; comma separated     |  TRUE | - | To configure payment methods to be enabled in the payment method page.  |
@@ -305,6 +312,7 @@ Endpoint:
 |status|Object|Status of response in Object|
 |trx_id|String|Payment Routing ID defined by OY!|
 |partner_user_id|String|Partner user ID that you defined in the request parameter|
+|use_linked_account|Boolean|Applicable for EWallet with `need_frontend: false`. If `true`, the transaction created is an EWallet Direct Payment transaction (ShopeePay only). Else, it is a regular EWallet transaction.|
 |partner_trx_id|String|Partner transaction ID that you defined in the request parameter|
 |receive_amount|Numeric|amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.|
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Transaction Expiration Time|
@@ -314,7 +322,7 @@ Endpoint:
 |account_name|String|VA display name if you use VA or bank account's owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |bank_code|String|Bank code for the destination VA number or bank account; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
-|ewallet_url|String| A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
+|ewallet_url|String| For `use_linked_account: true`: URL that prompt user to input PIN to authorize Direct Payment. For `use_linked_account: false`: A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
 |cards_url|String| URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'CARDS'.|
 |unique_code_detail|Object|Contains two objects of number: `amount` which is the requested amount and `unique_code` which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.|
 
@@ -347,7 +355,8 @@ The request should be filled only with 1 list_enable_payment_method and 1 list_e
 | EWALLET | dana_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
 
-If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. For other sof with BANK_TRANSFER payment method, you will be routed to use VA.
+- If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. For other sof with BANK_TRANSFER payment method, you will be routed to use VA.
+- For EWallet Direct Payment (`use_linked_account: true`), only `shopeepay_ewallet` is supported.
 
 #### Examples
 | need_frontend | Case | list_enable_payment_method | list_enable_sof |
@@ -367,6 +376,7 @@ The table below lists the valid expiration times for transactions based on the p
 | QRIS | QRIS | 30 minutes | Limited to 1 minute - 1 hour after the request is sent. The QRIS validity period is dynamic within the aforementioned limit.
 | EWALLET | dana_ewallet, shopeepay_ewallet | 60 minutes | 1 minute - 60 minutes.
 | EWALLET | linkaja_ewallet | 5 minutes | 5 minutes, regardless of the expiration time specified in the request.
+| EWALLET (Direct Payment) | shopeepay_ewallet | 30 minutes | 30 minutes, regardless of the expiration time specified in the request
 | CARDS | CC_DC | 60 minutes | 60 minutes, regardless of the expiration time specified in the request.
 | BANK_TRANSFER (unique code BCA only) | 014 | 3 hours | Limited to 1 minute - 3 hours after the request is sent, and maximum at 20:30 (UTC+7). If default expiration time (3 hours) exceeds 20:30, then the expiration time will be 20:30.
 
@@ -568,6 +578,7 @@ print(data.decode("utf-8"))
     },
     "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
     "partner_user_id": "USR-20211117-1029",
+    "use_linked_account": false,
     "partner_trx_id": "TRX-20211117-1030",
     "request_amount": 14000,
     "received_amount": 0,
@@ -627,7 +638,7 @@ Endpoint:
 |account_number|String|Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |account_name|String|VA display name if you use VA or bank account's owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
-|ewallet_url|String| A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
+|ewallet_url|String| For `use_linked_account: true`: URL that prompt user to input PIN to authorize Direct Payment. For `use_linked_account: false`: A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
 |cards_url|String| URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'CARDS'.|
 |unique_code_detail|Object|Contains two objects of number: `amount` which is the requested amount and `unique_code` which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.|
 |payment_routing|List of Object|List of payment routing recipients. See row belows|
@@ -680,6 +691,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 | ------------- |:-------------:| :----------: |
 |trx_id|String|payment routing transaction id|
 |partner_user_id|String|Partner user ID|
+|use_linked_account|Boolean|Applicable for EWallet with `need_frontend: false`. If `true`, the transaction created is an EWallet Direct Payment transaction. Else, it is a regular EWallet transaction.|
 |partner_trx_id|String|Partner transaction ID|
 |receive_amount|String|Amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.|
 |payment_status|String|Receive money status|
@@ -690,7 +702,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 |account_number|String|Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |account_name|String|VA display name if you use VA or bank account's owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
-|ewallet_url|String| A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
+|ewallet_url|String| For `use_linked_account: true`: URL that prompt user to input PIN to authorize Direct Payment. For `use_linked_account: false`: A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
 |cards_url|String| URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'CARDS'.|
 |unique_code_detail|Object|Contains two objects of number: amount which is the requested amount and unique_code which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.|
 |payment_routing|List of Object|List of payment routing recipients. See row belows|
