@@ -253,6 +253,7 @@ The field `data` in response parameters will contain below informations.
 Payment Method | Channel Code | Successful Account Linking | Failed Account Linking
 -------------- | ------------ | -------------------------- | ----------------------
 EWALLET | dana_ewallet | Send Callback | -
+EWALLET | shopeepay_ewallet | Send Callback | -
 
 > The response callback will looks like this:
 
