@@ -21529,6 +21529,7 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
     </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIRDAUS"</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">835000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"note for payment"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="s2">"000372190053"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="s2">"FIRDAUS"</span><span class="p">,</span><span class="w">
@@ -21600,6 +21601,11 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
 <td>additional_data</td>
 <td>Object</td>
 <td>Additional detailed data from biller</td>
+</tr>
+<tr>
+<td>note</td>
+<td>String(255)</td>
+<td>Partner defined note for bill payment</td>
 </tr>
 </tbody></table>
 <h2 id='get-bill-payment-status-biller-api' type='normal'>Get Bill Payment Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
@@ -21770,6 +21776,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">835000</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tx_status_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="s2">"000372190053"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="s2">"FIRDAUS"</span><span class="p">,</span><span class="w">
@@ -21863,6 +21870,11 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 <td>status</td>
 <td>String</td>
 <td>Biller Transaction Status, Refer to <a href="#api-biller-status-biller-api">API Biller Status</a></td>
+</tr>
+<tr>
+<td>tx_status_description</td>
+<td>String</td>
+<td>Error reason if exists, field is blank if status is SUCCESS</td>
 </tr>
 </tbody></table>
 <h2 id='get-bill-products-list-biller-api' type='normal'>Get Bill Products List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
