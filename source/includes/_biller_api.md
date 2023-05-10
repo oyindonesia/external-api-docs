@@ -712,6 +712,7 @@ print(data.decode("utf-8"))
     "customer_name": "FIRDAUS", 
     "amount": 835000, 
     "admin_fee": 2500, 
+    "status": "SUCCESS"
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
@@ -740,7 +741,7 @@ partner_tx_id | String(255) | TRUE | Unique Payout ID which partner put on sched
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Status of Payout in Object `{code: <status_code>, message: <status_message>}`
+status | Object | Status of Check Status hit in Object `{code: <status_code>, message: <status_message>}`
 data | Object | Data object that wraps the response parameters
 tx_id | String(36) | Unique Payout ID from OY!. Partner can use this ID for settlement
 customer_id | String(255) | Customer ID for specific biller product
@@ -750,6 +751,7 @@ customer_name | String(255) | Customer Name from biller
 amount | BigDecimal | Bill's amount (excluding admin fee).
 admin_fee | BigDecimal | Bill's admin fee
 additional_data | Object | Additional detailed data from biller
+status | String | Biller Transaction Status
 
 ## Get Bill Products List
 
