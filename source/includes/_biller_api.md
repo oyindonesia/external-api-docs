@@ -522,7 +522,7 @@ customer_name | String(255) | Customer Name from biller
 amount | BigDecimal | Bill's amount (excluding admin fee).
 admin_fee | BigDecimal | Bill's admin fee
 additional_data | Object | Additional detailed data from biller
-note | String(255) | FALSE | Partner defined note for bill payment
+note | String(255) | Partner defined note for bill payment
 
 ## Get Bill Payment Status
 
