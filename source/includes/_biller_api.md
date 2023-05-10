@@ -491,6 +491,7 @@ admin_fee | BigDecimal | Bill's admin fee
     "customer_name": "FIRDAUS", 
     "amount": 835000,
     "admin_fee": 2500,
+    "note": "note for payment",
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
@@ -521,6 +522,7 @@ customer_name | String(255) | Customer Name from biller
 amount | BigDecimal | Bill's amount (excluding admin fee).
 admin_fee | BigDecimal | Bill's admin fee
 additional_data | Object | Additional detailed data from biller
+note | String(255) | FALSE | Partner defined note for bill payment
 
 ## Get Bill Payment Status
 
@@ -713,6 +715,7 @@ print(data.decode("utf-8"))
     "amount": 835000, 
     "admin_fee": 2500, 
     "status": "SUCCESS",
+    "tx_status_description": "",
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
@@ -752,6 +755,7 @@ amount | BigDecimal | Bill's amount (excluding admin fee).
 admin_fee | BigDecimal | Bill's admin fee
 additional_data | Object | Additional detailed data from biller
 status | String | Biller Transaction Status, Refer to [API Biller Status](#api-biller-status-biller-api)
+tx_status_description | String | Error reason if exists, field is blank if status is SUCCESS
 
 ## Get Bill Products List
 
