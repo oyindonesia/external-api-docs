@@ -21169,7 +21169,7 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 <td>product_id</td>
 <td>String(255)</td>
 <td>TRUE</td>
-<td>OY&#39;s Biller ID, see <a href="#">Biller Products List</a></td>
+<td>OY&#39;s Biller ID, see <a href="#biller-products-list-biller-api">Biller Products List</a></td>
 </tr>
 <tr>
 <td>partner_tx_id</td>
@@ -21221,7 +21221,7 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 <tr>
 <td>product_id</td>
 <td>String(255)</td>
-<td>OY&#39;s Biller ID, see [Biller Products List]</td>
+<td>OY&#39;s Biller ID, see <a href="#biller-products-list-biller-api">Biller Products List</a></td>
 </tr>
 <tr>
 <td>partner_tx_id</td>
@@ -21484,7 +21484,7 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
 <tr>
 <td>product_id</td>
 <td>String(255)</td>
-<td>OY&#39;s Biller ID, see [Biller Products List]</td>
+<td>OY&#39;s Biller ID, see <a href="#biller-products-list-biller-api">Biller Products List</a></td>
 </tr>
 <tr>
 <td>partner_tx_id</td>
@@ -21574,7 +21574,7 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
 <tr>
 <td>product_id</td>
 <td>String(255)</td>
-<td>OY&#39;s Biller ID, see [Biller Products List]</td>
+<td>OY&#39;s Biller ID, see <a href="#biller-products-list-biller-api">Biller Products List</a></td>
 </tr>
 <tr>
 <td>partner_tx_id</td>
@@ -21769,6 +21769,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
     </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIRDAUS"</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">835000</span><span class="p">,</span><span class="w"> 
     </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"additional_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"customer_id"</span><span class="p">:</span><span class="s2">"000372190053"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"customer_name"</span><span class="p">:</span><span class="s2">"FIRDAUS"</span><span class="p">,</span><span class="w">
@@ -21811,7 +21812,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 <tr>
 <td>status</td>
 <td>Object</td>
-<td>Status of Payout in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
+<td>Status of Check Status hit in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>data</td>
@@ -21831,7 +21832,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 <tr>
 <td>product_id</td>
 <td>String(255)</td>
-<td>OY&#39;s Biller ID, see [Biller Products List]</td>
+<td>OY&#39;s Biller ID, see <a href="#biller-products-list-biller-api">Biller Products List</a></td>
 </tr>
 <tr>
 <td>partner_tx_id</td>
@@ -21857,6 +21858,11 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 <td>additional_data</td>
 <td>Object</td>
 <td>Additional detailed data from biller</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Biller Transaction Status, Refer to <a href="#api-biller-status-biller-api">API Biller Status</a></td>
 </tr>
 </tbody></table>
 <h2 id='get-bill-products-list-biller-api' type='normal'>Get Bill Products List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
@@ -22034,7 +22040,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 <tr>
 <td>product_id</td>
 <td>String(255)</td>
-<td>OY&#39;s Biller ID, see [Biller Products List]</td>
+<td>OY&#39;s Biller ID, see <a href="#biller-products-list-biller-api">Biller Products List</a></td>
 </tr>
 <tr>
 <td>description</td>
