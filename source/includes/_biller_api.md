@@ -712,7 +712,7 @@ print(data.decode("utf-8"))
     "customer_name": "FIRDAUS", 
     "amount": 835000, 
     "admin_fee": 2500, 
-    "status": "SUCCESS"
+    "status": "SUCCESS",
     "additional_data": {
       "customer_id":"000372190053",
       "customer_name":"FIRDAUS",
