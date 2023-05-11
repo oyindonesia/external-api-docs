@@ -1,6 +1,5 @@
 # API Account Linking
-
-OY's API Collection to link user's phone number to e-wallets. Currently, this feature support to link user's phone number to DANA e-wallet. Contact your Business Representative if you'd like to activate this feature.
+OY's API Collection to link user's account. Currently, this feature support DANA e-wallet and CC/DC. Contact your Business Representative if you'd like to activate this feature.
 
 ## Get Linking URL
 
