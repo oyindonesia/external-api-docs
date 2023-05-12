@@ -14,7 +14,9 @@ POST https://partner.oyindonesia.com/api/v2/bill \
 -d '{
     "customer_id": "12345678910",
     "product_id": "plnprepaid",
-    "partner_tx_id": "DEV123456789"
+    "partner_tx_id": "DEV123456789",
+    "amount": null,
+    "additional_data": null
 }'
 ```
 
@@ -29,7 +31,9 @@ var request = http.Request('POST', Uri.parse('{{base_url}}/api/v2/bill'));
 request.body = json.encode({
     "customer_id": "12345678910",
     "product_id": "plnprepaid",
-    "partner_tx_id": "DEV123456789"
+    "partner_tx_id": "DEV123456789",
+    "amount": null,
+    "additional_data": null
 });
 request.headers.addAll(headers);
 
@@ -61,7 +65,9 @@ func main() {
   payload := strings.NewReader(`{
     "customer_id": "12345678910",
     "product_id": "plnprepaid",
-    "partner_tx_id": "DEV123456789"
+    "partner_tx_id": "DEV123456789",
+    "amount": null,
+    "additional_data": null
   }`)
 
   client := &http.Client {
@@ -97,7 +103,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"customer_id\": \"12345678910\",\n\t\"product_id\": \"plnprepaid\",\n\t\"partner_tx_id\": \"DEV123456789\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"customer_id\": \"12345678910\",\n\t\"product_id\": \"plnprepaid\",\n\t\"partner_tx_id\": \"DEV123456789\",\n\t\"amount\": null,\n\t\"additional_data\": null\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/v2/bill")
   .method("POST", body)
@@ -113,7 +119,9 @@ Response response = client.newCall(request).execute();
 var data = JSON.stringify({
     "customer_id": "12345678910",
     "product_id": "plnprepaid",
-    "partner_tx_id": "DEV123456789"
+    "partner_tx_id": "DEV123456789",
+    "amount": null,
+    "additional_data": null
 });
 
 var xhr = new XMLHttpRequest();
@@ -149,7 +157,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n  "customer_id": "12345678910",\n  "product_id": "plnprepaid",\n  "partner_tx_id": "DEV123456789"\n}');
+$request->setBody('{\n  "customer_id": "12345678910",\n  "product_id": "plnprepaid",\n  "partner_tx_id": "DEV123456789",\n  "amount": null,\n  "additional_data": null\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -173,7 +181,9 @@ conn = http.client.HTTPSConnection("{{base_url}}")
 payload = json.dumps({
     "customer_id": "12345678910",
     "product_id": "plnprepaid",
-    "partner_tx_id": "DEV123456789"
+    "partner_tx_id": "DEV123456789",
+    "amount": null,
+    "additional_data": null
 })
 headers = {
   'Content-Type': 'application/json',
