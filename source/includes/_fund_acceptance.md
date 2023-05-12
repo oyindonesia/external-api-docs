@@ -723,6 +723,7 @@ curl -X POST \
         "sender_bank":"008",
         "settlement_type":"non_realtime",
         "description":"description",
+        "payment_reference_number": "",
         "expiration":"2020-10-18T15:00:00",
         "due_date": "2020-10-18T14:00:00",
         "email":"johndoe@gmail.com;jane@gmail.com",
@@ -750,6 +751,7 @@ created | DateTime | The timestamp which indicates the creation time of a paymen
 updated | DateTime | The timestamp which indicates the latest updated time of a payment link due to status update
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
 description | String | The description of the payment link/invoice link.
+payment_reference_number| String | Identifier for QRIS transactions success proof
 expiration | DateTime | The expiration time of the payment link/invoice link
 due_date | DateTime | The transaction due date of the payment link/invoice
 email | String | The email addresses for the payment link/invoice link to be sent. You can add up to 3 emails separated by ";"
@@ -942,6 +944,7 @@ print(data.decode("utf-8"))
   "payment_method": "CC",
   "created": "2021-01-12T16:25:33",
   "description": "",
+  "payment_reference_number": "",
   "paid_amount": 100000,
   "expiration": "2021-01-13T16:25:14",
   "due_date": "2021-01-13T15:00:00",
@@ -983,6 +986,7 @@ sender_bank | String | The bank code used by a payer to do payment
 payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)
 created | String | The timestamp which indicates the creation time of a payment link
 description | String | Description of the payment link.
+payment_reference_number | String | Identifier for QRIS transactions success proof
 paid_amount | BigDecimal | the total amount that a user has paid.
 expiration | String | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss)
 due_date | String | To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss)
