@@ -751,7 +751,7 @@ created | DateTime | The timestamp which indicates the creation time of a paymen
 updated | DateTime | The timestamp which indicates the latest updated time of a payment link due to status update
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
 description | String | The description of the payment link/invoice link.
-payment_reference_number| String | Identifier for QRIS transactions success proof
+payment_reference_number| String | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Available for: QRIS
 expiration | DateTime | The expiration time of the payment link/invoice link
 due_date | DateTime | The transaction due date of the payment link/invoice
 email | String | The email addresses for the payment link/invoice link to be sent. You can add up to 3 emails separated by ";"
@@ -986,7 +986,7 @@ sender_bank | String | The bank code used by a payer to do payment
 payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)
 created | String | The timestamp which indicates the creation time of a payment link
 description | String | Description of the payment link.
-payment_reference_number | String | Identifier for QRIS transactions success proof
+payment_reference_number | String | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Available for: QRIS
 paid_amount | BigDecimal | the total amount that a user has paid.
 expiration | String | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss)
 due_date | String | To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss)
