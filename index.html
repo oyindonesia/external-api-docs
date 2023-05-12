@@ -20967,7 +20967,9 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 <span class="nt">-d</span> <span class="s1">'{
     "customer_id": "12345678910",
     "product_id": "plnprepaid",
-    "partner_tx_id": "DEV123456789"
+    "partner_tx_id": "DEV123456789",
+    "amount": null,
+    "additional_data": null
 }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
   <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
@@ -20979,7 +20981,9 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 <span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
     <span class="s">"customer_id"</span><span class="o">:</span> <span class="s">"12345678910"</span><span class="o">,</span>
     <span class="s">"product_id"</span><span class="o">:</span> <span class="s">"plnprepaid"</span><span class="o">,</span>
-    <span class="s">"partner_tx_id"</span><span class="o">:</span> <span class="s">"DEV123456789"</span>
+    <span class="s">"partner_tx_id"</span><span class="o">:</span> <span class="s">"DEV123456789"</span><span class="o">,</span>
+    <span class="s">"amount"</span><span class="o">:</span> <span class="kc">null</span><span class="o">,</span>
+    <span class="s">"additional_data"</span><span class="o">:</span> <span class="kc">null</span>
 <span class="o">});</span>
 <span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
 
@@ -21008,7 +21012,9 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
   <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
     "customer_id": "12345678910",
     "product_id": "plnprepaid",
-    "partner_tx_id": "DEV123456789"
+    "partner_tx_id": "DEV123456789",
+    "amount": null,
+    "additional_data": null
   }`</span><span class="p">)</span>
 
   <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
@@ -21041,7 +21047,7 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n\t\"customer_id\": \"12345678910\",\n\t\"product_id\": \"plnprepaid\",\n\t\"partner_tx_id\": \"DEV123456789\"\n}"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n\t\"customer_id\": \"12345678910\",\n\t\"product_id\": \"plnprepaid\",\n\t\"partner_tx_id\": \"DEV123456789\",\n\t\"amount\": null,\n\t\"additional_data\": null\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/v2/bill"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
@@ -21054,7 +21060,9 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
     <span class="dl">"</span><span class="s2">customer_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12345678910</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">product_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">plnprepaid</span><span class="dl">"</span><span class="p">,</span>
-    <span class="dl">"</span><span class="s2">partner_tx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DEV123456789</span><span class="dl">"</span>
+    <span class="dl">"</span><span class="s2">partner_tx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DEV123456789</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">additional_data</span><span class="dl">"</span><span class="p">:</span> <span class="kc">null</span>
 <span class="p">});</span>
 
 <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
@@ -21087,7 +21095,7 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
   <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
   <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "customer_id": "12345678910",\n  "product_id": "plnprepaid",\n  "partner_tx_id": "DEV123456789"\n}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "customer_id": "12345678910",\n  "product_id": "plnprepaid",\n  "partner_tx_id": "DEV123456789",\n  "amount": null,\n  "additional_data": null\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -21108,7 +21116,9 @@ POST https://partner.oyindonesia.com/api/v2/bill <span class="se">\</span>
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
     <span class="s">"customer_id"</span><span class="p">:</span> <span class="s">"12345678910"</span><span class="p">,</span>
     <span class="s">"product_id"</span><span class="p">:</span> <span class="s">"plnprepaid"</span><span class="p">,</span>
-    <span class="s">"partner_tx_id"</span><span class="p">:</span> <span class="s">"DEV123456789"</span>
+    <span class="s">"partner_tx_id"</span><span class="p">:</span> <span class="s">"DEV123456789"</span><span class="p">,</span>
+    <span class="s">"amount"</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">"additional_data"</span><span class="p">:</span> <span class="n">null</span>
 <span class="p">})</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
