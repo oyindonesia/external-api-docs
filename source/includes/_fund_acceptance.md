@@ -972,7 +972,7 @@ payment_reference_id | String | A unique reference ID only for QRIS transactions
 send_callback | Boolean | A flag to indiciate if the latest callback of a transaction need to be re-sent or not
 
 <aside class="warning">
-Note: All requests made must contain "partner_trx_id" or "payment_reference_number" parameter, but not both at the same time.
+Note: All requests made must contain "partner_trx_id" or "payment_reference_number" parameter, but not both at the same time, otherwise will return error.
 </aside>
 
 ### Response Parameters

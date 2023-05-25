@@ -610,7 +610,7 @@ Endpoint:
 |send_callback|Boolean|FALSE|-|If set true, we also send response as a callback to partner|
 
 <aside class="warning">
-Note: All requests made must contain "partner_trx_id" or "payment_reference_number", but not both at the same time.
+Note: All requests made must contain "partner_trx_id" or "payment_reference_number", but not both at the same time, otherwise will return error.
 </aside>
 
 ### Responses Parameter
