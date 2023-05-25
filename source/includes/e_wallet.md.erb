@@ -791,9 +791,9 @@ refund_amount | BigDecimal | Requested refund amount
 
 ### HTTPS Request
 
-**[Production]** `GET https://partner.oyindonesia.com/api/e-wallet-aggregator/get-refund ` <br/>
+**[Production]** `GET https://partner.oyindonesia.com/api/e-wallet-aggregator/get-refund?refund_id=<refund_id> ` <br/>
 
-**[Staging]** `GET https://api-stg.oyindonesia.com/api/e-wallet-aggregator/get-refund`
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/e-wallet-aggregator/get-refund?refund_id=<refund_id>`
 
 ### Request Headers
 
@@ -802,18 +802,15 @@ Parameter | Type | Description
 X-Api-Key | String | API Key used to connect to this particular endpoint
 X-Oy-Username | String | Your OY! account username
 
-### Request Parameters
+### Query Parameters
 
 ```shell
 curl -X GET \
-  <%= config[:endpoint_prod] %>/api/e-wallet-aggregator/get-refund \
+  <%= config[:endpoint_prod] %>/api/e-wallet-aggregator/get-refund?refund_id=<refund_id> \
   -H 'content-type: application/json' \
   -H 'accept: application/json' \
   -H 'x-api-key: yourapikey' \
-  -H 'x-oy-username: yourusername' \
-  -d '{
-        "refund_id": "REFUND123"
-    }'
+  -H 'x-oy-username: yourusername'
 ```
 
 ```dart
@@ -822,10 +819,7 @@ var headers = {
   'X-Oy-Username': '{{username}}',
   'X-Api-Key': '{{api-key}}'
 };
-var request = http.Request('GET', Uri.parse('{{base_url}}/api/e-wallet-aggregator/get-refund'));
-request.body = json.encode({
- "refund_id": "REFUND123"
-});
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/e-wallet-aggregator/get-refund?refund_id=<refund_id>'));
 request.headers.addAll(headers);
 
 http.StreamedResponse response = await request.send();
@@ -850,16 +844,12 @@ import (
 
 func main() {
 
-  url := "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/get-refund"
+  url := "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/get-refund?refund_id=<refund_id>"
   method := "GET"
-
-  payload := strings.NewReader(`{
-     "refund_id": "REFUND123"
-}`)
 
   client := &http.Client {
   }
-  req, err := http.NewRequest(method, url, payload)
+  req, err := http.NewRequest(method, url, nil)
 
   if err != nil {
     fmt.Println(err)
@@ -889,10 +879,9 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"refund_id\": \"REFUND123\"\n}");
 Request request = new Request.Builder()
-  .url("{{base_url}}/api/e-wallet-aggregator/get-refund")
-  .method("GET", body)
+  .url("{{base_url}}/api/e-wallet-aggregator/get-refund?refund_id=<refund_id>")
+  .method("GET", null)
   .addHeader("Content-Type", "application/json")
   .addHeader("X-Oy-Username", "{{username}}")
   .addHeader("X-Api-Key", "{{api-key}}")
@@ -901,10 +890,6 @@ Response response = client.newCall(request).execute();
 ```
 
 ```javascript
-var data = JSON.stringify({
-    "refund_id": "REFUND123"
-});
-
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
@@ -914,19 +899,19 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/get-refund");
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/get-refund?refund_id=<refund_id>");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("X-Oy-Username", "{{username}}");
 xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
 
-xhr.send(data);
+xhr.send();
 ```
 
 ```php
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('{{base_url}}/api/e-wallet-aggregator/get-refund');
+$request->setUrl('{{base_url}}/api/e-wallet-aggregator/get-refund?refund_id=<refund_id>');
 $request->setMethod(HTTP_Request2::METHOD_GET);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -936,7 +921,6 @@ $request->setHeader(array(
   'X-Oy-Username' => '{{username}}',
   'X-Api-Key' => '{{api-key}}'
 ));
-$request->setBody('{\n  "refund_id": "REFUND123"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -957,15 +941,13 @@ import http.client
 import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
-payload = json.dumps({
-  "refund_id": "REFUND123"
-})
+payload = ''
 headers = {
   'Content-Type': 'application/json',
   'X-Oy-Username': '{{username}}',
   'X-Api-Key': '{{api-key}}'
 }
-conn.request("GET", "/api/e-wallet-aggregator/get-refund", payload, headers)
+conn.request("GET", "/api/e-wallet-aggregator/get-refund?refund_id=<refund_id>", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -1002,9 +984,9 @@ refund_amount | BigDecimal | Requested refund amount
 
 ### HTTPS Request
 
-**[Production]** `GET https://partner.oyindonesia.com/api/e-wallet-aggregator/list-refund ` <br/>
+**[Production]** `GET https://partner.oyindonesia.com/api/e-wallet-aggregator/list-refund?partner_trx_id=<partner_trx_id> ` <br/>
 
-**[Staging]** `GET https://api-stg.oyindonesia.com/api/e-wallet-aggregator/list-refund`
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/e-wallet-aggregator/list-refund?partner_trx_id=<partner_trx_id>`
 
 ### Request Headers
 
@@ -1013,18 +995,15 @@ Parameter | Type | Description
 X-Api-Key | String | API Key used to connect to this particular endpoint
 X-Oy-Username | String | Your OY! account username
 
-### Request Parameters
+### Query Parameters
 
 ```shell
 curl -X GET \
-  <%= config[:endpoint_prod] %>/api/e-wallet-aggregator/list-refund \
+  <%= config[:endpoint_prod] %>/api/e-wallet-aggregator/list-refund?partner_trx_id=<partner_trx_id> \
   -H 'content-type: application/json' \
   -H 'accept: application/json' \
   -H 'x-api-key: yourapikey' \
-  -H 'x-oy-username: yourusername' \
-  -d '{
-        "partner_trx_id": "ABC123456527"
-    }'
+  -H 'x-oy-username: yourusername' 
 ```
 
 ```dart
@@ -1033,10 +1012,7 @@ var headers = {
   'X-Oy-Username': '{{username}}',
   'X-Api-Key': '{{api-key}}'
 };
-var request = http.Request('GET', Uri.parse('{{base_url}}/api/e-wallet-aggregator/list-refund'));
-request.body = json.encode({
- "partner_trx_id": "ABC123456527"
-});
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/e-wallet-aggregator/list-refund?partner_trx_id=<partner_trx_id>'));
 request.headers.addAll(headers);
 
 http.StreamedResponse response = await request.send();
@@ -1061,16 +1037,12 @@ import (
 
 func main() {
 
-  url := "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/list-refund"
+  url := "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/list-refund?partner_trx_id=<partner_trx_id>"
   method := "GET"
-
-  payload := strings.NewReader(`{
-     "partner_trx_id": "ABC123456527"
-}`)
 
   client := &http.Client {
   }
-  req, err := http.NewRequest(method, url, payload)
+  req, err := http.NewRequest(method, url, nil)
 
   if err != nil {
     fmt.Println(err)
@@ -1100,10 +1072,9 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"partner_trx_id\": \"ABC123456527"\"\n}");
 Request request = new Request.Builder()
-  .url("{{base_url}}/api/e-wallet-aggregator/list-refund")
-  .method("GET", body)
+  .url("{{base_url}}/api/e-wallet-aggregator/list-refund?partner_trx_id=<partner_trx_id>")
+  .method("GET", null)
   .addHeader("Content-Type", "application/json")
   .addHeader("X-Oy-Username", "{{username}}")
   .addHeader("X-Api-Key", "{{api-key}}")
@@ -1112,10 +1083,6 @@ Response response = client.newCall(request).execute();
 ```
 
 ```javascript
-var data = JSON.stringify({
-    "partner_trx_id": "ABC123456527"
-});
-
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
@@ -1125,19 +1092,19 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/list-refund");
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/e-wallet-aggregator/list-refund?partner_trx_id=<partner_trx_id>");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("X-Oy-Username", "{{username}}");
 xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
 
-xhr.send(data);
+xhr.send();
 ```
 
 ```php
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('{{base_url}}/api/e-wallet-aggregator/list-refund');
+$request->setUrl('{{base_url}}/api/e-wallet-aggregator/list-refund?partner_trx_id=<partner_trx_id>');
 $request->setMethod(HTTP_Request2::METHOD_GET);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -1147,7 +1114,6 @@ $request->setHeader(array(
   'X-Oy-Username' => '{{username}}',
   'X-Api-Key' => '{{api-key}}'
 ));
-$request->setBody('{\n  "partner_trx_id": "ABC123456527"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -1168,15 +1134,13 @@ import http.client
 import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
-payload = json.dumps({
-  "partner_trx_id": "ABC123456527"
-})
+payload = ''
 headers = {
   'Content-Type': 'application/json',
   'X-Oy-Username': '{{username}}',
   'X-Api-Key': '{{api-key}}'
 }
-conn.request("GET", "/api/e-wallet-aggregator/list-refund", payload, headers)
+conn.request("GET", "/api/e-wallet-aggregator/list-refund?partner_trx_id=<partner_trx_id>", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
