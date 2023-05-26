@@ -968,7 +968,12 @@ x-oy-username | String | The registered partner username which access is enabled
 Parameters | Type | Description
 ---- | ---- | ----
 partner_tx_id | String | A unique transaction ID which callback status to be checked
+payment_reference_number | String | A unique reference ID only for QRIS transactions. Used to identify which callback status to be checked. The reference number is stated in the end user’s receipt/proof of transaction
 send_callback | Boolean | A flag to indiciate if the latest callback of a transaction need to be re-sent or not
+
+<aside class="warning">
+Note: All requests made must contain "partner_trx_id" or "payment_reference_number" parameter, but not both at the same time, otherwise will return error.
+</aside>
 
 ### Response Parameters
 Parameter | Type | Description
