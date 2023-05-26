@@ -606,7 +606,7 @@ Endpoint:
 | Parameter  | Type |  Required   | Default | Description |
 | ------------- |:-------------:| :----------: | :-------------:| :----------: |
 |partner_trx_id|String|FALSE|-|Unique partner transaction ID
-|payment_reference_number|String|FALSE|-|Unique reference ID for QRIS transactions
+|payment_reference_number|String|FALSE|-|Unique reference ID for QRIS transactions. The reference number is stated in the end user’s receipt/proof of transaction
 |send_callback|Boolean|FALSE|-|If set true, we also send response as a callback to partner|
 
 <aside class="warning">
