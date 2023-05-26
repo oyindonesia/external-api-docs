@@ -9904,11 +9904,20 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>A unique transaction ID which callback status to be checked</td>
 </tr>
 <tr>
+<td>payment_reference_number</td>
+<td>String</td>
+<td>A unique reference ID only for QRIS transactions. Used to identify which callback status to be checked. The reference number is stated in the end user’s receipt/proof of transaction</td>
+</tr>
+<tr>
 <td>send_callback</td>
 <td>Boolean</td>
 <td>A flag to indiciate if the latest callback of a transaction need to be re-sent or not</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+Note: All requests made must contain "partner_trx_id" or "payment_reference_number" parameter, but not both at the same time, otherwise will return error.
+</aside>
 <h3 id='response-parameters-api-payment-status' type='normal'>Response Parameters</h3>
 <table><thead>
 <tr>
@@ -19642,9 +19651,16 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>partner_trx_id</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">TRUE</td>
+<td style="text-align: center">FALSE</td>
 <td style="text-align: center">-</td>
 <td style="text-align: center">Unique partner transaction ID</td>
+</tr>
+<tr>
+<td>payment_reference_number</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">FALSE</td>
+<td style="text-align: center">-</td>
+<td style="text-align: center">Unique reference ID for QRIS transactions. The reference number is stated in the end user’s receipt/proof of transaction</td>
 </tr>
 <tr>
 <td>send_callback</td>
@@ -19654,6 +19670,10 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">If set true, we also send response as a callback to partner</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+Note: All requests made must contain "partner_trx_id" or "payment_reference_number", but not both at the same time, otherwise will return error.
+</aside>
 <h3 id='responses-parameter-check-status-payment-routing-transaction' type='normal'>Responses Parameter</h3>
 <table><thead>
 <tr>
