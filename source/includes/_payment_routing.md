@@ -606,7 +606,7 @@ Endpoint:
 | Parameter  | Type |  Required   | Default | Description |
 | ------------- |:-------------:| :----------: | :-------------:| :----------: |
 |partner_trx_id|String|FALSE|-|Unique partner transaction ID
-|payment_reference_number|String|FALSE|-|Unique reference ID for QRIS transactions. The reference number is stated in the end user’s receipt/proof of transaction
+|payment_reference_number|String|FALSE|-|Unique reference ID for QRIS transactions. The reference number is stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code
 |send_callback|Boolean|FALSE|-|If set true, we also send response as a callback to partner|
 
 <aside class="warning">
