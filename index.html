@@ -3443,6 +3443,66 @@
               </ul>
           </li>
           <li>
+            <a href="#transaction-detail" class="toc-h1 toc-link" data-title="Transaction Detail">
+              <span class="toc-link-content">
+                Transaction Detail
+              </span>
+                <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow parent" alt="" />
+            </a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-transaction-detail-transaction-detail" class="toc-h2 toc-link" data-title="Get Transaction Detail">
+                     <span class="toc-link-content">
+                        Get Transaction Detail
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#https-request-get-transaction-detail" class="toc-h3 toc-link" data-title="HTTPS Request">
+                            <span class="toc-link-content">
+                              HTTPS Request
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#header-get-transaction-detail" class="toc-h3 toc-link" data-title="Header">
+                            <span class="toc-link-content">
+                              Header
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#request-parameters-get-transaction-detail" class="toc-h3 toc-link" data-title="Request Parameters">
+                            <span class="toc-link-content">
+                              Request Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#response-parameters-get-transaction-detail" class="toc-h3 toc-link" data-title="Response Parameters">
+                            <span class="toc-link-content">
+                              Response Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#product-type-get-transaction-detail" class="toc-h3 toc-link" data-title="Product Type">
+                            <span class="toc-link-content">
+                              Product Type
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#docs-changelog" class="toc-h1 toc-link" data-title="Docs Changelog">
               <span class="toc-link-content">
                 Docs Changelog
@@ -23710,6 +23770,277 @@ Another value not following the format will be processed normally. The response 
 <td>999</td>
 <td>Non-Final</td>
 <td>Internal Server Error.</td>
+</tr>
+</tbody></table>
+<h1 id='transaction-detail' type='normal'>Transaction Detail</h1>
+<p>Transaction detail API allows you to get the detail of a transaction</p>
+<h2 id='get-transaction-detail-transaction-detail' type='normal'>Get Transaction Detail</h2>
+<p>The Transaction Detail Query API allows partners to retrieve transaction details using the partner transaction ID. Before making a query using this API, it is recommended to ensure that the transaction has been marked as successful through the Check Status API. </p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=&lt;partner_tx_id&gt;&amp;product_type=&lt;product_type&gt;'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: yourusername'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikeymu'</span>
+</code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="s">'content-type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
+  <span class="s">'accept: application/json'</span><span class="o">,</span>
+  <span class="s">'x-oy-username'</span><span class="o">:</span> <span class="s">'yourusername'</span><span class="o">,</span>
+  <span class="s">'x-api-key'</span><span class="o">:</span> <span class="s">'apikeymu'</span>
+
+<span class="o">};</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=&lt;partner_tx_id&gt;&amp;product_type=&lt;product_type&gt;'</span><span class="o">));</span>
+<span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
+
+<span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">send</span><span class="o">();</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">await</span> <span class="n">response</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">bytesToString</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"fmt"</span>
+  <span class="s">"strings"</span>
+  <span class="s">"net/http"</span>
+  <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=&lt;partner_tx_id&gt;&amp;product_type=&lt;product_type&gt;"</span>
+  <span class="n">method</span> <span class="o">:=</span> <span class="s">"GET"</span>
+
+  <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-oy-username"</span><span class="p">,</span> <span class="s">"yourusername"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-api-key"</span><span class="p">,</span> <span class="s">"apikeymu"</span><span class="p">)</span>
+
+  <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+
+  <span class="n">body</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=&lt;partner_tx_id&gt;&amp;product_type=&lt;product_type&gt;"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-oy-username"</span><span class="o">,</span> <span class="s">"yourusername"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"apikeymu"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=&lt;partner_tx_id&gt;&amp;product_type=&lt;product_type&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yourusername</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">apikeymu</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=&lt;partner_tx_id&gt;&amp;producet_type=&lt;product_type&gt;'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeader</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'yourusername'</span><span class="p">,</span>
+  <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'apikeymu'</span>
+<span class="p">));</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"https://partner.oyindonesia.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'x-oy-username'</span><span class="p">:</span> <span class="s">'yourusername'</span><span class="p">,</span>
+  <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">'apikeymu'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v1/transaction?partner_tx_id=&lt;partner_tx_id&gt;&amp;product_type=&lt;product_type&gt;"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"transfer_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> 
+    </span><span class="nl">"settlement_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10150</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"admin_fee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"total_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-get-transaction-detail' type='normal'>HTTPS Request</h3>
+<p>Endpoint:<br>
+<strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=&lt;partner_tx_id&gt;&amp;product_type=&lt;product_type&gt;</code> <br/>
+<strong>[Staging]</strong> <code>GET https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=&lt;partner_tx_id&gt;&amp;product_type=&lt;product_type&gt;</code></p>
+<h3 id='header-get-transaction-detail' type='normal'>Header</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th style="text-align: center">Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-oy-username</td>
+<td style="text-align: center">Partner username</td>
+<td>username</td>
+</tr>
+<tr>
+<td>x-api-key</td>
+<td style="text-align: center">Partner api key</td>
+<td>6e87432c-2726-11ec-9621-0242ac130002</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-get-transaction-detail' type='normal'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_tx_id</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>The partner transaction ID of the transaction to be queried</td>
+</tr>
+<tr>
+<td>product_type</td>
+<td>Enum</td>
+<td>TRUE</td>
+<td>The product type of the transaction to be queried. Valid options are: <code>API_DISBURSE</code>, <code>API_BILLER</code>, <code>EWALLET_AGGREGATOR</code>, <code>VA_AGGREGATOR</code>, <code>PAYMENT_ROUTING</code>, <code>PAYMENT_LINK</code></td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-get-transaction-detail' type='normal'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>Status of the request in an object. <code>{code: \&lt;status_code\&gt;, message: \&lt;status_message\&gt;</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Data object that wraps the response parameters. Nullable if status is not success</td>
+</tr>
+<tr>
+<td>data.transfer_amount</td>
+<td>BigDecimal</td>
+<td>The amount that must be paid or received by the end user.</td>
+</tr>
+<tr>
+<td>data.settlement_amount</td>
+<td>BigDecimal</td>
+<td>The total amount that is reflected in the partner&#39;s balance. The calculation of the settlement amount varies depending on the transaction type:<br>- For disbursement transactions: <code>(settlement_amount = transfer_amount + admin_fee)</code><br>- For acceptance transactions: <code>(settlement_amount = transfer_amount - admin_fee)</code></td>
+</tr>
+<tr>
+<td>data.admin_fee</td>
+<td>Object</td>
+<td>Admin fee detail of the transaction</td>
+</tr>
+<tr>
+<td>data.admin_fee.total_fee</td>
+<td>BigDecimal</td>
+<td>Total amount of the admin fee for this transaction.</td>
+</tr>
+</tbody></table>
+<h3 id='product-type-get-transaction-detail' type='normal'>Product Type</h3>
+<p>For money-in product, this API can only be used for single-use transactions. For more detailed about each product type, please refer to the following table:</p>
+
+<table><thead>
+<tr>
+<th>Product Type</th>
+<th>Product Docs</th>
+<th>Notes</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>API_DISBURSE</td>
+<td><a href="#fund-disbursement">Api Disburse</a></td>
+<td></td>
+</tr>
+<tr>
+<td>API_BILLER</td>
+<td><a href="#biller-api">Api Biller</a></td>
+<td></td>
+</tr>
+<tr>
+<td>PAYMENT_LINK</td>
+<td><a href="#api-create-payment-link-fund-acceptance">Payment Link</a></td>
+<td>Excludes the use of reusable payment links.</td>
+</tr>
+<tr>
+<td>PAYMENT_ROUTING</td>
+<td><a href="#payment-routing">Payment Routing</a></td>
+<td>Excludes disbursement through payment routing.</td>
+</tr>
+<tr>
+<td>VA_AGGREGATOR</td>
+<td><a href="#va-aggregator">VA Aggregator</a></td>
+<td>Excludes the use of VA (Virtual Account) for multiple uses.</td>
+</tr>
+<tr>
+<td>EWALLET_AGGREGATOR</td>
+<td><a href="#api-e-wallet-aggregator">Ewallet Aggregator</a></td>
+<td></td>
 </tr>
 </tbody></table>
 <h1 id='docs-changelog' type='normal'>Docs Changelog</h1><h3 id='december-1-2022-' type='normal'><strong>December 1, 2022</strong></h3>
