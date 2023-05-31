@@ -197,15 +197,17 @@ Endpoint:
 | data.admin_fee           | Object     | Admin fee detail of the transaction                                                                                                                                                                                   |
 | data.admin_fee.total_fee | BigDecimal | Total amount of the admin fee for this transaction.                                                                                                                                                                   |
 
-### API Scope
-For mone-in product, this API can only be used for single-use transactions. For more detailed limitations specific to each product type, please refer to the following table:
+### Product Type
+For money-in product, this API can only be used for single-use transactions. For more detailed about each product type, please refer to the following table:
 
-| Product Type        | Notes                                                     |
-|---------------------|-----------------------------------------------------------|
-| API_DISBURSE        |                                                           |
-| API_BILLER          |                                                           |
-| PAYMENT_LINK        | Excludes the use of reusable payment links.                |
-| PAYMENT_ROUTING     | Excludes disbursement through payment routing.             |
-| VA_AGGREGATOR       | Excludes the use of VA (Virtual Account) for multiple uses.|
-| EWALLET_AGGREGATOR  |                                                           |
+
+| Product Type        | Product Docs                                      | Notes                                                        |
+|---------------------|---------------------------------------------------|--------------------------------------------------------------|
+| API_DISBURSE        | [Api Disburse](#fund-disbursement)                |                                                              |
+| API_BILLER          | [Api Biller](#biller-api)                         |                                                              |
+| PAYMENT_LINK        | [Payment Link](#api-create-payment-link-fund-acceptance) | Excludes the use of reusable payment links.                 |
+| PAYMENT_ROUTING     | [Payment Routing](#payment-routing)               | Excludes disbursement through payment routing.               |
+| VA_AGGREGATOR       | [VA Aggregator](#va-aggregator)                   | Excludes the use of VA (Virtual Account) for multiple uses.  |
+| EWALLET_AGGREGATOR  | [Ewallet Aggregator](#api-e-wallet-aggregator)    |                                                              |
+
 
