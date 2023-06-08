@@ -538,14 +538,11 @@ note | String(255) | Partner defined note for bill payment
 
 ```shell
 curl -X \
-GET https://partner.oyindonesia.com/api/v2/bill/status \
+GET https://partner.oyindonesia.com/api/v2/bill/status?partner_tx_id=partner-tx-id-001 \
 -H 'content-type: application/json' \
 -H 'accept: application/json' \
 -H 'x-oy-username:myuser' \
 -H 'x-api-key:987654' \
--d '{
-  "partner_tx_id": "partner-tx-id-001"
-}'
 ```
 
 ```dart
@@ -555,10 +552,7 @@ var headers = {
   'x-oy-username': '{{username}}',
   'x-api-key': '{{api-key}}'
 };
-var request = http.Request('GET', Uri.parse('{{base_url}}/api/v2/bill/status'));
-request.body = json.encode({
-  "partner_tx_id": "partner-tx-id-001"
-});
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/v2/bill/status?partner_tx_id=partner-tx-id-001'));
 request.headers.addAll(headers);
 
 http.StreamedResponse response = await request.send();
@@ -583,16 +577,12 @@ import (
 
 func main() {
 
-  url := "%7B%7Bbase_url%7D%7D/api/v2/bill/status"
+  url := "%7B%7Bbase_url%7D%7D/api/v2/bill/status?partner_tx_id=partner-tx-id-001"
   method := "GET"
-
-  payload := strings.NewReader(`{
-	"partner_tx_id": "partner-tx-id-001"
-}`)
 
   client := &http.Client {
   }
-  req, err := http.NewRequest(method, url, payload)
+  req, err := http.NewRequest(method, url, nil)
 
   if err != nil {
     fmt.Println(err)
@@ -623,7 +613,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 Request request = new Request.Builder()
-  .url("{{base_url}}/api/v2/bill/status")
+  .url("{{base_url}}/api/v2/bill/status?partner_tx_id=partner-tx-id-001")
   .method("GET", null)
   .addHeader("Content-Type", "application/json")
   .addHeader("Accept", "application/json")
@@ -634,9 +624,6 @@ Response response = client.newCall(request).execute();
 ```
 
 ```javascript
-var data = JSON.stringify({
-  "partner_tx_id": "partner-tx-id-001"
-});
 
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
@@ -647,20 +634,20 @@ xhr.addEventListener("readystatechange", function() {
   }
 });
 
-xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/v2/bill/status");
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/v2/bill/status?partner_tx_id=partner-tx-id-001");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-oy-username", "{{username}}");
 xhr.setRequestHeader("x-api-key", "{{api-key}}");
 
-xhr.send(data);
+xhr.send();
 ```
 
 ```php
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('{{base_url}}/api/v2/bill/status');
+$request->setUrl('{{base_url}}/api/v2/bill/status?partner_tx_id=partner-tx-id-001');
 $request->setMethod(HTTP_Request2::METHOD_GET);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -671,7 +658,6 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n	"partner_tx_id": "partner-tx-id-001"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -692,16 +678,14 @@ import http.client
 import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
-payload = json.dumps({
-  "partner_tx_id": "partner-tx-id-001"
-})
+payload = ''
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'x-oy-username': '{{username}}',
   'x-api-key': '{{api-key}}'
 }
-conn.request("GET", "/api/v2/bill/status", payload, headers)
+conn.request("GET", "/api/v2/bill/status?partner_tx_id=partner-tx-id-001", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -741,8 +725,8 @@ print(data.decode("utf-8"))
 This endpoint allows you to get the status of an inquiried bill.
 
 #### HTTPS Request
-**[Production]** `GET https://partner.oyindonesia.com/api/v2/bill/status`<br>
-**[Staging]** `GET https://api-stg.oyindonesia.com/api/v2/bill/status`
+**[Production]** `GET https://partner.oyindonesia.com/api/v2/bill/status?partner_tx_id=<partner_tx_id>`<br>
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/v2/bill/status?partner_tx_id=<partner_tx_id>`
 
 #### Request Parameters
 
@@ -907,7 +891,7 @@ headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
 }
-conn.request("GET", "/api/v2/bill/status", payload, headers)
+conn.request("GET", "/api/v2/bill/products", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
