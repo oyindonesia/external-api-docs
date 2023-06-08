@@ -21685,24 +21685,18 @@ POST https://partner.oyindonesia.com/api/v2/bill/payment <span class="se">\</spa
 </tr>
 </tbody></table>
 <h2 id='get-bill-payment-status-biller-api' type='normal'>Get Bill Payment Status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
-GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
+GET https://partner.oyindonesia.com/api/v2/bill/status?partner_tx_id<span class="o">=</span>partner-tx-id-001 <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-oy-username:myuser'</span> <span class="se">\</span>
 <span class="nt">-H</span> <span class="s1">'x-api-key:987654'</span> <span class="se">\</span>
-<span class="nt">-d</span> <span class="s1">'{
-  "partner_tx_id": "partner-tx-id-001"
-}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
   <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
   <span class="s">'Accept'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
   <span class="s">'x-oy-username'</span><span class="o">:</span> <span class="s">'{{username}}'</span><span class="o">,</span>
   <span class="s">'x-api-key'</span><span class="o">:</span> <span class="s">'{{api-key}}'</span>
 <span class="o">};</span>
-<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/v2/bill/status'</span><span class="o">));</span>
-<span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
-  <span class="s">"partner_tx_id"</span><span class="o">:</span> <span class="s">"partner-tx-id-001"</span>
-<span class="o">});</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'GET'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/v2/bill/status?partner_tx_id=partner-tx-id-001'</span><span class="o">));</span>
 <span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
 
 <span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">send</span><span class="o">();</span>
@@ -21724,16 +21718,12 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
 
-  <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/v2/bill/status"</span>
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/v2/bill/status?partner_tx_id=partner-tx-id-001"</span>
   <span class="n">method</span> <span class="o">:=</span> <span class="s">"GET"</span>
-
-  <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
-    "partner_tx_id": "partner-tx-id-001"
-}`</span><span class="p">)</span>
 
   <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
   <span class="p">}</span>
-  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
 
   <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -21761,7 +21751,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/v2/bill/status"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/v2/bill/status?partner_tx_id=partner-tx-id-001"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="kc">null</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Accept"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
@@ -21769,10 +21759,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"{{api-key}}"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-  <span class="dl">"</span><span class="s2">partner_tx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">partner-tx-id-001</span><span class="dl">"</span>
-<span class="p">});</span>
-
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 
@@ -21782,17 +21769,17 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
   <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">%7B%7Bbase_url%7D%7D/api/v2/bill/status</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">%7B%7Bbase_url%7D%7D/api/v2/bill/status?partner_tx_id=partner-tx-id-001</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Accept</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{username}}</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{api-key}}</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
 <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'{{base_url}}/api/v2/bill/status'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'{{base_url}}/api/v2/bill/status?partner_tx_id=partner-tx-id-001'</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_GET</span><span class="p">);</span>
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
   <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
@@ -21803,7 +21790,6 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
   <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
   <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "partner_tx_id": "partner-tx-id-001"\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -21821,16 +21807,14 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"{{base_url}}"</span><span class="p">)</span>
-<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
-  <span class="s">"partner_tx_id"</span><span class="p">:</span> <span class="s">"partner-tx-id-001"</span>
-<span class="p">})</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">''</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'x-oy-username'</span><span class="p">:</span> <span class="s">'{{username}}'</span><span class="p">,</span>
   <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">'{{api-key}}'</span>
 <span class="p">}</span>
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/bill/status"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/bill/status?partner_tx_id=partner-tx-id-001"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
@@ -21866,8 +21850,8 @@ GET https://partner.oyindonesia.com/api/v2/bill/status <span class="se">\</span>
 </span></code></pre></div>
 <p>This endpoint allows you to get the status of an inquiried bill.</p>
 <h4 id='https-request-callback-parameters' type='normal'>HTTPS Request</h4>
-<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/v2/bill/status</code><br>
-<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v2/bill/status</code></p>
+<p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/v2/bill/status?partner_tx_id=&lt;partner_tx_id&gt;</code><br>
+<strong>[Staging]</strong> <code>GET https://api-stg.oyindonesia.com/api/v2/bill/status?partner_tx_id=&lt;partner_tx_id&gt;</code></p>
 <h4 id='request-parameters-callback-parameters' type='normal'>Request Parameters</h4>
 <table><thead>
 <tr>
@@ -22072,7 +22056,7 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json'</span>
 <span class="p">}</span>
-<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/bill/status"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="s">"/api/v2/bill/products"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
