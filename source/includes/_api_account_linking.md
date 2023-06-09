@@ -257,7 +257,7 @@ curl --location --request POST 'https://partner.oyindonesia.com/api/account/unli
 --data-raw '{
     "partner_user_id": "USR-20230112-001",
     "payment_method": "EWALLET",
-    "channel_code": "dana_ewallet"
+    "channel_code": "shopeepay_ewallet"
 }
 '
 ```
@@ -273,7 +273,7 @@ var request = http.Request('POST', Uri.parse('https://partner.oyindonesia.com/ap
 request.body = json.encode({
   "partner_user_id": "USR-20230112-001",
   "payment_method": "EWALLET",
-  "channel_code": "dana_ewallet"
+  "channel_code": "shopeepay_ewallet"
 });
 request.headers.addAll(headers);
 
@@ -302,7 +302,7 @@ func main() {
   payload := strings.NewReader(`{
     "partner_user_id": "USR-20230112-001",
     "payment_method": "EWALLET",
-    "channel_code": "dana_ewallet"
+    "channel_code": "shopeepay_ewallet"
 }`)
 
   client := &http.Client {
@@ -337,7 +337,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"payment_method\": \"EWALLET\",\n    \"channel_code\": \"dana_ewallet\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"payment_method\": \"EWALLET\",\n    \"channel_code\": \"shopeepay_ewallet\"\n}");
 Request request = new Request.Builder()
   .url("https://partner.oyindonesia.com/api/account/unlink")
   .method("POST", body)
@@ -352,7 +352,7 @@ Response response = client.newCall(request).execute();
 var data = JSON.stringify({
   "partner_user_id": "USR-20230112-001",
   "payment_method": "EWALLET",
-  "channel_code": "dana_ewallet"
+  "channel_code": "shopeepay_ewallet"
 });
 
 var xhr = new XMLHttpRequest();
@@ -386,7 +386,7 @@ $request->setHeader(array(
   'x-oy-username' => 'yourusername',
   'x-api-key' => 'yourapikey'
 ));
-$request->setBody('{\n    "partner_user_id": "USR-20230112-001",\n    "payment_method": "EWALLET",\n    "channel_code": "dana_ewallet"\n}');
+$request->setBody('{\n    "partner_user_id": "USR-20230112-001",\n    "payment_method": "EWALLET",\n    "channel_code": "shopeepay_ewallet"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -410,7 +410,7 @@ conn = http.client.HTTPSConnection("https://partner.oyindonesia.com", undefined)
 payload = json.dumps({
   "partner_user_id": "USR-20230112-001",
   "payment_method": "EWALLET",
-  "channel_code": "dana_ewallet"
+  "channel_code": "shopeepay_ewallet"
 })
 headers = {
   'Content-Type': 'application/json',
@@ -432,7 +432,7 @@ print(data.decode("utf-8"))
     "data": {
         "partner_user_id": "USR-20230112-001",
         "payment_method": "EWALLET",
-        "channel_code": "dana_ewallet",
+        "channel_code": "shopeepay_ewallet",
         "status": "UNLINKED"
     },
     "reason": null,
