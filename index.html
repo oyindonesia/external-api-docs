@@ -23048,7 +23048,7 @@ Another value not following the format will be processed normally. The response 
 </tr>
 </tbody></table>
 <h1 id='api-account-linking' type='normal'>API Account Linking</h1>
-<p>OY&#39;s API Collection to link user&#39;s phone number to e-wallets. Currently, this feature support to link user&#39;s phone number to DANA e-wallet. Contact your Business Representative if you&#39;d like to activate this feature.</p>
+<p>OY&#39;s API Collection to link user&#39;s phone number to e-wallets. Currently, this feature support to link user&#39;s phone number to DANA and ShopeePay e-wallet. Contact your Business Representative if you&#39;d like to activate this feature.</p>
 <h2 id='get-linking-url-api-account-linking' type='normal'>Get Linking URL</h2>
 <p>Use this API to get the linking URL for your user.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://partner.oyindonesia.com/api/account/linking'</span> <span class="se">\</span>
@@ -23284,7 +23284,7 @@ Another value not following the format will be processed normally. The response 
 <td>String(255)</td>
 <td>TRUE</td>
 <td>-</td>
-<td>The payment channel type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
+<td>The payment channel type that user want to linked to (Currently support <code>dana_ewallet</code> and <code>shopeepay_ewallet</code>)</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-get-linking-url' type='normal'>Response Parameters</h3>
@@ -23344,7 +23344,7 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <td>channel_code</td>
 <td>String(255)</td>
-<td>The payment channel type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
+<td>The payment channel type that user want to linked to (Currently support <code>dana_ewallet</code> and <code>shopeepay_ewallet</code>)</td>
 </tr>
 <tr>
 <td>linking_url</td>
@@ -23368,6 +23368,12 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <td>EWALLET</td>
 <td>dana_ewallet</td>
+<td>Send Callback</td>
+<td>-</td>
+</tr>
+<tr>
+<td>EWALLET</td>
+<td>shopeepay_ewallet</td>
 <td>Send Callback</td>
 <td>-</td>
 </tr>
@@ -23411,7 +23417,7 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <td>channel_code</td>
 <td>String</td>
-<td>The payment channel type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
+<td>The payment channel type that user want to linked to (Currently support <code>dana_ewallet</code> and <code>shopeepay_ewallet</code>)</td>
 </tr>
 <tr>
 <td>phone_number</td>
@@ -23663,7 +23669,7 @@ Another value not following the format will be processed normally. The response 
 <td>String(255)</td>
 <td>TRUE</td>
 <td>-</td>
-<td>The payment channel type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
+<td>The payment channel type (Currently support <code>dana_ewallet</code> and <code>shopeepay_ewallet</code>)</td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-get-e-wallet-account-balance' type='normal'>Response Parameters</h3>
@@ -23687,7 +23693,7 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <td>channel_code</td>
 <td>String(255)</td>
-<td>The payment channel type that user want to linked to (currently only support <code>dana_ewallet</code>)</td>
+<td>The payment channel type (Currently support <code>dana_ewallet</code> and <code>shopeepay_ewallet</code>)</td>
 </tr>
 <tr>
 <td>amount</td>
@@ -23738,7 +23744,7 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <td>400</td>
 <td>Final</td>
-<td>Request is rejected with message “Unsupported e-wallet type for tokenization”. Currently, OY only support account linking for DANA e-wallet.</td>
+<td>Request is rejected with message “Unsupported e-wallet type for tokenization”. Currently, OY support account linking for DANA and ShopeePay e-wallet.</td>
 </tr>
 <tr>
 <td>400</td>
