@@ -3365,15 +3365,65 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="#how-we-notify-account-linking-result-api-account-linking" class="toc-h2 toc-link" data-title="How we notify account linking result?">
+                    <a href="#unlink-account-api-account-linking" class="toc-h2 toc-link" data-title="Unlink account">
                      <span class="toc-link-content">
-                        How we notify account linking result?
+                        Unlink account
                       </span>
                          <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
                     </a>
                     <ul class="toc-list-h3">
                         <li>
-                          <a href="#send-callback-condition-how-we-notify-account-linking-result" class="toc-h3 toc-link" data-title="Send Callback Condition">
+                          <a href="#https-request-unlink-account" class="toc-h3 toc-link" data-title="HTTPS Request">
+                            <span class="toc-link-content">
+                              HTTPS Request
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#request-headers-unlink-account" class="toc-h3 toc-link" data-title="Request Headers">
+                            <span class="toc-link-content">
+                              Request Headers
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#request-parameters-unlink-account" class="toc-h3 toc-link" data-title="Request Parameters">
+                            <span class="toc-link-content">
+                              Request Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#response-parameters-unlink-account" class="toc-h3 toc-link" data-title="Response Parameters">
+                            <span class="toc-link-content">
+                              Response Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#account-linking-response-data-unlink-account" class="toc-h3 toc-link" data-title="Account Linking Response Data">
+                            <span class="toc-link-content">
+                              Account Linking Response Data
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#how-we-notify-account-linking-unlinking-result-api-account-linking" class="toc-h2 toc-link" data-title="How we notify account linking/unlinking result?">
+                     <span class="toc-link-content">
+                        How we notify account linking/unlinking result?
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#send-callback-condition-how-we-notify-account-linking-unlinking-result" class="toc-h3 toc-link" data-title="Send Callback Condition">
                             <span class="toc-link-content">
                               Send Callback Condition
                             </span>
@@ -3381,7 +3431,7 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#callback-parameters-how-we-notify-account-linking-result" class="toc-h3 toc-link" data-title="Callback Parameters">
+                          <a href="#callback-parameters-how-we-notify-account-linking-unlinking-result" class="toc-h3 toc-link" data-title="Callback Parameters">
                             <span class="toc-link-content">
                               Callback Parameters
                             </span>
@@ -23352,11 +23402,302 @@ Another value not following the format will be processed normally. The response 
 <td>Linking URL to be accessed by user to complete the account linking process</td>
 </tr>
 </tbody></table>
-<h2 id='how-we-notify-account-linking-result-api-account-linking' type='normal'>How we notify account linking result?</h2>
+<h2 id='unlink-account-api-account-linking' type='normal'>Unlink account</h2>
+<p>Use this API to get the unlink user account. Currently this feature support unlink user ShopeePay account.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://partner.oyindonesia.com/api/account/unlink'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'X-Oy-Username: yourusername'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'X-Api-Key: yourapikey'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "partner_user_id": "USR-20230112-001",
+    "payment_method": "EWALLET",
+    "channel_code": "shopeepay_ewallet"
+}
+'</span>
+</code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
+  <span class="s">'x-oy-username'</span><span class="o">:</span> <span class="s">'yourusername'</span><span class="o">,</span>
+  <span class="s">'x-api-key'</span><span class="o">:</span> <span class="s">'yourapikey'</span>
+
+<span class="o">};</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'POST'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'https://partner.oyindonesia.com/api/account/unlink'</span><span class="o">));</span>
+<span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
+  <span class="s">"partner_user_id"</span><span class="o">:</span> <span class="s">"USR-20230112-001"</span><span class="o">,</span>
+  <span class="s">"payment_method"</span><span class="o">:</span> <span class="s">"EWALLET"</span><span class="o">,</span>
+  <span class="s">"channel_code"</span><span class="o">:</span> <span class="s">"shopeepay_ewallet"</span>
+<span class="o">});</span>
+<span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
+
+<span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">send</span><span class="o">();</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">await</span> <span class="n">response</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">bytesToString</span><span class="o">());</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"fmt"</span>
+  <span class="s">"strings"</span>
+  <span class="s">"net/http"</span>
+  <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"https://partner.oyindonesia.com/api/account/unlink"</span>
+  <span class="n">method</span> <span class="o">:=</span> <span class="s">"POST"</span>
+
+  <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
+    "partner_user_id": "USR-20230112-001",
+    "payment_method": "EWALLET",
+    "channel_code": "shopeepay_ewallet"
+}`</span><span class="p">)</span>
+
+  <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-oy-username"</span><span class="p">,</span> <span class="s">"yourusername"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"x-api-key"</span><span class="p">,</span> <span class="s">"yourapikey"</span><span class="p">)</span>
+
+  <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+
+  <span class="n">body</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_user_id\": \"USR-20230112-001\",\n    \"payment_method\": \"EWALLET\",\n    \"channel_code\": \"shopeepay_ewallet\"\n}"</span><span class="o">);</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://partner.oyindonesia.com/api/account/unlink"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-oy-username"</span><span class="o">,</span> <span class="s">"yourusername"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"x-api-key"</span><span class="o">,</span> <span class="s">"yourapikey"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">partner_user_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USR-20230112-001</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">payment_method</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">EWALLET</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">channel_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">shopeepay_ewallet</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://partner.oyindonesia.com/api/account/unlink</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-oy-username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yourusername</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">x-api-key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">yourapikey</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'https://partner.oyindonesia.com/api/account/unlink'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_POST</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeader</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'yourusername'</span><span class="p">,</span>
+  <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'yourapikey'</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_user_id": "USR-20230112-001",\n    "payment_method": "EWALLET",\n    "channel_code": "shopeepay_ewallet"\n}'</span><span class="p">);</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"https://partner.oyindonesia.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
+  <span class="s">"partner_user_id"</span><span class="p">:</span> <span class="s">"USR-20230112-001"</span><span class="p">,</span>
+  <span class="s">"payment_method"</span><span class="p">:</span> <span class="s">"EWALLET"</span><span class="p">,</span>
+  <span class="s">"channel_code"</span><span class="p">:</span> <span class="s">"shopeepay_ewallet"</span>
+<span class="p">})</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'x-oy-username'</span><span class="p">:</span> <span class="s">'yourusername'</span><span class="p">,</span>
+  <span class="s">'x-api-key'</span><span class="p">:</span> <span class="s">'yourapikey'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="s">"/api/account/unlink"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USR-20230112-001"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EWALLET"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"channel_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shopeepay_ewallet"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNLINKED"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-unlink-account' type='normal'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>POST https://partner.oyindonesia.com/api/account/unlink</code></p>
+
+<p><strong>[Staging]</strong> <code>POST https://api-stg.oyindonesia.com/api/account/unlink</code></p>
+<h3 id='request-headers-unlink-account' type='normal'>Request Headers</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Api-Key</td>
+<td>String</td>
+<td>API Key used to connect to this particular endpoint</td>
+</tr>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>Your OY! account username</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-unlink-account' type='normal'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_user_id</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>ID generated by Partner for a specific user/customer</td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>The payment method type that user want to linked to (Currently only support <code>EWALLET</code>. In the future we will have another payment method type, such as <code>CARDS</code>)</td>
+</tr>
+<tr>
+<td>channel_code</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>The payment channel type that user want to linked to (Currently only support <code>shopeepay_ewallet</code>)</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-unlink-account' type='normal'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success</td>
+<td>Boolean</td>
+<td>Will be <code>true</code> if the account linking process is successful and vice versa</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Object</td>
+<td>Error detail of the account linking process in Object <code>{code: &lt;error_code&gt;, message: &lt;error_message&gt;}</code>.    This value is not null if the value of field <code>success</code> is <code>false</code></td>
+</tr>
+<tr>
+<td>data</td>
+<td>Object</td>
+<td>Account linking data, the detail will be explained in the next section</td>
+</tr>
+<tr>
+<td>reason</td>
+<td>String(255)</td>
+<td>Will be filled with error reason if the linking status is failed</td>
+</tr>
+<tr>
+<td>status_code</td>
+<td>Integer</td>
+<td>Will be <code>200</code> if the account linking process is success and will be the same as error code if the linking process is failed</td>
+</tr>
+</tbody></table>
+<h3 id='account-linking-response-data-unlink-account' type='normal'>Account Linking Response Data</h3>
+<p>The field <code>data</code> in response parameters will contain below informations.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partner_user_id</td>
+<td>String(255)</td>
+<td>ID generated by Partner for a specific user/customer</td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td>String(255)</td>
+<td>The payment method type that user want to linked to (Currently only support <code>EWALLET</code>. In the future we will have another payment method type, such as <code>CARDS</code>)</td>
+</tr>
+<tr>
+<td>channel_code</td>
+<td>String(255)</td>
+<td>The payment channel type that user want to linked to (currently only support <code>shopeepay_ewallet</code>)</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Account linking status, should be <code>UNLINKED</code> if successful. Other status if otherwise.</td>
+</tr>
+</tbody></table>
+<h2 id='how-we-notify-account-linking-unlinking-result-api-account-linking' type='normal'>How we notify account linking/unlinking result?</h2>
 <ul>
 <li>The Account Linking Callback will be sent as a POST request (using JSON format) to your web hook. Please inform your callback web hook to our business representative or to partner@oyindonesia.com.</li>
 </ul>
-<h3 id='send-callback-condition-how-we-notify-account-linking-result' type='normal'>Send Callback Condition</h3>
+<h3 id='send-callback-condition-how-we-notify-account-linking-unlinking-result' type='normal'>Send Callback Condition</h3>
 <table><thead>
 <tr>
 <th>Payment Method</th>
@@ -23391,7 +23732,7 @@ Another value not following the format will be processed normally. The response 
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LINKED"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/02/2020T15:00:00.000+0000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='callback-parameters-how-we-notify-account-linking-result' type='normal'>Callback Parameters</h3>
+</span></code></pre></div><h3 id='callback-parameters-how-we-notify-account-linking-unlinking-result' type='normal'>Callback Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
