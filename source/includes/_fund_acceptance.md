@@ -749,6 +749,7 @@ payment_method | String | The payment method used by user to complete a payment.
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 created | DateTime | The timestamp which indicates the creation time of a payment link
 updated | DateTime | The timestamp which indicates the latest updated time of a payment link due to status update
+payment_received_time | Timestamp | Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
 description | String | The description of the payment link/invoice link.
 payment_reference_number| String | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
@@ -986,6 +987,7 @@ sender_name | String | Name of a payer for a transaction
 sender_phone | String | Phone number of a payer for a transaction
 sender_note | String | Additional notes from a payer for a transaction
 status | String | The status of a payment link
+payment_received_time | Timestamp | Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
 payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)
