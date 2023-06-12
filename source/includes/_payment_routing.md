@@ -627,7 +627,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 |trx_expiration_time|Timestamp|Transaction expiration time|
 |payment_received_time|Timestamp|Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |settlement_time|String| The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
-|settlement_status|String| The status of the settlement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).|
+|settlement_status|String| The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |settlement_type|String|Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
 |payment_info|Object|Payment info Object|
@@ -696,7 +696,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
 |payment_received_time|Timestamp|Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |settlement_time|String| The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
-|settlement_status|String| The status of the settlement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).|
+|settlement_status|String| The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |settlement_type|String|Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |payment_info|Object|Payment info Object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
