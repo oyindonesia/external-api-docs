@@ -9713,6 +9713,11 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>The timestamp which indicates the latest updated time of a payment link due to status update</td>
 </tr>
 <tr>
+<td>payment_received_time</td>
+<td>DateTime</td>
+<td>Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).</td>
+</tr>
+<tr>
 <td>is_invoice</td>
 <td>Boolean</td>
 <td>The invoice which indicates the transaction is invoice or not</td>
@@ -10075,6 +10080,11 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <td>status</td>
 <td>String</td>
 <td>The status of a payment link</td>
+</tr>
+<tr>
+<td>payment_received_time</td>
+<td>String</td>
+<td>Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>settlement_type</td>
@@ -19829,8 +19839,28 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 </tr>
 <tr>
 <td>trx_expiration_time</td>
-<td style="text-align: center">partner_user_id</td>
+<td style="text-align: center">Timestamp</td>
 <td style="text-align: center">Transaction expiration time</td>
+</tr>
+<tr>
+<td>payment_received_time</td>
+<td style="text-align: center">Timestamp</td>
+<td style="text-align: center">Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
+</tr>
+<tr>
+<td>settlement_time</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
+</tr>
+<tr>
+<td>settlement_status</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
+</tr>
+<tr>
+<td>settlement_type</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>need_frontend</td>
@@ -19997,13 +20027,33 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </tr>
 <tr>
 <td>trx_expiration_time</td>
-<td style="text-align: center">partner_user_id</td>
+<td style="text-align: center">Timestamp</td>
 <td style="text-align: center">Transaction expiration time</td>
 </tr>
 <tr>
 <td>need_frontend</td>
 <td style="text-align: center">Boolean</td>
 <td style="text-align: center">Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.</td>
+</tr>
+<tr>
+<td>payment_received_time</td>
+<td style="text-align: center">Timestamp</td>
+<td style="text-align: center">Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
+</tr>
+<tr>
+<td>settlement_time</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
+</tr>
+<tr>
+<td>settlement_status</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
+</tr>
+<tr>
+<td>settlement_type</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>payment_info</td>
