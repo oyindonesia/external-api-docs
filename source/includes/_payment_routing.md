@@ -347,7 +347,7 @@ The request should be filled only with 1 list_enable_payment_method and 1 list_e
 | EWALLET | dana_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
 
-If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. For other sof with BANK_TRANSFER payment method, you will be routed to use VA.
+If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative.  For other sof with BANK_TRANSFER payment method, you will be routed to use VA
 
 #### Examples
 | need_frontend | Case | list_enable_payment_method | list_enable_sof |
