@@ -173,7 +173,7 @@ print(data.decode("utf-8"))
 ### HTTPS Request
 Endpoint:  
 **[Production]** `GET https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=<partner_tx_id>&product_type=<product_type>` <br/>
-**[Staging]** `GET https://partner.oyindonesia.com/api/v1/transaction?partner_tx_id=<partner_tx_id>&product_type=<product_type>`
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/v1/transaction?partner_tx_id=<partner_tx_id>&product_type=<product_type>`
 
 ### Header
 | Field  | Description |  Example   |
