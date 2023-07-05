@@ -772,7 +772,7 @@ Response Code | State | Description
 400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss and must be within valid interval for each e-wallet type)
 400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss and must be between 1 minute and 1 hour)
 400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss, must be between 1 minute and 3 hours and not exceed 20:30:00)
-400 | Final | Invalid config product disburse or acceptance
+400 | Final | Request is rejected (Invalid config product disburse or acceptance)
 400 | Final | Request is rejected (Invalid partner user id)
 400 | Final | Request is rejected (Token is already expired.)
 203 | Final | Request is rejected (Duplicate Partner Tx Id)
