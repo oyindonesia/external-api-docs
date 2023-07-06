@@ -752,3 +752,30 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 | CANCEL               | Not receiving any payment so system will automatically cancel sending money to recipients |
 | FAILED               | Sending money to recipient process is failed                                              |
 | FAILED FORCE CREDIT  | When force credit process is failed                                                       |
+
+## Payment Routing Response Codes
+
+Below is the list of response codes for API Payment Routing:
+
+Response Code | State | Description
+---------- | ------- | -------
+000 | Final | Response success without error
+400 | Final | Request is rejected (Amount is not valid)
+400 | Final | Request is rejected (Amount is empty)
+400 | Final | Request is rejected (Invalid list payment method)
+400 | Final | Request is rejected (Invalid list source of fund)
+400 | Final | Request is rejected (Success redirect url is empty)
+400 | Final | Request is rejected (Failed redirect url is empty)
+400 | Final | Request is rejected (Reusable VA is not supported for the requested SOF)
+400 | Final | Request is rejected (Transaction using linked account is not supported for the requested SOF)
+400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss and must be greater than 1 hour)
+400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss and must be within valid interval for each e-wallet type)
+400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss and must be between 1 minute and 1 hour)
+400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss, must be between 1 minute and 3 hours and not exceed 20:30:00)
+400 | Final | Request is rejected (Invalid config product disburse or acceptance)
+400 | Final | Request is rejected (Invalid partner user id)
+400 | Final | Request is rejected (Token is already expired.)
+429 | Request Rejected (Too Many Request to specific endpoint)
+203 | Final | Request is rejected (Duplicate Partner Tx Id)
+247 | Final | Request is rejected (Email is not valid)
+901 | Non Final | General Error
