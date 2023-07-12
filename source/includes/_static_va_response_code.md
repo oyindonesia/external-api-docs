@@ -16,10 +16,12 @@ Response Code | State | Description
 216 | Final | Request is Rejected (VA Id is empty)
 217 | Final | Request is Rejected (VA Number is still active for this partner user id)
 219 | Final | Request is Rejected (Virtual account is not enabled for this bank)
+219 | Final | Request is Rejected (Virtual account for this bank has reached daily limit transaction)
 226 | Final | Request is rejected (Transaction expiry time exceeds VA expiry time)
 245 | Final | Request is rejected (Min expiry time is 60 minutes)
 246 | Final | Request is rejected (Failed update va)
 260 | Final | Request is rejected (Given VA suffix is invalid)
+262 | Final | Request is rejected (VA prefix for this risk level is not available)
 999 | Non-Final | Internal Server Error
 
 IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:
