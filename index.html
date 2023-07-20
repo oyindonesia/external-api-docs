@@ -9086,9 +9086,9 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>list_disabled_payment_methods</td>
 <td>String</td>
-<td>TRUE</td>
+<td>FALSE</td>
 <td>To configure payment methods to be disabled (e.g. BANK_TRANSFER, CREDIT_CARD, QRIS, EWALLET). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
-<td>There must be at least 1 payment method is enabled.</td>
+<td>There must be at least 1 payment method enabled. If this field is not included in the request, or filled with an empty String, then all payment methods will be enabled.</td>
 </tr>
 <tr>
 <td>list_enabled_banks</td>
@@ -12578,7 +12578,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <td>list_disabled_payment_methods</td>
 <td>String</td>
 <td>TRUE</td>
-<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. There must be at least 1 payment method is enabled</td>
+<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. There must be at least 1 payment method is enabled. If this field is not included in the request, or filled with an empty String, then all payment methods will be enabled.</td>
 </tr>
 <tr>
 <td>list_enabled_banks</td>
