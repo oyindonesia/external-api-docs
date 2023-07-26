@@ -284,7 +284,7 @@ email | String | FALSE | The email addresses where the payment link will be sent
 phone_number | Numeric | FALSE | Phone number of the payer for a transaction. | Do not use special character (e.g. "+")
 is_open	| Boolean | TRUE | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 10,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
 include_admin_fee | Boolean | TRUE | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
-list_disabled_payment_methods | String | TRUE | To configure payment methods to be disabled (e.g. BANK_TRANSFER, CREDIT_CARD, QRIS, EWALLET). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
+list_disabled_payment_methods | String | FALSE | To configure payment methods to be disabled (e.g. BANK_TRANSFER, CREDIT_CARD, QRIS, EWALLET). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method enabled. If this field is not included in the request, or filled with an empty String, then all payment methods will be enabled.
 list_enabled_banks | String | TRUE | To configure banks to be enabled for BANK_TRANSFER payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB), "213" (BSI), "016" (Maybank), "484" (Hana), "011" (Danamon), and "014" (BCA). Unique code is only available for BCA.
 list_enabled_ewallet | String | TRUE | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet", "dana_ewallet", "linkaja_ewallet", "ovo_ewallet".
 expiration | datetime | FALSE | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
@@ -723,6 +723,7 @@ curl -X POST \
         "sender_bank":"008",
         "settlement_type":"non_realtime",
         "description":"description",
+        "payment_reference_number": "",
         "expiration":"2020-10-18T15:00:00",
         "due_date": "2020-10-18T14:00:00",
         "email":"johndoe@gmail.com;jane@gmail.com",
@@ -748,8 +749,10 @@ payment_method | String | The payment method used by user to complete a payment.
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 created | DateTime | The timestamp which indicates the creation time of a payment link
 updated | DateTime | The timestamp which indicates the latest updated time of a payment link due to status update
+payment_received_time | DateTime | Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
 is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
 description | String | The description of the payment link/invoice link.
+payment_reference_number| String | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
 expiration | DateTime | The expiration time of the payment link/invoice link
 due_date | DateTime | The transaction due date of the payment link/invoice
 email | String | The email addresses for the payment link/invoice link to be sent. You can add up to 3 emails separated by ";"
@@ -942,6 +945,7 @@ print(data.decode("utf-8"))
   "payment_method": "CC",
   "created": "2021-01-12T16:25:33",
   "description": "",
+  "payment_reference_number": "",
   "paid_amount": 100000,
   "expiration": "2021-01-13T16:25:14",
   "due_date": "2021-01-13T15:00:00",
@@ -965,7 +969,12 @@ x-oy-username | String | The registered partner username which access is enabled
 Parameters | Type | Description
 ---- | ---- | ----
 partner_tx_id | String | A unique transaction ID which callback status to be checked
+payment_reference_number | String | A unique reference ID only for QRIS transactions. Used to identify which callback status to be checked. The reference number is stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code
 send_callback | Boolean | A flag to indiciate if the latest callback of a transaction need to be re-sent or not
+
+<aside class="warning">
+Note: All requests made must contain "partner_trx_id" or "payment_reference_number" parameter, but not both at the same time, otherwise will return error.
+</aside>
 
 ### Response Parameters
 Parameter | Type | Description
@@ -978,11 +987,13 @@ sender_name | String | Name of a payer for a transaction
 sender_phone | String | Phone number of a payer for a transaction
 sender_note | String | Additional notes from a payer for a transaction
 status | String | The status of a payment link
+payment_received_time | String | Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
 payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)
 created | String | The timestamp which indicates the creation time of a payment link
 description | String | Description of the payment link.
+payment_reference_number | String | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
 paid_amount | BigDecimal | the total amount that a user has paid.
 expiration | String | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss)
 due_date | String | To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss)

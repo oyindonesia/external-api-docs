@@ -5,6 +5,7 @@ Below is the list of response codes for API VA aggregator:
 Response Code | State | Description
 ---------- | ------- | -------
 000 | Final | Response success without error
+203 | Final | Request is Rejected (Duplicate Partner Tx ID)
 207 | Final | Request is Rejected (Request IP Address is not Registered)
 208 | Final | Request is Rejected (API Key is not Valid)
 211 | Final | Request is Rejected (Bank code is not available for this service)

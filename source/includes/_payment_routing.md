@@ -343,7 +343,7 @@ The request should be filled with at least 1 list_enable_payment_method and 1 li
 | EWALLET | dana_ewallet, ovo_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
 
-If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA (unique code BCA is soon to be enabled if `need_frontend = true`). For other sof with BANK_TRANSFER payment method, you will be routed to use VA.
+If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative.  For other sof with BANK_TRANSFER payment method, you will be routed to use VA
 
 #### If need_frontend: false
 The request should be filled only with 1 list_enable_payment_method and 1 list_enable_sof.
@@ -355,7 +355,7 @@ The request should be filled only with 1 list_enable_payment_method and 1 list_e
 | EWALLET | dana_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
 
-- If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. For other sof with BANK_TRANSFER payment method, you will be routed to use VA.
+- If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative.  For other sof with BANK_TRANSFER payment method, you will be routed to use VA
 - For EWallet Direct Payment (`use_linked_account: true`), only `shopeepay_ewallet` is supported.
 
 #### Examples
@@ -616,9 +616,13 @@ Endpoint:
 ### Request Parameter
 | Parameter  | Type |  Required   | Default | Description |
 | ------------- |:-------------:| :----------: | :-------------:| :----------: |
-|partner_trx_id|String|TRUE|-|Unique partner transaction ID
+|partner_trx_id|String|FALSE|-|Unique partner transaction ID
+|payment_reference_number|String|FALSE|-|Unique reference ID for QRIS transactions. The reference number is stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code
 |send_callback|Boolean|FALSE|-|If set true, we also send response as a callback to partner|
 
+<aside class="warning">
+Note: All requests made must contain "partner_trx_id" or "payment_reference_number", but not both at the same time, otherwise will return error.
+</aside>
 
 ### Responses Parameter
 
@@ -631,13 +635,18 @@ Endpoint:
 |request_amount|Numeric|Amount requested to be paid by end user|
 |received_amount|Numeric|Amount received. If user has paid, then the amount will be equal to request_amount. If you use unique code BCA, this number will contain the amount received subtracted by 3 digits generated unique code.|
 |payment_status|String|Receive money status|
-|trx_expiration_time|partner_user_id|Transaction expiration time|
+|trx_expiration_time|Timestamp|Transaction expiration time|
+|payment_received_time|Timestamp|Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
+|settlement_time|String| The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
+|settlement_status|String| The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
+|settlement_type|String|Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
 |payment_info|Object|Payment info Object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |account_number|String|Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |account_name|String|VA display name if you use VA or bank account's owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
+|payment_reference_number|String| Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
 |ewallet_url|String| For `use_linked_account: true`: URL that prompt user to input PIN to authorize Direct Payment. For `use_linked_account: false`: A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
 |cards_url|String| URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'CARDS'.|
 |unique_code_detail|Object|Contains two objects of number: `amount` which is the requested amount and `unique_code` which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.|
@@ -685,6 +694,13 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 }
 ```
 
+### Callback for Delayed Settlement (Non-Real Time Settlement)
+
+If your settlement is non-real time, for every transaction whose payment method is settled H+>0 from the time of transaction, you will receive two callbacks with details as follows:
+
+1.  1st Callback -> To be sent after your customer successfully executes the transaction. For example, if your customer executes the transaction on 11 May 2021 at 14:00:00, that is also when we send the 1st Callback to you. In the 1st callback, the settlement status is set to WAITING (because it is not yet settled to your Account Statement balance)
+2.  2nd Callback -> To be sent after the settlement status is changed from WAITING into SUCCESS. For example, if the settlement status is changed into SUCCESS on 12 May 2021 at 15:00:00, that is also when we send the 2nd Callback to you. In the 2nd callback, the settlement status is SUCCESS
+
 ### Callback Parameter
 
 | Parameter  | Type |  Description   |
@@ -695,13 +711,18 @@ Once user successfully do the payment, our system will make a callback via HTTP 
 |partner_trx_id|String|Partner transaction ID|
 |receive_amount|String|Amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.|
 |payment_status|String|Receive money status|
-|trx_expiration_time|partner_user_id|Transaction expiration time|
+|trx_expiration_time|Timestamp|Transaction expiration time|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be route to va aggregator.|
+|payment_received_time|Timestamp|Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
+|settlement_time|String| The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
+|settlement_status|String| The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
+|settlement_type|String|Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |payment_info|Object|Payment info Object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |account_number|String|Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |account_name|String|VA display name if you use VA or bank account's owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |qris_url|String|the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
+|payment_reference_number|String| Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
 |ewallet_url|String| For `use_linked_account: true`: URL that prompt user to input PIN to authorize Direct Payment. For `use_linked_account: false`: A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
 |cards_url|String| URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'CARDS'.|
 |unique_code_detail|Object|Contains two objects of number: amount which is the requested amount and unique_code which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.|
@@ -743,3 +764,30 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 | CANCEL               | Not receiving any payment so system will automatically cancel sending money to recipients |
 | FAILED               | Sending money to recipient process is failed                                              |
 | FAILED FORCE CREDIT  | When force credit process is failed                                                       |
+
+## Payment Routing Response Codes
+
+Below is the list of response codes for API Payment Routing:
+
+Response Code | State | Description
+---------- | ------- | -------
+000 | Final | Response success without error
+400 | Final | Request is rejected (Amount is not valid)
+400 | Final | Request is rejected (Amount is empty)
+400 | Final | Request is rejected (Invalid list payment method)
+400 | Final | Request is rejected (Invalid list source of fund)
+400 | Final | Request is rejected (Success redirect url is empty)
+400 | Final | Request is rejected (Failed redirect url is empty)
+400 | Final | Request is rejected (Reusable VA is not supported for the requested SOF)
+400 | Final | Request is rejected (Transaction using linked account is not supported for the requested SOF)
+400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss and must be greater than 1 hour)
+400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss and must be within valid interval for each e-wallet type)
+400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss and must be between 1 minute and 1 hour)
+400 | Final | Request is rejected (Format expiration is yyyy-MM-dd HH:mm:ss, must be between 1 minute and 3 hours and not exceed 20:30:00)
+400 | Final | Request is rejected (Invalid config product disburse or acceptance)
+400 | Final | Request is rejected (Invalid partner user id)
+400 | Final | Request is rejected (Token is already expired.)
+429 | Request Rejected (Too Many Request to specific endpoint)
+203 | Final | Request is rejected (Duplicate Partner Tx Id)
+247 | Final | Request is rejected (Email is not valid)
+901 | Non Final | General Error
