@@ -18921,6 +18921,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <span class="nt">--header</span> <span class="s1">'x-api-key: apikeymu'</span> <span class="se">\</span>
 <span class="nt">--data-raw</span> <span class="s1">'{
     "partner_user_id": "USR-20211117-1029",
+    "use_linked_account": false,
     "partner_trx_id": "TRX-20211117-1030",
     "need_frontend": false,
     "sender_email": "sender@gmail.com",
@@ -18944,6 +18945,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'POST'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'https://partner.oyindonesia.com/api/payment-routing/create-transaction'</span><span class="o">));</span>
 <span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
   <span class="s">"partner_user_id"</span><span class="o">:</span> <span class="s">"USR-20211117-1029"</span><span class="o">,</span>
+  <span class="s">"use_linked_account"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
   <span class="s">"partner_trx_id"</span><span class="o">:</span> <span class="s">"TRX-20211117-1030"</span><span class="o">,</span>
   <span class="s">"need_frontend"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
   <span class="s">"sender_email"</span><span class="o">:</span> <span class="s">"sender@gmail.com"</span><span class="o">,</span>
@@ -18983,6 +18985,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 
   <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
     "partner_user_id": "USR-20211117-1029",
+    "use_linked_account": false,
     "partner_trx_id": "TRX-20211117-1030",
     "need_frontend": false,
     "sender_email": "sender@gmail.com",
@@ -19027,7 +19030,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"BANK_TRANSFER\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"use_linked_account\": false,\n \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"BANK_TRANSFER\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"https://partner.oyindonesia.com/api/payment-routing/create-transaction"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
@@ -19038,6 +19041,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
   <span class="dl">"</span><span class="s2">partner_user_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USR-20211117-1029</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">use_linked_account</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">partner_trx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">TRX-20211117-1030</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">need_frontend</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">sender_email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sender@gmail.com</span><span class="dl">"</span><span class="p">,</span>
@@ -19083,7 +19087,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
   <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'yourusername'</span><span class="p">,</span>
   <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'apikeymu'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_user_id": "USR-20211117-1029",\n    "partner_trx_id": "TRX-20211117-1030",\n    "need_frontend": false,\n    "sender_email": "sender@gmail.com",\n    "receive_amount": 14000,\n    "list_enable_payment_method": "BANK_TRANSFER",\n    "list_enable_sof": "002",\n    "va_display_name": "partner_brand",\n    "payment_routing": [{\n        "recipient_bank": "014",\n        "recipient_account": "1234567890",\n        "recipient_amount": 10000,\n        "recipient_email": "recipient_bca@gmail.com"\n    }]\n}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_user_id": "USR-20211117-1029",\n  "use_linked_account": false,\n  "partner_trx_id": "TRX-20211117-1030",\n    "need_frontend": false,\n    "sender_email": "sender@gmail.com",\n    "receive_amount": 14000,\n    "list_enable_payment_method": "BANK_TRANSFER",\n    "list_enable_sof": "002",\n    "va_display_name": "partner_brand",\n    "payment_routing": [{\n        "recipient_bank": "014",\n        "recipient_account": "1234567890",\n        "recipient_amount": 10000,\n        "recipient_email": "recipient_bca@gmail.com"\n    }]\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -19103,6 +19107,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"https://partner.oyindonesia.com"</span><span class="p">,</span> <span class="n">undefined</span><span class="p">)</span>
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
   <span class="s">"partner_user_id"</span><span class="p">:</span> <span class="s">"USR-20211117-1029"</span><span class="p">,</span>
+  <span class="s">"use_linked_account"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
   <span class="s">"partner_trx_id"</span><span class="p">:</span> <span class="s">"TRX-20211117-1030"</span><span class="p">,</span>
   <span class="s">"need_frontend"</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
   <span class="s">"sender_email"</span><span class="p">:</span> <span class="s">"sender@gmail.com"</span><span class="p">,</span>
@@ -19139,6 +19144,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23a009f5-24ce-4567-96b3-03c42a0fb7ae"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USR-20211117-1029"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"use_linked_account"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20211117-1030"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"receive_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-02 18:59:31"</span><span class="p">,</span><span class="w">
@@ -19183,9 +19189,16 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <td>partner_user_id</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Only applicable for VA Aggregator. If you want the VA to be reusable for each users (multiple use), you are required define this parameter.</td>
+<td style="text-align: center">Applicable for VA and EWallet with <code>need_frontend: false</code>. If you want the VA to be reusable for each users (multiple use) or create EWallet Direct Payment transaction, you are required define this parameter.</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">Unique partner user id. Will automatically be generated if left empty on VA payment method with <code>need_frontend: false</code>.</td>
+<td style="text-align: center">Unique partner user id. Will automatically be generated if left empty on VA payment method with <code>need_frontend: false</code>. For EWallet Direct Payment, it is required to register <code>partner_user_id</code> using Account Linking API first.</td>
+</tr>
+<tr>
+<td>use_linked_account</td>
+<td style="text-align: center">Boolean</td>
+<td style="text-align: center">Applicable for EWallet with <code>need_frontend: false</code>.</td>
+<td style="text-align: center"><code>false</code></td>
+<td style="text-align: center">If <code>true</code>, then EWallet Direct Payment transaction will be created. Else, regular EWallet transaction will be created.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
@@ -19255,7 +19268,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">String</td>
 <td style="text-align: center">CONDITIONAL</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">Indicates the URL of your environment to redirect customers back to once payment has been completed. Accepts both HTTP links and URL scheme formats. Required if payment method is either &quot;EWALLET&quot; or &quot;CARDS&quot;, and <code>need_frontend</code> is set to false.</td>
+<td style="text-align: center">Indicates the URL of your environment to redirect customers back to once payment has been completed. Accepts both HTTP links and URL scheme formats. Required if payment method is either &quot;EWALLET&quot; or &quot;CARDS&quot;, and <code>need_frontend</code> is set to false. Specific for Shopeepay Direct Payment, Shopeepay will redirect to this url based on the result of the payment. If the payment is successful, ShopeePay will send an additional param <code>?result=100</code> following the redirect url. Otherwise, ShopeePay will send additional param <code>?result=201</code> for failed payment (insufficient balance, wrong pin, link has been paid, or user click back button). Example: <code>https://example.com/callback?result=100</code>.</td>
 </tr>
 <tr>
 <td>failed_redirect_url</td>
@@ -19331,6 +19344,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">Partner user ID that you defined in the request parameter</td>
 </tr>
 <tr>
+<td>use_linked_account</td>
+<td style="text-align: center">Boolean</td>
+<td style="text-align: center">Applicable for EWallet with <code>need_frontend: false</code>. If <code>true</code>, the transaction created is an EWallet Direct Payment transaction (ShopeePay only). Else, it is a regular EWallet transaction.</td>
+</tr>
+<tr>
 <td>partner_trx_id</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">Partner transaction ID that you defined in the request parameter</td>
@@ -19378,7 +19396,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <td>ewallet_url</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
+<td style="text-align: center">For <code>use_linked_account: true</code>: URL that prompt user to input PIN to authorize Direct Payment. For <code>use_linked_account: false</code>: A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
 </tr>
 <tr>
 <td>cards_url</td>
@@ -19452,7 +19470,10 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </tr>
 </tbody></table>
 
-<p>If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative.  For other sof with BANK_TRANSFER payment method, you will be routed to use VA</p>
+<ul>
+<li>If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative.  For other sof with BANK_TRANSFER payment method, you will be routed to use VA</li>
+<li>For EWallet Direct Payment (<code>use_linked_account: true</code>), only <code>shopeepay_ewallet</code> is supported.</li>
+</ul>
 <h4 id='examples-list-of-allowed-payment-methods-and-sof' type='normal'>Examples</h4>
 <table><thead>
 <tr>
@@ -19527,6 +19548,12 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">linkaja_ewallet</td>
 <td style="text-align: center">5 minutes</td>
 <td style="text-align: center">5 minutes, regardless of the expiration time specified in the request.</td>
+</tr>
+<tr>
+<td style="text-align: center">EWALLET (Direct Payment)</td>
+<td style="text-align: center">shopeepay_ewallet</td>
+<td style="text-align: center">30 minutes</td>
+<td style="text-align: center">30 minutes, regardless of the expiration time specified in the request</td>
 </tr>
 <tr>
 <td style="text-align: center">CARDS</td>
@@ -19735,6 +19762,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23a009f5-24ce-4567-96b3-03c42a0fb7ae"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USR-20211117-1029"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"use_linked_account"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20211117-1030"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"request_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w">
     </span><span class="nl">"received_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -19921,7 +19949,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <tr>
 <td>ewallet_url</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
+<td style="text-align: center">For <code>use_linked_account: true</code>: URL that prompt user to input PIN to authorize Direct Payment. For <code>use_linked_account: false</code>: A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
 </tr>
 <tr>
 <td>cards_url</td>
@@ -20039,6 +20067,11 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">Partner user ID</td>
 </tr>
 <tr>
+<td>use_linked_account</td>
+<td style="text-align: center">Boolean</td>
+<td style="text-align: center">Applicable for EWallet with <code>need_frontend: false</code>. If <code>true</code>, the transaction created is an EWallet Direct Payment transaction. Else, it is a regular EWallet transaction.</td>
+</tr>
+<tr>
 <td>partner_trx_id</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">Partner transaction ID</td>
@@ -20116,7 +20149,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>ewallet_url</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
+<td style="text-align: center">For <code>use_linked_account: true</code>: URL that prompt user to input PIN to authorize Direct Payment. For <code>use_linked_account: false</code>: A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
 </tr>
 <tr>
 <td>cards_url</td>
