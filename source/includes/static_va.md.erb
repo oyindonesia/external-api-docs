@@ -274,7 +274,7 @@ is_single_use | Boolean | FALSE | false | True means that this VA should be clos
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, e.g If VA want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty VA will be expired in 24 hour
 is_lifetime | Boolean | FALSE | FALSE | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
-email | String(50) | FALSE | - | Email of user, using email standard format
+email | String(255) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty transaction expiration time will be the same with va expiration time
 partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
 trx_counter | Int | FALSE | -1/1 | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
@@ -774,7 +774,7 @@ is_single_use | Boolean | FALSE |  false | True means that this VA should be clo
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, if empty VA will be expired in 24 hour. If you want to deactivate/cancel the VA, pass "0" in the expiration_time
 username_display | String | - | - | Customizable VA display name that will be seen by user, If empty willl be using partner username
 is_lifetime | Boolean | FALSE | - | false | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
-email | String(50) | FALSE | - | Email of user, using email standard format
+email | String(255) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If you want to make the trx_expiration_time expired, pass "0" in the trx_expiration_time
 partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
 trx_counter | Int | FALSE | -1/1 | Update transaction counter to limit number of transaction that can be receive by va number
@@ -1475,7 +1475,7 @@ bank_code | String(3) | TRUE | - | Bank code which the VA number will be generat
 amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
 is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
-email | String(50) | FALSE | - | Email of user, using email standard format
+email | String(255) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty, there will be no transaction expiration time.
 partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
 va_suffix | String (10-12) | TRUE | - | Customized VA suffix that will be used by user. Must consists of digit only. Please note that given suffix may be trimmed from the front if it exceeds maximum VA digit capacity.
@@ -1723,7 +1723,7 @@ Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
 amount | BigDecimal | FALSE | - | Amount your user must paid to complete the transaction
 username_display | String | - | - | Customizable VA display name that will be seen by user, If empty willl be using partner username
-email | String(50) | FALSE | - | Email of user, using email standard format
+email | String(255) | FALSE | - | Email of user, using email standard format
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If you want to make the trx_expiration_time expired, pass "0" in the trx_expiration_time
 partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
 
