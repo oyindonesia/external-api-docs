@@ -301,7 +301,7 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 </tr>
 <tr>
 <td>email</td>
-<td>String(50)</td>
+<td>String(255)</td>
 <td>FALSE</td>
 <td>-</td>
 <td>Email of user, using email standard format</td>
@@ -972,7 +972,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 </tr>
 <tr>
 <td>email</td>
-<td>String(50)</td>
+<td>String(255)</td>
 <td>FALSE</td>
 <td>-</td>
 <td>Email of user, using email standard format</td>
@@ -1811,7 +1811,7 @@ POST https://partner.oyindonesia.com/api/custom-va
 </tr>
 <tr>
 <td>email</td>
-<td>String(50)</td>
+<td>String(255)</td>
 <td>FALSE</td>
 <td>-</td>
 <td>Email of user, using email standard format</td>
@@ -2137,7 +2137,7 @@ PUT https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-212121
 </tr>
 <tr>
 <td>email</td>
-<td>String(50)</td>
+<td>String(255)</td>
 <td>FALSE</td>
 <td>-</td>
 <td>Email of user, using email standard format</td>
