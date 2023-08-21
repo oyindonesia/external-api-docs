@@ -314,7 +314,7 @@ Endpoint:
 |partner_user_id|String|Partner user ID that you defined in the request parameter|
 |use_linked_account|Boolean|Applicable for EWallet with `need_frontend: false`. If `true`, the transaction created is an EWallet Direct Payment transaction (ShopeePay only). Else, it is a regular EWallet transaction.|
 |partner_trx_id|String|Partner transaction ID that you defined in the request parameter|
-|receive_amount|Numeric|amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.|
+|receive_amount|Numeric|amount to be received. If you use unique code BCA, this number will contain the amount to be received, added or subtracted by 3 digits generated unique code.|
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Transaction Expiration Time|
 |payment_info|Object|Payment info object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
@@ -633,7 +633,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 |partner_user_id|String|Partner user ID|
 |partner_trx_id|String|Partner transaction ID|
 |request_amount|Numeric|Amount requested to be paid by end user|
-|received_amount|Numeric|Amount received. If user has paid, then the amount will be equal to request_amount. If you use unique code BCA, this number will contain the amount received subtracted by 3 digits generated unique code.|
+|received_amount|Numeric|Amount received. If user has paid, then the amount will be equal to request_amount. If you use unique code BCA, this number will contain the amount received, added or subtracted by 3 digits generated unique code.|
 |payment_status|String|Receive money status|
 |trx_expiration_time|Timestamp|Transaction expiration time|
 |payment_received_time|Timestamp|Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
@@ -709,7 +709,7 @@ If your settlement is non-real time, for every transaction whose payment method 
 |partner_user_id|String|Partner user ID|
 |use_linked_account|Boolean|Applicable for EWallet with `need_frontend: false`. If `true`, the transaction created is an EWallet Direct Payment transaction. Else, it is a regular EWallet transaction.|
 |partner_trx_id|String|Partner transaction ID|
-|receive_amount|String|Amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.|
+|receive_amount|String|Amount to be received. If you use unique code BCA, this number will contain the amount to be received, added or subtracted by 3 digits generated unique code.|
 |payment_status|String|Receive money status|
 |trx_expiration_time|Timestamp|Transaction expiration time|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be routed to payment aggregator.|
