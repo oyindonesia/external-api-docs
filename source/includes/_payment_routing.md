@@ -787,7 +787,18 @@ Response Code | State | Description
 400 | Final | Request is rejected (Invalid config product disburse or acceptance)
 400 | Final | Request is rejected (Invalid partner user id)
 400 | Final | Request is rejected (Token is already expired.)
-429 | Request Rejected (Too Many Request to specific endpoint)
+429 | Final | Request Rejected (Too Many Request to specific endpoint)
 203 | Final | Request is rejected (Duplicate Partner Tx Id)
 247 | Final | Request is rejected (Email is not valid)
 901 | Non Final | General Error
+
+
+Below is the list of HTTP Status Code for API Payment Routing:
+HTTP Status Code | State | Description
+---------- | ------- | -------
+403 | Final | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Final | Not Found (wrong URL)
+429 | Final | Request Rejected (Too Many Request to specific endpoint)
+500 | Non Final | Internal Server Error (OY system encountered unknown error)
+503 | Final | Service Unavailable (OY system unable to process the request temporarily)
+504 | Non Final | Gateway Timeout (OY system took too long processing the request)
