@@ -20384,8 +20384,8 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </tr>
 <tr>
 <td>429</td>
+<td>Final</td>
 <td>Request Rejected (Too Many Request to specific endpoint)</td>
-<td></td>
 </tr>
 <tr>
 <td>203</td>
@@ -20403,6 +20403,16 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>General Error</td>
 </tr>
 </tbody></table>
+
+<p>Below is the list of HTTP Status Code for API Payment Routing:
+HTTP Status Code | State | Description
+---------- | ------- | -------
+403 | Final | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Final | Not Found (wrong URL)
+429 | Final | Request Rejected (Too Many Request to specific endpoint)
+500 | Non Final | Internal Server Error (OY! system encountered unknown error)
+503 | Final | Service Unavailable (OY! system is unable to process the request temporarily)
+504 | Non Final | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)</p>
 <h1 id='api-multi-account-management' type='normal'>API Multi Account Management</h1>
 <p>Multi Account Management APIs allow you to interact with parent/child accounts in OY.</p>
 <h2 id='disburse-with-child-balance-api-multi-account-management' type='normal'>Disburse with Child Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
