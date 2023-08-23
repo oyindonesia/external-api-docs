@@ -279,7 +279,7 @@ child_balance | String | FALSE | An optional parameter. Applicable for MAM trans
 description | String | FALSE | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | FALSE | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | TRUE | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
-amount | Integer | TRUE | The amount of a transaction to be paid. | Minimum amount is IDR 10,000.
+amount | Integer | TRUE | The amount of a transaction to be paid. | The amount of a transaction to be paid, min. amount is 10000, except if you use unique code BCA which has min. amount 11000 or CARDS which has min. amount 15000
 email | String | FALSE | The email addresses where the payment link will be sent to. | Up to 3 emails separated by ";"
 phone_number | Numeric | FALSE | Phone number of the payer for a transaction. | Do not use special character (e.g. "+")
 is_open	| Boolean | TRUE | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 10,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
@@ -634,7 +634,7 @@ partner_tx_id | String | A unique transaction ID provided by partner. | A partne
 description | String | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
-amount | Integer | The amount of a transaction to be paid. | Minimum amount is IDR 10,000.
+amount | Integer | The amount of a transaction to be paid. | The amount of a transaction to be paid, min. amount is 10000, except if you use unique code BCA which has min. amount 11000 or CARDS which has min. amount 15000
 email | String | The email address where the payment link will be sent to. | Up to 3 emails separated by ";"
 phone_number | Numeric | Phone number of the payer for a transaction. | Do not use special character (e.g. "+").
 is_open	| Boolean | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 10,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
