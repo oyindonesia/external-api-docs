@@ -794,6 +794,7 @@ Response Code | State | Description
 
 
 Below is the list of HTTP Status Code for API Payment Routing:
+
 HTTP Status Code | State | Description
 ---------- | ------- | -------
 403 | Final | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
