@@ -268,7 +268,7 @@ print(data.decode("utf-8"))
 Parameters | Type | Description
 ---- | ---- | ----
 X-Api-Key | String | API Key for establishing connection to this particular endpoint
-X-Oy-Username | String | The registered partner username which access is enabled for payment link product
+X-Oy-Username | String | The registered partner's username with enabled access for payment link product
 
 ### Request Parameters
 
@@ -623,7 +623,7 @@ print(data.decode("utf-8"))
 Parameters | Type | Description
 ---- | ---- | ----
 X-Api-Key | String | API Key for establishing connection to this particular endpoint
-X-Oy-Username | String | The registered partner username which access is enabled for payment link product
+X-Oy-Username | String | The registered partner's username with enabled access for payment link product
 
 ### Request Parameters
 
@@ -979,7 +979,7 @@ print(data.decode("utf-8"))
 Parameters | Type | Description
 ---- | ---- | ----
 x-api-key | String | API Key for establishing connection to this particular endpoint
-x-oy-username | String | The registered partner username which access is enabled for payment link product
+X-Oy-Username | String | The registered partner's username with enabled access for payment link product
 
 ### Request Parameters
 
