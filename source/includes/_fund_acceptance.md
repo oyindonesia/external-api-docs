@@ -1596,12 +1596,12 @@ function PaycheckoutSlide({
 ## Fund Acceptance Response Codes
 
 Below is the list of HTTP Status Code for API Fund Acceptance:
-HTTP Status Code | State | Description
----------- | ------- | -------
-200 | Final | Response success without error
-403 | Final | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
-404 | Final | Not Found (wrong URL)
-429 | Final | Request Rejected (Too Many Request to specific endpoint)
-500 | Non Final | Internal Server Error (OY! system encountered unknown error)
-503 | Final | Service Unavailable (OY! system is unable to process the request temporarily)
-504 | Non Final | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)
+HTTP Status Code | Description
+---------- | -------
+200 | Response success without error
+403 | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Not Found (wrong URL)
+429 | Request Rejected (Too Many Request to specific endpoint)
+500 | Internal Server Error (OY! system encountered unknown error)
+503 | Service Unavailable (OY! system is unable to process the request temporarily)
+504 | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)
