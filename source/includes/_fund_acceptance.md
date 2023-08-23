@@ -301,6 +301,7 @@ child_balance | String | Applicable for MAM transaction. To be filled with the u
 message | String | Message response
 email_status | String | email status
 
+
 ## API Create (Invoicing)
 
 Our Invoicing product is leveraging most parameters that are defined for our payment link in the above section with some additional parameters that are only applicable for Inovicing product. 
@@ -617,6 +618,13 @@ print(data.decode("utf-8"))
 }
 ```
 
+### Request Headers
+
+Parameters | Type | Description
+---- | ---- | ----
+X-Api-Key | String | API Key for establishing connection to this particular endpoint
+X-Oy-Username | String | The registered partner username which access is enabled for payment link product
+
 ### Request Parameters
 
 Parameters | Type | Description | Limitation
@@ -639,6 +647,15 @@ full_name | String | The customer's full name. | -
 is_va_lifetime | Boolean | To enable VA static confirugation for a payment . | If this is set as true and the partner_user_id is already associated to specific VAs, then the same VA numbers will be used for this partner_tx_id instead of generating new VA number. Partner_user_id and VA payment method must be specified to use this parameter.
 invoice_items | List | List of items to be invoiced that can be generated via API in the following format: [item, description, quantity, date_of_purchase, price_per_item ]  | -
 attachment | - | Upload attachment (string base 64 pdf) and can be downloaded via the webview | There is a maximum limit of 1 PDF attachment (maximum 2 MB) to be uploaded per URL
+
+### Response Parameters
+Parameter | Type | Description
+---- | ---- | ----
+status | Boolean | true / false
+url | String | Payment link which used for payment
+message | String | Message response
+payment_link_id | String | A unique payment link transaction ID
+email_status | String | email status
 
 
 ## API Create (Recurring Invoice) (Coming soon)
@@ -1576,3 +1593,16 @@ function PaycheckoutSlide({
 ```
 
 <p class="lottie" id="payment-link-demo-right-stick"></p>
+
+## Fund Acceptance Response Codes
+
+Below is the list of HTTP Status Code for API Fund Acceptance:
+HTTP Status Code | State | Description
+---------- | ------- | -------
+200 | Final | Response success without error
+403 | Final | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Final | Not Found (wrong URL)
+429 | Final | Request Rejected (Too Many Request to specific endpoint)
+500 | Non Final | Internal Server Error (OY! system encountered unknown error)
+503 | Final | Service Unavailable (OY! system is unable to process the request temporarily)
+504 | Non Final | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)
