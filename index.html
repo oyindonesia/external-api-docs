@@ -1261,9 +1261,25 @@
                           </a>
                         </li>
                         <li>
+                          <a href="#request-headers-api-create-invoicing" class="toc-h3 toc-link" data-title="Request Headers">
+                            <span class="toc-link-content">
+                              Request Headers
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
                           <a href="#request-parameters-api-create-invoicing" class="toc-h3 toc-link" data-title="Request Parameters">
                             <span class="toc-link-content">
                               Request Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#response-parameters-api-create-invoicing" class="toc-h3 toc-link" data-title="Response Parameters">
+                            <span class="toc-link-content">
+                              Response Parameters
                             </span>
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
@@ -1495,6 +1511,14 @@
                           </a>
                         </li>
                     </ul>
+                  </li>
+                  <li>
+                    <a href="#fund-acceptance-response-codes-fund-acceptance" class="toc-h2 toc-link" data-title="Fund Acceptance Response Codes">
+                     <span class="toc-link-content">
+                        Fund Acceptance Response Codes
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
                   </li>
               </ul>
           </li>
@@ -9000,7 +9024,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>X-Oy-Username</td>
 <td>String</td>
-<td>The registered partner username which access is enabled for payment link product</td>
+<td>The registered partner&#39;s username with enabled access for payment link product</td>
 </tr>
 </tbody></table>
 <h3 id='request-parameters-api-create-payment-link' type='normal'>Request Parameters</h3>
@@ -9053,7 +9077,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>Integer</td>
 <td>TRUE</td>
 <td>The amount of a transaction to be paid.</td>
-<td>Minimum amount is IDR 10,000.</td>
+<td>The amount of a transaction to be paid, min. amount is 10000, except if you use unique code BCA which has min. amount 11000 or CARDS which has min. amount 15000</td>
 </tr>
 <tr>
 <td>email</td>
@@ -9087,7 +9111,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>list_disabled_payment_methods</td>
 <td>String</td>
 <td>FALSE</td>
-<td>To configure payment methods to be disabled (e.g. BANK_TRANSFER, CREDIT_CARD, QRIS, EWALLET). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
+<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET, BANK_TRANSFER). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
 <td>There must be at least 1 payment method enabled. If this field is not included in the request, or filled with an empty String, then all payment methods will be enabled.</td>
 </tr>
 <tr>
@@ -9095,7 +9119,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>String</td>
 <td>TRUE</td>
 <td>To configure banks to be enabled for BANK_TRANSFER payment method.</td>
-<td>List of eligible bank codes: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB), &quot;213&quot; (BSI), &quot;016&quot; (Maybank), &quot;484&quot; (Hana), &quot;011&quot; (Danamon), and &quot;014&quot; (BCA). Unique code is only available for BCA.</td>
+<td>List of eligible bank codes: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB), &quot;213&quot; (BTPN), &quot;213&quot; (BSI), &quot;016&quot; (Maybank), &quot;484&quot; (Hana), &quot;011&quot; (Danamon), and &quot;014&quot; (BCA). Unique code is only available for BCA.</td>
 </tr>
 <tr>
 <td>list_enabled_ewallet</td>
@@ -9446,7 +9470,26 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
         </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROCESSED"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"payment_link_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='request-parameters-api-create-invoicing' type='normal'>Request Parameters</h3>
+</span></code></pre></div><h3 id='request-headers-api-create-invoicing' type='normal'>Request Headers</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Api-Key</td>
+<td>String</td>
+<td>API Key for establishing connection to this particular endpoint</td>
+</tr>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>The registered partner&#39;s username with enabled access for payment link product</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-api-create-invoicing' type='normal'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameters</th>
@@ -9483,7 +9526,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>amount</td>
 <td>Integer</td>
 <td>The amount of a transaction to be paid.</td>
-<td>Minimum amount is IDR 10,000.</td>
+<td>The amount of a transaction to be paid, min. amount is 10000, except if you use unique code BCA which has min. amount 11000 or CARDS which has min. amount 15000</td>
 </tr>
 <tr>
 <td>email</td>
@@ -9512,14 +9555,14 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>list_disabled_payment_methods</td>
 <td>String</td>
-<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
+<td>To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET, BANK_TRANSFER). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card.</td>
 <td>There must be at least 1 payment method is enabled.</td>
 </tr>
 <tr>
 <td>list_enabled_banks</td>
 <td>String</td>
 <td>To configure banks to be enabled for VA payment method.</td>
-<td>List of eligible bank codes: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB).</td>
+<td>List of eligible bank codes: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB), &quot;213&quot; (BTPN), &quot;213&quot; (BSI), &quot;016&quot; (Maybank), &quot;484&quot; (Hana), &quot;011&quot; (Danamon), and &quot;014&quot; (BCA).</td>
 </tr>
 <tr>
 <td>expiration</td>
@@ -9562,6 +9605,40 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>-</td>
 <td>Upload attachment (string base 64 pdf) and can be downloaded via the webview</td>
 <td>There is a maximum limit of 1 PDF attachment (maximum 2 MB) to be uploaded per URL</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-api-create-invoicing' type='normal'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Boolean</td>
+<td>true / false</td>
+</tr>
+<tr>
+<td>url</td>
+<td>String</td>
+<td>Payment link which used for payment</td>
+</tr>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Message response</td>
+</tr>
+<tr>
+<td>payment_link_id</td>
+<td>String</td>
+<td>A unique payment link transaction ID</td>
+</tr>
+<tr>
+<td>email_status</td>
+<td>String</td>
+<td>email status</td>
 </tr>
 </tbody></table>
 <h2 id='api-create-recurring-invoice-coming-soon-fund-acceptance' type='normal'>API Create (Recurring Invoice) (Coming soon)</h2>
@@ -9831,12 +9908,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>charge_in_progress</td>
 <td>String</td>
-<td>OTP for card payment method has been succesfully entered and processed</td>
-</tr>
-<tr>
-<td>charge_sucess</td>
-<td>String</td>
-<td>Card payment has been successfully received by OY</td>
+<td>Payment currently in processed</td>
 </tr>
 <tr>
 <td>failed</td>
@@ -9851,7 +9923,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <td>closed</td>
 <td>String</td>
-<td>Payment link has  been deleted</td>
+<td>Payment link has been deleted</td>
 </tr>
 </tbody></table>
 <h2 id='api-payment-status-fund-acceptance' type='normal'>API Payment Status</h2>
@@ -10021,9 +10093,9 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>API Key for establishing connection to this particular endpoint</td>
 </tr>
 <tr>
-<td>x-oy-username</td>
+<td>X-Oy-Username</td>
 <td>String</td>
-<td>The registered partner username which access is enabled for payment link product</td>
+<td>The registered partner&#39;s username with enabled access for payment link product</td>
 </tr>
 </tbody></table>
 <h3 id='request-parameters-api-payment-status' type='normal'>Request Parameters</h3>
@@ -10120,7 +10192,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <tr>
 <td>payment_method</td>
 <td>String</td>
-<td>The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)</td>
+<td>The payment method used in a transaction. Choices are: CC (Cards), QRIS, EWALLET (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)</td>
 </tr>
 <tr>
 <td>created</td>
@@ -10669,13 +10741,13 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <tr>
 <td>listDisabledPaymentMethods</td>
 <td>String</td>
-<td>List Of Disable Payment Method (VA, CREDIT_CARD, QRIS, BANK_TRANSFER). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well. When BANK_TRANSFER is included, it means only unique code is disabled.</td>
+<td>List Of Disable Payment Method.</td>
 <td></td>
 </tr>
 <tr>
 <td>listEnabledBanks</td>
 <td>String</td>
-<td>Payment Method List Enable Bank for VA or Unique Code Payment Method: &quot;002&quot; (BRI), &quot;008&quot; (Mandiri), &quot;009&quot; (BNI), &quot;013&quot; (Permata), &quot;022&quot; (CIMB), &quot;213&quot; (BSI), &quot;016&quot; (Maybank), &quot;484&quot; (Hana), &quot;011&quot; (Danamon), and &quot;014&quot; (BCA). Unique code is only available for BCA.</td>
+<td>Payment Method List Enable Bank for VA or Unique Code Payment Method</td>
 <td>002,008</td>
 </tr>
 <tr>
@@ -10899,6 +10971,17 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <span class="p">}</span>
 </code></pre></div>
 <p class="lottie" id="payment-link-demo-right-stick"></p>
+<h2 id='fund-acceptance-response-codes-fund-acceptance' type='normal'>Fund Acceptance Response Codes</h2>
+<p>Below is the list of HTTP Status Code for API Fund Acceptance:
+HTTP Status Code | Description
+---------- | -------
+200 | Response success without error
+403 | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Not Found (wrong URL)
+429 | Request Rejected (Too Many Request to specific endpoint)
+500 | Internal Server Error (OY! system encountered unknown error)
+503 | Service Unavailable (OY! system is unable to process the request temporarily)
+504 | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)</p>
 <h1 id='api-account-receivable' type='normal'>API Account Receivable</h1>
 <p>API Account Receivable is the newest feature that allows Partners to manage customers and account receivable invoices via API. The differences between API Account Receivable API and API Invoicing is in the <strong>customer management ability</strong>. By utilizing API Account Receivable, Partners do not need to maintain manual data of the customers anymore when inputting invoice.</p>
 <h2 id='create-api-account-receivable' type='normal'>Create New Customer</h2>
@@ -19240,7 +19323,7 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td style="text-align: center">Numeric</td>
 <td style="text-align: center">TRUE</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">The amount of a transaction to be paid, min. amount is 10000, except if you use unique code BCA which has min. amount 11000</td>
+<td style="text-align: center">The amount of a transaction to be paid, min. amount is 10000, except if you use unique code BCA which has min. amount 11000 or CARDS which has min. amount 15000</td>
 </tr>
 <tr>
 <td>va_display_name</td>
@@ -20404,46 +20487,16 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </tr>
 </tbody></table>
 
-<p>Below is the list of HTTP Status Code for API Payment Routing:</p>
-
-<table><thead>
-<tr>
-<th>HTTP Status Code</th>
-<th>State</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>403</td>
-<td>Final</td>
-<td>Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Final</td>
-<td>Not Found (wrong URL)</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Final</td>
-<td>Request Rejected (Too Many Request to specific endpoint)</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Non Final</td>
-<td>Internal Server Error (OY! system encountered unknown error)</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Final</td>
-<td>Service Unavailable (OY! system is unable to process the request temporarily)</td>
-</tr>
-<tr>
-<td>504</td>
-<td>Non Final</td>
-<td>Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)</td>
-</tr>
-</tbody></table>
+<p>Below is the list of HTTP Status Code for API Payment Routing:
+HTTP Status Code | Description
+---------- | -------
+200 | Response success without error
+403 | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Not Found (wrong URL)
+429 | Request Rejected (Too Many Request to specific endpoint)
+500 | Internal Server Error (OY! system encountered unknown error)
+503 | Service Unavailable (OY! system is unable to process the request temporarily)
+504 | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)</p>
 <h1 id='api-multi-account-management' type='normal'>API Multi Account Management</h1>
 <p>Multi Account Management APIs allow you to interact with parent/child accounts in OY.</p>
 <h2 id='disburse-with-child-balance-api-multi-account-management' type='normal'>Disburse with Child Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
