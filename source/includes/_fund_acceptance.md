@@ -268,7 +268,7 @@ print(data.decode("utf-8"))
 Parameters | Type | Description
 ---- | ---- | ----
 X-Api-Key | String | API Key for establishing connection to this particular endpoint
-X-Oy-Username | String | The registered partner username which access is enabled for payment link product
+X-Oy-Username | String | The registered partner's username with enabled access for payment link product
 
 ### Request Parameters
 
@@ -279,13 +279,13 @@ child_balance | String | FALSE | An optional parameter. Applicable for MAM trans
 description | String | FALSE | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | FALSE | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | TRUE | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
-amount | Integer | TRUE | The amount of a transaction to be paid. | Minimum amount is IDR 10,000.
+amount | Integer | TRUE | The amount of a transaction to be paid. | The amount of a transaction to be paid, min. amount is 10000, except if you use unique code BCA which has min. amount 11000 or CARDS which has min. amount 15000
 email | String | FALSE | The email addresses where the payment link will be sent to. | Up to 3 emails separated by ";"
 phone_number | Numeric | FALSE | Phone number of the payer for a transaction. | Do not use special character (e.g. "+")
 is_open	| Boolean | TRUE | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 10,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
 include_admin_fee | Boolean | TRUE | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
-list_disabled_payment_methods | String | FALSE | To configure payment methods to be disabled (e.g. BANK_TRANSFER, CREDIT_CARD, QRIS, EWALLET). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method enabled. If this field is not included in the request, or filled with an empty String, then all payment methods will be enabled.
-list_enabled_banks | String | TRUE | To configure banks to be enabled for BANK_TRANSFER payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB), "213" (BSI), "016" (Maybank), "484" (Hana), "011" (Danamon), and "014" (BCA). Unique code is only available for BCA.
+list_disabled_payment_methods | String | FALSE | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET, BANK_TRANSFER). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method enabled. If this field is not included in the request, or filled with an empty String, then all payment methods will be enabled.
+list_enabled_banks | String | TRUE | To configure banks to be enabled for BANK_TRANSFER payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB), "213" (BTPN), "213" (BSI), "016" (Maybank), "484" (Hana), "011" (Danamon), and "014" (BCA). Unique code is only available for BCA.
 list_enabled_ewallet | String | TRUE | To configure list of e-wallets to be enabled on payment method page. | List of eligible e-wallet: "shopeepay_ewallet", "dana_ewallet", "linkaja_ewallet", "ovo_ewallet".
 expiration | datetime | FALSE | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | Expiration date will be defaulted to 24 hours if it is not defined.
 va_display_name | String | FALSE | Optional parameter, name to display on Bank Transfer VA Name | Can be omitted. Accepts alphabets (A-Z), numeric (0-9) and space as input.
@@ -300,6 +300,7 @@ payment_link_id | String | A unique transaction ID provided by partner
 child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in response.
 message | String | Message response
 email_status | String | email status
+
 
 ## API Create (Invoicing)
 
@@ -617,6 +618,13 @@ print(data.decode("utf-8"))
 }
 ```
 
+### Request Headers
+
+Parameters | Type | Description
+---- | ---- | ----
+X-Api-Key | String | API Key for establishing connection to this particular endpoint
+X-Oy-Username | String | The registered partner's username with enabled access for payment link product
+
 ### Request Parameters
 
 Parameters | Type | Description | Limitation
@@ -625,13 +633,13 @@ partner_tx_id | String | A unique transaction ID provided by partner. | A partne
 description | String | Description of the payment link. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 notes | String | Notes. | Only accepts alphabets (A-Z), numeric (0-9) and space as input.
 sender_name | String | Name of the payer for a transaction. | Only accepts alphabets (A-Z) and space as input and cannot be empty.
-amount | Integer | The amount of a transaction to be paid. | Minimum amount is IDR 10,000.
+amount | Integer | The amount of a transaction to be paid. | The amount of a transaction to be paid, min. amount is 10000, except if you use unique code BCA which has min. amount 11000 or CARDS which has min. amount 15000
 email | String | The email address where the payment link will be sent to. | Up to 3 emails separated by ";"
 phone_number | Numeric | Phone number of the payer for a transaction. | Do not use special character (e.g. "+").
 is_open	| Boolean | Enable open/closed amount transaction method. | If is_open = TRUE and the amount parameter is defined, then a payer can pay any amount (greater than IDR 10,000) up to the defined amount. And in the case that is_open=false, then the amount and partner_tx_id parameters must be defined.
 include_admin_fee | Boolean | Admin fee will be added to the specified amount or amount inputted by user if this parameter is set as TRUE. | -
-list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS). When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
-list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB).
+list_disabled_payment_methods | String | To configure payment methods to be disabled (e.g. VA, CREDIT_CARD, QRIS, EWALLET, BANK_TRANSFER). When BANK_TRANSFER is included, you are disabling both VA and Unique Code. When CREDIT_CARD is included, you are disabling the ‘cards’ payment method as a whole - which means disabling both credit card and debit card. | There must be at least 1 payment method is enabled.
+list_enabled_banks | String | To configure banks to be enabled for VA payment method. | List of eligible bank codes: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB), "213" (BTPN), "213" (BSI), "016" (Maybank), "484" (Hana), "011" (Danamon), and "014" (BCA).
 expiration | datetime | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss) | -
 due_date | datetime | To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss) | Transaction due date should equal or before expiration. As default, transaction due date will be same as expiration if it is not defined.
 partner_user_id | String | Username assigned to the customer by partner. | - 
@@ -639,6 +647,15 @@ full_name | String | The customer's full name. | -
 is_va_lifetime | Boolean | To enable VA static confirugation for a payment . | If this is set as true and the partner_user_id is already associated to specific VAs, then the same VA numbers will be used for this partner_tx_id instead of generating new VA number. Partner_user_id and VA payment method must be specified to use this parameter.
 invoice_items | List | List of items to be invoiced that can be generated via API in the following format: [item, description, quantity, date_of_purchase, price_per_item ]  | -
 attachment | - | Upload attachment (string base 64 pdf) and can be downloaded via the webview | There is a maximum limit of 1 PDF attachment (maximum 2 MB) to be uploaded per URL
+
+### Response Parameters
+Parameter | Type | Description
+---- | ---- | ----
+status | Boolean | true / false
+url | String | Payment link which used for payment
+message | String | Message response
+payment_link_id | String | A unique payment link transaction ID
+email_status | String | email status
 
 
 ## API Create (Recurring Invoice) (Coming soon)
@@ -774,11 +791,10 @@ Payment Status | Type | Description
 created | String | Status that will be returned when the payment link is first created and user has not selected a payment method
 waiting_payment | String | Status that indicates that the user has selected a payment method
 expired | String | The payment link has expired
-charge_in_progress | String | OTP for card payment method has been succesfully entered and processed
-charge_sucess | String | Card payment has been successfully received by OY
+charge_in_progress | String | Payment currently in processed
 failed | String | OTP for card payment method has been succesfully entered but payment is rejected or the selected payment channel has expired (but the link is still not yet expired)
 complete | String | Transaction has been succesfully completed
-closed | String | Payment link has  been deleted
+closed | String | Payment link has been deleted
 
 ## API Payment Status
 
@@ -962,7 +978,7 @@ print(data.decode("utf-8"))
 Parameters | Type | Description
 ---- | ---- | ----
 x-api-key | String | API Key for establishing connection to this particular endpoint
-x-oy-username | String | The registered partner username which access is enabled for payment link product
+X-Oy-Username | String | The registered partner's username with enabled access for payment link product
 
 ### Request Parameters
 
@@ -990,7 +1006,7 @@ status | String | The status of a payment link
 payment_received_time | String | Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
 settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
 sender_bank | String | The bank code used by a payer to do payment
-payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS (Shopee), EWallet (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)
+payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS, EWALLET (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)
 created | String | The timestamp which indicates the creation time of a payment link
 description | String | Description of the payment link.
 payment_reference_number | String | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
@@ -1401,8 +1417,8 @@ notes | String | Payment Notes / Subject | Cicilan Mobil - 5
 email | String | Payment Sender Email(s).You can add up to 3 emails separated by ";" | johndoe@gmail.com;jane@gmail.com
 senderPhoneNumber | String | Payment Sender Phone Number | 081234567890
 includeAdminFee | Boolean | Admin fee bills destination between partner or user | true
-listDisabledPaymentMethods | String | List Of Disable Payment Method (VA, CREDIT_CARD, QRIS, BANK_TRANSFER). When CREDIT_CARD is included, DEBIT_CARD will be disabled as well. When BANK_TRANSFER is included, it means only unique code is disabled.
-listEnabledBanks | String | Payment Method List Enable Bank for VA or Unique Code Payment Method: "002" (BRI), "008" (Mandiri), "009" (BNI), "013" (Permata), "022" (CIMB), "213" (BSI), "016" (Maybank), "484" (Hana), "011" (Danamon), and "014" (BCA). Unique code is only available for BCA. | 002,008
+listDisabledPaymentMethods | String | List Of Disable Payment Method.
+listEnabledBanks | String | Payment Method List Enable Bank for VA or Unique Code Payment Method | 002,008
 expirationTime | String | Payment Expiration Date and Time | "2020-08-12 00:00:00"
 due_date | String | Transaction Due Date | "2020-08-11 12:00:00"
 invoiceData | Invoice | Data For Invoice Payment will be null | CREDIT_CARD)** | null
@@ -1576,3 +1592,16 @@ function PaycheckoutSlide({
 ```
 
 <p class="lottie" id="payment-link-demo-right-stick"></p>
+
+## Fund Acceptance Response Codes
+
+Below is the list of HTTP Status Code for API Fund Acceptance:
+HTTP Status Code | Description
+---------- | -------
+200 | Response success without error
+403 | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Not Found (wrong URL)
+429 | Request Rejected (Too Many Request to specific endpoint)
+500 | Internal Server Error (OY! system encountered unknown error)
+503 | Service Unavailable (OY! system is unable to process the request temporarily)
+504 | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)
