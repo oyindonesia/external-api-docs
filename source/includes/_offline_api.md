@@ -16,6 +16,7 @@ POST https://partner.oyindonesia.com/api/offline-create \
    "receiver_phone_number":"081234567890",
    "customer_id":"customer01",
    "amount":50000,
+   "notes":"tagihan21",
    "transaction_type":"CASH_IN",
    "offline_channel":"INDOMARET"
 }'
@@ -33,6 +34,7 @@ request.body = json.encode({
   "receiver_phone_number": "081234567890",
   "customer_id": "customer01",
   "amount": 50000,
+  "notes":"tagihan21",
   "transaction_type": "CASH_IN",
   "offline_channel": "INDOMARET"
 });
@@ -68,6 +70,7 @@ func main() {
     "receiver_phone_number": "081234567890",
     "customer_id": "customer01",
     "amount": 50000,
+    "notes":"tagihan21",
     "transaction_type": "CASH_IN",
     "offline_channel": "INDOMARET"
 }`)
@@ -104,7 +107,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"oyonoy-00007\",\n    \"receiver_phone_number\": \"081223738047\",\n    \"customer_id\": \"customer01\",\n    \"amount\": 50000,\n    \"transaction_type\": \"CASH_IN\",\n    \"offline_channel\": \"INDOMARET\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_trx_id\": \"oyonoy-00007\",\n    \"receiver_phone_number\": \"081223738047\",\n    \"customer_id\": \"customer01\",\n    \"amount\": 50000,\n    \"notes\": \"tagihan21\",\n    \"transaction_type\": \"CASH_IN\",\n    \"offline_channel\": \"INDOMARET\"\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/offline-create")
   .method("POST", body)
@@ -120,6 +123,7 @@ var data = JSON.stringify({
   "partner_trx_id": "oyonoy-00007",
   "receiver_phone_number": "081223738047",
   "amount": 50000,
+  "notes":"tagihan21",
   "transaction_type": "CASH_IN",
   "offline_channel": "INDOMARET"
 });
@@ -155,7 +159,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n    "partner_trx_id": "oyonoy-00007",\n    "receiver_phone_number": "081223738047",\n    "amount": 50000,\n    "transaction_type": "CASH_IN",\n    "offline_channel": "INDOMARET"\n}');
+$request->setBody('{\n    "partner_trx_id": "oyonoy-00007",\n    "receiver_phone_number": "081223738047",\n    "amount": 50000,\n    "notes": "tagihan21",\n    "transaction_type": "CASH_IN",\n    "offline_channel": "INDOMARET"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -181,6 +185,7 @@ payload = json.dumps({
   "receiver_phone_number": "081223738047",
   "customer_id": "customer01",
   "amount": 50000,
+  "notes":"tagihan21",
   "transaction_type": "CASH_IN",
   "offline_channel": "INDOMARET"
 })
@@ -231,6 +236,7 @@ partner_trx_id | String(255) | TRUE | Unique Payout ID for a specific request, g
 receiver_phone_number | String(255) | FALSE | User's phone number
 customer_id | String(255) | TRUE | Customer's ID that will be used for withdraw or deposit process
 amount | BigDecimal | TRUE | The amount that will be withdrawn or deposit (Only accepts multiplier of 50.000 for cash-out transaction)
+notes | String(40) | FALSE | Add notes/description to the transaction.
 transaction_type | String(255) | TRUE | Type of transaction. CASH_OUT for withdrawal and CASH_IN for deposit.
 offline_channel | String(255) | TRUE | Offline Channel which the transaction will be processed. 
 
