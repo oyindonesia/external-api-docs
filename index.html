@@ -13988,6 +13988,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
    "receiver_phone_number":"081234567890",
    "customer_id":"customer01",
    "amount":50000,
+   "notes":"tagihan21",
    "transaction_type":"CASH_IN",
    "offline_channel":"INDOMARET"
 }'</span>
@@ -14002,6 +14003,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
   <span class="s">"receiver_phone_number"</span><span class="o">:</span> <span class="s">"081234567890"</span><span class="o">,</span>
   <span class="s">"customer_id"</span><span class="o">:</span> <span class="s">"customer01"</span><span class="o">,</span>
   <span class="s">"amount"</span><span class="o">:</span> <span class="mi">50000</span><span class="o">,</span>
+  <span class="s">"notes"</span><span class="o">:</span><span class="s">"tagihan21"</span><span class="o">,</span>
   <span class="s">"transaction_type"</span><span class="o">:</span> <span class="s">"CASH_IN"</span><span class="o">,</span>
   <span class="s">"offline_channel"</span><span class="o">:</span> <span class="s">"INDOMARET"</span>
 <span class="o">});</span>
@@ -14034,6 +14036,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
     "receiver_phone_number": "081234567890",
     "customer_id": "customer01",
     "amount": 50000,
+    "notes":"tagihan21",
     "transaction_type": "CASH_IN",
     "offline_channel": "INDOMARET"
 }`</span><span class="p">)</span>
@@ -14067,7 +14070,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 </code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 <span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_trx_id\": \"oyonoy-00007\",\n    \"receiver_phone_number\": \"081223738047\",\n    \"customer_id\": \"customer01\",\n    \"amount\": 50000,\n    \"transaction_type\": \"CASH_IN\",\n    \"offline_channel\": \"INDOMARET\"\n}"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n    \"partner_trx_id\": \"oyonoy-00007\",\n    \"receiver_phone_number\": \"081223738047\",\n    \"customer_id\": \"customer01\",\n    \"amount\": 50000,\n    \"notes\": \"tagihan21\",\n    \"transaction_type\": \"CASH_IN\",\n    \"offline_channel\": \"INDOMARET\"\n}"</span><span class="o">);</span>
 <span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
   <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/offline-create"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"POST"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
@@ -14080,6 +14083,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
   <span class="dl">"</span><span class="s2">partner_trx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">oyonoy-00007</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">receiver_phone_number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">081223738047</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">notes</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">tagihan21</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">transaction_type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">CASH_IN</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">offline_channel</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">INDOMARET</span><span class="dl">"</span>
 <span class="p">});</span>
@@ -14112,7 +14116,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
   <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
   <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_trx_id": "oyonoy-00007",\n    "receiver_phone_number": "081223738047",\n    "amount": 50000,\n    "transaction_type": "CASH_IN",\n    "offline_channel": "INDOMARET"\n}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n    "partner_trx_id": "oyonoy-00007",\n    "receiver_phone_number": "081223738047",\n    "amount": 50000,\n    "notes": "tagihan21",\n    "transaction_type": "CASH_IN",\n    "offline_channel": "INDOMARET"\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -14135,6 +14139,7 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
   <span class="s">"receiver_phone_number"</span><span class="p">:</span> <span class="s">"081223738047"</span><span class="p">,</span>
   <span class="s">"customer_id"</span><span class="p">:</span> <span class="s">"customer01"</span><span class="p">,</span>
   <span class="s">"amount"</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+  <span class="s">"notes"</span><span class="p">:</span><span class="s">"tagihan21"</span><span class="p">,</span>
   <span class="s">"transaction_type"</span><span class="p">:</span> <span class="s">"CASH_IN"</span><span class="p">,</span>
   <span class="s">"offline_channel"</span><span class="p">:</span> <span class="s">"INDOMARET"</span>
 <span class="p">})</span>
@@ -14205,6 +14210,12 @@ POST https://partner.oyindonesia.com/api/offline-create <span class="se">\</span
 <td>BigDecimal</td>
 <td>TRUE</td>
 <td>The amount that will be withdrawn or deposit (Only accepts multiplier of 50.000 for cash-out transaction)</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>String(40)</td>
+<td>FALSE</td>
+<td>Add notes/description to the transaction.</td>
 </tr>
 <tr>
 <td>transaction_type</td>
