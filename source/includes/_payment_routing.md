@@ -794,6 +794,7 @@ Response Code | State | Description
 
 
 Below is the list of HTTP Status Code for API Payment Routing:
+
 HTTP Status Code | Description
 ---------- | -------
 200 | Response success without error
