@@ -1596,6 +1596,7 @@ function PaycheckoutSlide({
 ## Fund Acceptance Response Codes
 
 Below is the list of HTTP Status Code for API Fund Acceptance:
+
 HTTP Status Code | Description
 ---------- | -------
 200 | Response success without error
