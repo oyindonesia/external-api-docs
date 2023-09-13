@@ -32,5 +32,15 @@ Response Code | Description
 202 | Request is Rejected (User ID is not Active)
 202 | Request is Rejected (Multiple Use VA is not allowed for use)
 202 | Request is Rejected (Custom VA is not allowed for use)
-429 | Request Rejected (Too Many Request to specific endpoint)
 990 | Request is Rejected (Invalid Format)
+
+Below is the list of HTTP Status Code for API VA Aggregator:
+
+HTTP Status Code | Description
+---------- | -------
+403 | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Not Found (wrong URL)
+429 | Request Rejected (Too Many Request to specific endpoint)
+500 | Internal Server Error (OY! system encountered unknown error)
+503 | Service Unavailable (OY! system is unable to process the request temporarily)
+504 | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)
