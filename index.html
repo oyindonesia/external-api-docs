@@ -8774,12 +8774,42 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>Request is Rejected (Custom VA is not allowed for use)</td>
 </tr>
 <tr>
+<td>990</td>
+<td>Request is Rejected (Invalid Format)</td>
+</tr>
+</tbody></table>
+
+<p>Below is the list of HTTP Status Code for API VA Aggregator:</p>
+
+<table><thead>
+<tr>
+<th>HTTP Status Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>403</td>
+<td>Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found (wrong URL)</td>
+</tr>
+<tr>
 <td>429</td>
 <td>Request Rejected (Too Many Request to specific endpoint)</td>
 </tr>
 <tr>
-<td>990</td>
-<td>Request is Rejected (Invalid Format)</td>
+<td>500</td>
+<td>Internal Server Error (OY! system encountered unknown error)</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable (OY! system is unable to process the request temporarily)</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)</td>
 </tr>
 </tbody></table>
 <h1 id='fund-acceptance' type='normal'>Fund Acceptance</h1>
