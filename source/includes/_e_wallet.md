@@ -785,7 +785,7 @@ Parameter | Type | Description
 success | boolean | Filled with true if refund is successfully processed by e-wallet vendor, and false if otherwise
 refund_id | String(255) | Filled with a unique refund identifier from OY
 refund_status | String(255) | Status of refund request, refer to "E-Wallet Refund Status" for more details
-refund_amount | BigDecimal | Requested refund amount 
+refund_amount | BigDecimal | Requested refund amount
 
 ## Get E-Wallet Refund Status
 
@@ -978,7 +978,7 @@ Parameter | Type | Description
 status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`. See table "Response Code" for more details
 refund_id | String(255) | Requested e-wallet refund ID
 refund_status | String(255) | Status of refund request, refer to "E-Wallet Refund Status" for more details
-refund_amount | BigDecimal | Requested refund amount 
+refund_amount | BigDecimal | Requested refund amount
 
 ## Get List of E-Wallet Refund
 
@@ -1003,7 +1003,7 @@ curl -X GET \
   -H 'content-type: application/json' \
   -H 'accept: application/json' \
   -H 'x-api-key: yourapikey' \
-  -H 'x-oy-username: yourusername' 
+  -H 'x-oy-username: yourusername'
 ```
 
 ```dart
@@ -1231,3 +1231,14 @@ Response Code | State | Description
 255 | Final | Request is Rejected (Refund ID is not found)
 999 | Non-Final | Internal Server Error
 
+## List of HTTP Status Codes
+
+HTTP Status Code | Description
+---------- | -------
+200 | Response success without error
+403 | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Not Found (wrong URL or wrong HTTP method)
+429 | Request Rejected (Too Many Request to specific endpoint)
+500 | Internal Server Error (OY! system encountered unknown error)
+503 | Service Unavailable (OY! system is unable to process the request temporarily)
+504 | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)
