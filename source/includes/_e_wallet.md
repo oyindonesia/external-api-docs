@@ -1229,11 +1229,16 @@ Response Code | State | Description
 253 | Final | Request is Rejected (Partner credential not found or invalid on e-wallet server)
 254 | Final | Request is Rejected (User credential not found, blocked, or invalid)
 255 | Final | Request is Rejected (Refund ID is not found)
-403 | Final | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
-404 | Final | Not Found (wrong URL)
-429 | Final | Request Rejected (Too Many Request to specific endpoint)
-500 | Non-Final | Internal Server Error (OY! system encountered unknown error)
-503 | Final | Service Unavailable (OY! system is unable to process the request temporarily)
-504 | Non-Final | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)
 999 | Non-Final | Internal Server Error
 
+## List of HTTP Status Codes
+
+HTTP Status Code | Description
+---------- | -------
+200 | Response success without error
+403 | Forbidden (IP address is not whitelisted or request is deemed suspicious e.g SQL injection or XSS)
+404 | Not Found (wrong URL or wrong HTTP method)
+429 | Request Rejected (Too Many Request to specific endpoint)
+500 | Internal Server Error (OY! system encountered unknown error)
+503 | Service Unavailable (OY! system is unable to process the request temporarily)
+504 | Gateway Timeout (OY! system took too long processing the request and was unable to respond in time)
