@@ -2488,65 +2488,91 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <th>Bank (Virtual Account)</th>
 <th>Bank Code</th>
-<th>Capability (Open Amount/Closed Amount)</th>
+<th>Open &amp; Closed Amount Capability</th>
+<th>Lifetime Capability</th>
+<th>Maximum Expiration Time</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>BNI</td>
 <td>009</td>
 <td>Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 <tr>
 <td>Bank Mandiri</td>
 <td>008</td>
 <td>Open Amount, Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 <tr>
 <td>BRI</td>
 <td>O02</td>
 <td>Open Amount, Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 <tr>
 <td>BCA</td>
 <td>014</td>
 <td>Open Amount, Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 <tr>
 <td>Bank Permata/Permata Syariah</td>
 <td>013</td>
 <td>Open Amount, Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 <tr>
 <td>CIMB Niaga/CIMB Niaga Syariah</td>
 <td>022</td>
 <td>Open Amount, Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 <tr>
 <td>BTPN</td>
 <td>213</td>
 <td>Open Amount, Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 <tr>
 <td>BSI (Bank Syariah Indonesia)</td>
 <td>451</td>
 <td>Closed Amount</td>
+<td>Not Supported</td>
+<td>99999 minutes</td>
 </tr>
 <tr>
 <td>Maybank BII</td>
 <td>016</td>
 <td>Open Amount, Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 <tr>
 <td>KEB Hana</td>
 <td>484</td>
 <td>Open Amount, Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 <tr>
 <td>Bank Danamon</td>
 <td>011</td>
 <td>Open Amount, Closed Amount</td>
+<td>Supported</td>
+<td>-</td>
 </tr>
 </tbody></table>
+
+<p>For all available banks, there is no minimum expiration time.</p>
 <h2 id='list-of-documents-va-aggregator' type='normal'>List of Documents</h2>
 <p>To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.</p>
 <h3 id='common-documents-list-of-documents' type='normal'>Common Documents</h3>
