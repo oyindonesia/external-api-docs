@@ -253,15 +253,17 @@ Use this API to start disbursing money to a specific beneficiary account.
 
 Below is the list of response codes that show the transaction status for API Create Disbursement:
 
-| Response Code | State     | Description                                                                        |
-|---------------|-----------|------------------------------------------------------------------------------------|
-| 000           | Final     | Transaction has been completed (success). Note: only happens for overbooking flow. |
-| 101           | Non-Final | Transaction is Processed                                                           |
-| 102           | Non-Final | Transaction is In Progress                                                         |
-| 206           | Final     | Transaction is FAILED (Partner Deposit Balance is Not Enough)                      |
-| 225           | Final     | Transaction is FAILED (Transaction amount exceeds the maximum limit) |
-| 300           | Final     | Transaction is FAILED                                                              |
-| 301           | Non-Final | Pending (When there is an unclear answer from Banks Network)                       |
+| Response Code | State     | Description                                                                                                                                                                          |
+|---------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 000           | Final     | Transaction has been completed (success). Note: only happens for overbooking flow.                                                                                                   |
+| 101           | Non-Final | Transaction is Processed                                                                                                                                                             |
+| 102           | Non-Final | Transaction is In Progress                                                                                                                                                           |
+| 206           | Final     | Transaction is FAILED (Partner Deposit Balance is Not Enough)                                                                                                                        |
+| 225           | Final     | Transaction is FAILED (Transaction amount exceeds the maximum limit)                                                                                                                 |
+| 300           | Final     | Transaction is FAILED                                                                                                                                                                |
+| 301           | Non-Final | Pending (When there is an unclear answer from Banks Network)                                                                                                                         |
+| 504           | Non-Final | Remit Submission Timed Out. Note: the transaction status is uncertain - it may or may not have been successfully submitted, so we suggest resubmitting using the same partner_trx_id |
+
 
 ### Request Status: API Create Disbursement
 
