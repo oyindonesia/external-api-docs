@@ -993,7 +993,9 @@ You can mock the inquiry to return failed status. To do this, fill in the `custo
 
 example:
 
-a request with `"customer_id": "123456789"` will mock the inquiry to return failed inquiry status.
+a request with `"customer_id": "123456789"` will mock the inquiry to return failed inquiry status with reason <b>Internal Server Error.</b><br />
+a request with `"customer_id": "1234563059"` will mock the inquiry to return failed inquiry status with reason <b>Bill is Already Paid or Not Found.</b><br />
+a request with `"customer_id": "1234563029"` will mock the inquiry to return failed inquiry status with reason <b>Customer Id is Not Found.</b>
 a request with `"customer_id": "987654321"` will return success inquiry.
 
 ### Payment
