@@ -22856,7 +22856,9 @@ GET https://partner.oyindonesia.com/api/v2/bill/products <span class="se">\</spa
 
 <p>example:</p>
 
-<p>a request with <code>&quot;customer_id&quot;: &quot;123456789&quot;</code> will mock the inquiry to return failed inquiry status.
+<p>a request with <code>&quot;customer_id&quot;: &quot;123456789&quot;</code> will mock the inquiry to return failed inquiry status with reason <b>Internal Server Error.</b><br />
+a request with <code>&quot;customer_id&quot;: &quot;1234563059&quot;</code> will mock the inquiry to return failed inquiry status with reason <b>Bill is Already Paid or Not Found.</b><br />
+a request with <code>&quot;customer_id&quot;: &quot;1234563029&quot;</code> will mock the inquiry to return failed inquiry status with reason <b>Customer Id is Not Found.</b>
 a request with <code>&quot;customer_id&quot;: &quot;987654321&quot;</code> will return success inquiry.</p>
 <h3 id='payment-mock-value-for-staging' type='normal'>Payment</h3>
 <p>You can replicate error response code (final) by filling in <code>customer_id</code> value using following format <code>&lt;desired response code&gt;0000</code>.
