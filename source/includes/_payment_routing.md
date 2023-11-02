@@ -745,9 +745,9 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 | Status               | Description                                                                                                                                            |
 |:----------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | CREATED              | For Payment Link, Payment Link has been created.                                                                                         |
-| WAITING PAYMENT      | For Payment Link, user already choose a payment method in payment link but has not done the payment yet.   For VA, VA number has been created. |
-| PAYMENT IN PROGRESS  | User has made a payment and currently being processed by OY!                                                                                           |
-| DISBURSE IN PROGRESS | Money has been successfuly received and is being forwared to each recipient.                                                                           |
+| WAITING_PAYMENT      | For Payment Link, user already choose a payment method in payment link but has not done the payment yet.   For VA, VA number has been created. |
+| PAYMENT_IN_PROGRESS  | User has made a payment and currently being processed by OY!                                                                                           |
+| DISBURSE_IN_PROGRESS | Money has been successfuly received and is being forwared to each recipient.                                                                           |
 | COMPLETE             | Money has been successfully received by recipients.                                                                                                    |
 | INCOMPLETE           | Money received but forwarding money to recipients process is totally or partially failed.                                                              |
 | EXPIRED              | Payment Link or VA number has been expired.                                                                                                   |
@@ -756,14 +756,14 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 
 | Status               | Description                                                                               |
 |----------------------|-------------------------------------------------------------------------------------------|
-| WAITING              | When status payment routing: Created / Waiting Payment / Payment In Progress              |
-| IN PROGRESS          | Money is being forwared to each recipient.                                                |
+| WAITING              | When status payment routing: CREATED / WAITING_PAYMENT / PAYMENT_IN_PROGRESS              |
+| IN_PROGRESS          | Money is being forwared to each recipient.                                                |
 | PENDING              | Disbursement pending because of disbursement channel                                      |
-| PENDING FORCE CREDIT | When force credit process is pending                                                      |
+| PENDING_FORCE_CREDIT | When force credit process is pending                                                      |
 | SUCCESS              | Money has been successfully received by recipients.                                       |
 | CANCEL               | Not receiving any payment so system will automatically cancel sending money to recipients |
 | FAILED               | Sending money to recipient process is failed                                              |
-| FAILED FORCE CREDIT  | When force credit process is failed                                                       |
+| FAILED_FORCE_CREDIT  | When force credit process is failed                                                       |
 
 ## Payment Routing Response Codes
 
