@@ -1786,7 +1786,7 @@ POST https://partner.oyindonesia.com/api/custom-va
 <td>String(3)</td>
 <td>TRUE</td>
 <td>-</td>
-<td>Bank code which the VA number will be generated. Refer to <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
+<td>Bank code which the VA number will be generated. Currently our system only supports customized VA BRI and CIMB. For bank code detail, please refer to <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>amount</td>
