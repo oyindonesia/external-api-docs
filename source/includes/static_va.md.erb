@@ -1471,7 +1471,7 @@ print(data.decode("utf-8"))
 Parameter | Type | Required | Default | Description
 --------- | ---- | -------- | ------- | -----------
 partner_user_id | String(255) | TRUE | - | Partner unique ID for specific user
-bank_code | String(3) | TRUE | - | Bank code which the VA number will be generated. Refer to [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
+bank_code | String(3) | TRUE | - | Bank code which the VA number will be generated. Currently our system only supports customized VA BRI and CIMB. For bank code detail, please refer to [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
 amount | BigDecimal | FALSE | 0 | Amount your user must paid to complete the transaction, if is_open is false, amount is required.
 is_open | Boolean | FALSE | true | If set true means VA number can accept any amount, field `amount` can be optional, if set false means VA number only accept the specified amount in the field amount. When you set `is_open` to false, you must specify amount field.
 username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
