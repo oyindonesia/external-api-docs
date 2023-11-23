@@ -20013,6 +20013,8 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
     </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-02 18:59:31"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"need_frontend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sender_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"009"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payment_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103406000000006289"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"va_display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner_brand"</span><span class="w">
@@ -20161,6 +20163,16 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <td style="text-align: center">Partner need UI or not, if true, we will route to payment link, otherwise will be routed to payment aggregator.</td>
 </tr>
 <tr>
+<td>payment_method</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">The payment method used by user to complete a payment. Refer to Payment Method on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
+</tr>
+<tr>
+<td>sender_bank</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">The bank code used by a payer to do payment. Refer to SOF on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
+</tr>
+<tr>
 <td>payment_info</td>
 <td style="text-align: center">Object</td>
 <td style="text-align: center">Payment info Object</td>
@@ -20270,6 +20282,8 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
     </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-02 18:59:31"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"need_frontend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sender_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"009"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payment_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103406000000006289"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"va_display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner_brand"</span><span class="w">
@@ -20359,6 +20373,16 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>settlement_type</td>
 <td style="text-align: center">String</td>
 <td style="text-align: center">Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
+</tr>
+<tr>
+<td>payment_method</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">The payment method used by user to complete a payment. Refer to Payment Method on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
+</tr>
+<tr>
+<td>sender_bank</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">The bank code used by a payer to do payment. Refer to SOF on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
 </tr>
 <tr>
 <td>payment_info</td>
