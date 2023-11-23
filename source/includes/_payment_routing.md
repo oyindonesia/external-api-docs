@@ -585,6 +585,8 @@ print(data.decode("utf-8"))
     "payment_status": "WAITING_PAYMENT",
     "trx_expiration_time": "2021-12-02 18:59:31",
     "need_frontend": false,
+    "payment_method": "VA",
+    "sender_bank": "009",
     "payment_info": {
         "va_number": "103406000000006289",
         "va_display_name": "partner_brand"
@@ -641,6 +643,8 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 |settlement_status|String| The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |settlement_type|String|Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |need_frontend|Boolean|Partner need UI or not, if true, we will route to payment link, otherwise will be routed to payment aggregator.|
+|payment_method | String | The payment method used by user to complete a payment. Refer to Payment Method on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
+|sender_bank | String | The bank code used by a payer to do payment. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
 |payment_info|Object|Payment info Object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |account_number|String|Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
@@ -677,6 +681,8 @@ Once user successfully do the payment, our system will make a callback via HTTP 
     "payment_status": "WAITING_PAYMENT",
     "trx_expiration_time": "2021-12-02 18:59:31",
     "need_frontend": false,
+    "payment_method": "VA",
+    "sender_bank": "009",
     "payment_info": {
         "va_number": "103406000000006289",
         "va_display_name": "partner_brand"
@@ -717,6 +723,8 @@ If your settlement is non-real time, for every transaction whose payment method 
 |settlement_time|String| The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |settlement_status|String| The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |settlement_type|String|Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
+|payment_method | String | The payment method used by user to complete a payment. Refer to Payment Method on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
+|sender_bank | String | The bank code used by a payer to do payment. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
 |payment_info|Object|Payment info Object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |account_number|String|Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
