@@ -213,12 +213,7 @@ print(data.decode("utf-8"))
     "customer_name": "FIRDAUS", 
     "amount": 832500,
     "admin_fee": 2500,
-    "additional_data": {
-      "customer_id":"000372190053",
-      "customer_name":"FIRDAUS",
-      "total_amount":835000,
-      // and other data that is passed by Biller from vendor
-    }
+    "additional_data": "{\"customer_id\":\"000372190053\",\"customer_name\":\"FIRDAUS\",\"total_amount\":835000}"
   },
 }
 ```
@@ -502,14 +497,7 @@ admin_fee | BigDecimal | Bill's admin fee
     "amount": 835000,
     "admin_fee": 2500,
     "note": "note for payment",
-    "additional_data": {
-      "customer_id":"000372190053",
-      "customer_name":"FIRDAUS",
-      "total_amount":835000,
-      "receipt_code":"123123123123",
-      "settlement_date":"2020-10-19 17:16:17",
-      // and other data that is passed by Biller from vendor
-    }
+    "additional_data": "{\"customer_id\":\"000372190053\",\"customer_name\":\"FIRDAUS\",\"total_amount\":835000,\"receipt_code\":\"123123123123\",\"settlement_date\":\"2020-10-1917:16:17\"}"
   },
 }
 ```
@@ -710,14 +698,7 @@ print(data.decode("utf-8"))
     "admin_fee": 2500, 
     "status": "SUCCESS",
     "tx_status_description": "",
-    "additional_data": {
-      "customer_id":"000372190053",
-      "customer_name":"FIRDAUS",
-      "total_amount":835000,
-      "receipt_code":"123123123123",
-      "settlement_date":"2020-10-19 17:16:17",
-      // and other data that is passed by biller from vendor
-    }
+    "additional_data": "{\"customer_id\":\"000372190053\",\"customer_name\":\"FIRDAUS\",\"total_amount\":835000,\"receipt_code\":\"123123123123\",\"settlement_date\":\"2020-10-1917:16:17\"}"
   }
 }
 ```
