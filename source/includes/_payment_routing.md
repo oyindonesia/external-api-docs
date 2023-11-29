@@ -265,6 +265,8 @@ print(data.decode("utf-8"))
     "partner_trx_id": "TRX-20211117-1030",
     "receive_amount": 14000,
     "trx_expiration_time": "2021-12-02 18:59:31",
+    "payment_method": "VA",
+    "sender_bank": "009",
     "payment_info": {
         "va_number": "103406000000006289",
         "va_display_name": "partner_brand"
@@ -316,6 +318,8 @@ Endpoint:
 |partner_trx_id|String|Partner transaction ID that you defined in the request parameter|
 |receive_amount|Numeric|amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.|
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format|Transaction Expiration Time|
+|payment_method | String | Only exist if request need_frontend is FALSE. The payment method used by user to complete a payment. Refer to Payment Method on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
+|sender_bank | String | Only exist if request need_frontend is FALSE. The bank code used by a payer to do payment. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
 |payment_info|Object|Payment info object|
 |payment_checkout_url|String|generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |account_number|String|Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
