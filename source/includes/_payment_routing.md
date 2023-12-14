@@ -755,7 +755,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
     "payment_method": "QRIS",
     "sender_bank": "QRIS",
     "payment_info": {
-        "qris_url": "https://mapi.gw.airpay.co.id/v3/merchant-host/qr/download?qr=12Z4Z4TQkIrhgdjQgusVlinghaja2GnDjrjWKN89",
+        "qris_url": "https://qris.url.com",
         "payment_reference_number": "120345030342784191"
     },
     "payment_routing": [
@@ -784,7 +784,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
     "payment_method": "EWALLET",
     "sender_bank": "dana_ewallet",
     "payment_info": {
-        "ewallet_url": "https://link.dana.id/pay?bizNo=123&timestamp=1700000000000&originSourcePlatform=IPG&mid=123&did=123&sign=sign&forceToH5=false"
+        "ewallet_url": "https://ewallet.url.com"
     },
     "payment_routing": [
         {
@@ -812,7 +812,7 @@ Once user successfully do the payment, our system will make a callback via HTTP 
     "payment_method": "CARDS",
     "sender_bank": "CC_DC",
     "payment_info": {
-        "card_url": "https://payment.mcpayment.id/en/a3BNtpHJic3RK4ozZ8N7Hn"
+        "card_url": "https://ccdc.link.com"
     },
     "payment_routing": [
         {
