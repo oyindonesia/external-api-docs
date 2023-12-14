@@ -676,6 +676,36 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 ## Partner Callback Payment Routing
 Once user successfully do the payment, our system will make a callback via HTTP POST request to your system
 
+> Callback Structure for Payment Link (need_frontend = true)
+
+```json
+{
+    "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
+    "partner_trx_id": "TRX-20211117-1030",
+    "receive_amount": 14000,
+    "payment_status": "WAITING_PAYMENT",
+    "trx_expiration_time": "2021-12-02 18:59:31",
+    "need_frontend": false,
+    "payment_method": "VA",
+    "sender_bank": "009",
+    "payment_info": {
+        "payment_checkout_url": "https://pay.oyindonesia.com/12345678-9012-3456-7890-123456789012"
+    },
+    "payment_routing": [
+        {
+            "recipient_bank": "014",
+            "recipient_account": "1234567890",
+            "recipient_account_name": "Katelin Bode",
+            "recipient_amount": 10000.0000,
+            "disbursement_trx_id": "35ff4e6b-e240-44b3-aff1-1151289e912e",
+            "trx_status": "WAITING"
+        }
+    ]
+}
+```
+
+> Callback Structure for VA
+
 ```json
 {
     "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
@@ -688,8 +718,129 @@ Once user successfully do the payment, our system will make a callback via HTTP 
     "payment_method": "VA",
     "sender_bank": "009",
     "payment_info": {
-        "va_number": "103406000000006289",
-        "va_display_name": "partner_brand"
+        "account_number": "103406000000006289",
+        "account_name": "partner_brand",
+        "bank_code": "009"
+    },
+    "payment_routing": [
+        {
+            "recipient_bank": "014",
+            "recipient_account": "1234567890",
+            "recipient_account_name": "Katelin Bode",
+            "recipient_amount": 10000.0000,
+            "disbursement_trx_id": "35ff4e6b-e240-44b3-aff1-1151289e912e",
+            "trx_status": "WAITING"
+        }
+    ]
+}
+```
+
+> Callback Structure for Unique Code
+
+```json
+{
+    "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
+    "partner_trx_id": "TRX-20211117-1030",
+    "receive_amount": 14000,
+    "payment_status": "WAITING_PAYMENT",
+    "trx_expiration_time": "2021-12-02 18:59:31",
+    "need_frontend": false,
+    "payment_method": "BANK_TRANSFER",
+    "sender_bank": "014",
+    "payment_info": {
+        "account_number": "123",
+        "account_name": "PT. Dompet Harapan Bangsa",
+        "bank_code": "014",
+        "unique_code_detail": {
+            "amount": 14123,
+            "unique_code": 123,
+            "unique_amount": 14000
+        }
+    },
+    "payment_routing": [
+        {
+            "recipient_bank": "014",
+            "recipient_account": "1234567890",
+            "recipient_account_name": "Katelin Bode",
+            "recipient_amount": 10000.0000,
+            "disbursement_trx_id": "35ff4e6b-e240-44b3-aff1-1151289e912e",
+            "trx_status": "WAITING"
+        }
+    ]
+}
+```
+
+> Callback Structure for QRIS
+
+```json
+{
+    "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
+    "partner_trx_id": "TRX-20211117-1030",
+    "receive_amount": 14000,
+    "payment_status": "WAITING_PAYMENT",
+    "trx_expiration_time": "2021-12-02 18:59:31",
+    "need_frontend": false,
+    "payment_method": "QRIS",
+    "sender_bank": "QRIS",
+    "payment_info": {
+        "qris_url": "https://qris.url.com",
+        "payment_reference_number": "120345030342784191"
+    },
+    "payment_routing": [
+        {
+            "recipient_bank": "014",
+            "recipient_account": "1234567890",
+            "recipient_account_name": "Katelin Bode",
+            "recipient_amount": 10000.0000,
+            "disbursement_trx_id": "35ff4e6b-e240-44b3-aff1-1151289e912e",
+            "trx_status": "WAITING"
+        }
+    ]
+}
+```
+
+> Callback Structure for E-wallet
+
+```json
+{
+    "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
+    "partner_trx_id": "TRX-20211117-1030",
+    "receive_amount": 14000,
+    "payment_status": "WAITING_PAYMENT",
+    "trx_expiration_time": "2021-12-02 18:59:31",
+    "need_frontend": false,
+    "payment_method": "EWALLET",
+    "sender_bank": "dana_ewallet",
+    "payment_info": {
+        "ewallet_url": "https://ewallet.url.com"
+    },
+    "payment_routing": [
+        {
+            "recipient_bank": "014",
+            "recipient_account": "1234567890",
+            "recipient_account_name": "Katelin Bode",
+            "recipient_amount": 10000.0000,
+            "disbursement_trx_id": "35ff4e6b-e240-44b3-aff1-1151289e912e",
+            "trx_status": "WAITING"
+        }
+    ]
+}
+```
+
+> Callback Structure for Cards
+
+```json
+{
+    "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
+    "partner_trx_id": "TRX-20211117-1030",
+    "receive_amount": 14000,
+    "payment_status": "WAITING_PAYMENT",
+    "trx_expiration_time": "2021-12-02 18:59:31",
+    "need_frontend": false,
+    "payment_method": "CARDS",
+    "sender_bank": "CC_DC",
+    "payment_info": {
+        "card_url": "https://ccdc.link.com"
     },
     "payment_routing": [
         {
