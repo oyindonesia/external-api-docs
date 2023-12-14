@@ -676,6 +676,34 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 ## Partner Callback Payment Routing
 Once user successfully do the payment, our system will make a callback via HTTP POST request to your system
 
+> Callback Structure for Payment Link (need_frontend = true)
+
+```json
+{
+    "trx_id": "23a009f5-24ce-4567-96b3-03c42a0fb7ae",
+    "partner_trx_id": "TRX-20211117-1030",
+    "receive_amount": 14000,
+    "payment_status": "WAITING_PAYMENT",
+    "trx_expiration_time": "2021-12-02 18:59:31",
+    "need_frontend": false,
+    "payment_method": "VA",
+    "sender_bank": "009",
+    "payment_info": {
+        "payment_checkout_url": "https://pay.oyindonesia.com/12345678-9012-3456-7890-123456789012"
+    },
+    "payment_routing": [
+        {
+            "recipient_bank": "014",
+            "recipient_account": "1234567890",
+            "recipient_account_name": "Katelin Bode",
+            "recipient_amount": 10000.0000,
+            "disbursement_trx_id": "35ff4e6b-e240-44b3-aff1-1151289e912e",
+            "trx_status": "WAITING"
+        }
+    ]
+}
+```
+
 > Callback Structure for VA
 
 ```json
