@@ -20286,6 +20286,37 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </aside>
 <h2 id='partner-callback-payment-routing-payment-routing' type='normal'>Partner Callback Payment Routing</h2>
 <p>Once user successfully do the payment, our system will make a callback via HTTP POST request to your system</p>
+
+<blockquote>
+<p>Callback Structure for Payment Link (need_frontend = true)</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23a009f5-24ce-4567-96b3-03c42a0fb7ae"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20211117-1030"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"receive_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-02 18:59:31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"need_frontend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sender_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"009"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"payment_checkout_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pay.oyindonesia.com/12345678-9012-3456-7890-123456789012"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_routing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Katelin Bode"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"disbursement_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35ff4e6b-e240-44b3-aff1-1151289e912e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Callback Structure for VA</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23a009f5-24ce-4567-96b3-03c42a0fb7ae"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USR-20211117-1029"</span><span class="p">,</span><span class="w">
@@ -20297,8 +20328,125 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
     </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VA"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"sender_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"009"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"payment_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103406000000006289"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"va_display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner_brand"</span><span class="w">
+        </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103406000000006289"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"partner_brand"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"009"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_routing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Katelin Bode"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"disbursement_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35ff4e6b-e240-44b3-aff1-1151289e912e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Callback Structure for Unique Code</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23a009f5-24ce-4567-96b3-03c42a0fb7ae"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20211117-1030"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"receive_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-02 18:59:31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"need_frontend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK_TRANSFER"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sender_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"account_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PT. Dompet Harapan Bangsa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unique_code_detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14123</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unique_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"unique_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_routing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Katelin Bode"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"disbursement_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35ff4e6b-e240-44b3-aff1-1151289e912e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Callback Structure for QRIS</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23a009f5-24ce-4567-96b3-03c42a0fb7ae"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20211117-1030"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"receive_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-02 18:59:31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"need_frontend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QRIS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sender_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QRIS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"qris_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qris.url.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"payment_reference_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120345030342784191"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_routing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Katelin Bode"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"disbursement_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35ff4e6b-e240-44b3-aff1-1151289e912e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Callback Structure for E-wallet</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23a009f5-24ce-4567-96b3-03c42a0fb7ae"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20211117-1030"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"receive_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-02 18:59:31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"need_frontend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EWALLET"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sender_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dana_ewallet"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"ewallet_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ewallet.url.com"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"payment_routing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567890"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_account_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Katelin Bode"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"recipient_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"disbursement_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"35ff4e6b-e240-44b3-aff1-1151289e912e"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"trx_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Callback Structure for Cards</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23a009f5-24ce-4567-96b3-03c42a0fb7ae"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20211117-1030"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"receive_amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">14000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WAITING_PAYMENT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-02 18:59:31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"need_frontend"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARDS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sender_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC_DC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"payment_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"card_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ccdc.link.com"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"payment_routing"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
