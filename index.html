@@ -19511,14 +19511,14 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 </tr>
 <tr>
 <td>success_redirect_url</td>
-<td style="text-align: center">String</td>
+<td style="text-align: center">String(512)</td>
 <td style="text-align: center">CONDITIONAL</td>
 <td style="text-align: center">-</td>
 <td style="text-align: center">Indicates the URL of your environment to redirect customers back to once payment has been completed. Accepts both HTTP links and URL scheme formats. Required if payment method is either &quot;EWALLET&quot; or &quot;CARDS&quot;, and <code>need_frontend</code> is set to false. Specific for Shopeepay Direct Payment, Shopeepay will redirect to this url based on the result of the payment. If the payment is successful, ShopeePay will send an additional param <code>?result=100</code> following the redirect url. Otherwise, ShopeePay will send additional param <code>?result=201</code> for failed payment (insufficient balance, wrong pin, link has been paid, or user click back button). Example: <code>https://example.com/callback?result=100</code>.</td>
 </tr>
 <tr>
 <td>failed_redirect_url</td>
-<td style="text-align: center">String</td>
+<td style="text-align: center">String(512)</td>
 <td style="text-align: center">CONDITIONAL</td>
 <td style="text-align: center">-</td>
 <td style="text-align: center">Indicates the URL of your environment to redirect customers back to once payment cannot be completed. Accepts both HTTP links and URL scheme formats. Required if payment method is &quot;CARDS&quot;, and <code>need_frontend</code> is set to false.</td>
