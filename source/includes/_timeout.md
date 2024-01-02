@@ -25,4 +25,4 @@ X-Api-Key: yourapikey
 Timeout: 60
 ```
 
-In this example, the partner is setting a timeout of 60 seconds for the request to POST /api/account/linking. Please note that OY's server will respond within this specified timeout duration.
+In this example, the partner is setting a timeout of 60 seconds for the request to POST /api/e-wallet-aggregator/create-transaction. Please note that OY's server will respond within this specified timeout duration.
