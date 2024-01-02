@@ -3609,6 +3609,40 @@
               </ul>
           </li>
           <li>
+            <a href="#timeout" class="toc-h1 toc-link" data-title="Timeout">
+              <span class="toc-link-content">
+                Timeout
+              </span>
+                <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow parent" alt="" />
+            </a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#timeout-durations-for-oy-39-s-api-timeout" class="toc-h2 toc-link" data-title="Timeout Durations for OY's API">
+                     <span class="toc-link-content">
+                        Timeout Durations for OY's API
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#setting-timeout-timeout" class="toc-h2 toc-link" data-title="Setting Timeout">
+                     <span class="toc-link-content">
+                        Setting Timeout
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#example-timeout" class="toc-h2 toc-link" data-title="Example">
+                     <span class="toc-link-content">
+                        Example
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#docs-changelog" class="toc-h1 toc-link" data-title="Docs Changelog">
               <span class="toc-link-content">
                 Docs Changelog
@@ -25197,6 +25231,32 @@ Another value not following the format will be processed normally. The response 
 <td></td>
 </tr>
 </tbody></table>
+<h1 id='timeout' type='normal'>Timeout</h1>
+<p>Timeouts can be set by partners when making requests to our API. This allows partners to control the maximum duration for which they are willing to wait for a response from our server.</p>
+<h2 id='timeout-durations-for-oy-39-s-api-timeout' type='normal'>Timeout Durations for OY&#39;s API</h2>
+<p>Below is the list of timeout durations for OY&#39;s API:</p>
+
+<table><thead>
+<tr>
+<th>API</th>
+<th>Timeout in seconds</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>E-Wallet Aggregator</td>
+<td>60</td>
+</tr>
+</tbody></table>
+<h2 id='setting-timeout-timeout' type='normal'>Setting Timeout</h2>
+<p>Partners can set the timeout by including the <code>timeout</code> parameter in the request headers. The value of the <code>timeout</code> parameter should be specified in seconds.</p>
+<h2 id='example-timeout' type='normal'>Example</h2><div class="highlight"><pre class="highlight http tab-http"><code><span class="err">POST https://partner.oyindonesia.com/api/e-wallet-aggregator/create-transaction
+Host: partner.oyindonesia.com
+Content-Type: application/json
+X-Oy-Username: yourusername
+X-Api-Key: yourapikey
+Timeout: 60
+</span></code></pre></div>
+<p>In this example, the partner is setting a timeout of 60 seconds for the request to POST /api/e-wallet-aggregator/create-transaction. Please note that OY&#39;s server will respond within this specified timeout duration.</p>
 <h1 id='docs-changelog' type='normal'>Docs Changelog</h1><h3 id='december-1-2022-' type='normal'><strong>December 1, 2022</strong></h3>
 <ul>
 <li>Remove Fund Disbursement Response Codes</li>
