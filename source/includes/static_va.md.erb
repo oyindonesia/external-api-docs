@@ -1958,7 +1958,7 @@ success | boolean | The status of the payment and it is always set to SUCCESS
 tx_date | Timestamp | Incoming payment transaction date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
 trx_expiration_date | Long | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
-partner_trx_id | String(255) | Partner unique Transaction ID for specific transaction
+partner_trx_id | String(255) | Unique Transaction ID provided by partner on creation or update VA. This parameter will be empty if partner leave this parameter empty when creating or updating the VA
 trx_id | String (255) | Unique ID of incoming payment
 settlement_time | Timestamp | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 settlement_status | String(255) | The status of the settlement
