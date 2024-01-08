@@ -1953,10 +1953,10 @@ Parameter | Type | Description
 --------- | ---- | -----------
 va_number | String(20) | Generated VA number
 amount | BigDecimal | Amount of VA transaction
-partner_user_id | String(255) | Your unique ID for specific user
+partner_user_id | String(255) | Unique ID provided by partner for specific user
 success | boolean | The status of the payment and it is always set to SUCCESS
 tx_date | Timestamp | Incoming payment transaction date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
-username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
+username_display | String(255) | Customizable VA display name that will be seen by user. If partner did not provide the value on creation VA, then it will be using partner’s username
 trx_expiration_date | Long | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 partner_trx_id | String(255) | Unique Transaction ID provided by partner on creation or update VA. This parameter will be empty if partner leave this parameter empty when creating or updating the VA
 trx_id | String (255) | Unique ID of incoming payment
