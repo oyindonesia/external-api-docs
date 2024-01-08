@@ -1960,7 +1960,7 @@ username_display | String(255) | FALSE | Customizable VA display name that will 
 trx_expiration_date | Long | FALSE | Transaction expiration date, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`. For VA Lifetime, the value of this parameter will be null/empty
 partner_trx_id | String(255) | TRUE | Unique Transaction ID provided by partner on creation or update VA. This parameter will be empty if partner leave this parameter empty when creating or updating the VA
 trx_id | String (255) | FALSE | Unique ID of incoming payment
-settlement_time | Timestamp | FALSE | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
+settlement_time | Timestamp | TRUE | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement, format `dd/MM/yyyy'T'HH:mm:ss.SSSZZZZ`
 settlement_status | String(255) | FALSE | The status of the settlement
 
 <aside class="warning">
