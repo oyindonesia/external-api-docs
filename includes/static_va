@@ -2420,62 +2420,74 @@ DELETE https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-2121
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
-<td>Your unique ID for specific user</td>
+<td>FALSE</td>
+<td>Unique ID provided by partner for specific user</td>
 </tr>
 <tr>
 <td>success</td>
 <td>boolean</td>
+<td>FALSE</td>
 <td>The status of the payment and it is always set to SUCCESS</td>
 </tr>
 <tr>
 <td>tx_date</td>
 <td>Timestamp</td>
+<td>FALSE</td>
 <td>Incoming payment transaction date, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
-<td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
+<td>FALSE</td>
+<td>Customizable VA display name that will be seen by user. If partner did not provide the value on creation VA, then it will be using partner’s username</td>
 </tr>
 <tr>
 <td>trx_expiration_date</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration date, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code></td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID for specific transaction</td>
+<td>TRUE</td>
+<td>Unique Transaction ID provided by partner on creation or update VA. This parameter will be empty if partner leave this parameter empty when creating or updating the VA</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td>String (255)</td>
+<td>FALSE</td>
 <td>Unique ID of incoming payment</td>
 </tr>
 <tr>
 <td>settlement_time</td>
 <td>Timestamp</td>
+<td>FALSE</td>
 <td>The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code></td>
 </tr>
 <tr>
 <td>settlement_status</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>The status of the settlement</td>
 </tr>
 </tbody></table>
