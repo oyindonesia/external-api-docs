@@ -2463,8 +2463,8 @@ DELETE https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-2121
 <tr>
 <td>trx_expiration_date</td>
 <td>Long</td>
-<td>FALSE</td>
-<td>Transaction expiration date, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code></td>
+<td>TRUE</td>
+<td>Transaction expiration date, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code>. For VA Lifetime, the value of this parameter will be null/empty</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
