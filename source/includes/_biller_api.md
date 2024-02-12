@@ -1034,10 +1034,10 @@ tvindvs | INDOVISION
 tvindvs | TOPTV
 tvindvs | OKEVISION
 tvnex | NEX MEDIA
-tvtlkmt | TRANSVISION
-tvtlkmt | TELKOMVISION
-tvtlkmt | YESTV
-tvtovas | TOPAS TV
+tvtlkmv | TRANSVISION
+tvtlkmv | TELKOMVISION
+tvtlkmv | YESTV
+tvtopas | TOPAS TV
 k-vision  | K VISION
 mnc-vision  | MNC VISION
 
