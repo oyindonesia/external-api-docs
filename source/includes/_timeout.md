@@ -8,7 +8,11 @@ Below is the list of timeout durations for OY's API:
 
 API | Timeout in seconds 
 ---------- | ------- 
+VA Aggregator | 60 
+Fund Acceptance (Payment Link) | 120
 E-Wallet Aggregator | 60 
+Payment Routing | 120
+Account Linking | ...
 
 ## Setting Timeout
 
