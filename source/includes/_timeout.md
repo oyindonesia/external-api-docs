@@ -4,11 +4,15 @@ Timeouts can be set by partners when making requests to our API. This allows par
 
 ## Timeout Durations for OY's API
 
-Below is the list of timeout durations for OY's API:
+Below is the list of timeout durations for OY's API, which partners can set when using our services:
 
 API | Timeout in seconds 
 ---------- | ------- 
+VA Aggregator | 60 
+Fund Acceptance (Payment Link) | 120
 E-Wallet Aggregator | 60 
+Payment Routing | 120
+Account Linking | 100
 
 ## Setting Timeout
 
