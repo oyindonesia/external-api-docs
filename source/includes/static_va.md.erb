@@ -274,8 +274,8 @@ is_single_use | Boolean | FALSE | false | True means that this VA should be clos
 expiration_time | Long | FALSE | - | Expiration time of the VA in minutes, e.g If VA want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty VA will be expired in 24 hour
 is_lifetime | Boolean | FALSE | FALSE | If it is set to FALSE (default) then VA will expire based on the expiration time. Otherwise, it will remain active.
 username_display | String(255) | FALSE | username | Customizable VA display name that will be seen by user, If empty willl be using partner username
-email | String(255) | CONDITIONAL (Required by some banks) | - | Email of user, using email standard format. Required by mandiri(008), permata(013) and cimb(022).
-full_name | String(255) | CONDITIONAL (Required by some banks) | - | Fill with the name of end-user that will pay this transaction. Required by mandiri(008), permata(013) and cimb(022).
+email | String(255) | CONDITIONAL (Required by some banks) | - | Email of user, using email standard format. Required by Mandiri(008), Permata(013) and CIMB(022).
+full_name | String(255) | CONDITIONAL (Required by some banks) | - | Fill with the name of end-user that will pay this transaction. Required by Mandiri(008), Permata(013) and CIMB(022).
 trx_expiration_time | Long | FALSE | - | Transaction expiration time in minutes, e.g If Transaction want to be expired after 5 minutes, you just have to set expiration_time to 5. If empty transaction expiration time will be the same with va expiration time
 partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
 trx_counter | Int | FALSE | -1/1 | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
@@ -520,7 +520,7 @@ trx_expiration_time | Long | Transaction expiration time on Unix timestamp in mi
 partner_trx_id | String(255) | Partner unique Transaction ID of a VA
 trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 email | String(255) | If `email` is inputted when creating the transaction, the inputted value at creation will be shown here
-full_name | String(255) | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here 
+full_name | String(255) | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here
 
 <aside class="warning">
 Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
@@ -808,7 +808,7 @@ email | String(255) | If `email` is needed when creating the transaction, the in
 full_name | String(255) | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here
 
 <aside class="warning">
-Note: For permata(013) and cimb(022) VA (and mandiri(008) for some user), the only operation permitted when updating VA is to deactivate it by setting trx_expiration_time as 0.
+Note: For Permata(013) and CIMB(022) VA (and Mandiri(008) for some user), the only operation permitted when updating VA is to deactivate it by setting trx_expiration_time as 0.
 </aside>
 
 ## Get list of created VA
@@ -1261,7 +1261,7 @@ POST <%= config[:endpoint_prod] %>/api/custom-va
     "partner_user_id":"51200021",
     "bank_code": "002",
     "amount": 10000,
-    "is_open": false, 
+    "is_open": false,
     "username_display": "va name",
     "email": "email@mail.com",
     "trx_expiration_time": 5,
@@ -1281,7 +1281,7 @@ request.body = json.encode({
     "partner_user_id":"51200021",
     "bank_code": "002",
     "amount": 10000,
-    "is_open": false, 
+    "is_open": false,
     "username_display": "va name",
     "email": "email@mail.com",
     "trx_expiration_time": 5,
@@ -1319,7 +1319,7 @@ func main() {
   "partner_user_id":"51200021",
   "bank_code": "002",
   "amount": 10000,
-  "is_open": false, 
+  "is_open": false,
   "username_display": "va name",
   "email": "email@mail.com",
   "trx_expiration_time": 5,
@@ -1375,7 +1375,7 @@ var data = JSON.stringify({
   "partner_user_id":"51200021",
   "bank_code": "002",
   "amount": 10000,
-  "is_open": false, 
+  "is_open": false,
   "username_display": "va name",
   "email": "email@mail.com",
   "trx_expiration_time": 5,
@@ -1439,7 +1439,7 @@ payload = json.dumps({
   "partner_user_id":"51200021",
   "bank_code": "002",
   "amount": 10000,
-  "is_open": false, 
+  "is_open": false,
   "username_display": "va name",
   "email": "email@mail.com",
   "trx_expiration_time": 5,
@@ -1759,9 +1759,9 @@ partner_user_id | String(255) | Partner unique ID for specific user
 trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
 partner_trx_id | String(255) | Partner unique Transaction ID of a VA
 
-## Deactivate Customized VA 
+## Deactivate Customized VA
 
-Use this API to deactivate an existing customized VA using unique VA id. 
+Use this API to deactivate an existing customized VA using unique VA id.
 
 
 ```shell
