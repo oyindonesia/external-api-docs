@@ -6346,9 +6346,16 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <tr>
 <td>email</td>
 <td>String(255)</td>
-<td>FALSE</td>
+<td>CONDITIONAL (Required by some banks)</td>
 <td>-</td>
-<td>Email of user, using email standard format</td>
+<td>Email of user, using email standard format. Required by Mandiri(008), Permata(013) and CIMB(022).</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>String(255)</td>
+<td>CONDITIONAL (Required by some banks)</td>
+<td>-</td>
+<td>Fill with the name of end-user that will pay this transaction. Required by Mandiri(008), Permata(013) and CIMB(022).</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
@@ -6454,6 +6461,11 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <td>counter_incoming_payment</td>
 <td>Integer</td>
 <td>Count total incoming payment of VA</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>String(255)</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted <code>full_name</code> value at creation will be shown here</td>
 </tr>
 </tbody></table>
 
@@ -6615,7 +6627,9 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
     </span><span class="nl">"counter_incoming_payment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582790250609</span><span class="p">,</span><span class="w">
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0001"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
+    </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"budi@gmal.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"budi budiman"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='https-request-get-va-info' type='normal'>HTTPS Request</h3>
 <p><strong>[Production]</strong> <code>GET https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
@@ -6730,6 +6744,16 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>trx_counter</td>
 <td>Int</td>
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String(255)</td>
+<td>If <code>email</code> is inputted when creating the transaction, the inputted value at creation will be shown here</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>String(255)</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here</td>
 </tr>
 </tbody></table>
 
@@ -7126,7 +7150,21 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <td>Integer</td>
 <td>Count total incoming payment of VA</td>
 </tr>
+<tr>
+<td>email</td>
+<td>String(255)</td>
+<td>If <code>email</code> is needed when creating the transaction, the inputted value at creation will be shown here</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>String(255)</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here</td>
+</tr>
 </tbody></table>
+
+<aside class="warning">
+Note: For Permata(013) and CIMB(022) VA (and Mandiri(008) for some user), the only operation permitted when updating VA is to deactivate it by setting trx_expiration_time as 0.
+</aside>
 <h2 id='get-list-of-created-va-va-aggregator' type='normal'>Get list of created VA</h2>
 <p>Get list of created VA</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
@@ -7281,7 +7319,9 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
             </span><span class="nl">"counter_incoming_payment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
             </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"budi@gmal.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"budi budiman"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de51383f-1557-409c-8542-dcb74ca76375"</span><span class="p">,</span><span class="w">
@@ -7300,7 +7340,9 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
             </span><span class="nl">"counter_incoming_payment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582802205412</span><span class="p">,</span><span class="w">
             </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"budi@gmal.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"budi budiman"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -7349,7 +7391,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 <tr>
 <td>data</td>
 <td>Array of object</td>
-<td>List of Object <code>{id: &lt;va_id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, bank_name: &lt;bank_name&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;, created: &lt;created&gt;, counter_incoming_payment: &lt;counter_incoming_payment&gt;, trx_counter: &lt;trx_counter&gt;}</code></td>
+<td>List of Object <code>{id: &lt;va_id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, bank_name: &lt;bank_name&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;, created: &lt;created&gt;, counter_incoming_payment: &lt;counter_incoming_payment&gt;, trx_counter: &lt;trx_counter&gt;, email: &lt;email&gt;, full_name: &lt;full_name&gt;}</code></td>
 </tr>
 <tr>
 <td>status</td>
@@ -7609,7 +7651,7 @@ POST https://partner.oyindonesia.com/api/custom-va
     "partner_user_id":"51200021",
     "bank_code": "002",
     "amount": 10000,
-    "is_open": false, 
+    "is_open": false,
     "username_display": "va name",
     "email": "email@mail.com",
     "trx_expiration_time": 5,
@@ -7626,7 +7668,7 @@ POST https://partner.oyindonesia.com/api/custom-va
     <span class="s">"partner_user_id"</span><span class="o">:</span><span class="s">"51200021"</span><span class="o">,</span>
     <span class="s">"bank_code"</span><span class="o">:</span> <span class="s">"002"</span><span class="o">,</span>
     <span class="s">"amount"</span><span class="o">:</span> <span class="mi">10000</span><span class="o">,</span>
-    <span class="s">"is_open"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span> 
+    <span class="s">"is_open"</span><span class="o">:</span> <span class="kc">false</span><span class="o">,</span>
     <span class="s">"username_display"</span><span class="o">:</span> <span class="s">"va name"</span><span class="o">,</span>
     <span class="s">"email"</span><span class="o">:</span> <span class="s">"email@mail.com"</span><span class="o">,</span>
     <span class="s">"trx_expiration_time"</span><span class="o">:</span> <span class="mi">5</span><span class="o">,</span>
@@ -7661,7 +7703,7 @@ POST https://partner.oyindonesia.com/api/custom-va
   "partner_user_id":"51200021",
   "bank_code": "002",
   "amount": 10000,
-  "is_open": false, 
+  "is_open": false,
   "username_display": "va name",
   "email": "email@mail.com",
   "trx_expiration_time": 5,
@@ -7711,7 +7753,7 @@ POST https://partner.oyindonesia.com/api/custom-va
   <span class="dl">"</span><span class="s2">partner_user_id</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">51200021</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">bank_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">002</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">is_open</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span> 
+  <span class="dl">"</span><span class="s2">is_open</span><span class="dl">"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">username_display</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">va name</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">email@mail.com</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">trx_expiration_time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
@@ -7769,7 +7811,7 @@ POST https://partner.oyindonesia.com/api/custom-va
   <span class="s">"partner_user_id"</span><span class="p">:</span><span class="s">"51200021"</span><span class="p">,</span>
   <span class="s">"bank_code"</span><span class="p">:</span> <span class="s">"002"</span><span class="p">,</span>
   <span class="s">"amount"</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-  <span class="s">"is_open"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> 
+  <span class="s">"is_open"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
   <span class="s">"username_display"</span><span class="p">:</span> <span class="s">"va name"</span><span class="p">,</span>
   <span class="s">"email"</span><span class="p">:</span> <span class="s">"email@mail.com"</span><span class="p">,</span>
   <span class="s">"trx_expiration_time"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
@@ -8266,7 +8308,7 @@ PUT https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-212121
 </tr>
 </tbody></table>
 <h2 id='deactivate-customized-va-va-aggregator' type='normal'>Deactivate Customized VA</h2>
-<p>Use this API to deactivate an existing customized VA using unique VA id. </p>
+<p>Use this API to deactivate an existing customized VA using unique VA id.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 DELETE https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-212121
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
@@ -8533,6 +8575,12 @@ DELETE https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-2121
 <td>String(255)</td>
 <td>FALSE</td>
 <td>The status of the settlement</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted <code>full_name</code> value at creation will be shown here</td>
 </tr>
 </tbody></table>
 
@@ -19523,9 +19571,16 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <td>sender_email</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">FALSE</td>
+<td style="text-align: center">CONDITIONAL</td>
 <td style="text-align: center">-</td>
-<td style="text-align: center">Email of sender</td>
+<td style="text-align: center">Email of sender. Required only when creating VA from Mandiri(008), Permata(013) or CIMB(022).</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">CONDITIONAL</td>
+<td style="text-align: center">-</td>
+<td style="text-align: center">Fill with the name of end-user that will pay this transaction. Required only when creating VA from Mandiri(008), Permata(013) or CIMB(022).</td>
 </tr>
 <tr>
 <td>receive_amount</td>
@@ -19709,6 +19764,11 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>unique_code_detail</td>
 <td style="text-align: center">Object</td>
 <td style="text-align: center">Contains two objects of number: <code>amount</code> which is the requested amount and <code>unique_code</code> which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">If <code>full_name</code> is needed when creating the transaction, the inputted <code>full_name</code> value at creation will be shown here.</td>
 </tr>
 </tbody></table>
 
