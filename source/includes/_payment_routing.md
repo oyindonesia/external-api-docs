@@ -330,7 +330,7 @@ Endpoint:
 |ewallet_url|String| For `use_linked_account: true`: URL that prompt user to input PIN to authorize Direct Payment. For `use_linked_account: false`: A deep link URL that allows user to access the specific e-wallet vendor's application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'EWALLET'.|
 |cards_url|String| URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter 'need_frontend' is set to 'FALSE' and the payment method selected is 'CARDS'.|
 |unique_code_detail|Object|Contains two objects of number: `amount` which is the requested amount and `unique_code` which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.|
-full_name | String(255) | If `full_name` is needed when creating the transaction, the inputted `full_name` value at creation will be shown here.|
+|full_name | String | If `full_name` is needed when creating the transaction, the inputted `full_name` value at creation will be shown here.|
 
 <aside class="warning">
 Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods. Also note that BSI VAs currently do not support the reusable option, so make sure that partner_user_id is left empty if BSI is chosen in list_enable_sof.
