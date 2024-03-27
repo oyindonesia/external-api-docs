@@ -5,32 +5,32 @@ Below is the list of response codes for API VA aggregator:
 Response Code | State | Description
 ---------- | ------- | -------
 000 | Final | Response success without error
-203 | Final | Request is Rejected (Duplicate Partner Tx ID)
-207 | Final | Request is Rejected (Request IP Address is not Registered)
-208 | Final | Request is Rejected (API Key is not Valid)
+203 | Final | Request is Rejected (Duplicate partner tx id)
+207 | Final | Request is Rejected (Request IP address is not registered)
+208 | Final | Request is Rejected (API key is not valid)
 211 | Final | Request is Rejected (Bank code is not available for this service)
-212 | Final | Request is Rejected (Given amount are lesser than allowed value for static va)
-213 | Final | Request is Rejected (Given amount are greater than allowed value for static va)
-214 | Final | Request is Rejected (Failed to generate static va)
+212 | Final | Request is Rejected (Given amount are lesser than allowed value for static VA)
+213 | Final | Request is Rejected (Given amount are greater than allowed value for static VA)
+214 | Final | Request is Rejected (Failed to generate static VA)
 214 | Final | Request is Rejected (Amount type is not supported for the requested bank code)
-216 | Final | Request is Rejected (VA Id is empty)
-217 | Final | Request is Rejected (VA Number is still active for this partner user id)
+216 | Final | Request is Rejected (VA id is empty)
+217 | Final | Request is Rejected (VA number is still active for this partner user id)
 219 | Final | Request is Rejected (Virtual account is not enabled for this bank)
 219 | Final | Request is Rejected (Virtual account for this bank has reached daily limit transaction)
 226 | Final | Request is rejected (Transaction expiry time exceeds VA expiry time)
-245 | Final | Request is rejected (Min expiry time is 60 minutes)
-246 | Final | Request is rejected (Failed update va)
+245 | Final | Request is rejected (Minimum expiry time is 10 minutes for VA CIMB and Permata)
+246 | Final | Request is rejected (Failed update VA)
 260 | Final | Request is rejected (Given VA suffix is invalid)
-262 | Final | Request is rejected (VA prefix for this risk level is not available)
+262 | Final | Request is rejected (VA prefix for this username is not available)
 999 | Non-Final | Internal Server Error
 
 IMPORTANT! The following response codes mean that your request is not received by OY! and do not represent any information related to your transaction activity/status:
 
 Response Code | Description
 ---------- | -------
-201 | Request is Rejected (User ID is not Found)
-202 | Request is Rejected (User ID is not Active)
-202 | Request is Rejected (Multiple Use VA is not allowed for use)
+201 | Request is Rejected (User ID is not found)
+202 | Request is Rejected (User ID is not active)
+202 | Request is Rejected (Multiple use VA is not allowed for use)
 202 | Request is Rejected (Custom VA is not allowed for use)
 990 | Request is Rejected (Invalid Format)
 
