@@ -86,7 +86,7 @@ Bank Codes | Bank Name
 490	| Bank YUDHA BHAKTI/ Bank Neo Commerce
 494	| Bank Rakyat Indonesia AGRONIAGA
 498	| Bank SBI Indonesia (Indomonex)
-501	| Bank Royal
+501	| BCA Digital (blu)
 503	| Bank National Nobu
 506	| Bank MEGA SYARIAH
 513	| Bank INA
