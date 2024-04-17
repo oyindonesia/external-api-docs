@@ -82,7 +82,6 @@ func main() {
   }
 }`)
 
-
   client := &http.Client {
   }
   req, err := http.NewRequest(method, url, payload)
