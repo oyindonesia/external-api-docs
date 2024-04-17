@@ -82,17 +82,6 @@ func main() {
   }
 }`)
 
-{
-	"recipient_bank": "008",
-	"recipient_account": "0201245681",
-	"amount": 15000,
-	"note": "Test API Disburse",
-	"partner_trx_id": "OYON0000064",
-	"email": "business.support@oyindonesia.com",
-  "additional_data": {
-      "partner_merchant_id": "merchant_abcd123"
-  }
-}
 
   client := &http.Client {
   }
