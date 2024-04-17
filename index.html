@@ -647,17 +647,17 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#transaction-status-api-create-disbursement-create-disbursement" class="toc-h3 toc-link" data-title="Transaction Status: API Create Disbursement">
+                          <a href="#response-code-api-create-disbursement-create-disbursement" class="toc-h3 toc-link" data-title="Response Code: API Create Disbursement">
                             <span class="toc-link-content">
-                              Transaction Status: API Create Disbursement
+                              Response Code: API Create Disbursement
                             </span>
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
                         </li>
                         <li>
-                          <a href="#request-status-api-create-disbursement-create-disbursement" class="toc-h3 toc-link" data-title="Request Status: API Create Disbursement">
+                          <a href="#column-state-details-response-code-api-create-disbursement-create-disbursement" class="toc-h3 toc-link" data-title="Column State Details: Response Code API Create Disbursement">
                             <span class="toc-link-content">
-                              Request Status: API Create Disbursement
+                              Column State Details: Response Code API Create Disbursement
                             </span>
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
@@ -723,17 +723,35 @@
                           </a>
                         </li>
                         <li>
-                          <a href="#transaction-status-api-get-disbursement-status-get-disbursement-status" class="toc-h3 toc-link" data-title="Transaction Status: API Get Disbursement Status">
+                          <a href="#response-code-api-get-disbursement-status-get-disbursement-status" class="toc-h3 toc-link" data-title="Response Code: API Get Disbursement Status">
                             <span class="toc-link-content">
-                              Transaction Status: API Get Disbursement Status
+                              Response Code: API Get Disbursement Status
                             </span>
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
                         </li>
                         <li>
-                          <a href="#request-status-api-get-disbursement-status-get-disbursement-status" class="toc-h3 toc-link" data-title="Request Status: API Get Disbursement Status">
+                          <a href="#column-state-details-response-code-api-get-disbursement-status-get-disbursement-status" class="toc-h3 toc-link" data-title="Column State Details: Response Code API Get Disbursement Status">
                             <span class="toc-link-content">
-                              Request Status: API Get Disbursement Status
+                              Column State Details: Response Code API Get Disbursement Status
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#disbursement-failed-reasons-fund-disbursement" class="toc-h2 toc-link" data-title="Disbursement Failed Reasons">
+                     <span class="toc-link-content">
+                        Disbursement Failed Reasons
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#explanation-disbursement-failed-reasons-disbursement-failed-reasons" class="toc-h3 toc-link" data-title="Explanation: Disbursement Failed Reasons">
+                            <span class="toc-link-content">
+                              Explanation: Disbursement Failed Reasons
                             </span>
                               <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
                           </a>
@@ -4429,7 +4447,10 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
   "amount":125000, 
   "note":"Split lunch bill", 
   "partner_trx_id":"1234-asdf",
-  "email" :"napoleon@email.com test@email.com"
+  "email" :"napoleon@email.com test@email.com",
+  "additional_data": {
+      "partner_merchant_id": "merchant_abcd123"
+  }
 }'</span>
 </code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
   <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
@@ -4628,43 +4649,49 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 <td>recipient_bank</td>
 <td>String(255)</td>
 <td>TRUE</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
+<td>Please refer to the <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a> to find the bank code for the recipient&#39;s bank account.</td>
 </tr>
 <tr>
 <td>recipient_account</td>
 <td>String(255)</td>
 <td>TRUE</td>
-<td>Beneficiary account number, numeric only</td>
+<td>Recipient bank account number, numeric only.</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigInteger</td>
 <td>TRUE</td>
-<td>Amount of disbursement (Accept Non-Decimal Number), min amount 10000</td>
+<td>Amount of disbursement, the minimum amount for bank is Rp10.000 and e-wallet is Rp100.</td>
 </tr>
 <tr>
 <td>note</td>
 <td>String(255)</td>
 <td>FALSE</td>
-<td>Add Note to the transaction</td>
+<td>The transaction&#39;s message may or may not be reflected in the recipient&#39;s bank account statement, based on the bank&#39;s capabilities. Using alphanumeric characters and some common symbols (e.g. -, *, . )</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
 <td>TRUE</td>
-<td>Unique disbursement ID for a specific request, generated by partner</td>
+<td>Unique disbursement ID for a specific request, generated by partner.</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String(255)</td>
 <td>FALSE</td>
-<td>Email for invoice notification (Optional). Email can be more than one but not more that five separated by a whitespace.</td>
+<td>Multiple emails allowed, max. 5, separated by space. E.g. john.doe@example.com budi@example.com stark@example.com</td>
 </tr>
 <tr>
 <td>child_balance</td>
 <td>String(255)</td>
 <td>FALSE</td>
-<td>Child username whom balance will be used for disbursement, if <a href="https://docs.oyindonesia.com/#multi-account-management-oy-dashboard-tutorial">Multi Account Management</a> config is active (Optional). By default will be using client’s own balance.</td>
+<td>If the <a href="https://docs.oyindonesia.com/#multi-account-management-oy-dashboard-tutorial">Multi Account Management</a> configuration is active, the disbursement will use the balance of child (sub-entity) account. Otherwise, the partner&#39;s own balance will be used by default.</td>
+</tr>
+<tr>
+<td>additonal_data</td>
+<td>Object</td>
+<td>FALSE</td>
+<td>Object that includes the additional parameter for partner’s needs. This object contain <code>partner_merchant_id String(64) (Unique ID for each of partner’s merchant)</code></td>
 </tr>
 </tbody></table>
 <h3 id='response-parameters-create-disbursement' type='normal'>Response Parameters</h3>
@@ -4683,167 +4710,176 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 <tr>
 <td>amount</td>
 <td>BigInteger</td>
-<td>Amount of disbursement (Accept Non-Decimal Number)</td>
+<td>Amount to disburse.</td>
 </tr>
 <tr>
 <td>recipient_bank</td>
 <td>String(255)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
+<td>Bank or Ewallet code of the recipient’s account, please refer to <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
 <td>String(255)</td>
-<td>Beneficiary account number</td>
+<td>Recipient bank account number.</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td>String(36)</td>
-<td>Unique Disbursement ID from OY!. Partner can use this ID for settlement</td>
+<td>Unique disbursement ID from OY!, partners can use this ID for reconciliation.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Unique Disbursement ID which partner put on the Request</td>
+<td>Unique disbursement ID which partner put on the request.</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>String(19)</td>
-<td>Execution time of Disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss in UTC Time zone&quot;)</td>
+<td>Creation time of disbursement transaction in OY! system, using the format &quot;dd-mm-yyyy hh:mm:ss&quot; in UTC time.</td>
 </tr>
 </tbody></table>
-<h3 id='transaction-status-api-create-disbursement-create-disbursement' type='normal'>Transaction Status: API Create Disbursement</h3>
-<p>Below is the list of response codes that show the transaction status for API Create Disbursement:</p>
-
-<table><thead>
-<tr>
-<th>Response Code</th>
-<th>State</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>000</td>
-<td>Final</td>
-<td>Transaction has been completed (success). Note: only happens for overbooking flow.</td>
-</tr>
-<tr>
-<td>101</td>
-<td>Non-Final</td>
-<td>Transaction is Processed</td>
-</tr>
-<tr>
-<td>102</td>
-<td>Non-Final</td>
-<td>Transaction is In Progress</td>
-</tr>
-<tr>
-<td>206</td>
-<td>Final</td>
-<td>Transaction is FAILED (Partner Deposit Balance is Not Enough)</td>
-</tr>
-<tr>
-<td>225</td>
-<td>Final</td>
-<td>Transaction is FAILED (Transaction amount exceeds the maximum limit)</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Final</td>
-<td>Transaction is FAILED</td>
-</tr>
-<tr>
-<td>301</td>
-<td>Non-Final</td>
-<td>Pending (When there is an unclear answer from Banks Network)</td>
-</tr>
-<tr>
-<td>504</td>
-<td>Non-Final</td>
-<td>Remit Submission Timed Out. Note: the transaction status is uncertain - it may or may not have been successfully submitted, so we suggest resubmitting using the same partner_trx_id</td>
-</tr>
-</tbody></table>
-<h3 id='request-status-api-create-disbursement-create-disbursement' type='normal'>Request Status: API Create Disbursement</h3>
+<h3 id='response-code-api-create-disbursement-create-disbursement' type='normal'>Response Code: API Create Disbursement</h3>
 <p>Below is the list of response codes that show the request status for API Create Disbursement:</p>
 
 <table><thead>
 <tr>
 <th>Response Code</th>
 <th>State</th>
+<th>State Details</th>
 <th>Description</th>
-<th>Notes</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>203</td>
-<td>Final</td>
-<td>Request is Rejected (Duplicate Partner Tx ID)</td>
-<td>Request Rejected. Transaction Not Created</td>
+<td>101</td>
+<td>Non-Final</td>
+<td>Transaction In Progress</td>
+<td>Transaction is processed.</td>
 </tr>
 <tr>
 <td>201</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request is Rejected (User ID is not Found)</td>
-<td>Request Rejected. Transaction Not Created</td>
 </tr>
 <tr>
 <td>202</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request is Rejected (User ID is not Active)</td>
-<td>Request Rejected. Transaction Not Created</td>
+</tr>
+<tr>
+<td>203</td>
+<td>Final</td>
+<td>Transaction Not Created</td>
+<td>Request is Rejected (Duplicate Partner Tx ID)</td>
 </tr>
 <tr>
 <td>205</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request is Rejected (Beneficiary Bank Code is Not Supported)</td>
-<td>Request Rejected. Transaction Not Created</td>
 </tr>
 <tr>
 <td>207</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request is Rejected (Request IP Address is not Registered)</td>
-<td>Request Rejected. Transaction Not Created</td>
 </tr>
 <tr>
 <td>208</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request is Rejected (API Key is not Valid)</td>
-<td>Request Rejected. Transaction Not Created</td>
 </tr>
 <tr>
 <td>209</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request is Rejected (Bank Account is not found)</td>
-<td>Request Rejected. Transaction Not Created</td>
 </tr>
 <tr>
 <td>210</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request is Rejected (Amount is not valid)</td>
-<td>Request Rejected. Transaction Not Created</td>
 </tr>
 <tr>
 <td>257</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request is Rejected (Disbursement with the same Partner Tx ID is still in process)</td>
-<td>Request Rejected. Transaction Not Created</td>
+</tr>
+<tr>
+<td>264</td>
+<td>Final</td>
+<td>Transaction Not Created</td>
+<td>Request is rejected (The suggested routing from the partner is not valid)</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Final</td>
+<td>Transaction Failed</td>
+<td>Transaction is failed.</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Non-Final</td>
+<td>Transaction Pending</td>
+<td>Pending (when there is an unclear answer from bank network)</td>
 </tr>
 <tr>
 <td>429</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request Rejected (Too Many Request to specific endpoint)</td>
-<td>Request Rejected. Transaction Not Created</td>
+</tr>
+<tr>
+<td>504</td>
+<td>Non-Final</td>
+<td>Transaction Unknown</td>
+<td>Disbursement Submission Timed Out. Note: the transaction status is uncertain, it may or may not have been successfully submitted, so we suggest resubmitting using the same partner_trx_id. Please check your dashboard or contact our business representative.</td>
 </tr>
 <tr>
 <td>990</td>
 <td>Final</td>
+<td>Transaction Not Created</td>
 <td>Request is Rejected (Invalid Format)</td>
-<td>Request Rejected. Transaction Not Created</td>
 </tr>
 <tr>
 <td>999</td>
 <td>Non-Final</td>
-<td>Internal Server Error</td>
-<td>Unclear answer from OY system, please check status</td>
+<td>Transaction Unknown</td>
+<td>Internal Server Error. Please check your dashboard or contact our business representative</td>
+</tr>
+</tbody></table>
+<h3 id='column-state-details-response-code-api-create-disbursement-create-disbursement' type='normal'>Column State Details: Response Code API Create Disbursement</h3>
+<p>Below is the list of Explanation for column state details that show on response code API Create Disbursement:</p>
+
+<table><thead>
+<tr>
+<th>State Details</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Transaction Failed</td>
+<td>Transaction is failed to disburse.</td>
+</tr>
+<tr>
+<td>Transaction In Progress</td>
+<td>Transaction is still in progress.</td>
+</tr>
+<tr>
+<td>Transaction Pending</td>
+<td>Transaction has an unclear status from the banks.</td>
+</tr>
+<tr>
+<td>Transaction Unknown</td>
+<td>Transaction status is uncertain, please wait the callback or hit check status API to make sure the status of transaction. Please check to your dashboard or contact our business representative.</td>
+</tr>
+<tr>
+<td>Transaction Not Created</td>
+<td>Transaction is not created in the OY! system due to not valid disbursement request.</td>
 </tr>
 </tbody></table>
 
@@ -4897,47 +4933,47 @@ Another value not following the format will be processed normally.</p>
 <tr>
 <td>tx_status_description</td>
 <td>String(255)</td>
-<td>additional information of status code (e.g. FORCE CREDIT)</td>
+<td>Additional information of status code, especially for failed status e.g. “Account is blocked. Please create a new transaction with a different recipient account number.”</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigInteger</td>
-<td>Amount of disbursement (Accept Non-Decimal Number)</td>
+<td>Amount to disburse.</td>
 </tr>
 <tr>
 <td>recipient_name</td>
 <td>String(255)</td>
-<td>Account holder name of Beneficiary account number</td>
+<td>Account holder name of recipient bank account.</td>
 </tr>
 <tr>
 <td>recipient_bank</td>
 <td>String(255)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
+<td>Bank or Ewallet code of the recipient’s account, please refer to <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
 <td>String(255)</td>
-<td>Beneficiary account number</td>
+<td>Recipient bank account number.</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td>String(36)</td>
-<td>Unique Disbursement ID from OY!. Partner can use this ID for settlement</td>
+<td>Unique disbursement ID from OY!, partners can use this ID for reconciliation.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Unique Disbursement ID which partner put on the Request, generated by partner</td>
+<td>Unique disbursement ID which partner put on the request.</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>String(19)</td>
-<td>Execution time of API remit status in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot; in UTC Time zone)</td>
+<td>Time of API get disbursement status called by partner (&quot;dd-MM-yyyy HH:mm:ss in UTC time zone&quot;).</td>
 </tr>
 <tr>
 <td>created_date</td>
 <td>String(19)</td>
-<td>Executionn time of Disbures in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot; in UTC Time zone)</td>
+<td>Execution time of disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss in UTC time zone&quot;).</td>
 </tr>
 <tr>
 <td>last_updated_date</td>
@@ -5190,47 +5226,47 @@ You can set your own callback URL in OY Business dashboard setting. You can Open
 <tr>
 <td>tx_status_description</td>
 <td>String(255)</td>
-<td>additional information of status code (e.g. FORCE CREDIT)</td>
+<td>Additional information of status code, especially for failed status. E.g. Account is blocked. Please create a new transaction with a different recipient account number.</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigInteger</td>
-<td>Amount of disbursement (Accept Non-Decimal Number)</td>
+<td>Amount to disburse.</td>
 </tr>
 <tr>
 <td>recipient_name</td>
 <td>String(255)</td>
-<td>Account holder name of Beneficiary account number</td>
+<td>Account holder name of recipient bank account.</td>
 </tr>
 <tr>
 <td>recipient_bank</td>
 <td>String(255)</td>
-<td>Bank Code of the Beneficiary account, see <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
+<td>Bank or Ewallet code of the recipient’s account, please refer to <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
 </tr>
 <tr>
 <td>recipient_account</td>
 <td>String(255)</td>
-<td>Beneficiary account number</td>
+<td>Recipient bank account number.</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td>String(36)</td>
-<td>Unique Disbursement ID from OY!. Partner can use this ID for settlement</td>
+<td>Unique disbursement ID from OY!, partners can use this ID for reconciliation.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Unique Disbursement ID which partner put on the Request, generated by partner</td>
+<td>Unique disbursement ID which partner put on the request.</td>
 </tr>
 <tr>
 <td>timestamp</td>
 <td>String(19)</td>
-<td>Execution time of API remit status in OY! system (&quot;dd-MM-yyyy HH:mm:ss in UTC Time zone&quot;)</td>
+<td>Time of API get disbursement status called by partner (&quot;dd-MM-yyyy HH:mm:ss in UTC time zone&quot;).</td>
 </tr>
 <tr>
 <td>created_date</td>
 <td>String(19)</td>
-<td>Executionn time of Disbures in OY! system (&quot;dd-MM-yyyy HH:mm:ss in UTC Time zone&quot;)</td>
+<td>Execution time of disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss in UTC time zone&quot;).</td>
 </tr>
 <tr>
 <td>last_updated_date</td>
@@ -5238,104 +5274,198 @@ You can set your own callback URL in OY Business dashboard setting. You can Open
 <td>Latest status change of a disbursement. Example from &#39;Pending&#39; to &#39;Success&#39; (&quot;dd-MM-yyyy HH:mm:ss in UTC Time zone&quot;)</td>
 </tr>
 </tbody></table>
-<h3 id='transaction-status-api-get-disbursement-status-get-disbursement-status' type='normal'>Transaction Status: API Get Disbursement Status</h3>
-<p>Below is the list of response codes that show the transaction status for API Get Disbursement Status:</p>
-
-<table><thead>
-<tr>
-<th>Response Code</th>
-<th>State</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>000</td>
-<td>Final</td>
-<td>Transaction has been completed (success)</td>
-</tr>
-<tr>
-<td>101</td>
-<td>Non-Final</td>
-<td>Transaction is Processed</td>
-</tr>
-<tr>
-<td>102</td>
-<td>Non-Final</td>
-<td>Transaction is In Progress</td>
-</tr>
-<tr>
-<td>204</td>
-<td>Final</td>
-<td>Transaction do not exist (Partner Tx ID is Not Found)</td>
-</tr>
-<tr>
-<td>206</td>
-<td>Final</td>
-<td>Transaction is FAILED (Partner Deposit Balance is Not Enough)</td>
-</tr>
-<tr>
-<td>300</td>
-<td>Final</td>
-<td>Transaction is FAILED</td>
-</tr>
-<tr>
-<td>301</td>
-<td>Non-Final</td>
-<td>Pending (When there is an unclear answer from Banks Network)</td>
-</tr>
-</tbody></table>
-<h3 id='request-status-api-get-disbursement-status-get-disbursement-status' type='normal'>Request Status: API Get Disbursement Status</h3>
+<h3 id='response-code-api-get-disbursement-status-get-disbursement-status' type='normal'>Response Code: API Get Disbursement Status</h3>
 <p>Below is the list of response codes that show the request status for API Get Disbursement Status:</p>
 
 <table><thead>
 <tr>
 <th>Response Code</th>
 <th>State</th>
+<th>State Details</th>
 <th>Description</th>
-<th>Notes</th>
 </tr>
 </thead><tbody>
 <tr>
+<td>000</td>
+<td>Final</td>
+<td>Transaction Success</td>
+<td>Transaction has been completed.</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Non-Final</td>
+<td>Transaction In Progress</td>
+<td>Transaction is processed.</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Non-Final</td>
+<td>Transaction In Progress</td>
+<td>Transaction is in progress.</td>
+</tr>
+<tr>
 <td>201</td>
 <td>Non-Final</td>
-<td>Request is Rejected (User ID is not Found)</td>
-<td>Request check status rejected. Doesn&#39;t represent transaction status. This response usually appears during the integration process.</td>
+<td>Transaction Unknown</td>
+<td>Request for Get Disbursement Status is rejected (user ID is not found)</td>
 </tr>
 <tr>
 <td>202</td>
 <td>Non-Final</td>
-<td>Request is Rejected (User ID is not Active)</td>
-<td>Request check status rejected. Doesn&#39;t represent transaction status. This response usually appears during the integration process.</td>
+<td>Transaction Unknown</td>
+<td>Request for Get Disbursement Status is rejected (user ID is not active)</td>
+</tr>
+<tr>
+<td>204</td>
+<td>Final</td>
+<td>Transaction Not Created</td>
+<td>Transaction do not exist (Partner Tx ID is Not Found)</td>
+</tr>
+<tr>
+<td>206</td>
+<td>Final</td>
+<td>Transaction Failed</td>
+<td>Transaction is failed (partner deposit balance is not enough)</td>
 </tr>
 <tr>
 <td>207</td>
 <td>Non-Final</td>
-<td>Request is Rejected (Request IP Address is not Registered)</td>
-<td>Request check status rejected. Doesn&#39;t represent transaction status. This response usually appears during the integration process.</td>
+<td>Transaction Unknown</td>
+<td>Request for Get Disbursement Status is rejected (request IP Address is not registered)</td>
 </tr>
 <tr>
 <td>208</td>
 <td>Non-Final</td>
-<td>Request is Rejected (API Key is not Valid)</td>
-<td>Request check status rejected. Doesn&#39;t represent transaction status. This response usually appears during the integration process.</td>
+<td>Transaction Unknown</td>
+<td>Request for Get Disbursement Status is rejected (API key is not valid)</td>
+</tr>
+<tr>
+<td>225</td>
+<td>Final</td>
+<td>Transaction Failed</td>
+<td>Transaction is failed (Transaction amount exceeds the maximum limit)</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Final</td>
+<td>Transaction Failed</td>
+<td>Transaction is failed.</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Non-Final</td>
+<td>Transaction Pending</td>
+<td>Pending (when there is an unclear answer from bank network)</td>
 </tr>
 <tr>
 <td>429</td>
 <td>Non-Final</td>
-<td>Request Rejected (Too Many Request to specific endpoint)</td>
-<td>Request check status rejected. Doesn&#39;t represent transaction status.</td>
+<td>Transaction Unknown</td>
+<td>Request for Get Disbursement Status is rejected (too many requests to specific endpoint)</td>
 </tr>
 <tr>
 <td>990</td>
-<td>Non-Final</td>
-<td>Request is Rejected (Invalid Format)</td>
-<td>Request check status rejected. Doesn&#39;t represent transaction status.</td>
+<td>Final</td>
+<td>Transaction Unknown</td>
+<td>Request for Get Disbursement Status is rejected (invalid format)</td>
 </tr>
 <tr>
 <td>999</td>
 <td>Non-Final</td>
+<td>Transaction Unknown</td>
 <td>Internal Server Error</td>
-<td>Request check status rejected. Doesn&#39;t represent transaction status.</td>
+</tr>
+</tbody></table>
+<h3 id='column-state-details-response-code-api-get-disbursement-status-get-disbursement-status' type='normal'>Column State Details: Response Code API Get Disbursement Status</h3>
+<p>Below is the list of Explanation for column state details that show on response code API Get Disbursement Status:</p>
+
+<table><thead>
+<tr>
+<th>State Details</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Transaction Success</td>
+<td>Transaction has been completed &amp; successfully received on the recipient account</td>
+</tr>
+<tr>
+<td>Transaction Failed</td>
+<td>Transaction is failed to disburse.</td>
+</tr>
+<tr>
+<td>Transaction In Progress</td>
+<td>Transaction is still in progress.</td>
+</tr>
+<tr>
+<td>Transaction Pending</td>
+<td>Transaction has an unclear status from the banks.</td>
+</tr>
+<tr>
+<td>Transaction Unknown</td>
+<td>Transaction status is uncertain, please wait the callback or hit check status API to make sure the status of transaction. Please check to your dashboard or contact our business representative.</td>
+</tr>
+<tr>
+<td>Transaction Not Created</td>
+<td>Transaction is not created in the OY! system due to not valid disbursement request.</td>
+</tr>
+</tbody></table>
+<h2 id='disbursement-failed-reasons-fund-disbursement' type='normal'>Disbursement Failed Reasons</h2>
+<p>If you receive a failed disbursement in the callback or check status response, this means that we tried processing the disbursement and failed.</p>
+
+<p>We return failed reasons description in our callback &amp; check status response in the <code>tx_status_description parameter</code>. Partners need to understand each failed reason to decide the appropriate action to take. Below is a list of the failed reasons that partners may receive:</p>
+<h3 id='explanation-disbursement-failed-reasons-disbursement-failed-reasons' type='normal'>Explanation: Disbursement Failed Reasons</h3>
+<table><thead>
+<tr>
+<th>Failed Reason</th>
+<th>Explanation</th>
+<th>Should I retry?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Account is blocked. Please create a new transaction with a different recipient account number.</td>
+<td>Recipient account number is blocked by the bank &amp; disbursement cannot proceed to this account.</td>
+<td>If you retry with the same request, most likely it will return the same response. Please confirm to the recipient that the account number details are correct and can receive funds. After that, you can revise the request to the correct account number before trying again.</td>
+</tr>
+<tr>
+<td>Account has exceeded the maximum amount for receiving money. Please contact the account owner.</td>
+<td>Recipient account number has reached the balance limit amount that is set by the corresponding bank/e-wallet.</td>
+<td>If you retry with the same request, most likely it will return the same response. Please confirm to the recipient that the account number details can receive funds for that amount. After that, you can revise the request to the correct account number and amount before trying again.</td>
+</tr>
+<tr>
+<td>Account is no longer active. Please create a new transaction with a different recipient account number.</td>
+<td>Recipient account number is no longer active in the bank &amp; disbursement cannot proceed to this account.</td>
+<td>If you retry with the same request, most likely it will return the same response. Please confirm to the recipient that the account number details are correct and can receive funds. After that, you can revise the request to the correct account number before trying again.</td>
+</tr>
+<tr>
+<td>Account not found. Please create a new transaction with a different recipient account number.</td>
+<td>Recipient account number is not found for the bank selected &amp; disbursement cannot proceed to this account.</td>
+<td>If you retry with the same request, most likely it will return the same response. Please confirm to the recipient that the account number details and the selected bank are correct and can receive funds. After that, you can revise the request to the correct account number before trying again.</td>
+</tr>
+<tr>
+<td>The bank/e-wallet provider system is under maintenance. Please try again in a moment.</td>
+<td>The bank/e-wallet is in downtime so there will be disturbances in the disbursement process.</td>
+<td>Please ensure the information of the bank maintenance schedule to our customer service. If there is any clear information about the maintenance schedule from the banks, you can retry the transaction after the maintenance schedule is over.</td>
+</tr>
+<tr>
+<td>The bank/e-wallet system encounters an error while disbursing the money. Try again in a moment.</td>
+<td>The bank/e-wallet has an issue in their  system to process the disbursement. There may be intermittent issues in the bank system that are unpredictable.</td>
+<td>You can retry the disbursement in the next few minutes. If you need any further information regarding the issue, you can contact our customer service.</td>
+</tr>
+<tr>
+<td>System encounters an error while disbursing the money. Please try again in a moment.</td>
+<td>There is an issue in the process of the disbursement. There may be intermittent issues that are unpredictable.</td>
+<td>You can retry the disbursement in the next few minutes. If you need any further information regarding the issue, you can contact our customer service.</td>
+</tr>
+<tr>
+<td>Your transaction exceeds the maximum limit amount. Please adjust the amount and try again.</td>
+<td>The transaction has an amount that exceeds the maximum limit that is already set in the OY! system.</td>
+<td>If you retry with the same request, it will return the same response. Please adjust the transaction amount according to the maximum limit that OY! gives to you. If you need any further information regarding the limit amount, you can contact our business representative.</td>
+</tr>
+<tr>
+<td>Not enough balance to disburse the money, please top up your balance.</td>
+<td>Insufficient partner’s deposit balance to process the disbursement transaction.</td>
+<td>Please top up your deposit balance in the OY! dashboard. You can retry the disbursement transaction after ensuring that you have sufficient balance in your account.</td>
 </tr>
 </tbody></table>
 <h2 id='get-balance-fund-disbursement' type='normal'>Get Balance</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
