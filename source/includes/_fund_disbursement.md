@@ -200,7 +200,7 @@ payload = json.dumps({
   "amount": 15000,
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
-  "email": "business.support@oyindonesia.com",,
+  "email": "business.support@oyindonesia.com",
   "additional_data": {
       "partner_merchant_id": "merchant_abcd123"
   }
