@@ -38,7 +38,10 @@ request.body = json.encode({
   "amount": 15000,
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
-  "email": "business.support@oyindonesia.com"
+  "email": "business.support@oyindonesia.com",
+  "additional_data": {
+      "partner_merchant_id": "merchant_abcd123"
+  }
 });
 request.headers.addAll(headers);
 
@@ -73,7 +76,10 @@ func main() {
 	"amount": 15000,
 	"note": "Test API Disburse",
 	"partner_trx_id": "OYON0000064",
-	"email": "business.support@oyindonesia.com"
+	"email": "business.support@oyindonesia.com",
+  "additional_data": {
+      "partner_merchant_id": "merchant_abcd123"
+  }
 }`)
 
   client := &http.Client {
@@ -109,7 +115,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"business.support@oyindonesia.com\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"business.support@oyindonesia.com\",\n  \"additional_data\": {\n      \"partner_merchant_id\": \"merchant_abcd123\"\n  }\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/remit")
   .method("POST", body)
@@ -128,7 +134,10 @@ var data = JSON.stringify({
   "amount": 15000,
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
-  "email": "business.support@oyindonesia.com"
+  "email": "business.support@oyindonesia.com",
+  "additional_data": {
+      "partner_merchant_id": "merchant_abcd123"
+  }
 });
 
 var xhr = new XMLHttpRequest();
@@ -164,7 +173,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n	"recipient_bank": "008",\n	"recipient_account": "0201245681",\n	"amount": 15000,\n	"note": "Test API Disburse",\n	"partner_trx_id": "OYON0000064",\n	"email": "business.support@oyindonesia.com"\n}');
+$request->setBody('{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"business.support@oyindonesia.com\",\n  \"additional_data\": {\n      \"partner_merchant_id\": \"merchant_abcd123\"\n  }\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -191,7 +200,10 @@ payload = json.dumps({
   "amount": 15000,
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
-  "email": "business.support@oyindonesia.com"
+  "email": "business.support@oyindonesia.com",
+  "additional_data": {
+      "partner_merchant_id": "merchant_abcd123"
+  }
 })
 headers = {
   'Content-Type': 'application/json',
