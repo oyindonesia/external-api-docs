@@ -282,24 +282,24 @@ trx_counter | Int | FALSE | -1/1 | Transaction counter to limit number of transa
 
 ### Response Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
-amount | BigDecimal | Amount of VA transaction
-va_number | String(20) | Generated VA number
-id | String(36) | Unique VA ID
-partner_user_id | String(255) | Your unique ID for specific user
-bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.
-expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
-va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
-username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID of a VA
-trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
-counter_incoming_payment | Integer | Count total incoming payment of VA
-full_name | String(255) | If `full_name` is needed when creating the transaction, the inputted `full_name` value at creation will be shown here
+Parameter | Type | Nullable | Description
+--------- | ---- | -------- | -----------
+status | Object | FALSE | Status of response in Object `{code: <status_code>, message: <status_message>}`
+amount | BigDecimal | FALSE | Amount of VA transaction
+va_number | String(20) | FALSE | Generated VA number
+id | String(36) | FALSE | Unique VA ID
+partner_user_id | String(255) | FALSE | Your unique ID for specific user
+bank_code | String(3) | FALSE | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
+is_open | Boolean | FALSE | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+is_single_use | Boolean | FALSE | True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.
+expiration_time | Long | FALSE | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
+va_status | String(16) | FALSE | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
+username_display | String(255) | FALSE | Customizable VA display name that will be seen by user, If empty willl be using partner username
+trx_expiration_time | Long | FALSE | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
+partner_trx_id | String(255) | TRUE | Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data
+trx_counter | Int | FALSE | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+counter_incoming_payment | Integer | FALSE | Count total incoming payment of VA
+full_name | String(255) | FALSE | If `full_name` is needed when creating the transaction, the inputted `full_name` value at creation will be shown here
 
 <aside class="warning">
 Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
@@ -500,27 +500,27 @@ ID | String(255) | TRUE | - | Unique VA id, you can get this once you success cr
 
 ### Response Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-id | String |  Unique VA id
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
-amount | BigDecimal | Amount of VA transaction
-va_number | String(20) | Generated VA number
-bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
-bank_name | String(10) | Bank name of the VA
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA.
-expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
-va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
-username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-partner_user_id | String(255) | Partner unique ID for specific user
-created | Long | Unix timestamp in milliseconds when VA created
-counter_incoming_payment | Integer | Count total incoming payment of VA
-trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID of a VA
-trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
-email | String(255) | If `email` is inputted when creating the transaction, the inputted value at creation will be shown here
-full_name | String(255) | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here
+Parameter | Type | Nullable | Description
+--------- | ---- | -------- | -----------
+id | String | FALSE |  Unique VA id
+status | Object | FALSE | Status of response in Object `{code: <status_code>, message: <status_message>}`
+amount | BigDecimal | FALSE | Amount of VA transaction
+va_number | String(20) | FALSE | Generated VA number
+bank_code | String(3) | FALSE | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
+bank_name | String(10) | FALSE | Bank name of the VA
+is_open | Boolean | FALSE | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+is_single_use | Boolean | FALSE | True means that this VA should be closed once there is a successful payment that is being made to this VA.
+expiration_time | Long | FALSE | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
+va_status | String(16) | FALSE | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
+username_display | String(255) | FALSE | Customizable VA display name that will be seen by user, If empty willl be using partner username
+partner_user_id | String(255) | FALSE | Partner unique ID for specific user
+created | Long | FALSE | Unix timestamp in milliseconds when VA created
+counter_incoming_payment | Integer | FALSE | Count total incoming payment of VA
+trx_expiration_time | Long | FALSE | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
+partner_trx_id | String(255) | TRUE | Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in creation process
+trx_counter | Int | FALSE | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+email | String(255) | FALSE | If `email` is inputted when creating the transaction, the inputted value at creation will be shown here
+full_name | String(255) | FALSE | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here
 
 <aside class="warning">
 Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking Syariah Indonesia Net, please only input the last 12 digits of the va_number (remove 6059 from the va_number with format "6059xxxxxxxxxxxx"). This does not apply to payments and inquiries involving a BSI VA using other methods
@@ -787,25 +787,25 @@ trx_counter | Int | FALSE | -1/1 | Update transaction counter to limit number of
 
 ### Response Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-id | String |  Unique VA id
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
-amount | BigDecimal | Amount of VA transaction
-va_number | String(20) | Generated VA number
-bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-is_single_use | Boolean | True means that this VA should be closed once there is a successful payment that is being made to this VA.
-expiration_time | Long | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
-va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
-username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-partner_user_id | String(255) | Partner unique ID for specific user
-trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID of a VA
-trx_counter | Int | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
-counter_incoming_payment | Integer | Count total incoming payment of VA
-email | String(255) | If `email` is needed when creating the transaction, the inputted value at creation will be shown here
-full_name | String(255) | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here
+Parameter | Type | Nullable | Description
+--------- | ---- | -------- | -----------
+id | String | FALSE |  Unique VA id
+status | Object | FALSE | Status of response in Object `{code: <status_code>, message: <status_message>}`
+amount | BigDecimal | FALSE | Amount of VA transaction
+va_number | String(20) | FALSE | Generated VA number
+bank_code | String(3) | FALSE | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
+is_open | Boolean | FALSE | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+is_single_use | Boolean | FALSE | True means that this VA should be closed once there is a successful payment that is being made to this VA.
+expiration_time | Long | FALSE | Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.
+va_status | String(16) | FALSE | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
+username_display | String(255) | FALSE | Customizable VA display name that will be seen by user, If empty willl be using partner username
+partner_user_id | String(255) | FALSE | Partner unique ID for specific user
+trx_expiration_time | Long | FALSE | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
+partner_trx_id | String(255) | TRUE | Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in update request parameter.
+trx_counter | Int | FALSE | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+counter_incoming_payment | Integer | FALSE | Count total incoming payment of VA
+email | String(255) | FALSE | If `email` is needed when creating the transaction, the inputted value at creation will be shown here
+full_name | String(255) | FALSE | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here
 
 <aside class="warning">
 Note: For Permata(013) and CIMB(022) VA (and Mandiri(008) for some user), the only operation permitted when updating VA is to deactivate it by setting trx_expiration_time as 0.
@@ -1031,11 +1031,11 @@ offset | Integer | 0 | start offset, default is 0, if empty will used default va
 limit | Integer | 10 | max item to fetch, default is 10, if empty will used default value
 
 ### Response Parameters
-Parameter | Type | Description
---------- | ---- | -----------
-total | Integer | total items
-data  | Array of object | List of Object `{id: <va_id>, amount: <amount>, va_number: <va_number>, bank_code: <bank_code>, bank_name: <bank_name>, is_open: <is_open>, is_single_user: <is_single_user>, expiration_time: <expiration_time>, va_status: <va_status>, username_display: <username_display>, amount_detected: <amount_detected>, partner_user_id: <partner_user_id>, created: <created>, counter_incoming_payment: <counter_incoming_payment>, trx_counter: <trx_counter>, email: <email>, full_name: <full_name>}`
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
+Parameter | Type | Nullable | Description
+--------- | ---- | -------- | -----------
+total | Integer | FALSE | total items
+data  | Array of object | TRUE | List of Object `{id: <va_id>, amount: <amount>, va_number: <va_number>, bank_code: <bank_code>, bank_name: <bank_name>, is_open: <is_open>, is_single_user: <is_single_user>, expiration_time: <expiration_time>, va_status: <va_status>, username_display: <username_display>, amount_detected: <amount_detected>, partner_user_id: <partner_user_id>, created: <created>, counter_incoming_payment: <counter_incoming_payment>, trx_counter: <trx_counter>, email: <email>, full_name: <full_name>}` If the user has never created a va, the data will be empty
+status | Object | FALSE | Status of response in Object `{code: <status_code>, message: <status_message>}`
 
 
 ## Get List of Transaction for VA
@@ -1238,13 +1238,13 @@ offset | Integer | FALSE | 0 | start offset, default is 0, if empty will used de
 limit | Integer | FALSE | 10 | max item to fetch, default is 10, if empty will used default value
 
 ### Response Parameters
-Parameter | Type | Description
---------- | ---- | -----------
-id | Integer | Unique VA id
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
-data  | Array of Object  | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>, va_history_id: <va_history_id>, settlement_time: <settlement_time>, settlement_status: <settlement_status>}`
-number_of_transaction  | Integer | Total transaction
-total_incoming_payment | Integer | Total incoming payment
+Parameter | Type | Nullable | Description
+--------- | ---- | -------- | -----------
+id | Integer | FALSE | Unique VA id
+status | Object | FALSE | Status of response in Object `{code: <status_code>, message: <status_message>}`
+data  | Array of Object  | TRUE | List of Object `{id:  <id>, created: <created>, name: <name>, amount: <amount>, create_by: <create_by>, last_update_by: <last_update_by>, last_updated: <last_updated>, admin_fee: <admin_fee>, va_number: <va_number>, va_history_id: <va_history_id>, settlement_time: <settlement_time>, settlement_status: <settlement_status>}` If the user has never created a va, the data will be empty
+number_of_transaction  | Integer | FALSE | Total transaction
+total_incoming_payment | Integer | FALSE | Total incoming payment
 
 ## Create Customized VA
 
@@ -1498,19 +1498,19 @@ va_suffix | String (10-12) | TRUE | - | Customized VA suffix that will be used b
 
 ### Response Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
-amount | BigDecimal | Amount of VA transaction
-va_number | String(20) | Generated VA number
-id | String(36) | Unique VA ID
-partner_user_id | String(255) | Your unique ID for specific user
-bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
-username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID of a VA
+Parameter | Type | Nullable | Description
+--------- | ---- | -------- | -----------
+status | Object | FALSE | Status of response in Object `{code: <status_code>, message: <status_message>}`
+amount | BigDecimal | FALSE | Amount of VA transaction
+va_number | String(20) | FALSE | Generated VA number
+id | String(36) | FALSE | Unique VA ID
+partner_user_id | String(255) | FALSE | Your unique ID for specific user
+bank_code | String(3) | FALSE | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
+is_open | Boolean | FALSE | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+va_status | String(16) | FALSE | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
+username_display | String(255) | FALSE | Customizable VA display name that will be seen by user, If empty willl be using partner username
+trx_expiration_time | Long | FALSE | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
+partner_trx_id | String(255) | TRUE | Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in creation process
 
 ## Update Customized VA
 
@@ -1745,19 +1745,19 @@ partner_trx_id | String(255) | FALSE | - | Partner unique Transaction ID of a VA
 
 ### Response Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-id | String |  Unique VA id
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
-amount | BigDecimal | Amount of VA transaction
-va_number | String(20) | Generated VA number
-bank_code | String(3) | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
-is_open | Boolean | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
-va_status | String(16) | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
-username_display | String(255) | Customizable VA display name that will be seen by user, If empty willl be using partner username
-partner_user_id | String(255) | Partner unique ID for specific user
-trx_expiration_time | Long | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
-partner_trx_id | String(255) | Partner unique Transaction ID of a VA
+Parameter | Type | Nullable | Description
+--------- | ---- | -------- | -----------
+id | String | FALSE |  Unique VA id
+status | Object | FALSE | Status of response in Object `{code: <status_code>, message: <status_message>}`
+amount | BigDecimal | FALSE | Amount of VA transaction
+va_number | String(20) | FALSE | Generated VA number
+bank_code | String(3) | FALSE | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator)
+is_open | Boolean | FALSE | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount
+va_status | String(16) | FALSE | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator)
+username_display | String(255) | FALSE | Customizable VA display name that will be seen by user, If empty willl be using partner username
+partner_user_id | String(255) | FALSE | Partner unique ID for specific user
+trx_expiration_time | Long | FALSE | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
+partner_trx_id | String(255) | TRUE | Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in update request parameter
 
 ## Deactivate Customized VA
 
@@ -1936,9 +1936,9 @@ ID | String(255) | TRUE | - | Unique VA id, you can get this once you have succe
 
 ### Response Parameters
 
-Parameter | Type | Description
---------- | ---- | -----------
-status | Object | Status of response in Object `{code: <status_code>, message: <status_message>}`
+Parameter | Type | Nullable | Description
+--------- | ---- | -------- | -----------
+status | Object | FALSE | Status of response in Object `{code: <status_code>, message: <status_message>}`
 
 
 ## Partner Callback Va Aggregator
