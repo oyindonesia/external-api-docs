@@ -1,4 +1,4 @@
-FROM ruby:3.0-slim
+FROM ruby:2.6-slim
 
 WORKDIR /srv/slate
 
@@ -8,7 +8,7 @@ VOLUME /srv/slate/source
 EXPOSE 4567
 
 COPY Gemfile .
-# COPY Gemfile.lock .
+COPY Gemfile.lock .
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
