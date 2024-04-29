@@ -323,7 +323,7 @@ Endpoint:
 |sender_bank | String | TRUE | Only exist if request need_frontend is FALSE. The bank code used by a payer to do payment. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
 |payment_info|Object| FALSE |Payment info object|
 |payment_checkout_url|String| TRUE |generated url for payment link; conditional, only exist if request need_frontend is TRUE|
-|account_number|String| FALSE |Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
+|account_number|String| TRUE |Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |account_name|String| TRUE |VA display name if you use VA or bank account's owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |bank_code|String| TRUE |Bank code for the destination VA number or bank account; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |qris_url|String| TRUE |the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
@@ -653,7 +653,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 |sender_bank | String | TRUE | The bank code used by a payer to do payment. Conditional, only exist if request need_frontend is FALSE. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
 |payment_info|Object| FALSE |Payment info Object|
 |payment_checkout_url|String| TRUE |generated url for payment link; conditional, only exist if request need_frontend is TRUE|
-|account_number|String| FALSE |Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
+|account_number|String| TRUE |Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |account_name|String| TRUE |VA display name if you use VA or bank account's owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |qris_url|String| TRUE |the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
 |payment_reference_number|String| FALSE | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
@@ -884,7 +884,7 @@ If your settlement is non-real time, for every transaction whose payment method 
 |sender_bank | String | TRUE | The bank code used by a payer to do payment. Conditional, only exist if request need_frontend is FALSE. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
 |payment_info|Object| FALSE |Payment info Object|
 |payment_checkout_url|String| TRUE |generated url for payment link; conditional, only exist if request need_frontend is TRUE|
-|account_number|String| FALSE |Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
+|account_number|String| TRUE |Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |account_name|String| TRUE |VA display name if you use VA or bank account's owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
 |qris_url|String| TRUE |the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
 |payment_reference_number|String| FALSE | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
