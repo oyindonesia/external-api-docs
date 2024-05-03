@@ -292,14 +292,14 @@ va_display_name | String | FALSE | Optional parameter, name to display on Bank T
 
 
 ### Response Parameters
-Parameter | Type | Description
----- | ---- | ----
-status | Boolean | true / false
-url | String | Payment link which used for payment
-payment_link_id | String | A unique transaction ID provided by partner
-child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in response.
-message | String | Message response
-email_status | String | email status
+Parameter | Type | Nullable | Description
+---- | ---- | ----- | ----
+status | Boolean | FALSE | true / false
+url | String | TRUE | Payment link which used for payment. Only filled if payment checkout successfully created.
+payment_link_id | String | TRUE | A unique transaction ID provided by partner. Only filled if payment checkout successfully created.
+child_balance | String | TRUE | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in response. Only applicable for MAM transaction.
+message | String | FALSE | Message response
+email_status | String | TRUE | email status. Only filled if payment checkout successfully created.
 
 
 ## API Create (Invoicing)
@@ -649,13 +649,13 @@ invoice_items | List | List of items to be invoiced that can be generated via AP
 attachment | - | Upload attachment (string base 64 pdf) and can be downloaded via the webview | There is a maximum limit of 1 PDF attachment (maximum 2 MB) to be uploaded per URL
 
 ### Response Parameters
-Parameter | Type | Description
----- | ---- | ----
-status | Boolean | true / false
-url | String | Payment link which used for payment
-message | String | Message response
-payment_link_id | String | A unique payment link transaction ID
-email_status | String | email status
+Parameter | Type | Nullable | Description
+---- | ---- | ----- | ----
+status | Boolean | FALSE | true / false
+url | String | TRUE | Payment link which used for payment. Only filled if payment checkout successfully created.
+message | String | FALSE | Message response
+payment_link_id | String | TRUE | A unique payment link transaction ID. Only filled if payment checkout successfully created.
+email_status | String | TRUE | email status. Only filled if payment checkout successfully created.
 
 
 ## API Create (Recurring Invoice) (Coming soon)
@@ -751,38 +751,38 @@ curl -X POST \
 
 ```
 
-Parameter | Type | Description
---------- | ---- | -----------
-partner_tx_id | String | A unique transaction ID provided by partner
-child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback
-tx_ref_number | String | OY's internal unique transaction ID
-amount | BigDecimal | The amount of a transaction that is paid
-sender_name | String | Name of a payer for a transaction
-sender_phone | String | Phone number of a payer for a transaction
-sender_note | String | Additional notes from a payer for a transaction
-status | String | The status of a transaction (e.g. success/failed/processing)
-sender_bank | String | The bank code used by a payer to do payment
-payment_method | String | The payment method used by user to complete a payment.
-settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
-created | DateTime | The timestamp which indicates the creation time of a payment link
-updated | DateTime | The timestamp which indicates the latest updated time of a payment link due to status update
-payment_received_time | DateTime | Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
-is_invoice | Boolean | The invoice which indicates the transaction is invoice or not
-description | String | The description of the payment link/invoice link.
-payment_reference_number| String | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
-expiration | DateTime | The expiration time of the payment link/invoice link
-due_date | DateTime | The transaction due date of the payment link/invoice
-email | String | The email addresses for the payment link/invoice link to be sent. You can add up to 3 emails separated by ";"
-paid_amount | BigDecimal | The total amount that a user has paid
-settlement_time | DateTime | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement
-settlement_status | String | Status of the settlement (e.g. success/waiting)
+Parameter | Type | Nullable | Description
+--------- | ---- | ----- | -----------
+partner_tx_id | String | FALSE | A unique transaction ID provided by partner.
+child_balance | String | TRUE | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback.
+tx_ref_number | String | FALSE | OY's internal unique transaction ID.
+amount | BigDecimal | FALSE | The amount of a transaction that is paid.
+sender_name | String | FALSE | Name of a payer for a transaction.
+sender_phone | String | TRUE | Phone number of a payer for a transaction. This parameter will only be sent if end user fill the data.
+sender_note | String | TRUE | Additional notes from a payer for a transaction. This parameter will only be sent if end user fill the data.
+status | String | FALSE | The status of a transaction (e.g. success/failed/processing).
+sender_bank | String | FALSE | The bank code used by a payer to do payment.
+payment_method | String | FALSE | The payment method used by user to complete a payment.
+settlement_type | String | FALSE | Indicate if a transaction will be settled in realtime/non-realtime.
+created | DateTime | FALSE | The timestamp which indicates the creation time of a payment link.
+updated | DateTime | FALSE | The timestamp which indicates the latest updated time of a payment link due to status update.
+payment_received_time | DateTime | TRUE | Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
+is_invoice | Boolean | FALSE | The invoice which indicates the transaction is invoice or not.
+description | String | FALSE | The description of the payment link/invoice link.
+payment_reference_number| String | TRUE | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS.
+expiration | DateTime | FALSE | The expiration time of the payment link/invoice link.
+due_date | DateTime | FALSE | The transaction due date of the payment link/invoice.
+email | String | FALSE | The email addresses for the payment link/invoice link to be sent. You can add up to 3 emails separated by ";".
+paid_amount | BigDecimal | FALSE | The total amount that a user has paid.
+settlement_time | DateTime | TRUE | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement. This parameter will only be sent once status of the payment link is set to 'COMPLETE'.
+settlement_status | String | TRUE | Status of the settlement (e.g. success/waiting). This parameter will only be sent once status of the payment link is set to 'COMPLETE'.
 
 Additional data on the callback if invoice = true
 
-Parameter | Type | Description
---------- | ---- | -----------
-invoice_ID | String | The invoice id.
-full_name | String | The full name.
+Parameter | Type | Nullable | Description
+--------- | ---- | ----- | -----------
+invoice_ID | String | FALSE | The invoice id.
+full_name | String | FALSE | The full name.
 
 ## Payment Link Status
 
@@ -993,31 +993,31 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 </aside>
 
 ### Response Parameters
-Parameter | Type | Description
----- | ---- | ----
-partner_tx_id | String | A unique transaction ID provided by partner
-child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request Create Payment Link, we will not pass this parameter in the response
-tx_ref_number | String | OY's internal unique transaction ID
-amount | BigDecimal | The amount of a transaction that is paid
-sender_name | String | Name of a payer for a transaction
-sender_phone | String | Phone number of a payer for a transaction
-sender_note | String | Additional notes from a payer for a transaction
-status | String | The status of a payment link
-payment_received_time | String | Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
-settlement_type | String | Indicate if a transaction will be settled in realtime/non-realtime
-sender_bank | String | The bank code used by a payer to do payment
-payment_method | String | The payment method used in a transaction. Choices are: CC (Cards), QRIS, EWALLET (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)
-created | String | The timestamp which indicates the creation time of a payment link
-description | String | Description of the payment link.
-payment_reference_number | String | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS
-paid_amount | BigDecimal | the total amount that a user has paid.
-expiration | String | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss)
-due_date | String | To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss)
-is_invoice | Boolean | The invoice which indicates the transaction is invoice or not.
-updated | String | The timestamp which indicates the latest updated time of a payment link due to status update
-email | String | The email addresses where the payment link will be sent to. You can add up to 3 emails separated by ";"
-settlement_time | String | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)
-settlement_status | String | The status of the settlement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)
+Parameter | Type | Nullable | Description
+---- | ---- | ----- | ----
+partner_tx_id | String | FALSE | A unique transaction ID provided by partner.
+child_balance | String | FALSE | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request Create Payment Link, we will not pass this parameter in the response.
+tx_ref_number | String | FALSE | OY's internal unique transaction ID.
+amount | BigDecimal | FALSE | The amount of a transaction that is paid.
+sender_name | String | FALSE | Name of a payer for a transaction.
+sender_phone | String | FALSE | Phone number of a payer for a transaction.
+sender_note | String | FALSE | Additional notes from a payer for a transaction.
+status | String | FALSE | The status of a payment link.
+payment_received_time | String | TRUE | Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
+settlement_type | String | FALSE | Indicate if a transaction will be settled in realtime/non-realtime.
+sender_bank | String | FALSE | The bank code used by a payer to do payment.
+payment_method | String | FALSE | The payment method used in a transaction. Choices are: CC (Cards), QRIS, EWALLET (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code).
+created | String | FALSE | The timestamp which indicates the creation time of a payment link.
+description | String | FALSE | Description of the payment link.
+payment_reference_number | String | FALSE | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS.
+paid_amount | BigDecimal | FALSE | the total amount that a user has paid.
+expiration | String | FALSE | To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss).
+due_date | String | FALSE | To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss).
+is_invoice | Boolean | FALSE | The invoice which indicates the transaction is invoice or not.
+updated | String | FALSE | The timestamp which indicates the latest updated time of a payment link due to status update.
+email | String | FALSE | The email addresses where the payment link will be sent to. You can add up to 3 emails separated by ";".
+settlement_time | String | FALSE | The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
+settlement_status | String | FALSE | The status of the settlement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).
 
 ## API Delete
 
@@ -1184,11 +1184,11 @@ payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in 
 
 ### Response Parameters
 
-Parameters | Type | Description
----- | ---- | ------
-status | Boolean | TRUE if delete is successful and FALSE otherwise
-message | String | Return message
-child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback
+Parameters | Type | Nullable | Description
+---- | ---- | -----| ------
+status | Boolean | FALSE | TRUE if delete is successful and FALSE otherwise.
+message | String | FALSE | Return message.
+child_balance | String | TRUE | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback.
 
 
 ### Return Message
@@ -1399,29 +1399,29 @@ payment_link_id_or_partner_tx_id | String | payment_link_id or partner_tx_id in 
 
 ### Payment Response Parameters
 
-Parameters | Type | Description | Example Value
----- | ---- | ------ | -------
-partnerTxId | String | Payment Partner Tx Id | abc123
-child_balance | String | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback | child123
-paymentLinkId | String | Payment Link Id | 35281815-4784-4f55-9a61-090f5c17a191
-amount | Integer | Payment Amount | 30000
-username | String | Partner Username | johndoe
-senderName | String | Payment Sender Name | Budi
-senderPhoneNumber | String | Payment Sender Phone Number | 081234567890
-senderNotes | String | Payment Notes / Subject | Cicilan Mobil - 5
-status | String | Payment Status | COMPLETE
-txRefNumber | String | Payment Transaction Reference Number | GTY67JJU
-description | String | Payment Description | Tagihan Cicilan Mobil
-isOpen | Boolean | Payment Editable Amount Capability | true
-notes | String | Payment Notes / Subject | Cicilan Mobil - 5
-email | String | Payment Sender Email(s).You can add up to 3 emails separated by ";" | johndoe@gmail.com;jane@gmail.com
-senderPhoneNumber | String | Payment Sender Phone Number | 081234567890
-includeAdminFee | Boolean | Admin fee bills destination between partner or user | true
-listDisabledPaymentMethods | String | List Of Disable Payment Method.
-listEnabledBanks | String | Payment Method List Enable Bank for VA or Unique Code Payment Method | 002,008
-expirationTime | String | Payment Expiration Date and Time | "2020-08-12 00:00:00"
-due_date | String | Transaction Due Date | "2020-08-11 12:00:00"
-invoiceData | Invoice | Data For Invoice Payment will be null | CREDIT_CARD)** | null
+Parameters | Type | Nullable | Description | Example Value
+---- | ---- | ----- | ------ | -------
+partnerTxId | String | FALSE | Payment Partner Tx Id | abc123
+child_balance | String | TRUE | Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback | child123
+paymentLinkId | String | FALSE | Payment Link Id | 35281815-4784-4f55-9a61-090f5c17a191
+amount | Integer | FALSE | Payment Amount | 30000
+username | String | FALSE | Partner Username | johndoe
+senderName | String | FALSE | Payment Sender Name | Budi
+senderPhoneNumber | String | TRUE | Payment Sender Phone Number. This parameter will only be sent if end user fill the data | 081234567890
+senderNotes | String | TRUE | Payment Notes / Subject. This parameter will only be sent if end user fill the data | Cicilan Mobil - 5
+status | String | FALSE | Payment Status | COMPLETE
+txRefNumber | String | FALSE | Payment Transaction Reference Number | GTY67JJU
+description | String | FALSE | Payment Description | Tagihan Cicilan Mobil
+isOpen | Boolean | FALSE | Payment Editable Amount Capability | true
+notes | String | FALSE | Payment Notes / Subject | Cicilan Mobil - 5
+email | String | FALSE | Payment Sender Email(s).You can add up to 3 emails separated by ";" | johndoe@gmail.com;jane@gmail.com
+senderPhoneNumber | String | FALSE | Payment Sender Phone Number | 081234567890
+includeAdminFee | Boolean | FALSE | Admin fee bills destination between partner or user | true
+listDisabledPaymentMethods | String | FALSE | List Of Disable Payment Method.
+listEnabledBanks | String | FALSE | Payment Method List Enable Bank for VA or Unique Code Payment Method | 002,008
+expirationTime | String | FALSE | Payment Expiration Date and Time | "2020-08-12 00:00:00"
+due_date | String | FALSE | Transaction Due Date | "2020-08-11 12:00:00"
+invoiceData | Invoice | TRUE | Data For Invoice Payment will be null | CREDIT_CARD)** | null
 
 ### Invoice Response Parameters
 

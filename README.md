@@ -21,6 +21,17 @@
 `docker-compose logs -f`
 4. Open the application in your web browser by visiting `http://localhost:4567/`
 
+> [!NOTE]
+> If Build Docker Image Failed, you can try like this
+> 1. In file `Dockerfile` change ruby from `2.6-slim` to `3.0-slim` And command this line `COPY Gemfile.lock .`
+> 2. In file `Gemfile` change this line `ruby '~> 2.5'` to `ruby '~> 3.0'`
+> 3. **Don't forget** to change back again when you will push the code
+
+> [!NOTE]
+> If Error when you try to run local, you can try like this
+> 1. In file `layout.erb` delete style tag with body content in line 34 to line 36 who has contain  ```Rouge::Themes::OyTheme.render```
+> 3. **Don't forget** to change back again when you will push the code
+
 **Features**
 ------------
 
