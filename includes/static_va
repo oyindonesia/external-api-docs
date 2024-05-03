@@ -340,88 +340,105 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>id</td>
 <td>String(36)</td>
+<td>FALSE</td>
 <td>Unique VA ID</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Your unique ID for specific user</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data</td>
 </tr>
 <tr>
 <td>trx_counter</td>
 <td>Int</td>
+<td>FALSE</td>
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
 <tr>
 <td>counter_incoming_payment</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Count total incoming payment of VA</td>
 </tr>
 <tr>
 <td>full_name</td>
 <td>String(255)</td>
-<td>If <code>full_name</code> is needed when creating the transaction, the inputted <code>full_name</code> value at creation will be shown here</td>
+<td>TRUE</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted <code>full_name</code> value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.</td>
 </tr>
 </tbody></table>
 
@@ -613,103 +630,123 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Unique VA id</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>bank_name</td>
 <td>String(10)</td>
+<td>FALSE</td>
 <td>Bank name of the VA</td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Partner unique ID for specific user</td>
 </tr>
 <tr>
 <td>created</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Unix timestamp in milliseconds when VA created</td>
 </tr>
 <tr>
 <td>counter_incoming_payment</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Count total incoming payment of VA</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in creation process</td>
 </tr>
 <tr>
 <td>trx_counter</td>
 <td>Int</td>
+<td>FALSE</td>
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String(255)</td>
-<td>If <code>email</code> is inputted when creating the transaction, the inputted value at creation will be shown here</td>
+<td>TRUE</td>
+<td>This parameter will only be sent if the value inputted in creation request.</td>
 </tr>
 <tr>
 <td>full_name</td>
 <td>String(255)</td>
-<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here</td>
+<td>TRUE</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.</td>
 </tr>
 </tbody></table>
 
@@ -1028,93 +1065,111 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Unique VA id</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Partner unique ID for specific user</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in update request parameter.</td>
 </tr>
 <tr>
 <td>trx_counter</td>
 <td>Int</td>
+<td>FALSE</td>
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
 <tr>
 <td>counter_incoming_payment</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Count total incoming payment of VA</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String(255)</td>
-<td>If <code>email</code> is needed when creating the transaction, the inputted value at creation will be shown here</td>
+<td>TRUE</td>
+<td>This parameter will only be sent if the value inputted in creation request.</td>
 </tr>
 <tr>
 <td>full_name</td>
 <td>String(255)</td>
-<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here</td>
+<td>TRUE</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.</td>
 </tr>
 </tbody></table>
 
@@ -1336,22 +1391,26 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>total</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>total items</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Array of object</td>
-<td>List of Object <code>{id: &lt;va_id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, bank_name: &lt;bank_name&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;, created: &lt;created&gt;, counter_incoming_payment: &lt;counter_incoming_payment&gt;, trx_counter: &lt;trx_counter&gt;, email: &lt;email&gt;, full_name: &lt;full_name&gt;}</code></td>
+<td>TRUE</td>
+<td>List of Object <code>{id: &lt;va_id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, bank_name: &lt;bank_name&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;, created: &lt;created&gt;, counter_incoming_payment: &lt;counter_incoming_payment&gt;, trx_counter: &lt;trx_counter&gt;, email: &lt;email&gt;, full_name: &lt;full_name&gt;}</code> If the user has never created a va, the data will be empty</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 </tbody></table>
@@ -1566,32 +1625,38 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Unique VA id</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>data</td>
 <td>Array of Object</td>
-<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;, va_history_id: &lt;va_history_id&gt;, settlement_time: &lt;settlement_time&gt;, settlement_status: &lt;settlement_status&gt;}</code></td>
+<td>TRUE</td>
+<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;, va_history_id: &lt;va_history_id&gt;, settlement_time: &lt;settlement_time&gt;, settlement_status: &lt;settlement_status&gt;}</code> If the user has never created a va, the data will be empty</td>
 </tr>
 <tr>
 <td>number_of_transaction</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Total transaction</td>
 </tr>
 <tr>
 <td>total_incoming_payment</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Total incoming payment</td>
 </tr>
 </tbody></table>
@@ -1885,63 +1950,75 @@ POST https://partner.oyindonesia.com/api/custom-va
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>id</td>
 <td>String(36)</td>
+<td>FALSE</td>
 <td>Unique VA ID</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Your unique ID for specific user</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in creation process</td>
 </tr>
 </tbody></table>
 <h2 id='update-customized-va-va-aggregator' type='normal'>Update Customized VA</h2>
@@ -2204,63 +2281,75 @@ PUT https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-212121
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Unique VA id</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Partner unique ID for specific user</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in update request parameter</td>
 </tr>
 </tbody></table>
 <h2 id='deactivate-customized-va-va-aggregator' type='normal'>Deactivate Customized VA</h2>
@@ -2429,12 +2518,14 @@ DELETE https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-2121
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 </tbody></table>

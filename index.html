@@ -6526,88 +6526,105 @@ POST https://partner.oyindonesia.com/api/generate-static-va
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>id</td>
 <td>String(36)</td>
+<td>FALSE</td>
 <td>Unique VA ID</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Your unique ID for specific user</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means that this VA should be closed/complete once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data</td>
 </tr>
 <tr>
 <td>trx_counter</td>
 <td>Int</td>
+<td>FALSE</td>
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
 <tr>
 <td>counter_incoming_payment</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Count total incoming payment of VA</td>
 </tr>
 <tr>
 <td>full_name</td>
 <td>String(255)</td>
-<td>If <code>full_name</code> is needed when creating the transaction, the inputted <code>full_name</code> value at creation will be shown here</td>
+<td>TRUE</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted <code>full_name</code> value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.</td>
 </tr>
 </tbody></table>
 
@@ -6799,103 +6816,123 @@ GET https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Unique VA id</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>bank_name</td>
 <td>String(10)</td>
+<td>FALSE</td>
 <td>Bank name of the VA</td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Partner unique ID for specific user</td>
 </tr>
 <tr>
 <td>created</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Unix timestamp in milliseconds when VA created</td>
 </tr>
 <tr>
 <td>counter_incoming_payment</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Count total incoming payment of VA</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in creation process</td>
 </tr>
 <tr>
 <td>trx_counter</td>
 <td>Int</td>
+<td>FALSE</td>
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String(255)</td>
-<td>If <code>email</code> is inputted when creating the transaction, the inputted value at creation will be shown here</td>
+<td>TRUE</td>
+<td>This parameter will only be sent if the value inputted in creation request.</td>
 </tr>
 <tr>
 <td>full_name</td>
 <td>String(255)</td>
-<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here</td>
+<td>TRUE</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.</td>
 </tr>
 </tbody></table>
 
@@ -7214,93 +7251,111 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Unique VA id</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>is_single_use</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
 </tr>
 <tr>
 <td>expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Expiration time of VA on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Partner unique ID for specific user</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in update request parameter.</td>
 </tr>
 <tr>
 <td>trx_counter</td>
 <td>Int</td>
+<td>FALSE</td>
 <td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
 </tr>
 <tr>
 <td>counter_incoming_payment</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Count total incoming payment of VA</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String(255)</td>
-<td>If <code>email</code> is needed when creating the transaction, the inputted value at creation will be shown here</td>
+<td>TRUE</td>
+<td>This parameter will only be sent if the value inputted in creation request.</td>
 </tr>
 <tr>
 <td>full_name</td>
 <td>String(255)</td>
-<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here</td>
+<td>TRUE</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.</td>
 </tr>
 </tbody></table>
 
@@ -7522,22 +7577,26 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>total</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>total items</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Array of object</td>
-<td>List of Object <code>{id: &lt;va_id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, bank_name: &lt;bank_name&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;, created: &lt;created&gt;, counter_incoming_payment: &lt;counter_incoming_payment&gt;, trx_counter: &lt;trx_counter&gt;, email: &lt;email&gt;, full_name: &lt;full_name&gt;}</code></td>
+<td>TRUE</td>
+<td>List of Object <code>{id: &lt;va_id&gt;, amount: &lt;amount&gt;, va_number: &lt;va_number&gt;, bank_code: &lt;bank_code&gt;, bank_name: &lt;bank_name&gt;, is_open: &lt;is_open&gt;, is_single_user: &lt;is_single_user&gt;, expiration_time: &lt;expiration_time&gt;, va_status: &lt;va_status&gt;, username_display: &lt;username_display&gt;, amount_detected: &lt;amount_detected&gt;, partner_user_id: &lt;partner_user_id&gt;, created: &lt;created&gt;, counter_incoming_payment: &lt;counter_incoming_payment&gt;, trx_counter: &lt;trx_counter&gt;, email: &lt;email&gt;, full_name: &lt;full_name&gt;}</code> If the user has never created a va, the data will be empty</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 </tbody></table>
@@ -7752,32 +7811,38 @@ GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Unique VA id</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>data</td>
 <td>Array of Object</td>
-<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;, va_history_id: &lt;va_history_id&gt;, settlement_time: &lt;settlement_time&gt;, settlement_status: &lt;settlement_status&gt;}</code></td>
+<td>TRUE</td>
+<td>List of Object <code>{id:  &lt;id&gt;, created: &lt;created&gt;, name: &lt;name&gt;, amount: &lt;amount&gt;, create_by: &lt;create_by&gt;, last_update_by: &lt;last_update_by&gt;, last_updated: &lt;last_updated&gt;, admin_fee: &lt;admin_fee&gt;, va_number: &lt;va_number&gt;, va_history_id: &lt;va_history_id&gt;, settlement_time: &lt;settlement_time&gt;, settlement_status: &lt;settlement_status&gt;}</code> If the user has never created a va, the data will be empty</td>
 </tr>
 <tr>
 <td>number_of_transaction</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Total transaction</td>
 </tr>
 <tr>
 <td>total_incoming_payment</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Total incoming payment</td>
 </tr>
 </tbody></table>
@@ -8071,63 +8136,75 @@ POST https://partner.oyindonesia.com/api/custom-va
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>id</td>
 <td>String(36)</td>
+<td>FALSE</td>
 <td>Unique VA ID</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Your unique ID for specific user</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in creation process</td>
 </tr>
 </tbody></table>
 <h2 id='update-customized-va-va-aggregator' type='normal'>Update Customized VA</h2>
@@ -8390,63 +8467,75 @@ PUT https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-212121
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>id</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Unique VA id</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Amount of VA transaction</td>
 </tr>
 <tr>
 <td>va_number</td>
 <td>String(20)</td>
+<td>FALSE</td>
 <td>Generated VA number</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td>String(3)</td>
+<td>FALSE</td>
 <td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a></td>
 </tr>
 <tr>
 <td>is_open</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount</td>
 </tr>
 <tr>
 <td>va_status</td>
 <td>String(16)</td>
+<td>FALSE</td>
 <td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a></td>
 </tr>
 <tr>
 <td>username_display</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customizable VA display name that will be seen by user, If empty willl be using partner username</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Partner unique ID for specific user</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td>Long</td>
+<td>FALSE</td>
 <td>Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>Partner unique Transaction ID of a VA</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in update request parameter</td>
 </tr>
 </tbody></table>
 <h2 id='deactivate-customized-va-va-aggregator' type='normal'>Deactivate Customized VA</h2>
@@ -8615,12 +8704,14 @@ DELETE https://partner.oyindonesia.com/api/custom-va/1414255-12121-21212121-2121
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 </tbody></table>
@@ -9471,38 +9562,45 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>true / false</td>
 </tr>
 <tr>
 <td>url</td>
 <td>String</td>
-<td>Payment link which used for payment</td>
+<td>TRUE</td>
+<td>Payment link which used for payment. Only filled if payment checkout successfully created.</td>
 </tr>
 <tr>
 <td>payment_link_id</td>
 <td>String</td>
-<td>A unique transaction ID provided by partner</td>
+<td>TRUE</td>
+<td>A unique transaction ID provided by partner. Only filled if payment checkout successfully created.</td>
 </tr>
 <tr>
 <td>child_balance</td>
 <td>String</td>
-<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in response.</td>
+<td>TRUE</td>
+<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in response. Only applicable for MAM transaction.</td>
 </tr>
 <tr>
 <td>message</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Message response</td>
 </tr>
 <tr>
 <td>email_status</td>
 <td>String</td>
-<td>email status</td>
+<td>TRUE</td>
+<td>email status. Only filled if payment checkout successfully created.</td>
 </tr>
 </tbody></table>
 <h2 id='api-create-invoicing-fund-acceptance' type='normal'>API Create (Invoicing)</h2>
@@ -9935,33 +10033,39 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>true / false</td>
 </tr>
 <tr>
 <td>url</td>
 <td>String</td>
-<td>Payment link which used for payment</td>
+<td>TRUE</td>
+<td>Payment link which used for payment. Only filled if payment checkout successfully created.</td>
 </tr>
 <tr>
 <td>message</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Message response</td>
 </tr>
 <tr>
 <td>payment_link_id</td>
 <td>String</td>
-<td>A unique payment link transaction ID</td>
+<td>TRUE</td>
+<td>A unique payment link transaction ID. Only filled if payment checkout successfully created.</td>
 </tr>
 <tr>
 <td>email_status</td>
 <td>String</td>
-<td>email status</td>
+<td>TRUE</td>
+<td>email status. Only filled if payment checkout successfully created.</td>
 </tr>
 </tbody></table>
 <h2 id='api-create-recurring-invoice-coming-soon-fund-acceptance' type='normal'>API Create (Recurring Invoice) (Coming soon)</h2>
@@ -10065,123 +10169,147 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>partner_tx_id</td>
 <td>String</td>
-<td>A unique transaction ID provided by partner</td>
+<td>FALSE</td>
+<td>A unique transaction ID provided by partner.</td>
 </tr>
 <tr>
 <td>child_balance</td>
 <td>String</td>
-<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback</td>
+<td>TRUE</td>
+<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback.</td>
 </tr>
 <tr>
 <td>tx_ref_number</td>
 <td>String</td>
-<td>OY&#39;s internal unique transaction ID</td>
+<td>FALSE</td>
+<td>OY&#39;s internal unique transaction ID.</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
-<td>The amount of a transaction that is paid</td>
+<td>FALSE</td>
+<td>The amount of a transaction that is paid.</td>
 </tr>
 <tr>
 <td>sender_name</td>
 <td>String</td>
-<td>Name of a payer for a transaction</td>
+<td>FALSE</td>
+<td>Name of a payer for a transaction.</td>
 </tr>
 <tr>
 <td>sender_phone</td>
 <td>String</td>
-<td>Phone number of a payer for a transaction</td>
+<td>TRUE</td>
+<td>Phone number of a payer for a transaction. This parameter will only be sent if end user fill the data.</td>
 </tr>
 <tr>
 <td>sender_note</td>
 <td>String</td>
-<td>Additional notes from a payer for a transaction</td>
+<td>TRUE</td>
+<td>Additional notes from a payer for a transaction. This parameter will only be sent if end user fill the data.</td>
 </tr>
 <tr>
 <td>status</td>
 <td>String</td>
-<td>The status of a transaction (e.g. success/failed/processing)</td>
+<td>FALSE</td>
+<td>The status of a transaction (e.g. success/failed/processing).</td>
 </tr>
 <tr>
 <td>sender_bank</td>
 <td>String</td>
-<td>The bank code used by a payer to do payment</td>
+<td>FALSE</td>
+<td>The bank code used by a payer to do payment.</td>
 </tr>
 <tr>
 <td>payment_method</td>
 <td>String</td>
+<td>FALSE</td>
 <td>The payment method used by user to complete a payment.</td>
 </tr>
 <tr>
 <td>settlement_type</td>
 <td>String</td>
-<td>Indicate if a transaction will be settled in realtime/non-realtime</td>
+<td>FALSE</td>
+<td>Indicate if a transaction will be settled in realtime/non-realtime.</td>
 </tr>
 <tr>
 <td>created</td>
 <td>DateTime</td>
-<td>The timestamp which indicates the creation time of a payment link</td>
+<td>FALSE</td>
+<td>The timestamp which indicates the creation time of a payment link.</td>
 </tr>
 <tr>
 <td>updated</td>
 <td>DateTime</td>
-<td>The timestamp which indicates the latest updated time of a payment link due to status update</td>
+<td>FALSE</td>
+<td>The timestamp which indicates the latest updated time of a payment link due to status update.</td>
 </tr>
 <tr>
 <td>payment_received_time</td>
 <td>DateTime</td>
+<td>TRUE</td>
 <td>Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>is_invoice</td>
 <td>Boolean</td>
-<td>The invoice which indicates the transaction is invoice or not</td>
+<td>FALSE</td>
+<td>The invoice which indicates the transaction is invoice or not.</td>
 </tr>
 <tr>
 <td>description</td>
 <td>String</td>
+<td>FALSE</td>
 <td>The description of the payment link/invoice link.</td>
 </tr>
 <tr>
 <td>payment_reference_number</td>
 <td>String</td>
-<td>Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS</td>
+<td>TRUE</td>
+<td>Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS.</td>
 </tr>
 <tr>
 <td>expiration</td>
 <td>DateTime</td>
-<td>The expiration time of the payment link/invoice link</td>
+<td>FALSE</td>
+<td>The expiration time of the payment link/invoice link.</td>
 </tr>
 <tr>
 <td>due_date</td>
 <td>DateTime</td>
-<td>The transaction due date of the payment link/invoice</td>
+<td>FALSE</td>
+<td>The transaction due date of the payment link/invoice.</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String</td>
-<td>The email addresses for the payment link/invoice link to be sent. You can add up to 3 emails separated by &quot;;&quot;</td>
+<td>FALSE</td>
+<td>The email addresses for the payment link/invoice link to be sent. You can add up to 3 emails separated by &quot;;&quot;.</td>
 </tr>
 <tr>
 <td>paid_amount</td>
 <td>BigDecimal</td>
-<td>The total amount that a user has paid</td>
+<td>FALSE</td>
+<td>The total amount that a user has paid.</td>
 </tr>
 <tr>
 <td>settlement_time</td>
 <td>DateTime</td>
-<td>The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement</td>
+<td>TRUE</td>
+<td>The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement. This parameter will only be sent once status of the payment link is set to &#39;COMPLETE&#39;.</td>
 </tr>
 <tr>
 <td>settlement_status</td>
 <td>String</td>
-<td>Status of the settlement (e.g. success/waiting)</td>
+<td>TRUE</td>
+<td>Status of the settlement (e.g. success/waiting). This parameter will only be sent once status of the payment link is set to &#39;COMPLETE&#39;.</td>
 </tr>
 </tbody></table>
 
@@ -10191,17 +10319,20 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>invoice_ID</td>
 <td>String</td>
+<td>FALSE</td>
 <td>The invoice id.</td>
 </tr>
 <tr>
 <td>full_name</td>
 <td>String</td>
+<td>FALSE</td>
 <td>The full name.</td>
 </tr>
 </tbody></table>
@@ -10454,123 +10585,147 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>partner_tx_id</td>
 <td>String</td>
-<td>A unique transaction ID provided by partner</td>
+<td>FALSE</td>
+<td>A unique transaction ID provided by partner.</td>
 </tr>
 <tr>
 <td>child_balance</td>
 <td>String</td>
-<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request Create Payment Link, we will not pass this parameter in the response</td>
+<td>FALSE</td>
+<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request Create Payment Link, we will not pass this parameter in the response.</td>
 </tr>
 <tr>
 <td>tx_ref_number</td>
 <td>String</td>
-<td>OY&#39;s internal unique transaction ID</td>
+<td>FALSE</td>
+<td>OY&#39;s internal unique transaction ID.</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
-<td>The amount of a transaction that is paid</td>
+<td>FALSE</td>
+<td>The amount of a transaction that is paid.</td>
 </tr>
 <tr>
 <td>sender_name</td>
 <td>String</td>
-<td>Name of a payer for a transaction</td>
+<td>FALSE</td>
+<td>Name of a payer for a transaction.</td>
 </tr>
 <tr>
 <td>sender_phone</td>
 <td>String</td>
-<td>Phone number of a payer for a transaction</td>
+<td>FALSE</td>
+<td>Phone number of a payer for a transaction.</td>
 </tr>
 <tr>
 <td>sender_note</td>
 <td>String</td>
-<td>Additional notes from a payer for a transaction</td>
+<td>FALSE</td>
+<td>Additional notes from a payer for a transaction.</td>
 </tr>
 <tr>
 <td>status</td>
 <td>String</td>
-<td>The status of a payment link</td>
+<td>FALSE</td>
+<td>The status of a payment link.</td>
 </tr>
 <tr>
 <td>payment_received_time</td>
 <td>String</td>
+<td>TRUE</td>
 <td>Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>settlement_type</td>
 <td>String</td>
-<td>Indicate if a transaction will be settled in realtime/non-realtime</td>
+<td>FALSE</td>
+<td>Indicate if a transaction will be settled in realtime/non-realtime.</td>
 </tr>
 <tr>
 <td>sender_bank</td>
 <td>String</td>
-<td>The bank code used by a payer to do payment</td>
+<td>FALSE</td>
+<td>The bank code used by a payer to do payment.</td>
 </tr>
 <tr>
 <td>payment_method</td>
 <td>String</td>
-<td>The payment method used in a transaction. Choices are: CC (Cards), QRIS, EWALLET (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code)</td>
+<td>FALSE</td>
+<td>The payment method used in a transaction. Choices are: CC (Cards), QRIS, EWALLET (shopeepay_ewallet, dana_ewallet, linkaja_ewallet, ovo_ewallet), VA (Virtual Account), or BANK_TRANSFER (Unique Code).</td>
 </tr>
 <tr>
 <td>created</td>
 <td>String</td>
-<td>The timestamp which indicates the creation time of a payment link</td>
+<td>FALSE</td>
+<td>The timestamp which indicates the creation time of a payment link.</td>
 </tr>
 <tr>
 <td>description</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Description of the payment link.</td>
 </tr>
 <tr>
 <td>payment_reference_number</td>
 <td>String</td>
-<td>Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS</td>
+<td>FALSE</td>
+<td>Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS.</td>
 </tr>
 <tr>
 <td>paid_amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>the total amount that a user has paid.</td>
 </tr>
 <tr>
 <td>expiration</td>
 <td>String</td>
-<td>To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss)</td>
+<td>FALSE</td>
+<td>To set the expiration of the payment link (yyyy-MM-dd HH:mm:ss).</td>
 </tr>
 <tr>
 <td>due_date</td>
 <td>String</td>
-<td>To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss)</td>
+<td>FALSE</td>
+<td>To set the transaction due date of the payment (yyyy-MM-dd HH:mm:ss).</td>
 </tr>
 <tr>
 <td>is_invoice</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>The invoice which indicates the transaction is invoice or not.</td>
 </tr>
 <tr>
 <td>updated</td>
 <td>String</td>
-<td>The timestamp which indicates the latest updated time of a payment link due to status update</td>
+<td>FALSE</td>
+<td>The timestamp which indicates the latest updated time of a payment link due to status update.</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String</td>
-<td>The email addresses where the payment link will be sent to. You can add up to 3 emails separated by &quot;;&quot;</td>
+<td>FALSE</td>
+<td>The email addresses where the payment link will be sent to. You can add up to 3 emails separated by &quot;;&quot;.</td>
 </tr>
 <tr>
 <td>settlement_time</td>
 <td>String</td>
-<td>The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)</td>
+<td>FALSE</td>
+<td>The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>settlement_status</td>
 <td>String</td>
-<td>The status of the settlement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’)</td>
+<td>FALSE</td>
+<td>The status of the settlement (this parameter will only be sent once status of the payment link is set to ‘COMPLETE’).</td>
 </tr>
 </tbody></table>
 <h2 id='api-delete-fund-acceptance' type='normal'>API Delete</h2>
@@ -10723,23 +10878,27 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <tr>
 <th>Parameters</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Boolean</td>
-<td>TRUE if delete is successful and FALSE otherwise</td>
+<td>FALSE</td>
+<td>TRUE if delete is successful and FALSE otherwise.</td>
 </tr>
 <tr>
 <td>message</td>
 <td>String</td>
-<td>Return message</td>
+<td>FALSE</td>
+<td>Return message.</td>
 </tr>
 <tr>
 <td>child_balance</td>
 <td>String</td>
-<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback</td>
+<td>TRUE</td>
+<td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback.</td>
 </tr>
 </tbody></table>
 <h3 id='return-message-api-delete' type='normal'>Return Message</h3>
@@ -10961,6 +11120,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <tr>
 <th>Parameters</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 <th>Example Value</th>
 </tr>
@@ -10968,126 +11128,147 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <tr>
 <td>partnerTxId</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Partner Tx Id</td>
 <td>abc123</td>
 </tr>
 <tr>
 <td>child_balance</td>
 <td>String</td>
+<td>TRUE</td>
 <td>Applicable for MAM transaction. To be filled with the username of child account. If you do not pass the parameter in request, we will not pass this parameter in Callback</td>
 <td>child123</td>
 </tr>
 <tr>
 <td>paymentLinkId</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Link Id</td>
 <td>35281815-4784-4f55-9a61-090f5c17a191</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Payment Amount</td>
 <td>30000</td>
 </tr>
 <tr>
 <td>username</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Partner Username</td>
 <td>johndoe</td>
 </tr>
 <tr>
 <td>senderName</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Sender Name</td>
 <td>Budi</td>
 </tr>
 <tr>
 <td>senderPhoneNumber</td>
 <td>String</td>
-<td>Payment Sender Phone Number</td>
+<td>TRUE</td>
+<td>Payment Sender Phone Number. This parameter will only be sent if end user fill the data</td>
 <td>081234567890</td>
 </tr>
 <tr>
 <td>senderNotes</td>
 <td>String</td>
-<td>Payment Notes / Subject</td>
+<td>TRUE</td>
+<td>Payment Notes / Subject. This parameter will only be sent if end user fill the data</td>
 <td>Cicilan Mobil - 5</td>
 </tr>
 <tr>
 <td>status</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Status</td>
 <td>COMPLETE</td>
 </tr>
 <tr>
 <td>txRefNumber</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Transaction Reference Number</td>
 <td>GTY67JJU</td>
 </tr>
 <tr>
 <td>description</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Description</td>
 <td>Tagihan Cicilan Mobil</td>
 </tr>
 <tr>
 <td>isOpen</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>Payment Editable Amount Capability</td>
 <td>true</td>
 </tr>
 <tr>
 <td>notes</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Notes / Subject</td>
 <td>Cicilan Mobil - 5</td>
 </tr>
 <tr>
 <td>email</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Sender Email(s).You can add up to 3 emails separated by &quot;;&quot;</td>
 <td>johndoe@gmail.com;jane@gmail.com</td>
 </tr>
 <tr>
 <td>senderPhoneNumber</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Sender Phone Number</td>
 <td>081234567890</td>
 </tr>
 <tr>
 <td>includeAdminFee</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>Admin fee bills destination between partner or user</td>
 <td>true</td>
 </tr>
 <tr>
 <td>listDisabledPaymentMethods</td>
 <td>String</td>
+<td>FALSE</td>
 <td>List Of Disable Payment Method.</td>
 <td></td>
 </tr>
 <tr>
 <td>listEnabledBanks</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Method List Enable Bank for VA or Unique Code Payment Method</td>
 <td>002,008</td>
 </tr>
 <tr>
 <td>expirationTime</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Payment Expiration Date and Time</td>
 <td>&quot;2020-08-12 00:00:00&quot;</td>
 </tr>
 <tr>
 <td>due_date</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Transaction Due Date</td>
 <td>&quot;2020-08-11 12:00:00&quot;</td>
 </tr>
 <tr>
 <td>invoiceData</td>
 <td>Invoice</td>
+<td>TRUE</td>
 <td>Data For Invoice Payment will be null</td>
 <td>CREDIT_CARD)**</td>
 </tr>
@@ -18042,52 +18223,62 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. See table &quot;Response Code&quot; for more details</td>
 </tr>
 <tr>
 <td>ewallet_trx_status</td>
 <td>String(20)</td>
+<td>TRUE</td>
 <td>Always filled with WAITING_PAYMENT if a transaction is successfully created</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>Filled with a unique transaction identifier from OY</td>
 </tr>
 <tr>
 <td>ref_number</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>Filled with a unique transaction identifier from OY, can also be used to mock callback in staging environment</td>
 </tr>
 <tr>
 <td>customer_id</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>ID generated by Partner for a specific user/customer</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>ID generated by Partner for a specific transaction</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>Transaction amount</td>
 </tr>
 <tr>
 <td>ewallet_code</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>The ewallet issuer that the customer will use to pay. Refer to this for the list of available ewallet codes</td>
 </tr>
 <tr>
 <td>ewallet_url</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>EWallet URL generated by the the e-wallet issuers to be used for payment purposes</td>
 </tr>
 </tbody></table>
@@ -18122,62 +18313,74 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>success</td>
 <td>boolean</td>
+<td>FALSE</td>
 <td>The status of the payment and it is always set to to true</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>ID generated by Partner for a specific transaction</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Filled with a unique transaction identifier from OY</td>
 </tr>
 <tr>
 <td>ref_number</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Filled with a unique transaction identifier from OY, can also be used to mock callback in staging environment</td>
 </tr>
 <tr>
 <td>customer_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>ID generated by Partner for a specific user/customer</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Transaction amount</td>
 </tr>
 <tr>
 <td>ewallet_code</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>The ewallet issuer that the customer used to pay. Refer to this for the list of available ewallet codes</td>
 </tr>
 <tr>
 <td>mobile_number</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Customer mobile number</td>
 </tr>
 <tr>
 <td>success_redirect_url</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Indicates the URL of your environment (to redirect the customers back once payment has been  completed in e-wallet issuers.)</td>
 </tr>
 <tr>
 <td>settlement_time</td>
 <td>Timestamp</td>
+<td>FALSE</td>
 <td>The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement, format <code>dd/MM/yyyy&#39;T&#39;HH:mm:ss.SSSZZZZ</code></td>
 </tr>
 <tr>
 <td>settlement_status</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Status of the settlement (e.g. success/waiting)</td>
 </tr>
 </tbody></table>
@@ -18393,53 +18596,63 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code></td>
 </tr>
 <tr>
 <td>ewallet_trx_status</td>
 <td>String(20)</td>
-<td>Current transaction status, refer to &quot;E-Wallet Transaction Status&quot; for more details</td>
+<td>TRUE</td>
+<td>Current transaction status, refer to &quot;E-Wallet Transaction Status&quot; for more details. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td>String(255)</td>
-<td>Filled with a unique transaction identifier from OY</td>
+<td>TRUE</td>
+<td>Filled with a unique transaction identifier from OY. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>customer_id</td>
 <td>String(255)</td>
-<td>ID generated by Partner for a specific user/customer</td>
+<td>TRUE</td>
+<td>ID generated by Partner for a specific user/customer. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>ID generated by Partner for a specific transaction</td>
+<td>TRUE</td>
+<td>ID generated by Partner for a specific transaction. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Transaction Amount</td>
 </tr>
 <tr>
 <td>ewallet_code</td>
 <td>String(255)</td>
-<td>The ewallet issuer that the customer will use to pay.</td>
+<td>TRUE</td>
+<td>The ewallet issuer that the customer will use to pay. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>ewallet_url</td>
 <td>String(255)</td>
-<td>EWallet URL passed from the e-wallet issuers to be used for payment purposes</td>
+<td>TRUE</td>
+<td>EWallet URL passed from the e-wallet issuers to be used for payment purposes. Empty for all ovo transaction. Also empty for other ewallet if request is failed.</td>
 </tr>
 <tr>
 <td>reason</td>
 <td>String(255)</td>
-<td>Reason for the status given</td>
+<td>TRUE</td>
+<td>Reason for the status given. Will not be sent if request is failed.</td>
 </tr>
 </tbody></table>
 <h2 id='refund-e-wallet-transaction-api-e-wallet-aggregator' type='normal'>Refund E-Wallet Transaction</h2>
@@ -18663,38 +18876,45 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. See table &quot;Response Code&quot; for more details</td>
 </tr>
 <tr>
 <td>refund_id</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>Filled with a unique refund identifier from OY. You will get refund ID if your request is successfully passed to e-wallet vendor. This can be used as a request parameter to call get refund status API</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td>String(255)</td>
-<td>Filled with a unique transaction identifier from OY</td>
+<td>TRUE</td>
+<td>Filled with a unique transaction identifier from OY. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td>String(255)</td>
-<td>ID generated by Partner for a specific transaction</td>
+<td>TRUE</td>
+<td>ID generated by Partner for a specific transaction. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>refund_amount</td>
 <td>BigDecimal</td>
-<td>Requested refund amount</td>
+<td>TRUE</td>
+<td>Requested refund amount. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>refund_status</td>
 <td>String(255)</td>
-<td>Filled with status of refund request, refer to &quot;E-Wallet Refund Status&quot; for more details</td>
+<td>TRUE</td>
+<td>Filled with status of refund request, refer to &quot;E-Wallet Refund Status&quot; for more details. Will not be sent if request is failed.</td>
 </tr>
 </tbody></table>
 <h2 id='e-wallet-refund-callback-api-e-wallet-aggregator' type='normal'>E-Wallet Refund Callback</h2>
@@ -18716,27 +18936,32 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>success</td>
 <td>boolean</td>
+<td>FALSE</td>
 <td>Filled with true if refund is successfully processed by e-wallet vendor, and false if otherwise</td>
 </tr>
 <tr>
 <td>refund_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Filled with a unique refund identifier from OY</td>
 </tr>
 <tr>
 <td>refund_status</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>Status of refund request, refer to &quot;E-Wallet Refund Status&quot; for more details</td>
 </tr>
 <tr>
 <td>refund_amount</td>
 <td>BigDecimal</td>
+<td>FALSE</td>
 <td>Requested refund amount</td>
 </tr>
 </tbody></table>
@@ -18927,28 +19152,33 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. See table &quot;Response Code&quot; for more details</td>
 </tr>
 <tr>
 <td>refund_id</td>
 <td>String(255)</td>
-<td>Requested e-wallet refund ID</td>
+<td>TRUE</td>
+<td>Requested e-wallet refund ID. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>refund_status</td>
 <td>String(255)</td>
-<td>Status of refund request, refer to &quot;E-Wallet Refund Status&quot; for more details</td>
+<td>TRUE</td>
+<td>Status of refund request, refer to &quot;E-Wallet Refund Status&quot; for more details. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>refund_amount</td>
 <td>BigDecimal</td>
-<td>Requested refund amount</td>
+<td>TRUE</td>
+<td>Requested refund amount. Will not be sent if request is failed.</td>
 </tr>
 </tbody></table>
 <h2 id='get-list-of-e-wallet-refund-api-e-wallet-aggregator' type='normal'>Get List of E-Wallet Refund</h2><h3 id='https-request-get-list-of-e-wallet-refund' type='normal'>HTTPS Request</h3>
@@ -19148,23 +19378,27 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>. See table &quot;Response Code&quot; for more details</td>
 </tr>
 <tr>
 <td>total</td>
 <td>Integer</td>
-<td>Total items</td>
+<td>TRUE</td>
+<td>Total items. Will not be sent if request is failed.</td>
 </tr>
 <tr>
 <td>data</td>
 <td>Array of object</td>
-<td>List of Object <code>{refund_id: &lt;refund_id&gt;, refund_status: &lt;refund_status&gt;, refund_amount: &lt;refund_amount&gt;}</code></td>
+<td>TRUE</td>
+<td>List of Object <code>{refund_id: &lt;refund_id&gt;, refund_status: &lt;refund_status&gt;, refund_amount: &lt;refund_amount&gt;}</code> Will not be sent if request is failed.</td>
 </tr>
 </tbody></table>
 <h2 id='e-wallet-details-api-e-wallet-aggregator' type='normal'>E-Wallet Details</h2>
@@ -19814,102 +20048,122 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <tr>
 <th>Parameter</th>
 <th style="text-align: center">Type</th>
+<th>Nullable</th>
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td style="text-align: center">Object</td>
+<td>FALSE</td>
 <td style="text-align: center">Status of response in Object</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Payment Routing ID defined by OY!</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Partner user ID that you defined in the request parameter</td>
+<td>TRUE</td>
+<td style="text-align: center">Partner user ID that you defined in the request parameter. Only available for reusable VA or direct payment</td>
 </tr>
 <tr>
 <td>use_linked_account</td>
 <td style="text-align: center">Boolean</td>
+<td>FALSE</td>
 <td style="text-align: center">Applicable for EWallet with <code>need_frontend: false</code>. If <code>true</code>, the transaction created is an EWallet Direct Payment transaction (ShopeePay only). Else, it is a regular EWallet transaction.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Partner transaction ID that you defined in the request parameter</td>
 </tr>
 <tr>
 <td>receive_amount</td>
 <td style="text-align: center">Numeric</td>
+<td>FALSE</td>
 <td style="text-align: center">amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td style="text-align: center">Date string; yyyy-MM-dd HH:mm:ss format</td>
+<td>FALSE</td>
 <td style="text-align: center">Transaction Expiration Time</td>
 </tr>
 <tr>
 <td>payment_method</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">Only exist if request need_frontend is FALSE. The payment method used by user to complete a payment. Refer to Payment Method on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
 </tr>
 <tr>
 <td>sender_bank</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">Only exist if request need_frontend is FALSE. The bank code used by a payer to do payment. Refer to SOF on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
 </tr>
 <tr>
 <td>payment_info</td>
 <td style="text-align: center">Object</td>
+<td>FALSE</td>
 <td style="text-align: center">Payment info object</td>
 </tr>
 <tr>
 <td>payment_checkout_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">generated url for payment link; conditional, only exist if request need_frontend is TRUE</td>
 </tr>
 <tr>
 <td>account_number</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>account_name</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">VA display name if you use VA or bank account&#39;s owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>bank_code</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">Bank code for the destination VA number or bank account; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>qris_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.</td>
 </tr>
 <tr>
 <td>ewallet_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">For <code>use_linked_account: true</code>: URL that prompt user to input PIN to authorize Direct Payment. For <code>use_linked_account: false</code>: A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
 </tr>
 <tr>
 <td>cards_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;CARDS&#39;.</td>
 </tr>
 <tr>
 <td>unique_code_detail</td>
 <td style="text-align: center">Object</td>
+<td>TRUE</td>
 <td style="text-align: center">Contains two objects of number: <code>amount</code> which is the requested amount and <code>unique_code</code> which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.</td>
 </tr>
 <tr>
 <td>full_name</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">If <code>full_name</code> is needed when creating the transaction, the inputted <code>full_name</code> value at creation will be shown here.</td>
 </tr>
 </tbody></table>
@@ -20354,177 +20608,212 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 <tr>
 <th>Parameter</th>
 <th style="text-align: center">Type</th>
+<th>Nullable</th>
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td style="text-align: center">Object</td>
+<td>FALSE</td>
 <td style="text-align: center">Status of response in Object</td>
 </tr>
 <tr>
 <td>trx_id</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">payment routing transaction id</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Partner user ID</td>
+<td>TRUE</td>
+<td style="text-align: center">Partner user ID. Only available for reusable VA or direct payment</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Partner transaction ID</td>
 </tr>
 <tr>
 <td>request_amount</td>
 <td style="text-align: center">Numeric</td>
+<td>FALSE</td>
 <td style="text-align: center">Amount requested to be paid by end user</td>
 </tr>
 <tr>
 <td>received_amount</td>
 <td style="text-align: center">Numeric</td>
+<td>FALSE</td>
 <td style="text-align: center">Amount received. If user has paid, then the amount will be equal to request_amount. If you use unique code BCA, this number will contain the amount received subtracted by 3 digits generated unique code.</td>
 </tr>
 <tr>
 <td>payment_status</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Receive money status</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td style="text-align: center">Timestamp</td>
+<td>FALSE</td>
 <td style="text-align: center">Transaction expiration time</td>
 </tr>
 <tr>
 <td>payment_received_time</td>
 <td style="text-align: center">Timestamp</td>
+<td>TRUE</td>
 <td style="text-align: center">Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>settlement_time</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>settlement_status</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>settlement_type</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>need_frontend</td>
 <td style="text-align: center">Boolean</td>
+<td>FALSE</td>
 <td style="text-align: center">Partner need UI or not, if true, we will route to payment link, otherwise will be routed to payment aggregator.</td>
 </tr>
 <tr>
 <td>payment_method</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">The payment method used by user to complete a payment. Refer to Payment Method on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
+<td>TRUE</td>
+<td style="text-align: center">The payment method used by user to complete a payment. Conditional, only exist if request need_frontend is FALSE. Refer to Payment Method on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
 </tr>
 <tr>
 <td>sender_bank</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">The bank code used by a payer to do payment. Refer to SOF on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
+<td>TRUE</td>
+<td style="text-align: center">The bank code used by a payer to do payment. Conditional, only exist if request need_frontend is FALSE. Refer to SOF on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
 </tr>
 <tr>
 <td>payment_info</td>
 <td style="text-align: center">Object</td>
+<td>FALSE</td>
 <td style="text-align: center">Payment info Object</td>
 </tr>
 <tr>
 <td>payment_checkout_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">generated url for payment link; conditional, only exist if request need_frontend is TRUE</td>
 </tr>
 <tr>
 <td>account_number</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>account_name</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">VA display name if you use VA or bank account&#39;s owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>qris_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.</td>
 </tr>
 <tr>
 <td>payment_reference_number</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS</td>
 </tr>
 <tr>
 <td>ewallet_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">For <code>use_linked_account: true</code>: URL that prompt user to input PIN to authorize Direct Payment. For <code>use_linked_account: false</code>: A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
 </tr>
 <tr>
 <td>cards_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;CARDS&#39;.</td>
 </tr>
 <tr>
 <td>unique_code_detail</td>
 <td style="text-align: center">Object</td>
+<td>TRUE</td>
 <td style="text-align: center">Contains two objects of number: <code>amount</code> which is the requested amount and <code>unique_code</code> which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.</td>
 </tr>
 <tr>
 <td>payment_routing</td>
 <td style="text-align: center">List of Object</td>
-<td style="text-align: center">List of payment routing recipients. See row belows</td>
+<td>TRUE</td>
+<td style="text-align: center">List of payment routing recipients. Only available if exist upon creation. See row belows</td>
 </tr>
 <tr>
 <td>recipient_bank</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Bank code of the recipient account</td>
 </tr>
 <tr>
 <td>recipient_account</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Recipient&#39;s account number</td>
 </tr>
 <tr>
 <td>recipient_account_name</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Recipient&#39;s bank account name</td>
 </tr>
 <tr>
 <td>recipient_amount</td>
 <td style="text-align: center">Numeric</td>
+<td>FALSE</td>
 <td style="text-align: center">The amount of transaction to be disbursed</td>
 </tr>
 <tr>
 <td>recipient_email</td>
 <td style="text-align: center">String; e-mail format</td>
-<td style="text-align: center">Email for disbursement notification, email can be up to 5, seperated by a whitespace</td>
+<td>TRUE</td>
+<td style="text-align: center">Email for disbursement notification, email can be up to 5, seperated by a whitespace. Only available if exist upon creation</td>
 </tr>
 <tr>
 <td>disbursement_trx_id</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Disbursement transaction id</td>
 </tr>
 <tr>
 <td>disbursement_trx_notes</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Disbursement Transaction notes</td>
+<td>TRUE</td>
+<td style="text-align: center">Disbursement Transaction notes. Only available if exist upon creation</td>
 </tr>
 <tr>
 <td>disbursement_trx_status</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Disbursement transaction status. See List of Disbursement Status below</td>
 </tr>
 <tr>
 <td>email_status</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Email sending status; Possible status:- SENT- UNSENT</td>
 </tr>
 </tbody></table>
@@ -20719,172 +21008,206 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <tr>
 <th>Parameter</th>
 <th style="text-align: center">Type</th>
+<th>Nullable</th>
 <th style="text-align: center">Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>trx_id</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">payment routing transaction id</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Partner user ID</td>
+<td>TRUE</td>
+<td style="text-align: center">Partner user ID. Only available for reusable VA or direct payment</td>
 </tr>
 <tr>
 <td>use_linked_account</td>
 <td style="text-align: center">Boolean</td>
+<td>FALSE</td>
 <td style="text-align: center">Applicable for EWallet with <code>need_frontend: false</code>. If <code>true</code>, the transaction created is an EWallet Direct Payment transaction. Else, it is a regular EWallet transaction.</td>
 </tr>
 <tr>
 <td>partner_trx_id</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Partner transaction ID</td>
 </tr>
 <tr>
 <td>receive_amount</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.</td>
 </tr>
 <tr>
 <td>payment_status</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Receive money status</td>
 </tr>
 <tr>
 <td>trx_expiration_time</td>
 <td style="text-align: center">Timestamp</td>
+<td>FALSE</td>
 <td style="text-align: center">Transaction expiration time</td>
 </tr>
 <tr>
 <td>need_frontend</td>
 <td style="text-align: center">Boolean</td>
+<td>FALSE</td>
 <td style="text-align: center">Partner need UI or not, if true, we will route to payment link, otherwise will be routed to payment aggregator.</td>
 </tr>
 <tr>
 <td>payment_received_time</td>
 <td style="text-align: center">Timestamp</td>
+<td>FALSE</td>
 <td style="text-align: center">Indicates the time when payment routing is marked as COMPLETE (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>settlement_time</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">The timestamp (in UTC+7) indicating when the fund will be settled to partner’s account statement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>settlement_status</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>settlement_type</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).</td>
 </tr>
 <tr>
 <td>payment_method</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">The payment method used by user to complete a payment. Refer to Payment Method on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
+<td>TRUE</td>
+<td style="text-align: center">The payment method used by user to complete a payment. Conditional, only exist if request need_frontend is FALSE. Refer to Payment Method on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
 </tr>
 <tr>
 <td>sender_bank</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">The bank code used by a payer to do payment. Refer to SOF on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
+<td>TRUE</td>
+<td style="text-align: center">The bank code used by a payer to do payment. Conditional, only exist if request need_frontend is FALSE. Refer to SOF on <a href="#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing">List of Allowed Payment Methods and SOF</a></td>
 </tr>
 <tr>
 <td>payment_info</td>
 <td style="text-align: center">Object</td>
+<td>FALSE</td>
 <td style="text-align: center">Payment info Object</td>
 </tr>
 <tr>
 <td>payment_checkout_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">generated url for payment link; conditional, only exist if request need_frontend is TRUE</td>
 </tr>
 <tr>
 <td>account_number</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>account_name</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">VA display name if you use VA or bank account&#39;s owner name if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER</td>
 </tr>
 <tr>
 <td>qris_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.</td>
 </tr>
 <tr>
 <td>payment_reference_number</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code. Available for: QRIS</td>
 </tr>
 <tr>
 <td>ewallet_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">For <code>use_linked_account: true</code>: URL that prompt user to input PIN to authorize Direct Payment. For <code>use_linked_account: false</code>: A deep link URL that allows user to access the specific e-wallet vendor&#39;s application for making a payment. Currently, only Linkaja, ShopeePay and Dana are supported options. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;EWALLET&#39;.</td>
 </tr>
 <tr>
 <td>cards_url</td>
 <td style="text-align: center">String</td>
+<td>TRUE</td>
 <td style="text-align: center">URL that allows user to make payment using their Credit Card. This attribute will only be present if the request parameter &#39;need_frontend&#39; is set to &#39;FALSE&#39; and the payment method selected is &#39;CARDS&#39;.</td>
 </tr>
 <tr>
 <td>unique_code_detail</td>
 <td style="text-align: center">Object</td>
+<td>TRUE</td>
 <td style="text-align: center">Contains two objects of number: amount which is the requested amount and unique_code which is the generated 3 digits unique code ; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER and you use unique code BCA.</td>
 </tr>
 <tr>
 <td>payment_routing</td>
 <td style="text-align: center">List of Object</td>
-<td style="text-align: center">List of payment routing recipients. See row belows</td>
+<td>TRUE</td>
+<td style="text-align: center">List of payment routing recipients. Only available if exist upon creation. See row belows</td>
 </tr>
 <tr>
 <td>recipient_bank</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Bank code of the recipient account</td>
 </tr>
 <tr>
 <td>recipient_account</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Recipient&#39;s account number</td>
 </tr>
 <tr>
 <td>recipient_account_name</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Recipient&#39;s bank account name</td>
 </tr>
 <tr>
 <td>recipient_amount</td>
 <td style="text-align: center">Numeric</td>
+<td>FALSE</td>
 <td style="text-align: center">The amount of transaction to be disbursed</td>
 </tr>
 <tr>
 <td>recipient_email</td>
 <td style="text-align: center">String; e-mail format</td>
-<td style="text-align: center">Email for disbursement notification, email can be up to 5, seperated by a whitespace</td>
+<td>TRUE</td>
+<td style="text-align: center">Email for disbursement notification, email can be up to 5, seperated by a whitespace. Only available if exist upon creation</td>
 </tr>
 <tr>
 <td>disbursement_trx_id</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Disbursement transaction id</td>
 </tr>
 <tr>
 <td>disbursement_trx_notes</td>
 <td style="text-align: center">String</td>
-<td style="text-align: center">Disbursement Transaction notes</td>
+<td>TRUE</td>
+<td style="text-align: center">Disbursement Transaction notes. Only available if exist upon creation</td>
 </tr>
 <tr>
 <td>disbursement_trx_status</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Disbursement transaction status. See List of Disbursement Status below</td>
 </tr>
 <tr>
 <td>email_status</td>
 <td style="text-align: center">String</td>
+<td>FALSE</td>
 <td style="text-align: center">Email sending status; Possible status:- SENT- UNSENT</td>
 </tr>
 </tbody></table>
@@ -24417,32 +24740,38 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>success</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>Will be <code>true</code> if the account linking process is successful and vice versa</td>
 </tr>
 <tr>
 <td>error</td>
 <td>Object</td>
-<td>Error detail of the account linking process in Object <code>{code: &lt;error_code&gt;, message: &lt;error_message&gt;}</code>.    This value is not null if the value of field <code>success</code> is <code>false</code></td>
+<td>TRUE</td>
+<td>Error detail of the account linking process in Object <code>{code: &lt;error_code&gt;, message: &lt;error_message&gt;}</code>. This value is not null if the value of field <code>success</code> is <code>false</code></td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object</td>
-<td>Account linking data, the detail will be explained in the next section</td>
+<td>TRUE</td>
+<td>Account linking data, the detail will be explained in the next section. This value is not null if the value of field success is false</td>
 </tr>
 <tr>
 <td>reason</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>Will be filled with error reason if the linking status is failed</td>
 </tr>
 <tr>
 <td>status_code</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Will be <code>200</code> if the account linking process is success and will be the same as error code if the linking process is failed</td>
 </tr>
 </tbody></table>
@@ -24708,32 +25037,38 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>success</td>
 <td>Boolean</td>
+<td>FALSE</td>
 <td>Will be <code>true</code> if the account linking process is successful and vice versa</td>
 </tr>
 <tr>
 <td>error</td>
 <td>Object</td>
-<td>Error detail of the account linking process in Object <code>{code: &lt;error_code&gt;, message: &lt;error_message&gt;}</code>.    This value is not null if the value of field <code>success</code> is <code>false</code></td>
+<td>TRUE</td>
+<td>Error detail of the account linking process in Object <code>{code: &lt;error_code&gt;, message: &lt;error_message&gt;}</code>. This value is not null if the value of field <code>success</code> is <code>false</code></td>
 </tr>
 <tr>
 <td>data</td>
 <td>Object</td>
-<td>Account linking data, the detail will be explained in the next section</td>
+<td>TRUE</td>
+<td>Account linking data, the detail will be explained in the next section. This value is not null if the value of field success is false</td>
 </tr>
 <tr>
 <td>reason</td>
 <td>String(255)</td>
+<td>TRUE</td>
 <td>Will be filled with error reason if the linking status is failed</td>
 </tr>
 <tr>
 <td>status_code</td>
 <td>Integer</td>
+<td>FALSE</td>
 <td>Will be <code>200</code> if the account linking process is success and will be the same as error code if the linking process is failed</td>
 </tr>
 </tbody></table>
@@ -24812,42 +25147,50 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>username</td>
 <td>String</td>
+<td>FALSE</td>
 <td>Partner username</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String</td>
+<td>FALSE</td>
 <td>ID generated by Partner for a specific user/customer</td>
 </tr>
 <tr>
 <td>payment_method</td>
 <td>String</td>
+<td>FALSE</td>
 <td>The payment method type that user want to linked to (Currently only support <code>EWALLET</code>. In the future we will have another payment method type, such as <code>CARDS</code>)</td>
 </tr>
 <tr>
 <td>channel_code</td>
 <td>String</td>
+<td>FALSE</td>
 <td>The payment channel type that user want to linked to (Currently support <code>dana_ewallet</code> and <code>shopeepay_ewallet</code>)</td>
 </tr>
 <tr>
 <td>phone_number</td>
 <td>String</td>
+<td>FALSE</td>
 <td>The user phone number (format 08xxxxxxxxxx)</td>
 </tr>
 <tr>
 <td>status</td>
 <td>String</td>
+<td>FALSE</td>
 <td>User&#39;s account linking status</td>
 </tr>
 <tr>
 <td>expiration_time</td>
 <td>String</td>
+<td>FALSE</td>
 <td>User&#39;s account linking expiration time (example: <code>01/02/2020T15:00:00.000+0000</code>)</td>
 </tr>
 </tbody></table>
@@ -25093,28 +25436,33 @@ Another value not following the format will be processed normally. The response 
 <tr>
 <th>Parameter</th>
 <th>Type</th>
+<th>Nullable</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>status</td>
 <td>Object</td>
+<td>FALSE</td>
 <td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>.</td>
 </tr>
 <tr>
 <td>partner_user_id</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>ID generated by Partner for a specific user/customer</td>
 </tr>
 <tr>
 <td>channel_code</td>
 <td>String(255)</td>
+<td>FALSE</td>
 <td>The payment channel type (Currently support <code>dana_ewallet</code> and <code>shopeepay_ewallet</code>)</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>BigDecimal</td>
-<td>User e-wallet balance amount</td>
+<td>TRUE</td>
+<td>User e-wallet balance amount. This value is not null if the value of field success is false</td>
 </tr>
 </tbody></table>
 <h2 id='response-codes-api-account-linking' type='normal'>Response Codes</h2>
