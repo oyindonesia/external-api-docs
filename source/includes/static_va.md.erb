@@ -519,7 +519,7 @@ counter_incoming_payment | Integer | FALSE | Count total incoming payment of VA
 trx_expiration_time | Long | FALSE | Transaction expiration time on Unix timestamp in milliseconds, -1 means no expiration time.
 partner_trx_id | String(255) | TRUE | Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in creation process
 trx_counter | Int | FALSE | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
-email | String(255) | TRUE | If `email` is inputted when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request.
+email | String(255) | TRUE | This parameter will only be sent if the value inputted in creation request.
 full_name | String(255) | TRUE | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.
 
 <aside class="warning">
@@ -804,7 +804,7 @@ trx_expiration_time | Long | FALSE | Transaction expiration time on Unix timesta
 partner_trx_id | String(255) | TRUE | Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in update request parameter.
 trx_counter | Int | FALSE | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
 counter_incoming_payment | Integer | FALSE | Count total incoming payment of VA
-email | String(255) | TRUE | If `email` is needed when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request.
+email | String(255) | TRUE | This parameter will only be sent if the value inputted in creation request.
 full_name | String(255) | TRUE | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.
 
 <aside class="warning">
