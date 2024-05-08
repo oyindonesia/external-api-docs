@@ -32,6 +32,8 @@ Response Code | Description
 202 | Request is Rejected (User ID is not active)
 202 | Request is Rejected (Multiple use VA is not allowed for use)
 202 | Request is Rejected (Custom VA is not allowed for use)
+990 | Request is Rejected (Field full_name and email is required)
+990 | Request is Rejected (Field full_name/email is invalid)
 990 | Request is Rejected (Invalid Format)
 
 Below is the list of HTTP Status Code for API VA Aggregator:
