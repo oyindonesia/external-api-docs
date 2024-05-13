@@ -305,7 +305,7 @@ Below is the list of Explanation for column state details that show on response 
 
 **Mock Data in Demo Environment**
 
-You can replicate final error response codes based on the Response Code by filling in the `recipient_account` value using value using this format: `<desired response code>0000`.
+You can replicate final error response codes based on the Response Code by filling in the `recipient_account` value using this format: `<desired response code>0000`.
 You can input 4 to 15 characters consisting only of the digit 0 at the end of the response code. Any value that doesn't follow this format will be processed normally.
 
 For example, if you want to get the `"Request is Rejected (Amount is not valid)”` error, you can trigger the response code `“210”` by formatting the recipient_account as `"2100000"`.
