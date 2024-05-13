@@ -303,14 +303,43 @@ Below is the list of Explanation for column state details that show on response 
 | Transaction Not Created | Transaction is not created in the OY! system due to not valid disbursement request. |
 
 
-**[Staging only]**
+**Mock Data in Demo Environment**
 
-You can replicate error response code (final) based on [Transaction Status](#transaction-status-api-create-disbursement-create-disbursement) and [Request Status](#request-status-api-create-disbursement-create-disbursement) by fill in `recipient_account` value using following format `<desired response code>0000`.
-Another value not following the format will be processed normally.
+You can replicate final error response codes based on the Response Code by filling in the `recipient_account` value using this format: `<desired response code>0000`.
+You can input 4 to 15 characters consisting only of the digit 0 at the end of the response code. Any value that doesn't follow this format will be processed normally.
 
-example:
+For example, if you want to get the `"Request is Rejected (Amount is not valid)”` error, you can trigger the response code `“210”` by formatting the recipient_account as `"2100000"`.
 
-a request with `"recipient_account": "2100000"` will return response with `"status": { "code": "210", message": "Request is Rejected (Amount is not valid)"}`
+> Request body mock data in demo environment:
+
+```json
+{
+  "recipient_bank": "014",
+  "recipient_account": "2100000",
+  "amount": 10000,
+  "note": "Test Expose Route",
+  "partner_trx_id": "TRX-20231211-007",
+  "email": "yono@oyindonesia.com"
+}
+```
+
+> Response body mock data in demo environment:
+
+```json
+{
+  "status": {
+      "code": "210",
+      "message": "Request is Rejected (Amount is not valid)"
+  },
+  "amount": 10000,
+  "recipient_bank": "014",
+  "recipient_account": "2100000",
+  "trx_id": "",
+  "partner_trx_id": "TRX-20231211-007",
+  "timestamp": "11-12-2023 05:06:16"
+}
+```
+
 
 ## Disbursement Callback
 
