@@ -4895,15 +4895,41 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<p><strong>[Staging only]</strong></p>
+<p><strong>Mock Data in Demo Environment</strong></p>
 
-<p>You can replicate error response code (final) based on <a href="#transaction-status-api-create-disbursement-create-disbursement">Transaction Status</a> and <a href="#request-status-api-create-disbursement-create-disbursement">Request Status</a> by fill in <code>recipient_account</code> value using following format <code>&lt;desired response code&gt;0000</code>.
-Another value not following the format will be processed normally.</p>
+<p>You can replicate final error response codes based on the Response Code by filling in the <code>recipient_account</code> value using this format: <code>&lt;desired response code&gt;0000</code>.
+You can input 4 to 15 characters consisting only of the digit 0 at the end of the response code. Any value that doesn&#39;t follow this format will be processed normally.</p>
 
-<p>example:</p>
+<p>For example, if you want to get the <code>&quot;Request is Rejected (Amount is not valid)”</code> error, you can trigger the response code <code>“210”</code> by formatting the recipient_account as <code>&quot;2100000&quot;</code>.</p>
 
-<p>a request with <code>&quot;recipient_account&quot;: &quot;2100000&quot;</code> will return response with <code>&quot;status&quot;: { &quot;code&quot;: &quot;210&quot;, message&quot;: &quot;Request is Rejected (Amount is not valid)&quot;}</code></p>
-<h2 id='disbursement-callback-fund-disbursement' type='normal'>Disbursement Callback</h2>
+<blockquote>
+<p>Request body mock data in demo environment:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2100000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Expose Route"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yono@oyindonesia.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body mock data in demo environment:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"210"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request is Rejected (Amount is not valid)"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2100000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:06:16"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='disbursement-callback-fund-disbursement' type='normal'>Disbursement Callback</h2>
 <blockquote>
 <p>Response callback:</p>
 </blockquote>
