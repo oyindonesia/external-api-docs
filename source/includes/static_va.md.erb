@@ -811,6 +811,239 @@ full_name | String(255) | TRUE | If `full_name` is needed when creating the tran
 Note: For Permata(013) and CIMB(022) VA (and Mandiri(008) for some user), the only operation permitted when updating VA is to deactivate it by setting trx_expiration_time as 0.
 </aside>
 
+## Deactivate VA
+
+To deactivate a VA number, use API Update VA with specific request parameter explained below.
+
+```shell
+curl -X \
+PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/1414255-12121-21212121-212121
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username: username' \
+-H 'x-api-key: apikey' \
+-d '{
+    "expiration_time": 0
+}'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+};
+var request = http.Request('PUT', Uri.parse('{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09'));
+request.body = json.encode({
+  "expiration_time": 0
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09"
+  method := "PUT"
+
+  payload := strings.NewReader(`{
+	"expiration_time": 0
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("X-Oy-Username", "{{username}}")
+  req.Header.Add("X-Api-Key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"amount\": 50000,\n\t\"is_single_use\": false,\n\t\"expiration_time\": 30,\n\t\"username_display\": "test",\n\t\"is_lifetime\": false,\n\t\"email\": "email@domain.com",\n\t\"trx_expiration_time\": 5,\n\t\"partner_trx_id\": \"TRX0002\",\n\t\"trx_counter\": 1\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09")
+  .method("PUT", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("X-Oy-Username", "{{username}}")
+  .addHeader("X-Api-Key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  "expiration_time": 0
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("PUT", "%7B%7Bbase_url%7D%7D/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("X-Oy-Username", "{{username}}");
+xhr.setRequestHeader("X-Api-Key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09');
+$request->setMethod(HTTP_Request2::METHOD_PUT);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'X-Oy-Username' => '{{username}}',
+  'X-Api-Key' => '{{api-key}}'
+));
+$request->setBody('{\n	"expiration_time": 0\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "expiration_time": 0
+})
+headers = {
+  'Content-Type': 'application/json',
+  'X-Oy-Username': '{{username}}',
+  'X-Api-Key': '{{api-key}}'
+}
+conn.request("PUT", "/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "id": "1414255-12121-21212121-212121",
+    "status": {
+        "code": "000",
+        "message": "Success"
+    },
+    "amount": 50000,
+    "va_number": "1001234000000000001",
+    "bank_code": "002",
+    "is_open": true,
+    "is_single_use": false,
+    "expiration_time": 0,
+    "va_status": "EXPIRED",
+    "username_display": "vaname",
+    "partner_user_id": "12345677",
+    "trx_expiration_time": 0,
+    "partner_trx_id": "TRX0002",
+    "trx_counter": 1,
+    "counter_incoming_payment" : 0
+}
+```
+
+### HTTPS Request
+**[Production]** `PUT <%= config[:endpoint_prod] %>/api/static-virtual-account/<ID>` <br/>
+**[Staging]** `PUT <%= config[:endpoint_stg] %>/api/static-virtual-account/<ID>`
+
+### URL Parameter
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+ID | String(36) | TRUE | - | Unique VA ID, you can get this once you success created VA
+
+### Request Parameters
+
+Parameter | Type | Required | Default | Description
+--------- | ---- | -------- | ------- | -----------
+expiration_time | Long | TRUE | - | To deactivate/cancel the VA, pass "0" in the expiration_time.
+
+### Response Parameters
+
+Parameter | Type | Nullable | Description
+--------- | ---- | -------- | -----------
+id | String | FALSE |  Unique VA id
+status | Object | FALSE | Status of response in Object `{code: <status_code>, message: <status_message>}`.
+amount | BigDecimal | FALSE | Amount of VA transaction.
+va_number | String(20) | FALSE | Generated VA number.
+bank_code | String(3) | FALSE | Bank code for VA, see [VA Bank Code](https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator).
+is_open | Boolean | FALSE | True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount.
+is_single_use | Boolean | FALSE | True means that this VA should be closed once there is a successful payment that is being made to this VA.
+expiration_time | Long | FALSE | Expiration time of VA on Unix timestamp in milliseconds.
+va_status | String(16) | FALSE | Status of VA, see [VA Status](https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator). For deactivation request, the va_status result should be `EXPIRED`.
+username_display | String(255) | FALSE | Customizable VA display name that will be seen by user, If empty willl be using partner username.
+partner_user_id | String(255) | FALSE | Partner unique ID for specific user.
+trx_expiration_time | Long | FALSE | Transaction expiration time on Unix timestamp in milliseconds.
+partner_trx_id | String(255) | TRUE | Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in update request parameter.
+trx_counter | Int | FALSE | Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.
+counter_incoming_payment | Integer | FALSE | Count total incoming payment of VA.
+email | String(255) | TRUE | This parameter will only be sent if the value inputted in creation request.
+full_name | String(255) | TRUE | If `full_name` is needed when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.
+
 ## Get list of created VA
 
 Get list of created VA
