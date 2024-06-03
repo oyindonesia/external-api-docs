@@ -929,6 +929,48 @@
                     </ul>
                   </li>
                   <li>
+                    <a href="#deactivate-va-va-aggregator" class="toc-h2 toc-link" data-title="Deactivate VA">
+                     <span class="toc-link-content">
+                        Deactivate VA
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#https-request-deactivate-va" class="toc-h3 toc-link" data-title="HTTPS Request">
+                            <span class="toc-link-content">
+                              HTTPS Request
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#url-parameter-deactivate-va" class="toc-h3 toc-link" data-title="URL Parameter">
+                            <span class="toc-link-content">
+                              URL Parameter
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#request-parameters-deactivate-va" class="toc-h3 toc-link" data-title="Request Parameters">
+                            <span class="toc-link-content">
+                              Request Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#response-parameters-deactivate-va" class="toc-h3 toc-link" data-title="Response Parameters">
+                            <span class="toc-link-content">
+                              Response Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+                  <li>
                     <a href="#get-list-of-created-va-va-aggregator" class="toc-h2 toc-link" data-title="Get list of created VA">
                      <span class="toc-link-content">
                         Get list of created VA
@@ -7388,6 +7430,329 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 <aside class="warning">
 Note: For Permata(013) and CIMB(022) VA (and Mandiri(008) for some user), the only operation permitted when updating VA is to deactivate it by setting trx_expiration_time as 0.
 </aside>
+<h2 id='deactivate-va-va-aggregator' type='normal'>Deactivate VA</h2>
+<p>To deactivate a VA number, use API Update VA with specific request parameter explained below.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
+PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-21212121-212121
+<span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-oy-username: username'</span> <span class="se">\</span>
+<span class="nt">-H</span> <span class="s1">'x-api-key: apikey'</span> <span class="se">\</span>
+<span class="nt">-d</span> <span class="s1">'{
+    "expiration_time": 0
+}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight dart tab-dart"><code><span class="kd">var</span> <span class="n">headers</span> <span class="o">=</span> <span class="o">{</span>
+  <span class="s">'Content-Type'</span><span class="o">:</span> <span class="s">'application/json'</span><span class="o">,</span>
+  <span class="s">'X-Oy-Username'</span><span class="o">:</span> <span class="s">'{{username}}'</span><span class="o">,</span>
+  <span class="s">'X-Api-Key'</span><span class="o">:</span> <span class="s">'{{api-key}}'</span>
+<span class="o">};</span>
+<span class="kd">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="na">Request</span><span class="o">(</span><span class="s">'PUT'</span><span class="o">,</span> <span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">'{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09'</span><span class="o">));</span>
+<span class="n">request</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="na">encode</span><span class="o">({</span>
+  <span class="s">"expiration_time"</span><span class="o">:</span> <span class="mi">0</span>
+<span class="o">});</span>
+<span class="n">request</span><span class="o">.</span><span class="na">headers</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">headers</span><span class="o">);</span>
+
+<span class="n">http</span><span class="o">.</span><span class="na">StreamedResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">send</span><span class="o">();</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">await</span> <span class="n">response</span><span class="o">.</span><span class="na">stream</span><span class="o">.</span><span class="na">bytesToString</span><span class="o">());</span>
+<span class="o">}</span>
+<span class="k">else</span> <span class="o">{</span>
+  <span class="n">print</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">reasonPhrase</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"fmt"</span>
+  <span class="s">"strings"</span>
+  <span class="s">"net/http"</span>
+  <span class="s">"io/ioutil"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">url</span> <span class="o">:=</span> <span class="s">"%7B%7Bbase_url%7D%7D/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09"</span>
+  <span class="n">method</span> <span class="o">:=</span> <span class="s">"PUT"</span>
+
+  <span class="n">payload</span> <span class="o">:=</span> <span class="n">strings</span><span class="o">.</span><span class="n">NewReader</span><span class="p">(</span><span class="s">`{
+    "expiration_time": 0
+}`</span><span class="p">)</span>
+
+  <span class="n">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Client</span> <span class="p">{</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewRequest</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"X-Oy-Username"</span><span class="p">,</span> <span class="s">"{{username}}"</span><span class="p">)</span>
+  <span class="n">req</span><span class="o">.</span><span class="n">Header</span><span class="o">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"X-Api-Key"</span><span class="p">,</span> <span class="s">"{{api-key}}"</span><span class="p">)</span>
+
+  <span class="n">res</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">Do</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="k">defer</span> <span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Close</span><span class="p">()</span>
+
+  <span class="n">body</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">ioutil</span><span class="o">.</span><span class="n">ReadAll</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">Body</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">return</span>
+  <span class="p">}</span>
+  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">body</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="nc">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OkHttpClient</span><span class="o">().</span><span class="na">newBuilder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="nc">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
+<span class="nc">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="nc">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"{\n\t\"amount\": 50000,\n\t\"is_single_use\": false,\n\t\"expiration_time\": 30,\n\t\"username_display\": "</span><span class="n">test</span><span class="s">",\n\t\"is_lifetime\": false,\n\t\"email\": "</span><span class="n">email</span><span class="nd">@domain</span><span class="o">.</span><span class="na">com</span><span class="s">",\n\t\"trx_expiration_time\": 5,\n\t\"partner_trx_id\": \"TRX0002\",\n\t\"trx_counter\": 1\n}"</span><span class="o">);</span>
+<span class="nc">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">method</span><span class="o">(</span><span class="s">"PUT"</span><span class="o">,</span> <span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"application/json"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"X-Oy-Username"</span><span class="o">,</span> <span class="s">"{{username}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"X-Api-Key"</span><span class="o">,</span> <span class="s">"{{api-key}}"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="nc">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+  <span class="dl">"</span><span class="s2">expiration_time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">readystatechange</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">PUT</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">%7B%7Bbase_url%7D%7D/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">Content-Type</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Oy-Username</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{username}}</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="dl">"</span><span class="s2">X-Api-Key</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">{{api-key}}</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+<span class="k">require_once</span> <span class="s1">'HTTP/Request2.php'</span><span class="p">;</span>
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HTTP_Request2</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setUrl</span><span class="p">(</span><span class="s1">'{{base_url}}/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setMethod</span><span class="p">(</span><span class="n">HTTP_Request2</span><span class="o">::</span><span class="no">METHOD_PUT</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setConfig</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'follow_redirects'</span> <span class="o">=&gt;</span> <span class="kc">TRUE</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setHeader</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'X-Oy-Username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
+  <span class="s1">'X-Api-Key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
+<span class="p">));</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n  "expiration_time": 0\n}'</span><span class="p">);</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getBody</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Unexpected HTTP status: '</span> <span class="mf">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="mf">.</span> <span class="s1">' '</span> <span class="mf">.</span>
+    <span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getReasonPhrase</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">catch</span><span class="p">(</span><span class="n">HTTP_Request2_Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="s1">'Error: '</span> <span class="mf">.</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="nf">getMessage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">client</span><span class="p">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s">"{{base_url}}"</span><span class="p">)</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span>
+  <span class="s">"expiration_time"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">})</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+  <span class="s">'X-Oy-Username'</span><span class="p">:</span> <span class="s">'{{username}}'</span><span class="p">,</span>
+  <span class="s">'X-Api-Key'</span><span class="p">:</span> <span class="s">'{{api-key}}'</span>
+<span class="p">}</span>
+<span class="n">conn</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="s">"/api/static-virtual-account/2701b82a-89f8-4343-81a2-fa0c92edca09"</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="p">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1414255-12121-21212121-212121"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"va_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1001234000000000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"is_single_use"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"va_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPIRED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username_display"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vaname"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345677"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_expiration_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX0002"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_counter"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"counter_incoming_payment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-deactivate-va' type='normal'>HTTPS Request</h3>
+<p><strong>[Production]</strong> <code>PUT https://partner.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code> <br/>
+<strong>[Staging]</strong> <code>PUT https://api-stg.oyindonesia.com/api/static-virtual-account/&lt;ID&gt;</code></p>
+<h3 id='url-parameter-deactivate-va' type='normal'>URL Parameter</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>String(36)</td>
+<td>TRUE</td>
+<td>-</td>
+<td>Unique VA ID, you can get this once you success created VA</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-deactivate-va' type='normal'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>expiration_time</td>
+<td>Long</td>
+<td>TRUE</td>
+<td>-</td>
+<td>To deactivate/cancel the VA, pass &quot;0&quot; in the expiration_time.</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-deactivate-va' type='normal'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>FALSE</td>
+<td>Unique VA id</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Object</td>
+<td>FALSE</td>
+<td>Status of response in Object <code>{code: &lt;status_code&gt;, message: &lt;status_message&gt;}</code>.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>FALSE</td>
+<td>Amount of VA transaction.</td>
+</tr>
+<tr>
+<td>va_number</td>
+<td>String(20)</td>
+<td>FALSE</td>
+<td>Generated VA number.</td>
+</tr>
+<tr>
+<td>bank_code</td>
+<td>String(3)</td>
+<td>FALSE</td>
+<td>Bank code for VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-bank-code-va-aggregator">VA Bank Code</a>.</td>
+</tr>
+<tr>
+<td>is_open</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>True means VA number can accept any amount, False means VA number only accept the specified amount in the field amount.</td>
+</tr>
+<tr>
+<td>is_single_use</td>
+<td>Boolean</td>
+<td>FALSE</td>
+<td>True means that this VA should be closed once there is a successful payment that is being made to this VA.</td>
+</tr>
+<tr>
+<td>expiration_time</td>
+<td>Long</td>
+<td>FALSE</td>
+<td>Expiration time of VA on Unix timestamp in milliseconds.</td>
+</tr>
+<tr>
+<td>va_status</td>
+<td>String(16)</td>
+<td>FALSE</td>
+<td>Status of VA, see <a href="https://api-docs.oyindonesia.com/#va-aggregator-status-va-aggregator">VA Status</a>. For deactivation request, the va_status result should be <code>EXPIRED</code>.</td>
+</tr>
+<tr>
+<td>username_display</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>Customizable VA display name that will be seen by user, If empty willl be using partner username.</td>
+</tr>
+<tr>
+<td>partner_user_id</td>
+<td>String(255)</td>
+<td>FALSE</td>
+<td>Partner unique ID for specific user.</td>
+</tr>
+<tr>
+<td>trx_expiration_time</td>
+<td>Long</td>
+<td>FALSE</td>
+<td>Transaction expiration time on Unix timestamp in milliseconds.</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>Partner unique Transaction ID of a VA. This parameter will only be sent if end user fill the data in update request parameter.</td>
+</tr>
+<tr>
+<td>trx_counter</td>
+<td>Int</td>
+<td>FALSE</td>
+<td>Transaction counter to limit number of transaction that can be receive by va number, if empty will be use default value -1 for multiple use va, and 1 for single use va. If counter reach zero, va cannot be inquiry or accept payment.</td>
+</tr>
+<tr>
+<td>counter_incoming_payment</td>
+<td>Integer</td>
+<td>FALSE</td>
+<td>Count total incoming payment of VA.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>This parameter will only be sent if the value inputted in creation request.</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>String(255)</td>
+<td>TRUE</td>
+<td>If <code>full_name</code> is needed when creating the transaction, the inputted value at creation will be shown here. This parameter will only be sent if the value inputted in creation request. Only some VA banks required this parameter.</td>
+</tr>
+</tbody></table>
 <h2 id='get-list-of-created-va-va-aggregator' type='normal'>Get list of created VA</h2>
 <p>Get list of created VA</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
