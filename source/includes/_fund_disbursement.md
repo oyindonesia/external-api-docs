@@ -217,20 +217,37 @@ data = res.read()
 print(data.decode("utf-8"))
 ```
 
-> The above command returns JSON structured similar like this:
+> Response for valid request (transaction will processed in the OY! system):
 
 ```json
 {
-  "status":{
-    "code":"101",
-    "message":"Request is Processed"
+  "status": {
+    "code": "101",
+    "message": "Request is Processed"
   },
-  "amount":125000,
-  "recipient_bank":"014",
-  "recipient_account":"1239812390",
-  "trx_id":"ABC-456",
-  "partner_trx_id":"1234-asdf",
-  "timestamp":"16-10-2019 10:23:42"
+  "amount": 10000,
+  "recipient_bank": "014",
+  "recipient_account": "12341234",
+  "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
+  "partner_trx_id": "TRX-20231211-007",
+  "timestamp": "11-12-2023 05:06:16"
+}
+```
+
+> Response for invalid request (transaction will rejected & not processed in the OY! system):
+
+```json
+{
+  "status": {
+    "code": "264",
+    "message": "The suggested routing from the client is not valid"
+  },
+  "amount": 10000,
+  "recipient_bank": "014",
+  "recipient_account": "12341234",
+  "trx_id": "",
+  "partner_trx_id": "TRX-20231211-007",
+  "timestamp": "11-12-2023 05:06:16"
 }
 ```
 
@@ -343,7 +360,7 @@ For example, if you want to get the `"Request is Rejected (Amount is not valid)â
 
 ## Disbursement Callback
 
-> Response callback:
+> Response for successful callback:
 
 ```json
 {
@@ -351,16 +368,37 @@ For example, if you want to get the `"Request is Rejected (Amount is not valid)â
     "code":"000",
     "message":"Success"
   },
-  "tx_status_description":"Force Credit",
-  "amount":125000,
+  "tx_status_description":"",
+  "amount":10000,
   "recipient_name":"John Doe",
-  "recipient_bank":"008",
-  "recipient_account":"1234567890",
-  "trx_id":"ABC-456",
-  "partner_trx_id":"1234-asde",
-  "timestamp":"16-10-2020 10:34:23",
-  "created_date": "24-01-2020 06:48:08",
-  "last_updated_date": "24-01-2020 06:48:39"
+  "recipient_bank":"014",
+  "recipient_account":"12341234",
+  "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
+  "partner_trx_id": "TRX-20231211-007",
+  "timestamp": "11-12-2023 05:07:20",
+  "created_date": "11-12-2023 05:06:20",
+  "last_updated_date": "11-12-2023 05:07:00"
+}
+```
+
+> Response for failed callback:
+
+```json
+{
+  "status":{
+    "code":"300",
+    "message":"Failed"
+  },
+  "tx_status_description":"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again",
+  "amount":10000,
+  "recipient_name":"John Doe",
+  "recipient_bank":"014",
+  "recipient_account":"12341234",
+  "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
+  "partner_trx_id": "TRX-20231211-007",
+  "timestamp": "11-12-2023 05:07:20",
+  "created_date": "11-12-2023 05:06:20",
+  "last_updated_date": "11-12-2023 05:07:00"
 }
 ```
 
@@ -571,7 +609,7 @@ data = res.read()
 print(data.decode("utf-8"))
 ```
 
-> The above command returns JSON structured similar like this:
+> Response for success transaction status:
 
 ```json
 {
@@ -579,16 +617,37 @@ print(data.decode("utf-8"))
     "code":"000",
     "message":"Success"
   },
-  "tx_status_description":"Force Credit",
-  "amount":125000,
+  "tx_status_description":"",
+  "amount":10000,
   "recipient_name":"John Doe",
-  "recipient_bank":"008",
-  "recipient_account":"1234567890",
-  "trx_id":"ABC-456",
-  "partner_trx_id":"1234-asde",
-  "timestamp":"16-10-2020 10:34:23",
-  "created_date": "24-01-2020 06:48:08",
-  "last_updated_date": "24-01-2020 06:48:39"
+  "recipient_bank":"014",
+  "recipient_account":"12341234",
+  "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
+  "partner_trx_id": "TRX-20231211-007",
+  "timestamp": "11-12-2023 05:07:20",
+  "created_date": "11-12-2023 05:06:20",
+  "last_updated_date": "11-12-2023 05:07:00"
+}
+```
+
+> Response for failed transaction status:
+
+```json
+{
+  "status":{
+    "code":"300",
+    "message":"Failed"
+  },
+  "tx_status_description":"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again",
+  "amount":10000,
+  "recipient_name":"John Doe",
+  "recipient_bank":"014",
+  "recipient_account":"12341234",
+  "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
+  "partner_trx_id": "TRX-20231211-007",
+  "timestamp": "11-12-2023 05:07:20",
+  "created_date": "11-12-2023 05:06:20",
+  "last_updated_date": "11-12-2023 05:07:00"
 }
 ```
 
