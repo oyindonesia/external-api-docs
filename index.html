@@ -20782,7 +20782,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </tr>
 </tbody></table>
 
-<p>If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative.  For other sof with BANK_TRANSFER payment method, you will be routed to use VA</p>
+<p>If you use BANK_TRANSFER payment method with BCA bank code (014) as SOF, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative. For other SOF with BANK_TRANSFER payment method, you will be routed to use VA.</p>
 <h4 id='if-need_frontend-false-list-of-allowed-payment-methods-and-sof' type='normal'>If need_frontend: false</h4>
 <p>The request should be filled only with 1 list_enable_payment_method and 1 list_enable_sof.</p>
 
@@ -20811,7 +20811,13 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 </tbody></table>
 
 <ul>
-<li>If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative.  For other sof with BANK_TRANSFER payment method, you will be routed to use VA</li>
+<li>If you use BANK_TRANSFER payment method with BCA bank code (014) as SOF:
+
+<ul>
+<li>in our Staging environment, it will by default create a VA transaction: so please adjust your request’s <code>trx_expiration_time</code> accordingly</li>
+<li>in our Production environment, you will be routed to use VA or unique code based on your commercial agreement with OY!. Contact our business representative to configure using addition or subtraction method</li>
+</ul></li>
+<li>Using BANK_TRANSFER with other SOFs will route to a VA transaction</li>
 <li>For EWallet Direct Payment (<code>use_linked_account: true</code>), only <code>shopeepay_ewallet</code> is supported.</li>
 </ul>
 <h4 id='examples-list-of-allowed-payment-methods-and-sof' type='normal'>Examples</h4>
@@ -20905,7 +20911,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">BANK_TRANSFER (unique code BCA only)</td>
 <td style="text-align: center">014</td>
 <td style="text-align: center">3 hours</td>
-<td style="text-align: center">Limited to 1 minute - 3 hours after the request is sent, and maximum at 20:30 (UTC+7). If default expiration time (3 hours) exceeds 20:30, then the expiration time will be 20:30.</td>
+<td style="text-align: center">Limited to 1 minute - 3 hours after the request is sent, and maximum at 20:30 (UTC+7). If default expiration time (3 hours) exceeds 20:30, then the expiration time will be 20:30. This does not apply in Staging, as you will be routed to use VA by default in the staging environment. Please check the default transaction expiration time.</td>
 </tr>
 </tbody></table>
 <h3 id='list-of-disbursement-mock-account-for-testing-purpose-create-and-update-payment-routing' type='normal'>List of Disbursement Mock Account for Testing Purpose</h3>
