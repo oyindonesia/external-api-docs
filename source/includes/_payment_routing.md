@@ -349,7 +349,7 @@ The request should be filled with at least 1 list_enable_payment_method and 1 li
 | EWALLET | dana_ewallet, ovo_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
 
-If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative.  For other sof with BANK_TRANSFER payment method, you will be routed to use VA
+If you use BANK_TRANSFER payment method with BCA bank code (014) as SOF, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative. For other SOF with BANK_TRANSFER payment method, you will be routed to use VA.
 
 #### If need_frontend: false
 The request should be filled only with 1 list_enable_payment_method and 1 list_enable_sof.
@@ -361,7 +361,10 @@ The request should be filled only with 1 list_enable_payment_method and 1 list_e
 | EWALLET | dana_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
 
-- If you use BANK_TRANSFER payment method with BCA bank code (014) as sof, you can either be routed to use VA BCA or unique code BCA. If you are routed to unique code BCA, you can either use addition or subtraction approach by requesting to our business representative.  For other sof with BANK_TRANSFER payment method, you will be routed to use VA
+- If you use BANK_TRANSFER payment method with BCA bank code (014) as SOF:
+  - in our Staging environment, it will by default create a VA transaction: so please adjust your request’s `trx_expiration_time` accordingly
+  - in our Production environment, you will be routed to use VA or unique code based on your commercial agreement with OY!. Contact our business representative to configure using addition or subtraction method
+- Using BANK_TRANSFER with other SOFs will route to a VA transaction
 - For EWallet Direct Payment (`use_linked_account: true`), only `shopeepay_ewallet` is supported.
 
 #### Examples
@@ -384,7 +387,7 @@ The table below lists the valid expiration times for transactions based on the p
 | EWALLET | linkaja_ewallet | 5 minutes | 5 minutes, regardless of the expiration time specified in the request.
 | EWALLET (Direct Payment) | shopeepay_ewallet | 30 minutes | 30 minutes, regardless of the expiration time specified in the request
 | CARDS | CC_DC | 60 minutes | 60 minutes, regardless of the expiration time specified in the request.
-| BANK_TRANSFER (unique code BCA only) | 014 | 3 hours | Limited to 1 minute - 3 hours after the request is sent, and maximum at 20:30 (UTC+7). If default expiration time (3 hours) exceeds 20:30, then the expiration time will be 20:30.
+| BANK_TRANSFER (unique code BCA only) | 014 | 3 hours | Limited to 1 minute - 3 hours after the request is sent, and maximum at 20:30 (UTC+7). If default expiration time (3 hours) exceeds 20:30, then the expiration time will be 20:30. This does not apply in Staging, as you will be routed to use VA by default in the staging environment. Please check the default transaction expiration time.
 
 ### List of Disbursement Mock Account for Testing Purpose 
 Use those mock receiver bank account for testing Payment Routing purpose. To simulate all available status of Payment Routing, you can combine those mocked bank account numbers. For example, if you want to see `INCOMPLETE` status, put two recipients in the payment_routing object with mocked bank account number `1234567890` and `1234567891`. For more information about payment Routing status, see List of Payment Routing section.
