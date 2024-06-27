@@ -1174,7 +1174,7 @@ PUT https://partner.oyindonesia.com/api/static-virtual-account/1414255-12121-212
 </tbody></table>
 
 <aside class="warning">
-Note: For Permata(013) and CIMB(022) VA (and Mandiri(008) for some user), the only operation permitted when updating VA is to deactivate it by setting trx_expiration_time as 0.
+Note: For Permata(013) and CIMB(022) VA (and Mandiri(008) for some user), the only operation permitted when updating VA is to deactivate it by setting expiration_time as 0.
 </aside>
 <h2 id='deactivate-va-va-aggregator' type='normal'>Deactivate VA</h2>
 <p>To deactivate a VA number, use API Update VA with specific request parameter explained below.</p>
