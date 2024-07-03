@@ -5540,12 +5540,6 @@ You can set your own callback URL in OY Business dashboard setting. You can Open
 </tr>
 </tbody></table>
 <h2 id='mock-data-in-demo-environment-fund-disbursement' type='normal'>Mock Data in Demo Environment</h2>
-<p>You can replicate final error response codes based on the Response Code by filling in the <code>recipient_account</code> value using this format: <strong>&lt;desired response code&gt;0000</strong>. You can input 4 to 15 characters consisting only of the digit 0 at the end of the response code. Any value that doesn’t follow this format as default will be processed as a Successful transaction.</p>
-
-<p>For example, if you want to get the <strong>&quot;Request is Rejected (Amount is not valid)”</strong> error, you can trigger the response code <strong>“210”</strong> by formatting the recipient_account as &quot;2100000&quot;.</p>
-<h3 id='test-scenario-mock-data-in-demo-environment' type='normal'>Test Scenario</h3>
-<p>To test out all scenarios of API Disbursement and ensure the flows in your integration are handled correctly, please visit this <a href="https://docs.google.com/spreadsheets/u/0/d/1M4OT1SF19FZIY3D_3x279WhhhSs98-XsjkF-YmySii4/edit">link</a>.</p>
-
 <blockquote>
 <p>Request body mock data in demo environment:</p>
 </blockquote>
@@ -5573,8 +5567,13 @@ You can set your own callback URL in OY Business dashboard setting. You can Open
     </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:06:16"</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>You can replicate final error response codes based on the Response Code by filling in the <code>recipient_account</code> value using this format: <strong>&lt;desired response code&gt;0000</strong>. You can input 4 to 15 characters consisting only of the digit 0 at the end of the response code. Any value that doesn’t follow this format as default will be processed as a Successful transaction.</p>
 
-</span></code></pre></div><h2 id='disbursement-failed-reasons-fund-disbursement' type='normal'>Disbursement Failed Reasons</h2>
+<p>For example, if you want to get the <strong>&quot;Request is Rejected (Amount is not valid)”</strong> error, you can trigger the response code <strong>“210”</strong> by formatting the recipient_account as &quot;2100000&quot;.</p>
+<h3 id='test-scenario-mock-data-in-demo-environment' type='normal'>Test Scenario</h3>
+<p>To test out all scenarios of API Disbursement and ensure the flows in your integration are handled correctly, please visit this <a href="https://docs.google.com/spreadsheets/u/0/d/1M4OT1SF19FZIY3D_3x279WhhhSs98-XsjkF-YmySii4/edit">link</a>.</p>
+<h2 id='disbursement-failed-reasons-fund-disbursement' type='normal'>Disbursement Failed Reasons</h2>
 <p>If you receive a failed disbursement in the callback or check status response, this means that we tried processing the disbursement and failed.</p>
 
 <p>We return failed reasons description in our callback &amp; check status response in the <code>tx_status_description parameter</code>. Partners need to understand each failed reason to decide the appropriate action to take. Below is a list of the failed reasons that partners may receive:</p>
