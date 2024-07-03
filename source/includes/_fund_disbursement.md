@@ -683,13 +683,6 @@ Below is the list of Explanation for column state details that show on response 
 
 ## Mock Data in Demo Environment
 
-You can replicate final error response codes based on the Response Code by filling in the `recipient_account` value using this format: __\<desired response code\>0000__. You can input 4 to 15 characters consisting only of the digit 0 at the end of the response code. Any value that doesn’t follow this format as default will be processed as a Successful transaction.
-
-For example, if you want to get the __"Request is Rejected (Amount is not valid)”__ error, you can trigger the response code __“210”__ by formatting the recipient_account as "2100000".
-
-### Test Scenario
-To test out all scenarios of API Disbursement and ensure the flows in your integration are handled correctly, please visit this [link](https://docs.google.com/spreadsheets/u/0/d/1M4OT1SF19FZIY3D_3x279WhhhSs98-XsjkF-YmySii4/edit).
-
 > Request body mock data in demo environment:
 
 ```json
@@ -718,8 +711,14 @@ To test out all scenarios of API Disbursement and ensure the flows in your integ
     "partner_trx_id": "TRX-20231211-007",
     "timestamp": "11-12-2023 05:06:16"
 }
-
 ```
+
+You can replicate final error response codes based on the Response Code by filling in the `recipient_account` value using this format: __\<desired response code\>0000__. You can input 4 to 15 characters consisting only of the digit 0 at the end of the response code. Any value that doesn’t follow this format as default will be processed as a Successful transaction.
+
+For example, if you want to get the __"Request is Rejected (Amount is not valid)”__ error, you can trigger the response code __“210”__ by formatting the recipient_account as "2100000".
+
+### Test Scenario
+To test out all scenarios of API Disbursement and ensure the flows in your integration are handled correctly, please visit this [link](https://docs.google.com/spreadsheets/u/0/d/1M4OT1SF19FZIY3D_3x279WhhhSs98-XsjkF-YmySii4/edit).
 
 ## Disbursement Failed Reasons
 
