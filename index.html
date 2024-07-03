@@ -741,6 +741,24 @@
                     </ul>
                   </li>
                   <li>
+                    <a href="#mock-data-in-demo-environment-fund-disbursement" class="toc-h2 toc-link" data-title="Mock Data in Demo Environment">
+                     <span class="toc-link-content">
+                        Mock Data in Demo Environment
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#test-scenario-mock-data-in-demo-environment" class="toc-h3 toc-link" data-title="Test Scenario">
+                            <span class="toc-link-content">
+                              Test Scenario
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+                  <li>
                     <a href="#disbursement-failed-reasons-fund-disbursement" class="toc-h2 toc-link" data-title="Disbursement Failed Reasons">
                      <span class="toc-link-content">
                         Disbursement Failed Reasons
@@ -4962,42 +4980,7 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 <td>Transaction is not created in the OY! system due to not valid disbursement request.</td>
 </tr>
 </tbody></table>
-
-<p><strong>Mock Data in Demo Environment</strong></p>
-
-<p>You can replicate final error response codes based on the Response Code by filling in the <code>recipient_account</code> value using this format: <code>&lt;desired response code&gt;0000</code>.
-You can input 4 to 15 characters consisting only of the digit 0 at the end of the response code. Any value that doesn&#39;t follow this format will be processed normally.</p>
-
-<p>For example, if you want to get the <code>&quot;Request is Rejected (Amount is not valid)”</code> error, you can trigger the response code <code>“210”</code> by formatting the recipient_account as <code>&quot;2100000&quot;</code>.</p>
-
-<blockquote>
-<p>Request body mock data in demo environment:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2100000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Expose Route"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yono@oyindonesia.com"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>Response body mock data in demo environment:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"210"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request is Rejected (Amount is not valid)"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2100000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:06:16"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='disbursement-callback-fund-disbursement' type='normal'>Disbursement Callback</h2>
+<h2 id='disbursement-callback-fund-disbursement' type='normal'>Disbursement Callback</h2>
 <blockquote>
 <p>Response for successful callback:</p>
 </blockquote>
@@ -5556,7 +5539,42 @@ You can set your own callback URL in OY Business dashboard setting. You can Open
 <td>Transaction is not created in the OY! system due to not valid disbursement request.</td>
 </tr>
 </tbody></table>
-<h2 id='disbursement-failed-reasons-fund-disbursement' type='normal'>Disbursement Failed Reasons</h2>
+<h2 id='mock-data-in-demo-environment-fund-disbursement' type='normal'>Mock Data in Demo Environment</h2>
+<p>You can replicate final error response codes based on the Response Code by filling in the <code>recipient_account</code> value using this format: <strong>&lt;desired response code&gt;0000</strong>. You can input 4 to 15 characters consisting only of the digit 0 at the end of the response code. Any value that doesn’t follow this format as default will be processed as a Successful transaction.</p>
+
+<p>For example, if you want to get the <strong>&quot;Request is Rejected (Amount is not valid)”</strong> error, you can trigger the response code <strong>“210”</strong> by formatting the recipient_account as &quot;2100000&quot;.</p>
+<h3 id='test-scenario-mock-data-in-demo-environment' type='normal'>Test Scenario</h3>
+<p>To test out all scenarios of API Disbursement and ensure the flows in your integration are handled correctly, please visit this <a href="https://docs.google.com/spreadsheets/u/0/d/1M4OT1SF19FZIY3D_3x279WhhhSs98-XsjkF-YmySii4/edit">link</a>.</p>
+
+<blockquote>
+<p>Request body mock data in demo environment:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2100000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Expose Route"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yono@oyindonesia.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Response body mock data in demo environment:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"210"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request is Rejected (Amount is not valid)"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2100000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:06:16"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h2 id='disbursement-failed-reasons-fund-disbursement' type='normal'>Disbursement Failed Reasons</h2>
 <p>If you receive a failed disbursement in the callback or check status response, this means that we tried processing the disbursement and failed.</p>
 
 <p>We return failed reasons description in our callback &amp; check status response in the <code>tx_status_description parameter</code>. Partners need to understand each failed reason to decide the appropriate action to take. Below is a list of the failed reasons that partners may receive:</p>
