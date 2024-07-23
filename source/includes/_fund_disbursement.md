@@ -330,7 +330,27 @@ Below is the list of Explanation for column state details that show on response 
     "code":"000",
     "message":"Success"
   },
-  "tx_status_description":"",
+  "amount":10000,
+  "recipient_name":"John Doe",
+  "recipient_bank":"014",
+  "recipient_account":"12341234",
+  "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
+  "partner_trx_id": "TRX-20231211-007",
+  "timestamp": "11-12-2023 05:07:20",
+  "created_date": "11-12-2023 05:06:20",
+  "last_updated_date": "11-12-2023 05:07:00"
+}
+```
+
+> Response for successful callback for special case(s):
+
+```json
+{
+  "status":{
+    "code":"000",
+    "message":"Success"
+  },
+  "tx_status_description":"Force Credit",
   "amount":10000,
   "recipient_name":"John Doe",
   "recipient_bank":"014",
