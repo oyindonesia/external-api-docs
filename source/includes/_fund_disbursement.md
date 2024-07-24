@@ -330,7 +330,6 @@ Below is the list of Explanation for column state details that show on response 
     "code":"000",
     "message":"Success"
   },
-  "tx_status_description":"",
   "amount":10000,
   "recipient_name":"John Doe",
   "recipient_bank":"014",
@@ -375,7 +374,9 @@ We also have a resend callback feature which you can read about [here](https://d
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Disbursement in Object `{code: <status_code>, message: <status_message>}`
-tx_status_description | String(255) | Additional information of status code, especially for failed status e.g. “Account is blocked. Please create a new transaction with a different recipient account number.”
+tx_status_description | String(255) | Additional information regarding status code, especially for Failed transactions, Force Credit transactions, and Queued transactions.
+For example: “Account is blocked. Please create a new transaction with a different recipient account number.”
+Note: This parameter will not appear in the response body for transactions with a Success status.
 amount | BigInteger | Amount to disburse.
 recipient_name | String(255) | Account holder name of recipient bank account.
 recipient_bank | String(255) | Bank or Ewallet code of the recipient’s account, please refer to [Disbursement Bank Codes](#disbursement-bank-codes-)
