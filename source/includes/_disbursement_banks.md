@@ -4,19 +4,19 @@ Supported Bank Codes to be used in the Disbursement Request:
 
 Bank Codes | Bank Name
 ---------- | ---------
-002	| Bank BRI
+002	| BRI
 008	| Bank Mandiri
-009	| Bank BNI
+009	| Bank Negara Indonesia
 011	| Bank Danamon
 013	| Bank Permata
-013 | Bank Permata Syariah
-014	| Bank BCA
+014	| BCA
 016	| BII Maybank
 019	| Bank Panin
 022	| CIMB Niaga
 023	| Bank UOB Indonesia
 028	| Bank OCBC NISP
-031	| CITIBANK
+031	| Citibank
+032 | JPMorgan Chase Bank
 036	| Bank China Construction Bank Indonesia
 037	| Bank Artha Graha Internasional
 042	| MUFG Bank
@@ -24,14 +24,15 @@ Bank Codes | Bank Name
 050	| Standard Chartered
 054	| Bank Capital Indonesia
 061	| ANZ Indonesia
-069	| Bank OF CHINA
+067 | Deutsche Bank AG
+069	| Bank OF China
 076	| Bank Bumi Arta
 087 | Bank HSBC Indonesia
 088	| Bank Antardaerah
 089	| Bank Rabobank
-095	| Bank JTRUST INDONESIA
-097	| Bank MAYAPADA
-110	| Bank Jawa Barat
+095	| Bank Jtrust Indonesia
+097	| Bank Mayapada International
+110	| BJB
 111	| Bank DKI
 112	| Bank DIY
 112S | Bank DIY Syariah
@@ -41,7 +42,6 @@ Bank Codes | Bank Name
 115	| Bank Jambi
 115S | Bank Jambi Syariah
 116	| Bank Aceh
-116S | Bank Aceh Syariah
 117	| Bank Sumut
 117S | Bank Sumut Syariah
 118	| Bank Sumbar
@@ -61,60 +61,62 @@ Bank Codes | Bank Name
 126S | Bank Sulselbar Syariah
 127	| Bank Sulut
 128	| Bank NTB
-128 | Bank NTB Syariah
 129	| Bank Bali
 130	| Bank NTT
 131	| Bank Maluku
 132	| Bank Papua
+133 | Bank Bengkulu
 134	| Bank Sulteng
 135	| Bank Sultra
-137	| Bank BANTEN
+137	| Bank Banten
 145	| Bank Nusantara Parahyangan
 146	| Bank Of India Indonesia
 147	| Bank Muamalat
 151	| Bank Mestika
-152	| Bank SHINHAN
+152	| Bank Shinhan
 153	| Bank Sinarmas
-157	| Bank Maspion
+157	| Bank Maspion Indonesia
 161	| Bank Ganesha
 164	| Bank ICBC Indonesia
-167	| Bank QNB indonesia
-200	| Bank BTN
-200S	| Bank BTN Syariah
+167	| Bank QNB Indonesia
+200	| BTN
+200S | BTN Syariah
 212	| Bank Woori Saudara
 213	| Bank BTPN
 405	| Bank Victoria Syariah
-425	| Bank Jabar Banten Syariah
+425	| BJB Syariah
 426	| Bank Mega
 441	| Bank Bukopin
 451	| Bank Syariah Indonesia
 472	| Bank Jasa Jakarta
-484	| Bank KEB HANA
-485	| Bank MNC INTERNATIONAL
+484	| Bank KEB Hana
+485	| Bank MNC
 490	| Bank Neo Commerce
-494	| Bank Rakyat Indonesia AGRONIAGA
+494	| Bank Rakyat Indonesia Agroniaga
 498	| Bank SBI Indonesia
-501	| BCA Digital (blu)
+501	| BCA Digital
 503	| Bank National Nobu
-506	| Bank MEGA SYARIAH
+506	| Bank Mega Syariah
 513	| Bank INA
-517	| Bank PANIN SYARIAH
-520	| PRIMA MASTER BANK
-521	| Bank SYARIAH BUKOPIN
+517	| Bank Panin Syariah
+520	| Bank Prima
+521	| Bank Syariah Bukopin
 523	| Bank Sahabat Sampoerna
 526	| Bank Oke Indonesia
 535	| Bank Seabank Indonesia
-536	| Bank BCA SYARIAH
+536	| Bank BCA Syariah
 542	| Bank Jago
 542S | Bank Jago Syariah
 547	| Bank BTPN Syariah
-548	| Bank MULTIARTA SENTOSA
+548	| Bank Multiarta Sentosa
 553	| Bank Mayora
-555	| Bank INDEX
-559	| CNB
+555	| Bank Index
+559	| Bank CNB
+562 | Superbank
 564	| Bank Mandiri Taspen
-566	| Bank VICTORIA INTL
-567	| HARDA
+566	| Bank Victoria International
+567	| Allo Bank
+600 | ATMB LSB
 688 | BPR KS
 724 | Bank DKI Syariah
 725 | Bank Jateng Syariah
@@ -123,10 +125,10 @@ Bank Codes | Bank Name
 867 | Bank Eka
 945	| Bank IBK Indonesia
 949	| Bank CTBC Indonesia
-950	| Bank Bank Commonwealth
+950	| Bank Commonwealth
 987 | ATMB Plus
-ovo | OVO
+dana | DANA
+gopay	| GoPay
 linkaja | LinkAja
-dana    | Dana
-gopay	| Gopay
-shopeepay   | ShopeePay
+ovo | OVO
+shopeepay | Shopeepay
