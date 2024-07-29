@@ -36,7 +36,6 @@ Bank Codes | Bank Name
 112	| Bank DIY
 112S | Bank DIY Syariah
 113	| Bank Jateng
-113S | BANK Jateng Syariah
 114	| Bank Jatim
 114S | Bank Jatim Syariah
 115	| Bank Jambi
