@@ -3141,13 +3141,6 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>99999 minutes</td>
 </tr>
 <tr>
-<td>Maybank BII</td>
-<td>016</td>
-<td>Open Amount, Closed Amount</td>
-<td>Supported</td>
-<td>-</td>
-</tr>
-<tr>
 <td>KEB Hana</td>
 <td>484</td>
 <td>Open Amount, Closed Amount</td>
