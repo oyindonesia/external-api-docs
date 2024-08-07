@@ -2,12 +2,13 @@ version: '3'
 services:
   slate:
     build: .
+    image: local/external-api-docs_slate
     command: ["build"]
     volumes:
       - "./build:/srv/slate/build"
       - "./source:/srv/slate/source"
   slate_serve:
-    image: external-api-docs-slate
+    image: local/external-api-docs_slate
     command: ["serve"]
     ports:
       - "4567:4567"
