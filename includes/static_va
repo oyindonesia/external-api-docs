@@ -1738,7 +1738,7 @@ GET https://partner.oyindonesia.com/api/static-virtual-account?offset<span class
 </tr>
 </tbody></table>
 <h2 id='get-list-of-transaction-for-va-va-aggregator' type='normal'>Get List of Transaction for VA</h2>
-<p>Get list of incoming transaction for specific va number.</p>
+<p>Get list of incoming transaction for specific va number. This API will only retrieve lastest updated data within last 3 months.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="se">\</span>
 GET https://partner.oyindonesia.com/api/va-tx-history/2701b82a-89f8-4343-81a2-fa0c92edca09?offset<span class="o">=</span>0&amp;limit<span class="o">=</span>10
 <span class="nt">-H</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
