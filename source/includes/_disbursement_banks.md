@@ -109,7 +109,7 @@ Bank Codes | Bank Name
 542S | Bank Jago Syariah
 547	| Bank BTPN Syariah
 548	| Bank Multiarta Sentosa
-553	| Bank Bank Hibank Indonesia
+553	| Bank Hibank Indonesia
 555	| Bank Index
 559	| Bank CNB
 562 | Superbank
