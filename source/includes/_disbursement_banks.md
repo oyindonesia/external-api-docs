@@ -44,8 +44,8 @@ Bank Codes | Bank Name
 116	| Bank Aceh
 117	| Bank Sumut
 117S | Bank Sumut Syariah
-118	| Bank Sumbar
-118S | Bank Sumbar Syariah
+118	| Bank Nagari
+118S | Bank Nagari Syariah
 119	| Bank Riau
 120	| Bank Sumsel Babel
 120S | Bank Sumsel Babel Syariah
@@ -92,7 +92,7 @@ Bank Codes | Bank Name
 484	| Bank KEB Hana
 485	| Bank MNC
 490	| Bank Neo Commerce
-494	| Bank Rakyat Indonesia Agroniaga
+494	| Bank Raya Indonesia
 498	| Bank SBI Indonesia
 501	| BCA Digital
 503	| Bank National Nobu
@@ -109,7 +109,7 @@ Bank Codes | Bank Name
 542S | Bank Jago Syariah
 547	| Bank BTPN Syariah
 548	| Bank Multiarta Sentosa
-553	| Bank Mayora
+553	| Bank Bank Hibank Indonesia
 555	| Bank Index
 559	| Bank CNB
 562 | Superbank
