@@ -213,17 +213,15 @@ print(data.decode("utf-8"))
 {
   "data": {
     "id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
-    "status": "ACTIVE",
-    "partner_customer_id": "customer_id",
     "name": "Acumen Metros",
+    "partner_customer_id": "customer_id",
+    "tax_type": "PPN_10_INCLUSIVE",
+    "address": "address",
+    "email": "email@address.com",
     "pic_name": "Pic Name",
     "phone_number": "0812345678",
-    "tax_type": "PPN_10_INCLUSIVE",
     "pph_tax": "PPH_23_NON_NPWP",
-    "email": "email@address.com",
-    "address": "address",
-    "total_piutang": null,
-    "can_be_deactivated": false
+    "status": "ACTIVE"
   },
   "error": null,
   "status": true,
@@ -269,12 +267,12 @@ id | String | customer primary id
 partner_customer_id | String | Inputted customer id name
 status | ACTIVE | Customer's status, first creation always active.
 name | String | Name of a customer for a transaction
-tax_type | NO_TAX | Result of choosen enum tax type 
+tax_type | NO_TAX / PPN_11_INCLUSIVE / PPN_11_EXCLUSIVE / PPN_10_INCLUSIVE / PPN_10_EXCLUSIVE | Result of choosen enum tax type 
 address | String | Inputted customer's address
 email | String | Inputted customer's email
 pic_name | String | Inputted PIC name
 phone_number| String | Inputted customer's phone number
-pph_tax | PPH_23_NON_NPWP | Result of choosen enum
+pph_tax | NO_TAX/ *PPH_23_NON_NPWP* / *PPH_23_NPWP* | Result of choosen enum
 reason| String | Reserved field to add additional notes for the response
 status_code | Integer | Response Status code  
 
@@ -497,17 +495,15 @@ print(data.decode("utf-8"))
 {
   "data": {
     "id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
-    "status": "ACTIVE",
-    "partner_customer_id": "customer_id",
     "name": "Acumen Metros",
-    "pic_name": null,
-    "phone_number": "082143207721",
+    "partner_customer_id": "customer_id",
     "tax_type": "NO_TAX",
-    "pph_tax": "PPH_23_NON_NPWP",
-    "email": "new_email@address.com",
     "address": "",
-    "total_piutang": null,
-    "can_be_deactivated": false
+    "email": "new_email@address.com",
+    "pic_name": 123,
+    "phone_number": "082143207721",
+    "pph_tax": "PPH_23_NON_NPWP",
+    "status": "ACTIVE"
   },
   "error": null,
   "status": true,
@@ -518,8 +514,8 @@ print(data.decode("utf-8"))
 
 ### HTTPS Request
 
-**[Production]** `POST https://partner.oyindonesia.com/api/account-receivable/customers/:id` <br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/account-receivable/customers/:id`
+**[Production]** `PUT https://partner.oyindonesia.com/api/account-receivable/customers/:id` <br>
+**[Staging]** `PUT https://api-stg.oyindonesia.com/api/account-receivable/customers/:id`
 
 
 ### Request Parameters
@@ -548,12 +544,12 @@ id | String | customer primary id
 partner_customer_id | String | Inputted customer id name
 status | ACTIVE | Customer's status, first creation always active.
 name | String | Name of a customer for a transaction
-tax_type | NO_TAX | Result of choosen enum tax type 
+tax_type | NO_TAX / PPN_11_INCLUSIVE / PPN_11_EXCLUSIVE / PPN_10_INCLUSIVE / PPN_10_EXCLUSIVE | Result of choosen enum tax type 
 address | String | Inputted customer's address
 email | String | Inputted customer's email
 pic_name | String | Inputted PIC name
 phone_number| String | Inputted customer's phone number
-pph_tax | PPH_23_NON_NPWP | Result of choosen enum
+pph_tax | NO_TAX / *PPH_23_NON_NPWP* / *PPH_23_NPWP* | Result of choosen enum
 reason| String | Reserved field to add additional notes for the response
 status_code | Integer | Response Status code  
 
@@ -711,8 +707,8 @@ print(data.decode("utf-8"))
 
 ### HTTPS Request
 
-**[Production]** `PUT https://partner.oyindonesia.com/api/account-receivable/customers/:id` <br>
-**[Staging]** `PUT https://api-stg.oyindonesia.com/api/account-receivable/customers/:id`
+**[Production]** `GET https://partner.oyindonesia.com/api/account-receivable/customers/:id` <br>
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/account-receivable/customers/:id`
 
 
 ### Response Parameters
@@ -919,7 +915,7 @@ print(data.decode("utf-8"))
 Parameters | Required | Description | Example value
 ---- | ---- | ------ | -------
 limit | FALSE | Number of records that should be returned to the API | 10
-offset | FALSE |Filter invoice using customer name, it can be filtering using spesific value or just contain some text | 0
+offset | FALSE | Offset number of records | 0
 status |FALSE | Filter based on invoice status | Possible value: CREATED, OVERDUE, PAID | CREATED
 partner_customer_id | FALSE | partner customer id name |USER001
 name | FALSE | partner customer name |Aston
@@ -952,8 +948,6 @@ status_code | Integer | Response Status code
 ## Create & Send Invoice
 
 This endpoint allows Partners to create Account Receivable Invoice through API and send invoice directly to customers via email.
-
-Use this API to create new VA number
 
 ```shell
 curl --location --request POST 'https://partner.oyindonesia.com/api/account-receivable/invoices' \
@@ -1259,30 +1253,36 @@ print(data.decode("utf-8"))
 {
   "data": {
     "id": "c6733a50-f93b-489f-b12b-48f8cc67735e",
-    "status": "CREATED",
-    "customer_id": null,
-    "customer_name": "Acumen Metros",
-    "customer_phone_number": null,
     "invoice_number": "INV/2022/12/210205",
-    "source_data": "API",
-    "invoice_date": 1671555600000,
-    "due_date": 1671901200000,
-    "expiration_date": 1671947881000,
+    "invoice_date": "2022-12-21",
+    "due_date": "2022-12-25",
+    "customer_id": "8b57cbb0-41f9-48f2-b092-5fa999ddcb15",
+    "expiration_date": "2022-12-25 12:58:01",
     "invoice_items": [
       {
+        "price_per_item": 25600,
         "description": "kopi susu",
-        "quantity": 4,
-        "price_per_item": 25600
+        "quantity": 4
       }
     ],
-    "message": null,
+    "additional_items": [
+      {
+        "description": "Diskon",
+        "price_per_item": -5000,
+        "quantity": 1
+      }
+    ],
+    "message": "None",
     "attachments": [],
-    "payment_url": "https://pay-dev.oyindonesia.com/invoice/c6733a50-f93b-489f-b12b-48f8cc67735e",
-    "payment_date": null,
-    "admin_fee": null,
-    "amount_billed": null,
-    "amount_received": null,
-    "customer_email": null
+    "save_as_default_message": "False",
+    "payment_configuration": {
+      "include_admin_fee": "True",
+      "list_disabled_payment_methods": "OFFLINE_CASH_IN",
+      "list_enabled_banks": "002,008,009,013,213",
+      "list_enabled_ewallet": "shopeepay_ewallet,linkaja_ewallet,dana_ewallet",
+      "list_enabled_offline_channel": ""
+    },
+    "payment_url": "https://pay-dev.oyindonesia.com/invoice/c6733a50-f93b-489f-b12b-48f8cc67735e"
   },
   "error": null,
   "status": true,
@@ -1331,21 +1331,29 @@ Parameters | Type | Description
 ---- | ---- | ------
 success | Boolean | To determine result of endpoint
 error | Object | Specific code for cause of error and error message
-data | Object | Status of response in Object {id: <id>, partner_customer_id: <partner_customer_id>, status: <status>, tax_type: <tax_type>, address: <address>, email: <email>, pic_name: <pic_name>, phone_number: <phone_number>, pph_tax: <pph_tax>}
+data | Object | Status of response in Object {id: <id>, invoice_number: <invoice_number>, invoice_date: <invoice_date>, due_date: <due_date>, customer_id: <customer_id>, expiration_date: <expiration_date>, invoice_items: <invoice_items>,additional_items: <additional_items>, message: <message>, attachments: <attachments>,save_as_default_message: <save_as_default_message>, payment_configuration: <payment_configuration>, payment_url: <payment_url>}
 id | String | Unique Payment ID for a specific invoice, that is generated after successful invoice creation.
-status | String | Default status first time invoice created
-customer_name | String | Inputted Customer name
-invoice_number | String | Inputted invoice number
-source_data | String | Default value will be "API" when create invoice through API
-invoice_date | Date string with pattern *yyyy-MM-dd* |  Inputted invoice date
-due_date | Date string with pattern *yyyy-MM-dd* | Inputted due date
-expiration_date | Date string with pattern *yyyy-MM-dd HH:mm:ss* | Inputted experation date
-invoice_items | List Object of invoice items | Inputted invoice items
-price_per_item | Integer | Inputed price per items
-description | String | Inputed description
-quantity | Integer | Inputed quantity
-message | String | Inputed message
-attachments | String | inputted attachments
+invoice_number | String | Invoice number for identification purposes
+invoice_date | Date string with pattern *yyyy-MM-dd* | The date of the invoice
+due_date | Date string with pattern *yyyy-MM-dd* | Due date of invoice
+customer_id | String| Customer must be in ACTIVE state
+expiration_date | Date string with pattern *yyyy-MM-dd HH:mm:ss* | Expiration date of invoice payment.
+invoice_items| List Object of invoice items | List Invoice Items object, Request in Object {price_per_item: <price_per_item>, description: <description>, quantity: <quantity>}
+price_per_item | Integer | Price per item
+description | String | The description of the items
+quantity | Integer | Quantity of item
+additional_items | List Object of additional items | List additional items object. Request in object {price_per_item: <price_per_item>, description: <description>, quantity: <quantity>}
+price_per_item | Integer | Price per additional item
+description | String | The description of the additional items
+quantity | Integer | Quantity of additional item
+message | String | Additional footnote message inside invoice
+attachments | String | Attachment of invoice
+payment_configuration | Object | Status of request in Object {include_admin_fee: <include_admin_fee>, list_disabled_payment_methods: <list_disabled_payment_methods>, list_enabled_banks: <list_enabled_banks>, list_enabled_ewallet: <list_enabled_ewallet>, list_enabled_offline_channel: <list_enabled_offline_channel>}
+include_admin_fee | Boolean | Identifier whether admin fee included or not
+list_disabled_payment_methods | String | List of disabled payment methods.
+list_enabled_banks | String | List of enabled bank for VA payment.
+list_enabled_ewallet | String | List of e-wallet for invoice payment.
+list_enabled_offline_channel | String | List of offline channel
 payment_url | String | Payment link to pay this invoice
 reason| String | Reserved field to add additional notes for the response
 status_code | Integer | Response Status code  
@@ -1507,7 +1515,7 @@ print(data.decode("utf-8"))
 {
   "success": true,
   "error": null,
-  "data": null,
+  "data": "c6733a50-f93b-489f-b12b-48f8cc67735e",
   "reason": null,
   "status_code": 200
 }
@@ -1532,7 +1540,7 @@ Parameters | Type | Description
 ---- | ---- | ------
 success | Boolean | Determine result of endpoint
 error | Object | If success, this field is null
-data | Object	
+data | String | Return invoice id that being cancelled	
 code | String | Success status code
 message | String | Success reason message
 reason | String | Reserve field to add additional notes for the response
@@ -1989,8 +1997,8 @@ print(data.decode("utf-8"))
 
 Parameters | Required | Description | Example value
 ---- | ---- | ------ | -------
-limit | FALSE | Limit record need to show | 10
-offset | FALSE | Filter invoice using customer name, it can be filtering using spesific value or just contain some text | 0
+limit | FALSE | Number of records that should be returned to the API | 10
+offset | FALSE | Offset number of records | 0
 source_data | FALSE | Enum to choose source creation invoice | API/DASHBOARD
 invoice_number | FALSE | Filter invoice using invoice number, it can be filtering using spesific value or just contain some text | 2022
 customer_name | FALSE | Filter invoice using customer name, it can be filtering using spesific value or just contain some text | dev 2
@@ -2188,7 +2196,10 @@ print(data.decode("utf-8"))
 {
   "success":true,
   "error":null,
-  "data":null,
+  "data": {
+    "channel" : "EMAIL",
+    "id": "d24ee55f-7eaf-4269-b932-f123dec6f863"
+  },
   "reason":null,
   "status_code":200
 }
@@ -2214,7 +2225,9 @@ Parameters | Type | Description
 ---- | ---- | ------
 success | Boolean | To determine result of endpoint
 error | Object | Specific code for cause of error and error message
-data | Object | Always null, use success to determine the result of request
+data | Object | Status of response in Object {id: <id>, channel: <channel>}
+id | String | invoice id used in request
+channel | String | Channel used in request (**EMAIL** or **WHATSAPP**)
 reason| String | Reserved field to add additional notes for the response
 status_code | Integer | Response Status code  
 
