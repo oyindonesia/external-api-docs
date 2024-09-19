@@ -3077,6 +3077,56 @@
               </ul>
           </li>
           <li>
+            <a href="#api-get-transaction-summary" class="toc-h1 toc-link" data-title="API GET Transaction Summary">
+              <span class="toc-link-content">
+                API GET Transaction Summary
+              </span>
+                <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow parent" alt="" />
+            </a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#https-request-" class="toc-h2 toc-link" data-title="HTTPS Request">
+                     <span class="toc-link-content">
+                        HTTPS Request
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#request-headers-" class="toc-h2 toc-link" data-title="Request Headers">
+                     <span class="toc-link-content">
+                        Request Headers
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#request-parameters-" class="toc-h2 toc-link" data-title="Request Parameters">
+                     <span class="toc-link-content">
+                        Request Parameters
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#response-parameters-" class="toc-h2 toc-link" data-title="Response Parameters">
+                     <span class="toc-link-content">
+                        Response Parameters
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#response-codes-and-messages-" class="toc-h2 toc-link" data-title="Response Codes and Messages">
+                     <span class="toc-link-content">
+                        Response Codes and Messages
+                      </span>
+                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                    </a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#api-send-whatsapp" class="toc-h1 toc-link" data-title="API Send WhatsApp  NEW ">
               <span class="toc-link-content">
                 API Send WhatsApp  <span class="tags new">NEW</span> 
@@ -22654,6 +22704,171 @@ GET https://partner.oyindonesia.com/api/v1/multi-account/child/balance <span cla
 <td>timeStamp</td>
 <td>String(19)</td>
 <td>Execution time of Request in OY! system (&quot;dd-MM-yyyy HH:mm:ss&quot;).</td>
+</tr>
+</tbody></table>
+<h1 id='api-get-transaction-summary' type='normal'>API GET Transaction Summary</h1>
+<p>This API allows you to get a summary of how much balance that is still waiting for settlement time within a chosen time frame. You will receive data of:
+* Count Transaction
+* Sum transaction amount
+* Sum admin fee amount
+* Sum PPN tax amount
+* Settlement balance after admin fee and tax.</p>
+
+<p>You can select to get your pending settlement transaction summary within these time periods: today, tomorrow, or all time (all balance that has not been settled yet). &quot;Today&quot; means you will get summary of transaction that will be settled today. &quot;Tommorow&quot; means you will get summary of transaction that will be settled tommorow. While &quot;All time&quot; means you will get all the total balance that is still waiting for settlement. To be able to use this API, please contact our representative so we can activate this API for you.</p>
+
+<p>Note: Soon, this API can provide you with the capability to get a summary of how much you have spent and earned during a time period.</p>
+<h3 id='https-request-' type='normal'>HTTPS Request</h3>
+<p><strong>[Production]</strong> GET <code>https://partner.oyindonesia.com/api/transaction-summary</code> <br>
+<strong>[Staging]</strong> GET <code>https://api-stg.oyindonesia.com/api/transaction-summary</code></p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="sb">`</span>https://partner.oyindonesia.com/api/transaction-summary<span class="sb">`</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: yourusername'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: yourapikey'</span> <span class="se">\</span>
+<span class="nt">--data-raw</span> <span class="s1">'{
+    "product_group": "PENDING_SETTLEMENT",
+    "time_period": "ALL_TIME"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> 
+        </span><span class="p">{</span><span class="w">
+         </span><span class="err">“product_group”</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="err">“PENDING_SETTLEMENT”</span><span class="p">,</span><span class="w">
+         </span><span class="err">“time_period”:</span><span class="w"> </span><span class="err">“ALL_TIME”</span><span class="p">,</span><span class="w">
+         </span><span class="err">“amount”</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="mi">8000000</span><span class="p">,</span><span class="w">
+         </span><span class="err">“admin_fee”</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="mi">800000</span><span class="p">,</span><span class="w">
+         </span><span class="err">“ppn_tax”</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="mi">88000</span><span class="p">,</span><span class="w">
+         </span><span class="err">“count”</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w">
+         </span><span class="err">“settlement_balance”</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="mi">7112000</span><span class="w">
+
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='request-headers-' type='normal'>Request Headers</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>X-Oy-Key</td>
+<td>String</td>
+<td>API Key for establishing connection to this particular endpoint</td>
+</tr>
+<tr>
+<td>X-Oy-Username</td>
+<td>String</td>
+<td>The registered partner&#39;s username with enabled access for API Get Transaction Summary</td>
+</tr>
+</tbody></table>
+<h3 id='request-parameters-' type='normal'>Request Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>product_group</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Value must be: PENDING_SETTLEMENT (to get a summary of how much transaction that is still waiting for settlement)</td>
+</tr>
+<tr>
+<td>time_period</td>
+<td>String</td>
+<td>TRUE</td>
+<td>Time period that you need. You can select one from these values: TODAY, TOMORROW, and ALL_TIME.</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-' type='normal'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Nullable</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>WalletError</td>
+<td>FALSE</td>
+<td>Indicates the status of the request, it will return response code and response message</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>Object</td>
+<td>TRUE</td>
+<td>Data that you requested.</td>
+</tr>
+</tbody></table>
+
+<p>Product_group: Product group that you requested, currently only PENDING SETTLEMENT
+time_period: seleted time period (ALL_TIME, TODAY, or TOMMOROW)
+Transfer_amount: SUM amount of transaction before admin fee and tax
+Admin_fee: SUM admin fee
+Ppn_tax: SUM of PPN tax
+Count: count of transaction
+Setlement_balance: total balance that will be settled, after admin fee and tax. </p>
+<h3 id='response-codes-and-messages-' type='normal'>Response Codes and Messages</h3>
+<p>Below is the list of response codes that show the request status for API Get Transaction Summary:</p>
+
+<table><thead>
+<tr>
+<th>Response Code</th>
+<th>Response Message</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>000</td>
+<td>Successful</td>
+<td>Request successful</td>
+</tr>
+<tr>
+<td>102</td>
+<td>Request is in progress. Please retry after several minutes</td>
+<td>Request is in progress and you should retry after several minutes</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Username Not Found</td>
+<td>Username not found error</td>
+</tr>
+<tr>
+<td>202</td>
+<td>User is not active</td>
+<td>This API has not yet been activated for you</td>
+</tr>
+<tr>
+<td>207</td>
+<td>IP Address not registered</td>
+<td>You have not registered your IP Address</td>
+</tr>
+<tr>
+<td>208</td>
+<td>API Key is not valid</td>
+<td>Your API Key is invalid</td>
+</tr>
+<tr>
+<td>229</td>
+<td>Too many request</td>
+<td>When you make requests too much and reached the rate limit</td>
+</tr>
+<tr>
+<td>290</td>
+<td>Parameter / object is not valid</td>
+<td>The param you requested is invalid</td>
 </tr>
 </tbody></table>
 <h1 id='api-send-whatsapp' type='new'>API Send WhatsApp  <span class='tags new'>NEW</span> </h1>
