@@ -919,6 +919,7 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 | COMPLETE             | Money has been successfully received by recipients.                                                                                                    |
 | INCOMPLETE           | Money received but forwarding money to recipients process is totally or partially failed.                                                              |
 | EXPIRED              | Payment Link or VA number has been expired.                                                                                                   |
+| PAYMENT_FAILED       | Payment has been failed, no money has been received (currently for EWALLET only) |
 
 ## List of Disbursement Status
 
