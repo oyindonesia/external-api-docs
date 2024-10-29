@@ -13,7 +13,7 @@ POST https://partner.oyindonesia.com/api/v2/bill \
 -H 'x-api-key:987654' \
 -d '{
     "customer_id": "12345678910",
-    "product_id": "plnprepaid",
+    "product_id": "plnpre",
     "partner_tx_id": "DEV123456789",
     "amount": null,
     "additional_data": null
@@ -30,7 +30,7 @@ var headers = {
 var request = http.Request('POST', Uri.parse('{{base_url}}/api/v2/bill'));
 request.body = json.encode({
     "customer_id": "12345678910",
-    "product_id": "plnprepaid",
+    "product_id": "plnpre",
     "partner_tx_id": "DEV123456789",
     "amount": null,
     "additional_data": null
@@ -64,7 +64,7 @@ func main() {
 
   payload := strings.NewReader(`{
     "customer_id": "12345678910",
-    "product_id": "plnprepaid",
+    "product_id": "plnpre",
     "partner_tx_id": "DEV123456789",
     "amount": null,
     "additional_data": null
@@ -103,7 +103,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"customer_id\": \"12345678910\",\n\t\"product_id\": \"plnprepaid\",\n\t\"partner_tx_id\": \"DEV123456789\",\n\t\"amount\": null,\n\t\"additional_data\": null\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"customer_id\": \"12345678910\",\n\t\"product_id\": \"plnpre\",\n\t\"partner_tx_id\": \"DEV123456789\",\n\t\"amount\": null,\n\t\"additional_data\": null\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/v2/bill")
   .method("POST", body)
@@ -118,7 +118,7 @@ Response response = client.newCall(request).execute();
 ```javascript
 var data = JSON.stringify({
     "customer_id": "12345678910",
-    "product_id": "plnprepaid",
+    "product_id": "plnpre",
     "partner_tx_id": "DEV123456789",
     "amount": null,
     "additional_data": null
@@ -157,7 +157,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n  "customer_id": "12345678910",\n  "product_id": "plnprepaid",\n  "partner_tx_id": "DEV123456789",\n  "amount": null,\n  "additional_data": null\n}');
+$request->setBody('{\n  "customer_id": "12345678910",\n  "product_id": "plnpre",\n  "partner_tx_id": "DEV123456789",\n  "amount": null,\n  "additional_data": null\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -180,7 +180,7 @@ import json
 conn = http.client.HTTPSConnection("{{base_url}}")
 payload = json.dumps({
     "customer_id": "12345678910",
-    "product_id": "plnprepaid",
+    "product_id": "plnpre",
     "partner_tx_id": "DEV123456789",
     "amount": null,
     "additional_data": null
@@ -208,12 +208,12 @@ print(data.decode("utf-8"))
   "data": {
     "tx_id": "12345-12345-12345-12345",
     "partner_tx_id": "DEV123456789",
-    "product_id": "BPFI",
+    "product_id": "plnpre",
     "customer_id": "000372190053",
     "customer_name": "FIRDAUS", 
     "amount": 832500,
     "admin_fee": 2500,
-    "additional_data": "{\"customer_id\":\"000372190053\",\"customer_name\":\"FIRDAUS\",\"total_amount\":835000}"
+    "additional_data": "{\"electric_power\":\"R1M/900 VA\",\"customer_id\":\"000372190053\",\"customer_name\":\"FIRDAUS\",\"total_amount\":835000}"
   },
 }
 ```
