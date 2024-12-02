@@ -400,6 +400,50 @@ Use those mock receiver bank account for testing Payment Routing purpose. To sim
 |1234567893|PENDING|
 |1234567894|PENDING FORCE CREDIT|
 
+## Deactivate Payment Routing
+
+Use this API to **deactivate** an existing **QRIS transaction** created via payment routing using the same partner_trx_id inputted at creation.
+Currently, only QRIS transaction created with **need_frontend** param set as false are able to be deactivated. 
+
+``` shell
+curl --location --request DELETE 'https://partner.oyindonesia.com/api/payment-routing/mypartnertrxid123' \
+--header 'Content-Type: application/json' \
+--header 'x-oy-username: yourusername' \
+--header 'x-api-key: apikeymu' \
+```
+
+> The above command returns JSON structured similar like this:
+
+```json
+{
+    "status": {
+        "code": "000",
+        "message": "Success"
+    }
+}
+```
+
+### HTTPS Request
+Endpoint:  
+**[Production]** `DELETE https://partner.oyindonesia.com/api/payment-routing/:partnerTrxId` <br/>
+**[Staging]** `DELETE https://api-stg.oyindonesia.com/api/payment-routing/:partnerTrxId`
+
+### Header
+| Field  | Description |  Example   |
+| ------------- |:-------------:| ---------- |
+| x-oy-username    |Partner username    |   username    |
+| x-api-key      | Partner api key     | 6e87432c-2726-11ec-9621-0242ac130002 |
+
+### URL Parameters
+| Parameter  | Type | Required | Description |
+| ------------- |:-------------:| :----------: |:-----:|
+|partnerTrxId   | String  | TRUE | Unique id inputted in creation process |
+
+### Response Parameters
+| Parameter  | Type | Nullable |  Description   |
+| ------------- |:-------------:| ----- | :----------: |
+|status|Object| FALSE |Status of response in Object|
+
 
 ## Check Status Payment Routing Transaction
 
