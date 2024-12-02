@@ -425,8 +425,8 @@ curl --location --request DELETE 'https://partner.oyindonesia.com/api/payment-ro
 
 ### HTTPS Request
 Endpoint:  
-**[Production]** `DELETE https://partner.oyindonesia.com/api/payment-routing/:partnerTrxId` <br/>
-**[Staging]** `DELETE https://api-stg.oyindonesia.com/api/payment-routing/:partnerTrxId`
+**[Production]** `DELETE https://partner.oyindonesia.com/api/payment-routing/<partnerTrxId>` <br/>
+**[Staging]** `DELETE https://api-stg.oyindonesia.com/api/payment-routing/<partnerTrxId>`
 
 ### Header
 | Field  | Description |  Example   |
