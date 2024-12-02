@@ -1002,7 +1002,10 @@ Response Code | State | Description
 400 | Final | Request is rejected (Token is already expired.)
 429 | Final | Request Rejected (Too Many Request to specific endpoint)
 203 | Final | Request is rejected (Duplicate Partner Tx Id)
+204 | Final | Request is Rejected (Partner Trx ID not found on deactivation request)
 247 | Final | Request is rejected (Email is not valid)
+254 | Final | Request is Rejected (User credential not found, blocked, or invalid on deactivation request)
+300 | Non Final | Request is rejected (Deactivation request failed)
 901 | Non Final | General Error
 
 
