@@ -2905,6 +2905,48 @@
                     </ul>
                   </li>
                   <li>
+                    <a href="#deactivate-payment-routing-payment-routing" class="toc-h2 toc-link" data-title="Deactivate Payment Routing">
+                     <span class="toc-link-content">
+                        Deactivate Payment Routing
+                      </span>
+                         <img src="images/arrow-bottom-425d93ba.svg" class="icon-arrow" alt="" />
+                    </a>
+                    <ul class="toc-list-h3">
+                        <li>
+                          <a href="#https-request-deactivate-payment-routing" class="toc-h3 toc-link" data-title="HTTPS Request">
+                            <span class="toc-link-content">
+                              HTTPS Request
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#header-deactivate-payment-routing" class="toc-h3 toc-link" data-title="Header">
+                            <span class="toc-link-content">
+                              Header
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#url-parameters-deactivate-payment-routing" class="toc-h3 toc-link" data-title="URL Parameters">
+                            <span class="toc-link-content">
+                              URL Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#response-parameters-deactivate-payment-routing" class="toc-h3 toc-link" data-title="Response Parameters">
+                            <span class="toc-link-content">
+                              Response Parameters
+                            </span>
+                              <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
+                          </a>
+                        </li>
+                    </ul>
+                  </li>
+                  <li>
                     <a href="#check-status-payment-routing-transaction-payment-routing" class="toc-h2 toc-link" data-title="Check Status Payment Routing Transaction">
                      <span class="toc-link-content">
                         Check Status Payment Routing Transaction
@@ -21077,6 +21119,78 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td style="text-align: center">PENDING FORCE CREDIT</td>
 </tr>
 </tbody></table>
+<h2 id='deactivate-payment-routing-payment-routing' type='normal'>Deactivate Payment Routing</h2>
+<p>Use this API to <strong>deactivate</strong> an existing <strong>QRIS transaction</strong> created via payment routing using the same partner_trx_id inputted at creation.
+Currently, only QRIS transaction created with <strong>need_frontend</strong> param set as false are able to be deactivated. </p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://partner.oyindonesia.com/api/payment-routing/mypartnertrxid123'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-oy-username: yourusername'</span> <span class="se">\</span>
+<span class="nt">--header</span> <span class="s1">'x-api-key: apikeymu'</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured similar like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='https-request-deactivate-payment-routing' type='normal'>HTTPS Request</h3>
+<p>Endpoint:<br>
+<strong>[Production]</strong> <code>DELETE https://partner.oyindonesia.com/api/payment-routing/&lt;partnerTrxId&gt;</code> <br/>
+<strong>[Staging]</strong> <code>DELETE https://api-stg.oyindonesia.com/api/payment-routing/&lt;partnerTrxId&gt;</code></p>
+<h3 id='header-deactivate-payment-routing' type='normal'>Header</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th style="text-align: center">Description</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-oy-username</td>
+<td style="text-align: center">Partner username</td>
+<td>username</td>
+</tr>
+<tr>
+<td>x-api-key</td>
+<td style="text-align: center">Partner api key</td>
+<td>6e87432c-2726-11ec-9621-0242ac130002</td>
+</tr>
+</tbody></table>
+<h3 id='url-parameters-deactivate-payment-routing' type='normal'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align: center">Type</th>
+<th style="text-align: center">Required</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>partnerTrxId</td>
+<td style="text-align: center">String</td>
+<td style="text-align: center">TRUE</td>
+<td style="text-align: center">Unique id inputted in creation process</td>
+</tr>
+</tbody></table>
+<h3 id='response-parameters-deactivate-payment-routing' type='normal'>Response Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align: center">Type</th>
+<th>Nullable</th>
+<th style="text-align: center">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td style="text-align: center">Object</td>
+<td>FALSE</td>
+<td style="text-align: center">Status of response in Object</td>
+</tr>
+</tbody></table>
 <h2 id='check-status-payment-routing-transaction-payment-routing' type='normal'>Check Status Payment Routing Transaction</h2>
 <p>And endpoint to check status of payment routing transaction.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://partner.oyindonesia.com/api/payment-routing/check-status'</span> <span class="se">\</span>
@@ -22117,9 +22231,24 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>Request is rejected (Duplicate Partner Tx Id)</td>
 </tr>
 <tr>
+<td>204</td>
+<td>Final</td>
+<td>Request is Rejected (Partner Trx ID not found on deactivation request)</td>
+</tr>
+<tr>
 <td>247</td>
 <td>Final</td>
 <td>Request is rejected (Email is not valid)</td>
+</tr>
+<tr>
+<td>254</td>
+<td>Final</td>
+<td>Request is Rejected (User credential not found, blocked, or invalid on deactivation request)</td>
+</tr>
+<tr>
+<td>300</td>
+<td>Non Final</td>
+<td>Request is rejected (Deactivation request failed)</td>
 </tr>
 <tr>
 <td>901</td>
