@@ -82,7 +82,7 @@ Bank Codes | Bank Name
 200	| BTN
 200S | BTN Syariah
 212	| Bank Woori Saudara
-213	| Bank BTPN
+213	| Bank SMBC Indonesia
 405	| Bank Victoria Syariah
 425	| BJB Syariah
 426	| Bank Mega
