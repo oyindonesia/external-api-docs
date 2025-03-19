@@ -720,6 +720,14 @@ recurring_frequency | Integer | The interval of a recurring invoice to be sent t
 
 The data on the callback will be sent using JSON format via POST data to your web hook.
 
+### Callback for Delayed Settlement (Non-Real Time Settlement)
+
+If your settlement is non-real time, for every transaction whose payment method is settled H+>0 from the time of transaction, you will receive two callbacks with details as follows:
+
+1.  1st Callback -> To be sent after your customer successfully executes the transaction. For example, if your customer executes the transaction on 11 May 2021 at 14:00:00, that is also when we send the 1st Callback to you. In the 1st callback, the settlement status is set to WAITING (because it is not yet settled to your Account Statement balance)
+2.  2nd Callback -> To be sent after the settlement status is changed from WAITING into SUCCESS. For example, if the settlement status is changed into SUCCESS on 12 May 2021 at 15:00:00, that is also when we send the 2nd Callback to you. In the 2nd callback, the settlement status is SUCCESS
+
+
 ```shell
 curl -X POST \
   https://partner.url.com/api/callback\
