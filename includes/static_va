@@ -3148,8 +3148,6 @@ Note: For payments and inquiries involving a BSI VA using BSI Mobile or Banking 
 <td>99999 minutes</td>
 </tr>
 </tbody></table>
-
-<p>For all available banks, there is no minimum expiration time.</p>
 <h2 id='list-of-documents-va-aggregator' type='normal'>List of Documents</h2>
 <p>To enable VA Bank BCA, we need partner to send documents using email, directly to our business representative.</p>
 <h3 id='common-documents-list-of-documents' type='normal'>Common Documents</h3>
