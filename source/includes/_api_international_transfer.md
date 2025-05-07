@@ -242,41 +242,28 @@ Use this API to get the latest Exchange Rate information.
 
 ### Request Parameters
 
-| Parameter                 | Type       | Required | Description                                                     |
-| ------------------------- | ---------- | -------- | --------------------------------------------------------------- |
-| destination_country_code  | String(2)  | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.   |
-| destination_currency_code | String(3)  | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code. |
-| source_amount             | BigInteger | FALSE    | Amount in source currency (IDR).                                |
-
-Minimum Source Amount: IDR 200,000.
-Maximum Source Amount: depends on each corridor.
-SG/SGD: IDR 35,000,000
-SG/USD: 1,450,000,000
-CN/CNH: 35,000,000
-CN/USD: 1,450,000,000
-HK/HKD: 35,000,000
-HK/USD: 1,450,000,000
-|
-| destination_amount | String(255) | FALSE | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.|
+| Parameter                 | Type        | Required | Description                                                                                       |
+| ------------------------- | ----------- | -------- | ------------------------------------------------------------------------------------------------- |
+| destination_country_code  | String(2)   | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.                                     |
+| destination_currency_code | String(3)   | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code.                                   |
+| source_amount             | BigInteger  | FALSE    | Amount in source currency (IDR)                                                                   |
+| destination_amount        | String(255) | FALSE    | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency. |
 
 ### Response Parameters
 
-| Parameter | Type   | Description                                                                                                                                                                               |
-| --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status    | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. |
-
-`{code: <status_code>, message: <status_message>}`
-|
-| source_amount | Object | |
-| value | BigInteger | Amount in source currency |
-| currency | String | Amount Currency Code. Currently, only available for IDR. |
-| destination_amount | Object | |
-| value | BigInteger | Amount in destination currency (with 2-digit decimal). |
-| currency | String | Destination Currency Code. Three-letter ISO 4217 currency code. |
-| fx_rate | BigInteger | Conversion rate |
-| transfer_fee | Object | |
-| value | BigInteger | Transaction fee |
-| currency | String | Transaction Fee Currency Code. Currently, only available for IDR. |
+| Parameter          | Type       | Description                                                                                                                                                                                                                                 |
+| ------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status             | Object     | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API.`{code: <status_code>, message: <status_message>}` |
+| source_amount      | Object     |                                                                                                                                                                                                                                             |
+| value              | BigInteger | Amount in source currency                                                                                                                                                                                                                   |
+| currency           | String     | Amount Currency Code. Currently, only available for IDR.                                                                                                                                                                                    |
+| destination_amount | Object     |                                                                                                                                                                                                                                             |
+| value              | BigInteger | Amount in destination currency (with 2-digit decimal).                                                                                                                                                                                      |
+| currency           | String     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                             |
+| fx_rate            | BigInteger | Conversion rate                                                                                                                                                                                                                             |
+| transfer_fee       | Object     |                                                                                                                                                                                                                                             |
+| value              | BigInteger | Transaction fee                                                                                                                                                                                                                             |
+| currency           | String     | Transaction Fee Currency Code. Currently, only available for IDR.                                                                                                                                                                           |
 
 ## Get Corridor Active
 
@@ -528,19 +515,16 @@ Use this API to get the latest active corridor information on a given Client.
 
 ### Response Parameters
 
-| Parameter | Type   | Description                                                                                                                                                                               |
-| --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status    | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. |
-
-`{code: <status_code>, message: <status_message>}`
-|
-| active_corridors | Array | |
-| currency | Object | |
-| currency_code | String | Destination Currency Code. Three-letter ISO 4217 currency code. |
-| currency_name | String | Description of destination currency code |
-| country_list | Object | |
-| country_code | String | Destination Country Code. Two-letter ISO 3166-2 country code. |
-| country_name | String | Description of destination country code |
+| Parameter        | Type   | Description                                                                                                                                                                                                                                  |
+| ---------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status           | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
+| active_corridors | Array  |                                                                                                                                                                                                                                              |
+| currency         | Object |                                                                                                                                                                                                                                              |
+| currency_code    | String | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                              |
+| currency_name    | String | Description of destination currency code                                                                                                                                                                                                     |
+| country_list     | Object |                                                                                                                                                                                                                                              |
+| country_code     | String | Destination Country Code. Two-letter ISO 3166-2 country code.                                                                                                                                                                                |
+| country_name     | String | Description of destination country code                                                                                                                                                                                                      |
 
 ## Create Conversion Quotation
 
@@ -789,43 +773,30 @@ Use this API to create a new Conversion Quotation.
 
 ### Request Parameters
 
-| Parameter                 | Type       | Required | Description                                                                                                |
-| ------------------------- | ---------- | -------- | ---------------------------------------------------------------------------------------------------------- |
-| quotation_id              | String(64) | TRUE     | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters. |
-| destination_country_code  | String(2)  | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.                                              |
-| destination_currency_code | String(3)  | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code.                                            |
-| source_amount             | BigInteger | FALSE    | Amount in source currency (IDR).                                                                           |
-
-Minimum Source Amount: IDR 200,000.
-Maximum Source Amount: depends on each corridor.
-SG/SGD: IDR 35,000,000
-SG/USD: 1,450,000,000
-CN/CNH: 35,000,000
-CN/USD: 1,450,000,000
-HK/HKD: 35,000,000
-HK/USD: 1,450,000,000
-|
-| destination_amount | String(255) | FALSE | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.|
+| Parameter                 | Type        | Required | Description                                                                                                |
+| ------------------------- | ----------- | -------- | ---------------------------------------------------------------------------------------------------------- |
+| quotation_id              | String(64)  | TRUE     | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters. |
+| destination_country_code  | String(2)   | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.                                              |
+| destination_currency_code | String(3)   | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code.                                            |
+| source_amount             | BigInteger  | FALSE    | Amount in source currency (IDR).                                                                           |
+| destination_amount        | String(255) | FALSE    | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.          |
 
 ### Response Parameters
 
-| Parameter | Type   | Description                                                                                                                                                                               |
-| --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status    | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. |
-
-`{code: <status_code>, message: <status_message>}`
-|
-| tx_id | String | Unique Transaction ID, generated by OY! |
-| quotation_id | String | Unique Reference ID for a specific request, generated by the Client |
-| source_amount | BigInteger | Amount in source currency |
-| source_currency_code | String | Amount Currency Code. Currently, only available for IDR |
-| destination_amount | String | Amount in destination currency (with 2-digit decimal). |
-| destination_currency_code | String | Destination Currency Code. Three-letter ISO 4217 currency code. |
-| fx_rate | BigInteger | Conversion rate |
-| transfer_fee | BigInteger | Transaction fee |
-| converted_amount | BigInteger | Source Amount imposed by Transfer Fee, will be converted to the Amount in destination currency. |
-| expiry_time | Date | Validity of Quotation (in GMT+0) |
-| created_time | Date | Conversion rate creation datetime (in GMT+0) |
+| Parameter                 | Type       | Description                                                                                                                                                                                                                                  |
+| ------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status                    | Object     | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
+| tx_id                     | String     | Unique Transaction ID, generated by OY!                                                                                                                                                                                                      |
+| quotation_id              | String     | Unique Reference ID for a specific request, generated by the Client                                                                                                                                                                          |
+| source_amount             | BigInteger | Amount in source currency                                                                                                                                                                                                                    |
+| source_currency_code      | String     | Amount Currency Code. Currently, only available for IDR                                                                                                                                                                                      |
+| destination_amount        | String     | Amount in destination currency (with 2-digit decimal).                                                                                                                                                                                       |
+| destination_currency_code | String     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                              |
+| fx_rate                   | BigInteger | Conversion rate                                                                                                                                                                                                                              |
+| transfer_fee              | BigInteger | Transaction fee                                                                                                                                                                                                                              |
+| converted_amount          | BigInteger | Source Amount imposed by Transfer Fee, will be converted to the Amount in destination currency.                                                                                                                                              |
+| expiry_time               | Date       | Validity of Quotation (in GMT+0)                                                                                                                                                                                                             |
+| created_time              | Date       | Conversion rate creation datetime (in GMT+0)                                                                                                                                                                                                 |
 
 ## Upload Document
 
@@ -1021,6 +992,31 @@ catch(HTTP_Request2_Exception $e) {
 }
 ```
 
+```python
+import requests
+
+url = "https://{{base_url}}/api/international/quotation"
+headers = {
+    'Accept': 'application/json',
+    'x-oy-username': '{{username}}',
+    'x-api-key': '{{api-key}}'
+}
+data = {
+    "quotation_id": "TRX20250325001",
+    "destination_country_code": "SG",
+    "destination_currency_code": "SGD",
+    "source_amount": "200000",
+    "destination_amount": ""
+}
+files = {
+    "document": ("document.pdf", open("path/to/your/document.pdf", "rb"), "application/pdf")
+}
+
+response = requests.post(url, headers=headers, data=data, files=files)
+
+print(response.text)
+```
+
 > Response for valid request (transaction will processed in the OY! system):
 
 ```json
@@ -1068,11 +1064,1023 @@ Maximum 10 attachments per Quotation ID.
 
 ### Response Parameters
 
-| Parameter | Type   | Description                                                                                                                                                                               |
-| --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status    | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. |
+| Parameter    | Type   | Description                                                                                                                                                                                                                                  |
+| ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status       | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
+| quotation_id | String | Unique Reference ID for a specific request, generated by the Client                                                                                                                                                                          |
+| document_url | String | Uploaded document path                                                                                                                                                                                                                       |
 
-`{code: <status_code>, message: <status_message>}`
-|
-| quotation_id | String | Unique Reference ID for a specific request, generated by the Client |
-| document_url | String | Uploaded document path |
+## Create Transfer
+
+```shell
+curl -X \
+POST https://partner.oyindonesia.com/api/international/transfer \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "quotation_id": "TRX20250325001",
+  "source_of_fund": "BI",
+  "purpose_of_transfer": "SS",
+  "sender_contact_details": {
+    "type": "PERSONAL",
+    "personal_contact": {
+      "last_name": "Smith",
+      "date_of_birth": "1990-08-25",
+      "nationality": "ID",
+      "id_type": "passport",
+      "id_number": "987654321",
+      "mobile_number_prefix": "+62",
+      "mobile_number": "85712163208",
+      "address_line": "Pondok Indah Office Tower",
+      "city": "South Jakarta",
+      "state_or_province": "DKI Jakarta",
+      "address_country": "ID",
+      "postal": "12140",
+      "first_name": "",
+      "middle_name": "",
+      "other_name": "",
+      "gender": "male",
+      "occupation": "",
+      "country_of_birth": "ID",
+      "email": "sender@example.com",
+      "residential_status": "Permanent Residency"
+    }
+  },
+  "recipient_contact_details": {
+    "type": "BUSINESS",
+    "business_contact": {
+      "business_name": "Example Corp",
+      "business_reg_number": "1122334455667788",
+      "date_of_incorporation": "2010-05-15",
+      "country_of_incorporation": "SG",
+      "country_of_operation": "SG",
+      "mobile_number_prefix": "+65",
+      "mobile_number": "88097917",
+      "address_line": "180 Kitchener Road #02-01",
+      "city": "Singapore",
+      "state_or_province": "Singapore",
+      "address_country": "SG",
+      "postal": "208539",
+      "website": "",
+      "email": "recipient@example.com"
+    },
+    "bank": {
+      "bank_account_number": "1234567890",
+      "bank_account_name": "Example Corp Account",
+      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
+      "swift_bic_code": "OCBCSGSG",
+      "ts_bank_code": null,
+      "iban_code": null,
+      "cnaps_code": null
+    }
+  }
+}
+	'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/international/transfer'));
+request.body = json.encode({
+  "quotation_id": "TRX20250325001",
+  "source_of_fund": "BI",
+  "purpose_of_transfer": "SS",
+  "sender_contact_details": {
+    "type": "PERSONAL",
+    "personal_contact": {
+      "last_name": "Smith",
+      "date_of_birth": "1990-08-25",
+      "nationality": "ID",
+      "id_type": "passport",
+      "id_number": "987654321",
+      "mobile_number_prefix": "+62",
+      "mobile_number": "85712163208",
+      "address_line": "Pondok Indah Office Tower",
+      "city": "South Jakarta",
+      "state_or_province": "DKI Jakarta",
+      "address_country": "ID",
+      "postal": "12140",
+      "first_name": "",
+      "middle_name": "",
+      "other_name": "",
+      "gender": "male",
+      "occupation": "",
+      "country_of_birth": "ID",
+      "email": "sender@example.com",
+      "residential_status": "Permanent Residency"
+    }
+  },
+  "recipient_contact_details": {
+    "type": "BUSINESS",
+    "business_contact": {
+      "business_name": "Example Corp",
+      "business_reg_number": "1122334455667788",
+      "date_of_incorporation": "2010-05-15",
+      "country_of_incorporation": "SG",
+      "country_of_operation": "SG",
+      "mobile_number_prefix": "+65",
+      "mobile_number": "88097917",
+      "address_line": "180 Kitchener Road #02-01",
+      "city": "Singapore",
+      "state_or_province": "Singapore",
+      "address_country": "SG",
+      "postal": "208539",
+      "website": "",
+      "email": "recipient@example.com"
+    },
+    "bank": {
+      "bank_country": "SG",
+      "bank_account_currency": "SGD",
+      "bank_account_number": "1234567890",
+      "bank_account_name": "Example Corp Account",
+      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
+      "swift_bic_code": "OCBCSGSG",
+      "ts_bank_code": null,
+      "iban_code": null,
+      "cnaps_code": null
+    }
+  }
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/international/tranfer"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "quotation_id": "TRX20250325001",
+  "source_of_fund": "BI",
+  "purpose_of_transfer": "SS",
+  "sender_contact_details": {
+    "type": "PERSONAL",
+    "personal_contact": {
+      "last_name": "Smith",
+      "date_of_birth": "1990-08-25",
+      "nationality": "ID",
+      "id_type": "passport",
+      "id_number": "987654321",
+      "mobile_number_prefix": "+62",
+      "mobile_number": "85712163208",
+      "address_line": "Pondok Indah Office Tower",
+      "city": "South Jakarta",
+      "state_or_province": "DKI Jakarta",
+      "address_country": "ID",
+      "postal": "12140",
+      "first_name": "",
+      "middle_name": "",
+      "other_name": "",
+      "gender": "male",
+      "occupation": "",
+      "country_of_birth": "ID",
+      "email": "sender@example.com",
+      "residential_status": "Permanent Residency"
+    }
+  },
+  "recipient_contact_details": {
+    "type": "BUSINESS",
+    "business_contact": {
+      "business_name": "Example Corp",
+      "business_reg_number": "1122334455667788",
+      "date_of_incorporation": "2010-05-15",
+      "country_of_incorporation": "SG",
+      "country_of_operation": "SG",
+      "mobile_number_prefix": "+65",
+      "mobile_number": "88097917",
+      "address_line": "180 Kitchener Road #02-01",
+      "city": "Singapore",
+      "state_or_province": "Singapore",
+      "address_country": "SG",
+      "postal": "208539",
+      "website": "",
+      "email": "recipient@example.com"
+    },
+    "bank": {
+      "bank_country": "SG",
+      "bank_account_currency": "SGD",
+      "bank_account_number": "1234567890",
+      "bank_account_name": "Example Corp Account",
+      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
+      "swift_bic_code": "OCBCSGSG",
+      "ts_bank_code": null,
+      "iban_code": null,
+      "cnaps_code": null
+    }
+  }
+}
+`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("Accept", "application/json")
+  req.Header.Add("x-oy-username", "{{username}}")
+  req.Header.Add("x-api-key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+````java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n" +
+    "\t\"quotation_id\": \"TRX20250325001\",\n" +
+    "\t\"source_of_fund\": \"BI\",\n" +
+    "\t\"purpose_of_transfer\": \"SS\",\n" +
+    "\t\"sender_contact_details\": {\n" +
+    "\t\t\"type\": \"```plaintext
+PERSONAL\",\n" +
+    "\t\t\"personal_contact\": {\n" +
+    "\t\t\t\"last_name\": \"Smith\",\n" +
+    "\t\t\t\"date_of_birth\": \"1990-08-25\",\n" +
+    "\t\t\t\"nationality\": \"ID\",\n" +
+    "\t\t\t\"id_type\": \"passport\",\n" +
+    "\t\t\t\"id_number\": \"987654321\",\n" +
+    "\t\t\t\"mobile_number_prefix\": \"+62\",\n" +
+    "\t\t\t\"mobile_number\": \"85712163208\",\n" +
+    "\t\t\t\"address_line\": \"Pondok Indah Office Tower\",\n" +
+    "\t\t\t\"city\": \"South Jakarta\",\n" +
+    "\t\t\t\"state_or_province\": \"DKI Jakarta\",\n" +
+    "\t\t\t\"address_country\": \"ID\",\n" +
+    "\t\t\t\"postal\": \"12140\",\n" +
+    "\t\t\t\"first_name\": \"\",\n" +
+    "\t\t\t\"middle_name\": \"\",\n" +
+    "\t\t\t\"other_name\": \"\",\n" +
+    "\t\t\t\"gender\": \"male\",\n" +
+    "\t\t\t\"occupation\": \"\",\n" +
+    "\t\t\t\"country_of_birth\": \"ID\",\n" +
+    "\t\t\t\"email\": \"sender@example.com\",\n" +
+    "\t\t\t\"residential_status\": \"Permanent Residency\"\n" +
+    "\t\t}\n" +
+    "\t},\n" +
+    "\t\"recipient_contact_details\": {\n" +
+    "\t\t\"type\": \"BUSINESS\",\n" +
+    "\t\t\"business_contact\": {\n" +
+    "\t\t\t\"business_name\": \"Example Corp\",\n" +
+    "\t\t\t\"business_reg_number\": \"1122334455667788\",\n" +
+    "\t\t\t\"date_of_incorporation\": \"2010-05-15\",\n" +
+    "\t\t\t\"country_of_incorporation\": \"SG\",\n" +
+    "\t\t\t\"country_of_operation\": \"SG\",\n" +
+    "\t\t\t\"mobile_number_prefix\": \"+65\",\n" +
+    "\t\t\t\"mobile_number\": \"88097917\",\n" +
+    "\t\t\t\"address_line\": \"180 Kitchener Road #02-01\",\n" +
+    "\t\t\t\"city\": \"Singapore\",\n" +
+    "\t\t\t\"state_or_province\": \"Singapore\",\n" +
+    "\t\t\t\"address_country\": \"SG\",\n" +
+    "\t\t\t\"postal\": \"208539\",\n" +
+    "\t\t\t\"website\": \"\",\n" +
+    "\t\t\t\"email\": \"recipient@example.com\"\n" +
+    "\t\t},\n" +
+    "\t\t\"bank\": {\n" +
+    "\t\t\t\"bank_country\": \"SG\",\n" +
+    "\t\t\t\"bank_account_currency\": \"SGD\",\n" +
+    "\t\t\t\"bank_account_number\": \"1234567890\",\n" +
+    "\t\t\t\"bank_account_name\": \"Example Corp Account\",\n" +
+    "\t\t\t\"bank_name\": \"Oversea-Chinese Banking Corporation Limited [OCBC Bank]\",\n" +
+    "\t\t\t\"bank_address\": \"180 Kitchener Road #02-01, Singapore 208539\",\n" +
+    "\t\t\t\"Swift_bic_code\": \"OCBCSGSG\",\n" +
+    "\t\t\t\"ts_bank_code\": null,\n" +
+    "\t\t\t\"iban_code\": null,\n" +
+    "\t\t\t\"cnaps_code\": null\n" +
+    "\t\t}\n" +
+    "\t}\n" +
+    "}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/international/transfer")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("Accept", "application/json")
+  .addHeader("x-oy-username", "{{username}}")
+  .addHeader("x-api-key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+````
+
+```javascript
+var data = JSON.stringify({
+  quotation_id: "TRX20250325001",
+  source_of_fund: "BI",
+  purpose_of_transfer: "SS",
+  sender_contact_details: {
+    type: "PERSONAL",
+    personal_contact: {
+      last_name: "Smith",
+      date_of_birth: "1990-08-25",
+      nationality: "ID",
+      id_type: "passport",
+      id_number: "987654321",
+      mobile_number_prefix: "+62",
+      mobile_number: "85712163208",
+      address_line: "Pondok Indah Office Tower",
+      city: "South Jakarta",
+      state_or_province: "DKI Jakarta",
+      address_country: "ID",
+      postal: "12140",
+      first_name: "",
+      middle_name: "",
+      other_name: "",
+      gender: "male",
+      occupation: "",
+      country_of_birth: "ID",
+      email: "sender@example.com",
+      residential_status: "Permanent Residency",
+    },
+  },
+  recipient_contact_details: {
+    type: "BUSINESS",
+    business_contact: {
+      business_name: "Example Corp",
+      business_reg_number: "1122334455667788",
+      date_of_incorporation: "2010-05-15",
+      country_of_incorporation: "SG",
+      country_of_operation: "SG",
+      mobile_number_prefix: "+65",
+      mobile_number: "88097917",
+      address_line: "180 Kitchener Road #02-01",
+      city: "Singapore",
+      state_or_province: "Singapore",
+      address_country: "SG",
+      postal: "208539",
+      website: "",
+      email: "recipient@example.com",
+    },
+    bank: {
+      bank_country: "SG",
+      bank_account_currency: "SGD",
+      bank_account_number: "1234567890",
+      bank_account_name: "Example Corp Account",
+      bank_name: "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      bank_address: "180 Kitchener Road #02-01, Singapore 208539",
+      swift_bic_code: "OCBCSGSG",
+      ts_bank_code: null,
+      iban_code: null,
+      cnaps_code: null,
+    },
+  },
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/international/transfer");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-oy-username", "{{username}}");
+xhr.setRequestHeader("x-api-key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/international/transfer');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'x-oy-username' => '{{username}}',
+  'x-api-key' => '{{api-key}}'
+));
+$request->setBody('{\n' .
+    '\t"quotation_id": "TRX20250325001",\n' .
+    '\t"source_of_fund": "BI",\n' .
+    '\t"purpose_of_transfer": "SS",\n' .
+    '\t"sender_contact_details": {\n' .
+    '\t\t"type": "PERSONAL",\n' .
+    '\t\t"personal_contact": {\n' .
+    '\t\t\t"last_name": "Smith",\n' .
+    '\t\t\t"date_of_birth": "1990-08-25",\n' .
+    '\t\t\t"nationality": "ID",\n' .
+    '\t\t\t"id_type": "passport",\n' .
+    '\t\t\t"id_number": "987654321",\n' .
+    '\t\t\t"mobile_number_prefix": "+62",\n' .
+    '\t\t\t"mobile_number": "85712163208",\n' .
+    '\t\t\t"address_line": "Pondok Indah Office Tower",\n' .
+    '\t\t\t"city": "South Jakarta",\n' .
+    '\t\t\t"state_or_province": "DKI Jakarta",\n' .
+    '\t\t\t"address_country": "ID",\n' .
+    '\t\t\t"postal": "12140",\n' .
+    '\t\t\t"first_name": "",\n' .
+    '\t\t\t"middle_name": "",\n' .
+    '\t\t\t"other_name": "",\n' .
+    '\t\t\t"gender": "male",\n' .
+    '\t\t\t"occupation": "",\n' .
+    '\t\t\t"country_of_birth": "ID",\n' .
+    '\t\t\t"email": "sender@example.com",\n' .
+    '\t\t\t"residential_status": "Permanent Residency"\n' .
+    '\t\t}\n' .
+    '\t},\n' .
+    '\t"recipient_contact_details": {\n' .
+    '\t\t"type": "BUSINESS",\n' .
+    '\t\t"business_contact": {\n' .
+    '\t\t\t"business_name": "Example Corp",\n' .
+    '\t\t\t"business_reg_number": "1122334455667788",\n' .
+    '\t\t\t"date_of_incorporation": "2010-05-15",\n' .
+    '\t\t\t"country_of_incorporation": "SG",\n' .
+    '\t\t\t"country_of_operation": "SG",\n' .
+    '\t\t\t"mobile_number_prefix": "+65",\n' .
+    '\t\t\t"mobile_number": "88097917",\n' .
+    '\t\t\t"address_line": "180 Kitchener Road #02-01",\n' .
+    '\t\t\t"city": "Singapore",\n' .
+    '\t\t\t"state_or_province": "Singapore",\n' .
+    '\t\t\t"address_country": "SG",\n' .
+    '\t\t\t"postal": "208539",\n' .
+    '\t\t\t"website": "",\n' .
+    '\t\t\t"email": "recipient@example.com"\n' .
+    '\t\t},\n' .
+    '\t\t"bank": {\n' .
+    '\t\t\t"bank_country": "SG",\n' .
+    '\t\t\t"bank_account_currency": "SGD",\n' .
+    '\t\t\t"bank_account_number": "1234567890",\n' .
+    '\t\t\t"bank_account_name": "Example Corp Account",\n' .
+    '\t\t\t"bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",\n' .
+    '\t\t\t"bank_address": "180 Kitchener Road #02-01, Singapore 208539",\n' .
+    '\t\t\t"swift_bic_code": "OCBCSGSG",\n' .
+    '\t\t\t"ts_bank_code": null,\n' .
+    '\t\t\t"iban_code": null,\n' .
+    '\t\t\t"cnaps_code": null\n' .
+    '\t\t}\n' .
+    '\t}\n' .
+    '}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "quotation_id": "TRX20250325001",
+  "source_of_fund": "BI",
+  "purpose_of_transfer": "SS",
+  "sender_contact_details": {
+    "type": "PERSONAL",
+    "personal_contact": {
+      "last_name": "Smith",
+      "date_of_birth": "1990-08-25",
+      "nationality": "ID",
+      "id_type": "passport",
+      "id_number": "987654321",
+      "mobile_number_prefix": "+62",
+      "mobile_number": "85712163208",
+      "address_line": "Pondok Indah Office Tower",
+      "city": "South Jakarta",
+      "state_or_province": "DKI Jakarta",
+      "address_country": "ID",
+      "postal": "12140",
+      "first_name": "",
+      "middle_name": "",
+      "other_name": "",
+      "gender": "male",
+      "occupation": "",
+      "country_of_birth": "ID",
+      "email": "sender@example.com",
+      "residential_status": "Permanent Residency"
+    }
+  },
+  "recipient_contact_details": {
+    "type": "BUSINESS",
+    "business_contact": {
+      "business_name": "Example Corp",
+      "business_reg_number": "1122334455667788",
+      "date_of_incorporation": "2010-05-15",
+      "country_of_incorporation": "SG",
+      "country_of_operation": "SG",
+      "mobile_number_prefix": "+65",
+      "mobile_number": "88097917",
+      "address_line": "180 Kitchener Road #02-01",
+      "city": "Singapore",
+      "state_or_province": "Singapore",
+      "address_country": "SG",
+      "postal": "208539",
+      "website": "",
+      "email": "recipient@example.com"
+    },
+    "bank": {
+      "bank_country": "SG",
+      "bank_account_currency": "SGD",
+      "bank_account_number": "1234567890",
+      "bank_account_name": "Example Corp Account",
+      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
+      "swift_bic_code": "OCBCSGSG",
+      "ts_bank_code": null,
+      "iban_code": null,
+      "cnaps_code": null
+    }
+  }
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+}
+conn.request("POST", "/api/international/transfer", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> Response for valid request (transaction will processed in the OY! system):
+
+```json
+{
+  "status": {
+    "code": "000",
+    "message": "Success"
+  },
+  "tx_status": "IN_PROGRESS",
+  "tx_id": "049fa1a6-e051-4ec2-aff5-ffc601c3ce0c",
+  "quotation_id": "TRX20250325001"
+}
+```
+
+> Response for invalid request (transaction will rejected & not processed in the OY! system):
+
+```json
+{
+  "status": {
+    "code": "990",
+    "message": "Quotation ID is required"
+  },
+  "tx_status": null,
+  "tx_id": null,
+  "quotation_id": null
+}
+```
+
+Use this API to create an International Transfer transaction.
+
+### HTTPS Request
+
+**[Production]** `POST https://partner.oyindonesia.com/api/international/transfer`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/international/transfer`
+
+### Request Parameters
+
+| Parameter                 | Type         | Required | Description                                                                                                |
+| ------------------------- | ------------ | -------- | ---------------------------------------------------------------------------------------------------------- |
+| quotation_id              | String(64)   | TRUE     | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters. |
+| source_of_fund            | String(ENUM) | TRUE     | [Fund Sources ENUM](#source-of-funds-)                                                                     |
+| purpose_of_transfer       | String(ENUM) | TRUE     | [Transfer Purposes ENUM](#transfer-purposes-)                                                              |
+| sender_contact_details    | Object       | TRUE     | Details of the [Sender Contact object](#sender-contact-details) information                                |
+| recipient_contact_details | Object       | TRUE     | Details of the [Recipient Contact object](#recipient-contact-details) information                          |
+
+#### Sender Contact Details
+
+| Parameter        | Type         | Required | Description                                                                                       |
+| ---------------- | ------------ | -------- | ------------------------------------------------------------------------------------------------- |
+| type             | String(ENUM) | TRUE     | Type of Sender Contact. Allowed values: PERSONAL, BUSINESS                                        |
+| personal_contact | Object       | FALSE    | Object for [Sender Personal Contact information](#personal-contact). Required if type = PERSONAL. |
+| business_contact | Object       | FALSE    | Object for [Sender Business Contact information](#business-contact). Required if type = BUSINESS. |
+
+#### Recipient Contact Details
+
+| Parameter        | Type         | Required | Description                                                                                       |
+| ---------------- | ------------ | -------- | ------------------------------------------------------------------------------------------------- |
+| type             | String(ENUM) | TRUE     | Type of Sender Contact. Allowed values: PERSONAL, BUSINESS                                        |
+| personal_contact | Object       | FALSE    | Object for [Sender Personal Contact information](#personal-contact). Required if type = PERSONAL. |
+| business_contact | Object       | FALSE    | Object for [Sender Business Contact information](#business-contact). Required if type = BUSINESS. |
+| bank             | Object       | TRUE     | Object for [Recipient Bank information](#bank-detail)                                             |
+
+#### Personal Contact
+
+| Parameter            | Type          | Required | Description                                                      |
+| -------------------- | ------------- | -------- | ---------------------------------------------------------------- |
+| last_name            | String        | TRUE     | Last Name                                                        |
+| date_of_birth        | String        | TRUE     | Date of Birth. Use the format: yyyy-MM-dd.                       |
+| nationality          | String        | TRUE     | Nationality. Two-letter ISO 3166-2 country code.                 |
+| id_type              | String (ENUM) | TRUE     | Identification Type. Allowed values: passport, nric, unspecified |
+| id_number            | String        | TRUE     | Identification Number                                            |
+| mobile_number_prefix | String        | TRUE     | Prefix for Phone / Mobile Number. Example: +62, +65.             |
+| mobile_number        | String        | TRUE     | Phone / Mobile Number without Prefix. Must be numeric.           |
+| address_line         | String        | TRUE     | Address                                                          |
+| city                 | String        | TRUE     | City                                                             |
+| state_or_province    | String        | TRUE     | State / Province                                                 |
+| address_country      | String        | TRUE     | Address Country. Two-letter ISO 3166-2 country code.             |
+| postal               | String        | TRUE     | Postal Code                                                      |
+| first_name           | String        | FALSE    | First Name                                                       |
+| middle_name          | String        | FALSE    | Middle Name                                                      |
+| other_name           | String        | FALSE    | Other Name                                                       |
+| gender               | String (ENUM) | FALSE    | Gender. Allowed values: male, female                             |
+| occupation           | String        | FALSE    | Occupation                                                       |
+| country_of_birth     | String        | FALSE    | Country of Birth. Two-letter ISO 3166-2 country code.            |
+| email                | String        | FALSE    | Email                                                            |
+| residential_status   | String        | FALSE    | Residential Status                                               |
+
+#### Business Contact
+
+| Parameter                | Type   | Required | Description                                                                   |
+| ------------------------ | ------ | -------- | ----------------------------------------------------------------------------- |
+| business_name            | String | TRUE     | Business Name                                                                 |
+| business_reg_number      | String | TRUE     | Business Registration Number                                                  |
+| date_of_incorporation    | String | TRUE     | Date the Business was registered. Use the format: yyyy-MM-dd.                 |
+| country_of_incorporation | String | TRUE     | Country where the Business is registered. Two-letter ISO 3166-2 country code. |
+| country_of_operation     | String | TRUE     | Country where the Business is operated. Two-letter ISO 3166-2 country code.   |
+| mobile_number_prefix     | String | TRUE     | Prefix for Phone / Mobile Number. Example: +62, +65.                          |
+| mobile_number            | String | TRUE     | Phone / Mobile Number without Prefix. Must be numeric.                        |
+| address_line             | String | TRUE     | Address                                                                       |
+| city                     | String | TRUE     | City                                                                          |
+| state_or_province        | String | TRUE     | State / Province                                                              |
+| address_country          | String | TRUE     | Address Country. Two-letter ISO 3166-2 country code.                          |
+| postal                   | String | TRUE     | Postal Code                                                                   |
+| website                  | String | FALSE    | Website                                                                       |
+| email                    | String | FALSE    | Email                                                                         |
+
+#### Bank Detail
+
+| Parameter           | Type   | Required | Description                     |
+| ------------------- | ------ | -------- | ------------------------------- |
+| bank_account_number | String | TRUE     | Bank Account Number             |
+| bank_account_name   | String | TRUE     | Name of the Bank Account Holder |
+| swift_bic_code      | String | TRUE     | SWIFT / BIC Code                |
+| bank_name           | String | FALSE    | Bank Name                       |
+| bank_address        | String | FALSE    | Bank Address                    |
+| ts_bank_code        | String | FALSE    | TS Bank Code                    |
+| iban_code           | String | FALSE    | IBAN Code                       |
+| cnaps_code          | String | FALSE    | CNAPS Code                      |
+
+### Response Parameters
+
+| Parameter    | Type   | Description                                                                                                                                                                                                                                  |
+| ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status       | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
+| tx_status    | String | Transaction status                                                                                                                                                                                                                           |
+| tx_id        | String | Unique Transaction ID, generated by OY!                                                                                                                                                                                                      |
+| quotation_id | String | Unique Reference ID for a specific request, generated by the Client                                                                                                                                                                          |
+
+## Transfer Detail
+
+```shell
+curl -X \
+POST https://partner.oyindonesia.com/api/international/transfer-details \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "quotation_id": "TRX20250325001",
+  "send_callback": true
+}	'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/international/transfer-details'));
+request.body = json.encode({
+  "quotation_id": "TRX20250325001",
+  "send_callback": true
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/international/tranfer-details"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+  "quotation_id": "TRX20250325001",
+  "send_callback": true
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("Accept", "application/json")
+  req.Header.Add("x-oy-username", "{{username}}")
+  req.Header.Add("x-api-key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"quotation_id\": \"TRX20250325001\",\n\t\"send_callback\": true\n}")
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/international/transfer-details")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("Accept", "application/json")
+  .addHeader("x-oy-username", "{{username}}")
+  .addHeader("x-api-key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  quotation_id: "TRX20250325001",
+  send_callback: true,
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/international/transfer-details");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-oy-username", "{{username}}");
+xhr.setRequestHeader("x-api-key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/international/transfer-details');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'x-oy-username' => '{{username}}',
+  'x-api-key' => '{{api-key}}'
+));
+$request->setBody('{\n' .
+    '\t"quotation_id": "TRX20250325001",\n' .
+    '\t"send_callback": true\n' .
+    '}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "quotation_id": "TRX20250325001",
+  "send_callback": true
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+}
+conn.request("POST", "/api/international/transfer-details", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> Response for valid request (transaction will processed in the OY! system):
+
+```json
+{
+  "status": {
+    "code": "000",
+    "message": "Success"
+  },
+  "tx_status": "SUCCESS",
+  "tx_id": "049fa1a6-e051-4ec2-aff5-ffc601c3ce0c",
+  "quotation_id": "TRX20250325001",
+  "url_list": [
+    "pejetaja/049fa1a6-e051-4ec2-aff5-ffc601c3ce0c/document_file_name.png"
+  ],
+  "sender_contact_details": {
+    "type": "PERSONAL",
+    "personal_contact": {
+      "last_name": "Smith",
+      "date_of_birth": "1990-08-25",
+      "nationality": "ID",
+      "id_type": "passport",
+      "id_number": "987654321",
+      "mobile_number_prefix": "+62",
+      "mobile_number": "85712163208",
+      "address_line": "Pondok Indah Office Tower",
+      "city": "South Jakarta",
+      "state_or_province": "DKI Jakarta",
+      "address_country": "ID",
+      "postal": "12140",
+      "first_name": "",
+      "middle_name": "",
+      "other_name": "",
+      "gender": "male",
+      "occupation": "",
+      "country_of_birth": "ID",
+      "email": "sender@example.com",
+      "residential_status": "Permanent Residency"
+    }
+  },
+  "recipient_contact_details": {
+    "type": "BUSINESS",
+    "business_contact": {
+      "business_name": "Example Corp",
+      "business_reg_number": "1122334455667788",
+      "date_of_incorporation": "2010-05-15",
+      "country_of_incorporation": "SG",
+      "country_of_operation": "SG",
+      "mobile_number_prefix": "+65",
+      "mobile_number": "88097917",
+      "address_line": "180 Kitchener Road #02-01",
+      "city": "Singapore",
+      "state_or_province": "Singapore",
+      "address_country": "SG",
+      "postal": "208539",
+      "website": "",
+      "email": "recipient@example.com"
+    },
+    "bank": {
+      "bank_country": "SG",
+      "bank_account_currency": "SGD",
+      "bank_account_number": "1234567890",
+      "bank_account_name": "Example Corp Account",
+      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
+      "swift_bic_code": "OCBCSGSG",
+      "ts_bank_code": null,
+      "iban_code": null,
+      "cnaps_code": null
+    }
+  }
+}
+```
+
+> Response for invalid request (transaction will rejected & not processed in the OY! system):
+
+```json
+{
+  "status": {
+    "code": "990",
+    "message": "Quotation ID is required"
+  },
+  "tx_status": null,
+  "tx_id": null,
+  "quotation_id": null,
+  "url_list": null,
+  "sender_contact_details": null,
+  "recipient_contact_details": null
+}
+```
+
+Use this API to create an International Transfer transaction.
+
+### HTTPS Request
+
+**[Production]** `POST https://partner.oyindonesia.com/api/international/transfer-details`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/international/transfer-details`
+
+### Request Parameters
+
+| Parameter     | Type       | Required | Description                                                                                                |
+| ------------- | ---------- | -------- | ---------------------------------------------------------------------------------------------------------- |
+| quotation_id  | String(64) | TRUE     | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters. |
+| send_callback | Boolean    | TRUE     | A flag to resend the transaction callback. Default value: false.                                           |
+
+### Response Parameters
+
+| Parameter                 | Type            | Description                                                                                                                                                                                                                                  |
+| ------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status                    | Object          | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
+| tx_status                 | String          | Transaction status                                                                                                                                                                                                                           |
+| tx_id                     | String          | Unique Transaction ID, generated by OY!                                                                                                                                                                                                      |
+| quotation_id              | String          | Unique Reference ID for a specific request, generated by the Client                                                                                                                                                                          |
+| source_of_fund            | String(Enum)    | [Fund Sources](#source-of-funds-)                                                                                                                                                                                                            |
+| purpose_of_transfer       | String          | [Transfer Purposes](#transfer-purposes-)                                                                                                                                                                                                     |
+| url_list                  | Array of String | Array of the uploaded document path                                                                                                                                                                                                          |
+| sender_contact_details    | Object          | Details of the [Sender Contact object information](#sender-contact-details)                                                                                                                                                                  |
+| recipient_contact_details | Object          | Details of the [Recipient Contact object information](#recipient-contact-details)                                                                                                                                                            |
