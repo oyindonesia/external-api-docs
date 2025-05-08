@@ -218,8 +218,6 @@ print(data.decode("utf-8"))
 > Response for invalid request (transaction will rejected & not processed in the OY! system):
 
 ```json
-Status: 400 Bad Request
-
 {
   "status": {
     "code": "990",
@@ -230,7 +228,6 @@ Status: 400 Bad Request
   "fx_rate": null,
   "transfer_fee": null
 }
-
 ```
 
 Use this API to get the latest Exchange Rate information.
@@ -493,8 +490,6 @@ print(data.decode("utf-8"))
 > Response for invalid request (transaction will rejected & not processed in the OY! system):
 
 ```json
-Status: 400 Bad Request
-
 {
   "status": {
     "code": "208",
@@ -502,8 +497,6 @@ Status: 400 Bad Request
   },
   "active_corridors": null
 }
-
-
 ```
 
 Use this API to get the latest active corridor information on a given Client.
@@ -1983,7 +1976,7 @@ print(data.decode("utf-8"))
 }
 ```
 
-Use this API to create an International Transfer transaction.
+Use this API to get details of a specific International Transfer transaction.
 
 ### HTTPS Request
 
