@@ -233,7 +233,8 @@ print(data.decode("utf-8"))
   "note": "note",
   "claim_fund_link": "https://claimfund.oyindonesia.com/claim-fund/claim/251280aa-95cb-41f2-84c3-8d2b247aa2b4?token=1ac006ce-82d9-4cb6-9afd-a621ca8dafa0",
   "expiration": "2025-04-08 12:10:00",
-  "created": "2025-04-08 02:10:00"
+  "created": "2025-04-08 02:10:00",
+  "updated": "2025-04-08 02:10:00"
 }
 
 ```
@@ -270,32 +271,33 @@ note | String | Claim Fund Notes. Accepts alphanumeric characters.
 claim_fund_link | String | Claim Fund Link which will be used to fill in Bank Account information
 expiration | String | Expiration for the Claim Fund Link. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
 created | String | Claim Fund Link creation datetime. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
+updated | String | Claim Fund last update datetime, based on the latest status update. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
 
 ### Response Codes & Messages
 
-| HTTP Status | Status Code | Status Message | Description |
+| HTTP Status | Case Code | Response Message | Description |
 | ----- | ----- | :---- | :---- |
 | 200 OK | 000 | Success | Request successful |
-| 403 Forbidden | 201 | User is not found | Indicates that x-oy-username is empty and the request does not have the x-oy-username parameter in the Header. Indicates that x-oy-username contains a value that does not exist in the database. |
-| 403 Forbidden | 202 | User is not active | Indicates that x-oy-username contains a value with an inactive Claim Fund API product. |
+| 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive Claim Fund API product. |
 | 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
-| 403 Forbidden | 208 | API Key is not valid | Indicates that x-api-key is empty and the request does not have the x-api-key parameter in the Header. Also, the request contains a value that does not match the one registered in OY\!. |
-| 400 Bad Request | 203 | Duplicate Partner Trx ID | Indicates that partner\_trx\_id has already been used before. |
-| 400 Bad Request | 990 | Amount is required | Indicates that amount contains an empty or null value, and the request is missing an amount parameter. |
-| 400 Bad Request | 990 | Invalid request body: Invalid format value 'xxxxxx' for field 'amount' | Indicates that amount contains a non-numeric value (using Data Type other than BigInteger). |
-| 400 Bad Request | 990 | Amount must be greater than or equal to IDR 100 | Indicates that amount contains a value less than IDR 100\. |
-| 400 Bad Request | 225 | Transaction amount exceeds the maximum limit | Indicates that amount contains a value greater than the MAXIMUM\_TRANSACTION\_AMOUNT configured in b2x\_config. |
-| 400 Bad Request | 990 | Partner Trx ID is required | Indicates that partner\_trx\_id contains an empty or null value, and the request is missing a partner\_trx\_id parameter. |
-| 400 Bad Request | 990 | Partner Trx ID must be a maximum of 255 characters | Indicates that partner\_trx\_id contains a value of more than 255 characters. |
-| 400 Bad Request | 990 | Recipient Email is required | Indicates that recipient\_email contains an empty or null value, and the request is missing an recipient\_email parameter. |
-| 400 Bad Request | 990 | Recipient Email is not valid | Indicates that recipient\_email contains an invalid format value. Indicates that recipient\_email contains a value of more than 255 characters. |
-| 400 Bad Request | 990 | Recipient Name must be a maximum of 64 characters | Indicates that recipient\_name contains a value of more than 255 characters. |
-| 400 Bad Request | 990 | Note must be a maximum of 255 characters | Indicates that note contains a value of more than 255 characters. |
-| 400 Bad Request | 990 | Note must be alphanumeric | Indicates that note contains a non-alphanumeric value. |
-| 400 Bad Request | 990 | Expiration must be numeric | Indicates that expiration contains a non-numeric value. |
-| 400 Bad Request | 990 | Expiration must be between 1 and 24 hours | Indicates that expiration contains a value of less than 1 hour or more than 24 hours. |
+| 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
+| 400 Bad Request | 203 | Duplicate Partner Trx ID | Indicates that the partner\_trx\_id has already been used before. |
+| 400 Bad Request | 990 | Amount is required | Indicates that the amount parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Invalid request body: Invalid format value 'xxxxxx' for field 'amount' | Indicates that the amount parameter contains a non-numeric value or uses a Data Type other than BigInteger. |
+| 400 Bad Request | 990 | Amount must be greater than or equal to IDR 100 | Indicates that the amount parameter contains a value less than IDR 100\. |
+| 400 Bad Request | 225 | Transaction amount exceeds the maximum limit | Indicates that the amount parameter contains a value greater than the MAXIMUM\_TRANSACTION\_AMOUNT limit configured for your account. |
+| 400 Bad Request | 990 | Partner Trx ID is required | Indicates that the partner\_trx\_id parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Partner Trx ID must be a maximum of 255 characters | Indicates that the partner\_trx\_id parameter contains a value of more than 255 characters. |
+| 400 Bad Request | 990 | Recipient Email is required | Indicates that the recipient\_email parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Recipient Email is not valid | Indicates that the recipient\_email parameter is either in an invalid format or more than 255 characters. |
+| 400 Bad Request | 990 | Recipient Name must be a maximum of 64 characters | Indicates that the recipient\_name parameter contains a value of more than 255 characters. |
+| 400 Bad Request | 990 | Note must be a maximum of 255 characters | Indicates that the note parameter contains a value of more than 255 characters. |
+| 400 Bad Request | 990 | Note must be alphanumeric | Indicates that the note parameter contains a non-alphanumeric value. |
+| 400 Bad Request | 990 | Expiration must be numeric | Indicates that the expiration parameter contains a non-numeric value. |
+| 400 Bad Request | 990 | Expiration must be between 1 and 24 hours | Indicates that the expiration parameter contains a value of less than 1 hour or more than 24 hours. |
 | 429 Too Many Requests | 429 | Too Many Requests | Indicates that the Client has sent too many requests within a given period, exceeding the allowed rate limit. |
-| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an External Service (e.g., FX Rate Provider) |
+| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
 | 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
 ## Approve/Reject Claim Fund
@@ -501,7 +503,8 @@ print(data.decode("utf-8"))
   "note": "note",
   "claim_fund_link": "https://claimfund.oyindonesia.com/claim-fund/claim/251280aa-95cb-41f2-84c3-8d2b247aa2b4?token=1ac006ce-82d9-4cb6-9afd-a621ca8dafa0",
   "expiration": "2025-04-08 12:10:00",
-  "created": "2025-04-08 02:10:00"
+  "created": "2025-04-08 02:10:00",
+  "updated": "2025-04-08 02:10:00"
 }
 
 ```
@@ -534,24 +537,25 @@ note | String | Claim Fund Notes. Accepts alphanumeric characters.
 claim_fund_link | String | Claim Fund Link which will be used to fill in Bank Account information
 expiration | String | Expiration for the Claim Fund Link. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
 created | String | Claim Fund Link creation datetime. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
+updated | String | Claim Fund last update datetime, based on the latest status update. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
 
 ### Response Codes & Messages
 
-| HTTP Status | Status Code | Status Message | Description |
+| HTTP Status | Case Code | Response Message | Description |
 | ----- | ----- | :---- | :---- |
 | 200 OK | 000 | Success | Request successful |
-| 403 Forbidden | 201 | User is not found | Indicates that x-oy-username is empty and the request does not have the x-oy-username parameter in the Header. Indicates that x-oy-username contains a value that does not exist in the database. |
-| 403 Forbidden | 202 | User is not active | Indicates that x-oy-username contains a value with an inactive Claim Fund API product. |
+| 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive Claim Fund API product. |
 | 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
-| 403 Forbidden | 208 | API Key is not valid | Indicates that x-api-key is empty and the request does not have the x-api-key parameter in the Header. Also, the request contains a value that does not match the one registered in OY\!. |
-| 400 Bad Request | 990 | Partner Trx ID is required | Indicates that partner\_trx\_id contains an empty or null value, and the request is missing a partner\_trx\_id parameter. |
-| 404 Not Found | 204 | Partner Trx ID is not found | Indicates that partner\_trx\_id contains a value that does not exist in the database. Indicates that partner\_trx\_id contains a value with product\_name \= CLAIM\_FUND. |
-| 400 Bad Request | 203 | The provided Partner Trx ID has a status that is not eligible for this action | Indicates that the request uses a partner\_trx\_id that is not in a WAITING\_APPROVAL status, such as INITIATED, IN\_PROGRESS, SUCCESS, FAILED, PENDING, EXPIRED, or REJECTED. |
-| 409 Conflict | 257 | An API request with the same Partner Trx ID is already in progress | Indicates that the request with the same partner\_trx\_id is already in progress when the Client hits the request \> 1\. |
-| 400 Bad Request | 990 | Action is required | Indicates that action contains an empty or null value, and the request is missing an action parameter. |
-| 400 Bad Request | 990 | Action must be either APPROVE or REJECT | Indicates that action does not match an ENUM value or contains an invalid value (e.g. YES). |
+| 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
+| 400 Bad Request | 990 | Partner Trx ID is required | Indicates that the partner\_trx\_id parameter is missing from the request or contains an empty or null value. |
+| 404 Not Found | 204 | Partner Trx ID is not found | Indicates that the partner\_trx\_id parameter contains a value that either does not exist in the database or is associated with a product named CLAIM\_FUND. |
+| 400 Bad Request | 203 | The provided Partner Trx ID has a status that is not eligible for this action | Indicates that the partner\_trx\_id used in the request is not in the WAITING\_APPROVAL status, such as: INITIATED, IN\_PROGRESS, SUCCESS, FAILED, EXPIRED, or REJECTED. |
+| 409 Conflict | 257 | An API request with the same Partner Trx ID is already in progress | Indicates that a request with the same partner\_trx\_id is already in progress when the Client sends the request multiple times (more than 1). |
+| 400 Bad Request | 990 | Action is required | Indicates that the action parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Action must be either APPROVE or REJECT | Indicates that the action parameter does not match any valid ENUM value or contains an invalid value (e.g., YES). |
 | 429 Too Many Requests | 429 | Too Many Requests | Indicates that the Client has sent too many requests within a given period, exceeding the allowed rate limit. |
-| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an External Service (e.g., FX Rate Provider) |
+| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
 | 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
 
@@ -752,7 +756,8 @@ print(data.decode("utf-8"))
   "note": "note",
   "claim_fund_link": "https://claimfund.oyindonesia.com/claim-fund/claim/251280aa-95cb-41f2-84c3-8d2b247aa2b4?token=1ac006ce-82d9-4cb6-9afd-a621ca8dafa0",
   "expiration": "2025-04-08 12:10:00",
-  "created": "2025-04-08 02:10:00"
+  "created": "2025-04-08 02:10:00",
+  "updated": "2025-04-08 02:10:00"
 }
 
 ```
@@ -785,21 +790,22 @@ note | String | Claim Fund Notes. Accepts alphanumeric characters.
 claim_fund_link | String | Claim Fund Link which will be used to fill in Bank Account information
 expiration | String | Expiration for the Claim Fund Link. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
 created | String | Claim Fund Link creation datetime. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
+updated | String | Claim Fund last update datetime, based on the latest status update. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
 
 ### Response Codes & Messages
 
-| HTTP Status | Status Code | Status Message | Description |
+| HTTP Status | Case Code | Response Message | Description |
 | ----- | ----- | :---- | :---- |
 | 200 OK | 000 | Success | Request successful |
-| 403 Forbidden | 201 | User is not found | Indicates that x-oy-username is empty and the request does not have the x-oy-username parameter in the Header. Indicates that x-oy-username contains a value that does not exist in the database. |
-| 403 Forbidden | 202 | User is not active | Indicates that x-oy-username contains a value with an inactive Claim Fund API product. |
+| 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive Claim Fund API product. |
 | 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
-| 403 Forbidden | 208 | API Key is not valid | Indicates that x-api-key is empty and the request does not have the x-api-key parameter in the Header. Also, the request contains a value that does not match the one registered in OY\!. |
-| 400 Bad Request | 990 | Partner Trx ID is required | Indicates that partner\_trx\_id contains an empty or null value, and the request is missing a partner\_trx\_id parameter. |
-| 404 Not Found | 204 | Partner Trx ID is not found | Indicates that partner\_trx\_id contains a value that does not exist in the database. Indicates that partner\_trx\_id contains a value with product\_name \= CLAIM\_FUND. |
-| 400 Bad Request | 203 | The provided Partner Trx ID has a status that is not eligible for this action | Indicates that the request uses a partner\_trx\_id that is not in an INITIATED status, such as WAITING\_APPROVAL, IN\_PROGRESS, SUCCESS, FAILED, PENDING, EXPIRED, or REJECTED. |
+| 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
+| 400 Bad Request | 990 | Partner Trx ID is required | Indicates that the partner\_trx\_id parameter is missing from the request or contains an empty or null value. |
+| 404 Not Found | 204 | Partner Trx ID is not found | Indicates that the partner\_trx\_id parameter contains a value that either does not exist in the database or is associated with a product named CLAIM\_FUND. |
+| 400 Bad Request | 203 | The provided Partner Trx ID has a status that is not eligible for this action | Indicates that the partner\_trx\_id used in the request is not in the INITIATED status, such as: WAITING\_APPROVAL, IN\_PROGRESS, SUCCESS, FAILED, EXPIRED, or REJECTED. |
 | 429 Too Many Requests | 429 | Too Many Requests | Indicates that the Client has sent too many requests within a given period, exceeding the allowed rate limit. |
-| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an External Service (e.g., FX Rate Provider) |
+| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
 | 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
 ## Get Detail Claim Fund
@@ -975,7 +981,8 @@ print(data.decode("utf-8"))
   "note": "note",
   "claim_fund_link": "https://claimfund.oyindonesia.com/claim-fund/claim/251280aa-95cb-41f2-84c3-8d2b247aa2b4?token=1ac006ce-82d9-4cb6-9afd-a621ca8dafa0",
   "expiration": "2025-04-08 12:10:00",
-  "created": "2025-04-08 02:10:00"
+  "created": "2025-04-08 02:10:00",
+  "updated": "2025-04-08 02:10:00"
 }
 
 ```
@@ -1008,21 +1015,22 @@ note | String | Claim Fund Notes. Accepts alphanumeric characters.
 claim_fund_link | String | Claim Fund Link which will be used to fill in Bank Account information
 expiration | String | Expiration for the Claim Fund Link. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
 created | String | Claim Fund Link creation datetime. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
+updated | String | Claim Fund last update datetime, based on the latest status update. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone.
 
 ### Response Codes & Messages
 
-| HTTP Status | Status Code | Status Message | Description |
+| HTTP Status | Case Code | Response Message | Description |
 | ----- | ----- | :---- | :---- |
 | 200 OK | 000 | Success | Request successful |
-| 403 Forbidden | 201 | User is not found | Indicates that x-oy-username is empty and the request does not have the x-oy-username parameter in the Header. Indicates that x-oy-username contains a value that does not exist in the database. |
-| 403 Forbidden | 202 | User is not active | Indicates that x-oy-username contains a value with an inactive Claim Fund API product. |
+| 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive Claim Fund API product. |
 | 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
-| 403 Forbidden | 208 | API Key is not valid | Indicates that x-api-key is empty and the request does not have the x-api-key parameter in the Header. Also, the request contains a value that does not match the one registered in OY\!. |
-| 400 Bad Request | 990 | Partner Trx ID is required | Indicates that partner\_trx\_id contains an empty value, and the request is missing a partner\_trx\_id parameter. |
-| 404 Not Found | 204 | Partner Trx ID is not found | Indicates that partner\_trx\_id contains a value that does not exist in the database. Indicates that partner\_trx\_id contains a value with product\_name \= CLAIM\_FUND. |
-| 400 Bad Request | 990 | Send Callback must be either true or false | Indicates that send\_callback contains a non-boolean value. |
+| 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
+| 400 Bad Request | 990 | Partner Trx ID is required | Indicates that the partner\_trx\_id parameter is missing from the request or contains an empty value. |
+| 404 Not Found | 204 | Partner Trx ID is not found | Indicates that the partner\_trx\_id parameter contains a value that either does not exist in the database or is associated with a product named CLAIM\_FUND. |
+| 400 Bad Request | 990 | Send Callback must be either true or false | Indicates that the send\_callback parameter contains a non-boolean value. |
 | 429 Too Many Requests | 429 | Too Many Requests | Indicates that the Client has sent too many requests within a given period, exceeding the allowed rate limit. |
-| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an External Service (e.g., FX Rate Provider) |
+| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
 | 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
 ## Transaction Callback
@@ -1089,7 +1097,7 @@ We also have a resend callback feature which you can read about [here](https://d
 
 ### Callback Parameters
 
-| Parameter | Type | Description |
+| Parameter | Data Type | Description |
 | :---- | :---- | :---- |
 | tx\_status | String | Claim Fund Transaction Status |
 | tx\_status\_description | String | Description of the Claim Fund Transaction Status |
@@ -1097,11 +1105,11 @@ We also have a resend callback feature which you can read about [here](https://d
 | partner\_trx\_id | String | Unique Transaction ID for a specific request, generated by the Client |
 | recipient\_email | String | Recipient Email to receive the Claim Fund Link |
 | recipient\_name | String | Recipient Name |
-| note | String | Claim Fund notes |
+| note | String | Claim Fund Notes. Accepts alphanumeric characters. |
 | claim\_fund\_link | String | Claim Fund Link which will be used to fill in Bank Account information |
 | expiration | String | Expiration for the Claim Fund Link. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone. |
 | created | String | Claim Fund Link creation datetime. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone. |
-| updated | String | The timestamp, which indicates the latest updated time of a claim fund due to a status update. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone. |
+| updated | String | Claim Fund last update datetime, based on the latest status update. Using yyyy-MM-dd HH:mm:ss format in GMT+0 time zone. |
 
 ## Transaction Status
 Below is the list of transaction status of Claim Fund transaction:
@@ -1109,7 +1117,7 @@ Below is the list of transaction status of Claim Fund transaction:
 | Transaction Status <br> (Parameter: tx\_status) | Description <br> (Parameter: tx\_status\_description) | Details |
 | :---- | :---- | :---- |
 | INITIATED | The Claim Fund link has successfully been created and is awaiting the end user's response | State: Non-Final <br> The Claim Fund Link has been successfully created and sent to the Recipient’s Email. The Recipient needs to fill in the Bank Account information in the Claim Fund Link before the expiration date. |
-| EXPIRED | The Claim Fund link has expired or has been voided | State: Final <br> There are 2 cases: The Claim Fund Link has expired because the Recipient did not fill in the Bank Account information before the expiration date occurred. The Claim Fund Link has been cancelled or voided by the Owner before the expiration date occurs and the Recipient did not fill in the Bank Account information. |
+| EXPIRED | The Claim Fund link has expired or has been voided | State: Final <br> There are 2 cases: (1) The Claim Fund Link has expired because the Recipient did not fill in the Bank Account information before the expiration date occurred. (2) The Claim Fund Link has been cancelled or voided by the Owner before the expiration date occurs and the Recipient did not fill in the Bank Account information. |
 | WAITING\_APPROVAL | The Claim Fund transaction is awaiting approval | State: Non-Final <br> The Recipient has successfully filled in the Bank Account information and is waiting for the Owner’s approval to carry out the disbursement process. |
 | IN\_PROGRESS | The Claim Fund transaction is being processed | State: Non-Final <br> The Owner has approved the transaction and the disbursement process is in progress. |
 | PENDING | The Claim Fund transaction is currently awaiting further processing or confirmation | State: Non-Final <br> The Claim Fund Transaction did not receive a clear response from the Bank Network. The transaction is waiting for further processing or confirmation with the Bank Network.  |
