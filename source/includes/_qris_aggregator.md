@@ -113,7 +113,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"use_linked_account\": false,\n \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"BANK_TRANSFER\",\n    \"list_enable_sof\": \"002\",\n    \"va_display_name\": \"partner_brand\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"partner_user_id\": \"USR-20211117-1029\",\n    \"use_linked_account\": false,\n \"partner_trx_id\": \"TRX-20211117-1030\",\n    \"need_frontend\": false,\n    \"sender_email\": \"sender@gmail.com\",\n    \"receive_amount\": 14000,\n    \"list_enable_payment_method\": \"BANK_TRANSFER\",\n    \"list_enable_sof\": \"002\",\n    \"payment_routing\": [{\n        \"recipient_bank\": \"014\",\n        \"recipient_account\": \"1234567890\",\n        \"recipient_amount\": 10000,\n        \"recipient_email\": \"recipient_bca@gmail.com\"\n    }]\n}");
 Request request = new Request.Builder()
   .url("https://partner.oyindonesia.com/api/payment-routing/create-transaction")
   .method("POST", body)
@@ -250,7 +250,6 @@ Endpoint:
 | list_enable_payment_method | String     |  TRUE | - | Fill with `QRIS`.  |
 | list_enable_sof | String      |  TRUE | - | Fill with `QRIS`. |
 | receive_amount | Numeric     |  TRUE | - | The amount of a transaction to be paid. For QRIS min. amount is 10.000 and max. amount is 10.000.000 |
-| va_display_name | String     |  FALSE | Partner's brand name | Display name for VA that will be displayed once user do inquiry. If empty VA name will be set using partner brand name. This parameter will be used only if you use BANK_TRANSFER payment method and routed to VA. |
 | trx_expiration_time | Date string; yyyy-mm-dd hh:mm:ss format (UTC+7)    |  FALSE | 30 minutes | Limited to 1 minute - 1 hour after the request is sent. |
 
 ### Response Parameters
