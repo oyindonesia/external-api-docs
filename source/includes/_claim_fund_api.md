@@ -664,8 +664,7 @@ Response response = client.newCall(request).execute();
 
 ```javascript
 var data = JSON.stringify({
-  "partner_trx_id": "TRX-20250408-001",
-  "action": "APPROVE"
+  "partner_trx_id": "TRX-20250408-001"
 });
 
 var xhr = new XMLHttpRequest();
