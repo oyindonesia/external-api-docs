@@ -1,20 +1,14 @@
 # API International Transfer
 
-## Get Fx Rate
+## Get Bank List
 
 ```shell
 curl -X \
-POST https://partner.oyindonesia.com/api/international/fx-rate \
+GET https://partner.oyindonesia.com/api/international/banks \
 -H 'content-type: application/json' \
 -H 'accept: application/json' \
 -H 'x-oy-username:myuser' \
--H 'x-api-key:987654' \
--d '{
-  "destination_country_code": "SG",
-  "destination_currency_code": "SGD",
-  "source_amount": 200000,
-  "destination_amount": ""
-}'
+-H 'x-api-key:987654' \'
 ```
 
 ```dart
@@ -24,13 +18,7 @@ var headers = {
   'x-oy-username': '{{username}}',
   'x-api-key': '{{api-key}}'
 };
-var request = http.Request('POST', Uri.parse('{{base_url}}/api/international/fx-rate'));
-request.body = json.encode({
-  "destination_country_code": "SG",
-  "destination_currency_code": "SGD",
-  "source_amount": 15000,
-  "destination_amount": ""
-});
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/international/banks'));
 request.headers.addAll(headers);
 
 http.StreamedResponse response = await request.send();
@@ -55,19 +43,12 @@ import (
 
 func main() {
 
-  url := "%7B%7Bbase_url%7D%7D/api/international/fx-rate"
-  method := "POST"
-
-  payload := strings.NewReader(`{
-    "destination_country_code": "SG",
-    "destination_currency_code": "SGD",
-    "source_amount": 15000,
-    "destination_amount": ""
-}`)
+  url := "%7B%7Bbase_url%7D%7D/api/international/banks"
+  method := "GET"
 
   client := &http.Client {
   }
-  req, err := http.NewRequest(method, url, payload)
+  req, err := http.NewRequest(method, url)
 
   if err != nil {
     fmt.Println(err)
@@ -98,10 +79,9 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"destination_country_code\": \"SG\",\n\t\"destination_currency_code\": \"SGD\",\n\t\"source_amount\": 200000,\n\t\"destination_amount\": \"\"\n}");
 Request request = new Request.Builder()
-  .url("{{base_url}}/api/international/fx-rate")
-  .method("POST", body)
+  .url("{{base_url}}/api/international/active-corridors")
+  .method("GET", body)
   .addHeader("Content-Type", "application/json")
   .addHeader("Accept", "application/json")
   .addHeader("x-oy-username", "{{username}}")
@@ -111,13 +91,6 @@ Response response = client.newCall(request).execute();
 ```
 
 ```javascript
-var data = JSON.stringify({
-  destination_country_code: "SG",
-  destination_currency_code: "SGD",
-  source_amount: 200000,
-  destination_amount: "",
-});
-
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
@@ -127,7 +100,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/international/fx-rate");
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/international/banks");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-oy-username", "{{username}}");
@@ -140,8 +113,8 @@ xhr.send(data);
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('{{base_url}}/api/international/fx-rate');
-$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setUrl('{{base_url}}/api/international/banks');
+$request->setMethod(HTTP_Request2::METHOD_GET);
 $request->setConfig(array(
   'follow_redirects' => TRUE
 ));
@@ -151,7 +124,6 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n\t\"destination_country_code\": \"SG\",\n\t\"destination_currency_code\": \"SGD\",\n\t\"source_amount\": 200000,\n\t\"destination_amount\": \"\"\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -172,20 +144,13 @@ import http.client
 import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
-payload = json.dumps({
-  "destination_country_code": "SG",
-  "destination_currency_code": "SGD",
-  "source_amount": 200000,
-  "destination_amount": ""
-}
-)
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
   'x-oy-username': '{{username}}',
   'x-api-key': '{{api-key}}'
 }
-conn.request("POST", "/api/international/fx-rate", payload, headers)
+conn.request("GET", "/api/international/banks", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
@@ -199,19 +164,21 @@ print(data.decode("utf-8"))
     "code": "000",
     "message": "Success"
   },
-  "source_amount": {
-    "value": 200000,
-    "currency": "IDR"
-  },
-  "destination_amount": {
-    "value": "14.97",
-    "currency": "SGD"
-  },
-  "fx_rate": 0.0001,
-  "transfer_fee": {
-    "value": 50300,
-    "currency": "IDR"
-  }
+  "banks": [
+    {
+      "bank_country": "SG",
+      "bank_details": [
+        {
+          "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+          "bank_code": "TSSG0034"
+        },
+        {
+          "bank_name": "Svenska Handelsbanken, Singapore Branch",
+          "bank_code": "TSSG0043"
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -220,47 +187,30 @@ print(data.decode("utf-8"))
 ```json
 {
   "status": {
-    "code": "990",
-    "message": "Destination Country Code is required"
+    "code": "208",
+    "message": "API Key is not valid"
   },
-  "source_amount": null,
-  "destination_amount": null,
-  "fx_rate": null,
-  "transfer_fee": null
+  "banks": null
 }
 ```
 
-Use this API to get the latest Exchange Rate information.
+Use this API to get a list of available Destination Banks for International Transfer API transactions in all Destination Countries.
 
 ### HTTPS Request
 
-**[Production]** `POST https://partner.oyindonesia.com/api/international/fx-rate`<br>
-**[Staging]** `POST https://api-stg.oyindonesia.com/api/international/fx-rate`
-
-### Request Parameters
-
-| Parameter                 | Type        | Required | Description                                                                                       |
-| ------------------------- | ----------- | -------- | ------------------------------------------------------------------------------------------------- |
-| destination_country_code  | String(2)   | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.                                     |
-| destination_currency_code | String(3)   | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code.                                   |
-| source_amount             | BigInteger  | FALSE    | Amount in source currency (IDR)                                                                   |
-| destination_amount        | String(255) | FALSE    | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency. |
+**[Production]** `GET https://partner.oyindonesia.com/api/international/banks`<br>
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/international/banks`
 
 ### Response Parameters
 
-| Parameter          | Type       | Description                                                                                                                                                                                                                                 |
-| ------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status             | Object     | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API.`{code: <status_code>, message: <status_message>}` |
-| source_amount      | Object     |                                                                                                                                                                                                                                             |
-| value              | BigInteger | Amount in source currency                                                                                                                                                                                                                   |
-| currency           | String     | Amount Currency Code. Currently, only available for IDR.                                                                                                                                                                                    |
-| destination_amount | Object     |                                                                                                                                                                                                                                             |
-| value              | BigInteger | Amount in destination currency (with 2-digit decimal).                                                                                                                                                                                      |
-| currency           | String     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                             |
-| fx_rate            | BigInteger | Conversion rate                                                                                                                                                                                                                             |
-| transfer_fee       | Object     |                                                                                                                                                                                                                                             |
-| value              | BigInteger | Transaction fee                                                                                                                                                                                                                             |
-| currency           | String     | Transaction Fee Currency Code. Currently, only available for IDR.                                                                                                                                                                           |
+| Parameter    | Type   | Description                                                                                                                                                                                                                                  |
+| ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status       | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
+| banks        | Array  |
+| bank_country | String | Destination Currency Code. Three-letter ISO 3166-2 country code.                                                                                                                                                                             |
+| bank_details | Object |                                                                                                                                                                                                                                              |
+| bank_name    | String | Bank Name                                                                                                                                                                                                                                    |
+| bank_code    | String | Bank Code                                                                                                                                                                                                                                    |
 
 ## Get Corridor Active
 
@@ -519,6 +469,268 @@ Use this API to get the latest active corridor information on a given Client.
 | country_code     | String | Destination Country Code. Two-letter ISO 3166-2 country code.                                                                                                                                                                                |
 | country_name     | String | Description of destination country code                                                                                                                                                                                                      |
 
+## Get Fx Rate
+
+```shell
+curl -X \
+POST https://partner.oyindonesia.com/api/international/fx-rate \
+-H 'content-type: application/json' \
+-H 'accept: application/json' \
+-H 'x-oy-username:myuser' \
+-H 'x-api-key:987654' \
+-d '{
+  "destination_country_code": "SG",
+  "destination_currency_code": "SGD",
+  "source_amount": 200000,
+  "destination_amount": ""
+}'
+```
+
+```dart
+var headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+};
+var request = http.Request('POST', Uri.parse('{{base_url}}/api/international/fx-rate'));
+request.body = json.encode({
+  "destination_country_code": "SG",
+  "destination_currency_code": "SGD",
+  "source_amount": 200000,
+  "destination_amount": ""
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "%7B%7Bbase_url%7D%7D/api/international/fx-rate"
+  method := "POST"
+
+  payload := strings.NewReader(`{
+    "destination_country_code": "SG",
+    "destination_currency_code": "SGD",
+    "source_amount": 200000,
+    "destination_amount": ""
+}`)
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/json")
+  req.Header.Add("Accept", "application/json")
+  req.Header.Add("x-oy-username", "{{username}}")
+  req.Header.Add("x-api-key", "{{api-key}}")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+
+```java
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("application/json");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"destination_country_code\": \"SG\",\n\t\"destination_currency_code\": \"SGD\",\n\t\"source_amount\": 200000,\n\t\"destination_amount\": \"\"\n}");
+Request request = new Request.Builder()
+  .url("{{base_url}}/api/international/fx-rate")
+  .method("POST", body)
+  .addHeader("Content-Type", "application/json")
+  .addHeader("Accept", "application/json")
+  .addHeader("x-oy-username", "{{username}}")
+  .addHeader("x-api-key", "{{api-key}}")
+  .build();
+Response response = client.newCall(request).execute();
+```
+
+```javascript
+var data = JSON.stringify({
+  destination_country_code: "SG",
+  destination_currency_code: "SGD",
+  source_amount: 200000,
+  destination_amount: "",
+});
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/international/fx-rate");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.setRequestHeader("x-oy-username", "{{username}}");
+xhr.setRequestHeader("x-api-key", "{{api-key}}");
+
+xhr.send(data);
+```
+
+```php
+<?php
+require_once 'HTTP/Request2.php';
+$request = new HTTP_Request2();
+$request->setUrl('{{base_url}}/api/international/fx-rate');
+$request->setMethod(HTTP_Request2::METHOD_POST);
+$request->setConfig(array(
+  'follow_redirects' => TRUE
+));
+$request->setHeader(array(
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'x-oy-username' => '{{username}}',
+  'x-api-key' => '{{api-key}}'
+));
+$request->setBody('{\n\t\"destination_country_code\": \"SG\",\n\t\"destination_currency_code\": \"SGD\",\n\t\"source_amount\": 200000,\n\t\"destination_amount\": \"\"\n}');
+try {
+  $response = $request->send();
+  if ($response->getStatus() == 200) {
+    echo $response->getBody();
+  }
+  else {
+    echo 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+    $response->getReasonPhrase();
+  }
+}
+catch(HTTP_Request2_Exception $e) {
+  echo 'Error: ' . $e->getMessage();
+}
+```
+
+```python
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("{{base_url}}")
+payload = json.dumps({
+  "destination_country_code": "SG",
+  "destination_currency_code": "SGD",
+  "source_amount": 200000,
+  "destination_amount": ""
+}
+)
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'x-oy-username': '{{username}}',
+  'x-api-key': '{{api-key}}'
+}
+conn.request("POST", "/api/international/fx-rate", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+```
+
+> Response for valid request (transaction will processed in the OY! system):
+
+```json
+{
+  "status": {
+    "code": "000",
+    "message": "Success"
+  },
+  "source_amount": {
+    "value": 200000,
+    "currency": "IDR"
+  },
+  "destination_amount": {
+    "value": "14.97",
+    "currency": "SGD"
+  },
+  "fx_rate": 0.0001,
+  "transfer_fee": {
+    "value": 50300,
+    "currency": "IDR"
+  }
+}
+```
+
+> Response for invalid request (transaction will rejected & not processed in the OY! system):
+
+```json
+{
+  "status": {
+    "code": "990",
+    "message": "Destination Country Code is required"
+  },
+  "source_amount": null,
+  "destination_amount": null,
+  "fx_rate": null,
+  "transfer_fee": null
+}
+```
+
+Use this API to get the latest Exchange Rate information.
+
+### HTTPS Request
+
+**[Production]** `POST https://partner.oyindonesia.com/api/international/fx-rate`<br>
+**[Staging]** `POST https://api-stg.oyindonesia.com/api/international/fx-rate`
+
+### Request Parameters
+
+| Parameter                 | Type        | Required | Description                                                                                                                                                                                                                         |
+| ------------------------- | ----------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| destination_country_code  | String(2)   | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.                                                                                                                                                                       |
+| destination_currency_code | String(3)   | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                     |
+| source_amount             | BigInteger  | FALSE    | Amount in source currency (IDR). Minimum Source Amount: IDR 200,000. Maximum Source Amount depends on each corridor: SGD: IDR 35,000,000; USD: IDR 1,450,000,000; CNH: IDR 35,000,000; USD: IDR 1,450,000,000; HKD: IDR 35,000,000. |
+| destination_amount        | String(255) | FALSE    | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.                                                                                                                                   |
+
+### Response Parameters
+
+| Parameter          | Type       | Description                                                                                                                                                                                                                                 |
+| ------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| status             | Object     | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API.`{code: <status_code>, message: <status_message>}` |
+| source_amount      | Object     |                                                                                                                                                                                                                                             |
+| value              | BigInteger | Amount in source currency                                                                                                                                                                                                                   |
+| currency           | String     | Amount Currency Code. Currently, only available for IDR.                                                                                                                                                                                    |
+| destination_amount | Object     |                                                                                                                                                                                                                                             |
+| value              | BigInteger | Amount in destination currency (with 2-digit decimal).                                                                                                                                                                                      |
+| currency           | String     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                             |
+| fx_rate            | BigInteger | Conversion rate                                                                                                                                                                                                                             |
+| transfer_fee       | Object     |                                                                                                                                                                                                                                             |
+| value              | BigInteger | Transaction fee                                                                                                                                                                                                                             |
+| currency           | String     | Transaction Fee Currency Code. Currently, only available for IDR.                                                                                                                                                                           |
+
 ## Create Conversion Quotation
 
 ```shell
@@ -766,13 +978,13 @@ Use this API to create a new Conversion Quotation.
 
 ### Request Parameters
 
-| Parameter                 | Type        | Required | Description                                                                                                |
-| ------------------------- | ----------- | -------- | ---------------------------------------------------------------------------------------------------------- |
-| quotation_id              | String(64)  | TRUE     | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters. |
-| destination_country_code  | String(2)   | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.                                              |
-| destination_currency_code | String(3)   | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code.                                            |
-| source_amount             | BigInteger  | FALSE    | Amount in source currency (IDR).                                                                           |
-| destination_amount        | String(255) | FALSE    | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.          |
+| Parameter                 | Type        | Required | Description                                                                                                                                                                                                                         |
+| ------------------------- | ----------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| quotation_id              | String(64)  | TRUE     | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters.                                                                                                                          |
+| destination_country_code  | String(2)   | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.                                                                                                                                                                       |
+| destination_currency_code | String(3)   | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                     |
+| source_amount             | BigInteger  | FALSE    | Amount in source currency (IDR). Minimum Source Amount: IDR 200,000. Maximum Source Amount depends on each corridor: SGD: IDR 35,000,000; USD: IDR 1,450,000,000; CNH: IDR 35,000,000; USD: IDR 1,450,000,000; HKD: IDR 35,000,000. |
+| destination_amount        | String(255) | FALSE    | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.                                                                                                                                   |
 
 ### Response Parameters
 
@@ -1045,15 +1257,9 @@ Use this API to upload a supporting document for a specific transaction (such as
 
 ### Request Parameters
 
-| Parameter | Type | Required | Description                          |
-| --------- | ---- | -------- | ------------------------------------ |
-| document  | File | TRUE     | Attachments to support transactions. |
-
-Only available for a Quotation ID that is still in validity period and does not have status = IN_PROGRESS, SUCCESS, or FAILED.
-Only available for PNG, JPG, PDF, DOCX, and XLSX formats.
-Maximum 10 MB per attachment.
-Maximum 10 attachments per Quotation ID.
-|
+| Parameter | Type | Required | Description                                                                                                                                                                                                                                                                                          |
+| --------- | ---- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| document  | File | TRUE     | Attachments to support transactions. Only available for a Quotation ID that is still in validity period and does not have status = IN_PROGRESS, SUCCESS, or FAILED. Only available for PNG, JPG, PDF, DOCX, and XLSX formats. Maximum 10 MB per attachment. Maximum 10 attachments per Quotation ID. |
 
 ### Response Parameters
 
@@ -1119,13 +1325,12 @@ POST https://partner.oyindonesia.com/api/international/transfer \
       "website": "",
       "email": "recipient@example.com"
     },
-    "bank": {
+   "bank": {
+      "bank_code": "TSSG0043",
       "bank_account_number": "1234567890",
-      "bank_account_name": "Example Corp Account",
-      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      "bank_account_name": "John Doe",
+      "swift_bic_code": "",
       "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
-      "swift_bic_code": "OCBCSGSG",
-      "ts_bank_code": null,
       "iban_code": null,
       "cnaps_code": null
     }
@@ -1189,15 +1394,12 @@ request.body = json.encode({
       "website": "",
       "email": "recipient@example.com"
     },
-    "bank": {
-      "bank_country": "SG",
-      "bank_account_currency": "SGD",
+   "bank": {
+      "bank_code": "TSSG0043",
       "bank_account_number": "1234567890",
-      "bank_account_name": "Example Corp Account",
-      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      "bank_account_name": "John Doe",
+      "swift_bic_code": "",
       "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
-      "swift_bic_code": "OCBCSGSG",
-      "ts_bank_code": null,
       "iban_code": null,
       "cnaps_code": null
     }
@@ -1277,15 +1479,12 @@ func main() {
       "website": "",
       "email": "recipient@example.com"
     },
-    "bank": {
-      "bank_country": "SG",
-      "bank_account_currency": "SGD",
+   "bank": {
+      "bank_code": "TSSG0043",
       "bank_account_number": "1234567890",
-      "bank_account_name": "Example Corp Account",
-      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      "bank_account_name": "John Doe",
+      "swift_bic_code": "",
       "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
-      "swift_bic_code": "OCBCSGSG",
-      "ts_bank_code": null,
       "iban_code": null,
       "cnaps_code": null
     }
@@ -1322,25 +1521,24 @@ func main() {
 }
 ```
 
-````java
+```java
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{\n" +
-    "\t\"quotation_id\": \"TRX20250325001\",\n" +
+    "\t\"quotation_id\": \"TRX20250504001\",\n" +
     "\t\"source_of_fund\": \"BI\",\n" +
     "\t\"purpose_of_transfer\": \"SS\",\n" +
     "\t\"sender_contact_details\": {\n" +
-    "\t\t\"type\": \"```plaintext
-PERSONAL\",\n" +
+    "\t\t\"type\": \"PERSONAL\",\n" +
     "\t\t\"personal_contact\": {\n" +
-    "\t\t\t\"last_name\": \"Smith\",\n" +
+    "\t\t\t\"last_name\": \"Doe\",\n" +
     "\t\t\t\"date_of_birth\": \"1990-08-25\",\n" +
     "\t\t\t\"nationality\": \"ID\",\n" +
     "\t\t\t\"id_type\": \"passport\",\n" +
     "\t\t\t\"id_number\": \"987654321\",\n" +
     "\t\t\t\"mobile_number_prefix\": \"+62\",\n" +
-    "\t\t\t\"mobile_number\": \"85712163208\",\n" +
+    "\t\t\t\"mobile_number\": \"811131000\",\n" +
     "\t\t\t\"address_line\": \"Pondok Indah Office Tower\",\n" +
     "\t\t\t\"city\": \"South Jakarta\",\n" +
     "\t\t\t\"state_or_province\": \"DKI Jakarta\",\n" +
@@ -1350,16 +1548,16 @@ PERSONAL\",\n" +
     "\t\t\t\"middle_name\": \"\",\n" +
     "\t\t\t\"other_name\": \"\",\n" +
     "\t\t\t\"gender\": \"male\",\n" +
-    "\t\t\t\"occupation\": \"\",\n" +
+    "\t\t\t\"occupation\": \"Product Manager\",\n" +
     "\t\t\t\"country_of_birth\": \"ID\",\n" +
-    "\t\t\t\"email\": \"sender@example.com\",\n" +
+    "\t\t\t\"email\": \"sender@email.com\",\n" +
     "\t\t\t\"residential_status\": \"Permanent Residency\"\n" +
     "\t\t}\n" +
     "\t},\n" +
     "\t\"recipient_contact_details\": {\n" +
     "\t\t\"type\": \"BUSINESS\",\n" +
     "\t\t\"business_contact\": {\n" +
-    "\t\t\t\"business_name\": \"Example Corp\",\n" +
+    "\t\t\t\"business_name\": \"莲花 Corporation\",\n" +
     "\t\t\t\"business_reg_number\": \"1122334455667788\",\n" +
     "\t\t\t\"date_of_incorporation\": \"2010-05-15\",\n" +
     "\t\t\t\"country_of_incorporation\": \"SG\",\n" +
@@ -1371,18 +1569,18 @@ PERSONAL\",\n" +
     "\t\t\t\"state_or_province\": \"Singapore\",\n" +
     "\t\t\t\"address_country\": \"SG\",\n" +
     "\t\t\t\"postal\": \"208539\",\n" +
-    "\t\t\t\"website\": \"\",\n" +
-    "\t\t\t\"email\": \"recipient@example.com\"\n" +
+    "\t\t\t\"website\": \"https://www.example.com\",\n" +
+    "\t\t\t\"email\": \"recipient@email.com\"\n" +
     "\t\t},\n" +
     "\t\t\"bank\": {\n" +
     "\t\t\t\"bank_country\": \"SG\",\n" +
     "\t\t\t\"bank_account_currency\": \"SGD\",\n" +
     "\t\t\t\"bank_account_number\": \"1234567890\",\n" +
-    "\t\t\t\"bank_account_name\": \"Example Corp Account\",\n" +
-    "\t\t\t\"bank_name\": \"Oversea-Chinese Banking Corporation Limited [OCBC Bank]\",\n" +
+    "\t\t\t\"bank_account_name\": \"John Doe\",\n" +
+    "\t\t\t\"bank_name\": \"Unknown\",\n" +
     "\t\t\t\"bank_address\": \"180 Kitchener Road #02-01, Singapore 208539\",\n" +
-    "\t\t\t\"Swift_bic_code\": \"OCBCSGSG\",\n" +
-    "\t\t\t\"ts_bank_code\": null,\n" +
+    "\t\t\t\"Swift_bic_code\": \"\",\n" +
+    "\t\t\t\"ts_bank_code\": \"TSSG0043\",\n" +
     "\t\t\t\"iban_code\": null,\n" +
     "\t\t\t\"cnaps_code\": null\n" +
     "\t\t}\n" +
@@ -1397,7 +1595,7 @@ Request request = new Request.Builder()
   .addHeader("x-api-key", "{{api-key}}")
   .build();
 Response response = client.newCall(request).execute();
-````
+```
 
 ```javascript
 var data = JSON.stringify({
@@ -1448,14 +1646,11 @@ var data = JSON.stringify({
       email: "recipient@example.com",
     },
     bank: {
-      bank_country: "SG",
-      bank_account_currency: "SGD",
+      bank_code: "TSSG0043",
       bank_account_number: "1234567890",
-      bank_account_name: "Example Corp Account",
-      bank_name: "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      bank_account_name: "John Doe",
+      swift_bic_code: "",
       bank_address: "180 Kitchener Road #02-01, Singapore 208539",
-      swift_bic_code: "OCBCSGSG",
-      ts_bank_code: null,
       iban_code: null,
       cnaps_code: null,
     },
@@ -1496,19 +1691,19 @@ $request->setHeader(array(
   'x-api-key' => '{{api-key}}'
 ));
 $request->setBody('{\n' .
-    '\t"quotation_id": "TRX20250325001",\n' .
+    '\t"quotation_id": "TRX20250504001",\n' .
     '\t"source_of_fund": "BI",\n' .
     '\t"purpose_of_transfer": "SS",\n' .
     '\t"sender_contact_details": {\n' .
     '\t\t"type": "PERSONAL",\n' .
     '\t\t"personal_contact": {\n' .
-    '\t\t\t"last_name": "Smith",\n' .
+    '\t\t\t"last_name": "Doe",\n' .
     '\t\t\t"date_of_birth": "1990-08-25",\n' .
     '\t\t\t"nationality": "ID",\n' .
     '\t\t\t"id_type": "passport",\n' .
     '\t\t\t"id_number": "987654321",\n' .
     '\t\t\t"mobile_number_prefix": "+62",\n' .
-    '\t\t\t"mobile_number": "85712163208",\n' .
+    '\t\t\t"mobile_number": "811131000",\n' .
     '\t\t\t"address_line": "Pondok Indah Office Tower",\n' .
     '\t\t\t"city": "South Jakarta",\n' .
     '\t\t\t"state_or_province": "DKI Jakarta",\n' .
@@ -1518,16 +1713,16 @@ $request->setBody('{\n' .
     '\t\t\t"middle_name": "",\n' .
     '\t\t\t"other_name": "",\n' .
     '\t\t\t"gender": "male",\n' .
-    '\t\t\t"occupation": "",\n' .
+    '\t\t\t"occupation": "Product Manager",\n' .
     '\t\t\t"country_of_birth": "ID",\n' .
-    '\t\t\t"email": "sender@example.com",\n' .
+    '\t\t\t"email": "sender@email.com",\n' .
     '\t\t\t"residential_status": "Permanent Residency"\n' .
     '\t\t}\n' .
     '\t},\n' .
     '\t"recipient_contact_details": {\n' .
     '\t\t"type": "BUSINESS",\n' .
     '\t\t"business_contact": {\n' .
-    '\t\t\t"business_name": "Example Corp",\n' .
+    '\t\t\t"business_name": "莲花 Corporation",\n' .
     '\t\t\t"business_reg_number": "1122334455667788",\n' .
     '\t\t\t"date_of_incorporation": "2010-05-15",\n' .
     '\t\t\t"country_of_incorporation": "SG",\n' .
@@ -1539,18 +1734,18 @@ $request->setBody('{\n' .
     '\t\t\t"state_or_province": "Singapore",\n' .
     '\t\t\t"address_country": "SG",\n' .
     '\t\t\t"postal": "208539",\n' .
-    '\t\t\t"website": "",\n' .
-    '\t\t\t"email": "recipient@example.com"\n' .
+    '\t\t\t"website": "https://www.example.com",\n' .
+    '\t\t\t"email": "recipient@email.com"\n' .
     '\t\t},\n' .
     '\t\t"bank": {\n' .
     '\t\t\t"bank_country": "SG",\n' .
     '\t\t\t"bank_account_currency": "SGD",\n' .
     '\t\t\t"bank_account_number": "1234567890",\n' .
-    '\t\t\t"bank_account_name": "Example Corp Account",\n' .
-    '\t\t\t"bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",\n' .
+    '\t\t\t"bank_account_name": "John Doe",\n' .
+    '\t\t\t"bank_name": "Unknown",\n' .
     '\t\t\t"bank_address": "180 Kitchener Road #02-01, Singapore 208539",\n' .
-    '\t\t\t"swift_bic_code": "OCBCSGSG",\n' .
-    '\t\t\t"ts_bank_code": null,\n' .
+    '\t\t\t"swift_bic_code": "",\n' .
+    '\t\t\t"ts_bank_code": "TSSG0043",\n' .
     '\t\t\t"iban_code": null,\n' .
     '\t\t\t"cnaps_code": null\n' .
     '\t\t}\n' .
@@ -1624,14 +1819,11 @@ payload = json.dumps({
       "email": "recipient@example.com"
     },
     "bank": {
-      "bank_country": "SG",
-      "bank_account_currency": "SGD",
+      "bank_code": "TSSG0043",
       "bank_account_number": "1234567890",
-      "bank_account_name": "Example Corp Account",
-      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
+      "bank_account_name": "John Doe",
+      "swift_bic_code": "",
       "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
-      "swift_bic_code": "OCBCSGSG",
-      "ts_bank_code": null,
       "iban_code": null,
       "cnaps_code": null
     }
@@ -1944,16 +2136,17 @@ print(data.decode("utf-8"))
       "email": "recipient@example.com"
     },
     "bank": {
-      "bank_country": "SG",
-      "bank_account_currency": "SGD",
-      "bank_account_number": "1234567890",
-      "bank_account_name": "Example Corp Account",
-      "bank_name": "Oversea-Chinese Banking Corporation Limited [OCBC Bank]",
-      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
-      "swift_bic_code": "OCBCSGSG",
-      "ts_bank_code": null,
+      "bank_code": "TSSG0043",
+      "bank_name": "Svenska Handelsbanken, Singapore Branch",
       "iban_code": null,
-      "cnaps_code": null
+      "cnaps_code": null,
+      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
+      "bank_country": "SG",
+      "ts_bank_code": "TSSG0043",
+      "swift_bic_code": "HANDSGSG",
+      "bank_account_name": "PT DOMPET HARAPAN BANGSA",
+      "bank_account_number": "1234567890",
+      "bank_account_currency": "SGD"
     }
   }
 }
@@ -2071,9 +2264,8 @@ Use this API to get details of a specific International Transfer transaction.
 | ------------------- | ------ | -------- | ------------------------------- |
 | bank_account_number | String | TRUE     | Bank Account Number             |
 | bank_account_name   | String | TRUE     | Name of the Bank Account Holder |
-| swift_bic_code      | String | TRUE     | SWIFT / BIC Code                |
-| bank_name           | String | FALSE    | Bank Name                       |
+| bank_code           | String | TRUE     | Bank Code                       |
+| swift_bic_code      | String | FALSE    | SWIFT / BIC Code                |
 | bank_address        | String | FALSE    | Bank Address                    |
-| ts_bank_code        | String | FALSE    | TS Bank Code                    |
 | iban_code           | String | FALSE    | IBAN Code                       |
 | cnaps_code          | String | FALSE    | CNAPS Code                      |
