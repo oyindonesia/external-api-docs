@@ -3,7 +3,7 @@
 QRIS aggregator allows you to create QRIS transactions as a payment method to be displayed to your customer.
 
 <aside class="info">
-Note: QRIS as Aggregator is implemented using existing Payment Routing API. This section highlights only the parameters and setup relevant for QRIS Aggregator transactions. The base URL and core structure remain the same as those used in Payment Routing.
+Note: QRIS as Aggregator is implemented using existing Payment Routing API. This section highlights only the parameters and setup relevant for QRIS Aggregator transactions. The base URL and core structure remain the same as those used in Payment Routing. All transactions will be displayed in OY! Dashboard under Payment Routing menu.
 </aside>
 
 ## Create QRIS Transaction
@@ -261,7 +261,7 @@ Endpoint:
 |receive_amount|Numeric| FALSE |amount to be received. |
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format| FALSE |Transaction Expiration Time|
 |payment_method | String | TRUE | Value is always `QRIS` |
-|sender_bank | String | TRUE | The provider for the QRIS transaction. |
+|sender_bank | String | TRUE | Refers to the QRIS vendor integrated with the OY! system. |
 |payment_info|Object| FALSE |Payment info object|
 |qris_url|String| TRUE |The URL of QR image. This returned URL can only be accessed for 5 minutes after initial response was received, and independent to the actual QRIS validity / expiration time. |
 
@@ -507,7 +507,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 |settlement_type|String| TRUE |Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |need_frontend|Boolean| FALSE |Value is always `false`|
 |payment_method | String | TRUE | Value is always `QRIS` |
-|sender_bank | String | TRUE |  |
+|sender_bank | String | TRUE | Refers to the QRIS vendor integrated with the OY! system. |
 |payment_info|Object| FALSE |Payment info Object|
 |qris_url|String| TRUE |the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
 |payment_reference_number|String| FALSE | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code.|
@@ -562,7 +562,7 @@ If your settlement is non-real time, for every transaction whose payment method 
 |settlement_status|String| TRUE | The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |settlement_type|String| TRUE |Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |payment_method | String | TRUE | Value is always `QRIS` |
-|sender_bank | String | TRUE |  |
+|sender_bank | String | TRUE | Refers to the QRIS vendor integrated with the OY! system. |
 |payment_info|Object| FALSE |Payment info Object|
 |qris_url|String| TRUE |the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
 |payment_reference_number|String| FALSE | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code.
