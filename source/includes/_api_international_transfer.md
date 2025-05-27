@@ -696,7 +696,7 @@ data = res.read()
 print(data.decode("utf-8"))
 ```
 
-> Response for valid request (transaction will processed in the OY! system):
+> API Response for Valid Request (Transaction will be processed in the OY! system):
 
 ```json
 {
@@ -704,23 +704,23 @@ print(data.decode("utf-8"))
     "code": "000",
     "message": "Success"
   },
+  "fx_rate": 0.0000783637814888146,
+  "transfer_fee": {
+    "value": 64478,
+    "currency": "IDR"
+  },
   "source_amount": {
     "value": 200000,
     "currency": "IDR"
   },
   "destination_amount": {
-    "value": "14.97",
+    "value": 10.62,
     "currency": "SGD"
-  },
-  "fx_rate": 0.0001,
-  "transfer_fee": {
-    "value": 50300,
-    "currency": "IDR"
   }
 }
 ```
 
-> Response for invalid request (transaction will rejected & not processed in the OY! system):
+> API Response for Invalid Request (Transaction will be rejected and not processed in the OY! system):
 
 ```json
 {
@@ -728,44 +728,79 @@ print(data.decode("utf-8"))
     "code": "990",
     "message": "Destination Country Code is required"
   },
-  "source_amount": null,
-  "destination_amount": null,
   "fx_rate": null,
-  "transfer_fee": null
+  "transfer_fee": null,
+  "source_amount": null,
+  "destination_amount": null
 }
 ```
 
-Use this API to get the latest Exchange Rate information.
+This endpoint is used to get the latest Exchange Rate information.
 
 ### HTTPS Request
-
 **[Production]** `POST https://partner.oyindonesia.com/api/international/fx-rate`<br>
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/international/fx-rate`
 
 ### Request Parameters
 
-| Parameter                 | Type        | Required | Description                                                                                                                                                                                                                         |
-| ------------------------- | ----------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| destination_country_code  | String(2)   | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.                                                                                                                                                                       |
-| destination_currency_code | String(3)   | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                     |
-| source_amount             | BigInteger  | FALSE    | Amount in source currency (IDR). Minimum Source Amount: IDR 200,000. Maximum Source Amount depends on each corridor: SGD: IDR 35,000,000; USD: IDR 1,450,000,000; CNH: IDR 35,000,000; USD: IDR 1,450,000,000; HKD: IDR 35,000,000. |
-| destination_amount        | String(255) | FALSE    | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.                                                                                                                                   |
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+destination_country_code | String(2) | TRUE | Destination Country Code. Two-letter ISO 3166-2 country code.
+destination_currency_code | String(3) | TRUE | Destination Currency Code. Three-letter ISO 4217 currency code.
+source_amount | Number | FALSE | Amount in source currency (IDR). <br>• **Maximum Source Amount**: depends on each corridor:<br><br>  
+&nbsp;&nbsp;&nbsp;&nbsp;| Country | Currency | Maximum Amount (IDR) |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;|----------|----------|----------------------|<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| SG       | SGD      | 35,000,000           |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| SG       | USD      | 1,450,000,000        |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| CN       | CNH      | 35,000,000           |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| CN       | USD      | 1,450,000,000        |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| HK       | HKD      | 35,000,000           |<br>
+&nbsp;&nbsp;&nbsp;&nbsp;| HK       | USD      | 1,450,000,000        |
+destination_amount | String | FALSE | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.
 
 ### Response Parameters
 
-| Parameter          | Type       | Description                                                                                                                                                                                                                                 |
-| ------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status             | Object     | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API.`{code: <status_code>, message: <status_message>}` |
-| source_amount      | Object     |                                                                                                                                                                                                                                             |
-| value              | BigInteger | Amount in source currency                                                                                                                                                                                                                   |
-| currency           | String     | Amount Currency Code. Currently, only available for IDR.                                                                                                                                                                                    |
-| destination_amount | Object     |                                                                                                                                                                                                                                             |
-| value              | BigInteger | Amount in destination currency (with 2-digit decimal).                                                                                                                                                                                      |
-| currency           | String     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                             |
-| fx_rate            | BigInteger | Conversion rate                                                                                                                                                                                                                             |
-| transfer_fee       | Object     |                                                                                                                                                                                                                                             |
-| value              | BigInteger | Transaction fee                                                                                                                                                                                                                             |
-| currency           | String     | Transaction Fee Currency Code. Currently, only available for IDR.                                                                                                                                                                           |
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. <br><br> `{code: <status_code>, message: <status_message>}` <br><br>
+fx_rate | BigDecimal | Conversion rate
+transfer_fee | Object | 
+value | Number | Transaction fee
+currency | String | Transaction Fee Currency Code. Currently, only available for IDR.
+source_amount | Object | 
+value | Number | Amount in source currency
+currency | String | Source Amount Currency Code. Currently, only available for IDR.
+destination_amount | Object | 
+value | Number | Amount in destination currency (with 2-digit decimal)
+currency | String | Destination Currency Code. Three-letter ISO 4217 currency code.
+
+### Response Codes & Messages
+
+| HTTP Status | Case Code | Response Message | Description |
+| ----- | ----- | :---- | :---- |
+| 200 OK | 000 | Success | Request successful |
+| 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive International Transfer API product. |
+| 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
+| 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
+| 400 Bad Request | 990 | Destination Country Code is required | Indicates that the destination_country_code parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Destination Country Code is not valid | Indicates that the destination_country_code parameter does not match any valid ENUM value or contains an invalid value (e.g., OY). |
+| 400 Bad Request | 990 | Destination Country Code must be 2 characters | Indicates that the destination_country_code parameter contains a value of less than or more than 2 characters. |
+| 400 Bad Request | 990 | Destination Currency Code is required | Indicates that the destination_currency_code parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Destination Currency Code is not valid | Indicates that the destination_currency_code parameter does not match any valid ENUM value or contains an invalid value (e.g., IDR). |
+| 400 Bad Request | 990 | Destination Currency Code must be 3 characters | Indicates that the destination_currency_code parameter contains a value of less than or more than 3 characters. |
+| 400 Bad Request | 990 | Source Amount or Destination Amount is required | Indicates that both source_amount and destination_amount parameters are missing from the request or contain an empty or null value. |
+| 400 Bad Request | 990 | Source Amount must be between IDR 200,000 and IDR <maximum_amount> | Indicates that the source_amount parameter contains a value of less than IDR 200,000 or more than the Maximum Amount per corridor. |
+| 400 Bad Request | 990 | Source Amount must be numeric | Indicates that the source_amount parameter contains a non-numeric value. |
+| 400 Bad Request | 990 | Destination Amount must be greater than 0.00 | Indicates that the destination_amount parameter contains a value equal to 0.00. |
+| 400 Bad Request | 990 | Destination Amount must be numeric with 2 decimal digits | Indicates that the destination_amount parameter contains a non-numeric value or a numeric value without 2 decimal places. |
+| 403 Forbidden | 403 | Destination ${destination_country_code} with currency ${destination_currency_code} is not yet configured for your account | Indicates that the selected corridor is not configured for the provided account. |
+| 503 Service Unavailable | 503 | Destination ${destination_country_code} with currency ${destination_currency_code} is currently unavailable | Indicates that the selected corridor is configured for the provided account, but is temporarily unavailable in OY!. |
+| 500 Server Error | 500 | Failed to calculate price | Indicates that the request is valid, but the system cannot process it due to business logic failures (e.g., conversion issue). |
+| 429 Too Many Requests | 429 | Too Many Requests | Indicates that the Client has sent too many requests within a given period, exceeding the allowed rate limit. |
+| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
+| 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
+
 
 ## Create Conversion Quotation
 
