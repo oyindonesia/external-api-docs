@@ -747,15 +747,14 @@ Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 destination_country_code | String(2) | TRUE | Destination Country Code. Two-letter ISO 3166-2 country code.
 destination_currency_code | String(3) | TRUE | Destination Currency Code. Three-letter ISO 4217 currency code.
-source_amount | Number | FALSE | Amount in source currency (IDR). <br>• **Maximum Source Amount**: depends on each corridor:<br><br>  
-&nbsp;&nbsp;&nbsp;&nbsp;| Country | Currency | Maximum Amount (IDR) |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;|----------|----------|----------------------|<br>
-&nbsp;&nbsp;&nbsp;&nbsp;| SG       | SGD      | 35,000,000           |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;| SG       | USD      | 1,450,000,000        |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;| CN       | CNH      | 35,000,000           |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;| CN       | USD      | 1,450,000,000        |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;| HK       | HKD      | 35,000,000           |<br>
-&nbsp;&nbsp;&nbsp;&nbsp;| HK       | USD      | 1,450,000,000        |
+source_amount | Number | FALSE | Amount in source currency (IDR). <br><br>• **Minimum Source Amount**: IDR 200,000. <br>• **Maximum Source Amount**: depends on each corridor:<br><br>  
+&nbsp;&nbsp;&nbsp;&nbsp;**Country** | **Currency** | **Maximum Amount (IDR)**<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;SG | SGD | 35,000,000<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;SG | USD | 1,450,000,000<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;CN | CNH | 35,000,000<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;CN | USD | 1,450,000,000<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;HK | HKD | 35,000,000<br>  
+&nbsp;&nbsp;&nbsp;&nbsp;HK | USD | 1,450,000,000
 destination_amount | String | FALSE | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.
 
 ### Response Parameters
