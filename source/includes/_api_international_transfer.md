@@ -212,7 +212,7 @@ destination_country_code | String(2) | TRUE | Destination Country Code. Two-lett
 
 Parameter | Type | Description
 --------- | ---- | -----------
-status | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. <br><br> `{code: <status_code>, message: <status_message>}`. <br><br> |
+status | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. <br><br> `{code: <status_code>, message: <status_message>}` <br><br> |
 banks | Object |  |
 bank_country | String | Destination Country Code. Two-letter ISO 3166-2 country code. |
 bank_details | Object |  |
@@ -225,7 +225,7 @@ bank_code | String | Bank Code |
 | ----- | ----- | :---- | :---- |
 | 200 OK | 000 | Success | Request successful |
 | 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
-| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive Claim Fund API product. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive International Transfer API product. |
 | 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
 | 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
 | 400 Bad Request | 990 | Destination Country Code is required | Indicates that the destination_country_code parameter is missing from the request or contains an empty value. |
@@ -235,7 +235,7 @@ bank_code | String | Bank Code |
 | 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
 | 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
-## Get Corridor Active
+## Get Active Corridors
 
 ```shell
 curl -X \
@@ -391,7 +391,7 @@ data = res.read()
 print(data.decode("utf-8"))
 ```
 
-> Response for valid request (transaction will processed in the OY! system):
+> API Response for Valid Request (Transaction will be processed in the OY! system):
 
 ```json
 {
@@ -447,12 +447,12 @@ print(data.decode("utf-8"))
           "country_name": "China"
         },
         {
-          "country_code": "HK",
-          "country_name": "Hong Kong"
-        },
-        {
           "country_code": "SG",
           "country_name": "Singapore"
+        },
+        {
+          "country_code": "HK",
+          "country_name": "Hong Kong"
         }
       ]
     }
@@ -460,7 +460,7 @@ print(data.decode("utf-8"))
 }
 ```
 
-> Response for invalid request (transaction will rejected & not processed in the OY! system):
+> API Response for Invalid Request (Transaction will be rejected and not processed in the OY! system):
 
 ```json
 {
@@ -472,25 +472,38 @@ print(data.decode("utf-8"))
 }
 ```
 
-Use this API to get the latest active corridor information on a given Client.
+This endpoint is used to get the latest active corridor information in your account.
 
 ### HTTPS Request
-
 **[Production]** `GET https://partner.oyindonesia.com/api/international/active-corridors`<br>
 **[Staging]** `GET https://api-stg.oyindonesia.com/api/international/active-corridors`
 
 ### Response Parameters
 
-| Parameter        | Type   | Description                                                                                                                                                                                                                                  |
-| ---------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status           | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
-| active_corridors | Array  |                                                                                                                                                                                                                                              |
-| currency         | Object |                                                                                                                                                                                                                                              |
-| currency_code    | String | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                              |
-| currency_name    | String | Description of destination currency code                                                                                                                                                                                                     |
-| country_list     | Object |                                                                                                                                                                                                                                              |
-| country_code     | String | Destination Country Code. Two-letter ISO 3166-2 country code.                                                                                                                                                                                |
-| country_name     | String | Description of destination country code                                                                                                                                                                                                      |
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. <br><br> `{code: <status_code>, message: <status_message>}` <br><br>
+active_corridors | Array | 
+currency | Object | 
+currency_code | String | Destination Currency Code. Three-letter ISO 4217 currency code.
+currency_name | String | Description of Destination Currency Code
+country_list | Object | 
+country_code | String | Destination Country Code. Two-letter ISO 3166-2 country code.
+country_name | String | Description of Destination Country Code
+
+### Response Codes & Messages
+
+| HTTP Status | Case Code | Response Message | Description |
+| ----- | ----- | :---- | :---- |
+| 200 OK | 000 | Success | Request successful |
+| 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive International Transfer API product. |
+| 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
+| 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
+| 429 Too Many Requests | 429 | Too Many Requests | Indicates that the Client has sent too many requests within a given period, exceeding the allowed rate limit. |
+| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
+| 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
+
 
 ## Get Fx Rate
 
