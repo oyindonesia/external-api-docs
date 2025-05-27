@@ -1,10 +1,12 @@
-# API International Transfer
+# International Transfer API
+
+The International Transfer API allows businesses in Indonesia to seamlessly send cross-border payments to recipients in supported destination countries. It supports secure, compliant, and efficient international transfers for both personal and business recipients.
 
 ## Get Bank List
 
 ```shell
 curl -X \
-GET https://partner.oyindonesia.com/api/international/banks \
+GET https://partner.oyindonesia.com/api/international/banks?destination_country_code=SG \
 -H 'content-type: application/json' \
 -H 'accept: application/json' \
 -H 'x-oy-username:myuser' \
@@ -18,7 +20,7 @@ var headers = {
   'x-oy-username': '{{username}}',
   'x-api-key': '{{api-key}}'
 };
-var request = http.Request('GET', Uri.parse('{{base_url}}/api/international/banks'));
+var request = http.Request('GET', Uri.parse('{{base_url}}/api/international/banks?destination_country_code=SG'));
 request.headers.addAll(headers);
 
 http.StreamedResponse response = await request.send();
@@ -43,7 +45,7 @@ import (
 
 func main() {
 
-  url := "%7B%7Bbase_url%7D%7D/api/international/banks"
+  url := "%7B%7Bbase_url%7D%7D/api/international/banks?destination_country_code=SG"
   method := "GET"
 
   client := &http.Client {
@@ -80,7 +82,7 @@ OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
 Request request = new Request.Builder()
-  .url("{{base_url}}/api/international/active-corridors")
+  .url("{{base_url}}/api/international/banks?destination_country_code=SG")
   .method("GET", body)
   .addHeader("Content-Type", "application/json")
   .addHeader("Accept", "application/json")
@@ -100,7 +102,7 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/international/banks");
+xhr.open("GET", "%7B%7Bbase_url%7D%7D/api/international/banks?destination_country_code=SG");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.setRequestHeader("Accept", "application/json");
 xhr.setRequestHeader("x-oy-username", "{{username}}");
@@ -113,7 +115,7 @@ xhr.send(data);
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('{{base_url}}/api/international/banks');
+$request->setUrl('{{base_url}}/api/international/banks?destination_country_code=SG');
 $request->setMethod(HTTP_Request2::METHOD_GET);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -150,13 +152,13 @@ headers = {
   'x-oy-username': '{{username}}',
   'x-api-key': '{{api-key}}'
 }
-conn.request("GET", "/api/international/banks", payload, headers)
+conn.request("GET", "/api/international/banks?destination_country_code=SG", payload, headers)
 res = conn.getresponse()
 data = res.read()
 print(data.decode("utf-8"))
 ```
 
-> Response for valid request (transaction will processed in the OY! system):
+> API Response for Valid Request (Transaction will be processed in the OY! system):
 
 ```json
 {
@@ -182,35 +184,56 @@ print(data.decode("utf-8"))
 }
 ```
 
-> Response for invalid request (transaction will rejected & not processed in the OY! system):
+> API Response for Invalid Request (Transaction will be rejected and not processed in the OY! system):
 
 ```json
 {
   "status": {
-    "code": "208",
-    "message": "API Key is not valid"
+    "code": "990",
+    "message": "Destination Country Code is not valid"
   },
   "banks": null
 }
 ```
 
-Use this API to get a list of available Destination Banks for International Transfer API transactions in all Destination Countries.
+This endpoint is used to get a list of available Destination Banks for International Transfer API transactions in all Destination Countries.
 
 ### HTTPS Request
+**[Production]** `GET https://partner.oyindonesia.com/api/international/banks?destination_country_code=:destination_country_code`<br>
+**[Staging]** `GET https://api-stg.oyindonesia.com/api/international/banks?destination_country_code=:destination_country_code`
 
-**[Production]** `GET https://partner.oyindonesia.com/api/international/banks`<br>
-**[Staging]** `GET https://api-stg.oyindonesia.com/api/international/banks`
+### Query Parameters
+
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+destination_country_code | String(2) | TRUE | Destination Country Code. Two-letter ISO 3166-2 country code.
 
 ### Response Parameters
 
-| Parameter    | Type   | Description                                                                                                                                                                                                                                  |
-| ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status       | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
-| banks        | Array  |
-| bank_country | String | Destination Currency Code. Three-letter ISO 3166-2 country code.                                                                                                                                                                             |
-| bank_details | Object |                                                                                                                                                                                                                                              |
-| bank_name    | String | Bank Name                                                                                                                                                                                                                                    |
-| bank_code    | String | Bank Code                                                                                                                                                                                                                                    |
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. <br><br> `{code: <status_code>, message: <status_message>}`. <br><br> |
+banks | Object |  |
+bank_country | String | Destination Country Code. Two-letter ISO 3166-2 country code. |
+bank_details | Object |  |
+bank_name | String | Bank Name |
+bank_code | String | Bank Code |
+
+### Response Codes & Messages
+
+| HTTP Status | Case Code | Response Message | Description |
+| ----- | ----- | :---- | :---- |
+| 200 OK | 000 | Success | Request successful |
+| 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive Claim Fund API product. |
+| 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
+| 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
+| 400 Bad Request | 990 | Destination Country Code is required | Indicates that the destination_country_code parameter is missing from the request or contains an empty value. |
+| 400 Bad Request | 990 | Destination Country Code is not valid | Indicates that the destination_country_code parameter does not match any valid ENUM value or contains an invalid value (e.g., OY). |
+| 400 Bad Request | 990 | Destination Country Code must be 2 characters | Indicates that the destination_country_code parameter contains a value of less than or more than 2 characters. |
+| 429 Too Many Requests | 429 | Too Many Requests | Indicates that the Client has sent too many requests within a given period, exceeding the allowed rate limit. |
+| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
+| 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
 ## Get Corridor Active
 
