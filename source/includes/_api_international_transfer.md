@@ -747,7 +747,7 @@ Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 destination_country_code | String(2) | TRUE | Destination Country Code. Two-letter ISO 3166-2 country code.
 destination_currency_code | String(3) | TRUE | Destination Currency Code. Three-letter ISO 4217 currency code.
-source_amount | Number | FALSE | Amount in source currency (IDR). <br><br>• **Minimum Source Amount**: IDR 200,000. <br>• **Maximum Source Amount**: depends on each corridor:<br><br> <table> <thead> <tr> <th>Country</th> <th>Currency</th> <th>Max Amount (IDR)</th> </tr> </thead>  <tbody> <tr> <td>SG</td> <td>SGD</td> <td>35,000,000</td> </tr> <tr> <td>SG</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>CN</td> <td>CNH</td> <td>35,000,000</td> </tr> <tr> <td>CN</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>HK</td> <td>HKD</td> <td>35,000,000</td> </tr> <tr> <td>HK</td> <td>USD</td> <td>1,450,000,000</td> </tr> </tbody> </table>
+source_amount | Number | FALSE | Amount in source currency (IDR). <br><br>• **Minimum Source Amount**: IDR 200,000. <br>• **Maximum Source Amount**: depends on each corridor.<br><br> <table> <thead> <tr> <th>Country</th> <th>Currency</th> <th>Maximum Amount (IDR)</th> </tr> </thead>  <tbody> <tr> <td>SG</td> <td>SGD</td> <td>35,000,000</td> </tr> <tr> <td>SG</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>CN</td> <td>CNH</td> <td>35,000,000</td> </tr> <tr> <td>CN</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>HK</td> <td>HKD</td> <td>35,000,000</td> </tr> <tr> <td>HK</td> <td>USD</td> <td>1,450,000,000</td> </tr> </tbody> </table>
 destination_amount | String | FALSE | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.
 
 ### Response Parameters
@@ -793,7 +793,6 @@ currency | String | Destination Currency Code. Three-letter ISO 4217 currency co
 | 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
 | 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
-
 ## Create Conversion Quotation
 
 ```shell
@@ -804,7 +803,7 @@ POST https://partner.oyindonesia.com/api/international/quotation \
 -H 'x-oy-username:myuser' \
 -H 'x-api-key:987654' \
 -d '{
-  "quotation_id": "TRX20250325001",
+  "quotation_id": "TRX20250504001",
   "destination_country_code": "SG",
   "destination_currency_code": "SGD",
   "source_amount": 200000,
@@ -821,7 +820,7 @@ var headers = {
 };
 var request = http.Request('POST', Uri.parse('{{base_url}}/api/international/quotation'));
 request.body = json.encode({
-  "quotation_id": "TRX20250325001",
+  "quotation_id": "TRX20250504001",
   "destination_country_code": "SG",
   "destination_currency_code": "SGD",
   "source_amount": 200000,
@@ -855,7 +854,7 @@ func main() {
   method := "POST"
 
   payload := strings.NewReader(`{
-  "quotation_id": "TRX20250325001",
+  "quotation_id": "TRX20250504001",
   "destination_country_code": "SG",
   "destination_currency_code": "SGD",
   "source_amount": 200000,
@@ -895,7 +894,7 @@ func main() {
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n\t\"quotation_id\": \"TRX20250325001\",\n\t\"destination_country_code\": \"SG\",\n\t\"destination_currency_code\": \"SGD\",\n\t\"source_amount\": 200000,\n\t\"destination_amount\": \"\"\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n\t\"quotation_id\": \"TRX20250504001\",\n\t\"destination_country_code\": \"SG\",\n\t\"destination_currency_code\": \"SGD\",\n\t\"source_amount\": 200000,\n\t\"destination_amount\": \"\"\n}");
 Request request = new Request.Builder()
   .url("{{base_url}}/api/international/quotation")
   .method("POST", body)
@@ -909,6 +908,7 @@ Response response = client.newCall(request).execute();
 
 ```javascript
 var data = JSON.stringify({
+  quotation_id: "TRX20250504001",
   destination_country_code: "SG",
   destination_currency_code: "SGD",
   source_amount: 200000,
@@ -948,7 +948,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n\t"quotation_id": "TRX20250325001",\n\t"destination_country_code": "SG",\n\t"destination_currency_code": "SGD",\n\t"source_amount": 200000,\n\t"destination_amount": ""\n}');
+$request->setBody('{\n\t"quotation_id": "TRX20250504001",\n\t"destination_country_code": "SG",\n\t"destination_currency_code": "SGD",\n\t"source_amount": 200000,\n\t"destination_amount": ""\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -970,7 +970,7 @@ import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
 payload = json.dumps({
-  "quotation_id": "TRX20250325001",
+  "quotation_id": "TRX20250504001",
   "destination_country_code": "SG",
   "destination_currency_code": "SGD",
   "source_amount": 200000,
@@ -988,7 +988,7 @@ data = res.read()
 print(data.decode("utf-8"))
 ```
 
-> Response for valid request (transaction will processed in the OY! system):
+> API Response for Valid Request (Transaction will be processed in the OY! system):
 
 ```json
 {
@@ -996,21 +996,21 @@ print(data.decode("utf-8"))
     "code": "000",
     "message": "Success"
   },
-  "tx_id": "049fa1a6-e051-4ec2-aff5-ffc601c3ce0c",
-  "quotation_id": "TRX20250325001",
+  "tx_id": "9ca6e105-89bd-43ba-9346-641e09e9d574",
+  "quotation_id": "TRX20250504001",
   "source_amount": 200000,
   "source_currency_code": "IDR",
-  "destination_amount": "14.97",
+  "destination_amount": "11.53",
   "destination_currency_code": "SGD",
-  "fx_rate": 0.0001,
-  "transfer_fee": 50300,
-  "converted_amount": 149700,
-  "expiry_time": "2025-03-25 00:30:00",
-  "created_time": "2025-03-25 00:00:00"
+  "fx_rate": 0.0000827042978087322,
+  "transfer_fee": 60587,
+  "converted_amount": 139413,
+  "expiry_time": "2025-05-04 15:00:35",
+  "created_time": "2025-05-04 14:30:35"
 }
 ```
 
-> Response for invalid request (transaction will rejected & not processed in the OY! system):
+> API Response for Invalid Request (Transaction will be rejected and not processed in the OY! system):
 
 ```json
 {
@@ -1019,11 +1019,11 @@ print(data.decode("utf-8"))
     "message": "Quotation ID is required"
   },
   "tx_id": null,
-  "quotation_id": "TRX20250325001",
-  "source_amount": 200000,
-  "source_currency_code": "IDR",
+  "quotation_id": null,
+  "source_amount": null,
+  "source_currency_code": null,
   "destination_amount": null,
-  "destination_currency_code": "SGD",
+  "destination_currency_code": null,
   "fx_rate": null,
   "transfer_fee": null,
   "converted_amount": null,
@@ -1032,39 +1032,70 @@ print(data.decode("utf-8"))
 }
 ```
 
-Use this API to create a new Conversion Quotation.
+This endpoint is used to create a new Conversion Quotation.
 
 ### HTTPS Request
-
 **[Production]** `POST https://partner.oyindonesia.com/api/international/quotation`<br>
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/international/quotation`
 
 ### Request Parameters
 
-| Parameter                 | Type        | Required | Description                                                                                                                                                                                                                         |
-| ------------------------- | ----------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| quotation_id              | String(64)  | TRUE     | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters.                                                                                                                          |
-| destination_country_code  | String(2)   | TRUE     | Destination Country Code. Two-letter ISO 3166-2 country code.                                                                                                                                                                       |
-| destination_currency_code | String(3)   | TRUE     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                     |
-| source_amount             | BigInteger  | FALSE    | Amount in source currency (IDR). Minimum Source Amount: IDR 200,000. Maximum Source Amount depends on each corridor: SGD: IDR 35,000,000; USD: IDR 1,450,000,000; CNH: IDR 35,000,000; USD: IDR 1,450,000,000; HKD: IDR 35,000,000. |
-| destination_amount        | String(255) | FALSE    | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.                                                                                                                                   |
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+quotation_id | String(8,64) | TRUE | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters.
+destination_country_code | String(2) | TRUE | Destination Country Code. Two-letter ISO 3166-2 country code.
+destination_currency_code | String(3) | TRUE | Destination Currency Code. Three-letter ISO 4217 currency code.
+source_amount | Number | FALSE | Amount in source currency (IDR). <br><br>• **Minimum Source Amount**: IDR 200,000. <br>• **Maximum Source Amount**: depends on each corridor.<br><br> <table> <thead> <tr> <th>Country</th> <th>Currency</th> <th>Maximum Amount (IDR)</th> </tr> </thead>  <tbody> <tr> <td>SG</td> <td>SGD</td> <td>35,000,000</td> </tr> <tr> <td>SG</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>CN</td> <td>CNH</td> <td>35,000,000</td> </tr> <tr> <td>CN</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>HK</td> <td>HKD</td> <td>35,000,000</td> </tr> <tr> <td>HK</td> <td>USD</td> <td>1,450,000,000</td> </tr> </tbody> </table>
+destination_amount | String | FALSE | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.
 
 ### Response Parameters
 
-| Parameter                 | Type       | Description                                                                                                                                                                                                                                  |
-| ------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status                    | Object     | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
-| tx_id                     | String     | Unique Transaction ID, generated by OY!                                                                                                                                                                                                      |
-| quotation_id              | String     | Unique Reference ID for a specific request, generated by the Client                                                                                                                                                                          |
-| source_amount             | BigInteger | Amount in source currency                                                                                                                                                                                                                    |
-| source_currency_code      | String     | Amount Currency Code. Currently, only available for IDR                                                                                                                                                                                      |
-| destination_amount        | String     | Amount in destination currency (with 2-digit decimal).                                                                                                                                                                                       |
-| destination_currency_code | String     | Destination Currency Code. Three-letter ISO 4217 currency code.                                                                                                                                                                              |
-| fx_rate                   | BigInteger | Conversion rate                                                                                                                                                                                                                              |
-| transfer_fee              | BigInteger | Transaction fee                                                                                                                                                                                                                              |
-| converted_amount          | BigInteger | Source Amount imposed by Transfer Fee, will be converted to the Amount in destination currency.                                                                                                                                              |
-| expiry_time               | Date       | Validity of Quotation (in GMT+0)                                                                                                                                                                                                             |
-| created_time              | Date       | Conversion rate creation datetime (in GMT+0)                                                                                                                                                                                                 |
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. <br><br> `{code: <status_code>, message: <status_message>}` <br><br>
+tx_id | String | Unique Transaction ID, generated by OY!
+quotation_id | String | Unique Reference ID for a specific request, generated by the Client
+source_amount | Number | Amount in source currency
+source_currency_code | String | Source Amount Currency Code. Currently, only available for IDR.
+destination_amount | String | Amount in destination currency (with 2-digit decimal)
+destination_currency_code | String | Destination Currency Code. Three-letter ISO 4217 currency code.
+fx_rate | BigDecimal | Conversion rate
+transfer_fee | Number | Transaction fee
+converted_amount | Number | Source Amount imposed by Transfer Fee, will be converted to the Amount in destination currency.
+expiry_time | Date | Validity of Quotation (in GMT+0)
+created_time | Date | Conversion rate creation datetime  (in GMT+0)
+
+### Response Codes & Messages
+
+| HTTP Status | Case Code | Response Message | Description |
+| ----- | ----- | :---- | :---- |
+| 200 OK | 000 | Success | Request successful |
+| 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive International Transfer API product. |
+| 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
+| 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
+| 402 Payment Required | 206 | Balance is not enough | • Indicates that the request was made while the Client’s Available Balance is below the minimum amount of IDR 200,000. <br>• Indicates that the request was made with a Send Amount that exceeds the Client’s Available Balance. <br>• Indicates that the send_amount, as calculated from the destination_amount conversion, exceeds the Client’s Available Balance. <br><br>This case applies if the Client uses Real Balance for their account. |
+| 400 Bad Request | 990 | Quotation ID is required | Indicates that the quotation_id parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Quotation ID must be between 8 and 64 characters long | Indicates that the quotation_id parameter contains a value of less than 8 characters or more than 64 characters. |
+| 400 Bad Request | 990 | Quotation ID must contain only alphanumeric characters | Indicates that the quotation_id parameter contains a non-alphanumeric value. |
+| 400 Bad Request | 203 | Duplicate Quotation ID | Indicates that the quotation_id has already been used before. |
+| 400 Bad Request | 990 | Destination Country Code is required | Indicates that the destination_country_code parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Destination Country Code is not valid | Indicates that the destination_country_code parameter does not match any valid ENUM value or contains an invalid value (e.g., OY). |
+| 400 Bad Request | 990 | Destination Country Code must be 2 characters | Indicates that the destination_country_code parameter contains a value of less than or more than 2 characters. |
+| 400 Bad Request | 990 | Destination Currency Code is required | Indicates that the destination_currency_code parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Destination Currency Code is not valid | Indicates that the destination_currency_code parameter does not match any valid ENUM value or contains an invalid value (e.g., IDR). |
+| 400 Bad Request | 990 | Destination Currency Code must be 3 characters | Indicates that the destination_currency_code parameter contains a value of less than or more than 3 characters. |
+| 400 Bad Request | 990 | Source Amount or Destination Amount is required | Indicates that both source_amount and destination_amount contain empty and null values, and the request is missing source_amount and destination_amount parameters. |
+| 400 Bad Request | 990 | Source Amount must be between IDR 200,000 and IDR <maximum_amount> | Indicates that the source_amount parameter is invalid – either the source_amount is below IDR 200,000 or exceeds the Maximum Amount allowed per corridor, or the converted send_amount from the destination_amount is below IDR 200,000. |
+| 400 Bad Request | 990 | Source Amount must be numeric | Indicates that the source_amount parameter contains a non-numeric value. |
+| 400 Bad Request | 990 | Destination Amount must be greater than 0.00 | Indicates that the destination_amount parameter contains a value equal to 0.00. |
+| 400 Bad Request | 990 | Destination Amount must be numeric with 2 decimal digits | Indicates that the destination_amount parameter contains a non-numeric value or a numeric value without 2 decimal places. |
+| 403 Forbidden | 403 | Destination ${destination_country_code} with currency ${destination_currency_code} is not yet configured for your account | Indicates that the selected corridor is not configured for the provided account. |
+| 503 Service Unavailable | 503 | Destination ${destination_country_code} with currency ${destination_currency_code} is currently unavailable | Indicates that the selected corridor is configured for the provided account, but is temporarily unavailable in OY!. |
+| 500 Server Error | 500 | Failed to calculate price | Indicates that the request is valid, but the system cannot process it due to business logic failures (e.g., conversion issue). |
+| 429 Too Many Requests | 429 | Too Many Requests | Indicates that the Client has sent too many requests within a given period, exceeding the allowed rate limit. |
+| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
+| 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
 ## Upload Document
 
