@@ -1345,7 +1345,7 @@ This endpoint is used to upload a supporting document for a specific Quotation I
 
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
-document | File | TRUE | Attachments to support transactions. <br>• Only available for PNG, JPG, PDF, DOCX, and XLSX formats. <br>• Maximum 10 MB per attachment. <br>• Maximum 10 attachments per Quotation ID.
+document | File | TRUE | Attachments to support transactions. <br><br>• Only available for PNG, JPG, PDF, DOCX, and XLSX formats. <br>• Maximum 10 MB per attachment. <br>• Maximum 10 attachments per Quotation ID.
 
 ### Response Parameters
 
@@ -1387,19 +1387,19 @@ POST https://partner.oyindonesia.com/api/international/transfer \
 -H 'x-oy-username:myuser' \
 -H 'x-api-key:987654' \
 -d '{
-  "quotation_id": "TRX20250325001",
+  "quotation_id": "TRX20250504001",
   "source_of_fund": "BI",
   "purpose_of_transfer": "SS",
   "sender_contact_details": {
     "type": "PERSONAL",
     "personal_contact": {
-      "last_name": "Smith",
+      "last_name": "Doe",
       "date_of_birth": "1990-08-25",
       "nationality": "ID",
       "id_type": "passport",
       "id_number": "987654321",
       "mobile_number_prefix": "+62",
-      "mobile_number": "85712163208",
+      "mobile_number": "811131000",
       "address_line": "Pondok Indah Office Tower",
       "city": "South Jakarta",
       "state_or_province": "DKI Jakarta",
@@ -1409,16 +1409,16 @@ POST https://partner.oyindonesia.com/api/international/transfer \
       "middle_name": "",
       "other_name": "",
       "gender": "male",
-      "occupation": "",
+      "occupation": "Product Manager",
       "country_of_birth": "ID",
-      "email": "sender@example.com",
+      "email": "sender@email.com",
       "residential_status": "Permanent Residency"
     }
   },
   "recipient_contact_details": {
     "type": "BUSINESS",
     "business_contact": {
-      "business_name": "Example Corp",
+      "business_name": "莲花 Corporation",
       "business_reg_number": "1122334455667788",
       "date_of_incorporation": "2010-05-15",
       "country_of_incorporation": "SG",
@@ -1430,10 +1430,10 @@ POST https://partner.oyindonesia.com/api/international/transfer \
       "state_or_province": "Singapore",
       "address_country": "SG",
       "postal": "208539",
-      "website": "",
-      "email": "recipient@example.com"
+      "website": "https://www.example.com",
+      "email": "recipient@email.com"
     },
-   "bank": {
+    "bank": {
       "bank_code": "TSSG0043",
       "bank_account_number": "1234567890",
       "bank_account_name": "John Doe",
@@ -1456,19 +1456,19 @@ var headers = {
 };
 var request = http.Request('POST', Uri.parse('{{base_url}}/api/international/transfer'));
 request.body = json.encode({
-  "quotation_id": "TRX20250325001",
+  "quotation_id": "TRX20250504001",
   "source_of_fund": "BI",
   "purpose_of_transfer": "SS",
   "sender_contact_details": {
     "type": "PERSONAL",
     "personal_contact": {
-      "last_name": "Smith",
+      "last_name": "Doe",
       "date_of_birth": "1990-08-25",
       "nationality": "ID",
       "id_type": "passport",
       "id_number": "987654321",
       "mobile_number_prefix": "+62",
-      "mobile_number": "85712163208",
+      "mobile_number": "811131000",
       "address_line": "Pondok Indah Office Tower",
       "city": "South Jakarta",
       "state_or_province": "DKI Jakarta",
@@ -1478,16 +1478,16 @@ request.body = json.encode({
       "middle_name": "",
       "other_name": "",
       "gender": "male",
-      "occupation": "",
+      "occupation": "Product Manager",
       "country_of_birth": "ID",
-      "email": "sender@example.com",
+      "email": "sender@email.com",
       "residential_status": "Permanent Residency"
     }
   },
   "recipient_contact_details": {
     "type": "BUSINESS",
     "business_contact": {
-      "business_name": "Example Corp",
+      "business_name": "莲花 Corporation",
       "business_reg_number": "1122334455667788",
       "date_of_incorporation": "2010-05-15",
       "country_of_incorporation": "SG",
@@ -1499,10 +1499,10 @@ request.body = json.encode({
       "state_or_province": "Singapore",
       "address_country": "SG",
       "postal": "208539",
-      "website": "",
-      "email": "recipient@example.com"
+      "website": "https://www.example.com",
+      "email": "recipient@email.com"
     },
-   "bank": {
+    "bank": {
       "bank_code": "TSSG0043",
       "bank_account_number": "1234567890",
       "bank_account_name": "John Doe",
@@ -1537,23 +1537,23 @@ import (
 
 func main() {
 
-  url := "%7B%7Bbase_url%7D%7D/api/international/tranfer"
+  url := "%7B%7Bbase_url%7D%7D/api/international/transfer"
   method := "POST"
 
   payload := strings.NewReader(`{
-  "quotation_id": "TRX20250325001",
+  "quotation_id": "TRX20250504001",
   "source_of_fund": "BI",
   "purpose_of_transfer": "SS",
   "sender_contact_details": {
     "type": "PERSONAL",
     "personal_contact": {
-      "last_name": "Smith",
+      "last_name": "Doe",
       "date_of_birth": "1990-08-25",
       "nationality": "ID",
       "id_type": "passport",
       "id_number": "987654321",
       "mobile_number_prefix": "+62",
-      "mobile_number": "85712163208",
+      "mobile_number": "811131000",
       "address_line": "Pondok Indah Office Tower",
       "city": "South Jakarta",
       "state_or_province": "DKI Jakarta",
@@ -1563,16 +1563,16 @@ func main() {
       "middle_name": "",
       "other_name": "",
       "gender": "male",
-      "occupation": "",
+      "occupation": "Product Manager",
       "country_of_birth": "ID",
-      "email": "sender@example.com",
+      "email": "sender@email.com",
       "residential_status": "Permanent Residency"
     }
   },
   "recipient_contact_details": {
     "type": "BUSINESS",
     "business_contact": {
-      "business_name": "Example Corp",
+      "business_name": "莲花 Corporation",
       "business_reg_number": "1122334455667788",
       "date_of_incorporation": "2010-05-15",
       "country_of_incorporation": "SG",
@@ -1584,10 +1584,10 @@ func main() {
       "state_or_province": "Singapore",
       "address_country": "SG",
       "postal": "208539",
-      "website": "",
-      "email": "recipient@example.com"
+      "website": "https://www.example.com",
+      "email": "recipient@email.com"
     },
-   "bank": {
+    "bank": {
       "bank_code": "TSSG0043",
       "bank_account_number": "1234567890",
       "bank_account_name": "John Doe",
@@ -1681,14 +1681,11 @@ RequestBody body = RequestBody.create(mediaType, "{\n" +
     "\t\t\t\"email\": \"recipient@email.com\"\n" +
     "\t\t},\n" +
     "\t\t\"bank\": {\n" +
-    "\t\t\t\"bank_country\": \"SG\",\n" +
-    "\t\t\t\"bank_account_currency\": \"SGD\",\n" +
+    "\t\t\t\"bank_code\": \"TSSG0043\",\n" +
     "\t\t\t\"bank_account_number\": \"1234567890\",\n" +
     "\t\t\t\"bank_account_name\": \"John Doe\",\n" +
-    "\t\t\t\"bank_name\": \"Unknown\",\n" +
+    "\t\t\t\"swift_bic_code\": \"\",\n" +
     "\t\t\t\"bank_address\": \"180 Kitchener Road #02-01, Singapore 208539\",\n" +
-    "\t\t\t\"Swift_bic_code\": \"\",\n" +
-    "\t\t\t\"ts_bank_code\": \"TSSG0043\",\n" +
     "\t\t\t\"iban_code\": null,\n" +
     "\t\t\t\"cnaps_code\": null\n" +
     "\t\t}\n" +
@@ -1707,62 +1704,62 @@ Response response = client.newCall(request).execute();
 
 ```javascript
 var data = JSON.stringify({
-  quotation_id: "TRX20250325001",
-  source_of_fund: "BI",
-  purpose_of_transfer: "SS",
-  sender_contact_details: {
-    type: "PERSONAL",
-    personal_contact: {
-      last_name: "Smith",
-      date_of_birth: "1990-08-25",
-      nationality: "ID",
-      id_type: "passport",
-      id_number: "987654321",
-      mobile_number_prefix: "+62",
-      mobile_number: "85712163208",
-      address_line: "Pondok Indah Office Tower",
-      city: "South Jakarta",
-      state_or_province: "DKI Jakarta",
-      address_country: "ID",
-      postal: "12140",
-      first_name: "",
-      middle_name: "",
-      other_name: "",
-      gender: "male",
-      occupation: "",
-      country_of_birth: "ID",
-      email: "sender@example.com",
-      residential_status: "Permanent Residency",
-    },
+  "quotation_id": "TRX20250504001",
+  "source_of_fund": "BI",
+  "purpose_of_transfer": "SS",
+  "sender_contact_details": {
+    "type": "PERSONAL",
+    "personal_contact": {
+      "last_name": "Doe",
+      "date_of_birth": "1990-08-25",
+      "nationality": "ID",
+      "id_type": "passport",
+      "id_number": "987654321",
+      "mobile_number_prefix": "+62",
+      "mobile_number": "811131000",
+      "address_line": "Pondok Indah Office Tower",
+      "city": "South Jakarta",
+      "state_or_province": "DKI Jakarta",
+      "address_country": "ID",
+      "postal": "12140",
+      "first_name": "",
+      "middle_name": "",
+      "other_name": "",
+      "gender": "male",
+      "occupation": "Product Manager",
+      "country_of_birth": "ID",
+      "email": "sender@email.com",
+      "residential_status": "Permanent Residency"
+    }
   },
-  recipient_contact_details: {
-    type: "BUSINESS",
-    business_contact: {
-      business_name: "Example Corp",
-      business_reg_number: "1122334455667788",
-      date_of_incorporation: "2010-05-15",
-      country_of_incorporation: "SG",
-      country_of_operation: "SG",
-      mobile_number_prefix: "+65",
-      mobile_number: "88097917",
-      address_line: "180 Kitchener Road #02-01",
-      city: "Singapore",
-      state_or_province: "Singapore",
-      address_country: "SG",
-      postal: "208539",
-      website: "",
-      email: "recipient@example.com",
+  "recipient_contact_details": {
+    "type": "BUSINESS",
+    "business_contact": {
+      "business_name": "莲花 Corporation",
+      "business_reg_number": "1122334455667788",
+      "date_of_incorporation": "2010-05-15",
+      "country_of_incorporation": "SG",
+      "country_of_operation": "SG",
+      "mobile_number_prefix": "+65",
+      "mobile_number": "88097917",
+      "address_line": "180 Kitchener Road #02-01",
+      "city": "Singapore",
+      "state_or_province": "Singapore",
+      "address_country": "SG",
+      "postal": "208539",
+      "website": "https://www.example.com",
+      "email": "recipient@email.com"
     },
-    bank: {
-      bank_code: "TSSG0043",
-      bank_account_number: "1234567890",
-      bank_account_name: "John Doe",
-      swift_bic_code: "",
-      bank_address: "180 Kitchener Road #02-01, Singapore 208539",
-      iban_code: null,
-      cnaps_code: null,
-    },
-  },
+    "bank": {
+      "bank_code": "TSSG0043",
+      "bank_account_number": "1234567890",
+      "bank_account_name": "John Doe",
+      "swift_bic_code": "",
+      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
+      "iban_code": null,
+      "cnaps_code": null
+    }
+  }
 });
 
 var xhr = new XMLHttpRequest();
@@ -1846,14 +1843,11 @@ $request->setBody('{\n' .
     '\t\t\t"email": "recipient@email.com"\n' .
     '\t\t},\n' .
     '\t\t"bank": {\n' .
-    '\t\t\t"bank_country": "SG",\n' .
-    '\t\t\t"bank_account_currency": "SGD",\n' .
+    '\t\t\t"bank_code": "TSSG0043",\n' .
     '\t\t\t"bank_account_number": "1234567890",\n' .
     '\t\t\t"bank_account_name": "John Doe",\n' .
-    '\t\t\t"bank_name": "Unknown",\n' .
-    '\t\t\t"bank_address": "180 Kitchener Road #02-01, Singapore 208539",\n' .
     '\t\t\t"swift_bic_code": "",\n' .
-    '\t\t\t"ts_bank_code": "TSSG0043",\n' .
+    '\t\t\t"bank_address": "180 Kitchener Road #02-01, Singapore 208539",\n' .
     '\t\t\t"iban_code": null,\n' .
     '\t\t\t"cnaps_code": null\n' .
     '\t\t}\n' .
@@ -1880,19 +1874,19 @@ import json
 
 conn = http.client.HTTPSConnection("{{base_url}}")
 payload = json.dumps({
-  "quotation_id": "TRX20250325001",
+  "quotation_id": "TRX20250504001",
   "source_of_fund": "BI",
   "purpose_of_transfer": "SS",
   "sender_contact_details": {
     "type": "PERSONAL",
     "personal_contact": {
-      "last_name": "Smith",
+      "last_name": "Doe",
       "date_of_birth": "1990-08-25",
       "nationality": "ID",
       "id_type": "passport",
       "id_number": "987654321",
       "mobile_number_prefix": "+62",
-      "mobile_number": "85712163208",
+      "mobile_number": "811131000",
       "address_line": "Pondok Indah Office Tower",
       "city": "South Jakarta",
       "state_or_province": "DKI Jakarta",
@@ -1902,16 +1896,16 @@ payload = json.dumps({
       "middle_name": "",
       "other_name": "",
       "gender": "male",
-      "occupation": "",
+      "occupation": "Product Manager",
       "country_of_birth": "ID",
-      "email": "sender@example.com",
+      "email": "sender@email.com",
       "residential_status": "Permanent Residency"
     }
   },
   "recipient_contact_details": {
     "type": "BUSINESS",
     "business_contact": {
-      "business_name": "Example Corp",
+      "business_name": "莲花 Corporation",
       "business_reg_number": "1122334455667788",
       "date_of_incorporation": "2010-05-15",
       "country_of_incorporation": "SG",
@@ -1923,8 +1917,8 @@ payload = json.dumps({
       "state_or_province": "Singapore",
       "address_country": "SG",
       "postal": "208539",
-      "website": "",
-      "email": "recipient@example.com"
+      "website": "https://www.example.com",
+      "email": "recipient@email.com"
     },
     "bank": {
       "bank_code": "TSSG0043",
@@ -1949,7 +1943,7 @@ data = res.read()
 print(data.decode("utf-8"))
 ```
 
-> Response for valid request (transaction will processed in the OY! system):
+> API Response for Valid Request (Transaction will be processed in the OY! system):
 
 ```json
 {
@@ -1958,18 +1952,18 @@ print(data.decode("utf-8"))
     "message": "Success"
   },
   "tx_status": "IN_PROGRESS",
-  "tx_id": "049fa1a6-e051-4ec2-aff5-ffc601c3ce0c",
-  "quotation_id": "TRX20250325001"
+  "tx_id": "a79d3b21-fe4e-4460-aa8a-5c2c4321557e",
+  "quotation_id": "TRX20250504001"
 }
 ```
 
-> Response for invalid request (transaction will rejected & not processed in the OY! system):
+> API Response for Invalid Request (Transaction will be rejected and not processed in the OY! system):
 
 ```json
 {
   "status": {
-    "code": "990",
-    "message": "Quotation ID is required"
+    "code": "203",
+    "message": "Quotation ID is running or has been completed"
   },
   "tx_status": null,
   "tx_id": null,
@@ -1977,31 +1971,293 @@ print(data.decode("utf-8"))
 }
 ```
 
-Use this API to create an International Transfer transaction.
+This endpoint is used to create a new International Transfer API transaction.
 
 ### HTTPS Request
-
 **[Production]** `POST https://partner.oyindonesia.com/api/international/transfer`<br>
 **[Staging]** `POST https://api-stg.oyindonesia.com/api/international/transfer`
 
 ### Request Parameters
 
-| Parameter                 | Type         | Required | Description                                                                                                  |
-| ------------------------- | ------------ | -------- | ------------------------------------------------------------------------------------------------------------ |
-| quotation_id              | String(64)   | TRUE     | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters.   |
-| source_of_fund            | String(ENUM) | TRUE     | [Fund Sources ENUM](#source-of-funds-)                                                                       |
-| purpose_of_transfer       | String(ENUM) | TRUE     | [Transfer Purposes ENUM](#transfer-purposes-)                                                                |
-| sender_contact_details    | Object       | TRUE     | Details of the [Sender Contact object](#sender-contact-details-api-international-transfer) information       |
-| recipient_contact_details | Object       | TRUE     | Details of the [Recipient Contact object](#recipient-contact-details-api-international-transfer) information |
+Parameter | Type | Required | Description
+--------- | ---- | -------- | -----------
+quotation_id | String(8,64) | TRUE | Unique Reference ID for a specific request, generated by the Client. Accepts only alphanumeric characters.
+source_of_fund | String(ENUM) | TRUE | Fund Sources. <br><br>**Allowed values**: [See here](#source-of-funds-) 
+purpose_of_transfer | String(ENUM) | TRUE | Transfer Purposes. <br><br>**Allowed values**: [See here](#transfer-purposes-)
+sender_contact_details | Object | TRUE | Details of the Sender Contact object information. [See here](#sender-contact-details-)
+recipient_contact_details | Object | TRUE | Details of the Recipient Contact object information. [See here](#recipient-contact-details-)
 
 ### Response Parameters
 
-| Parameter    | Type   | Description                                                                                                                                                                                                                                  |
-| ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status       | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. `{code: <status_code>, message: <status_message>}` |
-| tx_status    | String | Transaction status                                                                                                                                                                                                                           |
-| tx_id        | String | Unique Transaction ID, generated by OY!                                                                                                                                                                                                      |
-| quotation_id | String | Unique Reference ID for a specific request, generated by the Client                                                                                                                                                                          |
+Parameter | Type | Description
+--------- | ---- | -----------
+status | Object | Information about the result of the API request. It does not indicate the status of the transaction itself but rather confirms whether the request was successfully processed by the API. <br><br> `{code: <status_code>, message: <status_message>}` <br><br>See [Response Codes & Messages](#response-codes-amp-messages-create-transfer) for more details.
+tx_status | String | Transaction status (IN_PROGRESS)
+tx_id | String | Unique Transaction ID, generated by OY!
+quotation_id | String | Unique Reference ID for a specific request, generated by the Client
+
+### Response Codes & Messages
+
+| HTTP Status | Case Code | Response Message | Description |
+| ----- | ----- | :---- | :---- |
+| 200 OK | 000 | Success | Request successful |
+| 403 Forbidden | 201 | User is not found | Indicates that the x-oy-username Header is either missing from the request or is present but empty. It may also indicate that the provided x-oy-username value does not exist in the database. |
+| 403 Forbidden | 202 | User is not active | Indicates that the x-oy-username Header contains a value with an inactive International Transfer API product. |
+| 403 Forbidden | 207 | IP Address not registered | Indicates that the Client IP Address is not whitelisted in OY\!. |
+| 403 Forbidden | 208 | API Key is not valid | Indicates that the x-api-key Header is either missing from the request or is present but empty. It may also indicate that the provided x-api-key value does not match the one registered in OY\!. |
+| 402 Payment Required | 206 | Balance is not enough | Indicates that the request is made when the Client’s Available Balance is insufficient (i.e., the Send Amount exceeds the current Available Balance). This case applies if the Client uses Real Balance for their account. |
+
+| 400 Bad Request | 990 | Quotation ID is required | Indicates that the quotation_id parameter is missing from the request or contains an empty or null value. |
+| 404 Not Found | 204 | Quotation ID is not found | Indicates that the quotation_id parameter contains a value that does not exist in the database. |
+| 400 Bad Request | 203 | Quotation ID is running or has been completed | Indicates that the quotation_id parameter used in the request is not in the INITIATED status, such as: IN_PROGRESS, SUCCESS, or FAILED. |
+| 410 Gone | 222 | Quotation ID has expired | Indicates that the quotation_id parameter used in the request has status INITIATED, but has expired. |
+| 400 Bad Request | 990 | Source of Fund is required | Indicates that the source_of_fund parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Source of Fund is not valid | Indicates that the source_of_fund parameter does not match any valid ENUM value or contains an invalid value (e.g., OY). |
+| 400 Bad Request | 990 | Purpose of Transfer is required | Indicates that the purpose_of_transfer parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Purpose of Transfer is not valid | Indicates that the purpose_of_transfer parameter does not match any valid ENUM value or contains an invalid value (e.g., OY). |
+| 400 Bad Request | 990 | Sender Contact Details object is required | Indicates that the sender_contact_details object parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Recipient Contact Details object is required | Indicates that the recipient_contact_details object parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Type is required | Indicates that the type parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Type is not valid | Indicates that the type parameter does not match any valid ENUM value or contains an invalid value (e.g., OY). |
+| 400 Bad Request | 990 | Personal Contact object is required when the Sender or Recipient Contact Type is set to Personal | Indicates that the personal_contact object parameter is missing from the request or contains an empty or null value when using type = PERSONAL. Used inside the sender_contact_details and recipient_contact_details object parameters. |
+| 400 Bad Request | 990 | Business Contact object is required when the Sender or Recipient Contact Type is set to Business | Indicates that the business_contact object parameter is missing from the request or contains an empty or null value when using type = BUSINESS. Used inside the sender_contact_details and recipient_contact_details object parameters. |
+| 400 Bad Request | 990 | Transfers to Destination Country CN only allow Recipient Type for BUSINESS | Indicates that the request uses type = PERSONAL in the recipient_contact_details object for a transfer to the Destination Country = CN. Only type = BUSINESS is allowed for transfers to CN. |
+| 400 Bad Request | 990 | Bank object is required in the Recipient Contact Details object | Indicates that the bank object parameter is missing from the request or contains an empty or null value. Used inside the recipient_contact_details object parameter. |
+| 400 Bad Request | 990 | Last Name is required | Indicates that the last_name parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Last Name must be a maximum of 255 characters | Indicates that the last_name parameter contains a value of more than 255 characters. |
+| 400 Bad Request | 990 | Date of Birth is required | Indicates that the date_of_birth parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Date of Birth is not valid | Indicates that the date_of_birth parameter contains an invalid format value. |
+| 400 Bad Request | 990 | Nationality is required | Indicates that the nationality parameter is missing from the request or contains an empty or null value. |
+| 400 Bad Request | 990 | Nationality is not valid Indicates that the nationality parameter does not match any valid ENUM value or contains an invalid value (e.g., OY). |
+400 Bad Request
+990
+Nationality must be 2 characters
+Indicates that the nationality parameter contains a value of less than or more than 2 characters.
+400 Bad Request
+990
+ID Type is required
+Indicates that the id_type parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+ID Type is not valid
+Indicates that the id_type parameter does not match any valid ENUM value or contains an invalid value (e.g., OY).
+400 Bad Request
+990
+ID Number is required
+Indicates that the id_number parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+ID Number must be a maximum of 255 characters
+Indicates that the id_number parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Mobile Number Prefix is required
+Indicates that the mobile_number_prefix parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Mobile Number Prefix must be a maximum of 255 characters
+Indicates that the mobile_number_prefix parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Mobile Number is required
+Indicates that the mobile_number parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Mobile Number must be a maximum of 255 characters
+Indicates that the mobile_number parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Mobile Number must be numeric
+Indicates that the mobile_number parameter contains a non-numeric value
+400 Bad Request
+990
+Address Line is required
+Indicates that the address_line parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Address Line must be a maximum of 255 characters
+Indicates that the address_line parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+City is required
+Indicates that the city parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+City must be a maximum of 255 characters
+Indicates that the city parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+State or Province is required
+Indicates that the state_or_province parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+State or Province must be a maximum of 255 characters
+Indicates that the state_or_province parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Address Country is required
+Indicates that the address_country parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Address Country is not valid
+Indicates that the address_country parameter does not match any valid ENUM value or contains an invalid value (e.g., OY).
+400 Bad Request
+990
+Address Country must be 2 characters
+Indicates that the address_country parameter contains a value of less than or more than 2 characters.
+400 Bad Request
+990
+Postal is required
+Indicates that the postal parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Postal must be a maximum of 255 characters
+Indicates that the postal parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+First Name must be a maximum of 255 characters
+Indicates that the first_name parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Middle Name must be a maximum of 255 characters
+Indicates that the middle_name parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Other Name must be a maximum of 255 characters
+Indicates that the other_name parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Gender is not valid
+Indicates that the gender parameter does not match any valid ENUM value or contains an invalid value (e.g., OY).
+400 Bad Request
+990
+Occupation must be a maximum of 255 characters
+Indicates that the occupation parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Country of Birth is not valid
+Indicates that the country_of_birth parameter does not match any valid ENUM value or contains an invalid value (e.g., OY).
+400 Bad Request
+990
+Country of Birth must be 2 characters
+Indicates that the country_of_birth parameter contains a value of less than or more than 2 characters.
+400 Bad Request
+990
+Email must be a maximum of 255 characters
+Indicates that the email parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Email is not valid
+Indicates that the email parameter contains an invalid format value.
+400 Bad Request
+990
+Residential Status must be a maximum of 255 characters
+Indicates that the residential_status parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Business Name is required
+Indicates that the business_name parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Business Name must be a maximum of 255 characters
+Indicates that the business_name parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Business Registration Number is required
+Indicates that the business_reg_number parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Business Registration Number must be a maximum of 255 characters
+Indicates that the business_reg_number parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Date of Incorporation is required
+Indicates that the date_of_incorporation parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Date of Incorporation is not valid
+Indicates that the date_of_incorporation parameter contains an invalid format value.
+400 Bad Request
+990
+Country of Incorporation is required
+Indicates that the country_of_incorporation parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Country of Incorporation is not valid
+Indicates that the country_of_incorporation parameter does not match any valid ENUM value or contains an invalid value (e.g., OY).
+400 Bad Request
+990
+Country of Incorporation must be 2 characters
+Indicates that the country_of_incorporation parameter contains a value of less than or more than 2 characters.
+400 Bad Request
+990
+Country of Operation is required
+Indicates that the country_of_operation parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Country of Operation is not valid
+Indicates that the country_of_operation parameter does not match any valid ENUM value or contains an invalid value (e.g., OY).
+400 Bad Request
+990
+Country of Operation must be 2 characters
+Indicates that the country_of_operation parameter contains a value of less than or more than 2 characters.
+400 Bad Request
+990
+Website URL must be a maximum of 255 characters
+Indicates that the website parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Website URL is not valid
+Indicates that the website parameter contains an invalid URL format value.
+400 Bad Request
+990
+Bank Code is required
+Indicates that the bank_code parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Bank Code is not valid
+Indicates that the bank_code parameter does not match any valid ENUM value or contains an invalid value (e.g., OY). It may also not be available for the selected Destination Country.
+400 Bad Request
+990
+Bank Account Number is required
+Indicates that the bank_account_number parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Bank Account Number must be a maximum of 255 characters
+Indicates that the bank_account_number parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Bank Account Name is required
+Indicates that the bank_account_name parameter is missing from the request or contains an empty or null value.
+400 Bad Request
+990
+Bank Account Name must be a maximum of 255 characters
+Indicates that the bank_account_name parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+Bank Address must be a maximum of 255 characters
+Indicates that the bank_address parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+SWIFT or BIC Code must be a maximum of 255 characters
+Indicates that the swift_bic_code parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+IBAN Code must be a maximum of 255 characters
+Indicates that the iban_code parameter contains a value of more than 255 characters.
+400 Bad Request
+990
+CNAPS Code must be a maximum of 255 characters
+Indicates that the cnaps_code parameter contains a value of more than 255 characters.
+
+
+
+
+
+
+| 429 Too Many Requests | 429 | Too Many Requests | Indicates that the Client has sent too many requests within a given period, exceeding the allowed rate limit. |
+| 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
+| 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
 ## Transfer Detail
 
