@@ -2406,6 +2406,159 @@ recipient_contact_details | Object | Details of the Recipient Contact object inf
 | 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
 | 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
+## Transaction Callback
+
+> Callback Response for a successful transaction:
+```json
+{
+  "tx_status": "SUCCESS",
+  "quotation_id": "TRX20250504001",
+  "url_list": [
+    "username/TRX20250504001/document_file_name.png"
+  ],
+  "recipient_contact_detail": {
+    "type": "BUSINESS",
+    "business_contact": {
+      "business_name": "莲花 Corporation",
+      "business_reg_number": "1122334455667788",
+      "country_of_incorporation": "SG",
+      "date_of_incorporation": "2010-05-15",
+      "country_of_operation": "SG",
+      "website": "https://www.example.com",
+      "address_line": "180 Kitchener Road #02-01",
+      "email": "recipient@email.com",
+      "city": "Singapore",
+      "state_or_province": "Singapore",
+      "postal": "208539",
+      "address_country": "SG",
+      "mobile_number": "88097917",
+      "mobile_number_prefix": "+65"
+    },
+    "bank": {
+      "bank_name": "Svenska Handelsbanken, Singapore Branch",
+      "bank_country": "SG",
+      "bank_account_currency": "SGD",
+      "bank_account_number": "1234567890",
+      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
+      "bank_account_name": "John Doe",
+      "ts_bank_code": "TSSG0043",
+      "swift_bic_code": "HANDSGSG",
+      "bank_code": "TSSG0043"
+    }
+  },
+  "sender_contact_detail": {
+    "type": "PERSONAL",
+    "personal_contact": {
+      "last_name": "Doe",
+      "date_of_birth": "1990-08-25",
+      "nationality": "ID",
+      "id_number": "987654321",
+      "id_type": "passport",
+      "occupation": "Product Manager",
+      "country_of_birth": "ID",
+      "first_name": "John",
+      "gender": "female",
+      "middle_name": "Johny",
+      "other_name": "Bro John",
+      "residential_status": "Permanent Residency",
+      "address_line": "Pondok Indah Office Tower",
+      "email": "sender@email.com",
+      "city": "South Jakarta",
+      "state_or_province": "DKI Jakarta",
+      "postal": "12140",
+      "address_country": "ID",
+      "mobile_number": "811131000",
+      "mobile_number_prefix": "+62"
+    }
+  },
+  "tx_id": "a79d3b21-fe4e-4460-aa8a-5c2c4321557e"
+}
+```
+
+> Callback Response for a failed transaction:
+```json
+{
+  "tx_status": "FAILED",
+  "quotation_id": "TRX20250504001",
+  "url_list": [
+    "username/TRX20250504001/document_file_name.png"
+  ],
+  "recipient_contact_detail": {
+    "type": "BUSINESS",
+    "business_contact": {
+      "business_name": "莲花 Corporation",
+      "business_reg_number": "1122334455667788",
+      "country_of_incorporation": "SG",
+      "date_of_incorporation": "2010-05-15",
+      "country_of_operation": "SG",
+      "website": "https://www.example.com",
+      "address_line": "180 Kitchener Road #02-01",
+      "email": "recipient@email.com",
+      "city": "Singapore",
+      "state_or_province": "Singapore",
+      "postal": "208539",
+      "address_country": "SG",
+      "mobile_number": "88097917",
+      "mobile_number_prefix": "+65"
+    },
+    "bank": {
+      "bank_name": "Svenska Handelsbanken, Singapore Branch",
+      "bank_country": "SG",
+      "bank_account_currency": "SGD",
+      "bank_account_number": "1234567890",
+      "bank_address": "180 Kitchener Road #02-01, Singapore 208539",
+      "bank_account_name": "John Doe",
+      "ts_bank_code": "TSSG0043",
+      "swift_bic_code": "HANDSGSG",
+      "bank_code": "TSSG0043"
+    }
+  },
+  "sender_contact_detail": {
+    "type": "PERSONAL",
+    "personal_contact": {
+      "last_name": "Doe",
+      "date_of_birth": "1990-08-25",
+      "nationality": "ID",
+      "id_number": "987654321",
+      "id_type": "passport",
+      "occupation": "Product Manager",
+      "country_of_birth": "ID",
+      "first_name": "John",
+      "gender": "female",
+      "middle_name": "Johny",
+      "other_name": "Bro John",
+      "residential_status": "Permanent Residency",
+      "address_line": "Pondok Indah Office Tower",
+      "email": "sender@email.com",
+      "city": "South Jakarta",
+      "state_or_province": "DKI Jakarta",
+      "postal": "12140",
+      "address_country": "ID",
+      "mobile_number": "811131000",
+      "mobile_number_prefix": "+62"
+    }
+  },
+  "tx_id": "a79d3b21-fe4e-4460-aa8a-5c2c4321557e"
+}
+```
+
+Our system will send a callback to your system when the International Transfer API transaction status changes to: SUCCESS and FAILED.
+
+You can set your own Callback URL in the OY! Business Dashboard settings. You can open the "Settings" tab, click the "Developer Option" menu, click the "Callback Configuration" tab, and fill in your Callback URL in the International Transfer API field.
+
+We also have a resend callback feature which you can read about [here](https://docs.oyindonesia.com/#feature-resend-callback-sending-payments).
+
+### Callback Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+tx_status | String | Transaction status (SUCCESS, FAILED, IN_PROGRESS)
+quotation_id | String | Unique Reference ID for a specific request, generated by the Client
+url_list | Array | Array of the uploaded document path
+recipient_contact_details | Object | Details of the Recipient Contact object information. [See here](#sender-amp-recipient-contact-details-)
+sender_contact_details | Object | Details of the Sender Contact object information. [See here](#sender-amp-recipient-contact-details-)
+tx_id | String | Unique Transaction ID, generated by OY!
+
 ## Sender & Recipient Contact Details
 
 ### Sender Contact Details Object
