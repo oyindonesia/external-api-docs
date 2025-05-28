@@ -20770,8 +20770,8 @@ POST <span class="s1">'https://partner.oyindonesia.com/api/transaction-data/acco
 <td>trx_counter</td>
 <td style="text-align: center">Numeric</td>
 <td style="text-align: center">FALSE</td>
-<td style="text-align: center">1/-1</td>
-<td style="text-align: center">A transaction counter to limit number of transaction that can be receive by va number. For example, if you put 3, it means that the VA number can only accept transaction 3 times. This parameter will be used only if you use BANK_TRANSFER payment method and routed to VA.</td>
+<td style="text-align: center">1</td>
+<td style="text-align: center">A transaction counter to limit number of transaction that can be receive by va number. Currently we only support single transaction (value = 1) in Payment Routing. This parameter will be used only if you use BANK_TRANSFER payment method and routed to VA.</td>
 </tr>
 <tr>
 <td>success_redirect_url</td>
