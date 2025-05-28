@@ -227,7 +227,7 @@ print(data.decode("utf-8"))
        "qris_url": "www.qris-image-url.com"
     },
     "payment_method": "QRIS",
-    "sender_bank": "dana"
+    "sender_bank": "danamon"
 }
 ```
 
