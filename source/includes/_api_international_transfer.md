@@ -1,6 +1,6 @@
 # International Transfer API
 
-The International Transfer API allows businesses in Indonesia to seamlessly send cross-border payments to recipients in supported destination countries. It supports secure, compliant, and efficient international transfers for both personal and business recipients.
+The International Transfer API allows you to seamlessly send cross-border payments to recipients in supported destination countries. It supports secure, compliant, and efficient international transfers for both personal and business recipients.
 
 ## Get Bank List
 
