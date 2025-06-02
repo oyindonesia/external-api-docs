@@ -267,6 +267,8 @@ Endpoint:
 
 ## Check Status QRIS Transaction
 
+Use this API to check the status of QRIS transactions.
+
 ```shell
 curl --location --request POST 'https://partner.oyindonesia.com/api/payment-routing/check-status' \
 --header 'Content-Type: application/json' \
@@ -515,6 +517,10 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 ## Callback QRIS Transaction
 Once user successfully do the payment, our system will make a callback via HTTP POST request to your system
 
+<aside class="info">
+Note: QRIS Aggregator is implemented using existing Payment Routing API. The transaction will trigger a callback to the callback URL configured in OY! Dashboard under Payment Routing settings.
+</aside>
+
 > QRIS Callback Structure
 
 ```json
@@ -574,7 +580,7 @@ If your settlement is non-real time, for every transaction whose payment method 
 | COMPLETE             | Money has been successfully received.                                                                                                    |
 | EXPIRED              | QRIS transaction has expired.                                                                                                   |
 
-## Payment Routing Response Codes
+## QRIS Transaction Response Codes
 
 Below is the list of response codes for QRIS Aggregator:
 
