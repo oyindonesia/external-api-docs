@@ -320,7 +320,7 @@ Endpoint:
 |receive_amount|Numeric| FALSE |amount to be received. If you use unique code BCA, this number will contain the amount to be received subtracted by 3 digits generated unique code.|
 |trx_expiration_time|Date string; yyyy-MM-dd HH:mm:ss format| FALSE |Transaction Expiration Time|
 |payment_method | String | TRUE | Only exist if request need_frontend is FALSE. The payment method used by user to complete a payment. Refer to Payment Method on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
-|sender_bank | String | TRUE | Only exist if request need_frontend is FALSE. The bank code used by a payer to do payment. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
+|sender_bank | String | TRUE | Only exist if request need_frontend is FALSE. The bank code used by a payer to do payment. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) for Non QRIS Payment Method.<br><br>For QRIS Payment Method, it refers to the QRIS vendor integrated with the OY! system. |
 |payment_info|Object| FALSE |Payment info object|
 |payment_checkout_url|String| TRUE |generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |account_number|String| TRUE |Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
@@ -697,7 +697,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 |settlement_type|String| TRUE |Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |need_frontend|Boolean| FALSE |Partner need UI or not, if true, we will route to payment link, otherwise will be routed to payment aggregator.|
 |payment_method | String | TRUE | The payment method used by user to complete a payment. Conditional, only exist if request need_frontend is FALSE. Refer to Payment Method on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
-|sender_bank | String | TRUE | The bank code used by a payer to do payment. Conditional, only exist if request need_frontend is FALSE. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
+|sender_bank | String | TRUE | The bank code used by a payer to do payment. Conditional, only exist if request need_frontend is FALSE. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) for Non QRIS Payment Method.<br><br>For QRIS Payment Method, it refers to the QRIS vendor integrated with the OY! system. |
 |payment_info|Object| FALSE |Payment info Object|
 |payment_checkout_url|String| TRUE |generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |account_number|String| TRUE |Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
@@ -928,7 +928,7 @@ If your settlement is non-real time, for every transaction whose payment method 
 |settlement_status|String| TRUE | The status of the settlement (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |settlement_type|String| TRUE |Indicate if a transaction will be settled in realtime/non-realtime. (this parameter will only be sent once status of the payment routing is set to ‘COMPLETE’).|
 |payment_method | String | TRUE | The payment method used by user to complete a payment. Conditional, only exist if request need_frontend is FALSE. Refer to Payment Method on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
-|sender_bank | String | TRUE | The bank code used by a payer to do payment. Conditional, only exist if request need_frontend is FALSE. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) |
+|sender_bank | String | TRUE | The bank code used by a payer to do payment. Conditional, only exist if request need_frontend is FALSE. Refer to SOF on [List of Allowed Payment Methods and SOF](#list-of-allowed-payment-methods-and-sof-create-and-update-payment-routing) for Non QRIS Payment Method.<br><br>For QRIS Payment Method, it refers to the QRIS vendor integrated with the OY! system. |
 |payment_info|Object| FALSE |Payment info Object|
 |payment_checkout_url|String| TRUE |generated url for payment link; conditional, only exist if request need_frontend is TRUE|
 |account_number|String| TRUE |Generated VA number if you use VA or account number destination if you use unique code BCA; conditional, only exist if request need_frontend is FALSE and payment_method is BANK_TRANSFER|
