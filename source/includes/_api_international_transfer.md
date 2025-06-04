@@ -2415,8 +2415,8 @@ The following mock values are supported:
 | `bank_account_number` | Simulated Transaction Status | Description |
 |------------------------|------------------|-------------|
 | `1234567891` | `FAILED` | Simulates a transaction that fails due to a processing error. |
-| `1234567892` | `PENDING` | Simulates a transaction that is still being processed and has not reached a final status. |
-| `1234567893` | `SUSPECT` | Simulates a transaction flagged for suspicious activity or manual review. |
+| `1234567892` | `PENDING` | Simulates a transaction that is delayed or under review for further checks. |
+| `1234567893` | `IN_PROGRESS` | Simulates a transaction that is currently in progress. |
 | Any other value | `SUCCESS` | Simulates a successful transaction with no issues. |
 
 > ⚠️ **Note**: This behavior is **only available in the Demo Environment** and should not be relied upon in Production. These values are provided strictly for testing purposes.
