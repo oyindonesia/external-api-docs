@@ -2410,6 +2410,8 @@ recipient_contact_details | Object | Details of the Recipient Contact object inf
 
 To facilitate integration and testing, the International Transfer API provides mock behavior in the **Demo Environment** based on the `bank_account_number` provided in the request. This allows you to simulate various transaction outcomes without executing real transactions.
 
+The `bank_account_number` is part of the `bank` object inside the `recipient_contact_details` object in the API **Create Transfer**.
+
 The following mock values are supported:
 
 | `bank_account_number` | Simulated Transaction Status | Description |
