@@ -2406,6 +2406,21 @@ recipient_contact_details | Object | Details of the Recipient Contact object inf
 | 504 Gateway Timeout | 504 | Request Timeout | Indicates that the server does not receive a timely response from an OY\! Service. |
 | 500 Server Error | 999 | Oops\! Something went wrong\! Sorry for the inconvenience. \\n The application has encountered an unknown error. \\n We have been automatically notified and will be looking into this with the utmost urgency. | Indicates failures due to an unexpected issue on the server side, including unhandled NPEs and database issues. |
 
+## Mock Data in Demo Environment
+
+To facilitate integration and testing, the International Transfer API provides mock behavior in the **Demo Environment** based on the `bank_account_number` provided in the request. This allows you to simulate various transaction outcomes without executing real transactions.
+
+The following mock values are supported:
+
+| `bank_account_number` | Simulated Transaction Status | Description |
+|------------------------|------------------|-------------|
+| `1234567891` | `FAILED` | Simulates a transaction that fails due to a processing error. |
+| `1234567892` | `PENDING` | Simulates a transaction that is still being processed and has not reached a final status. |
+| `1234567893` | `SUSPECT` | Simulates a transaction flagged for suspicious activity or manual review. |
+| Any other value | `SUCCESS` | Simulates a successful transaction with no issues. |
+
+> ⚠️ **Note**: This behavior is **only available in the Demo Environment** and should not be relied upon in Production. These values are provided strictly for testing purposes.
+
 ## Transaction Callback
 
 > Callback Response for a successful transaction:
