@@ -1121,3 +1121,17 @@ Below is the list of transaction status of Claim Fund API transaction:
 | SUCCESS | The Claim Fund transaction has completed | State: Final <br> The Claim Fund transaction is successful and the Recipient receives the Claimed Amount. |
 | FAILED | The Claim Fund transaction has failed | State: Final <br> The Claim Fund transaction failed and the Recipient did not receive the Claim Amount. No retry disbursement process. |
 | REJECTED | The Claim Fund transaction has been rejected | State: Final <br> The Owner has rejected the transaction. No disbursement process. |
+
+## Mock Data in Demo Environment
+
+To facilitate integration and testing, the Claim Fund API provides mock behavior in the **Demo Environment** based on the `NOMOR REKENING` provided when filling in customer data in the Claim Fund Link. This allows you to simulate various transaction outcomes without executing real transactions.
+
+The following mock values are supported:
+
+| `NOMOR REKENING` | Simulated Transaction Status | Description |
+|------------------------|------------------|-------------|
+| `30000000000` | `FAILED` | Simulates a transaction that fails due to a processing error. |
+| `10200000000`, `30100000000` | `IN_PROGRESS` | Simulates a transaction that is currently in progress. |
+| `00000000000` | `SUCCESS` | Simulates a successful transaction with no issues. |
+
+> ⚠️ **Note**: This behavior is **only available in the Demo Environment** and should not be relied upon in Production. These values are provided strictly for testing purposes.
