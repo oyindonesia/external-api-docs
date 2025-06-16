@@ -344,7 +344,7 @@ The request should be filled with at least 1 list_enable_payment_method and 1 li
 
 | Payment Method |  SOF |
 | :---------: | :---------------: |
-| BANK_TRANSFER | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484 |
+| BANK_TRANSFER | 002, 008, 009, 013, 014, 022, 213, 451 |
 | QRIS | QRIS |
 | EWALLET | dana_ewallet, ovo_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
@@ -356,7 +356,7 @@ The request should be filled only with 1 list_enable_payment_method and 1 list_e
 
 | Payment Method |  SOF |
 | :---------: | :---------------: |
-| BANK_TRANSFER | 002, 008, 009, 011, 014, 016, 022, 213, 451, 484 |
+| BANK_TRANSFER | 002, 008, 009, 013, 014, 022, 213, 451 |
 | QRIS | QRIS |
 | EWALLET | dana_ewallet, shopeepay_ewallet, linkaja_ewallet |
 | CARDS | CC_DC |
