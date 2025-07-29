@@ -263,7 +263,7 @@ Endpoint:
 |payment_method | String | TRUE | Value is always `QRIS` |
 |sender_bank | String | TRUE | Refers to the QRIS vendor integrated with the OY! system. |
 |payment_info|Object| FALSE |Payment info object|
-|qris_url|String| TRUE |The URL of QR image. This returned URL can only be accessed for 5 minutes after initial response was received, and independent to the actual QRIS validity / expiration time. |
+|qris_url|String| TRUE |The URL of QR image. This returned URL can be accessed as long as the QRIS transaction still valid. |
 
 ## Check Status QRIS Transaction
 
@@ -511,7 +511,7 @@ Note: All requests made must contain "partner_trx_id" or "payment_reference_numb
 |payment_method | String | TRUE | Value is always `QRIS` |
 |sender_bank | String | TRUE | Refers to the QRIS vendor integrated with the OY! system. |
 |payment_info|Object| FALSE |Payment info Object|
-|qris_url|String| TRUE |the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
+|qris_url|String| TRUE |The URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS.  This returned URL can be accessed as long as the QRIS transaction still valid.|
 |payment_reference_number|String| FALSE | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code.|
 
 ## Callback QRIS Transaction
@@ -570,7 +570,7 @@ If your settlement is non-real time, for every transaction whose payment method 
 |payment_method | String | TRUE | Value is always `QRIS` |
 |sender_bank | String | TRUE | Refers to the QRIS vendor integrated with the OY! system. |
 |payment_info|Object| FALSE |Payment info Object|
-|qris_url|String| TRUE |the URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS. This returned URL can only be accessed for 5 minutes after initial response was received, and is independent to the actual QRIS validity / expiration time.|
+|qris_url|String| TRUE |The URL of QR image; conditional, only exist if request need_frontend is FALSE and payment_method is QRIS.  This returned URL can be accessed as long as the QRIS transaction still valid.|
 |payment_reference_number|String| FALSE | Identifier of a payment attempt when the end user successfully completes the payment. The reference number is also stated in the end user’s receipt/proof of transaction. Note that if a QRIS transaction is paid using OVO, the payment reference number is only the first 12 characters from the given transaction code.
 
 ## QRIS Transaction Status
