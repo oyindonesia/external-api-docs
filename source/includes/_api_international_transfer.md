@@ -747,7 +747,7 @@ Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 destination_country_code | String(2) | TRUE | Destination Country Code. Two-letter ISO 3166-2 country code.
 destination_currency_code | String(3) | TRUE | Destination Currency Code. Three-letter ISO 4217 currency code.
-source_amount | Number | FALSE | Amount in source currency (IDR). <br><br>• **Minimum Source Amount**: IDR 200,000. <br>• **Maximum Source Amount**: depends on each corridor.<br><br> <table> <thead> <tr> <th>Country</th> <th>Currency</th> <th>Maximum Amount (IDR)</th> </tr> </thead>  <tbody> <tr> <td>SG</td> <td>SGD</td> <td>35,000,000</td> </tr> <tr> <td>SG</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>CN</td> <td>CNH</td> <td>35,000,000</td> </tr> <tr> <td>CN</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>HK</td> <td>HKD</td> <td>35,000,000</td> </tr> <tr> <td>HK</td> <td>USD</td> <td>1,450,000,000</td> </tr> </tbody> </table>
+source_amount | Number | FALSE | Amount in source currency (IDR). <br><br>• **Minimum Source Amount**: IDR 200,000. <br>• **Maximum Source Amount**: depends on each corridor.<br><br> <table> <thead> <tr> <th>Country</th> <th>Currency</th> <th>Maximum Amount (IDR)</th> </tr> </thead>  <tbody> <tr> <td>SG</td> <td>SGD</td> <td>35,000,000</td> </tr> <tr> <td>SG</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>CN</td> <td>CNH</td> <td>35,000,000</td> </tr> <tr> <td>CN</td> <td>USD</td> <td>1,450,000,000</td> </tr> <tr> <td>HK</td> <td>HKD</td> <td>35,000,000</td> </tr> <tr> <td>HK</td> <td>USD</td> <td>1,450,000,000</td> </tr> <td>US</td> <td>USD</td> <td>1,450,000,000</td> </tr> </tbody> </table>
 destination_amount | String | FALSE | Amount in destination currency (with 2-digit decimal). Must be greater than 0.00 in any currency.
 
 ### Response Parameters
@@ -2650,6 +2650,7 @@ bank_address | String(255) | FALSE | Bank Address
 swift_bic_code | String(255) | FALSE | SWIFT BIC Code
 iban_code | String(255) | FALSE | IBAN Code
 cnaps_code | String(255) | FALSE | CNAPS Code
+aba_routing_number | String(255) | TRUE (For Destination Country = US) | ABA Routing Number
 
 ## Source of Funds
 
