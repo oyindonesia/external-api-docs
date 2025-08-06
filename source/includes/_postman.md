@@ -2,8 +2,6 @@
 
 Postman is a free web testing service that provides an easy, fast, and solid software for developers to learn and maintain a web service contract from both the provider and consumer. As such, Postman has become a widely used tool for contract testing and reference due to its User Experience.
 
-To streamline development and integration with OY!, we have created a Postman Collection at your disposal. Get started by installing Postman here.
-
 Prerequisites: You must have received an authorization Username and API Key from us to access our feature. Contact us at partner@oyindonesia.com to receive your authorization information now.
 
 ## API Authorization
