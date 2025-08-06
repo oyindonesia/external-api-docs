@@ -383,14 +383,6 @@
             </a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#getting-started-postman" class="toc-h2 toc-link" data-title="Getting Started">
-                     <span class="toc-link-content">
-                        Getting Started
-                      </span>
-                        <img src="images/arrow-right-7aed4afa.svg" class="icon-arrow" alt="" />
-                    </a>
-                  </li>
-                  <li>
                     <a href="#api-authorization-postman" class="toc-h2 toc-link" data-title="API Authorization">
                      <span class="toc-link-content">
                         API Authorization
@@ -4021,20 +4013,10 @@
 <h1 id='postman' type='normal'>Postman</h1>
 <p>Postman is a free web testing service that provides an easy, fast, and solid software for developers to learn and maintain a web service contract from both the provider and consumer. As such, Postman has become a widely used tool for contract testing and reference due to its User Experience.</p>
 
-<p>To streamline development and integration with OY!, we have created a Postman Collection at your disposal. Get started by installing Postman here.</p>
-
 <p>Prerequisites: You must have received an authorization Username and API Key from us to access our feature. Contact us at partner@oyindonesia.com to receive your authorization information now.</p>
-<h2 id='getting-started-postman' type='normal'>Getting Started</h2>
-<p>The easiest way to get started using our API is to use our Postman Collection. Postman is a free client application that enables you to make calls using API easily. To make integrating with our API easier, we have created Postman Collection of all our endpoints so that you can test our APIs more easily.</p>
-
-<p>The following is an outline of actions to get started with Postman</p>
-
-<p><a href="https://app.getpostman.com/run-collection/893ce0e3ece7fffdb235?action=collection%2Fimport"><img src="images/button_postman-8b11e6b5.svg" alt="Run in Postman" /></a></p>
-
-<p>You’ll need to create a OY! indonesia account to access OY! APIs via Postman Collection</p>
 <h2 id='api-authorization-postman' type='normal'>API Authorization</h2>
 <ul>
-<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Link Postman collection to test. </li>
+<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Link Postman collection to test.</li>
 <li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
 <li>Open the “Headers” tab and add the following key-value pairs: <strong>Content-Type</strong> with <strong>application/json</strong>, <strong>X-Oy-Username</strong> with your <strong>username</strong> and <strong>X-Api-Key</strong> with your <strong>API Key</strong></li>
 </ul>
@@ -4042,7 +4024,7 @@
 <p><img src="images/images/postman_checkout_header-f3a257d2.png" alt="header" /></p>
 
 <ul>
-<li>Your Authorization header configuration has been complete. Click the blue “Send” button and check your response window to retrieve your payment information response. </li>
+<li>Your Authorization header configuration has been complete. Click the blue “Send” button and check your response window to retrieve your payment information response.</li>
 </ul>
 
 <p><img src="images/images/postman_checkout_header_finish-44fd7390.png" alt="header_result" /></p>
@@ -4066,8 +4048,8 @@
 <p><img src="images/images/postman_checkout_setup_environtment-fda59661.png" alt="header" /></p>
 
 <ul>
-<li>To utilize the created environment, locate the environment management menu at the upper left corner of your screen. It should be to the left of the eye icon. </li>
-<li>In the drop down menu, choose the environment that you have just created. </li>
+<li>To utilize the created environment, locate the environment management menu at the upper left corner of your screen. It should be to the left of the eye icon.</li>
+<li>In the drop down menu, choose the environment that you have just created.</li>
 </ul>
 
 <p><img src="images/images/postman_checkout_choose_environtment-2c54b8f9.png" alt="header" /></p>
@@ -4075,17 +4057,17 @@
 <p>You just set your authorization value header with environment variable which already configured.</p>
 <h2 id='test-one-of-our-api-calls-postman' type='normal'>Test one of our API Calls</h2>
 <ul>
-<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Link Postman collection to test. </li>
+<li>On the left hand side of your screen, navigate to the Collections tab. Select one of our API from our Payment Link Postman collection to test.</li>
 <li>The screenshot below uses Detail &gt; Get Detail Payment/Invoice as an example</li>
-<li>Replace <a href="https://partner.oyindonesia.com">https://partner.oyindonesia.com</a> in the GET url with <strong>{{base_url}}</strong> as the value </li>
-<li>Replace the <strong>X-Oy-Username</strong> key-value pair to <strong>{{username}}</strong> as the value </li>
+<li>Replace <a href="https://partner.oyindonesia.com">https://partner.oyindonesia.com</a> in the GET url with <strong>{{base_url}}</strong> as the value</li>
+<li>Replace the <strong>X-Oy-Username</strong> key-value pair to <strong>{{username}}</strong> as the value</li>
 <li>Replace the <strong>X-Api-Key</strong> key-value pair to <strong>{{api_key}}</strong> as the value</li>
 <li>Click the blue “Send” button and check your response window to retrieve your payment information response.</li>
 </ul>
 
 <p><img src="images/images/postman_checkout_detail-1255093a.png" alt="header" /></p>
 
-<p>If you were able to complete all these steps, your environment is working perfectly and is on the right track. Feel free to test out our other API products or contact us at <a href="partner@oyindonesia.com">partner@oyindonesia.com</a> if you encountered any difficulties testing our Postman Collection. </p>
+<p>If you were able to complete all these steps, your environment is working perfectly and is on the right track. Feel free to test out our other API products or contact us at <a href="partner@oyindonesia.com">partner@oyindonesia.com</a> if you encountered any difficulties testing our Postman Collection.</p>
 <h1 id='authentication' type='normal'>Authentication</h1>
 <p>OY! API uses pair of <code>API Key</code> and <code>IP Address</code> to authenticate a partner request. Partner needs to register a unique <code>IP Address</code> which will be used as originating request for the API Services.</p>
 
