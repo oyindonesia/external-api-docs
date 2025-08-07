@@ -88,6 +88,7 @@ Bank Codes | Bank Name
 426	| Bank Mega
 441	| Bank Bukopin
 451	| Bank Syariah Indonesia
+459 | Krom Bank Indonesia
 472	| Bank Jasa Jakarta
 484	| Bank KEB Hana
 485	| Bank MNC
