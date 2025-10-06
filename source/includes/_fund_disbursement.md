@@ -270,9 +270,10 @@ This object contain `sender_account_name String(255), sender_account_number Stri
 | email               | String(255) | FALSE    | Multiple emails allowed, max. 5, separated by space. E.g. john.doe@example.com budi@example.com stark@example.com |
 | child_balance       | String(255) | FALSE    | If the [Multi Account Management](https://docs.oyindonesia.com/#multi-account-management-oy-dashboard-tutorial) configuration is active, the disbursement will use the balance of child (sub-entity) account. Otherwise, the partner's own balance will be used by default. |
 | sender_info      | Object      | FALSE    | Object related to sender information. By default, if your request does not include the sender_info object, the system will automatically use your registered bank account from Accounts > Bank Accounts. 
+| Parameter         | Type        | Required | Description                                                                                                                                                                                                                                        |
+|-------------------|-------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | recipient_bank      | String(255) | TRUE     | Please refer to the [Disbursement Bank Codes](#disbursement-bank-codes-) to find the bank code for the recipient's bank account. |
-| recipient_account   | String(255) | TRUE     | Recipient bank account number, numeric only. |
-| amount              | BigInteger  | TRUE     | Amount of disbursement, the minimum amount for bank is Rp10.000 and e-wallet is Rp100. ||
+| recipient_account   | String(255) | TRUE     | Recipient bank account number, numeric only. ||
 | additional_data      | Object      | FALSE    | Object that includes the additional parameter for partner’s needs. This object contain `partner_merchant_id String(64) (Unique ID for each of partner’s merchant)` |
 
 ### Response Parameters
