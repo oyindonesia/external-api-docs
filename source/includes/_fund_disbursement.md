@@ -18,6 +18,11 @@ POST https://partner.oyindonesia.com/api/remit \
   "note":"Split lunch bill", 
   "partner_trx_id":"1234-asdf",
   "email" :"napoleon@email.com test@email.com",
+  "sender_info": {
+      "sender_account_name": "John Doe",
+      "sender_account_number": "12341235",
+      "sender_bank_code": "014"
+  },
   "additional_data": {
       "partner_merchant_id": "merchant_abcd123"
   }
@@ -39,6 +44,11 @@ request.body = json.encode({
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
   "email": "business.support@oyindonesia.com",
+  "sender_info": {
+      "sender_account_name": "John Doe",
+      "sender_account_number": "12341235",
+      "sender_bank_code": "014"
+  },
   "additional_data": {
       "partner_merchant_id": "merchant_abcd123"
   }
@@ -77,6 +87,11 @@ func main() {
 	"note": "Test API Disburse",
 	"partner_trx_id": "OYON0000064",
 	"email": "business.support@oyindonesia.com",
+  "sender_info": {
+      "sender_account_name": "John Doe",
+      "sender_account_number": "12341235",
+      "sender_bank_code": "014"
+  },
   "additional_data": {
       "partner_merchant_id": "merchant_abcd123"
   }
@@ -135,6 +150,11 @@ var data = JSON.stringify({
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
   "email": "business.support@oyindonesia.com",
+  "sender_info": {
+      "sender_account_name": "John Doe",
+      "sender_account_number": "12341235",
+      "sender_bank_code": "014"
+  },
   "additional_data": {
       "partner_merchant_id": "merchant_abcd123"
   }
@@ -173,7 +193,7 @@ $request->setHeader(array(
   'x-oy-username' => '{{username}}',
   'x-api-key' => '{{api-key}}'
 ));
-$request->setBody('{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"business.support@oyindonesia.com\",\n  \"additional_data\": {\n      \"partner_merchant_id\": \"merchant_abcd123\"\n  }\n}');
+$request->setBody('{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"business.support@oyindonesia.com\",\n\t\"sender_info\": {\n\t\t\"sender_account_name\": \"John Doe\",\n\t\t\"sender_account_number\": \"12341235\",\n\t\t\"sender_bank_code\": \"014\"\n\t},\n\t\"additional_data\": {\n\t\t\"partner_merchant_id\": \"merchant_abcd123\"\n\t}\n}');
 try {
   $response = $request->send();
   if ($response->getStatus() == 200) {
@@ -201,6 +221,11 @@ payload = json.dumps({
   "note": "Test API Disburse",
   "partner_trx_id": "OYON0000064",
   "email": "business.support@oyindonesia.com",
+  "sender_info": {
+      "sender_account_name": "John Doe",
+      "sender_account_number": "12341235",
+      "sender_bank_code": "014"
+  },
   "additional_data": {
       "partner_merchant_id": "merchant_abcd123"
   }
