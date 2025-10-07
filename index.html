@@ -4732,6 +4732,11 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
   "note":"Split lunch bill", 
   "partner_trx_id":"1234-asdf",
   "email" :"napoleon@email.com test@email.com",
+  "sender_info": {
+      "sender_account_name": "John Doe",
+      "sender_account_number": "12341235",
+      "sender_bank_code": "014"
+  },
   "additional_data": {
       "partner_merchant_id": "merchant_abcd123"
   }
@@ -4750,6 +4755,11 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
   <span class="s">"note"</span><span class="o">:</span> <span class="s">"Test API Disburse"</span><span class="o">,</span>
   <span class="s">"partner_trx_id"</span><span class="o">:</span> <span class="s">"OYON0000064"</span><span class="o">,</span>
   <span class="s">"email"</span><span class="o">:</span> <span class="s">"business.support@oyindonesia.com"</span><span class="o">,</span>
+  <span class="s">"sender_info"</span><span class="o">:</span> <span class="o">{</span>
+      <span class="s">"sender_account_name"</span><span class="o">:</span> <span class="s">"John Doe"</span><span class="o">,</span>
+      <span class="s">"sender_account_number"</span><span class="o">:</span> <span class="s">"12341235"</span><span class="o">,</span>
+      <span class="s">"sender_bank_code"</span><span class="o">:</span> <span class="s">"014"</span>
+  <span class="o">},</span>
   <span class="s">"additional_data"</span><span class="o">:</span> <span class="o">{</span>
       <span class="s">"partner_merchant_id"</span><span class="o">:</span> <span class="s">"merchant_abcd123"</span>
   <span class="o">}</span>
@@ -4785,6 +4795,11 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
     "note": "Test API Disburse",
     "partner_trx_id": "OYON0000064",
     "email": "business.support@oyindonesia.com",
+  "sender_info": {
+      "sender_account_name": "John Doe",
+      "sender_account_number": "12341235",
+      "sender_bank_code": "014"
+  },
   "additional_data": {
       "partner_merchant_id": "merchant_abcd123"
   }
@@ -4837,6 +4852,11 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
   <span class="dl">"</span><span class="s2">note</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Test API Disburse</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">partner_trx_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OYON0000064</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">business.support@oyindonesia.com</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">sender_info</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">sender_account_name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John Doe</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">sender_account_number</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12341235</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">sender_bank_code</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">014</span><span class="dl">"</span>
+  <span class="p">},</span>
   <span class="dl">"</span><span class="s2">additional_data</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
       <span class="dl">"</span><span class="s2">partner_merchant_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">merchant_abcd123</span><span class="dl">"</span>
   <span class="p">}</span>
@@ -4872,7 +4892,7 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
   <span class="s1">'x-oy-username'</span> <span class="o">=&gt;</span> <span class="s1">'{{username}}'</span><span class="p">,</span>
   <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'{{api-key}}'</span>
 <span class="p">));</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"business.support@oyindonesia.com\",\n  \"additional_data\": {\n      \"partner_merchant_id\": \"merchant_abcd123\"\n  }\n}'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">setBody</span><span class="p">(</span><span class="s1">'{\n\t\"recipient_bank\": \"008\",\n\t\"recipient_account\": \"0201245681\",\n\t\"amount\": 15000,\n\t\"note\": \"Test API Disburse\",\n\t\"partner_trx_id\": \"OYON0000064\",\n\t\"email\": \"business.support@oyindonesia.com\",\n\t\"sender_info\": {\n\t\t\"sender_account_name\": \"John Doe\",\n\t\t\"sender_account_number\": \"12341235\",\n\t\t\"sender_bank_code\": \"014\"\n\t},\n\t\"additional_data\": {\n\t\t\"partner_merchant_id\": \"merchant_abcd123\"\n\t}\n}'</span><span class="p">);</span>
 <span class="k">try</span> <span class="p">{</span>
   <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">();</span>
   <span class="k">if</span> <span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
@@ -4897,6 +4917,11 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
   <span class="s">"note"</span><span class="p">:</span> <span class="s">"Test API Disburse"</span><span class="p">,</span>
   <span class="s">"partner_trx_id"</span><span class="p">:</span> <span class="s">"OYON0000064"</span><span class="p">,</span>
   <span class="s">"email"</span><span class="p">:</span> <span class="s">"business.support@oyindonesia.com"</span><span class="p">,</span>
+  <span class="s">"sender_info"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">"sender_account_name"</span><span class="p">:</span> <span class="s">"John Doe"</span><span class="p">,</span>
+      <span class="s">"sender_account_number"</span><span class="p">:</span> <span class="s">"12341235"</span><span class="p">,</span>
+      <span class="s">"sender_bank_code"</span><span class="p">:</span> <span class="s">"014"</span>
+  <span class="p">},</span>
   <span class="s">"additional_data"</span><span class="p">:</span> <span class="p">{</span>
       <span class="s">"partner_merchant_id"</span><span class="p">:</span> <span class="s">"merchant_abcd123"</span>
   <span class="p">}</span>
@@ -4998,6 +5023,12 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 <td>String(255)</td>
 <td>FALSE</td>
 <td>If the <a href="https://docs.oyindonesia.com/#multi-account-management-oy-dashboard-tutorial">Multi Account Management</a> configuration is active, the disbursement will use the balance of child (sub-entity) account. Otherwise, the partner&#39;s own balance will be used by default.</td>
+</tr>
+<tr>
+<td>sender_info</td>
+<td>Object</td>
+<td>FALSE</td>
+<td>Object related to sender information. This object contain : <br> <code>• sender_account_name String(255)</code> <br> <code>• sender_account_number String(255)</code> <br> <code>• sender_bank_code String(255)</code> <br> By default, if your request does not include the sender_info object, the system will automatically use your registered bank account from Accounts &gt; Bank Accounts.</td>
 </tr>
 <tr>
 <td>additional_data</td>
