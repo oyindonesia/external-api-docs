@@ -215,7 +215,7 @@ Use this API to get beneficiary account details.
 Parameter | Type | Required | Description
 --------- | ---- | -------- | -----------
 bank_code | String(255) | TRUE | Bank Code of the Beneficiary account, see [Disbursement Bank Codes](#disbursement-bank-codes-)
-account_number | String(255) | TRUE | Beneficiary account number
+account_number | String(255) | TRUE | Beneficiary account number, numeric only
 
 ### Response Parameters
 
