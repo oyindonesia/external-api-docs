@@ -323,6 +323,7 @@ Below is the list of response codes that show the request status for API Create 
 | 208           | Final     | Transaction Not Created | Request is Rejected (API Key is not Valid)                                         |
 | 209           | Final     | Transaction Not Created | Request is Rejected (Bank Account is not found)                                    |
 | 210           | Final     | Transaction Not Created | Request is Rejected (Amount is not valid)                                          |
+| 211           | Final     | Transaction Not Created | Request is Rejected (Bank Account is not Allowed)                                          |
 | 257           | Final     | Transaction Not Created | Request is Rejected (Disbursement with the same Partner Tx ID is still in process) |
 | 264           | Final     | Transaction Not Created | Request is rejected (The suggested routing from the partner is not valid)          |
 | 300           | Final     | Transaction Failed      | Transaction is failed.                                                             |
