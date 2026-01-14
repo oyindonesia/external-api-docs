@@ -353,14 +353,14 @@ Below is the list of Explanation for column state details that show on response 
 
 ```json
 {
-  "status":{
-    "code":"000",
-    "message":"Success"
+  "status": {
+    "code": "000",
+    "message": "Success"
   },
-  "amount":10000.0000,
-  "recipient_name":"John Doe",
-  "recipient_bank":"014",
-  "recipient_account":"12341234",
+  "amount": 10000.0000,
+  "recipient_name": "John Doe",
+  "recipient_bank": "014",
+  "recipient_account": "12341234",
   "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
   "partner_trx_id": "TRX-20231211-007",
   "timestamp": "11-12-2023 05:07:20",
@@ -373,15 +373,15 @@ Below is the list of Explanation for column state details that show on response 
 
 ```json
 {
-  "status":{
-    "code":"300",
-    "message":"Failed"
+  "status": {
+    "code": "300",
+    "message": "Failed"
   },
-  "tx_status_description":"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again",
-  "amount":10000.0000,
-  "recipient_name":"John Doe",
-  "recipient_bank":"014",
-  "recipient_account":"12341234",
+  "tx_status_description": "Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again",
+  "amount": 10000.0000,
+  "recipient_name": "John Doe",
+  "recipient_bank": "014",
+  "recipient_account": "12341234",
   "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
   "partner_trx_id": "TRX-20231211-007",
   "timestamp": "11-12-2023 05:07:20",
@@ -661,7 +661,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Disbursement in Object `{code: <status_code>, message: <status_message>}`
 tx_status_description | String(255) | Additional information of status code, especially for failed status. E.g. Account is blocked. Please create a new transaction with a different recipient account number.
-amount | BigInteger | Amount to disburse.
+amount | BigDecimal | Amount to disburse.
 recipient_name | String(255) | Account holder name of recipient bank account.
 recipient_bank | String(255) | Bank or Ewallet code of the recipient’s account, please refer to [Disbursement Bank Codes](#disbursement-bank-codes-)
 recipient_account | String(255) | Recipient bank account number.
