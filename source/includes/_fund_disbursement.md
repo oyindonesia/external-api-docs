@@ -357,7 +357,7 @@ Below is the list of Explanation for column state details that show on response 
     "code":"000",
     "message":"Success"
   },
-  "amount":10000,
+  "amount":10000.0000,
   "recipient_name":"John Doe",
   "recipient_bank":"014",
   "recipient_account":"12341234",
@@ -378,7 +378,7 @@ Below is the list of Explanation for column state details that show on response 
     "message":"Failed"
   },
   "tx_status_description":"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again",
-  "amount":10000,
+  "amount":10000.0000,
   "recipient_name":"John Doe",
   "recipient_bank":"014",
   "recipient_account":"12341234",
@@ -606,7 +606,7 @@ print(data.decode("utf-8"))
     "message":"Success"
   },
   "tx_status_description":"",
-  "amount":10000,
+  "amount":10000.0000,
   "recipient_name":"John Doe",
   "recipient_bank":"014",
   "recipient_account":"12341234",
@@ -627,7 +627,7 @@ print(data.decode("utf-8"))
     "message":"Failed"
   },
   "tx_status_description":"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again",
-  "amount":10000,
+  "amount":10000.0000,
   "recipient_name":"John Doe",
   "recipient_bank":"014",
   "recipient_account":"12341234",
