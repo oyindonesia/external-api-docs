@@ -402,7 +402,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Disbursement in Object `{code: <status_code>, message: <status_message>}`
 tx_status_description | String(255) | Additional information regarding status code, especially for Failed transactions, Force Credit transactions, and Queued transactions.<br><br>For example: “Account is blocked. Please create a new transaction with a different recipient account number.”<br><br>Note: This parameter will not appear in the response body for transactions with a Success status.
-amount | BigDecimal | Amount to disburse.
+amount | BigDecimal | Amount to disburse.<br><br>Note: The amount field uses BigDecimal to maintain financial precision.<br>Decimal values (e.g. `10000.0000`) may appear in Get Disbursement Status and Callback responses due to standardized internal processing.
 recipient_name | String(255) | Account holder name of recipient bank account.
 recipient_bank | String(255) | Bank or Ewallet code of the recipient’s account, please refer to [Disbursement Bank Codes](#disbursement-bank-codes-)
 recipient_account | String(255) | Recipient bank account number.
@@ -661,7 +661,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Disbursement in Object `{code: <status_code>, message: <status_message>}`
 tx_status_description | String(255) | Additional information of status code, especially for failed status. E.g. Account is blocked. Please create a new transaction with a different recipient account number.
-amount | BigDecimal | Amount to disburse.
+amount | BigDecimal | Amount to disburse.<br><br>Note: The amount field uses BigDecimal to maintain financial precision.<br>Decimal values (e.g. `10000.0000`) may appear in Get Disbursement Status and Callback responses due to standardized internal processing.
 recipient_name | String(255) | Account holder name of recipient bank account.
 recipient_bank | String(255) | Bank or Ewallet code of the recipient’s account, please refer to [Disbursement Bank Codes](#disbursement-bank-codes-)
 recipient_account | String(255) | Recipient bank account number.
