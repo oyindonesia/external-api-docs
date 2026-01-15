@@ -366,7 +366,7 @@ Below is the list of Explanation for column state details that show on response 
   "timestamp": "11-12-2023 05:07:20",
   "created_date": "11-12-2023 05:06:20",
   "last_updated_date": "11-12-2023 05:07:00",
-  "receipt_url": "https://partner.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"
+  "receipt_url": "https://api.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"
 }
 ```
 
@@ -617,7 +617,7 @@ print(data.decode("utf-8"))
   "timestamp": "11-12-2023 05:07:20",
   "created_date": "11-12-2023 05:06:20",
   "last_updated_date": "11-12-2023 05:07:00",
-  "receipt_url": "https://partner.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"
+  "receipt_url": "https://api.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"
 }
 ```
 
