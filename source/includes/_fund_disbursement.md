@@ -365,7 +365,8 @@ Below is the list of Explanation for column state details that show on response 
   "partner_trx_id": "TRX-20231211-007",
   "timestamp": "11-12-2023 05:07:20",
   "created_date": "11-12-2023 05:06:20",
-  "last_updated_date": "11-12-2023 05:07:00"
+  "last_updated_date": "11-12-2023 05:07:00",
+  "receipt_url": "https://partner.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"
 }
 ```
 
@@ -411,6 +412,7 @@ partner_trx_id | String(255) | Unique disbursement ID which partner put on the r
 timestamp | String(19) | Time of API get disbursement status called by partner ("dd-MM-yyyy HH:mm:ss in UTC time zone").
 created_date | String(19) | Execution time of disbursement in OY! system ("dd-MM-yyyy HH:mm:ss in UTC time zone").
 last_updated_date | String(19) | Latest status change of a disbursement. Example from 'Pending' to 'Success' ("dd-MM-yyyy HH:mm:ss in UTC Time zone")
+receipt_url | String(255) | URL to download the transaction receipt. Contact our business representative to activate this parameter.
 
 ### Transaction Status: API Disbursement
 Below is the list of response codes that show the transaction status for Disbursement Callback:
@@ -614,7 +616,8 @@ print(data.decode("utf-8"))
   "partner_trx_id": "TRX-20231211-007",
   "timestamp": "11-12-2023 05:07:20",
   "created_date": "11-12-2023 05:06:20",
-  "last_updated_date": "11-12-2023 05:07:00"
+  "last_updated_date": "11-12-2023 05:07:00",
+  "receipt_url": "https://partner.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"
 }
 ```
 
@@ -670,6 +673,7 @@ partner_trx_id | String(255) | Unique disbursement ID which partner put on the r
 timestamp | String(19) | Time of API get disbursement status called by partner ("dd-MM-yyyy HH:mm:ss in UTC time zone").
 created_date | String(19) | Execution time of disbursement in OY! system ("dd-MM-yyyy HH:mm:ss in UTC time zone").
 last_updated_date | String(19) | Latest status change of a disbursement. Example from 'Pending' to 'Success' ("dd-MM-yyyy HH:mm:ss in UTC Time zone")
+receipt_url | String(255) | URL to download the transaction receipt. Contact our business representative to activate this parameter.
 
 ### Response Code: API Get Disbursement Status
 
