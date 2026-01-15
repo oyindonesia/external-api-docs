@@ -353,19 +353,20 @@ Below is the list of Explanation for column state details that show on response 
 
 ```json
 {
-  "status":{
-    "code":"000",
-    "message":"Success"
+  "status": {
+    "code": "000",
+    "message": "Success"
   },
-  "amount":10000,
-  "recipient_name":"John Doe",
-  "recipient_bank":"014",
-  "recipient_account":"12341234",
+  "amount": 10000.0000,
+  "recipient_name": "John Doe",
+  "recipient_bank": "014",
+  "recipient_account": "12341234",
   "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
   "partner_trx_id": "TRX-20231211-007",
   "timestamp": "11-12-2023 05:07:20",
   "created_date": "11-12-2023 05:06:20",
-  "last_updated_date": "11-12-2023 05:07:00"
+  "last_updated_date": "11-12-2023 05:07:00",
+  "receipt_url": "https://api.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"
 }
 ```
 
@@ -373,15 +374,15 @@ Below is the list of Explanation for column state details that show on response 
 
 ```json
 {
-  "status":{
-    "code":"300",
-    "message":"Failed"
+  "status": {
+    "code": "300",
+    "message": "Failed"
   },
-  "tx_status_description":"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again",
-  "amount":10000,
-  "recipient_name":"John Doe",
-  "recipient_bank":"014",
-  "recipient_account":"12341234",
+  "tx_status_description": "Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again",
+  "amount": 10000.0000,
+  "recipient_name": "John Doe",
+  "recipient_bank": "014",
+  "recipient_account": "12341234",
   "trx_id": "d23ed68a-2a31-43a8-ac6f-15c0b45565c9",
   "partner_trx_id": "TRX-20231211-007",
   "timestamp": "11-12-2023 05:07:20",
@@ -401,10 +402,8 @@ We also have a resend callback feature which you can read about [here](https://d
 Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Disbursement in Object `{code: <status_code>, message: <status_message>}`
-tx_status_description | String(255) | Additional information regarding status code, especially for Failed transactions, Force Credit transactions, and Queued transactions.
-For example: “Account is blocked. Please create a new transaction with a different recipient account number.”
-Note: This parameter will not appear in the response body for transactions with a Success status.
-amount | BigInteger | Amount to disburse.
+tx_status_description | String(255) | Additional information regarding status code, especially for Failed transactions, Force Credit transactions, and Queued transactions.<br><br>For example: “Account is blocked. Please create a new transaction with a different recipient account number.”<br><br>Note: This parameter will not appear in the response body for transactions with a Success status.
+amount | BigDecimal | Amount to disburse.<br><br>Note: The amount field uses BigDecimal to maintain financial precision.<br>Decimal values (e.g. `10000.0000`) may appear in Get Disbursement Status and Callback responses due to standardized internal processing.
 recipient_name | String(255) | Account holder name of recipient bank account.
 recipient_bank | String(255) | Bank or Ewallet code of the recipient’s account, please refer to [Disbursement Bank Codes](#disbursement-bank-codes-)
 recipient_account | String(255) | Recipient bank account number.
@@ -413,6 +412,7 @@ partner_trx_id | String(255) | Unique disbursement ID which partner put on the r
 timestamp | String(19) | Time of API get disbursement status called by partner ("dd-MM-yyyy HH:mm:ss in UTC time zone").
 created_date | String(19) | Execution time of disbursement in OY! system ("dd-MM-yyyy HH:mm:ss in UTC time zone").
 last_updated_date | String(19) | Latest status change of a disbursement. Example from 'Pending' to 'Success' ("dd-MM-yyyy HH:mm:ss in UTC Time zone")
+receipt_url | String(255) | URL to download the transaction receipt. Contact our business representative to activate this parameter.
 
 ### Transaction Status: API Disbursement
 Below is the list of response codes that show the transaction status for Disbursement Callback:
@@ -608,7 +608,7 @@ print(data.decode("utf-8"))
     "message":"Success"
   },
   "tx_status_description":"",
-  "amount":10000,
+  "amount":10000.0000,
   "recipient_name":"John Doe",
   "recipient_bank":"014",
   "recipient_account":"12341234",
@@ -616,7 +616,8 @@ print(data.decode("utf-8"))
   "partner_trx_id": "TRX-20231211-007",
   "timestamp": "11-12-2023 05:07:20",
   "created_date": "11-12-2023 05:06:20",
-  "last_updated_date": "11-12-2023 05:07:00"
+  "last_updated_date": "11-12-2023 05:07:00",
+  "receipt_url": "https://api.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"
 }
 ```
 
@@ -629,7 +630,7 @@ print(data.decode("utf-8"))
     "message":"Failed"
   },
   "tx_status_description":"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again",
-  "amount":10000,
+  "amount":10000.0000,
   "recipient_name":"John Doe",
   "recipient_bank":"014",
   "recipient_account":"12341234",
@@ -663,7 +664,7 @@ Parameter | Type | Description
 --------- | ---- | -----------
 status | Object | Status of Disbursement in Object `{code: <status_code>, message: <status_message>}`
 tx_status_description | String(255) | Additional information of status code, especially for failed status. E.g. Account is blocked. Please create a new transaction with a different recipient account number.
-amount | BigInteger | Amount to disburse.
+amount | BigDecimal | Amount to disburse.<br><br>Note: The amount field uses BigDecimal to maintain financial precision.<br>Decimal values (e.g. `10000.0000`) may appear in Get Disbursement Status and Callback responses due to standardized internal processing.
 recipient_name | String(255) | Account holder name of recipient bank account.
 recipient_bank | String(255) | Bank or Ewallet code of the recipient’s account, please refer to [Disbursement Bank Codes](#disbursement-bank-codes-)
 recipient_account | String(255) | Recipient bank account number.
@@ -672,6 +673,7 @@ partner_trx_id | String(255) | Unique disbursement ID which partner put on the r
 timestamp | String(19) | Time of API get disbursement status called by partner ("dd-MM-yyyy HH:mm:ss in UTC time zone").
 created_date | String(19) | Execution time of disbursement in OY! system ("dd-MM-yyyy HH:mm:ss in UTC time zone").
 last_updated_date | String(19) | Latest status change of a disbursement. Example from 'Pending' to 'Success' ("dd-MM-yyyy HH:mm:ss in UTC Time zone")
+receipt_url | String(255) | URL to download the transaction receipt. Contact our business representative to activate this parameter.
 
 ### Response Code: API Get Disbursement Status
 
