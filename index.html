@@ -5624,34 +5624,35 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 <p>Response for successful callback:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_name"</span><span class="p">:</span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="s2">"12341234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12341234"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d23ed68a-2a31-43a8-ac6f-15c0b45565c9"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:07:20"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:06:20"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"last_updated_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:07:00"</span><span class="w">
+  </span><span class="nl">"last_updated_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"receipt_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&amp;trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
 <p>Response for failed callback:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="s2">"300"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Failed"</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Failed"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"tx_status_description"</span><span class="p">:</span><span class="s2">"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_name"</span><span class="p">:</span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="s2">"014"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="s2">"12341234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tx_status_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"014"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12341234"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d23ed68a-2a31-43a8-ac6f-15c0b45565c9"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:07:20"</span><span class="p">,</span><span class="w">
@@ -5680,21 +5681,59 @@ POST https://partner.oyindonesia.com/api/remit <span class="se">\</span>
 <tr>
 <td>tx_status_description</td>
 <td>String(255)</td>
-<td>Additional information regarding status code, especially for Failed transactions, Force Credit transactions, and Queued transactions.</td>
+<td>Additional information regarding status code, especially for Failed transactions, Force Credit transactions, and Queued transactions.<br><br>For example: “Account is blocked. Please create a new transaction with a different recipient account number.”<br><br>Note: This parameter will not appear in the response body for transactions with a Success status.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>BigDecimal</td>
+<td>Amount to disburse.<br><br>Note: The amount field uses BigDecimal to maintain financial precision.<br>Decimal values (e.g. <code>10000.0000</code>) may appear in Get Disbursement Status and Callback responses due to standardized internal processing.</td>
+</tr>
+<tr>
+<td>recipient_name</td>
+<td>String(255)</td>
+<td>Account holder name of recipient bank account.</td>
+</tr>
+<tr>
+<td>recipient_bank</td>
+<td>String(255)</td>
+<td>Bank or Ewallet code of the recipient’s account, please refer to <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a></td>
+</tr>
+<tr>
+<td>recipient_account</td>
+<td>String(255)</td>
+<td>Recipient bank account number.</td>
+</tr>
+<tr>
+<td>trx_id</td>
+<td>String(36)</td>
+<td>Unique disbursement ID from OY!, partners can use this ID for reconciliation.</td>
+</tr>
+<tr>
+<td>partner_trx_id</td>
+<td>String(255)</td>
+<td>Unique disbursement ID which partner put on the request.</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>String(19)</td>
+<td>Time of API get disbursement status called by partner (&quot;dd-MM-yyyy HH:mm:ss in UTC time zone&quot;).</td>
+</tr>
+<tr>
+<td>created_date</td>
+<td>String(19)</td>
+<td>Execution time of disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss in UTC time zone&quot;).</td>
+</tr>
+<tr>
+<td>last_updated_date</td>
+<td>String(19)</td>
+<td>Latest status change of a disbursement. Example from &#39;Pending&#39; to &#39;Success&#39; (&quot;dd-MM-yyyy HH:mm:ss in UTC Time zone&quot;)</td>
+</tr>
+<tr>
+<td>receipt_url</td>
+<td>String(255)</td>
+<td>URL to download the transaction receipt. Contact our business representative to activate this parameter.</td>
 </tr>
 </tbody></table>
-
-<p>For example: “Account is blocked. Please create a new transaction with a different recipient account number.”
-Note: This parameter will not appear in the response body for transactions with a Success status.
-amount | BigInteger | Amount to disburse.
-recipient_name | String(255) | Account holder name of recipient bank account.
-recipient_bank | String(255) | Bank or Ewallet code of the recipient’s account, please refer to <a href="#disbursement-bank-codes-">Disbursement Bank Codes</a>
-recipient_account | String(255) | Recipient bank account number.
-trx_id | String(36) | Unique disbursement ID from OY!, partners can use this ID for reconciliation.
-partner_trx_id | String(255) | Unique disbursement ID which partner put on the request.
-timestamp | String(19) | Time of API get disbursement status called by partner (&quot;dd-MM-yyyy HH:mm:ss in UTC time zone&quot;).
-created_date | String(19) | Execution time of disbursement in OY! system (&quot;dd-MM-yyyy HH:mm:ss in UTC time zone&quot;).
-last_updated_date | String(19) | Latest status change of a disbursement. Example from &#39;Pending&#39; to &#39;Success&#39; (&quot;dd-MM-yyyy HH:mm:ss in UTC Time zone&quot;)</p>
 <h3 id='transaction-status-api-disbursement-disbursement-callback' type='normal'>Transaction Status: API Disbursement</h3>
 <p>Below is the list of response codes that show the transaction status for Disbursement Callback:</p>
 
@@ -5884,7 +5923,7 @@ POST https://partner.oyindonesia.com/api/remit-status <span class="se">\</span>
     </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"tx_status_description"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"recipient_name"</span><span class="p">:</span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="s2">"014"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="s2">"12341234"</span><span class="p">,</span><span class="w">
@@ -5892,7 +5931,8 @@ POST https://partner.oyindonesia.com/api/remit-status <span class="se">\</span>
   </span><span class="nl">"partner_trx_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TRX-20231211-007"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:07:20"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"created_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:06:20"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"last_updated_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:07:00"</span><span class="w">
+  </span><span class="nl">"last_updated_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-12-2023 05:07:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"receipt_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.oyindonesia.com/api/receipt?partner_trx_id=TRX-20231211-007&amp;trx_id=d23ed68a-2a31-43a8-ac6f-15c0b45565c9"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -5904,7 +5944,7 @@ POST https://partner.oyindonesia.com/api/remit-status <span class="se">\</span>
     </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Failed"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"tx_status_description"</span><span class="p">:</span><span class="s2">"Your transaction amount exceeds maximum routing limit. Please adjust the routing and try again"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"amount"</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="mf">10000.0000</span><span class="p">,</span><span class="w">
   </span><span class="nl">"recipient_name"</span><span class="p">:</span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"recipient_bank"</span><span class="p">:</span><span class="s2">"014"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"recipient_account"</span><span class="p">:</span><span class="s2">"12341234"</span><span class="p">,</span><span class="w">
@@ -5964,8 +6004,8 @@ You can set your own callback URL in OY Business dashboard setting. You can Open
 </tr>
 <tr>
 <td>amount</td>
-<td>BigInteger</td>
-<td>Amount to disburse.</td>
+<td>BigDecimal</td>
+<td>Amount to disburse.<br><br>Note: The amount field uses BigDecimal to maintain financial precision.<br>Decimal values (e.g. <code>10000.0000</code>) may appear in Get Disbursement Status and Callback responses due to standardized internal processing.</td>
 </tr>
 <tr>
 <td>recipient_name</td>
@@ -6006,6 +6046,11 @@ You can set your own callback URL in OY Business dashboard setting. You can Open
 <td>last_updated_date</td>
 <td>String(19)</td>
 <td>Latest status change of a disbursement. Example from &#39;Pending&#39; to &#39;Success&#39; (&quot;dd-MM-yyyy HH:mm:ss in UTC Time zone&quot;)</td>
+</tr>
+<tr>
+<td>receipt_url</td>
+<td>String(255)</td>
+<td>URL to download the transaction receipt. Contact our business representative to activate this parameter.</td>
 </tr>
 </tbody></table>
 <h3 id='response-code-api-get-disbursement-status-get-disbursement-status' type='normal'>Response Code: API Get Disbursement Status</h3>
