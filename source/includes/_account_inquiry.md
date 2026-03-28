@@ -110,28 +110,45 @@ Request request = new Request.Builder()
 Response response = client.newCall(request).execute();
 ```
 
-```javascript
+```nodejs
+const https = require('https');
+
 var data = JSON.stringify({
   "bank_code": "014",
   "account_number": "1280259361"
 });
 
-var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
-
-xhr.addEventListener("readystatechange", function() {
-  if(this.readyState === 4) {
-    console.log(this.responseText);
+var options = {
+  host: '%7B%7Bbase_url%7D%7D',
+  path: '/api/account-inquiry',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json', 
+    'Accept':'application/json', 
+    'x-oy-username':'{{username}}', 
+    'x-api-key':'{{api-key}}'
   }
+}
+
+const req = https.request(options, (resp) => {
+  let data = '';
+
+  // A chunk of data has been received.
+  resp.on('data', (chunk) => {
+    data += chunk;
+  });
+
+  // The whole response has been received. Print out the result.
+  resp.on('end', () => {
+    console.log(JSON.parse(data).explanation);
+  });
+
+}).on("error", (err) => {
+  console.log("Error: " + err.message);
 });
 
-xhr.open("POST", "%7B%7Bbase_url%7D%7D/api/account-inquiry");
-xhr.setRequestHeader("Content-Type", "application/json");
-xhr.setRequestHeader("Accept", "application/json");
-xhr.setRequestHeader("x-oy-username", "{{username}}");
-xhr.setRequestHeader("x-api-key", "{{api-key}}");
-
-xhr.send(data);
+req.write(data)
+req.end
 ```
 
 ```php
